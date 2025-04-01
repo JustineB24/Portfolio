@@ -1,0 +1,246 @@
+/* Profil */
+/* Paragraphe */
+.profil,
+.btsSio {
+    font-size: 1rem;
+    /* Taille de la police */
+    line-height: 1.5;
+    /* Hauteur de ligne pour aérer le texte */
+    color: #333;
+    /* Couleur du texte */
+    background-color: #fff2f0;
+    /* Couleur de fond douce */
+    padding: 15px;
+    /* Espacement intérieur */
+    margin: 1rem 12rem;
+    /* Espacement autour du paragraphe */
+    border-radius: 8px;
+    /* Bords arrondis */
+    border: 2px solid #cc0000;
+    /* Bordure stylisée */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* Ombre subtile */
+    text-align: justify;
+    /* Justification du texte */
+}
+
+/* Bouton CV */
+.btn {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    border: 3px solid #ffcc00;
+    background: black;
+    color: #ffcc00;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px #ffcc00;
+    position: relative;
+    margin: 3rem;
+}
+
+.btn:active {
+    box-shadow: 2px 2px 0px #ffcc00;
+    transform: translate(2px, 2px);
+}
+
+.piece {
+    width: 1.5rem;
+}
+
+/* BTS SIO */
+/* Styles pour la section des spécialités */
+#specialites {
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+}
+
+#specialites h2 {
+    color: #939393;
+    margin-bottom: 30px;
+    text-decoration: underline;
+}
+
+.bloc-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.bloc-specialite {
+    background: linear-gradient(145deg, rgb(147 146 146) 0%, rgb(191 185 255) 25%, rgb(88 195 255) 50%, rgb(88 255 252) 75%, rgb(98 249 172) 100%);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 40rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 2%;
+}
+
+.bloc-specialite:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.bloc-specialite h3 {
+    color: #939393;
+}
+
+.bloc-specialite h4 {
+    color: #939393;
+    margin-bottom: 10%;
+}
+
+.bloc-specialite p {
+    font-size: 1rem;
+    color: #939393;
+    margin: 10% auto 5% auto;
+    text-decoration: underline;
+}
+
+.bloc-specialite ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    color: #939393;
+}
+
+.bloc-specialite li {
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.bloc-specialite img {
+    width: 30rem;
+    border-radius: 8px;
+    display: block;
+    /* Nécessaire pour que margin auto fonctionne */
+    margin: 0 auto;
+    /* Centre horizontalement */
+}
+
+/* Parcours */
+h4 {
+    color: #333;
+}
+
+.timeline-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 150px;
+    /* Espace entre les colonnes */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timeline {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 0;
+    flex: 1;
+    /* Les deux timelines prennent la même largeur */
+    min-width: 300px;
+    /* Pour éviter que ça devienne trop petit */
+}
+
+/* Ligne verticale de la timeline */
+.timeline-item {
+    padding: 0 0 50px 40px;
+    /* On ajoute + de padding pour compenser */
+    border-left: 3px solid #971f1f;
+    /* Couleur de la ligne */
+    position: relative;
+}
+
+/* Ajout du point sur la timeline */
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    left: -12px;
+    /* Alignement parfait avec la ligne */
+    top: 10px;
+    /* Centrage vertical */
+    background: #fff;
+    border: 3px solid #971f1f;
+    /* Couleur du point */
+}
+
+/* Bloc de contenu */
+.timeline-content {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    animation: fadeInUp 0.6s ease-in-out;
+    /* Animation */
+}
+
+/* Animation d'apparition */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Titres */
+.timeline h2 {
+    padding-bottom: 30px;
+    text-decoration: underline;
+}
+
+/* Titres des blocs */
+.timeline-content h3 {
+    margin: 10px;
+    color: #971f1f;
+    /* Harmonisation des couleurs */
+}
+
+/* Paragraphes */
+.timeline-content p {
+    margin: 20px 0;
+}
+
+/* RESPONSIVE : Ajustement pour les petits écrans */
+@media screen and (max-width: 600px) {
+    .timeline-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timeline-item {
+        padding: 0 0 20px 30px;
+        /* Moins d’espace */
+    }
+
+    .timeline-item::before {
+        left: -10px;
+        /* Ajustement du point */
+        width: 14px;
+        height: 14px;
+    }
+}
+
+
+
+
+
+
+
+hr {
+    border: none;
+    border-top: 2px dashed #666;
+    margin: 20px 0;
+}

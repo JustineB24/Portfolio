@@ -1,0 +1,18 @@
+.titre-projet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.fleche {
+    width: 70%;
+}
+
+.back-button {
+    transition: transform 0.2s;
+}
+
+.back-button:hover {
+    transform: scale(1.1);
+}

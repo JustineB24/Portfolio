@@ -1,0 +1,190 @@
+/* Conteneur principal de la galerie */
+.gallery {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+    grid-template-columns: repeat(3, 1fr);
+    /* 2 colonnes de largeur égale */
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style des images des certifications */
+.gallery .certif {
+    width: 100%;
+    /* Prend toute la largeur disponible dans sa cellule */
+    height: 420px;
+    /* Définit une hauteur fixe pour toutes les images */
+    object-fit: cover;
+    /* Fait en sorte que l'image remplisse l'espace sans déformation */
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.gallery .certif:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Modale d'image */
+#image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Image agrandie */
+#image-modal img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+/* Afficher la modale */
+#image-modal.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Bouton de fermeture */
+#image-modal .close-btn {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    font-size: 3rem;
+    color: white;
+    background: transparent;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Flèches de navigation */
+.nav-btn {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.left-btn {
+    left: 10px;
+}
+
+.right-btn {
+    right: 10px;
+}
+
+/* Cache la modale au chargement */
+.hidden {
+    display: none;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    /* Espacement entre les cartes */
+    flex-wrap: wrap;
+    /* Permet aux cartes de se réorganiser sur plusieurs lignes si nécessaire */
+    margin: 5rem;
+}
+
+.card {
+    width: 10rem;
+    /* Largeur de la carte */
+    height: 10rem;
+    /* Hauteur de la carte (égale à la largeur pour rendre la carte carrée) */
+    padding: 15px;
+    border-radius: 10px;
+    /* Coins arrondis */
+    text-align: center;
+    /* Centrer le contenu de chaque carte */
+    background-color: rgba(132, 132, 132, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Centrer le contenu de la carte, comme une image ou du texte */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card img {
+    max-width: 100%;
+    max-height: 100%;
+    /* Les images ne dépassent pas la taille de la carte */
+    object-fit: contain;
+    /* Garder les proportions de l'image sans la déformer */
+}
+
+/* Ombre des cartes */
+.html:hover {
+    box-shadow: 0 0 10px 5px #f16529;
+}
+
+.css:hover {
+    box-shadow: 0 0 10px 5px #2965f1;
+}
+
+.js:hover {
+    box-shadow: 0 0 10px 5px #f7df1e;
+}
+
+.php:hover {
+    box-shadow: 0 0 10px 5px #6181b6;
+}
+
+.python:hover {
+    box-shadow: 0 0 10px 5px #ffce3e;
+}
+
+.c-sharp:hover {
+    box-shadow: 0 0 10px 5px #1e9e25;
+}
+
+.mysql:hover {
+    box-shadow: 0 0 10px 5px #00758f;
+}
+
+.vscode:hover {
+    box-shadow: 0 0 10px 5px #3aa8f1;
+}
+
+.vs:hover {
+    box-shadow: 0 0 10px 5px #b885f2;
+}
+
+.xampp:hover {
+    box-shadow: 0 0 10px 5px #fb7a24;
+}
+
+.git:hover {
+    box-shadow: 0 0 10px 5px #de4c36;
+}
+
+.github:hover {
+    box-shadow: 0 0 10px 5px #161614;
+}

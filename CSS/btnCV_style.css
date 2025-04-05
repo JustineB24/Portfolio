@@ -1,0 +1,21 @@
+/* Bouton CV */
+.btn {
+    font-size: 20px;
+    padding: 10px 20px;
+    border: 3px solid #ffcc00;
+    background: black;
+    color: #ffcc00;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px #ffcc00;
+    position: relative;
+}
+
+.btn:active {
+    box-shadow: 2px 2px 0px #ffcc00;
+    transform: translate(2px, 2px);
+}
+
+.piece {
+    width: 1.5rem;
+}

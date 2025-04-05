@@ -111,16 +111,23 @@
 
     <!-- Contenu principal -->
     <main>
-        <div class="titre-projet">
-            <a href="projets.html" class="back-button"><img class="fleche" src="../Images/fleche-projet.png"></a>
-            <h1 id="projet-title"></h1>
-        </div>
-        <img id="projet-image" src="" alt="Image du projet">
-        <p id="projet-description"></p>
+        <a href="projets.html" class="back-button" title="Go Back">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="back-icon">
+                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5"
+                    d="M11 6L5 12M5 12L11 18M5 12H19"></path>
+            </svg>
+        </a>
+        <div class="projet-details">
+            <div class="title-container">
+                <h1 id="projet-title"></h1>
+            </div>
+            <img id="projet-image" src="" alt="Image du projet">
+            <p id="projet-description"></p>
 
-        <script src="../JS/projet-details.js"></script>
+            <h2>Technologies utilisées :</h2>
+            <ul id="projet-technologies"></ul>
+        </div>
     </main>
-    <!-- <script src="../JS/projet.js"></script> -->
 
     <!-- Bas de page copyright -->
     <footer id="footer">
@@ -131,6 +138,8 @@
             Tous droits réservés.
         </div>
     </footer>
+
+    <script src="../JS/projet-details.js"></script>
     <script src="../JS/theme.js"></script>
 </body>
 

@@ -209,7 +209,7 @@ p {
 
 /* Bouton GitHub */
 #github {
-    background-color: rgb(31, 31, 31);
+    background-color: #1f1f1f;
 }
 
 /* Variables pour le thème clair */
@@ -286,6 +286,19 @@ body.dark-theme {
 .onglet:hover::after {
     transform: translateX(-50%) scaleX(1);
     transition: transform 0.3s ease-out;
+}
+
+/* Menu burger */
+.burger-menu {
+    display: none;
+    font-size: 32px;
+    position: fixed;
+    top: 10px;
+    /* Positionné en haut de la page */
+    left: 10px;
+    /* Positionné à gauche */
+    cursor: pointer;
+    z-index: 999;
 }
 
 /* Bas de page */
@@ -510,219 +523,234 @@ footer {
     transform: translateY(-50%);
 }
 
-/* Media Queries pour responsivité */
+/* ------------------ */
+/* Responsive Design */
+/* ------------------ */
 
-/* Pour les écrans de taille moyenne */
-@media (max-width: 1024px) {}
-
-/* Pour les écrans de petite taille */
-@media (max-width: 768px) {}
-
-
-/* Media Queries pour responsivité */
-
-/* Pour les écrans de taille moyenne (tablettes) */
-@media (max-width: 1024px) {
-    header {
-        height: 80px;
-        /* Réduire la hauteur du header */
-        padding: 10px 15px;
-        /* Réduire le padding */
-    }
-
-    .titreNom {
-        font-size: 2.5rem;
-        /* Réduire la taille des titres */
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-        font-size: 2.5rem;
-        /* Réduire la taille des titres */
-    }
-
-    p {
-        margin: 1rem 5rem;
-        /* Réduire les marges du paragraphe */
-    }
-
-    .btnReseaux {
-        width: 40px;
-        /* Réduire la taille des boutons */
-        height: 40px;
-    }
-
-    .reseaux {
-        gap: 8px;
-        /* Réduire l'espace entre les boutons */
-    }
-
-    .nav-menu {
-        display: block;
-        text-align: center;
-        /* Aligner les éléments du menu verticalement */
-    }
-
-    .onglet {
-        margin: 0.5rem;
-        /* Réduire l'espacement des onglets */
-    }
-}
-
-/* Pour les petits écrans (smartphones) */
+/* Tablettes (768px et moins) */
 @media (max-width: 768px) {
     header {
-        height: 70px;
-        /* Réduire la hauteur du header */
+        height: 80px;
         padding: 5px 10px;
-        /* Réduire le padding */
     }
 
     .titreNom {
-        font-size: 2rem;
-        /* Réduire la taille du titre principal */
+        font-size: 1.5rem;
     }
 
-    h1,
-    h2,
-    h3,
-    h4 {
+    main {
+        margin-top: 100px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
         font-size: 2rem;
-        /* Réduire la taille des titres */
+    }
+
+    h3 {
+        font-size: 1.75rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
     }
 
     p {
         font-size: 0.9rem;
-        /* Réduire la taille de la police des paragraphes */
-        margin: 1rem 2rem;
-        /* Réduire les marges du paragraphe */
+        padding: 10px;
+    }
+
+    .reseaux {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .btnReseaux {
+        width: 40px;
+        height: 40px;
+    }
+
+    .btnReseaux .text {
+        width: 100px;
+    }
+
+    .burger-menu {
+        display: block;
+        /* Affiche le menu burger */
+    }
+
+    .nav-menu {
+        display: none;
+        /* Cache le menu classique */
+    }
+
+    /* Lorsque le menu burger est ouvert, afficher les éléments du menu verticalement */
+    .nav-menu.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: white;
+        width: 100%;
+        padding: 10px;
+        border-top: 1px solid black;
+    }
+
+    .menu-item {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .onglet {
+        font-size: 1.2rem;
+        padding: 10px 0;
+    }
+
+    /* Réduire la taille du bouton */
+    button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    footer {
+        font-size: 0.7rem;
+        /* Réduire la taille de la police pour les petits écrans */
+        padding: 0.8rem;
+        /* Réduire la marge intérieure */
+    }
+
+    .theme-switch {
+        --container-width: 4.5em;
+        /* Réduire la largeur du toggle */
+        --container-height: 2.25em;
+        /* Réduire la hauteur du toggle */
+        --sun-moon-diameter: 1.75em;
+        /* Réduire la taille du cercle pour les petits écrans */
+        --circle-container-diameter: 3em;
+        /* Réduire le diamètre du container du cercle */
+    }
+
+    .theme-switch__container {
+        width: var(--container-width);
+        height: var(--container-height);
+    }
+
+    .theme-switch__circle-container {
+        width: var(--circle-container-diameter);
+        height: var(--circle-container-diameter);
+    }
+
+    .theme-switch__sun-moon-container {
+        width: var(--sun-moon-diameter);
+        height: var(--sun-moon-diameter);
+    }
+}
+
+/* Mobiles (480px et moins) */
+@media (max-width: 480px) {
+    header {
+        height: 60px;
+        padding: 5px;
+    }
+
+    .titreNom {
+        font-size: 1.2rem;
+        padding: 3px 6px;
+    }
+
+    main {
+        margin-top: 90px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+
+    .reseaux {
+        flex-direction: column;
+        gap: 5px;
     }
 
     .btnReseaux {
         width: 35px;
-        /* Réduire la taille des boutons */
         height: 35px;
     }
 
-    .reseaux {
-        gap: 5px;
-        /* Réduire l'espace entre les boutons */
+    .btnReseaux .text {
+        width: 80px;
     }
 
-    .nav-menu {
-        display: block;
-        text-align: center;
+    .burger-menu {
+        font-size: 28px;
+        /* Réduit la taille de l'icône burger */
     }
 
-    .onglet {
-        font-size: 1rem;
-        /* Réduire la taille des onglets */
-        margin: 0.5rem 0;
+    .nav-menu.open {
+        top: 50px;
+        /* Ajuste la position du menu */
     }
 
-    .theme-switch__container {
-        width: 4em;
-        height: 2em;
-    }
-
-    .theme-switch__circle-container {
-        width: 2.5em;
-        height: 2.5em;
-    }
-
-    .theme-switch__sun-moon-container {
-        width: 1.5em;
-        height: 1.5em;
-    }
-}
-
-/* Pour les très petits écrans (smartphones en mode portrait) */
-@media (max-width: 480px) {
-    header {
-        height: 60px;
-        /* Réduire la hauteur du header */
-        padding: 5px 8px;
-        /* Réduire le padding */
-    }
-
-    .titreNom {
-        font-size: 1.5rem;
-        /* Réduire la taille du titre */
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-        font-size: 1.5rem;
-        /* Réduire la taille des titres */
-    }
-
-    p {
+    /* Réduire la taille du bouton encore plus */
+    button {
         font-size: 0.8rem;
-        /* Réduire la taille du texte */
-        margin: 1rem 1rem;
-        /* Réduire les marges du paragraphe */
+        padding: 6px 12px;
     }
 
-    .btnReseaux {
-        width: 30px;
-        /* Réduire encore plus la taille des boutons */
-        height: 30px;
+    footer {
+        font-size: 0.6rem;
+        /* Réduire encore plus la taille de la police */
+        padding: 0.5rem;
+        /* Réduire la marge intérieure */
     }
 
-    .reseaux {
-        gap: 3px;
-        /* Réduire l'espace entre les boutons */
-    }
-
-    .nav-menu {
-        display: block;
-        text-align: center;
-    }
-
-    .onglet {
-        font-size: 0.9rem;
-        /* Réduire encore la taille des onglets */
-        margin: 0.5rem 0;
+    .theme-switch {
+        --container-width: 4em;
+        /* Réduire encore la largeur du toggle */
+        --container-height: 2em;
+        /* Réduire la hauteur du toggle */
+        --sun-moon-diameter: 1.5em;
+        /* Réduire davantage la taille du cercle */
+        --circle-container-diameter: 2.75em;
+        /* Réduire encore le diamètre du container du cercle */
     }
 
     .theme-switch__container {
-        width: 3.5em;
-        height: 1.8em;
+        width: var(--container-width);
+        height: var(--container-height);
     }
 
     .theme-switch__circle-container {
-        width: 2.3em;
-        height: 2.3em;
+        width: var(--circle-container-diameter);
+        height: var(--circle-container-diameter);
     }
 
     .theme-switch__sun-moon-container {
-        width: 1.3em;
-        height: 1.3em;
-    }
-}
-
-/* Ajuster les éléments en mode paysage pour les petits écrans */
-@media (max-width: 768px) and (orientation: landscape) {
-    p {
-        font-size: 1rem;
-        /* Ajuster la taille du texte en mode paysage */
-        margin: 1rem 3rem;
-        /* Ajuster les marges en mode paysage */
-    }
-
-    .reseaux {
-        justify-content: space-between;
-        /* Espacement entre les boutons */
-        gap: 10px;
-        /* Espacement ajusté */
-    }
-
-    .btnReseaux {
-        width: 40px;
-        height: 40px;
+        width: var(--sun-moon-diameter);
+        height: var(--sun-moon-diameter);
     }
 }

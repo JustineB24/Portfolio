@@ -20,7 +20,6 @@
     <!-- Liens CSS -->
     <link rel="stylesheet" href="../CSS/portfolio_style.css" media="all" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../CSS/projet-details_style.css" media="all" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="../CSS/fleche_style.css" media="all" rel="stylesheet" type="text/css">
 
     <title>Portfolio | Projets</title>
 
@@ -111,16 +110,20 @@
 
     <!-- Contenu principal -->
     <main>
-        <div class="titre-projet">
-            <a href="projets.html" class="back-button"><img class="fleche" src="../Images/fleche-projet.png"></a>
-            <h1 id="projet-title"></h1>
-        </div>
-        <img id="projet-image" src="" alt="Image du projet">
-        <p id="projet-description"></p>
+        <div class="projet-details">
+            <div class="title-container">
+                <a href="projets.html" class="back-button">
+                    <img class="fleche" src="../Images/fleche-projet.png" alt="Retour aux projets">
+                </a>
+                <h1 id="projet-title"></h1>
+            </div>
+            <img id="projet-image" src="" alt="Image du projet">
+            <p id="projet-description"></p>
 
-        <script src="../JS/projet-details.js"></script>
+            <h2>Technologies utilisées :</h2>
+            <ul id="projet-technologies"></ul>
+        </div>
     </main>
-    <!-- <script src="../JS/projet.js"></script> -->
 
     <!-- Bas de page copyright -->
     <footer id="footer">
@@ -131,6 +134,8 @@
             Tous droits réservés.
         </div>
     </footer>
+
+    <script src="../JS/projet-details.js"></script>
     <script src="../JS/theme.js"></script>
 </body>
 

@@ -6,26 +6,99 @@
     margin: 5rem;
 }
 
-.projet-card {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.card {
     height: 20rem;
     width: 30rem;
-    margin: 2rem;
-    padding: 15px;
-    text-align: center;
+    border-radius: 20px;
+    transition: all .3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.card2 {
+    height: 18rem;
+    width: 28rem;
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    transition: all .2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card2 h2 {
+    color: white;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
     cursor: pointer;
 }
 
-.projet-card:hover {
-    transform: scale(1.05);
+/* Effet de survol sur la carte */
+.card:hover {
+    transform: scale(0.98);
+}
+
+.card2:hover {
+    transform: scale(0.98);
+    border-radius: 20px;
+}
+
+/* Couleurs spécifiques pour chaque carte */
+.card-1 {
+    background-color: #FF0000;
+    box-shadow: 0px 0px 30px 1px rgba(255, 0, 0, 0.5);
+}
+
+.card-2 {
+    background-color: #FF6A00;
+    box-shadow: 0px 0px 30px 1px rgba(255, 106, 0, 0.5);
+}
+
+.card-3 {
+    background-color: #FFD500;
+    box-shadow: 0px 0px 30px 1px rgba(255, 213, 0, 0.5);
+}
+
+.card-4 {
+    background-color: #47bd2c;
+    box-shadow: 0px 0px 30px 1px rgba(71, 189, 44, 0.5);
+}
+
+.card-5 {
+    background-color: #00631F;
+    box-shadow: 0px 0px 30px 1px rgba(0, 99, 31, 0.5);
+}
+
+.card-6 {
+    background-color: #00AAFF;
+    box-shadow: 0px 0px 30px 1px rgba(0, 170, 255, 0.5);
+}
+
+.card-7 {
+    background-color: #0900AF;
+    box-shadow: 0px 0px 30px 1px rgba(9, 0, 175, 0.5);
+}
+
+.card-8 {
+    background-color: #9300AD;
+    box-shadow: 0px 0px 30px 1px rgba(147, 0, 173, 0.5);
+}
+
+.card-9 {
+    background-color: #FF0044;
+    box-shadow: 0px 0px 30px 1px rgba(255, 0, 68, 0.5);
+}
+
+.card-10 {
+    background-color: #0F4C81;
+    box-shadow: 0px 0px 30px 1px rgba(15, 76, 129, 0.5);
+}
+
+.card-11 {
+    background-color: #ff6a00;
+    box-shadow: 0px 0px 30px 1px rgba(255, 106, 0, 0.5);
 }

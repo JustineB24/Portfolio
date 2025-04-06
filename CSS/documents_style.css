@@ -1,5 +1,16 @@
 iframe {
-    width: 50%;
-    height: 75rem;
-    margin-bottom: 5rem;
+    width: 100%;
+    max-width: 70rem;
+    height: 100rem;
+    margin: 0 auto 5rem auto;
+    display: block;
+    border: none;
+}
+
+/* Responsive pour tablette et mobile */
+@media screen and (max-width: 768px) {
+    iframe {
+        width: 95%;
+        height: 30rem;
+    }
 }

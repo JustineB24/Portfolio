@@ -9,6 +9,7 @@
     cursor: pointer;
     box-shadow: 4px 4px 0px #ffcc00;
     position: relative;
+    transition: all 0.2s ease;
 }
 
 .btn:active {
@@ -16,6 +17,26 @@
     transform: translate(2px, 2px);
 }
 
+/* Petite icône à côté du texte */
 .piece {
     width: 1.5rem;
+}
+
+/* Media queries : adapte pour téléphone/tablette */
+@media (max-width: 768px) {
+    .btn {
+        font-size: 16px;
+        padding: 8px 16px;
+        border: 2px solid #ffcc00;
+        box-shadow: 2px 2px 0px #ffcc00;
+    }
+
+    .btn:active {
+        box-shadow: 1px 1px 0px #ffcc00;
+        transform: translate(1px, 1px);
+    }
+
+    .piece {
+        width: 1.2rem;
+    }
 }

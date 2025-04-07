@@ -1,64 +1,78 @@
-/* Conteneur des détails du projet */
+/* Conteneur du projet */
 .projet-details {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    animation: fadeIn 0.5s ease-in-out;
+    margin: auto;
+    padding: 50px;
 }
 
-/* Effet d'apparition */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Images du projet */
-.projet-details img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out;
-}
-
+/* Titre + flèche retour */
 .title-container {
     display: flex;
     align-items: center;
-    /* Aligne la flèche et le titre verticalement */
-    justify-content: flex-start;
-    /* Aligne à gauche */
-    gap: 10px;
-    /* Espacement entre la flèche et le titre */
+    gap: 1rem;
+    margin-bottom: 20px;
 }
 
-/* Taille de la flèche */
-.fleche {
-    width: 20px;
-    /* Ajuste la taille de la flèche */
-    height: auto;
+.back-button img {
+    width: 5rem;
+    transition: transform 0.3s ease;
 }
 
-/* Bouton de retour */
-.back-button {
+.back-button img:hover {
+    transform: translateX(-5px);
+}
+
+/* Conteneur des blocs */
+.projet-content {
     display: flex;
-    align-items: center;
-    text-decoration: none;
-    margin-right: 10px;
-    /* Espacement entre la flèche et le titre */
+    gap: 2rem;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    max-width: 100rem;
+    margin: auto;
 }
 
-/* Animation hover sur le bouton de retour */
-.back-button:hover {
-    transform: scale(1.08);
+/* Bloc Présentation */
+.projet-presentation {
+    flex: 1;
+    min-width: 300px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Bloc Technologies */
+.projet-technologies {
+    flex: 1;
+    min-width: 300px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Liste des technologies */
+#projet-technologies {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#projet-technologies li {
+    background-color: #e0e0e0;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 1rem;
+    color: #555;
+    margin: auto;
+}
+
+/* Image du projet */
+#projet-image {
+    width: 50%;
+    height: auto;
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

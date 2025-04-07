@@ -19,7 +19,7 @@
 
     <!-- Liens CSS -->
     <link rel="stylesheet" href="../CSS/portfolio_style.css" media="all" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="../CSS/projet-details_style.css" media="all" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../CSS/projet-details_styles.css" media="all" rel="stylesheet" type="text/css">
 
     <title>Portfolio | Projets</title>
 
@@ -111,17 +111,32 @@
     <!-- Contenu principal -->
     <main>
         <div class="projet-details">
+
+            <!-- Titre du projet et flèche retour -->
             <div class="title-container">
                 <a href="projets.html" class="back-button">
                     <img class="fleche" src="../Images/fleche-projet.png" alt="Retour aux projets">
                 </a>
                 <h1 id="projet-title"></h1>
             </div>
-            <img id="projet-image" src="" alt="Image du projet">
-            <p id="projet-description"></p>
 
-            <h2>Technologies utilisées :</h2>
-            <ul id="projet-technologies"></ul>
+            <!-- Conteneur pour les blocs -->
+            <div class="projet-content">
+                <!-- Bloc Présentation -->
+                <div class="projet-presentation">
+                    <h2>Présentation du projet :</h2>
+                    <p id="projet-description"></p>
+                </div>
+
+                <!-- Bloc Technologies -->
+                <div class="projet-technologies">
+                    <h2>Technologies utilisées :</h2>
+                    <ul id="projet-technologies"></ul>
+                </div>
+            </div>
+
+            <!-- Image du projet -->
+            <div id="projet-images"></div>
         </div>
     </main>
 

@@ -116,35 +116,42 @@
             <h2>Certifications</h2>
             <div class="gallery">
                 <img class="certif" src="../Images/Certif_en_jpg/SoloLearn_Coding_Foundations.jpg"
-                    alt="Certification SoloLearn Coding Foundations" loading="lazy">
+                    alt="Certification SoloLearn Coding Foundations" loading="lazy" onclick="openModal(this)">
                 <img class="certif" src="../Images/Certif_en_jpg/SoloLearn_Introduction_to_C-sharp.jpg"
-                    alt="Certification SoloLearn Introduction to C-sharp" loading="lazy">
-                <img class="certif" src="../Images/Certif_en_jpg/Attestation_pix_Lycée_Marie_Curie.jpg"
-                    alt="Certification PIX" loading="lazy">
+                    alt="Certification SoloLearn Introduction to C-sharp" loading="lazy" onclick="openModal(this)">
+                <img class="certif" src="../Images/Certif_en_jpg/Attestation_pix_Lycée_Édouard_Gand.jpg"
+                    alt="Certification PIX" loading="lazy" onclick="openModal(this)">
                 <img class="certif" src="../Images/Certif_en_jpg/Certificat_module1.jpg"
-                    alt="Certification MOOC module 1" loading="lazy">
+                    alt="Certification MOOC module 1" loading="lazy" onclick="openModal(this)">
                 <img class="certif" src="../Images/Certif_en_jpg/Certificat_module2.jpg"
-                    alt="Certification MOOC module 2" loading="lazy">
+                    alt="Certification MOOC module 2" loading="lazy" onclick="openModal(this)">
                 <img class="certif" src="../Images/Certif_en_jpg/Certificat_module3.jpg"
-                    alt="Certification MOOC module 3" loading="lazy">
+                    alt="Certification MOOC module 3" loading="lazy" onclick="openModal(this)">
                 <img class="certif" src="../Images/Certif_en_jpg/Certificat_module4.jpg"
-                    alt="Certification MOOC module 4" loading="lazy">
+                    alt="Certification MOOC module 4" loading="lazy" onclick="openModal(this)">
                 <img class="certif" src="../Images/Certif_en_jpg/Certificat_module5.jpg"
-                    alt="Certification MOOC module 5" loading="lazy">
+                    alt="Certification MOOC module 5" loading="lazy" onclick="openModal(this)">
+                <img class="certif" src="../Images/Certif_en_jpg/Attestation_pix_Lycée_Marie_Curie.jpg"
+                    alt="Certification PIX" loading="lazy" onclick="openModal(this)">
             </div>
 
             <!-- Modale pour afficher les images agrandies -->
-            <div id="image-modal" class="hidden">
-                <div class="modal-content">
-                    <!-- Flèche de fermeture en haut à gauche -->
-                    <button class="close-btn">&times;</button>
-
-                    <!-- Flèches de navigation -->
-                    <button class="nav-btn left-btn">&lt;</button>
-                    <button class="nav-btn right-btn">&gt;</button>
-
-                    <img id="modal-img" src="" alt="Image agrandie">
-                </div>
+            <div id="zoom-modal" class="hidden">
+                <img id="zoom-modal-img" src="" alt="Image zoomable">
+                <!-- Flèche gauche -->
+                <span id="prev" class="modal-arrow left">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
+                        <path d="M15 18l-6-6 6-6" stroke="white" stroke-width="2" fill="none" />
+                    </svg>
+                </span>
+                <!-- Flèche droite -->
+                <span id="next" class="modal-arrow right">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
+                        <path d="M9 18l6-6-6-6" stroke="white" stroke-width="2" fill="none" />
+                    </svg>
+                </span>
+                <!-- Croix de fermeture -->
+                <span class="close" onclick="closeModal()">&#10005;</span>
             </div>
         </section>
 
@@ -202,7 +209,10 @@
             Tous droits réservés.
         </div>
     </footer>
+
+    <!-- Lien JS -->
     <script src="../JS/theme.js"></script>
+    <script src="../JS/certifications.js"></script>
 </body>
 
 </html>

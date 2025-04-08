@@ -3,25 +3,15 @@
 .profil,
 .btsSio {
     font-size: 1rem;
-    /* Taille de la police */
     line-height: 1.5;
-    /* Hauteur de ligne pour aérer le texte */
-    color: #333;
-    /* Couleur du texte */
+    color: black;
     background-color: #fff2f0;
-    /* Couleur de fond douce */
     padding: 15px;
-    /* Espacement intérieur */
     margin: 1rem 12rem;
-    /* Espacement autour du paragraphe */
     border-radius: 8px;
-    /* Bords arrondis */
     border: 2px solid #cc0000;
-    /* Bordure stylisée */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    /* Ombre subtile */
     text-align: justify;
-    /* Justification du texte */
 }
 
 /* BTS SIO */
@@ -33,7 +23,6 @@
 }
 
 #specialites h2 {
-    color: #939393;
     margin-bottom: 30px;
     text-decoration: underline;
 }
@@ -46,8 +35,8 @@
 }
 
 .bloc-specialite {
-    background: linear-gradient(145deg, rgb(147 146 146) 0%, rgb(191 185 255) 25%, rgb(88 195 255) 50%, rgb(88 255 252) 75%, rgb(98 249 172) 100%);
-    border: 1px solid #ddd;
+    background: rgb(150, 0, 0);
+    background: linear-gradient(0deg, rgba(150, 0, 0, 1) 0%, rgba(150, 37, 37, 1) 28%, rgba(150, 59, 59, 1) 46%, rgba(186, 114, 114, 1) 68%, rgba(255, 255, 255, 1) 100%);
     border-radius: 8px;
     padding: 20px;
     width: 40rem;
@@ -62,17 +51,17 @@
 }
 
 .bloc-specialite h3 {
-    color: #939393;
+    color: black;
 }
 
 .bloc-specialite h4 {
-    color: #939393;
+    color: black;
     margin-bottom: 10%;
 }
 
 .bloc-specialite p {
     font-size: 1rem;
-    color: #939393;
+    color: black;
     margin: 10% auto 5% auto;
     text-decoration: underline;
 }
@@ -81,7 +70,7 @@
     list-style-type: disc;
     margin-left: 20px;
     margin-bottom: 15px;
-    color: #939393;
+    color: black;
 }
 
 .bloc-specialite li {
@@ -100,7 +89,7 @@
 
 /* Parcours */
 h4 {
-    color: #333;
+    color: black;
 }
 
 .timeline-container {

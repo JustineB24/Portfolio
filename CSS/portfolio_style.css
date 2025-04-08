@@ -139,7 +139,7 @@ p {
     /* Taille de la police */
     line-height: 1.5;
     /* Hauteur de ligne pour aérer le texte */
-    color: #333;
+    color: black;
     /* Couleur du texte */
     padding: 15px;
     /* Espacement intérieur */
@@ -311,6 +311,20 @@ footer {
     background-color: #000;
     color: white;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    /* Pour espacer les éléments */
+    align-items: center;
+    /* Pour centrer verticalement */
+}
+
+#footer>div {
+    margin: 0 10px;
+    /* Ajoute un peu d'espace entre les éléments */
+}
+
+#mentions {
+    color: white;
 }
 
 /* Bouton mode sombre */

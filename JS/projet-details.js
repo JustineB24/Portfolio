@@ -34,7 +34,7 @@ const projets = {
             "../Projets/Sio_Shop/RechercheProduit.png",
             "../Projets/Sio_Shop/SaisirVente.png"
         ],
-        description: "Marketplace en ligne développée en PHP et MySQL.",
+        description: "Application de gestion commerciale développée sous Windows Forms pour une concession automobile. Ce projet propose une interface permettant aux employés de gérer les clients, les véhicules en stock et les ventes. L'application intègre une authentification sécurisée, une liaison directe avec une base de données SQL, ainsi qu'un module de création de factures au format PDF. Les utilisateurs peuvent rechercher, ajouter et modifier clients et produits, saisir des ventes avec calcul automatique du prix TTC, et suivre l'évolution des stocks en temps réel. La structure suit les principes de la programmation orientée objet, en assurant une navigation fluide et professionnelle entre les différentes fonctionnalités.",
         technologies: ["PHP", "MySQL"]
     },
     "5": {
@@ -52,13 +52,13 @@ const projets = {
     "6": {
         title: "Pong",
         images: ["../Projets/Pong/Pong.png"],
-        description: "Reproduction du jeu Pong en Windows Forms.",
+        description: "Jeu d'arcade développé sous Windows Forms, inspiré du célèbre Pong. L'objectif est de maintenir une balle en jeu à l'aide de raquettes contrôlées par le clavier. Le projet permet à deux joueurs de s'affronter en temps réel : chacun contrôle sa raquette avec des touches dédiées (A/Q pour un joueur, P/M pour l'autre). Le jeu intègre une gestion précise des collisions (rebonds sur les murs et sur les raquettes), un système de perte lorsqu'une balle est manquée, ainsi qu'une animation fluide assurée par un timer. Le code suit les principes de la programmation orientée objet avec des contrôles personnalisés pour la balle et les raquettes, et gère également les évènements de fin de partie.",
         technologies: ["Windows Forms", "C#"]
     },
     "7": {
         title: "Application météo",
         images: ["../Projets/Meteo/Meteo.png"],
-        description: "Application météo utilisant l'API OpenWeather pour afficher les prévisions.",
+        description: "Application web développée pour afficher en temps réel les conditions météorologiques d'une ville choisie par l'utilisateur. En utilisant l'API OpenWeather, ce projet permet de consulter la température actuelle, l'humidité ainsi qu'une description du temps (ensoleillé, nuageux, etc.). L'interface propose une zone de recherche, un affichage centralisé des données principales, et un design épuré avec fond personnalisé. Le JavaScript assure la récupération dynamique des données météo et la mise à jour instantanée de l'affichage après chaque recherche.",
         technologies: ["HTML", "CSS", "JavaScript"]
     },
     "8": {
@@ -81,7 +81,7 @@ const projets = {
     "10": {
         title: "Mairie de Cauffry",
         images: ["../Projets/Mairie_de_cauffry/Accueil.png"],
-        description: "Description du projet",
+        description: "Réalisation d'un site web pour la commune de Cauffry dans le cadre d'un stage de 4 semaines avec Adico (Association pour le développement et l'innovation numérique des collectivités).",
         technologies: ["HTML", "CSS"]
     },
     "11": {
@@ -93,7 +93,7 @@ const projets = {
             "../Projets/Panada_Food/Mentions_legales.png",
             "../Projets/Panada_Food/Ecran_chargement.png"
         ],
-        description: "Description du projet",
+        description: "Développement d'un site web pour le restaurant Panada Food sur une durée de 6 semaines, en collaboration avec une collègue.",
         technologies: ["HTML", "CSS"]
     }
 };

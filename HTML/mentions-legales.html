@@ -15,21 +15,16 @@
     <meta name="keywords"
         content="resume, cv, portfolio, personal, developer, designer, modern, web, bts, sio, slam, portfolio bts, portfolio bts sio, portfolio bts sio slam, portfolio bts sio sisr, bts, brevet, de, technicien, supérieur, services, informatiques, aux, organisations, lycée, bts sio, sio, option, slam, solutions logicielles et applications métiers, logiciels, applications, développement, justine, blin, justine blin">
     <meta name="author" content="Justine BLIN">
-    <meta name="theme-color" content="#a90000">
 
     <!-- Liens CSS -->
-    <link rel="stylesheet" href="../CSS/portfolio_style.css" media="all" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="../CSS/competences_style.css" media="all" rel="stylesheet" type="text/css">
-    <!-- A compléter -->
+    <link rel="stylesheet" href="../CSS/portfolio_style.css" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../CSS/mentions-legales_style.css" media="all" rel="stylesheet" type="text/css">
 
-    <title>Portfolio | Compétences</title>
+    <title>Portfolio | Documents</title>
 
     <!-- Lien logo -->
     <!-- <img src="../Images/Logo."> A compléter -->
-    <!-- <link rel="shortcut icon" type="image/x-icon" href="../Images/Logo." alt="Logo Justine BLIN"> A compléter -->
-
-    <!-- Liens bibliothèques -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="../Images/Logo." /> A compléter -->
 
 </head>
 
@@ -79,8 +74,6 @@
                 </ul>
             </b>
         </nav>
-        <!-- Bouton menu mobile -->
-        <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button> -->
         <!-- Fin menu -->
 
         <!-- From Uiverse.io by Galahhad -->
@@ -111,93 +104,39 @@
 
     <!-- Contenu principal -->
     <main>
-        <h1>Compétences</h1>
-        <section>
-            <h2>Certifications</h2>
-            <div class="gallery">
-                <img class="certif" src="../Images/Certif_en_jpg/SoloLearn_Coding_Foundations.jpg"
-                    alt="Certification SoloLearn Coding Foundations" loading="lazy" onclick="openModal(this)">
-                <img class="certif" src="../Images/Certif_en_jpg/SoloLearn_Introduction_to_C-sharp.jpg"
-                    alt="Certification SoloLearn Introduction to C-sharp" loading="lazy" onclick="openModal(this)">
-                <img class="certif" src="../Images/Certif_en_jpg/Attestation_pix_Lycée_Édouard_Gand.jpg"
-                    alt="Certification PIX" loading="lazy" onclick="openModal(this)">
-                <img class="certif" src="../Images/Certif_en_jpg/Certificat_module1.jpg"
-                    alt="Certification MOOC module 1" loading="lazy" onclick="openModal(this)">
-                <img class="certif" src="../Images/Certif_en_jpg/Certificat_module2.jpg"
-                    alt="Certification MOOC module 2" loading="lazy" onclick="openModal(this)">
-                <img class="certif" src="../Images/Certif_en_jpg/Certificat_module3.jpg"
-                    alt="Certification MOOC module 3" loading="lazy" onclick="openModal(this)">
-                <img class="certif" src="../Images/Certif_en_jpg/Certificat_module4.jpg"
-                    alt="Certification MOOC module 4" loading="lazy" onclick="openModal(this)">
-                <img class="certif" src="../Images/Certif_en_jpg/Certificat_module5.jpg"
-                    alt="Certification MOOC module 5" loading="lazy" onclick="openModal(this)">
-                <img class="certif" src="../Images/Certif_en_jpg/Attestation_pix_Lycée_Marie_Curie.jpg"
-                    alt="Certification PIX" loading="lazy" onclick="openModal(this)">
-            </div>
+        <h1>Mentions légales</h1>
 
-            <!-- Modale pour afficher les images agrandies -->
-            <div id="zoom-modal" class="hidden">
-                <img id="zoom-modal-img" src="" alt="Image zoomable">
-                <!-- Flèche gauche -->
-                <span id="prev" class="modal-arrow left">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
-                        <path d="M15 18l-6-6 6-6" stroke="white" stroke-width="2" fill="none" />
-                    </svg>
-                </span>
-                <!-- Flèche droite -->
-                <span id="next" class="modal-arrow right">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
-                        <path d="M9 18l6-6-6-6" stroke="white" stroke-width="2" fill="none" />
-                    </svg>
-                </span>
-                <!-- Croix de fermeture -->
-                <span class="close" onclick="closeModal()">&#10005;</span>
-            </div>
+        <!-- Éditeur -->
+        <section id="editeur">
+            <h2>Éditeur du site</h2>
+            <p>Justine Blin <br>
+                Adresse : Oise 60 <br>
+                N° de téléphone : <a href="tel:0607400161">06 07 40 01 61</a><br>
+                Mail : <a href="mailto:blin.justine.sio@gmail.com">blin.justine.sio@gmail.com</a><br>
+            </p>
+        </section>
+        <!-- Hébergeur -->
+        <section id="hebergement">
+            <h2>H&eacute;bergement</h2>
+            <p>GitHub Pages<br>
+                GitHub, Inc. <br>
+                88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA<br>
+                Site internet : <a href="https://pages.github.com/" target="_blank">https://pages.github.com/</a>
+            </p>
+        </section>
+        <!-- Contact -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>
+                Par t&eacute;l&eacute;phone : <a href="tel:0607400161">06 07 40 01 61</a><br>
+                Par email : <a href="mailto:blin.justine.sio@gmail.com">blin.justine.sio@gmail.com</a>
+            </p>
         </section>
 
-        <h2>Langages de programmation</h2>
-        <div class="card-container">
-            <div class="card html">
-                <img class="svg" src="../Images/SVG/html-5.svg" alt="HTML SVG">
-            </div>
-            <div class="card css">
-                <img class="svg" src="../Images/SVG/css-3.svg" alt="CSS SVG">
-            </div>
-            <div class="card js">
-                <img class="svg" src="../Images/SVG/javascript.svg" alt="JavaScript SVG">
-            </div>
-            <div class="card php">
-                <img class="svg" src="../Images/SVG/php.svg" alt="PHP SVG">
-            </div>
-            <div class="card python">
-                <img class="svg" src="../Images/SVG/python.svg" alt="Python SVG">
-            </div>
-            <div class="card c-sharp">
-                <img class="svg" src="../Images/SVG/c-sharp.svg" alt="C-sharp SVG">
-            </div>
-            <div class="card mysql">
-                <img class="svg" src="../Images/SVG/mysql.svg" alt="MySql SVG">
-            </div>
-        </div>
-
-        <h2>Outils & Environnements de développement</h2>
-        <div class="card-container">
-            <div class="card vscode">
-                <img class="svg" src="../Images/SVG/visual-studio-code.svg" alt="Visual Studio Code SVG">
-            </div>
-            <div class="card vs">
-                <img class="svg" src="../Images/SVG/visual-studio.svg" alt="Visual Studio 2019/2022 SVG">
-            </div>
-            <div class="card xampp">
-                <img class="svg" src="../Images/SVG/xampp.svg" alt="XAMPP SVG">
-            </div>
-            <div class="card git">
-                <img class="svg" src="../Images/SVG/git-icon.svg" alt="Git SVG">
-            </div>
-            <div class="card github">
-                <img class="svg" src="../Images/SVG/github-icon.svg" alt="GitHub SVG">
-            </div>
-        </div>
+        <!-- Crédits -->
+        <section id="photos">
+            <h2>Cr&eacute;dits photographiques</h2>
+        </section>
     </main>
 
     <!-- Bas de page copyright -->
@@ -212,7 +151,6 @@
 
     <!-- Lien JS -->
     <script src="../JS/theme.js"></script>
-    <script src="../JS/certifications.js"></script>
 </body>
 
 </html>

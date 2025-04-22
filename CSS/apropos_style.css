@@ -9,7 +9,7 @@
     padding: 15px;
     margin: 1rem 12rem;
     border-radius: 8px;
-    border: 2px solid #cc0000;
+    border: 2px solid #960000;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     text-align: justify;
 }
@@ -35,7 +35,7 @@
 }
 
 .bloc-specialite {
-    background: rgb(150, 0, 0);
+    background: #960000;
     background: linear-gradient(0deg, rgba(150, 0, 0, 1) 0%, rgba(150, 37, 37, 1) 28%, rgba(150, 59, 59, 1) 46%, rgba(186, 114, 114, 1) 68%, rgba(255, 255, 255, 1) 100%);
     border-radius: 8px;
     padding: 20px;
@@ -116,7 +116,7 @@ h4 {
 .timeline-item {
     padding: 0 0 50px 40px;
     /* On ajoute + de padding pour compenser */
-    border-left: 3px solid #971f1f;
+    border-left: 3px solid #960000;
     /* Couleur de la ligne */
     position: relative;
 }
@@ -132,20 +132,19 @@ h4 {
     /* Alignement parfait avec la ligne */
     top: 10px;
     /* Centrage vertical */
-    background: #fff;
-    border: 3px solid #971f1f;
+    background: white;
+    border: 3px solid #960000;
     /* Couleur du point */
 }
 
 /* Bloc de contenu */
 .timeline-content {
-    background: #f4f4f4;
+    background: #e6e6e6;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     position: relative;
     animation: fadeInUp 0.6s ease-in-out;
-    /* Animation */
 }
 
 /* Animation d'apparition */
@@ -170,7 +169,7 @@ h4 {
 /* Titres des blocs */
 .timeline-content h3 {
     margin: 10px;
-    color: #971f1f;
+    color: #960000;
     /* Harmonisation des couleurs */
 }
 

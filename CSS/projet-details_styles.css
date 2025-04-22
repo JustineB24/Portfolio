@@ -4,12 +4,16 @@
     padding: 50px;
 }
 
-/* Titre + flèche retour */
+/* Titre + bouton retour */
 .title-container {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-bottom: 20px;
+}
+
+.back-button {
+    margin-top: 3rem;
 }
 
 .back-button img {
@@ -21,7 +25,7 @@
     transform: translateX(-5px);
 }
 
-/* Conteneur des blocs */
+/* Contenu principal */
 .projet-content {
     display: flex;
     gap: 2rem;
@@ -32,25 +36,31 @@
     margin: auto;
 }
 
-/* Bloc Présentation */
-.projet-presentation {
-    flex: 1;
-    min-width: 300px;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-/* Bloc Technologies */
+/* Présentation */
+.projet-presentation,
 .projet-technologies {
     flex: 1;
     min-width: 300px;
-    background-color: #f9f9f9;
+    background-color: #e6e6e6;
     padding: 20px;
     border-radius: 10px;
+    animation: fadeInUp 0.6s ease both;
 }
 
-/* Liste des technologies */
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Liste technologies */
 #projet-technologies {
     list-style: none;
     padding: 0;
@@ -60,25 +70,23 @@
 }
 
 #projet-technologies li {
-    background-color: #e0e0e0;
+    background-color: #cecece;
     padding: 10px 15px;
     border-radius: 15px;
+    border: 1px solid black;
     font-size: 1rem;
-    color: #555;
+    color: black;
     margin: auto;
+    transition: background-color 0.3s ease;
 }
 
 /* Images du projet */
-#projet-images {
-    margin-top: 30px;
-    text-align: center;
-}
-
 .projet-image {
     width: 100%;
     max-width: 800px;
-    margin: 20px auto;
+    margin: 5rem auto;
     display: block;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease;
 }

@@ -36,7 +36,7 @@
 }
 
 .btnCV:hover {
-    color: #ffffff;
+    color: white;
 }
 
 /* Responsive - Tablette (écrans <= 768px) */
@@ -61,4 +61,22 @@
         margin: 1.5rem;
         /* Réduit la marge */
     }
+}
+
+
+
+.btn-cv {
+    margin-top: 2rem;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #960000;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-cv:hover {
+    background: #d80000;
 }

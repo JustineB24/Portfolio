@@ -38,6 +38,8 @@ body {
 }
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -55,7 +57,7 @@ a:visited {
 
 /* Entête */
 header {
-    background-color: rgb(150, 0, 0);
+    background-color: #960000;
     position: fixed;
     top: 0;
     left: 0;
@@ -84,7 +86,7 @@ main {
     /* Taille de la police */
     font-weight: 700;
     /* Poids de la police */
-    color: #fff;
+    color: white;
     /* Couleur du texte */
     text-transform: uppercase;
     /* Met le texte en majuscule */
@@ -107,7 +109,7 @@ main {
 
 /* Effet de survol du titre */
 .titreNom:hover {
-    color: #ffffff;
+    color: white;
     /* Changer la couleur au survol */
     text-shadow: 1px 1px 5px rgb(0 0 0 / 80%);
     /* Ombre différente au survol */
@@ -115,22 +117,19 @@ main {
 
 h1 {
     font-size: 3rem;
-    /* Taille de la police */
+    margin-top: 5rem;
 }
 
 h2 {
     font-size: 2.5rem;
-    /* Taille de la police */
 }
 
 h3 {
     font-size: 2rem;
-    /* Taille de la police */
 }
 
 h4 {
     font-size: 1.5rem;
-    /* Taille de la police */
 }
 
 /* Paragraphe */
@@ -182,7 +181,7 @@ p {
 
 .btnReseaux .text {
     position: absolute;
-    color: rgb(255, 255, 255);
+    color: white;
     width: 120px;
     font-weight: 600;
     opacity: 0;
@@ -228,7 +227,7 @@ body.dark-theme {
     --button-text-color: black;
 }
 
-/* Onglets */
+/* Menu de navigation */
 .nav-menu {
     list-style: none;
     /* Supprime les puces des listes */
@@ -294,7 +293,7 @@ body.dark-theme {
     font-size: 32px;
     position: fixed;
     top: 10px;
-    /* Positionné en haut de la page */
+    /* Positionné en haut */
     left: 10px;
     /* Positionné à gauche */
     cursor: pointer;
@@ -308,7 +307,7 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
-    background-color: #000;
+    background-color: black;
     color: white;
     text-align: center;
     display: flex;
@@ -598,7 +597,27 @@ footer {
 
     .nav-menu {
         display: none;
-        /* Cache le menu classique */
+        /* Cache le menu de navigation classique */
+        flex-direction: column;
+        background-color: #960000;
+        /* position: fixed; */
+        top: 100px;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        z-index: 999;
+
+        position: absolute;
+    }
+
+    .nav-menu.active {
+        display: flex;
+        /* Affiche le menu quand il est actif */
+    }
+
+    .menu-item {
+        display: block;
+        margin: 1rem 0;
     }
 
     /* Lorsque le menu burger est ouvert, afficher les éléments du menu verticalement */
@@ -612,11 +631,6 @@ footer {
         width: 100%;
         padding: 10px;
         border-top: 1px solid black;
-    }
-
-    .menu-item {
-        text-align: center;
-        margin: 10px 0;
     }
 
     .onglet {

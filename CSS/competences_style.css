@@ -19,6 +19,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .gallery .certif:hover {
@@ -87,7 +88,7 @@
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgb(150, 0, 0);
+    background-color: #960000;
     border-radius: 50%;
     padding: 10px;
     cursor: pointer;
@@ -130,7 +131,7 @@
     /* Coins arrondis */
     text-align: center;
     /* Centrer le contenu de chaque carte */
-    background-color: rgba(132, 132, 132, 0.6);
+    background-color: #cecece;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -168,7 +169,7 @@
 }
 
 .c-sharp:hover {
-    box-shadow: 0 0 10px 5px #1e9e25;
+    box-shadow: 0 0 10px 5px #390091;
 }
 
 .mysql:hover {

@@ -7,19 +7,19 @@ const projets = {
     "1": {
         title: "Pendu",
         images: ["../Projets/Pendu/Accueil.png"],
-        description: "Application mobile développée en MAUI.",
+        description: "Application mobile développée avec MAUI et XAML, recréant le célèbre jeu du pendu. L'utilisateur doit deviner un mot choisi aléatoirement, en proposant des lettres une par une. Chaque mauvaise réponse révèle progressivement une image du pendu. Le menu principal permet de jouer, de gérer la liste des mots à deviner, de consulter les meilleurs scores ou de quitter l'application. Les mots et les scores sont stockés localement, permettant une gestion dynamique des parties et une personnalisation du jeu. L'interface est responsive et s'adapte parfaitement aux différents formats mobiles.",
         technologies: ["XAML", "MAUI"]
     },
     "2": {
         title: "France Mobilier",
         images: ["../Projets/france-mobilier.png"],
-        description: "Site e-commerce pour une entreprise de mobilier.",
+        description: "Site e-commerce développé pour la société France Mobilier, spécialisée dans le mobilier d'intérieur. Conçu selon l'architecture MVC, il propose une page d'accueil présentant l'entreprise, un module de recherche de meubles par catégorie, ainsi qu'une page listant l'ensemble des magasins physiques. Le projet utilise une base de données pour gérer dynamiquement les meubles et les points de vente. Un panneau d'administration est également prévu pour permettre la modification des produits et des magasins. L'interface est pensée pour être claire et facilement maintenable.",
         technologies: ["MVC", "PHP", "C#", "BDD"]
     },
     "3": {
         title: "Rétro Gaming",
         images: ["../Projets/retro-gaming.png"],
-        description: "Projet Windows Forms pour émuler des jeux rétro en C#.",
+        description: "Application Windows Forms dédiée à l'univers du rétro gaming. L'objectif est de présenter les jeux emblématiques sortis sur des consoles mythiques aujourd'hui disparues (Nintendo 64, Sega Dreamcast, Sony PlayStation 2, etc.). Chaque jeu est accompagné d'une fiche détaillée comprenant une description, une note sur 20 et une illustration. L'application est connectée à une base de données MySQL pour stocker toutes les informations relatives aux jeux. Le projet propose une interface soignée et nostalgique, permettant de naviguer facilement parmi les consoles et de découvrir les titres les plus marquants de l'histoire du jeu vidéo.",
         technologies: ["Windows Forms", "C#", "BDD"]
     },
     "4": {

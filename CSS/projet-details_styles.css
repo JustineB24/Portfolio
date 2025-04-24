@@ -1,7 +1,7 @@
 /* Conteneur du projet */
 .projet-details {
-    margin: auto;
     padding: 50px;
+    display: inline-block;
 }
 
 /* Titre + bouton retour */
@@ -9,11 +9,11 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 20px;
 }
 
-.back-button {
-    margin-top: 3rem;
+.title-container h1 {
+    margin: 0;
+    line-height: 1.2;
 }
 
 .back-button img {
@@ -33,7 +33,11 @@
     align-items: stretch;
     flex-wrap: wrap;
     max-width: 100rem;
-    margin: auto;
+}
+
+/* Titre blocs */
+.title-blocs {
+    margin-bottom: 2rem;
 }
 
 /* Présentation */
@@ -42,7 +46,7 @@
     flex: 1;
     min-width: 300px;
     background-color: #e6e6e6;
-    padding: 20px;
+    padding: 2rem;
     border-radius: 10px;
     animation: fadeInUp 0.6s ease both;
 }
@@ -81,6 +85,10 @@
 }
 
 /* Images du projet */
+.projet-img {
+    margin-top: 5rem;
+}
+
 .projet-image {
     width: 100%;
     max-width: 800px;
@@ -89,4 +97,14 @@
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: fadeIn 1s ease;
+}
+
+
+
+
+.tech-logo {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
 }

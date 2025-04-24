@@ -11,7 +11,48 @@
     border-radius: 8px;
     border: 2px solid #960000;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: justify;
+}
+
+/* Bouton CV */
+.btnCV {
+    padding: 0.8em 1.8em;
+    border: 2px solid #960000;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: #960000;
+    margin: 3rem;
+    border-radius: 5px;
+}
+
+/* Animation de l'arrière-plan du bouton */
+.btnCV::before {
+    content: '';
+    width: 0;
+    height: 500%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #960000;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+
+/* Effet au survol */
+.btnCV:hover::before {
+    width: 105%;
+}
+
+.btnCV:hover {
+    color: white;
 }
 
 /* BTS SIO */
@@ -30,13 +71,11 @@
 .bloc-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
 }
 
 .bloc-specialite {
     background: #960000;
-    background: linear-gradient(0deg, rgba(150, 0, 0, 1) 0%, rgba(150, 37, 37, 1) 28%, rgba(150, 59, 59, 1) 46%, rgba(186, 114, 114, 1) 68%, rgba(255, 255, 255, 1) 100%);
+    background: linear-gradient(0deg, rgb(150, 0, 0) 0%, rgb(150, 37, 37) 28%, rgb(150, 59, 59) 46%, rgb(186, 114, 114) 68%, rgb(217, 217, 217) 100%);
     border-radius: 8px;
     padding: 20px;
     width: 40rem;
@@ -56,7 +95,7 @@
 
 .bloc-specialite h4 {
     color: black;
-    margin-bottom: 10%;
+    margin: 5%;
 }
 
 .bloc-specialite p {
@@ -82,9 +121,8 @@
     width: 30rem;
     border-radius: 8px;
     display: block;
-    /* Nécessaire pour que margin auto fonctionne */
     margin: 0 auto;
-    /* Centre horizontalement */
+    margin-bottom: 1rem;
 }
 
 /* Parcours */
@@ -96,7 +134,6 @@ h4 {
     display: flex;
     justify-content: space-between;
     gap: 150px;
-    /* Espace entre les colonnes */
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -107,17 +144,13 @@ h4 {
     margin: 0 auto;
     padding: 20px 0;
     flex: 1;
-    /* Les deux timelines prennent la même largeur */
     min-width: 300px;
-    /* Pour éviter que ça devienne trop petit */
 }
 
 /* Ligne verticale de la timeline */
 .timeline-item {
     padding: 0 0 50px 40px;
-    /* On ajoute + de padding pour compenser */
     border-left: 3px solid #960000;
-    /* Couleur de la ligne */
     position: relative;
 }
 
@@ -194,6 +227,10 @@ hr {
         margin: 1rem 5rem;
     }
 
+    .bloc-container {
+        flex-wrap: wrap;
+    }
+
     .bloc-specialite {
         width: 30rem;
     }
@@ -215,6 +252,12 @@ hr {
     .btsSio {
         margin: 1rem 2rem;
         padding: 10px;
+    }
+
+    .btnCV {
+        font-size: 14px;
+        padding: 0.6em 1.2em;
+        margin: 2rem;
     }
 
     .bloc-specialite {
@@ -248,6 +291,12 @@ hr {
     .btsSio {
         margin: 1rem 1rem;
         font-size: 0.9rem;
+    }
+
+    .btnCV {
+        font-size: 12px;
+        padding: 0.5em 1em;
+        margin: 1.5rem;
     }
 
     .bloc-specialite {

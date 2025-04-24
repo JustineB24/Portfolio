@@ -118,6 +118,7 @@ main {
 h1 {
     font-size: 3rem;
     margin-top: 5rem;
+    display: inline-block;
 }
 
 h2 {
@@ -312,9 +313,7 @@ footer {
     text-align: center;
     display: flex;
     justify-content: space-between;
-    /* Pour espacer les éléments */
     align-items: center;
-    /* Pour centrer verticalement */
 }
 
 #footer>div {
@@ -557,6 +556,7 @@ footer {
 
     h1 {
         font-size: 2.5rem;
+        margin: 1rem;
     }
 
     h2 {

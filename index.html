@@ -20,25 +20,20 @@
     <!-- Liens CSS -->
     <link rel="stylesheet" href="CSS/portfolio_style.css" media="all" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="CSS/accueil_style.css" media="all" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="CSS/btnCV_style.css" media="all" rel="stylesheet" type="text/css">
 
     <title>Portfolio | Justine BLIN</title>
 
     <!-- Lien logo -->
-    <!-- <img src="Images/Logo."> A compléter -->
-    <!-- <link rel="shortcut icon" type="image/x-icon" href="Images/Logo." alt="Logo Justine BLIN"> A compléter -->
+    <link rel="shortcut icon" type="image/x-icon" href="Images/Logo_portfolio.png" alt="Logo Justine BLIN">
 
     <!-- Liens bibliothèques -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
-
 </head>
 
 <body>
     <!-- En-tête -->
     <header>
-        <!-- Logo -->
-        <!-- <img src="../Images/Logo." alt="Logo Justine BLIN"> A compléter -->
         <a class="titreNom" href="index.html">Justine BLIN</a>
 
         <!-- Conteneur des boutons réseaux sociaux -->
@@ -119,7 +114,8 @@
     <!-- Contenu principal -->
     <main>
         <section class="hero">
-            <div class="initials">JB</div>
+            <!-- <div class="initials">JB</div> -->
+            <img class="initials" src="Images/Logo_portfolio.png">
             <div class="txt-rotate" data-period="2000"
                 data-rotate='[ "Bienvenue sur mon portfolio !", "Découvrez mes projets.", "Explorez mon univers.", "Bonne visite !"]'>
             </div>
@@ -127,7 +123,7 @@
 
         <section class="sections">
             <div class="card">
-                <h2>À propos</h2>
+                <h2><a href="HTML/apropos.html">À propos</a></h2>
                 <p>Développeuse en informatique passionnée par les nouvelles technologies, j'aime concevoir des
                     solutions innovantes et relever des défis techniques. Ce portfolio reflète non seulement mes projets
                     et compétences, mais aussi mon évolution constante dans le domaine du développement. Curieuse et
@@ -136,11 +132,11 @@
                 <a class="btn-cv" href="cv_blin_justine.pdf" download target="_blank">📄 Télécharger mon CV</a>
             </div>
             <div class="card">
-                <h2>Compétences</h2>
+                <h2><a href="HTML/competences.html">Compétences</a></h2>
                 <p>Découvrez mes compétences à travers ce portfolio, où je mets en avant mon savoir-faire en
                     développement informatique. De la création de sites web aux applications logicielles, j'explore
                     différentes technologies avec passion et créativité.</p>
-                <h2 style="margin-top:2rem;">Projets</h2>
+                <h2 style="margin-top:2rem;"><a href="HTML/projets.html">Projets</a></h2>
                 <p>Retrouvez ici quelques-uns de mes projets réalisés durant mon parcours. Vous y trouverez des
                     applications web, des scripts et bien plus encore.</p>
             </div>
@@ -161,7 +157,6 @@
     <script src="JS/theme.js"></script>
     <script src="JS/menuBurger.js"></script>
     <script src="JS/anim-bienvenue.js"></script>
-    <script src="JS/boutonCV.js"></script>
 </body>
 
 </html>

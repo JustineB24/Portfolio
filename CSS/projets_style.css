@@ -1,9 +1,9 @@
 .projet-container {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    justify-content: center;
+    gap: 5rem;
     flex-wrap: wrap;
-    margin: 5rem;
+    margin: 2rem 5rem 5rem;
 }
 
 .card {
@@ -50,58 +50,43 @@
 
 /* Couleurs spécifiques pour chaque carte */
 .card-1 {
-    background-color: #FF0000;
-    box-shadow: 0px 0px 30px 1px rgba(255, 0, 0, 0.5);
+    background-color: #ff0000;
+    box-shadow: 0px 0px 30px 1px rgb(255, 0, 0);
 }
 
 .card-2 {
-    background-color: #FF6A00;
-    box-shadow: 0px 0px 30px 1px rgba(255, 106, 0, 0.5);
+    background-color: #ff6a00;
+    box-shadow: 0px 0px 30px 1px rgb(255, 106, 0);
 }
 
 .card-3 {
-    background-color: #FFD500;
-    box-shadow: 0px 0px 30px 1px rgba(255, 213, 0, 0.5);
+    background-color: #ffd500;
+    box-shadow: 0px 0px 30px 1px rgb(255, 213, 0);
 }
 
 .card-4 {
-    background-color: #47bd2c;
-    box-shadow: 0px 0px 30px 1px rgba(71, 189, 44, 0.5);
+    background-color: #007a27;
+    box-shadow: 0px 0px 30px 1px rgb(0, 122, 39);
 }
 
 .card-5 {
-    background-color: #00631F;
-    box-shadow: 0px 0px 30px 1px rgba(0, 99, 31, 0.5);
+    background-color: #0b00d6;
+    box-shadow: 0px 0px 30px 1px rgb(11, 0, 214);
 }
 
 .card-6 {
-    background-color: #00AAFF;
-    box-shadow: 0px 0px 30px 1px rgba(0, 170, 255, 0.5);
+    background-color: #9c00b8;
+    box-shadow: 0px 0px 30px 1px rgb(156, 0, 184);
 }
 
 .card-7 {
-    background-color: #0900AF;
-    box-shadow: 0px 0px 30px 1px rgba(9, 0, 175, 0.5);
+    background-color: #0f4c81;
+    box-shadow: 0px 0px 30px 1px rgb(15, 76, 129);
 }
 
 .card-8 {
-    background-color: #9300AD;
-    box-shadow: 0px 0px 30px 1px rgba(147, 0, 173, 0.5);
-}
-
-.card-9 {
-    background-color: #FF0044;
-    box-shadow: 0px 0px 30px 1px rgba(255, 0, 68, 0.5);
-}
-
-.card-10 {
-    background-color: #0F4C81;
-    box-shadow: 0px 0px 30px 1px rgba(15, 76, 129, 0.5);
-}
-
-.card-11 {
-    background-color: #ff6a00;
-    box-shadow: 0px 0px 30px 1px rgba(255, 106, 0, 0.5);
+    background-color: #fc4400;
+    box-shadow: 0px 0px 30px 1px rgb(252, 68, 0);
 }
 
 @media (max-width: 768px) {

@@ -9,12 +9,11 @@
 }
 
 .hero .initials {
-    font-size: 5rem;
-    font-weight: bold;
-    color: #960000;
     margin-right: 2rem;
     position: absolute;
-    left: 15rem;
+    left: 10rem;
+    border-radius: 20rem;
+    width: 8rem;
 }
 
 .hero .txt-rotate {
@@ -22,8 +21,8 @@
     color: black;
     position: relative;
     opacity: 0;
-    /* Caché au départ */
-    animation: fadeIn 2s ease-out forwards 0.5s, glitch 0.8s infinite alternate;
+    animation: fadeIn 2s ease-out forwards 0.5s;
+    right: -5rem;
 }
 
 .sections {
@@ -44,6 +43,27 @@
 .card h2 {
     color: #960000;
     margin-bottom: 1rem;
+}
+
+.card h2 a {
+    color: inherit;
+}
+
+/* Bouton CV */
+.btn-cv {
+    margin-top: 2rem;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #960000;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-cv:hover {
+    background: #d80000;
 }
 
 /* Apparition progressive */
@@ -67,4 +87,33 @@
 /* Curseur clignotant en mode sombre */
 .dark-theme .txt-rotate>.wrap {
     border-right: 0.08em solid white;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-top: 0;
+    }
+
+    .hero .initials {
+        position: static;
+        margin: 0 auto 1rem;
+        width: 8rem;
+    }
+
+    .hero .txt-rotate {
+        font-size: 2.5rem;
+        right: 0;
+    }
+
+    .sections {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
 }

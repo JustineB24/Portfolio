@@ -11,11 +11,8 @@
 /* Style des images des certifications */
 .gallery .certif {
     width: 100%;
-    /* Prend toute la largeur disponible dans sa cellule */
-    height: 420px;
-    /* Définit une hauteur fixe pour toutes les images */
+    height: 25rem;
     object-fit: cover;
-    /* Fait en sorte que l'image remplisse l'espace sans déformation */
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -114,84 +111,142 @@
 .card-container {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
-    /* Espacement entre les cartes */
+    gap: 5rem;
     flex-wrap: wrap;
-    /* Permet aux cartes de se réorganiser sur plusieurs lignes si nécessaire */
     margin: 5rem;
 }
 
 .card {
     width: 10rem;
-    /* Largeur de la carte */
     height: 10rem;
-    /* Hauteur de la carte (égale à la largeur pour rendre la carte carrée) */
     padding: 15px;
     border-radius: 10px;
-    /* Coins arrondis */
     text-align: center;
-    /* Centrer le contenu de chaque carte */
     background-color: #cecece;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Centrer le contenu de la carte, comme une image ou du texte */
     transition: box-shadow 0.3s ease-in-out;
 }
 
 .card img {
     max-width: 100%;
     max-height: 100%;
-    /* Les images ne dépassent pas la taille de la carte */
     object-fit: contain;
-    /* Garder les proportions de l'image sans la déformer */
 }
 
 /* Ombre des cartes */
-.html:hover {
+.html {
+    border: 5px solid #f16529;
     box-shadow: 0 0 10px 5px #f16529;
 }
 
-.css:hover {
+.css {
+    border: 5px solid #2965f1;
     box-shadow: 0 0 10px 5px #2965f1;
 }
 
-.js:hover {
+.js {
+    border: 5px solid #f7df1e;
     box-shadow: 0 0 10px 5px #f7df1e;
 }
 
-.php:hover {
+.php {
+    border: 5px solid #6181b6;
     box-shadow: 0 0 10px 5px #6181b6;
 }
 
-.python:hover {
+.python {
+    border: 5px solid #ffce3e;
     box-shadow: 0 0 10px 5px #ffce3e;
 }
 
-.c-sharp:hover {
+.c-sharp {
+    border: 5px solid #390091;
     box-shadow: 0 0 10px 5px #390091;
 }
 
-.mysql:hover {
+.mysql {
+    border: 5px solid #00758f;
     box-shadow: 0 0 10px 5px #00758f;
 }
 
-.vscode:hover {
+.vscode {
+    border: 5px solid #3aa8f1;
     box-shadow: 0 0 10px 5px #3aa8f1;
 }
 
-.vs:hover {
+.vs {
+    border: 5px solid #b885f2;
     box-shadow: 0 0 10px 5px #b885f2;
 }
 
-.xampp:hover {
+.xampp {
+    border: 5px solid #fb7a24;
     box-shadow: 0 0 10px 5px #fb7a24;
 }
 
-.git:hover {
+.git {
+    border: 5px solid #de4c36;
     box-shadow: 0 0 10px 5px #de4c36;
 }
 
-.github:hover {
+.github {
+    border: 5px solid #161614;
     box-shadow: 0 0 10px 5px #161614;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    }
+
+    .card {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .card-container {
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        padding: 15px;
+    }
+
+    .card-container {
+        gap: 2rem;
+        margin: 3rem;
+    }
+
+    .card {
+        width: 7rem;
+        height: 7rem;
+    }
+
+    .modal-arrow {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+
+    .card {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .modal-arrow {
+        padding: 6px;
+    }
 }

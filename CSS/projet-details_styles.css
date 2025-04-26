@@ -2,6 +2,7 @@
 .projet-details {
     padding: 50px;
     display: inline-block;
+    box-sizing: border-box;
 }
 
 /* Titre + bouton retour */
@@ -9,6 +10,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .title-container h1 {
@@ -33,14 +35,16 @@
     align-items: stretch;
     flex-wrap: wrap;
     max-width: 100rem;
+    margin-top: 2rem;
 }
 
 /* Titre blocs */
 .title-blocs {
     margin-bottom: 2rem;
+    text-align: center;
 }
 
-/* Présentation */
+/* Présentation et technologies */
 .projet-presentation,
 .projet-technologies {
     flex: 1;
@@ -49,6 +53,7 @@
     padding: 2rem;
     border-radius: 10px;
     animation: fadeInUp 0.6s ease both;
+    box-sizing: border-box;
 }
 
 /* Animations */
@@ -65,6 +70,13 @@
 }
 
 /* Liste technologies */
+.tech-logo {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
 #projet-technologies {
     list-style: none;
     padding: 0;
@@ -78,7 +90,7 @@
     padding: 10px 15px;
     border-radius: 15px;
     border: 1px solid black;
-    font-size: 1rem;
+    /* font-size: 1rem; */
     color: black;
     margin: auto;
     transition: background-color 0.3s ease;
@@ -87,6 +99,9 @@
 /* Images du projet */
 .projet-img {
     margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .projet-image {
@@ -99,12 +114,60 @@
     animation: fadeIn 1s ease;
 }
 
+/* Responsive */
+@media (max-width: 1024px) {
+    .title-container h1 {
+        font-size: 1.8rem;
+    }
 
+    .back-button img {
+        width: 4rem;
+    }
+}
 
+@media (max-width: 768px) {
+    .projet-details {
+        padding: 2rem;
+    }
 
-.tech-logo {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-    margin-right: 5px;
+    .title-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .title-container h1 {
+        font-size: 1.6rem;
+    }
+
+    .back-button img {
+        width: 3.5rem;
+    }
+
+    .projet-image {
+        margin: 3rem auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-container h1 {
+        font-size: 1.4rem;
+    }
+
+    .back-button img {
+        width: 3rem;
+    }
+
+    .projet-presentation,
+    .projet-technologies {
+        padding: 1rem;
+    }
+
+    #projet-technologies li {
+        font-size: 0.95rem;
+        padding: 8px 12px;
+    }
+
+    .projet-image {
+        margin: 2rem auto;
+    }
 }

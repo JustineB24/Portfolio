@@ -19,6 +19,7 @@
 
     <!-- Liens CSS -->
     <link rel="stylesheet" href="CSS/portfolio_style.css" media="all" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="CSS/theme_style.css" media="all" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="CSS/accueil_style.css" media="all" rel="stylesheet" type="text/css">
 
     <title>Portfolio | Justine BLIN</title>
@@ -64,25 +65,46 @@
 
         <!-- Menu de navigation -->
         <nav class="menu">
-            <!-- Icone burger (visible sur mobile/tablette) -->
-            <div class="menu-icon" id="menu-icon">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-
-            <!-- Menu (liens) -->
-            <b>
-                <ul class="nav-menu" id="nav-menu">
-                    <li class="menu-item"><a class="onglet" href="index.html">Accueil</a></li>
-                    <li class="menu-item"><a class="onglet" href="HTML/apropos.html">À propos</a></li>
-                    <li class="menu-item"><a class="onglet" href="HTML/competences.html">Compétences</a></li>
-                    <li class="menu-item"><a class="onglet" href="HTML/projets.html">Projets</a></li>
-                    <li class="menu-item"><a class="onglet" href="HTML/veille.html">Veille Technologique</a></li>
-                    <li class="menu-item"><a class="onglet" href="HTML/documents.html">Documents</a></li>
-                </ul>
-            </b>
+            <ul class="nav-menu">
+                <li class="menu-item"><a class="onglet" href="index.html">Accueil</a></li>
+                <li class="menu-item"><a class="onglet" href="HTML/apropos.html">À propos</a></li>
+                <li class="menu-item"><a class="onglet" href="HTML/competences.html">Compétences</a></li>
+                <li class="menu-item"><a class="onglet" href="HTML/projets.html">Projets</a></li>
+                <li class="menu-item"><a class="onglet" href="HTML/veille.html">Veille Technologique</a></li>
+                <li class="menu-item"><a class="onglet" href="HTML/documents.html">Documents</a></li>
+            </ul>
         </nav>
+        <!-- Menu burger -->
+        <input hidden class="check-icon" id="check-icon" name="check-icon" type="checkbox">
+        <label class="icon-menu" for="check-icon" aria-label="Menu burger">
+            <div class="bar bar--1"></div>
+            <div class="bar bar--2"></div>
+            <div class="bar bar--3"></div>
+        </label>
+        <div class="menu-burger">
+            <div class="side-menu">
+                <ul>
+                    <li>
+                        <a class="onglet-burger" href="index.html">Accueil</a>
+                    </li>
+                    <li>
+                        <a class="onglet-burger" href="HTML/apropos.html">À propos</a>
+                    </li>
+                    <li>
+                        <a class="onglet-burger" href="HTML/competences.html">Compétences</a>
+                    </li>
+                    <li>
+                        <a class="onglet-burger" href="HTML/projets.html">Projets</a>
+                    </li>
+                    <li>
+                        <a class="onglet-burger" href="HTML/veille.html">Veille Technologique</a>
+                    </li>
+                    <li>
+                        <a class="onglet-burger" href="HTML/documents.html">Documents</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <!-- Fin menu -->
 
         <!-- From Uiverse.io by Galahhad -->
@@ -114,7 +136,6 @@
     <!-- Contenu principal -->
     <main>
         <section class="hero">
-            <!-- <div class="initials">JB</div> -->
             <img class="initials" src="Images/Logo_portfolio.png">
             <div class="txt-rotate" data-period="2000"
                 data-rotate='[ "Bienvenue sur mon portfolio !", "Découvrez mes projets.", "Explorez mon univers.", "Bonne visite !"]'>

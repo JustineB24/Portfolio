@@ -4,3 +4,17 @@ hr {
     margin: 20px auto;
     width: 30rem;
 }
+
+/* Responsive pour tablette et petits écrans */
+@media screen and (max-width: 768px) {
+    hr {
+        width: 80%;
+    }
+}
+
+/* Pour les très petits écrans (moins de 480px) */
+@media screen and (max-width: 480px) {
+    hr {
+        width: 90%;
+    }
+}

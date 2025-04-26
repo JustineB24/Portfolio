@@ -1,16 +1,16 @@
 .hero {
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 3rem 2rem;
+    gap: 10rem;
+    padding: 3rem 10rem;
     background: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     margin-top: 3rem;
+    flex-wrap: wrap;
 }
 
 .hero .initials {
     margin-right: 2rem;
-    position: absolute;
     left: 10rem;
     border-radius: 20rem;
     width: 8rem;
@@ -22,7 +22,29 @@
     position: relative;
     opacity: 0;
     animation: fadeIn 2s ease-out forwards 0.5s;
-    right: -5rem;
+}
+
+/* Apparition progressive */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Curseur clignotant en mode clair */
+.txt-rotate>.wrap {
+    border-right: 0.08em solid black;
+}
+
+/* Curseur clignotant en mode sombre */
+.dark-theme .txt-rotate>.wrap {
+    border-right: 0.08em solid white;
 }
 
 .sections {
@@ -63,38 +85,18 @@
 }
 
 .btn-cv:hover {
-    background: #d80000;
+    background: #d30000;
 }
 
-/* Apparition progressive */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
+/* Responsive */
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Curseur clignotant en mode clair */
-.txt-rotate>.wrap {
-    border-right: 0.08em solid black;
-}
-
-/* Curseur clignotant en mode sombre */
-.dark-theme .txt-rotate>.wrap {
-    border-right: 0.08em solid white;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .hero {
         flex-direction: column;
         text-align: center;
         padding: 2rem 1rem;
-        margin-top: 0;
+        margin-top: 5rem;
+        gap: 1rem;
     }
 
     .hero .initials {
@@ -104,8 +106,22 @@
     }
 
     .hero .txt-rotate {
+        font-size: 3rem;
+    }
+
+    .sections {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem 1rem;
+        margin-top: 0;
+    }
+
+    .hero .txt-rotate {
         font-size: 2.5rem;
-        right: 0;
     }
 
     .sections {
@@ -115,5 +131,28 @@
 
     .card {
         padding: 1.5rem;
+    }
+
+    .btn-cv {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero .txt-rotate {
+        font-size: 2rem;
+    }
+
+    .sections {
+        padding: 1.5rem 1rem;
+    }
+
+    .card {
+        padding: 1rem;
     }
 }

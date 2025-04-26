@@ -3,4 +3,7 @@ hr {
     height: 2px;
     background: linear-gradient(to right, #ff0000, #000);
     margin: 20px 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }

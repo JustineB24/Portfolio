@@ -19,8 +19,8 @@
 
     <!-- Liens CSS -->
     <link rel="stylesheet" href="../CSS/portfolio_style.css" media="all" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../CSS/theme_style.css" media="all" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../CSS/projets_style.css" media="all" rel="stylesheet" type="text/css">
-    <!-- A compléter -->
 
     <title>Portfolio | Projets</title>
 
@@ -64,19 +64,46 @@
 
         <!-- Menu de navigation -->
         <nav class="menu">
-            <b>
-                <ul class="nav-menu">
-                    <li class="menu-item"><a class="onglet" href="../index.html">Accueil</a></li>
-                    <li class="menu-item"><a class="onglet" href="apropos.html">À propos</a></li>
-                    <li class="menu-item"><a class="onglet" href="competences.html">Compétences</a></li>
-                    <li class="menu-item"><a class="onglet" href="projets.html">Projets</a></li>
-                    <li class="menu-item"><a class="onglet" href="veille.html">Veille Technologique</a></li>
-                    <li class="menu-item"><a class="onglet" href="documents.html">Documents</a></li>
-                </ul>
-            </b>
+            <ul class="nav-menu">
+                <li class="menu-item"><a class="onglet" href="../index.html">Accueil</a></li>
+                <li class="menu-item"><a class="onglet" href="apropos.html">À propos</a></li>
+                <li class="menu-item"><a class="onglet" href="competences.html">Compétences</a></li>
+                <li class="menu-item"><a class="onglet" href="projets.html">Projets</a></li>
+                <li class="menu-item"><a class="onglet" href="veille.html">Veille Technologique</a></li>
+                <li class="menu-item"><a class="onglet" href="documents.html">Documents</a></li>
+            </ul>
         </nav>
-        <!-- Bouton menu mobile -->
-        <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button> -->
+        <!-- Menu burger -->
+        <input hidden class="check-icon" id="check-icon" name="check-icon" type="checkbox">
+        <label class="icon-menu" for="check-icon" aria-label="Menu burger">
+            <div class="bar bar--1"></div>
+            <div class="bar bar--2"></div>
+            <div class="bar bar--3"></div>
+        </label>
+        <div class="menu-burger">
+            <div class="side-menu">
+                <ul>
+                    <li>
+                        <a class="onglet-burger" href="../index.html">Accueil</a>
+                    </li>
+                    <li>
+                        <a class="onglet-burger" href="apropos.html">À propos</a>
+                    </li>
+                    <li>
+                        <a class="onglet-burger" href="competences.html">Compétences</a>
+                    </li>
+                    <li>
+                        <a class="onglet-burger" href="projets.html">Projets</a>
+                    </li>
+                    <li>
+                        <a class="onglet-burger" href="veille.html">Veille Technologique</a>
+                    </li>
+                    <li>
+                        <a class="onglet-burger" href="documents.html">Documents</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <!-- Fin menu -->
 
         <!-- From Uiverse.io by Galahhad -->
@@ -178,6 +205,7 @@
 
     <!-- Lien JS -->
     <script src="../JS/theme.js"></script>
+    <script src="../JS/menuBurger.js"></script>
 </body>
 
 </html>

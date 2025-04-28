@@ -1,9 +1,118 @@
+body {
+    background: url('../Images/Veille/raspberry-pi-os-logo-with-board-background-3.avif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+main {
+    position: relative;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: rgb(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10rem;
+}
+
+main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Opacité du fond */
+    border-radius: 10px;
+    z-index: -1;
+    /* Pour que le fond soit derrière le contenu */
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: black;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-top: 5rem;
+    color: black;
+}
+
 hr {
+    display: inline-flex;
     border: none;
     height: 2px;
     background: linear-gradient(to right, #ff0000, #000);
     margin: 20px 0;
-    width: 100%;
-    max-width: 100%;
+    width: 30%;
+    max-width: 50%;
     box-sizing: border-box;
+}
+
+.sources {
+    color: black;
+}
+
+.sources:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Images */
+/* #logoRaspi {
+    max-width: 20%;
+    height: auto;
+    margin: 5rem 0 0 0;
+} */
+
+img {
+    max-width: 30%;
+    height: auto;
+    margin: 5rem 0 0 0;
+}
+
+#evolution {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+.texte-photo {
+    font-size: 1rem;
+}
+
+/* Timeline évolution des modèles */
+.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.timeline li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.timeline li strong {
+    font-weight: bold;
+}
+
+.timeline-group {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #d32f2f;
 }

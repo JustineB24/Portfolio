@@ -16,7 +16,9 @@ const projets = {
     },
     "2": {
         title: "France Mobilier",
-        images: ["../Projets/france-mobilier.png"],
+        images: ["../Projets/France_mobilier/Accueil.png",
+            "../Projets/France_mobilier/Meuble.png"
+        ],
         description: "Site e-commerce développé pour la société France Mobilier, spécialisée dans le mobilier d'intérieur. Conçu selon l'architecture MVC, il propose une page d'accueil présentant l'entreprise, un module de recherche de meubles par catégorie, ainsi qu'une page listant l'ensemble des magasins physiques. Le projet utilise une base de données pour gérer dynamiquement les meubles et les points de vente. Un panneau d'administration est également prévu pour permettre la modification des produits et des magasins. L'interface est pensée pour être claire et facilement maintenable.",
         technologies: ["HTML", "CSS", "PHP", "C#", "MYSQL"]
     },
@@ -63,7 +65,8 @@ const projets = {
         title: "Mairie de Cauffry",
         images: ["../Projets/Mairie_de_cauffry/Accueil.png"],
         description: "Réalisation d'un site web pour la commune de Cauffry dans le cadre d'un stage de 4 semaines avec Adico (Association pour le développement et l'innovation numérique des collectivités).",
-        technologies: ["HTML", "CSS"]
+        technologies: ["HTML", "CSS"],
+        link: "https://mairiecauffry.fr/"
     },
     "8": {
         title: "Panada Food",
@@ -75,7 +78,8 @@ const projets = {
             "../Projets/Panada_Food/Ecran_chargement.png"
         ],
         description: "Développement d'un site web pour le restaurant Panada Food sur une durée de 6 semaines, en collaboration avec une collègue.",
-        technologies: ["HTML", "CSS", "JavaScript"]
+        technologies: ["HTML", "CSS", "JavaScript"],
+        link: "https://panadafood.ovh"
     }
 };
 
@@ -127,24 +131,28 @@ if (projets[projetId]) {
 
     // Mettre à jour les zoomableImages après ajout dynamique
     const zoomableImages = document.querySelectorAll('.zoomable-img');
-    imagesArray = Array.from(zoomableImages);
-
-    // Réattacher les événements sur les nouvelles images
     zoomableImages.forEach((img, index) => {
         img.addEventListener('click', () => openModal(index));
     });
+
+    // Vérifier si un lien existe pour ce projet
+    if (projets[projetId].link) {
+        // Créer un élément <a> pour le lien
+        const linkElement = document.createElement("a");
+        linkElement.href = projets[projetId].link;
+        linkElement.target = "_blank"; // Ouvrir le lien dans un nouvel onglet
+        linkElement.innerText = "Voir le projet en ligne"; // Texte du lien
+
+        // Ajouter le lien à la section projet-link
+        const projetLinkContainer = document.getElementById("projet-link");
+        projetLinkContainer.appendChild(linkElement);
+    }
 }
 
 
 
 
-
-
-
 /* Zoom images */
-// Stocker toutes les images dans un tableau
-var images = document.querySelectorAll(".gallery .projet-image");
-
 // Variable pour savoir sur quelle image on est
 var currentIndex = 0;
 
@@ -153,15 +161,20 @@ function openModal(img) {
     var modal = document.getElementById("zoom-modal");
     var modalImg = document.getElementById("zoom-modal-img");
 
+    // Récupérer les images À JOUR
+    images = document.querySelectorAll(".gallery .projet-image");
+
     // Afficher la modale avec transition
     modal.classList.add("visible");
 
-    // Ajouter la classe no-scroll pour désactiver le défilement du body
-    document.body.style.overflow = 'hidden'; // Désactive le défilement
+    // Désactiver le défilement du body
+    document.body.style.overflow = 'hidden';
 
     // Mettre l'image dans la modale
     modalImg.src = img.src;
-    currentIndex = Array.from(images).indexOf(img); // Mettez à jour l'index actuel
+
+    // Trouver l'index actuel dans les images dynamiques
+    currentIndex = Array.from(images).indexOf(img);
 }
 
 // Ferme la modale

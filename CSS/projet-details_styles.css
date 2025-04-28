@@ -42,6 +42,7 @@
 .title-blocs {
     margin-bottom: 2rem;
     text-align: center;
+    color: black;
 }
 
 /* Présentation et technologies */
@@ -67,6 +68,30 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Lien */
+#projet-link {
+    border: 2px solid black;
+    border-radius: 1rem;
+    background-color: white;
+    padding: 10px 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Effet au survol du lien */
+#projet-link a {
+    text-decoration: none;
+    color: #960000;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Changer la couleur du texte quand on survole le lien */
+#projet-link a:hover {
+    color: #d30000;
+    transform: scale(1.05);
 }
 
 /* Liste technologies */

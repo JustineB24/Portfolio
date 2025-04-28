@@ -6,7 +6,11 @@ const projetId = urlParams.get("id");
 const projets = {
     "1": {
         title: "Pendu",
-        images: ["../Projets/Pendu/Accueil.png"],
+        images: ["../Projets/Pendu/Menu.jpg",
+            "../Projets/Pendu/Jeu.jpg",
+            "../Projets/Pendu/Mots.jpg",
+            "../Projets/Pendu/Scores.jpg"
+        ],
         description: "Application mobile développée avec MAUI et XAML, recréant le célèbre jeu du pendu. L'utilisateur doit deviner un mot choisi aléatoirement, en proposant des lettres une par une. Chaque mauvaise réponse révèle progressivement une image du pendu. Le menu principal permet de jouer, de gérer la liste des mots à deviner, de consulter les meilleurs scores ou de quitter l'application. Les mots et les scores sont stockés localement, permettant une gestion dynamique des parties et une personnalisation du jeu. L'interface est responsive et s'adapte parfaitement aux différents formats mobiles.",
         technologies: ["XAML", "MAUI"]
     },
@@ -14,7 +18,7 @@ const projets = {
         title: "France Mobilier",
         images: ["../Projets/france-mobilier.png"],
         description: "Site e-commerce développé pour la société France Mobilier, spécialisée dans le mobilier d'intérieur. Conçu selon l'architecture MVC, il propose une page d'accueil présentant l'entreprise, un module de recherche de meubles par catégorie, ainsi qu'une page listant l'ensemble des magasins physiques. Le projet utilise une base de données pour gérer dynamiquement les meubles et les points de vente. Un panneau d'administration est également prévu pour permettre la modification des produits et des magasins. L'interface est pensée pour être claire et facilement maintenable.",
-        technologies: ["HTML", "CSS", "PHP", "C#", "SQL"]
+        technologies: ["HTML", "CSS", "PHP", "C#", "MYSQL"]
     },
     "3": {
         title: "Sio Shop",
@@ -29,7 +33,7 @@ const projets = {
             "../Projets/Sio_Shop/SaisirVente.png"
         ],
         description: "Application de gestion commerciale développée sous Windows Forms pour une concession automobile. Ce projet propose une interface permettant aux employés de gérer les clients, les véhicules en stock et les ventes. L'application intègre une authentification sécurisée, une liaison directe avec une base de données SQL, ainsi qu'un module de création de factures au format PDF. Les utilisateurs peuvent rechercher, ajouter et modifier clients et produits, saisir des ventes avec calcul automatique du prix TTC, et suivre l'évolution des stocks en temps réel. La structure suit les principes de la programmation orientée objet, en assurant une navigation fluide et professionnelle entre les différentes fonctionnalités.",
-        technologies: ["Windows Forms", "C#", "SQL"]
+        technologies: ["WinForms", "C#", "MYSQL"]
     },
     "4": {
         title: "Speedcubing",
@@ -41,7 +45,7 @@ const projets = {
             "../Projets/Speedcubing/Connexion.png"
         ],
         description: "Projet développé pour l'Association Française de SpeedCubing. Ce site permet aux passionnés de Rubik's Cube de s'entraîner en ligne, d'enregistrer leurs temps et de comparer leurs performances avec celles des autres. Il intègre un chronomètre interactif, une base de données des meilleurs temps et une section dédiée à la résolution d'un Rubik's Cube 3x3.",
-        technologies: ["PHP", "CSS", "JavaScript", "SQL"]
+        technologies: ["PHP", "CSS", "JavaScript", "MYSQL"]
     },
     "5": {
         title: "Application météo",
@@ -86,19 +90,18 @@ if (projets[projetId]) {
     // Vider la liste avant d'ajouter les nouvelles technologies
     techList.innerHTML = "";
 
-    // Ajouter chaque technologie en tant que LI dans la liste
-    // projets[projetId].technologies.forEach(tech => {
-    //     let li = document.createElement("li");
-    //     li.innerText = tech;
-    //     techList.appendChild(li);
-    // });
-
     projets[projetId].technologies.forEach(tech => {
         let li = document.createElement("li");
 
+        // Exception pour C#
+        let fileName = tech.toLowerCase();
+        if (fileName === "c#") {
+            fileName = "c-sharp";
+        }
+
         // Création du logo
         let logo = document.createElement("img");
-        logo.src = `../Images/SVG/${tech.toLowerCase()}.svg`;
+        logo.src = `../Images/SVG/${fileName}.svg`;
         logo.alt = tech;
         logo.classList.add("tech-logo"); // Pour styliser le logo
 
@@ -109,7 +112,6 @@ if (projets[projetId]) {
         techList.appendChild(li);
     });
 
-
     // Ajouter les images dans le div "projet-images"
     const imagesContainer = document.getElementById("projet-images");
     imagesContainer.innerHTML = ""; // Nettoyer au cas où
@@ -118,7 +120,149 @@ if (projets[projetId]) {
         const img = document.createElement("img");
         img.src = imgSrc;
         img.alt = projets[projetId].title;
-        img.classList.add("projet-image"); // Tu peux styliser cette classe en CSS
+        img.classList.add("projet-image"); // Pour ton style CSS
+        img.classList.add("zoomable-img"); // Pour que l'image soit zoomable
         imagesContainer.appendChild(img);
     });
+
+    // Mettre à jour les zoomableImages après ajout dynamique
+    const zoomableImages = document.querySelectorAll('.zoomable-img');
+    imagesArray = Array.from(zoomableImages);
+
+    // Réattacher les événements sur les nouvelles images
+    zoomableImages.forEach((img, index) => {
+        img.addEventListener('click', () => openModal(index));
+    });
 }
+
+
+
+
+
+
+
+/* Zoom images */
+// Stocker toutes les images dans un tableau
+var images = document.querySelectorAll(".gallery .projet-image");
+
+// Variable pour savoir sur quelle image on est
+var currentIndex = 0;
+
+// Ouvre la modale avec l'image
+function openModal(img) {
+    var modal = document.getElementById("zoom-modal");
+    var modalImg = document.getElementById("zoom-modal-img");
+
+    // Afficher la modale avec transition
+    modal.classList.add("visible");
+
+    // Ajouter la classe no-scroll pour désactiver le défilement du body
+    document.body.style.overflow = 'hidden'; // Désactive le défilement
+
+    // Mettre l'image dans la modale
+    modalImg.src = img.src;
+    currentIndex = Array.from(images).indexOf(img); // Mettez à jour l'index actuel
+}
+
+// Ferme la modale
+function closeModal() {
+    var modal = document.getElementById("zoom-modal");
+    modal.classList.remove("visible");
+
+    // Réactiver le défilement du body
+    document.body.style.overflow = 'auto'; // Réactive le défilement
+}
+
+// Passer à l'image suivante
+function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length; // Boucle circulaire
+    var modalImg = document.getElementById("zoom-modal-img");
+    modalImg.src = images[currentIndex].src;
+}
+
+// Passer à l'image précédente
+function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length; // Boucle circulaire
+    var modalImg = document.getElementById("zoom-modal-img");
+    modalImg.src = images[currentIndex].src;
+}
+
+// Événements de navigation
+document.getElementById("next").addEventListener("click", nextImage);
+document.getElementById("prev").addEventListener("click", prevImage);
+
+// Fermeture en cliquant sur l'arrière-plan (hors image)
+document.getElementById("zoom-modal").addEventListener("click", function (event) {
+    if (event.target === this) {
+        closeModal();
+    }
+});
+
+// Fermeture avec la croix
+document.querySelector(".close").addEventListener("click", closeModal);
+
+// Zoom avant et arrière avec double-clic
+document.getElementById("zoom-modal-img").addEventListener("wheel", function (event) {
+    var modalImg = document.getElementById("zoom-modal-img");
+    var scale = parseFloat(modalImg.style.transform.replace("scale(", "").replace(")", "")) || 1;
+
+    // Modifier le facteur de zoom en fonction du sens de la molette
+    if (event.deltaY < 0) {
+        scale *= 1.1; // Zoom avant
+    } else {
+        scale *= 0.9; // Zoom arrière
+    }
+
+    // Appliquer le zoom avec une limite
+    modalImg.style.transform = `scale(${Math.min(Math.max(scale, 1), 2)})`; // Limiter à un zoom entre 1x et 2x
+});
+
+// Déplacement de l'image avec le glisser-déposer
+var isDragging = false;
+var startX, startY;
+var initialX, initialY;
+
+var modalImg = document.getElementById("zoom-modal-img");
+
+// Quand l'utilisateur clique sur l'image (mousedown)
+modalImg.addEventListener("mousedown", function (event) {
+    event.preventDefault(); // Empêche la sélection du texte
+
+    isDragging = true;
+    startX = event.clientX;
+    startY = event.clientY;
+
+    // Sauvegarder la position initiale de l'image
+    var transform = modalImg.style.transform.replace("scale(", "").replace(")", "").split(", ");
+    initialX = transform[0] ? parseInt(transform[0].replace('px', '')) : 0;
+    initialY = transform[1] ? parseInt(transform[1].replace('px', '')) : 0;
+
+    modalImg.classList.add("grabbing");
+});
+
+// Quand l'utilisateur déplace la souris (mousemove)
+modalImg.addEventListener("mousemove", function (event) {
+    if (isDragging) {
+        // Calculer les déplacements
+        var deltaX = event.clientX - startX;
+        var deltaY = event.clientY - startY;
+
+        // Déplacer l'image
+        var newX = initialX + deltaX;
+        var newY = initialY + deltaY;
+
+        modalImg.style.transform = `scale(1.5) translate(${newX}px, ${newY}px)`;
+    }
+});
+
+// Quand l'utilisateur relâche le bouton de la souris (mouseup)
+modalImg.addEventListener("mouseup", function () {
+    isDragging = false;
+    modalImg.classList.remove("grabbing");
+});
+
+// Quand l'utilisateur quitte la zone de l'image (mouseleave)
+modalImg.addEventListener("mouseleave", function () {
+    isDragging = false;
+    modalImg.classList.remove("grabbing");
+});

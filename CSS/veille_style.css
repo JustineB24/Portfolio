@@ -64,6 +64,7 @@ ul {
 ul li {
     margin-bottom: 10px;
     font-size: 1.2rem;
+    color: black;
 }
 
 /* Images */
@@ -82,6 +83,30 @@ img {
 
 .texte-photo {
     font-size: 1rem;
+}
+
+/* Tableau comparatif Avantages/Inconvénients */
+.comparatif {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.comparatif th,
+.comparatif td {
+    border: 1px solid black;
+    padding: 10px;
+    color: black;
+}
+
+.comparatif th {
+    background-color: rgb(150, 0, 0);
+    font-weight: bold;
+    color: white;
+}
+
+.comparatif tr {
+    background-color: #e6e6e6;
 }
 
 /* Timeline évolution des modèles */
@@ -108,4 +133,64 @@ img {
     font-size: 1.2em;
     font-weight: bold;
     color: #d32f2f;
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 1024px) {
+    main {
+        margin: 10rem 10px 20px 10px;
+        padding: 20px;
+    }
+
+    h2 {
+        margin-top: 3rem;
+    }
+
+    img {
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        margin: 8rem 10px 20px 10px;
+        padding: 15px;
+    }
+
+    h2 {
+        margin-top: 2rem;
+    }
+
+    ul li {
+        font-size: 1rem;
+    }
+
+    img {
+        max-width: 70%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    main {
+        margin: 6rem 5px 10px 5px;
+        padding: 10px;
+    }
+
+    h2 {
+        margin-top: 2rem;
+    }
+
+    ul li {
+        font-size: 0.85rem;
+    }
+
+    img {
+        max-width: 90%;
+    }
+
+    .timeline li {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 6px 0;
+    }
 }

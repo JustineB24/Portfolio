@@ -22,10 +22,8 @@ main::before {
     right: 0;
     bottom: 0;
     background-color: rgba(255, 255, 255, 0.9);
-    /* Opacité du fond */
     border-radius: 10px;
     z-index: -1;
-    /* Pour que le fond soit derrière le contenu */
 }
 
 h1 {
@@ -65,15 +63,10 @@ ul {
 
 ul li {
     margin-bottom: 10px;
+    font-size: 1.2rem;
 }
 
 /* Images */
-/* #logoRaspi {
-    max-width: 20%;
-    height: auto;
-    margin: 5rem 0 0 0;
-} */
-
 img {
     max-width: 30%;
     height: auto;

@@ -1,0 +1,199 @@
+/* Conteneur du projet */
+.projet-details {
+    padding: 50px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+/* Titre + bouton retour */
+.title-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.title-container h1 {
+    margin: 0;
+    line-height: 1.2;
+}
+
+.back-button img {
+    width: 5rem;
+    transition: transform 0.3s ease;
+}
+
+.back-button img:hover {
+    transform: translateX(-5px);
+}
+
+/* Contenu principal */
+.projet-content {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    max-width: 100rem;
+    margin-top: 2rem;
+}
+
+/* Titre blocs */
+.title-blocs {
+    margin-bottom: 2rem;
+    text-align: center;
+    color: black;
+}
+
+/* Présentation et technologies */
+.projet-presentation,
+.projet-technologies {
+    flex: 1;
+    min-width: 300px;
+    background-color: #e6e6e6;
+    padding: 2rem;
+    border-radius: 10px;
+    animation: fadeInUp 0.6s ease both;
+    box-sizing: border-box;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Lien */
+#projet-link {
+    display: none;
+
+    border: 2px solid black;
+    border-radius: 1rem;
+    background-color: white;
+    padding: 10px 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Effet au survol du lien */
+#projet-link a {
+    text-decoration: none;
+    color: #960000;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Changer la couleur du texte quand on survole le lien */
+#projet-link a:hover {
+    color: #d30000;
+    transform: scale(1.05);
+}
+
+/* Liste technologies */
+.tech-logo {
+    width: 5rem;
+    height: 5rem;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+#projet-technologies {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+#projet-technologies li {
+    background-color: #cecece;
+    padding: 10px 15px;
+    border-radius: 15px;
+    border: 1px solid black;
+    font-size: 1.5rem;
+    color: black;
+    margin: auto;
+    transition: background-color 0.3s ease;
+}
+
+/* Images du projet */
+.projet-img {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.projet-image {
+    width: 100%;
+    max-width: 800px;
+    margin: 5rem auto;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .title-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .back-button img {
+        width: 4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .projet-details {
+        padding: 2rem;
+    }
+
+    .title-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .title-container h1 {
+        font-size: 1.6rem;
+    }
+
+    .back-button img {
+        width: 3.5rem;
+    }
+
+    .projet-image {
+        margin: 3rem auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-container h1 {
+        font-size: 1.4rem;
+    }
+
+    .back-button img {
+        width: 3rem;
+    }
+
+    .projet-presentation,
+    .projet-technologies {
+        padding: 1rem;
+    }
+
+    #projet-technologies li {
+        font-size: 0.95rem;
+        padding: 8px 12px;
+    }
+
+    .projet-image {
+        margin: 2rem auto;
+    }
+}

@@ -1,0 +1,176 @@
+.projet-container {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    flex-wrap: wrap;
+    margin: 2rem 5rem 5rem;
+}
+
+.card {
+    height: 20rem;
+    width: 30rem;
+    border-radius: 20px;
+    transition: all .3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.card2 {
+    height: 18rem;
+    width: 28rem;
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    transition: all .2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+.card2 h2 {
+    color: white;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    word-break: break-word;
+}
+
+/* Effet de survol sur la carte */
+.card:hover,
+.card2:hover {
+    transform: scale(0.98);
+    border-radius: 20px;
+}
+
+/* Couleurs spécifiques pour chaque carte */
+.card-1 {
+    background-color: #ff0000;
+}
+
+.card-1:hover {
+    box-shadow: 0px 0px 30px 1px rgb(255, 0, 0);
+}
+
+.card-2 {
+    background-color: #ff6a00;
+}
+
+.card-2:hover {
+    box-shadow: 0px 0px 30px 1px rgb(255, 106, 0);
+}
+
+.card-3 {
+    background-color: #ffd500;
+}
+
+.card-3:hover {
+    box-shadow: 0px 0px 30px 1px rgb(255, 213, 0);
+}
+
+.card-4 {
+    background-color: #007a27;
+}
+
+.card-4:hover {
+    box-shadow: 0px 0px 30px 1px rgb(0, 122, 39);
+}
+
+.card-5 {
+    background-color: #0b00d6;
+}
+
+.card-5:hover {
+    box-shadow: 0px 0px 30px 1px rgb(11, 0, 214);
+}
+
+.card-6 {
+    background-color: #9c00b8;
+}
+
+.card-6:hover {
+    box-shadow: 0px 0px 30px 1px rgb(156, 0, 184);
+}
+
+.card-7 {
+    background-color: #0f4c81;
+}
+
+.card-7:hover {
+    box-shadow: 0px 0px 30px 1px rgb(15, 76, 129);
+}
+
+.card-8 {
+    background-color: #fc4400;
+}
+
+.card-8:hover {
+    box-shadow: 0px 0px 30px 1px rgb(252, 68, 0);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    .card {
+        width: 24rem;
+        height: 18rem;
+    }
+
+    .card2 {
+        width: 22rem;
+        height: 16rem;
+    }
+
+    .card2 h2 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .projet-container {
+        margin: 2rem;
+        gap: 2rem;
+    }
+
+    .card {
+        width: 90%;
+        height: 16rem;
+    }
+
+    .card2 {
+        width: 85%;
+        height: 14rem;
+    }
+
+    .card2 h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .projet-container {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin: 1rem;
+    }
+
+    .card {
+        width: 100%;
+        height: 14rem;
+    }
+
+    .card2 {
+        width: 95%;
+        height: 12rem;
+    }
+
+    .card2 h2 {
+        font-size: 1.1rem;
+    }
+}

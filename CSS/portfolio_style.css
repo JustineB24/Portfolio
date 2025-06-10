@@ -1,0 +1,555 @@
+/* Principal */
+html,
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+    background: var(--background-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Liens */
+a {
+    text-decoration: none;
+}
+
+/* Entête */
+header {
+    background-color: #960000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Pour éviter que le contenu principal ne soit caché sous le header */
+main {
+    margin: 1rem;
+    margin-top: 10rem;
+    flex: 1;
+}
+
+/* Titres */
+.titreNom {
+    font-size: 2rem;
+    font-weight: 700;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 1rem;
+    font-family: sans-serif;
+    display: inline-block;
+    padding: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    transition: color 0.3s ease;
+}
+
+.titreNom:hover {
+    color: white;
+    text-shadow: 1px 1px 5px rgb(0 0 0 / 80%);
+}
+
+h1 {
+    font-size: 3rem;
+    display: inline-block;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+/* Paragraphe */
+p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: black;
+    padding: 15px;
+}
+
+/* Boutons des réseaux sociaux */
+.reseaux {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btnReseaux {
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btnReseaux .svgIcon {
+    transition-duration: 0.3s;
+}
+
+.btnReseaux .svgIcon path {
+    fill: white;
+}
+
+.btnReseaux .text {
+    position: absolute;
+    color: white;
+    width: 120px;
+    font-weight: 600;
+    opacity: 0;
+    transition-duration: 0.4s;
+}
+
+.btnReseaux:hover {
+    width: 110px;
+    border-radius: 30px;
+}
+
+.btnReseaux:hover .text {
+    opacity: 1;
+}
+
+.btnReseaux:hover .svgIcon {
+    opacity: 0;
+}
+
+#linkedin {
+    background: #0274b3;
+}
+
+#github {
+    background-color: #1f1f1f;
+}
+
+/* Variables pour le thème clair */
+:root {
+    --background-color: white;
+    --text-color: black;
+    --button-background-color: black;
+    --button-text-color: white;
+}
+
+/* Variables pour le thème sombre */
+body.dark-theme {
+    --background-color: black;
+    --text-color: white;
+    --button-background-color: white;
+    --button-text-color: black;
+}
+
+/* Menu de navigation */
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.menu-item {
+    display: inline-flex;
+}
+
+.onglet {
+    position: relative;
+    margin: 0 1.5rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+}
+
+.onglet:link,
+.onglet:visited {
+    color: black;
+}
+
+.onglet:hover {
+    color: #ffffff;
+}
+
+.onglet::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: 50% 50%;
+    width: 100%;
+    height: 3px;
+    transition: transform 250ms;
+    background-color: #ffffff;
+}
+
+.onglet:hover::after {
+    transform: translateX(-50%) scaleX(1);
+    transition: transform 0.3s ease-out;
+}
+
+/* Icone menu burger */
+.icon-menu {
+    --gap: 5px;
+    --height-bar: 3px;
+    --pos-y-bar-one: 0;
+    --pos-y-bar-three: 0;
+    --scale-bar: 1;
+    --rotate-bar-one: 0;
+    --rotate-bar-three: 0;
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    cursor: pointer;
+    position: absolute;
+    left: 1rem;
+    z-index: 200;
+}
+
+.bar {
+    position: relative;
+    height: var(--height-bar);
+    width: 100%;
+    border-radius: .5rem;
+    background-color: white;
+}
+
+.bar--1 {
+    top: var(--pos-y-bar-one);
+    transform: rotate(var(--rotate-bar-one));
+    transition: top 200ms 100ms, transform 100ms;
+}
+
+.bar--2 {
+    transform: scaleX(var(--scale-bar));
+    transition: transform 150ms 100ms;
+}
+
+.bar--3 {
+
+    bottom: var(--pos-y-bar-three);
+    transform: rotate(var(--rotate-bar-three));
+    transition: bottom 200ms 100ms, transform 100ms;
+}
+
+.check-icon:checked+.icon-menu>.bar--1 {
+    transition: top 200ms, transform 200ms 100ms;
+}
+
+.check-icon:checked+.icon-menu>.bar--3 {
+    transition: bottom 200ms, transform 200ms 100ms;
+}
+
+.check-icon:checked+.icon-menu {
+    --pos-y-bar-one: calc(var(--gap) + var(--height-bar));
+    --pos-y-bar-three: calc(var(--gap) + var(--height-bar));
+    --scale-bar: 0;
+    --rotate-bar-one: 45deg;
+    --rotate-bar-three: -45deg;
+}
+
+/* Menu burger */
+.menu-burger {
+    position: fixed;
+    top: -1000%;
+    left: 0;
+    right: 0;
+    background-color: black;
+    z-index: 100;
+    transition: top 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    padding: 20px;
+    font-size: 1.2rem;
+    height: 100%;
+}
+
+.side-menu li {
+    display: flex;
+    align-items: center;
+    margin: 5rem 0;
+}
+
+.onglet-burger {
+    font-weight: bold;
+    transition: color 0.3s ease;
+    width: 100%;
+}
+
+.onglet-burger:link,
+.onglet-burger:visited {
+    color: rgb(255, 255, 255);
+}
+
+/* Affichage du menu lorsque la case est cochée */
+.check-icon:checked~.menu-burger {
+    top: 0;
+}
+
+/* Bas de page */
+footer {
+    font-size: 0.8rem;
+    padding: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#footer>div {
+    margin: 0 10px;
+}
+
+#mentions {
+    color: white;
+}
+
+/* ------------------ */
+/* Responsive Design */
+/* ------------------ */
+
+/* Pour les ordinateurs */
+@media (min-width: 1025px) {
+
+    /* Enlève le menu burger */
+    .icon-menu {
+        display: none;
+    }
+}
+
+/* Pour les écrans de taille moyenne */
+@media (max-width: 1024px) {
+
+    /* Onglet */
+    .menu {
+        display: none;
+    }
+
+    /* Supprimer la barre sur les appareils mobiles et tablettes */
+    .onglet::after {
+        content: none;
+    }
+}
+
+/* Tablettes (768px et moins) */
+@media (max-width: 768px) {
+    header {
+        height: 80px;
+        padding: 5px 10px;
+    }
+
+    .titreNom {
+        font-size: 1.5rem;
+    }
+
+    main {
+        margin-top: 100px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin: 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.75rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .reseaux {
+        flex-direction: inherit;
+        gap: 8px;
+    }
+
+    .btnReseaux {
+        width: 40px;
+        height: 40px;
+    }
+
+    .btnReseaux .text {
+        display: none;
+        opacity: 0;
+    }
+
+    .side-menu {
+        left: -500px;
+        width: 90%;
+    }
+
+    .nav-menu {
+        display: none;
+        /* Cache le menu de navigation classique */
+        flex-direction: column;
+        background-color: #960000;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        z-index: 999;
+
+        position: absolute;
+    }
+
+    .nav-menu.active {
+        display: flex;
+        /* Affiche le menu quand il est actif */
+    }
+
+    .menu-item {
+        display: block;
+        margin: 1rem 0;
+    }
+
+    /* Lorsque le menu burger est ouvert, afficher les éléments du menu verticalement */
+    .nav-menu.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: white;
+        width: 100%;
+        padding: 10px;
+        border-top: 1px solid black;
+    }
+
+    .onglet {
+        font-size: 1.2rem;
+        padding: 10px 0;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    footer {
+        font-size: 0.7rem;
+        padding: 0.8rem;
+    }
+}
+
+/* Mobiles (480px et moins) */
+@media (max-width: 480px) {
+    header {
+        height: 60px;
+        padding: 5px;
+    }
+
+    .titreNom {
+        font-size: 1.2rem;
+        padding: 3px 6px;
+        margin-left: 3rem;
+    }
+
+    main {
+        margin-top: 90px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+
+    .reseaux {
+        flex-direction: inherit;
+        gap: 5px;
+    }
+
+    .btnReseaux {
+        width: 35px;
+        height: 35px;
+    }
+
+    .btnReseaux .text {
+        display: none;
+        opacity: 0;
+    }
+
+    .burger-menu {
+        font-size: 28px;
+    }
+
+    .nav-menu.open {
+        top: 50px;
+    }
+
+    button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    footer {
+        font-size: 0.6rem;
+        padding: 0.5rem;
+    }
+}

@@ -1,0 +1,328 @@
+/* Profil */
+/* Paragraphe */
+.profil,
+.btsSio {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: black;
+    background-color: #fff2f0;
+    padding: 15px;
+    margin: 1rem 12rem;
+    border-radius: 8px;
+    border: 2px solid #960000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Bouton CV */
+.btnCV {
+    padding: 0.8em 1.8em;
+    border: 2px solid #960000;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: #960000;
+    margin: 3rem;
+    border-radius: 5px;
+}
+
+/* Animation de l'arrière-plan du bouton */
+.btnCV::before {
+    content: '';
+    width: 0;
+    height: 500%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #960000;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+
+/* Effet au survol */
+.btnCV:hover::before {
+    width: 105%;
+}
+
+.btnCV:hover {
+    color: white;
+}
+
+/* BTS SIO */
+/* Styles pour la section des spécialités */
+#specialites {
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+}
+
+#specialites h2 {
+    margin-bottom: 30px;
+    text-decoration: underline;
+}
+
+.bloc-container {
+    display: flex;
+    justify-content: center;
+}
+
+.bloc-specialite {
+    background: #960000;
+    background: linear-gradient(0deg, rgb(150, 0, 0) 0%, rgb(150, 37, 37) 28%, rgb(150, 59, 59) 46%, rgb(186, 114, 114) 68%, rgb(217, 217, 217) 100%);
+    border-radius: 8px;
+    padding: 20px;
+    width: 40rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 2%;
+}
+
+.bloc-specialite:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.bloc-specialite h3 {
+    color: black;
+}
+
+.bloc-specialite h4 {
+    color: black;
+    margin: 5%;
+}
+
+.bloc-specialite p {
+    font-size: 1rem;
+    color: black;
+    margin: 10% auto 5% auto;
+    text-decoration: underline;
+}
+
+.bloc-specialite ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    color: black;
+}
+
+.bloc-specialite li {
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.bloc-specialite img {
+    width: 30rem;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+/* Parcours */
+h4 {
+    color: black;
+}
+
+.timeline-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 150px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timeline {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 0;
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Ligne verticale de la timeline */
+.timeline-item {
+    padding: 0 0 50px 40px;
+    border-left: 3px solid #960000;
+    position: relative;
+}
+
+/* Ajout du point sur la timeline */
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    left: -12px;
+    top: 10px;
+    background: white;
+    border: 3px solid #960000;
+}
+
+/* Bloc de contenu */
+.timeline-content {
+    background: #e6e6e6;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    animation: fadeInUp 0.6s ease-in-out;
+}
+
+/* Animation d'apparition */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Titres */
+.timeline h2 {
+    padding-bottom: 30px;
+    text-decoration: underline;
+}
+
+/* Titres des blocs */
+.timeline-content h3 {
+    margin: 10px;
+    color: #960000;
+}
+
+/* Paragraphes */
+.timeline-content p {
+    margin: 20px 0;
+}
+
+hr {
+    border: none;
+    border-top: 2px dashed #666;
+    margin: 20px 0;
+}
+
+/* Responsive */
+
+/* Pour tablettes et petits écrans (jusqu'à 1024px) */
+@media screen and (max-width: 1024px) {
+
+    .profil,
+    .btsSio {
+        margin: 1rem 3rem;
+        padding: 15px;
+    }
+
+    .bloc-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .bloc-specialite {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+    .bloc-specialite img {
+        width: 100%;
+        height: auto;
+    }
+
+    .timeline-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .timeline-item {
+        padding: 0 0 30px 20px;
+    }
+
+    .timeline-content {
+        padding: 20px;
+    }
+}
+
+/* Pour mobiles (jusqu'à 768px) */
+@media screen and (max-width: 768px) {
+
+    .profil,
+    .btsSio {
+        margin: 1rem;
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .btnCV {
+        font-size: 14px;
+        padding: 0.6em 1.2em;
+        margin: 1.5rem;
+    }
+
+    .bloc-specialite {
+        width: 90%;
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    .bloc-specialite img {
+        width: 100%;
+        height: auto;
+    }
+
+    .timeline-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .timeline-item {
+        padding: 0 0 30px 20px;
+    }
+}
+
+/* Pour très petits écrans (jusqu'à 480px) */
+@media screen and (max-width: 480px) {
+
+    .profil,
+    .btsSio {
+        margin: 1rem;
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .btnCV {
+        font-size: 12px;
+        padding: 0.5em 1em;
+        margin: 1.5rem;
+    }
+
+    .bloc-specialite {
+        width: 95%;
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    .bloc-specialite img {
+        width: 100%;
+        height: auto;
+    }
+
+    .timeline-container {
+        gap: 20px;
+    }
+
+    .timeline-content {
+        padding: 10px;
+    }
+}

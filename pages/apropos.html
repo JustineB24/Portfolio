@@ -1,0 +1,217 @@
+<!--    ===============================    -->
+<!--    | * Nom du projet : Portfolio |    -->
+<!--    | * Création : Juin 2024      |    -->
+<!--    | * Auteur : Justine BLIN     |    -->
+<!--    ===============================    -->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Script pour générer le head commun (meta, css global, favicon) -->
+    <script src="../js/structure-globale.js"></script>
+    <script>genererHead("../");</script>
+
+    <!-- CSS spécifique -->
+    <link rel="stylesheet" href="../css/apropos.css" media="all" type="text/css">
+
+    <title>Portfolio | À propos</title>
+</head>
+
+<body>
+    <script>
+        genererHeader("../");
+    </script>
+
+    <!-- Contenu principal -->
+    <main>
+        <h1>Profil</h1>
+
+        <div>
+            <p class="profil">Actuellement étudiante en Bachelor Chef de Projet Développement et IA, à La Manu à
+                Lacroix-Saint-Ouen, je me spécialise dans le développement d'applications et la gestion de projets
+                informatiques. Passionnée par la technologie et la création d'outils numériques, j'ai choisi cette
+                filière pour
+                approfondir mes compétences techniques et découvrir les bonnes pratiques du développement logiciel.
+            </p>
+
+            <a href="../cv_blin_justine.pdf" download target="_blank">
+                <button class="btnCV">Télécharger mon CV</button>
+            </a>
+        </div>
+
+        <hr>
+
+        <h1>Parcours</h1>
+        <div class="timeline-container">
+            <section class="timeline">
+                <h2>Cursus scolaire</h2>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2025 - 2026</h3>
+                        <h4>Bachelor spécialité Développement & IA</h4>
+                        <p>La Manu, Lacroix-Saint-Ouen 60610</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-popup="btssio">
+                    <div class="timeline-content">
+                        <h3>2023 - 2025</h3>
+                        <h4>BTS SIO - SLAM</h4>
+                        <p>Lycée Édouard Gand, Amiens 80000</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2020 - 2023</h3>
+                        <h4>Baccalauréat Général</h4>
+                        <p>(Maths, NSI)</p>
+                        <p>Lycée Marie Curie, Nogent-sur-Oise 60180</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2016 - 2020</h3>
+                        <h4>Diplôme National du Brevet</h4>
+                        <p>Collège Simone Veil, Cauffry 60290</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="timeline">
+                <h2>Expériences professionnelles</h2>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Novembre - Décembre 2024</h3>
+                        <h3>(6 semaines)</h3>
+                        <h4>Panada Food</h4>
+                        <p>Développement d'un site web vitrine pour un restaurant en HTML, CSS et JavaScript.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Mai - Juin 2024</h3>
+                        <h3>(4 semaines)</h3>
+                        <h4>Mairie de Cauffry</h4>
+                        <p>Développement d'un site web vitrine avec Adico.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Popup BTS SIO -->
+    <div id="btssioPopup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="popup-close">&times;</button>
+            <h1>BTS SIO</h1>
+            <div>
+                <p class="btsSio">Le BTS SIO (Services Informatiques aux Organisations) est un diplôme national français
+                    de niveau Bac+2, qui forme des techniciens supérieurs capables de concevoir, développer, déployer et
+                    maintenir des solutions informatiques adaptées aux besoins des entreprises. Il s'adresse aux
+                    passionnés d'informatique qui souhaitent se spécialiser dans les métiers liés au développement ou à
+                    l'administration des systèmes d'information.
+                </p>
+
+                <section id="specialites">
+                    <h2>Spécialités du BTS SIO :</h2>
+                    <div class="bloc-container">
+                        <!-- Bloc SLAM -->
+                        <div class="bloc-specialite">
+                            <img src="../assets/CodeSLAM.jpg">
+                            <h3>SLAM :</h3>
+                            <h4>Solutions Logicielles et Applications Métiers</h4>
+                            <ul>
+                                <li>Conception et développement d'applications</li>
+                                <li>Programmation et bases de données</li>
+                                <li>Développement web et mobile</li>
+                                <li>Analyse des besoins utilisateurs et gestion de projets</li>
+                            </ul>
+
+                            <p>Voici les débouchés avec un BTS SIO SLAM :</p>
+                            <ul>
+                                <li>Développeur informatique</li>
+                                <li>Programmeur</li>
+                                <li>Analyste-programmeur</li>
+                                <li>Technicien informatique</li>
+                                <li>Responsable des services applicatifs</li>
+                                <li>Informaticien d'études</li>
+                                <li>Développeur d'applications informatiques</li>
+                            </ul>
+                        </div>
+
+                        <!-- Bloc SISR -->
+                        <div class="bloc-specialite">
+                            <img src="../assets/ServeurSISR.jpg">
+                            <h3>SISR :</h3>
+                            <h4>Solutions d'Infrastructure, Systèmes et Réseaux</h4>
+                            <ul>
+                                <li>Administration et gestion des réseaux informatiques</li>
+                                <li>Sécurité des systèmes d'information</li>
+                                <li>Virtualisation et maintenance des infrastructures</li>
+                                <li>Déploiement et supervision des systèmes</li>
+                            </ul>
+
+                            <p>Voici les débouchés avec un BTS SIO SISR :</p>
+                            <ul>
+                                <li>Pilote d'exploitation</li>
+                                <li>Administrateur systèmes et réseaux</li>
+                                <li>Gestionnaire du parc informatique de l'entreprise</li>
+                                <li>Analyste d'exploitation informatique</li>
+                                <li>Technicien des réseaux de télécommunications</li>
+                                <li>Technicien d'infrastructure</li>
+                                <li>Technicien systèmes et réseaux</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        genererFooter("../");
+    </script>
+
+    <script>
+        // Gestion de la popup BTS SIO
+        const timelineItems = document.querySelectorAll('.timeline-item[data-popup]');
+        const btssioPopup = document.getElementById('btssioPopup');
+        const popupClose = document.querySelector('.popup-close');
+
+        timelineItems.forEach(item => {
+            item.style.cursor = 'pointer';
+            item.addEventListener('click', function () {
+                const popupType = this.getAttribute('data-popup');
+                if (popupType === 'btssio') {
+                    btssioPopup.classList.add('active');
+                }
+            });
+        });
+
+        // Fermer la popup au clic sur le bouton fermeture
+        popupClose.addEventListener('click', function () {
+            btssioPopup.classList.remove('active');
+        });
+
+        // Fermer la popup en cliquant en dehors
+        btssioPopup.addEventListener('click', function (e) {
+            if (e.target === btssioPopup) {
+                btssioPopup.classList.remove('active');
+            }
+        });
+
+        // Fermer la popup avec la touche Échap
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                btssioPopup.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

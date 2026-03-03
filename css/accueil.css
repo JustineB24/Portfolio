@@ -1,0 +1,157 @@
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 10rem;
+    padding: 3rem 10rem;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap;
+}
+
+.hero .initials {
+    margin-right: 2rem;
+    left: 10rem;
+    border-radius: 20rem;
+    width: 8rem;
+}
+
+.hero .txt-rotate {
+    font-size: 4rem;
+    color: black;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards 0.5s;
+}
+
+/* Apparition progressive */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Curseur clignotant en mode clair */
+.txt-rotate>.wrap {
+    border-right: 0.08em solid black;
+}
+
+/* Curseur clignotant en mode sombre */
+.dark-theme .txt-rotate>.wrap {
+    border-right: 0.08em solid white;
+}
+
+.sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 4rem 2rem;
+}
+
+.card {
+    border: 2px solid #960000;
+    border-radius: 2rem;
+    padding: 2rem;
+    background: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card h2 {
+    color: #960000;
+    margin-bottom: 1rem;
+}
+
+.card h2 a {
+    color: inherit;
+}
+
+/* Bouton CV */
+.btn-cv {
+    margin-top: 2rem;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #960000;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-cv:hover {
+    background: #d30000;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-top: 5rem;
+        gap: 1rem;
+    }
+
+    .hero .initials {
+        position: static;
+        margin: 0 auto 1rem;
+        width: 8rem;
+    }
+
+    .hero .txt-rotate {
+        font-size: 3rem;
+    }
+
+    .sections {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem 1rem;
+        margin-top: 0;
+    }
+
+    .hero .txt-rotate {
+        font-size: 2.5rem;
+    }
+
+    .sections {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .btn-cv {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero .txt-rotate {
+        font-size: 2rem;
+    }
+
+    .sections {
+        padding: 1.5rem 1rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+}

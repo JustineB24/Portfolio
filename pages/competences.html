@@ -1,0 +1,136 @@
+<!--    ===============================    -->
+<!--    | * Nom du projet : Portfolio |    -->
+<!--    | * Création : Juin 2024      |    -->
+<!--    | * Auteur : Justine BLIN     |    -->
+<!--    ===============================    -->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Script pour générer le head commun (meta, css global, favicon) -->
+    <script src="../js/structure-globale.js"></script>
+    <script>genererHead("../");</script>
+
+    <!-- CSS spécifique -->
+    <link rel="stylesheet" href="../css/competences.css" media="all" type="text/css">
+
+    <title>Portfolio | Compétences</title>
+</head>
+
+<body>
+    <script>
+        genererHeader("../");
+    </script>
+
+    <!-- Contenu principal -->
+    <main>
+        <section>
+            <h1>Certifications</h1>
+            <div class="gallery">
+                <img class="certif" src="../assets/Certif_en_jpg/SoloLearn_Coding_Foundations.jpg"
+                    alt="Certification SoloLearn Coding Foundations" loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/SoloLearn_Introduction_to_C-sharp.jpg"
+                    alt="Certification SoloLearn Introduction to C-sharp" loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/SoloLearn_Introduction_to_SQL.jpg"
+                    alt="Certification SoloLearn Introduction to SQL" loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/FreeCodeCamp_Responsive_Web_Design.jpg"
+                    alt="Certification FreeCodeCamp Responsive Web Design" loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/Cursa_C-sharp_Unity.jpg"
+                    alt="Certification Cursa C-sharp Unity" loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/Cisco_Introduction_to_Cybersecurity.jpg"
+                    alt="Certification Cisco Introduction to Cybersecurity" loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/Canva_essentials.jpg"
+                    alt="Certification Canva essentials" loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/Canva_for_work.jpg" alt="Certification Canva for work"
+                    loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/Certificat_module1.jpg"
+                    alt="Certification MOOC module 1" loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/Certificat_module2.jpg"
+                    alt="Certification MOOC module 2" loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/Certificat_module3.jpg"
+                    alt="Certification MOOC module 3" loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/Certificat_module4.jpg"
+                    alt="Certification MOOC module 4" loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/Certificat_module5.jpg"
+                    alt="Certification MOOC module 5" loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/Attestation_pix_Lycée_Édouard_Gand.jpg"
+                    alt="Certification PIX" loading="lazy" onclick="ouvrirModale(this)">
+                <img class="certif" src="../assets/Certif_en_jpg/Attestation_pix_Lycée_Marie_Curie.jpg"
+                    alt="Certification PIX" loading="lazy" onclick="ouvrirModale(this)">
+            </div>
+
+            <!-- Modale pour afficher les images agrandies -->
+            <div id="zoom-modal" class="hidden">
+                <img id="zoom-modal-img" src="" alt="Image zoomable">
+                <!-- Flèche gauche -->
+                <span id="prev" class="modal-arrow left">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
+                        <path d="M15 18l-6-6 6-6" stroke="white" stroke-width="2" fill="none" />
+                    </svg>
+                </span>
+                <!-- Flèche droite -->
+                <span id="next" class="modal-arrow right">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
+                        <path d="M9 18l6-6-6-6" stroke="white" stroke-width="2" fill="none" />
+                    </svg>
+                </span>
+                <!-- Croix de fermeture -->
+                <span class="close" onclick="closeModal()">&#10005;</span>
+            </div>
+        </section>
+
+        <h1>Langages de programmation</h1>
+        <div class="card-container">
+            <div class="card html">
+                <img class="svg" src="../assets/SVG/html.svg" alt="HTML SVG">
+            </div>
+            <div class="card css">
+                <img class="svg" src="../assets/SVG/css.svg" alt="CSS SVG">
+            </div>
+            <div class="card js">
+                <img class="svg" src="../assets/SVG/javascript.svg" alt="JavaScript SVG">
+            </div>
+            <div class="card php">
+                <img class="svg" src="../assets/SVG/php.svg" alt="PHP SVG">
+            </div>
+            <div class="card python">
+                <img class="svg" src="../assets/SVG/python.svg" alt="Python SVG">
+            </div>
+            <div class="card c-sharp">
+                <img class="svg" src="../assets/SVG/c-sharp.svg" alt="C-sharp SVG">
+            </div>
+            <div class="card mysql">
+                <img class="svg" src="../assets/SVG/mysql.svg" alt="MySql SVG">
+            </div>
+        </div>
+
+        <h1>Outils & Environnements de développement</h1>
+        <div class="card-container">
+            <div class="card vscode">
+                <img class="svg" src="../assets/SVG/visual-studio-code.svg" alt="Visual Studio Code SVG">
+            </div>
+            <div class="card vs">
+                <img class="svg" src="../assets/SVG/visual-studio.svg" alt="Visual Studio 2019/2022 SVG">
+            </div>
+            <div class="card xampp">
+                <img class="svg" src="../assets/SVG/xampp.svg" alt="XAMPP SVG">
+            </div>
+            <div class="card git">
+                <img class="svg" src="../assets/SVG/git-icon.svg" alt="Git SVG">
+            </div>
+            <div class="card github">
+                <img class="svg" src="../assets/SVG/github-icon.svg" alt="GitHub SVG">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        genererFooter("../");
+    </script>
+
+    <!-- Lien JS -->
+    <script src="../js/certifications.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+/* Conteneur principal de la galerie */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style des images des certifications */
+.gallery .certif {
+    width: 100%;
+    height: 25rem;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.gallery .certif:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Modale pour afficher l'image en grand */
+#zoom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0s linear 0.3s;
+}
+
+/* Afficher la modale */
+#zoom-modal.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s, visibility 0s linear 0s;
+}
+
+#zoom-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+    cursor: grab;
+}
+
+/* Quand l'image est en train d'être déplacée */
+#zoom-modal img.grabbing {
+    cursor: grabbing;
+}
+
+#zoom-modal .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Empêcher le défilement du body quand la modale est ouverte */
+.no-scroll {
+    overflow: hidden;
+}
+
+/* Flèches de navigation */
+.modal-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #960000;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Flèche gauche */
+.modal-arrow.left {
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+/* Flèche droite */
+.modal-arrow.right {
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+/* Card pour langages et outils */
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+    flex-wrap: wrap;
+    margin: 5rem;
+}
+
+.card {
+    width: 10rem;
+    height: 10rem;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #cecece;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Ombre des cartes */
+.html {
+    border: 5px solid #f16529;
+    box-shadow: 0 0 10px 5px #f16529;
+}
+
+.css {
+    border: 5px solid #2965f1;
+    box-shadow: 0 0 10px 5px #2965f1;
+}
+
+.js {
+    border: 5px solid #f7df1e;
+    box-shadow: 0 0 10px 5px #f7df1e;
+}
+
+.php {
+    border: 5px solid #6181b6;
+    box-shadow: 0 0 10px 5px #6181b6;
+}
+
+.python {
+    border: 5px solid #ffce3e;
+    box-shadow: 0 0 10px 5px #ffce3e;
+}
+
+.c-sharp {
+    border: 5px solid #390091;
+    box-shadow: 0 0 10px 5px #390091;
+}
+
+.mysql {
+    border: 5px solid #00758f;
+    box-shadow: 0 0 10px 5px #00758f;
+}
+
+.vscode {
+    border: 5px solid #3aa8f1;
+    box-shadow: 0 0 10px 5px #3aa8f1;
+}
+
+.vs {
+    border: 5px solid #b885f2;
+    box-shadow: 0 0 10px 5px #b885f2;
+}
+
+.xampp {
+    border: 5px solid #fb7a24;
+    box-shadow: 0 0 10px 5px #fb7a24;
+}
+
+.git {
+    border: 5px solid #de4c36;
+    box-shadow: 0 0 10px 5px #de4c36;
+}
+
+.github {
+    border: 5px solid #161614;
+    box-shadow: 0 0 10px 5px #161614;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    }
+
+    .card {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .card-container {
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        padding: 15px;
+    }
+
+    .card-container {
+        gap: 2rem;
+        margin: 3rem;
+    }
+
+    .card {
+        width: 7rem;
+        height: 7rem;
+    }
+
+    .modal-arrow {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+
+    .card {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .modal-arrow {
+        padding: 6px;
+    }
+}

@@ -95,7 +95,7 @@ h4 {
 p {
     font-size: 1.2rem;
     line-height: 1.5;
-    color: black;
+    color: var(--text-color);
     padding: 15px;
 }
 
@@ -164,6 +164,8 @@ p {
     --text-color: black;
     --button-background-color: black;
     --button-text-color: white;
+    --main-bg-rgb: 255, 255, 255;
+    --card-background: #e6e6e6;
 }
 
 /* Variables pour le thème sombre */
@@ -172,6 +174,8 @@ body.dark-theme {
     --text-color: white;
     --button-background-color: white;
     --button-text-color: black;
+    --main-bg-rgb: 30, 30, 30;
+    --card-background: #2a2a2a;
 }
 
 /* Menu de navigation */

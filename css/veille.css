@@ -1,6 +1,12 @@
 body {
-    background: url('../assets/Veille/raspberry-pi-os-logo-with-board-background-3.avif') no-repeat center center fixed;
+    background: url('../assets/Veille/raspberry-pi-os-logo-with-board-background-3.png') no-repeat center center fixed;
     background-size: cover;
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        background-attachment: scroll;
+    }
 }
 
 main {
@@ -8,7 +14,7 @@ main {
     max-width: 1200px;
     margin: 20px auto;
     padding: 30px;
-    background-color: rgb(255, 255, 255, 0.9);
+    background-color: rgba(var(--main-bg-rgb), 0.9);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 10rem;
@@ -21,20 +27,20 @@ main::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(var(--main-bg-rgb), 0.9);
     border-radius: 10px;
     z-index: -1;
 }
 
 h1 {
     margin-bottom: 20px;
-    color: black;
+    color: var(--text-color);
 }
 
 h2 {
     font-size: 1.8em;
     margin-top: 5rem;
-    color: black;
+    color: var(--text-color);
 }
 
 hr {
@@ -49,7 +55,7 @@ hr {
 }
 
 .sources {
-    color: black;
+    color: var(--text-color);
 }
 
 .sources:hover {
@@ -64,7 +70,7 @@ ul {
 ul li {
     margin-bottom: 10px;
     font-size: 1.2rem;
-    color: black;
+    color: var(--text-color);
 }
 
 /* Images */
@@ -94,9 +100,9 @@ img {
 
 .comparatif th,
 .comparatif td {
-    border: 1px solid black;
+    border: 1px solid var(--text-color);
     padding: 10px;
-    color: black;
+    color: var(--text-color);
 }
 
 .comparatif th {
@@ -106,7 +112,7 @@ img {
 }
 
 .comparatif tr {
-    background-color: #e6e6e6;
+    background-color: var(--card-background);
 }
 
 /* Innovations */
@@ -117,7 +123,7 @@ img {
 
 .innovations li {
     margin-bottom: 20px;
-    background-color: white;
+    background-color: var(--background-color);
     border-left: 5px solid #c0392b;
     padding: 10px 15px;
     border-radius: 8px;
@@ -132,7 +138,7 @@ img {
 
 .innovations strong {
     font-size: 1.1em;
-    color: #2c3e50;
+    color: var(--text-color);
 }
 
 /* Timeline évolution des modèles */

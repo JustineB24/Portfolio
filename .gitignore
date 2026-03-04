@@ -1,0 +1,10 @@
+# IDE
+.idea/
+
+# Dossiers locales
+audit/
+problemes-ide/
+
+# Claude Code
+.claude/
+CLAUDE.md

@@ -42,7 +42,7 @@
 .title-blocs {
     margin-bottom: 2rem;
     text-align: center;
-    color: black;
+    color: var(--text-color);
 }
 
 /* Présentation et technologies */
@@ -50,7 +50,7 @@
 .projet-technologies {
     flex: 1;
     min-width: 300px;
-    background-color: #e6e6e6;
+    background-color: var(--card-background);
     padding: 2rem;
     border-radius: 10px;
     animation: fadeInUp 0.6s ease both;
@@ -74,9 +74,9 @@
 #projet-link {
     display: none;
 
-    border: 2px solid black;
+    border: 2px solid var(--text-color);
     border-radius: 1rem;
-    background-color: white;
+    background-color: var(--background-color);
     padding: 10px 20px;
     text-align: center;
     margin-top: 20px;
@@ -112,12 +112,12 @@
 }
 
 #projet-technologies li {
-    background-color: #cecece;
+    background-color: var(--card-background);
     padding: 10px 15px;
     border-radius: 15px;
-    border: 1px solid black;
+    border: 1px solid var(--text-color);
     font-size: 1.5rem;
-    color: black;
+    color: var(--text-color);
     margin: auto;
     transition: background-color 0.3s ease;
 }

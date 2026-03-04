@@ -70,7 +70,7 @@ function genererHeader(chemin) {
                             <a class="onglet-burger" href="${chemin}index.html">Accueil</a>
                         </li>
                         <li>
-                            <a class="onglet-burger" href="${chemin}html/apropos.html">À propos</a>
+                            <a class="onglet-burger" href="${chemin}pages/apropos.html">À propos</a>
                         </li>
                         <li>
                             <a class="onglet-burger" href="${chemin}pages/competences.html">Compétences</a>

@@ -20,30 +20,18 @@ main {
     margin-top: 10rem;
 }
 
-main::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(var(--main-bg-rgb), 0.9);
-    border-radius: 10px;
-    z-index: -1;
-}
-
-h1 {
+main h1 {
     margin-bottom: 20px;
     color: var(--text-color);
 }
 
-h2 {
+main h2 {
     font-size: 1.8em;
     margin-top: 5rem;
     color: var(--text-color);
 }
 
-hr {
+main hr {
     display: inline-flex;
     border: none;
     height: 2px;
@@ -62,19 +50,19 @@ hr {
     text-decoration: underline;
 }
 
-ul {
+main ul {
     list-style-type: none;
     text-align: center;
 }
 
-ul li {
+main ul li {
     margin-bottom: 10px;
     font-size: 1.2rem;
     color: var(--text-color);
 }
 
 /* Images */
-img {
+main img {
     max-width: 30%;
     height: auto;
     margin: 5rem 0 0 0;
@@ -133,7 +121,7 @@ img {
 }
 
 .innovations li:hover {
-    background-color: #f1f1f1;
+    background-color: var(--card-background);
 }
 
 .innovations strong {
@@ -174,11 +162,11 @@ img {
         padding: 20px;
     }
 
-    h2 {
+    main h2 {
         margin-top: 3rem;
     }
 
-    img {
+    main img {
         max-width: 50%;
     }
 }
@@ -189,15 +177,15 @@ img {
         padding: 15px;
     }
 
-    h2 {
+    main h2 {
         margin-top: 2rem;
     }
 
-    ul li {
+    main ul li {
         font-size: 1rem;
     }
 
-    img {
+    main img {
         max-width: 70%;
     }
 }
@@ -208,15 +196,15 @@ img {
         padding: 10px;
     }
 
-    h2 {
+    main h2 {
         margin-top: 2rem;
     }
 
-    ul li {
+    main ul li {
         font-size: 0.85rem;
     }
 
-    img {
+    main img {
         max-width: 90%;
     }
 

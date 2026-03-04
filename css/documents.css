@@ -1,10 +1,10 @@
 /* En-tête de page */
 .page-header {
-    background: linear-gradient(135deg, #960000 0%, #d30000 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #d30000 100%);
     color: white;
     padding: 3rem 2rem;
     text-align: center;
-    border-bottom: 4px solid #960000;
+    border-bottom: 4px solid var(--primary-color);
 }
 
 .page-header h1 {
@@ -40,7 +40,7 @@
     padding: 2rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     margin-bottom: 2rem;
-    border-left: 5px solid #960000;
+    border-left: 5px solid var(--primary-color);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
@@ -58,18 +58,18 @@
 
 .document-header i {
     font-size: 2.5rem;
-    color: #960000;
+    color: var(--primary-color);
 }
 
 .document-header h2 {
     margin: 0;
-    color: #960000;
+    color: var(--primary-color);
     font-size: 1.8rem;
     flex-grow: 1;
 }
 
 .document-type {
-    background: #960000;
+    background: var(--primary-color);
     color: white;
     padding: 0.4rem 0.8rem;
     border-radius: 20px;
@@ -107,9 +107,9 @@
 }
 
 .btn-download {
-    background: #960000;
+    background: var(--primary-color);
     color: white;
-    border: 2px solid #960000;
+    border: 2px solid var(--primary-color);
 }
 
 .btn-download:hover {
@@ -121,12 +121,12 @@
 
 .btn-view {
     background: transparent;
-    color: #960000;
-    border: 2px solid #960000;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
 }
 
 .btn-view:hover {
-    background: #960000;
+    background: var(--primary-color);
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(150, 0, 0, 0.3);
@@ -134,7 +134,7 @@
 
 /* Viewer PDF */
 .pdf-viewer-card {
-    background: white;
+    background: var(--background-color);
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -142,7 +142,7 @@
 }
 
 .pdf-viewer-card h3 {
-    color: #960000;
+    color: var(--primary-color);
     margin-top: 0;
     margin-bottom: 1.5rem;
     font-size: 1.3rem;
@@ -170,7 +170,7 @@ iframe {
 }
 
 .info-card {
-    background: #e8f4ff;
+    background: var(--card-background);
     border-left: 4px solid #0066cc;
     border-radius: 8px;
     padding: 1.5rem;
@@ -184,12 +184,12 @@ iframe {
 }
 
 .info-card h3 {
-    color: #333;
+    color: var(--text-color);
     margin: 0.5rem 0;
 }
 
 .info-card p {
-    color: #666;
+    color: var(--text-color);
     margin: 1rem 0 0 0;
     line-height: 1.6;
 }
@@ -205,7 +205,7 @@ iframe {
         font-size: 2.2rem;
     }
 
-    .document-container {
+    .documents-container {
         padding: 0 1.5rem;
     }
 
@@ -312,7 +312,7 @@ iframe {
 
     .document-card {
         padding: 1.2rem;
-        border-left: 3px solid #960000;
+        border-left: 3px solid var(--primary-color);
     }
 
     .document-header i {

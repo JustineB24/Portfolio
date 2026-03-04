@@ -1,3 +1,24 @@
+/* Variables pour le thème clair */
+:root {
+    --background-color: white;
+    --text-color: black;
+    --button-background-color: black;
+    --button-text-color: white;
+    --main-bg-rgb: 255, 255, 255;
+    --card-background: #e6e6e6;
+    --primary-color: #960000;
+}
+
+/* Variables pour le thème sombre */
+body.dark-theme {
+    --background-color: black;
+    --text-color: white;
+    --button-background-color: white;
+    --button-text-color: black;
+    --main-bg-rgb: 30, 30, 30;
+    --card-background: #2a2a2a;
+}
+
 /* Principal */
 html,
 body {
@@ -26,6 +47,12 @@ body {
     box-sizing: border-box;
 }
 
+/* Focus visible pour l'accessibilité clavier */
+:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
 /* Liens */
 a {
     text-decoration: none;
@@ -33,7 +60,7 @@ a {
 
 /* Entête */
 header {
-    background-color: #960000;
+    background-color: var(--primary-color);
     position: fixed;
     top: 0;
     left: 0;
@@ -55,7 +82,7 @@ main {
 }
 
 /* Titres */
-.titreNom {
+.titre-nom {
     font-size: 2rem;
     font-weight: 700;
     color: black;
@@ -69,7 +96,7 @@ main {
     transition: color 0.3s ease;
 }
 
-.titreNom:hover {
+.titre-nom:hover {
     color: white;
     text-shadow: 1px 1px 5px rgb(0 0 0 / 80%);
 }
@@ -106,7 +133,8 @@ p {
     justify-content: center;
 }
 
-.btnReseaux {
+.btn-reseaux {
+    text-decoration: none;
     border: none;
     border-radius: 50%;
     width: 45px;
@@ -120,15 +148,15 @@ p {
     overflow: hidden;
 }
 
-.btnReseaux .svgIcon {
+.btn-reseaux .svg-icon {
     transition-duration: 0.3s;
 }
 
-.btnReseaux .svgIcon path {
+.btn-reseaux .svg-icon path {
     fill: white;
 }
 
-.btnReseaux .text {
+.btn-reseaux .text {
     position: absolute;
     color: white;
     width: 120px;
@@ -137,16 +165,16 @@ p {
     transition-duration: 0.4s;
 }
 
-.btnReseaux:hover {
+.btn-reseaux:hover {
     width: 110px;
     border-radius: 30px;
 }
 
-.btnReseaux:hover .text {
+.btn-reseaux:hover .text {
     opacity: 1;
 }
 
-.btnReseaux:hover .svgIcon {
+.btn-reseaux:hover .svg-icon {
     opacity: 0;
 }
 
@@ -156,26 +184,6 @@ p {
 
 #github {
     background-color: #1f1f1f;
-}
-
-/* Variables pour le thème clair */
-:root {
-    --background-color: white;
-    --text-color: black;
-    --button-background-color: black;
-    --button-text-color: white;
-    --main-bg-rgb: 255, 255, 255;
-    --card-background: #e6e6e6;
-}
-
-/* Variables pour le thème sombre */
-body.dark-theme {
-    --background-color: black;
-    --text-color: white;
-    --button-background-color: white;
-    --button-text-color: black;
-    --main-bg-rgb: 30, 30, 30;
-    --card-background: #2a2a2a;
 }
 
 /* Menu de navigation */
@@ -200,7 +208,7 @@ body.dark-theme {
 
 .onglet:link,
 .onglet:visited {
-    color: black;
+    color: white;
 }
 
 .onglet:hover {
@@ -242,6 +250,18 @@ body.dark-theme {
     position: absolute;
     left: 1rem;
     z-index: 200;
+}
+
+.check-icon {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .bar {
@@ -379,7 +399,7 @@ footer {
         padding: 5px 10px;
     }
 
-    .titreNom {
+    .titre-nom {
         font-size: 1.5rem;
     }
 
@@ -414,12 +434,12 @@ footer {
         gap: 8px;
     }
 
-    .btnReseaux {
+    .btn-reseaux {
         width: 40px;
         height: 40px;
     }
 
-    .btnReseaux .text {
+    .btn-reseaux .text {
         display: none;
         opacity: 0;
     }
@@ -433,7 +453,7 @@ footer {
         display: none;
         /* Cache le menu de navigation classique */
         flex-direction: column;
-        background-color: #960000;
+        background-color: var(--primary-color);
         top: 100px;
         left: 0;
         width: 100%;
@@ -443,27 +463,9 @@ footer {
         position: absolute;
     }
 
-    .nav-menu.active {
-        display: flex;
-        /* Affiche le menu quand il est actif */
-    }
-
     .menu-item {
         display: block;
         margin: 1rem 0;
-    }
-
-    /* Lorsque le menu burger est ouvert, afficher les éléments du menu verticalement */
-    .nav-menu.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background-color: white;
-        width: 100%;
-        padding: 10px;
-        border-top: 1px solid black;
     }
 
     .onglet {
@@ -489,7 +491,7 @@ footer {
         padding: 5px;
     }
 
-    .titreNom {
+    .titre-nom {
         font-size: 1.2rem;
         padding: 3px 6px;
         margin-left: 3rem;
@@ -529,22 +531,14 @@ footer {
         gap: 5px;
     }
 
-    .btnReseaux {
+    .btn-reseaux {
         width: 35px;
         height: 35px;
     }
 
-    .btnReseaux .text {
+    .btn-reseaux .text {
         display: none;
         opacity: 0;
-    }
-
-    .burger-menu {
-        font-size: 28px;
-    }
-
-    .nav-menu.open {
-        top: 50px;
     }
 
     button {
@@ -555,5 +549,29 @@ footer {
     footer {
         font-size: 0.6rem;
         padding: 0.5rem;
+    }
+}
+
+/* Animations partagées */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Accessibilité : désactiver les animations pour les utilisateurs sensibles */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }

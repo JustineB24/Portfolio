@@ -6,6 +6,10 @@ class TxtRotate {
         this.period = parseInt(period, 10) || 2000;
         this.txt = '';
         this.isDeleting = false;
+        this.wrap = document.createElement('span');
+        this.wrap.className = 'wrap';
+        this.el.textContent = '';
+        this.el.appendChild(this.wrap);
         this.tick();
     }
 
@@ -14,7 +18,7 @@ class TxtRotate {
         let fullTxt = this.toRotate[i];
 
         this.txt = this.isDeleting ? fullTxt.substring(0, this.txt.length - 1) : fullTxt.substring(0, this.txt.length + 1);
-        this.el.innerHTML = `<span class="wrap">${this.txt}</span>`;
+        this.wrap.textContent = this.txt;
 
         let delta = this.isDeleting ? 75 : 150;
 
@@ -27,11 +31,17 @@ class TxtRotate {
             delta = 500;
         }
 
-        setTimeout(() => this.tick(), delta);
+        this.timeoutId = setTimeout(() => {
+            if (document.hidden) {
+                document.addEventListener('visibilitychange', () => this.tick(), { once: true });
+            } else {
+                this.tick();
+            }
+        }, delta);
     }
 }
 
-window.onload = function () {
+window.addEventListener('load', function () {
     let elements = document.getElementsByClassName('txt-rotate');
     for (let el of elements) {
         let toRotate = el.getAttribute('data-rotate');
@@ -40,4 +50,4 @@ window.onload = function () {
             new TxtRotate(el, JSON.parse(toRotate), period);
         }
     }
-};
+});

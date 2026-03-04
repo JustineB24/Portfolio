@@ -8,6 +8,7 @@
 <html lang="fr">
 
 <head>
+    <meta charset="UTF-8">
     <!-- Script pour générer le head commun (meta, css global, favicon) -->
     <script src="../js/structure-globale.js"></script>
     <script>genererHead("../");</script>
@@ -55,71 +56,71 @@
                 <img class="certif" src="../assets/Certif_en_jpg/Certificat_module5.jpg"
                     alt="Certification MOOC module 5" loading="lazy" onclick="ouvrirModale(this)" width="1754" height="1241">
                 <img class="certif" src="../assets/Certif_en_jpg/Attestation_pix_Lycée_Édouard_Gand.jpg"
-                    alt="Certification PIX" loading="lazy" onclick="ouvrirModale(this)" width="1241" height="1754">
+                    alt="Certification PIX — Lycée Édouard Gand" loading="lazy" onclick="ouvrirModale(this)" width="1241" height="1754">
                 <img class="certif" src="../assets/Certif_en_jpg/Attestation_pix_Lycée_Marie_Curie.jpg"
-                    alt="Certification PIX" loading="lazy" onclick="ouvrirModale(this)" width="1241" height="1754">
+                    alt="Certification PIX — Lycée Marie Curie" loading="lazy" onclick="ouvrirModale(this)" width="1241" height="1754">
             </div>
 
             <!-- Modale pour afficher les images agrandies -->
-            <div id="zoom-modal" class="hidden">
-                <img id="zoom-modal-img" src="" alt="Image zoomable">
+            <div id="zoom-modal" class="hidden" role="dialog" aria-modal="true" aria-label="Image agrandie">
+                <img id="zoom-modal-img" src="" alt="Image agrandie">
                 <!-- Flèche gauche -->
-                <span id="prev" class="modal-arrow left">
+                <span id="prev" class="modal-arrow left" role="button" aria-label="Image précédente" tabindex="0">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
                         <path d="M15 18l-6-6 6-6" stroke="white" stroke-width="2" fill="none" />
                     </svg>
                 </span>
                 <!-- Flèche droite -->
-                <span id="next" class="modal-arrow right">
+                <span id="next" class="modal-arrow right" role="button" aria-label="Image suivante" tabindex="0">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
                         <path d="M9 18l6-6-6-6" stroke="white" stroke-width="2" fill="none" />
                     </svg>
                 </span>
                 <!-- Croix de fermeture -->
-                <span class="close" onclick="closeModal()">&#10005;</span>
+                <span class="close" onclick="closeModal()" role="button" aria-label="Fermer" tabindex="0">&#10005;</span>
             </div>
         </section>
 
-        <h1>Langages de programmation</h1>
+        <h2>Langages de programmation</h2>
         <div class="card-container">
-            <div class="card html">
+            <div class="card-competence html">
                 <img class="svg" src="../assets/SVG/html.svg" alt="HTML SVG">
             </div>
-            <div class="card css">
+            <div class="card-competence css">
                 <img class="svg" src="../assets/SVG/css.svg" alt="CSS SVG">
             </div>
-            <div class="card js">
+            <div class="card-competence js">
                 <img class="svg" src="../assets/SVG/javascript.svg" alt="JavaScript SVG">
             </div>
-            <div class="card php">
+            <div class="card-competence php">
                 <img class="svg" src="../assets/SVG/php.svg" alt="PHP SVG">
             </div>
-            <div class="card python">
+            <div class="card-competence python">
                 <img class="svg" src="../assets/SVG/python.svg" alt="Python SVG">
             </div>
-            <div class="card c-sharp">
+            <div class="card-competence c-sharp">
                 <img class="svg" src="../assets/SVG/c-sharp.svg" alt="C-sharp SVG">
             </div>
-            <div class="card mysql">
+            <div class="card-competence mysql">
                 <img class="svg" src="../assets/SVG/mysql.svg" alt="MySql SVG">
             </div>
         </div>
 
-        <h1>Outils & Environnements de développement</h1>
+        <h2>Outils & Environnements de développement</h2>
         <div class="card-container">
-            <div class="card vscode">
+            <div class="card-competence vscode">
                 <img class="svg" src="../assets/SVG/visual-studio-code.svg" alt="Visual Studio Code SVG">
             </div>
-            <div class="card vs">
+            <div class="card-competence vs">
                 <img class="svg" src="../assets/SVG/visual-studio.svg" alt="Visual Studio 2019/2022 SVG">
             </div>
-            <div class="card xampp">
+            <div class="card-competence xampp">
                 <img class="svg" src="../assets/SVG/xampp.svg" alt="XAMPP SVG">
             </div>
-            <div class="card git">
+            <div class="card-competence git">
                 <img class="svg" src="../assets/SVG/git-icon.svg" alt="Git SVG">
             </div>
-            <div class="card github">
+            <div class="card-competence github">
                 <img class="svg" src="../assets/SVG/github-icon.svg" alt="GitHub SVG">
             </div>
         </div>

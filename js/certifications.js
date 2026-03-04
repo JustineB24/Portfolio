@@ -1,46 +1,52 @@
 // Stocker toutes les images dans un tableau
-var images = document.querySelectorAll(".gallery .certif");
+const images = document.querySelectorAll(".gallery .certif");
 
 // Variable pour savoir sur quelle image on est
-var currentIndex = 0;
+let currentIndex = 0;
+
+let dernierFocusAvantModale = null;
 
 // Ouvre la modale avec l'image
 function ouvrirModale(img) {
-    var modal = document.getElementById("zoom-modal");
-    var modalImg = document.getElementById("zoom-modal-img");
+    const modal = document.getElementById("zoom-modal");
+    const modalImg = document.getElementById("zoom-modal-img");
 
-    // Afficher la modale avec transition
+    dernierFocusAvantModale = document.activeElement;
     modal.classList.add("visible");
+    document.body.style.overflow = 'hidden';
 
-    // Ajouter la classe no-scroll pour désactiver le défilement du body
-    document.body.style.overflow = 'hidden'; // Désactive le défilement
-
-    // Mettre l'image dans la modale
     modalImg.src = img.src;
-    currentIndex = Array.from(images).indexOf(img); // Mettez à jour l'index actuel
+    currentIndex = Array.from(images).indexOf(img);
+
+    // Donner le focus au bouton fermer
+    const closeBtn = modal.querySelector(".close");
+    if (closeBtn) closeBtn.focus();
 }
 
 // Ferme la modale
 function closeModal() {
-    var modal = document.getElementById("zoom-modal");
+    const modal = document.getElementById("zoom-modal");
     modal.classList.remove("visible");
+    resetTransform();
+    document.body.style.overflow = 'auto';
 
-    // Réactiver le défilement du body
-    document.body.style.overflow = 'auto'; // Réactive le défilement
+    if (dernierFocusAvantModale) {
+        dernierFocusAvantModale.focus();
+    }
 }
 
 // Passer à l'image suivante
 function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length; // Boucle circulaire
-    var modalImg = document.getElementById("zoom-modal-img");
-    modalImg.src = images[currentIndex].src;
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById("zoom-modal-img").src = images[currentIndex].src;
+    resetTransform();
 }
 
 // Passer à l'image précédente
 function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length; // Boucle circulaire
-    var modalImg = document.getElementById("zoom-modal-img");
-    modalImg.src = images[currentIndex].src;
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    document.getElementById("zoom-modal-img").src = images[currentIndex].src;
+    resetTransform();
 }
 
 // Événements de navigation
@@ -57,67 +63,110 @@ document.getElementById("zoom-modal").addEventListener("click", function (event)
 // Fermeture avec la croix
 document.querySelector(".close").addEventListener("click", closeModal);
 
-// Zoom avant et arrière avec double-clic
-document.getElementById("zoom-modal-img").addEventListener("wheel", function (event) {
-    var modalImg = document.getElementById("zoom-modal-img");
-    var scale = parseFloat(modalImg.style.transform.replace("scale(", "").replace(")", "")) || 1;
+// Navigation clavier et focus trap dans la modale
+document.addEventListener("keydown", function (e) {
+    const modal = document.getElementById("zoom-modal");
+    if (!modal.classList.contains("visible")) return;
 
-    // Modifier le facteur de zoom en fonction du sens de la molette
-    if (event.deltaY < 0) {
-        scale *= 1.1; // Zoom avant
-    } else {
-        scale *= 0.9; // Zoom arrière
+    if (e.key === "Escape") {
+        closeModal();
+    } else if (e.key === "ArrowRight") {
+        nextImage();
+    } else if (e.key === "ArrowLeft") {
+        prevImage();
+    } else if (e.key === "Tab") {
+        const focusables = modal.querySelectorAll('[role="button"], [tabindex]:not([tabindex="-1"])');
+        const premier = focusables[0];
+        const dernier = focusables[focusables.length - 1];
+
+        if (e.shiftKey) {
+            if (document.activeElement === premier) {
+                e.preventDefault();
+                dernier.focus();
+            }
+        } else {
+            if (document.activeElement === dernier) {
+                e.preventDefault();
+                premier.focus();
+            }
+        }
     }
-
-    // Appliquer le zoom avec une limite
-    modalImg.style.transform = `scale(${Math.min(Math.max(scale, 1), 2)})`; // Limiter à un zoom entre 1x et 2x
 });
 
-// Déplacement de l'image avec le glisser-déposer
-var isDragging = false;
-var startX, startY;
-var initialX, initialY;
+// État du zoom et du déplacement
+let currentScale = 1;
+let currentTranslateX = 0;
+let currentTranslateY = 0;
+let isDragging = false;
+let startX, startY;
+let initialX, initialY;
+let rafId = null;
 
-var modalImg = document.getElementById("zoom-modal-img");
+const modalImg = document.getElementById("zoom-modal-img");
 
-// Quand l'utilisateur clique sur l'image (mousedown)
+// Applique la transformation (appelé via requestAnimationFrame)
+function applyTransform() {
+    modalImg.style.transform = `scale(${currentScale}) translate(${currentTranslateX}px, ${currentTranslateY}px)`;
+    rafId = null;
+}
+
+function requestTransformUpdate() {
+    if (!rafId) {
+        rafId = requestAnimationFrame(applyTransform);
+    }
+}
+
+// Réinitialiser le zoom et la position quand on change d'image
+function resetTransform() {
+    currentScale = 1;
+    currentTranslateX = 0;
+    currentTranslateY = 0;
+    modalImg.style.transform = '';
+}
+
+// Zoom avec la molette
+modalImg.addEventListener("wheel", function (event) {
+    if (event.deltaY < 0) {
+        currentScale *= 1.1;
+    } else {
+        currentScale *= 0.9;
+    }
+    currentScale = Math.min(Math.max(currentScale, 1), 2);
+
+    // Réinitialiser la position si on revient au zoom 1
+    if (currentScale === 1) {
+        currentTranslateX = 0;
+        currentTranslateY = 0;
+    }
+
+    requestTransformUpdate();
+});
+
+// Début du glisser-déposer
 modalImg.addEventListener("mousedown", function (event) {
-    event.preventDefault(); // Empêche la sélection du texte
-
+    event.preventDefault();
     isDragging = true;
     startX = event.clientX;
     startY = event.clientY;
-
-    // Sauvegarder la position initiale de l'image
-    var transform = modalImg.style.transform.replace("scale(", "").replace(")", "").split(", ");
-    initialX = transform[0] ? parseInt(transform[0].replace('px', '')) : 0;
-    initialY = transform[1] ? parseInt(transform[1].replace('px', '')) : 0;
-
+    initialX = currentTranslateX;
+    initialY = currentTranslateY;
     modalImg.classList.add("grabbing");
 });
 
-// Quand l'utilisateur déplace la souris (mousemove)
+// Déplacement de l'image (throttlé via requestAnimationFrame)
 modalImg.addEventListener("mousemove", function (event) {
-    if (isDragging) {
-        // Calculer les déplacements
-        var deltaX = event.clientX - startX;
-        var deltaY = event.clientY - startY;
-
-        // Déplacer l'image
-        var newX = initialX + deltaX;
-        var newY = initialY + deltaY;
-
-        modalImg.style.transform = `scale(1.5) translate(${newX}px, ${newY}px)`;
-    }
+    if (!isDragging) return;
+    currentTranslateX = initialX + (event.clientX - startX);
+    currentTranslateY = initialY + (event.clientY - startY);
+    requestTransformUpdate();
 });
 
-// Quand l'utilisateur relâche le bouton de la souris (mouseup)
+// Fin du glisser-déposer
 modalImg.addEventListener("mouseup", function () {
     isDragging = false;
     modalImg.classList.remove("grabbing");
 });
 
-// Quand l'utilisateur quitte la zone de l'image (mouseleave)
 modalImg.addEventListener("mouseleave", function () {
     isDragging = false;
     modalImg.classList.remove("grabbing");

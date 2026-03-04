@@ -1,6 +1,7 @@
-// Récupérer l'ID du projet depuis l'URL
+// Récupérer l'ID du projet depuis l'URL (n'accepte que des chiffres)
 const urlParams = new URLSearchParams(window.location.search);
-const projetId = urlParams.get("id");
+const rawId = urlParams.get("id");
+const projetId = rawId && /^\d+$/.test(rawId) ? rawId : null;
 
 // Base de données des projets
 const projets = {
@@ -96,8 +97,12 @@ const projets = {
 };
 
 // Vérifier si l'ID existe et mettre à jour la page
-if (projets[projetId]) {
+if (!projetId || !projets[projetId]) {
+    document.querySelector("main").innerHTML =
+        '<p style="text-align:center;margin-top:5rem;font-size:1.2rem;color:var(--text-color)">Projet introuvable. <a href="projets.html">Retour aux projets</a></p>';
+} else if (projets[projetId]) {
     document.getElementById("projet-title").innerText = projets[projetId].title;
+    document.title = "Portfolio | " + projets[projetId].title;
     document.getElementById("projet-description").innerText = projets[projetId].description;
 
     const techList = document.getElementById("projet-technologies");
@@ -131,11 +136,11 @@ if (projets[projetId]) {
     const imagesContainer = document.getElementById("projet-images");
     imagesContainer.innerHTML = ""; // Nettoyer au cas où
 
-    projets[projetId].images.forEach(imgSrc => {
+    projets[projetId].images.forEach((imgSrc, index) => {
         const img = document.createElement("img");
         img.src = imgSrc;
-        img.alt = projets[projetId].title;
-        img.classList.add("projet-image"); // Pour ton style CSS
+        img.alt = projets[projetId].title + " — capture " + (index + 1);
+        img.classList.add("projet-image");
         imagesContainer.appendChild(img);
     });
 
@@ -149,6 +154,7 @@ if (projets[projetId]) {
         const linkElement = document.createElement("a");
         linkElement.href = projets[projetId].link;
         linkElement.target = "_blank";
+        linkElement.rel = "noopener noreferrer";
         linkElement.innerText = "Voir le projet en ligne";
 
         projetLinkContainer.appendChild(linkElement);

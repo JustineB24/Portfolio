@@ -8,6 +8,7 @@
 <html lang="fr">
 
 <head>
+    <meta charset="UTF-8">
     <!-- Script pour générer le head commun (meta, css global, favicon) -->
     <script src="../js/structure-globale.js"></script>
     <script>genererHead("../");</script>
@@ -35,14 +36,12 @@
                 approfondir mes compétences techniques et découvrir les bonnes pratiques du développement logiciel.
             </p>
 
-            <a href="../cv_blin_justine.pdf" download target="_blank">
-                <button class="btnCV">Télécharger mon CV</button>
-            </a>
+            <a href="../cv_blin_justine.pdf" download target="_blank" rel="noopener noreferrer" class="btn-cv">Télécharger mon CV</a>
         </div>
 
         <hr>
 
-        <h1>Parcours</h1>
+        <h2>Parcours</h2>
         <div class="timeline-container">
             <section class="timeline">
                 <h2>Cursus scolaire</h2>
@@ -54,7 +53,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item" data-popup="btssio">
+                <div class="timeline-item" data-popup="btssio" tabindex="0" role="button">
                     <div class="timeline-content">
                         <h3>2023 - 2025</h3>
                         <h4>BTS SIO - SLAM</h4>
@@ -105,12 +104,12 @@
     </main>
 
     <!-- Popup BTS SIO -->
-    <div id="btssioPopup" class="popup-overlay">
+    <div id="btssioPopup" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="btssioTitle">
         <div class="popup-content">
-            <button class="popup-close">&times;</button>
-            <h1>BTS SIO</h1>
+            <button class="popup-close" aria-label="Fermer">&times;</button>
+            <h2 id="btssioTitle">BTS SIO</h2>
             <div>
-                <p class="btsSio">Le BTS SIO (Services Informatiques aux Organisations) est un diplôme national français
+                <p class="bts-sio">Le BTS SIO (Services Informatiques aux Organisations) est un diplôme national français
                     de niveau Bac+2, qui forme des techniciens supérieurs capables de concevoir, développer, déployer et
                     maintenir des solutions informatiques adaptées aux besoins des entreprises. Il s'adresse aux
                     passionnés d'informatique qui souhaitent se spécialiser dans les métiers liés au développement ou à
@@ -122,7 +121,7 @@
                     <div class="bloc-container">
                         <!-- Bloc SLAM -->
                         <div class="bloc-specialite">
-                            <img src="../assets/CodeSLAM.jpg">
+                            <img src="../assets/CodeSLAM.jpg" alt="Illustration de la spécialité SLAM">
                             <h3>SLAM :</h3>
                             <h4>Solutions Logicielles et Applications Métiers</h4>
                             <ul>
@@ -146,7 +145,7 @@
 
                         <!-- Bloc SISR -->
                         <div class="bloc-specialite">
-                            <img src="../assets/ServeurSISR.jpg">
+                            <img src="../assets/ServeurSISR.jpg" alt="Illustration de la spécialité SISR">
                             <h3>SISR :</h3>
                             <h4>Solutions d'Infrastructure, Systèmes et Réseaux</h4>
                             <ul>
@@ -183,32 +182,73 @@
         const btssioPopup = document.getElementById('btssioPopup');
         const popupClose = document.querySelector('.popup-close');
 
+        let dernieFocusAvantPopup = null;
+
+        function ouvrirPopup() {
+            dernieFocusAvantPopup = document.activeElement;
+            btssioPopup.classList.add('active');
+            popupClose.focus();
+        }
+
+        function fermerPopup() {
+            btssioPopup.classList.remove('active');
+            if (dernieFocusAvantPopup) {
+                dernieFocusAvantPopup.focus();
+            }
+        }
+
         timelineItems.forEach(item => {
             item.style.cursor = 'pointer';
-            item.addEventListener('click', function () {
-                const popupType = this.getAttribute('data-popup');
+            function ouvrir() {
+                const popupType = item.getAttribute('data-popup');
                 if (popupType === 'btssio') {
-                    btssioPopup.classList.add('active');
+                    ouvrirPopup();
+                }
+            }
+            item.addEventListener('click', ouvrir);
+            item.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    ouvrir();
                 }
             });
         });
 
         // Fermer la popup au clic sur le bouton fermeture
-        popupClose.addEventListener('click', function () {
-            btssioPopup.classList.remove('active');
-        });
+        popupClose.addEventListener('click', fermerPopup);
 
         // Fermer la popup en cliquant en dehors
         btssioPopup.addEventListener('click', function (e) {
             if (e.target === btssioPopup) {
-                btssioPopup.classList.remove('active');
+                fermerPopup();
             }
         });
 
-        // Fermer la popup avec la touche Échap
+        // Fermer la popup avec Échap + piège de focus
         document.addEventListener('keydown', function (e) {
+            if (!btssioPopup.classList.contains('active')) return;
+
             if (e.key === 'Escape') {
-                btssioPopup.classList.remove('active');
+                fermerPopup();
+                return;
+            }
+
+            if (e.key === 'Tab') {
+                const focusables = btssioPopup.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])');
+                const premier = focusables[0];
+                const dernier = focusables[focusables.length - 1];
+
+                if (e.shiftKey) {
+                    if (document.activeElement === premier) {
+                        e.preventDefault();
+                        dernier.focus();
+                    }
+                } else {
+                    if (document.activeElement === dernier) {
+                        e.preventDefault();
+                        premier.focus();
+                    }
+                }
             }
         });
     </script>

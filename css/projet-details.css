@@ -58,15 +58,13 @@
 }
 
 /* Animations */
-@keyframes fadeInUp {
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
@@ -85,7 +83,7 @@
 /* Effet au survol du lien */
 #projet-link a {
     text-decoration: none;
-    color: #960000;
+    color: var(--primary-color);
     font-weight: bold;
     transition: color 0.3s ease, transform 0.3s ease;
 }

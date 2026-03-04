@@ -1,7 +1,10 @@
+/* global pdfjsLib */
 const url = '../Tableau_de_synthèse_blin_justine.pdf';
 
-pdfjsLib.getDocument(url).promise.then(pdf => {
-    pdf.getPage(1).then(page => {
+if (typeof pdfjsLib !== 'undefined') {
+    pdfjsLib.getDocument(url).promise.then(pdf => {
+        return pdf.getPage(1);
+    }).then(page => {
         const scale = 1.5;
         const viewport = page.getViewport({ scale });
 
@@ -12,5 +15,7 @@ pdfjsLib.getDocument(url).promise.then(pdf => {
 
         const renderContext = { canvasContext: context, viewport: viewport };
         page.render(renderContext);
+    }).catch(err => {
+        console.error('Erreur lors du chargement du PDF :', err);
     });
-});
+}

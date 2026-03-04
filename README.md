@@ -2,6 +2,8 @@
 
 Portfolio professionnel présentant mes projets, mes compétences et mon parcours en développement informatique et gestion de projets.
 
+🔗 **[Voir le site en ligne](https://justineb24.github.io/Portfolio/)**
+
 ---
 
 ## 📋 Table des matières
@@ -58,7 +60,7 @@ Actuellement étudiante en **Bachelor Chef de Projet Développement et IA** à L
 
 - **LinkedIn** : [Profil LinkedIn](https://www.linkedin.com/in/justine-blin-a88600292)
 - **GitHub** : [Profil GitHub](https://github.com/JustineB24)
-- **Email** : [blin.justine.sio@gmail.com](blin.justine.sio@gmail.com)
+- **Email** : [blin.justine.sio@gmail.com](mailto:blin.justine.sio@gmail.com)
 
 ---
 

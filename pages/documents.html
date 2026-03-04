@@ -8,6 +8,7 @@
 <html lang="fr">
 
 <head>
+    <meta charset="UTF-8">
     <!-- Script pour générer le head commun (meta, css global, favicon) -->
     <script src="../js/structure-globale.js"></script>
     <script>genererHead("../");</script>
@@ -27,7 +28,7 @@
     <main>
         <section class="page-header">
             <div class="header-content">
-                <h1><i class="fas fa-file-alt"></i> Documents</h1>
+                <h1><i class="fas fa-file-alt" aria-hidden="true"></i> Documents</h1>
                 <p>Retrouvez ici mes documents importants : tableau de synthèse, ressources et fichiers utiles.</p>
             </div>
         </section>
@@ -36,7 +37,7 @@
             <!-- Document Principal -->
             <div class="document-card">
                 <div class="document-header">
-                    <i class="fas fa-file-pdf"></i>
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
                     <h2>Tableau de Synthèse</h2>
                     <span class="document-type">PDF</span>
                 </div>
@@ -44,10 +45,10 @@
                     et parcours professionnel.</p>
                 <div class="document-actions">
                     <a href="../Tableau_de_synthèse_BLIN_Justine.pdf" download class="btn btn-download">
-                        <i class="fas fa-download"></i> Télécharger
+                        <i class="fas fa-download" aria-hidden="true"></i> Télécharger
                     </a>
-                    <a href="../Tableau_de_synthèse_BLIN_Justine.pdf" target="_blank" class="btn btn-view">
-                        <i class="fas fa-eye"></i> Visualiser
+                    <a href="../Tableau_de_synthèse_BLIN_Justine.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-view">
+                        <i class="fas fa-eye" aria-hidden="true"></i> Visualiser
                     </a>
                 </div>
             </div>
@@ -64,7 +65,7 @@
         <!-- Section Alternative -->
         <section class="documents-info">
             <div class="info-card">
-                <i class="fas fa-info-circle"></i>
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
                 <h3>Problème de visualisation ?</h3>
                 <p>Si vous ne pouvez pas voir l'aperçu du PDF, vous pouvez le télécharger directement en utilisant le
                     bouton ci-dessus.</p>

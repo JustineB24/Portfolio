@@ -1,9 +1,9 @@
-p,
-a {
+main p,
+main a {
     color: var(--text-color);
 }
 
-hr {
+main hr {
     border: none;
     border-top: 2px dashed #666;
     margin: 20px auto;

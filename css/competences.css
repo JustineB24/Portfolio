@@ -75,17 +75,12 @@
     display: none;
 }
 
-/* Empêcher le défilement du body quand la modale est ouverte */
-.no-scroll {
-    overflow: hidden;
-}
-
 /* Flèches de navigation */
 .modal-arrow {
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: #960000;
+    background-color: var(--primary-color);
     border-radius: 50%;
     padding: 10px;
     cursor: pointer;
@@ -116,20 +111,20 @@
     margin: 5rem;
 }
 
-.card {
+.card-competence {
     width: 10rem;
     height: 10rem;
     padding: 15px;
     border-radius: 10px;
     text-align: center;
-    background-color: #cecece;
+    background-color: var(--card-background);
     display: flex;
     justify-content: center;
     align-items: center;
     transition: box-shadow 0.3s ease-in-out;
 }
 
-.card img {
+.card-competence img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -203,7 +198,7 @@
         grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     }
 
-    .card {
+    .card-competence {
         width: 8rem;
         height: 8rem;
     }
@@ -225,7 +220,7 @@
         margin: 3rem;
     }
 
-    .card {
+    .card-competence {
         width: 7rem;
         height: 7rem;
     }
@@ -241,7 +236,7 @@
         grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     }
 
-    .card {
+    .card-competence {
         width: 6rem;
         height: 6rem;
     }

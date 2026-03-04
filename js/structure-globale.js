@@ -5,23 +5,6 @@ function validerChemin(chemin) {
     return chemin;
 }
 
-function genererHead(chemin) {
-    chemin = validerChemin(chemin);
-    const headHTML = `
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Portfolio Justine BLIN BTS SIO">
-        <meta name="keywords" content="resume, cv, portfolio, personal, developer, designer, modern, web, bts, sio, slam, portfolio bts, portfolio bts sio, portfolio bts sio slam, portfolio bts sio sisr, bts, brevet, de, technicien, supérieur, services, informatiques, aux, organisations, lycée, bts sio, sio, option, slam, solutions logicielles et applications métiers, logiciels, applications, développement, justine, blin, justine blin">
-        <meta name="author" content="Justine BLIN">
-        <meta name="theme-color" content="#a90000">
-        <link rel="shortcut icon" type="image/x-icon" href="${chemin}assets/Logo_portfolio.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link rel="stylesheet" href="${chemin}css/global.css" media="all" type="text/css">
-        <link rel="stylesheet" href="${chemin}css/theme.css" media="all" type="text/css">
-    `;
-    document.head.insertAdjacentHTML('afterbegin', headHTML);
-}
-
 function genererHeader(chemin) {
     chemin = validerChemin(chemin);
     const headerHTML = `
@@ -140,7 +123,7 @@ function genererFooter(chemin) {
 
     // Ajout automatique des scripts communs (theme.js puis menu-burger.js)
     // Chargement séquentiel pour garantir l'ordre d'exécution
-    const scripts = ['theme.js', 'menu-burger.js'];
+    const scripts = ['theme.js', 'menu-burger.js', 'scroll-animations.js'];
     let index = 0;
 
     function chargerScriptSuivant() {

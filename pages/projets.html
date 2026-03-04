@@ -9,12 +9,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- Script pour générer le head commun (meta, css global, favicon) -->
-    <script src="../js/structure-globale.js"></script>
-    <script>genererHead("../");</script>
-
-    <!-- CSS spécifique -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Justine BLIN BTS SIO">
+    <meta name="author" content="Justine BLIN">
+    <meta name="theme-color" content="#a90000">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Portfolio | Projets">
+    <meta property="og:description" content="Projets réalisés par Justine BLIN durant son BTS SIO et ses stages.">
+    <meta property="og:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
+    <meta property="og:url" content="https://justineb24.github.io/Portfolio/pages/projets.html">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/Logo_portfolio.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
+    <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/projets.css" media="all" type="text/css">
+    <script src="../js/structure-globale.js"></script>
 
     <title>Portfolio | Projets</title>
 </head>
@@ -26,56 +36,65 @@
 
     <!-- Contenu principal -->
     <main>
-        <h1>Projets réalisés durant mon BTS SIO</h1>
+        <h1>Mes projets</h1>
+
+        <!-- Barre de filtres -->
+        <div class="filtre-container">
+            <button class="filtre-btn active" data-filtre="tous">Tous</button>
+            <button class="filtre-btn" data-filtre="bts">BTS SIO</button>
+            <button class="filtre-btn" data-filtre="stage">Stages</button>
+            <button class="filtre-btn" data-filtre="html">HTML</button>
+            <button class="filtre-btn" data-filtre="css">CSS</button>
+            <button class="filtre-btn" data-filtre="javascript">JavaScript</button>
+            <button class="filtre-btn" data-filtre="php">PHP</button>
+            <button class="filtre-btn" data-filtre="csharp">C#</button>
+            <button class="filtre-btn" data-filtre="mysql">MySQL</button>
+        </div>
+
         <div class="projet-container">
-            <div class="card card-1" data-id="1" tabindex="0" role="button">
+            <div class="card card-1" data-id="1" data-type="bts" data-tech="xaml,maui" tabindex="0" role="button">
                 <div class="card2">
                     <h2>Pendu</h2>
                 </div>
             </div>
 
-            <div class="card card-2" data-id="2" tabindex="0" role="button">
+            <div class="card card-2" data-id="2" data-type="bts" data-tech="html,css,php,csharp,mysql" tabindex="0" role="button">
                 <div class="card2">
                     <h2>France Mobilier</h2>
                 </div>
             </div>
 
-            <div class="card card-3" data-id="3" tabindex="0" role="button">
+            <div class="card card-3" data-id="3" data-type="bts" data-tech="winforms,csharp,mysql" tabindex="0" role="button">
                 <div class="card2">
                     <h2>Sio Shop</h2>
                 </div>
             </div>
 
-            <div class="card card-4" data-id="4" tabindex="0" role="button">
+            <div class="card card-4" data-id="4" data-type="bts" data-tech="php,css,javascript,mysql" tabindex="0" role="button">
                 <div class="card2">
                     <h2>Speedcubing</h2>
                 </div>
             </div>
 
-            <div class="card card-5" data-id="5" tabindex="0" role="button">
+            <div class="card card-5" data-id="5" data-type="bts" data-tech="html,css,javascript" tabindex="0" role="button">
                 <div class="card2">
                     <h2>Application météo</h2>
                 </div>
             </div>
 
-            <div class="card card-6" data-id="6" tabindex="0" role="button">
+            <div class="card card-6" data-id="6" data-type="bts" data-tech="html,css,javascript" tabindex="0" role="button">
                 <div class="card2">
                     <h2>Générateur de mots de passe</h2>
                 </div>
             </div>
-        </div>
 
-        <hr>
-
-        <h1>Projets réalisés durant mes stages de BTS</h1>
-        <div class="projet-container">
-            <div class="card card-7" data-id="7" tabindex="0" role="button">
+            <div class="card card-7" data-id="7" data-type="stage" data-tech="html,css" tabindex="0" role="button">
                 <div class="card2">
                     <h2>Mairie de Cauffry</h2>
                 </div>
             </div>
 
-            <div class="card card-8" data-id="8" tabindex="0" role="button">
+            <div class="card card-8" data-id="8" data-type="stage" data-tech="html,css,javascript" tabindex="0" role="button">
                 <div class="card2">
                     <h2>Panada Food</h2>
                 </div>

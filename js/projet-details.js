@@ -134,15 +134,133 @@ if (!projetId || !projets[projetId]) {
 
     // Ajouter les images dans le div "projet-images"
     const imagesContainer = document.getElementById("projet-images");
-    imagesContainer.innerHTML = ""; // Nettoyer au cas où
+    imagesContainer.innerHTML = "";
 
-    projets[projetId].images.forEach((imgSrc, index) => {
+    const images = projets[projetId].images;
+
+    if (images.length === 1) {
+        // Image unique : affichage simple
         const img = document.createElement("img");
-        img.src = imgSrc;
-        img.alt = projets[projetId].title + " — capture " + (index + 1);
+        img.src = images[0];
+        img.alt = projets[projetId].title + " — capture 1";
         img.classList.add("projet-image");
         imagesContainer.appendChild(img);
-    });
+    } else {
+        // Carrousel
+        const carrousel = document.createElement("div");
+        carrousel.classList.add("carrousel");
+
+        // Bouton précédent
+        const btnPrev = document.createElement("button");
+        btnPrev.classList.add("carrousel-btn", "carrousel-prev");
+        btnPrev.setAttribute("aria-label", "Image précédente");
+        btnPrev.innerHTML = '<i class="fas fa-chevron-left"></i>';
+
+        // Track
+        const track = document.createElement("div");
+        track.classList.add("carrousel-track");
+
+        images.forEach((imgSrc, index) => {
+            const img = document.createElement("img");
+            img.src = imgSrc;
+            img.alt = projets[projetId].title + " — capture " + (index + 1);
+            img.classList.add("carrousel-slide");
+            if (index === 0) img.classList.add("active");
+            track.appendChild(img);
+        });
+
+        // Bouton suivant
+        const btnNext = document.createElement("button");
+        btnNext.classList.add("carrousel-btn", "carrousel-next");
+        btnNext.setAttribute("aria-label", "Image suivante");
+        btnNext.innerHTML = '<i class="fas fa-chevron-right"></i>';
+
+        // Dots
+        const dotsContainer = document.createElement("div");
+        dotsContainer.classList.add("carrousel-dots");
+
+        images.forEach((_, index) => {
+            const dot = document.createElement("button");
+            dot.classList.add("carrousel-dot");
+            if (index === 0) dot.classList.add("active");
+            dot.setAttribute("aria-label", "Image " + (index + 1));
+            dotsContainer.appendChild(dot);
+        });
+
+        carrousel.appendChild(btnPrev);
+        carrousel.appendChild(track);
+        carrousel.appendChild(btnNext);
+        carrousel.appendChild(dotsContainer);
+        imagesContainer.appendChild(carrousel);
+
+        // Logique du carrousel
+        let currentSlide = 0;
+        const slides = track.querySelectorAll(".carrousel-slide");
+        const dots = dotsContainer.querySelectorAll(".carrousel-dot");
+
+        function allerASlide(index) {
+            slides[currentSlide].classList.remove("active");
+            dots[currentSlide].classList.remove("active");
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add("active");
+            dots[currentSlide].classList.add("active");
+        }
+
+        function slideSuivant() {
+            allerASlide(currentSlide + 1);
+        }
+
+        function slidePrecedent() {
+            allerASlide(currentSlide - 1);
+        }
+
+        btnNext.addEventListener("click", slideSuivant);
+        btnPrev.addEventListener("click", slidePrecedent);
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener("click", () => allerASlide(index));
+        });
+
+        // Clic sur image → modale plein écran
+        slides.forEach(slide => {
+            slide.addEventListener("click", () => {
+                const modale = document.createElement("div");
+                modale.classList.add("carrousel-modale");
+
+                const imgModale = document.createElement("img");
+                imgModale.src = slide.src;
+                imgModale.alt = slide.alt;
+
+                modale.appendChild(imgModale);
+                document.body.appendChild(modale);
+
+                // Forcer le reflow pour déclencher la transition
+                modale.offsetHeight;
+                modale.classList.add("active");
+
+                function fermerModale() {
+                    modale.classList.remove("active");
+                    modale.addEventListener("transitionend", () => modale.remove(), { once: true });
+                }
+
+                modale.addEventListener("click", fermerModale);
+
+                document.addEventListener("keydown", function escHandler(e) {
+                    if (e.key === "Escape") {
+                        fermerModale();
+                        document.removeEventListener("keydown", escHandler);
+                    }
+                });
+            });
+        });
+
+        // Navigation clavier
+        document.addEventListener("keydown", (e) => {
+            if (document.querySelector(".carrousel-modale")) return;
+            if (e.key === "ArrowRight") slideSuivant();
+            if (e.key === "ArrowLeft") slidePrecedent();
+        });
+    }
 
     const projetLinkContainer = document.getElementById("projet-link");
 

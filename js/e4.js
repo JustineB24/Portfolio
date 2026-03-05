@@ -1,5 +1,5 @@
 /* global pdfjsLib */
-const url = '../Tableau_de_synthèse_blin_justine.pdf';
+const url = '../tableau_de_synthese_blin_justine.pdf';
 
 if (typeof pdfjsLib !== 'undefined') {
     pdfjsLib.getDocument(url).promise.then(pdf => {

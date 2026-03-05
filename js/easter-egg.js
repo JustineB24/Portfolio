@@ -222,12 +222,12 @@
     // ==============================
 
     function estDansChamp() {
-        var el = document.activeElement;
+        const el = document.activeElement;
         return el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable);
     }
 
     function afficherModale(titre, contenu, onFermer) {
-        var modale = document.createElement('div');
+        const modale = document.createElement('div');
         modale.classList.add('ee-modale');
         modale.innerHTML =
             '<div class="ee-modale-contenu">' +
@@ -264,8 +264,8 @@
     // Détection de mots tapés au clavier
     // ==============================
 
-    var motsTapes = '';
-    var motsCles = {
+    let motsTapes = '';
+    const motsCles = {
         'disco': lancerDisco,
         'terminal': lancerTerminal,
         'gravity': lancerGravity,
@@ -294,7 +294,7 @@
             if (motsTapes.length > 20) {
                 motsTapes = motsTapes.slice(-20);
             }
-            for (var mot in motsCles) {
+            for (const mot in motsCles) {
                 if (motsTapes.endsWith(mot) && !easterEggActif) {
                     motsTapes = '';
                     motsCles[mot]();
@@ -308,17 +308,17 @@
     // Konami Code
     // ==============================
 
-    var konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-    var konamiPosition = 0;
+    const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiPosition = 0;
 
     function lancerConfettis() {
-        var couleurs = ['#ff4444', '#44ff44', '#4444ff', '#ffff44', '#ff44ff', '#44ffff', '#ff8800', '#960000'];
-        for (var i = 0; i < 100; i++) {
-            var confetti = document.createElement('div');
+        const couleurs = ['#ff4444', '#44ff44', '#4444ff', '#ffff44', '#ff44ff', '#44ffff', '#ff8800', '#960000'];
+        for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement('div');
             confetti.classList.add('ee-confetti');
-            var taille = Math.random() * 8 + 6;
-            var duree = Math.random() * 2 + 2;
-            var delai = Math.random() * 1.5;
+            const taille = Math.random() * 8 + 6;
+            const duree = Math.random() * 2 + 2;
+            const delai = Math.random() * 1.5;
             confetti.style.left = Math.random() * 100 + 'vw';
             confetti.style.width = taille + 'px';
             confetti.style.height = taille + 'px';
@@ -334,25 +334,25 @@
     }
 
     function lancerMatrix() {
-        var canvas = document.createElement('canvas');
+        const canvas = document.createElement('canvas');
         canvas.classList.add('ee-matrix-canvas');
         document.body.appendChild(canvas);
-        var ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        var colonnes = Math.floor(canvas.width / 16);
-        var gouttes = [];
-        for (var i = 0; i < colonnes; i++) {
+        const colonnes = Math.floor(canvas.width / 16);
+        const gouttes = [];
+        for (let i = 0; i < colonnes; i++) {
             gouttes[i] = Math.floor(Math.random() * -canvas.height / 16);
         }
-        var chars = 'アイウエオカキクケコサシスセソタチツテト0123456789ABCDEF';
-        var animId;
+        const chars = 'アイウエオカキクケコサシスセソタチツテト0123456789ABCDEF';
+        let animId;
         function dessiner() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.06)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = '#0f0';
             ctx.font = '14px monospace';
-            for (var j = 0; j < gouttes.length; j++) {
+            for (let j = 0; j < gouttes.length; j++) {
                 ctx.fillText(chars[Math.floor(Math.random() * chars.length)], j * 16, gouttes[j] * 16);
                 if (gouttes[j] * 16 > canvas.height && Math.random() > 0.975) gouttes[j] = 0;
                 gouttes[j]++;
@@ -367,9 +367,9 @@
         easterEggActif = true;
         lancerConfettis();
         document.body.classList.add('ee-flip');
-        var matrixCanvas, matrixAnimId;
+        let matrixCanvas, matrixAnimId;
         setTimeout(function () {
-            var result = lancerMatrix();
+            const result = lancerMatrix();
             matrixCanvas = result.canvas;
             matrixAnimId = result.animId;
         }, 500);
@@ -418,18 +418,18 @@
     // ==============================
 
     document.addEventListener('click', function (e) {
-        var yearEl = document.getElementById('year');
+        const yearEl = document.getElementById('year');
         if (!yearEl || e.target !== yearEl || easterEggActif) return;
         easterEggActif = true;
-        var anneeActuelle = new Date().getFullYear();
-        var annee = anneeActuelle;
-        var interval = setInterval(function () {
+        const anneeActuelle = new Date().getFullYear();
+        let annee = anneeActuelle;
+        const interval = setInterval(function () {
             annee--;
             yearEl.textContent = annee;
             if (annee <= 1990) {
                 clearInterval(interval);
                 setTimeout(function () {
-                    var interval2 = setInterval(function () {
+                    const interval2 = setInterval(function () {
                         annee++;
                         yearEl.textContent = annee;
                         if (annee >= anneeActuelle) {
@@ -465,13 +465,13 @@
 
     function lancerPirate() {
         easterEggActif = true;
-        var drapeau = document.createElement('div');
+        const drapeau = document.createElement('div');
         drapeau.classList.add('ee-pirate-flag');
         drapeau.textContent = '\u2620\uFE0F';
         document.body.appendChild(drapeau);
         setTimeout(function () { drapeau.remove(); }, 3000);
 
-        var traductions = {
+        const traductions = {
             'Accueil': 'Port d\'attache',
             'Projets': 'Butins',
             'Compétences': 'Talents de flibustier',
@@ -480,11 +480,11 @@
             'À propos': 'Le capitaine',
             'Veille Technologique': 'Vigie du navire'
         };
-        var originaux = [];
-        var onglets = document.querySelectorAll('.onglet, .onglet-burger');
+        const originaux = [];
+        const onglets = document.querySelectorAll('.onglet, .onglet-burger');
         onglets.forEach(function (el) {
             originaux.push({ el: el, texte: el.textContent });
-            var txt = el.textContent.trim();
+            const txt = el.textContent.trim();
             if (traductions[txt]) el.textContent = traductions[txt];
         });
         setTimeout(function () {
@@ -499,19 +499,19 @@
 
     function lancerSnake() {
         easterEggActif = true;
-        var overlay = document.createElement('div');
+        const overlay = document.createElement('div');
         overlay.classList.add('ee-snake-overlay');
 
-        var scoreEl = document.createElement('div');
+        const scoreEl = document.createElement('div');
         scoreEl.classList.add('ee-snake-score');
         scoreEl.textContent = 'Score : 0';
 
-        var canvas = document.createElement('canvas');
-        var TAILLE = Math.min(400, window.innerWidth - 40);
+        const canvas = document.createElement('canvas');
+        const TAILLE = Math.min(400, window.innerWidth - 40);
         canvas.width = TAILLE;
         canvas.height = TAILLE;
 
-        var info = document.createElement('div');
+        const info = document.createElement('div');
         info.classList.add('ee-snake-info');
         info.textContent = 'Flèches pour jouer \u2022 Echap pour quitter';
 
@@ -520,18 +520,18 @@
         overlay.appendChild(info);
         document.body.appendChild(overlay);
 
-        var ctx = canvas.getContext('2d');
-        var GRILLE = 20;
-        var CELLULE = TAILLE / GRILLE;
-        var serpent = [{ x: 10, y: 10 }];
-        var direction = { x: 1, y: 0 };
-        var prochDirection = { x: 1, y: 0 };
-        var pomme = placerPomme();
-        var score = 0;
-        var gameOver = false;
+        const ctx = canvas.getContext('2d');
+        const GRILLE = 20;
+        const CELLULE = TAILLE / GRILLE;
+        const serpent = [{ x: 10, y: 10 }];
+        let direction = { x: 1, y: 0 };
+        let prochDirection = { x: 1, y: 0 };
+        let pomme = placerPomme();
+        let score = 0;
+        let gameOver = false;
 
         function placerPomme() {
-            var pos;
+            let pos;
             do {
                 pos = {
                     x: Math.floor(Math.random() * GRILLE),
@@ -571,7 +571,7 @@
         function update() {
             if (gameOver) return;
             direction = prochDirection;
-            var tete = {
+            const tete = {
                 x: serpent[0].x + direction.x,
                 y: serpent[0].y + direction.y
             };
@@ -602,7 +602,7 @@
         }
 
         dessiner();
-        var gameInterval = setInterval(update, 180);
+        const gameInterval = setInterval(update, 180);
 
         function handleKey(e) {
             if (e.key === 'Escape') {
@@ -630,9 +630,9 @@
 
     function lancerRainbow() {
         easterEggActif = true;
-        var couleurs = ['#ff0000', '#ff8800', '#ffff00', '#00ff00', '#0088ff', '#8800ff'];
-        var index = 0;
-        var interval = setInterval(function () {
+        const couleurs = ['#ff0000', '#ff8800', '#ffff00', '#00ff00', '#0088ff', '#8800ff'];
+        let index = 0;
+        const interval = setInterval(function () {
             document.documentElement.style.setProperty('--primary-color', couleurs[index % couleurs.length]);
             index++;
         }, 300);

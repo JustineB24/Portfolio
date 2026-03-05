@@ -54,7 +54,7 @@
 .card {
     height: 20rem;
     width: 30rem;
-    border-radius: 20;
+    border-radius: 20px;
     transition: transform .3s, box-shadow .3s;
     display: flex;
     justify-content: center;
@@ -68,7 +68,7 @@
     height: 18rem;
     width: 28rem;
     background-color: #1a1a1a;
-    border-radius: 20;
+    border-radius: 20px;
     transition: transform .2s;
     display: flex;
     justify-content: center;
@@ -91,7 +91,7 @@
 .card:hover,
 .card2:hover {
     transform: scale(0.98);
-    border-radius: 20;
+    border-radius: 20px;
 }
 
 /* Couleurs spécifiques pour chaque carte */
@@ -100,7 +100,7 @@
 }
 
 .card-1:hover {
-    box-shadow: 0 0 30 1px rgb(255, 0, 0);
+    box-shadow: 0 0 30px 1px rgb(255, 0, 0);
 }
 
 .card-2 {
@@ -108,7 +108,7 @@
 }
 
 .card-2:hover {
-    box-shadow: 0 0 30 1px rgb(255, 106, 0);
+    box-shadow: 0 0 30px 1px rgb(255, 106, 0);
 }
 
 .card-3 {
@@ -116,7 +116,7 @@
 }
 
 .card-3:hover {
-    box-shadow: 0 0 30 1px rgb(255, 213, 0);
+    box-shadow: 0 0 30px 1px rgb(255, 213, 0);
 }
 
 .card-4 {
@@ -124,7 +124,7 @@
 }
 
 .card-4:hover {
-    box-shadow: 0 0 30 1px rgb(0, 122, 39);
+    box-shadow: 0 0 30px 1px rgb(0, 122, 39);
 }
 
 .card-5 {
@@ -132,7 +132,7 @@
 }
 
 .card-5:hover {
-    box-shadow: 0 0 30 1px rgb(11, 0, 214);
+    box-shadow: 0 0 30px 1px rgb(11, 0, 214);
 }
 
 .card-6 {
@@ -140,7 +140,7 @@
 }
 
 .card-6:hover {
-    box-shadow: 0 0 30 1px rgb(156, 0, 184);
+    box-shadow: 0 0 30px 1px rgb(156, 0, 184);
 }
 
 .card-7 {
@@ -148,7 +148,7 @@
 }
 
 .card-7:hover {
-    box-shadow: 0 0 30 1px rgb(15, 76, 129);
+    box-shadow: 0 0 30px 1px rgb(15, 76, 129);
 }
 
 .card-8 {
@@ -156,7 +156,7 @@
 }
 
 .card-8:hover {
-    box-shadow: 0 0 30 1px rgb(252, 68, 0);
+    box-shadow: 0 0 30px 1px rgb(252, 68, 0);
 }
 
 /* Responsive styles */
@@ -207,7 +207,7 @@
     }
 }
 
-@media (max-width: 480) {
+@media (max-width: 480px) {
     .projet-container {
         flex-direction: column;
         flex-wrap: nowrap;

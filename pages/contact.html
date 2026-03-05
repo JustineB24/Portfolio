@@ -90,11 +90,9 @@
         const sujet = document.getElementById('sujet').value.trim();
         const message = document.getElementById('message').value.trim();
 
-        const mailto = 'mailto:blin.justine.sio@gmail.com'
+        window.location.href = 'mailto:blin.justine.sio@gmail.com'
             + '?subject=' + encodeURIComponent(sujet)
             + '&body=' + encodeURIComponent('De : ' + nom + ' (' + email + ')\n\n' + message);
-
-        window.location.href = mailto;
     });
 </script>
 </body>

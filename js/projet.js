@@ -30,7 +30,7 @@ filtreBtns.forEach(btn => {
             const type = card.getAttribute('data-type');
             const techs = card.getAttribute('data-tech');
 
-            let visible = false;
+            let visible;
 
             if (filtre === 'tous') {
                 visible = true;

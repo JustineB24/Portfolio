@@ -9,26 +9,19 @@ Classées par priorité et effort estimé.
 
 ## Priorité basse (nice-to-have)
 
-### 1. Multilingue (FR/EN)
+### Multilingue (FR/EN)
 
 - **Effort** : Élevé
 - **Solution** : Ajouter un toggle FR/EN dans le header. Stocker la préférence dans localStorage. Dupliquer le contenu
   texte en anglais (via un objet JS de traductions ou des fichiers HTML séparés).
 - **Gain** : Accessibilité pour les recruteurs internationaux.
 
-### 2. Blog / Articles techniques
+### Blog / Articles techniques
 
 - **Effort** : Élevé
 - **Solution** : Ajouter une section blog avec des articles techniques (tutoriels, retours d'expérience). Chaque article
   serait un fichier HTML dans un dossier `blog/`.
 - **Gain** : Démontre l'expertise, améliore le SEO.
-
-### 3. Easter egg / Page cachée
-
-- **Effort** : Faible
-- **Solution** : Ajouter un easter egg déclenché par une combinaison de touches (ex : Konami Code) ou un élément
-  cliquable caché. Pourrait afficher une animation, un message humoristique ou une mini page "about the making of".
-- **Gain** : Touche personnelle et fun.
 
 ---
 
@@ -86,12 +79,3 @@ Classées par priorité et effort estimé.
   les plus utilisés, etc.
 - **Gain** : Contenu dynamique et à jour.
 - **Raison du refus** : Trop peu de contenu GitHub pour que ce soit pertinent.
-
----
-
-## Résumé par effort
-
-| Effort | Améliorations     |
-|--------|-------------------|
-| Faible | Easter egg        |
-| Élevé  | Multilingue, Blog |

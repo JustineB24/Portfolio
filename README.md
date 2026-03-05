@@ -50,7 +50,7 @@ Actuellement étudiante en **Bachelor Chef de Projet Développement et IA** à L
 ### Outils
 
 - **Visual Studio Code** - Éditeur de code
-- **Git** - Versionning
+- **Git** - Versioning
 - **FontAwesome** - Icônes
 - **Google Fonts** - Typographie
 

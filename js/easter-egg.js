@@ -155,17 +155,6 @@
             50% { transform: translateY(-100vh) rotate(5deg); }
             100% { transform: translateY(0) rotate(0deg); }
         }
-        .ee-emoji-rain {
-            position: fixed;
-            top: -50px;
-            font-size: 2rem;
-            z-index: 10001;
-            pointer-events: none;
-            animation: ee-emoji-fall linear forwards;
-        }
-        @keyframes ee-emoji-fall {
-            to { top: 110vh; transform: rotate(360deg); }
-        }
         .ee-rainbow {
             animation: ee-rainbow-color 0.5s linear infinite;
         }
@@ -206,27 +195,6 @@
             font-family: monospace;
             font-size: 0.9rem;
             margin-top: 0.5rem;
-        }
-        .ee-404-lettre {
-            display: inline-block;
-            cursor: grab;
-            user-select: none;
-            transition: color 0.2s;
-        }
-        .ee-404-lettre:hover {
-            color: #ff4444 !important;
-            animation: ee-404-bounce 0.3s ease;
-        }
-        @keyframes ee-404-bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        .ee-logo-spin {
-            animation: ee-logo-spin-anim 1s linear infinite;
-            filter: hue-rotate(0deg);
-        }
-        @keyframes ee-logo-spin-anim {
-            to { transform: rotate(360deg); filter: hue-rotate(360deg); }
         }
         .ee-pirate-flag {
             position: fixed;
@@ -337,7 +305,7 @@
     });
 
     // ==============================
-    // 1. Konami Code
+    // Konami Code
     // ==============================
 
     var konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
@@ -408,7 +376,7 @@
         setTimeout(function () {
             afficherModale(
                 'GG !',
-                'Tu as trouve le secret !<br>Le fameux <span class="ee-code">\u2191 \u2191 \u2193 \u2193 \u2190 \u2192 \u2190 \u2192 B A</span><br>Merci d\'avoir explore mon portfolio.',
+                'Tu as trouvé le secret !<br>Le fameux <span class="ee-code">\u2191 \u2191 \u2193 \u2193 \u2190 \u2192 \u2190 \u2192 B A</span><br>Merci d\'avoir exploré mon portfolio.',
                 function () {
                     document.body.classList.remove('ee-flip');
                     if (matrixCanvas) matrixCanvas.remove();
@@ -420,38 +388,7 @@
     }
 
     // ==============================
-    // 2. Logo cliquable secret (7 clics)
-    // ==============================
-
-    var logoClics = 0;
-    var logoTimer = null;
-
-    document.addEventListener('click', function (e) {
-        var logo = e.target.closest('.titre-nom');
-        if (!logo || easterEggActif) return;
-
-        logoClics++;
-        clearTimeout(logoTimer);
-
-        if (logoClics >= 7) {
-            e.preventDefault();
-            logoClics = 0;
-            easterEggActif = true;
-            logo.classList.add('ee-logo-spin');
-            setTimeout(function () {
-                logo.classList.remove('ee-logo-spin');
-                easterEggActif = false;
-            }, 4000);
-        } else {
-            // Reset apres 2 secondes d'inactivite
-            logoTimer = setTimeout(function () {
-                logoClics = 0;
-            }, 2000);
-        }
-    });
-
-    // ==============================
-    // 3. Mode disco
+    // Mode disco
     // ==============================
 
     function lancerDisco() {
@@ -464,7 +401,7 @@
     }
 
     // ==============================
-    // 4. Mode terminal
+    // Mode terminal
     // ==============================
 
     function lancerTerminal() {
@@ -477,7 +414,7 @@
     }
 
     // ==============================
-    // 5. Clic sur le copyright (Retour vers le futur)
+    // Retour vers le futur (clic sur le copyright)
     // ==============================
 
     document.addEventListener('click', function (e) {
@@ -500,7 +437,7 @@
                             yearEl.textContent = anneeActuelle;
                             afficherModale(
                                 'Retour vers le futur !',
-                                'Voyage temporel termine.<br>Bienvenue en ' + anneeActuelle + ' !'
+                                'Voyage temporel terminé.<br>Bienvenue en ' + anneeActuelle + ' !'
                             );
                         }
                     }, 30);
@@ -510,7 +447,7 @@
     });
 
     // ==============================
-    // 6. Gravite inversee
+    // Gravité inversée
     // ==============================
 
     function lancerGravity() {
@@ -523,7 +460,7 @@
     }
 
     // ==============================
-    // 7. Mode pirate
+    // Mode pirate
     // ==============================
 
     function lancerPirate() {
@@ -539,7 +476,7 @@
             'Projets': 'Butins',
             'Compétences': 'Talents de flibustier',
             'Contact': 'Envoyer un pigeon',
-            'Documents': 'Cartes au tresor',
+            'Documents': 'Cartes au trésor',
             'À propos': 'Le capitaine',
             'Veille Technologique': 'Vigie du navire'
         };
@@ -557,33 +494,7 @@
     }
 
     // ==============================
-    // 8. Pluie d'emojis (double-clic sur h1)
-    // ==============================
-
-    document.addEventListener('dblclick', function (e) {
-        if (e.target.tagName !== 'H1' || easterEggActif) return;
-        easterEggActif = true;
-        var emojis = ['\uD83D\uDE80', '\uD83C\uDF1F', '\uD83D\uDCBB', '\uD83C\uDF89', '\u2764\uFE0F', '\uD83D\uDD25', '\uD83C\uDF08', '\uD83C\uDFC6'];
-        for (var i = 0; i < 60; i++) {
-            var emoji = document.createElement('div');
-            emoji.classList.add('ee-emoji-rain');
-            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-            emoji.style.left = Math.random() * 100 + 'vw';
-            emoji.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
-            var duree = Math.random() * 2 + 2;
-            var delai = Math.random() * 2;
-            emoji.style.animationDuration = duree + 's';
-            emoji.style.animationDelay = delai + 's';
-            document.body.appendChild(emoji);
-            (function (el, t) {
-                setTimeout(function () { el.remove(); }, t);
-            })(emoji, (duree + delai) * 1000 + 500);
-        }
-        setTimeout(function () { easterEggActif = false; }, 4500);
-    });
-
-    // ==============================
-    // 9. Snake
+    // Snake
     // ==============================
 
     function lancerSnake() {
@@ -602,7 +513,7 @@
 
         var info = document.createElement('div');
         info.classList.add('ee-snake-info');
-        info.textContent = 'Fleches pour jouer \u2022 Echap pour quitter';
+        info.textContent = 'Flèches pour jouer \u2022 Echap pour quitter';
 
         overlay.appendChild(scoreEl);
         overlay.appendChild(canvas);
@@ -665,7 +576,7 @@
                 y: serpent[0].y + direction.y
             };
 
-            // Collision mur ou soi-meme
+            // Collision mur ou soi-même
             if (tete.x < 0 || tete.x >= GRILLE || tete.y < 0 || tete.y >= GRILLE ||
                 serpent.some(function (s) { return s.x === tete.x && s.y === tete.y; })) {
                 gameOver = true;
@@ -714,7 +625,7 @@
     }
 
     // ==============================
-    // 10. Theme arc-en-ciel
+    // Thème arc-en-ciel
     // ==============================
 
     function lancerRainbow() {
@@ -733,7 +644,7 @@
     }
 
     // ==============================
-    // 11. Message console
+    // Message console
     // ==============================
 
     console.log('%c' +
@@ -752,54 +663,5 @@
         'color: #960000; font-size: 16px; font-weight: bold;',
         'color: #666; font-size: 12px;'
     );
-
-    // ==============================
-    // 12. Page 404 interactive
-    // ==============================
-
-    var h1_404 = document.querySelector('.erreur-404 h1');
-    if (h1_404 && h1_404.textContent.trim() === '404') {
-        var lettres = h1_404.textContent.split('');
-        h1_404.innerHTML = '';
-        lettres.forEach(function (lettre) {
-            var span = document.createElement('span');
-            span.classList.add('ee-404-lettre');
-            span.textContent = lettre;
-            span.style.display = 'inline-block';
-            span.style.cursor = 'grab';
-            // Drag & drop
-            var isDragging = false;
-            var offsetX, offsetY;
-            span.addEventListener('mousedown', function (e) {
-                isDragging = true;
-                span.style.position = 'relative';
-                span.style.zIndex = '100';
-                span.style.cursor = 'grabbing';
-                offsetX = e.clientX;
-                offsetY = e.clientY;
-                e.preventDefault();
-            });
-            document.addEventListener('mousemove', function (e) {
-                if (!isDragging) return;
-                var dx = e.clientX - offsetX;
-                var dy = e.clientY - offsetY;
-                span.style.left = dx + 'px';
-                span.style.top = dy + 'px';
-            });
-            document.addEventListener('mouseup', function () {
-                if (!isDragging) return;
-                isDragging = false;
-                span.style.cursor = 'grab';
-                // Retour elastique
-                span.style.transition = 'left 0.5s ease, top 0.5s ease';
-                span.style.left = '0px';
-                span.style.top = '0px';
-                setTimeout(function () {
-                    span.style.transition = '';
-                }, 500);
-            });
-            h1_404.appendChild(span);
-        });
-    }
 
 })();

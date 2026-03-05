@@ -47,7 +47,11 @@ window.addEventListener('load', function () {
         let toRotate = el.getAttribute('data-rotate');
         let period = el.getAttribute('data-period');
         if (toRotate) {
-            new TxtRotate(el, JSON.parse(toRotate), period);
+            try {
+                new TxtRotate(el, JSON.parse(toRotate), period);
+            } catch (e) {
+                console.error('Erreur parsing data-rotate :', e);
+            }
         }
     }
 });

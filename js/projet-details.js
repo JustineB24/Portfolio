@@ -1,11 +1,11 @@
-// Récupérer l'ID du projet depuis l'URL (n'accepte que des chiffres)
+// Récupérer l'ID du projet depuis l'URL (lettres, chiffres et tirets uniquement)
 const urlParams = new URLSearchParams(window.location.search);
 const rawId = urlParams.get("id");
-const projetId = rawId && /^\d+$/.test(rawId) ? rawId : null;
+const projetId = rawId && /^[a-z0-9-]+$/.test(rawId) ? rawId : null;
 
 // Base de données des projets
 const projets = {
-    "1": {
+    "pendu": {
         title: "Pendu",
         images: ["../projets/Pendu/Menu.jpg",
             "../projets/Pendu/Jeu.jpg",
@@ -15,7 +15,7 @@ const projets = {
         description: "Application mobile développée avec MAUI et XAML, recréant le célèbre jeu du pendu. L'utilisateur doit deviner un mot choisi aléatoirement, en proposant des lettres une par une. Chaque mauvaise réponse révèle progressivement une image du pendu. Le menu principal permet de jouer, de gérer la liste des mots à deviner, de consulter les meilleurs scores ou de quitter l'application. Les mots et les scores sont stockés localement, permettant une gestion dynamique des parties et une personnalisation du jeu. L'interface est responsive et s'adapte parfaitement aux différents formats mobiles.",
         technologies: ["XAML", "MAUI"]
     },
-    "2": {
+    "france-mobilier": {
         title: "France Mobilier",
         images: ["../projets/France_mobilier/Accueil.png",
             "../projets/France_mobilier/Meuble.png",
@@ -27,7 +27,7 @@ const projets = {
         description: "Site e-commerce développé pour la société France Mobilier, spécialisée dans le mobilier d'intérieur. Conçu selon l'architecture MVC, il propose une page d'accueil présentant l'entreprise, un module de recherche de meubles par catégorie, ainsi qu'une page listant l'ensemble des magasins physiques. Le projet utilise une base de données pour gérer dynamiquement les meubles et les points de vente. Un panneau d'administration est également prévu pour permettre la modification des produits et des magasins. L'interface est pensée pour être claire et facilement maintenable.",
         technologies: ["HTML", "CSS", "PHP", "C#", "MYSQL"]
     },
-    "3": {
+    "sio-shop": {
         title: "Sio Shop",
         images: [
             "../projets/Sio_Shop/Connexion.png",
@@ -50,7 +50,7 @@ const projets = {
         description: "Application de gestion commerciale développée sous Windows Forms pour une concession automobile. Ce projet propose une interface permettant aux employés de gérer les clients, les véhicules en stock et les ventes. L'application intègre une authentification sécurisée, une liaison directe avec une base de données SQL, ainsi qu'un module de création de factures au format PDF. Les utilisateurs peuvent rechercher, ajouter et modifier clients et produits, saisir des ventes avec calcul automatique du prix TTC, et suivre l'évolution des stocks en temps réel. La structure suit les principes de la programmation orientée objet, en assurant une navigation fluide et professionnelle entre les différentes fonctionnalités.",
         technologies: ["WinForms", "C#", "MYSQL"]
     },
-    "4": {
+    "speedcubing": {
         title: "Speedcubing",
         images: [
             "../projets/Speedcubing/Accueil.png",
@@ -62,26 +62,26 @@ const projets = {
         description: "Projet développé pour l'Association Française de SpeedCubing. Ce site permet aux passionnés de Rubik's Cube de s'entraîner en ligne, d'enregistrer leurs temps et de comparer leurs performances avec celles des autres. Il intègre un chronomètre interactif, une base de données des meilleurs temps et une section dédiée à la résolution d'un Rubik's Cube 3x3.",
         technologies: ["PHP", "CSS", "JavaScript", "MYSQL"]
     },
-    "5": {
+    "meteo": {
         title: "Application météo",
         images: ["../projets/Meteo/Meteo.png"],
         description: "Application web développée pour afficher en temps réel les conditions météorologiques d'une ville choisie par l'utilisateur. En utilisant l'API OpenWeather, ce projet permet de consulter la température actuelle, l'humidité ainsi qu'une description du temps (ensoleillé, nuageux, etc.). L'interface propose une zone de recherche, un affichage centralisé des données principales, et un design épuré avec fond personnalisé. Le JavaScript assure la récupération dynamique des données météo et la mise à jour instantanée de l'affichage après chaque recherche.",
         technologies: ["HTML", "CSS", "JavaScript"]
     },
-    "6": {
+    "generateur-mdp": {
         title: "Générateur de mots de passe",
         images: ["../projets/Generateur_mdp/Generateur_mdp.png"],
         description: "Outil conçu pour aider les utilisateurs à générer des mots de passe sécurisés en quelques clics. Ce générateur permet de créer des mots de passe aléatoires respectant des critères de sécurité stricts : majuscules, minuscules, chiffres et caractères spéciaux. Il intègre une interface interactive, incluant un slider pour définir la longueur du mot de passe (de 8 à 16 caractères), ainsi que des boutons pour copier rapidement le résultat.",
         technologies: ["HTML", "CSS", "JavaScript"]
     },
-    "7": {
+    "mairie-cauffry": {
         title: "Mairie de Cauffry",
         images: ["../projets/Mairie_de_cauffry/Accueil.png"],
         description: "Réalisation d'un site web pour la commune de Cauffry dans le cadre d'un stage de 4 semaines avec Adico (Association pour le développement et l'innovation numérique des collectivités).",
         technologies: ["HTML", "CSS"],
         link: "https://mairiecauffry.fr/"
     },
-    "8": {
+    "panada-food": {
         title: "Panada Food",
         images: [
             "../projets/Panada_Food/Accueil.png",
@@ -98,12 +98,20 @@ const projets = {
 
 // Vérifier si l'ID existe et mettre à jour la page
 if (!projetId || !projets[projetId]) {
-    document.querySelector("main").innerHTML =
-        '<p style="text-align:center;margin-top:5rem;font-size:1.2rem;color:var(--text-color)">Projet introuvable. <a href="projets.html">Retour aux projets</a></p>';
-} else if (projets[projetId]) {
-    document.getElementById("projet-title").innerText = projets[projetId].title;
+    const main = document.querySelector("main");
+    main.textContent = "";
+    const p = document.createElement("p");
+    p.style.cssText = "text-align:center;margin-top:5rem;font-size:1.2rem;color:var(--text-color)";
+    p.textContent = "Projet introuvable. ";
+    const a = document.createElement("a");
+    a.href = "projets.html";
+    a.textContent = "Retour aux projets";
+    p.appendChild(a);
+    main.appendChild(p);
+} else {
+    document.getElementById("projet-title").textContent = projets[projetId].title;
     document.title = "Portfolio | " + projets[projetId].title;
-    document.getElementById("projet-description").innerText = projets[projetId].description;
+    document.getElementById("projet-description").textContent = projets[projetId].description;
 
     const techList = document.getElementById("projet-technologies");
 
@@ -246,6 +254,9 @@ if (!projetId || !projets[projetId]) {
             slide.addEventListener("click", () => {
                 const modale = document.createElement("div");
                 modale.classList.add("carrousel-modale");
+                modale.setAttribute("role", "dialog");
+                modale.setAttribute("aria-modal", "true");
+                modale.setAttribute("aria-label", "Image en plein écran");
 
                 const pictureModale = document.createElement("picture");
                 const sourceModale = document.createElement("source");
@@ -263,25 +274,29 @@ if (!projetId || !projets[projetId]) {
                 // Forcer le reflow pour déclencher la transition
                 modale.offsetHeight;
                 modale.classList.add("active");
+                modale.setAttribute("tabindex", "-1");
+                modale.focus();
+
+                function escHandler(e) {
+                    if (e.key === "Escape") {
+                        fermerModale();
+                    }
+                }
 
                 function fermerModale() {
                     modale.classList.remove("active");
+                    document.removeEventListener("keydown", escHandler);
                     modale.addEventListener("transitionend", () => modale.remove(), { once: true });
                 }
 
                 modale.addEventListener("click", fermerModale);
-
-                document.addEventListener("keydown", function escHandler(e) {
-                    if (e.key === "Escape") {
-                        fermerModale();
-                        document.removeEventListener("keydown", escHandler);
-                    }
-                });
+                document.addEventListener("keydown", escHandler);
             });
         });
 
         // Navigation clavier
         document.addEventListener("keydown", (e) => {
+            if (!document.querySelector(".carrousel")) return;
             if (document.querySelector(".carrousel-modale")) return;
             if (e.key === "ArrowRight") slideSuivant();
             if (e.key === "ArrowLeft") slidePrecedent();
@@ -299,7 +314,7 @@ if (!projetId || !projets[projetId]) {
         linkElement.href = projets[projetId].link;
         linkElement.target = "_blank";
         linkElement.rel = "noopener noreferrer";
-        linkElement.innerText = "Voir le projet en ligne";
+        linkElement.textContent = "Voir le projet en ligne";
 
         projetLinkContainer.appendChild(linkElement);
 

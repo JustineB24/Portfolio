@@ -5,7 +5,7 @@ main a {
 
 main hr {
     border: none;
-    border-top: 2px dashed #666;
+    border-top: 2px dashed var(--card-background);
     margin: 20px auto;
     width: 30rem;
 }

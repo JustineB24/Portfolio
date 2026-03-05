@@ -6,7 +6,14 @@ const elementsAAnimer = document.querySelectorAll(
     '.timeline-item, .card-competence, .innovations, .comparatif, .card-container, .profil, .btn-cv'
 );
 
-elementsAAnimer.forEach(el => el.classList.add('scroll-reveal'));
+elementsAAnimer.forEach(el => {
+    // Ne pas animer les éléments déjà visibles au chargement (au-dessus du fold)
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+        el.classList.add('scroll-reveal', 'visible');
+    } else {
+        el.classList.add('scroll-reveal');
+    }
+});
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -20,7 +27,11 @@ const observer = new IntersectionObserver((entries) => {
     rootMargin: '0px 0px -50px 0px'
 });
 
-elementsAAnimer.forEach(el => observer.observe(el));
+elementsAAnimer.forEach(el => {
+    if (!el.classList.contains('visible')) {
+        observer.observe(el);
+    }
+});
 
 // ==============================
 // Bouton "Retour en haut"

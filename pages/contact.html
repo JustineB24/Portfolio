@@ -1,0 +1,102 @@
+<!--    ===============================    -->
+<!--    | * Nom du projet : Portfolio |    -->
+<!--    | * Création : Juin 2024      |    -->
+<!--    | * Auteur : Justine BLIN     |    -->
+<!--    ===============================    -->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Justine BLIN BTS SIO">
+    <meta name="author" content="Justine BLIN">
+    <meta name="theme-color" content="#a90000">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Portfolio | Contact">
+    <meta property="og:description" content="Contactez Justine BLIN pour toute question ou opportunité.">
+    <meta property="og:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
+    <meta property="og:url" content="https://justineb24.github.io/Portfolio/pages/contact.html">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/Logo_portfolio.png">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+          media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
+    <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
+    <link rel="stylesheet" href="../css/contact.css" media="all" type="text/css">
+    <script>try{if(localStorage.getItem('dark-mode')==='true')document.documentElement.classList.add('dark-theme')}catch(e){}</script>
+    <script src="../js/structure-globale.js" defer></script>
+
+    <title>Portfolio | Contact</title>
+</head>
+
+<body>
+<!-- Contenu principal -->
+<main>
+    <h1>Contact</h1>
+    <p class="contact-intro">N'hésitez pas à me contacter pour discuter d'un projet ou d'une collaboration.</p>
+
+    <div class="contact-container">
+        <form class="contact-form" id="contact-form">
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" required placeholder="Votre nom">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Votre adresse email">
+            </div>
+            <div class="form-group">
+                <label for="sujet">Sujet</label>
+                <input type="text" id="sujet" name="sujet" required placeholder="Objet de votre message">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" required placeholder="Votre message"></textarea>
+            </div>
+            <button type="submit" class="btn-envoyer">Envoyer</button>
+        </form>
+
+        <aside class="contact-infos">
+            <h2>Moyens de contact</h2>
+            <ul>
+                <li>
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <a href="mailto:blin.justine.sio@gmail.com">blin.justine.sio@gmail.com</a>
+                </li>
+                <li>
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    <a href="https://www.linkedin.com/in/justine-blin-a88600292" target="_blank"
+                       rel="noopener noreferrer">LinkedIn</a>
+                </li>
+                <li>
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <a href="https://github.com/JustineB24" target="_blank"
+                       rel="noopener noreferrer">GitHub</a>
+                </li>
+            </ul>
+        </aside>
+    </div>
+</main>
+
+<script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const nom = document.getElementById('nom').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const sujet = document.getElementById('sujet').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        const mailto = 'mailto:blin.justine.sio@gmail.com'
+            + '?subject=' + encodeURIComponent(sujet)
+            + '&body=' + encodeURIComponent('De : ' + nom + ' (' + email + ')\n\n' + message);
+
+        window.location.href = mailto;
+    });
+</script>
+</body>
+
+</html>

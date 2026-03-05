@@ -13,10 +13,13 @@
     left: 10rem;
     border-radius: 20rem;
     width: 8rem;
+    height: auto;
 }
 
 .hero .txt-rotate {
     font-size: 4rem;
+    height: 5rem;
+    overflow: hidden;
     color: var(--text-color);
     position: relative;
     opacity: 0;
@@ -110,6 +113,7 @@
 
     .hero .txt-rotate {
         font-size: 3rem;
+        height: 4rem;
     }
 
     .sections {
@@ -125,6 +129,7 @@
 
     .hero .txt-rotate {
         font-size: 2.5rem;
+        height: 3.5rem;
     }
 
     .sections {
@@ -149,6 +154,7 @@
 
     .hero .txt-rotate {
         font-size: 2rem;
+        height: 3rem;
     }
 
     .sections {

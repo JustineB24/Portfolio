@@ -20,20 +20,18 @@
     <meta property="og:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
     <meta property="og:url" content="https://justineb24.github.io/Portfolio/pages/veille.html">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/Logo_portfolio.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/veille.css" media="all" type="text/css">
-    <script src="../js/structure-globale.js"></script>
+    <script>try{if(localStorage.getItem('dark-mode')==='true')document.documentElement.classList.add('dark-theme')}catch(e){}</script>
+    <script src="../js/structure-globale.js" defer></script>
 
     <title>Portfolio | Veille technologique</title>
 </head>
 
 <body>
-    <script>
-        genererHeader("../");
-    </script>
-
     <!-- Contenu principal -->
     <main>
         <h1>Veille technologique</h1>
@@ -63,7 +61,10 @@
             </li>
         </ul>
 
-        <img src="../assets/Veille/Raspberry_Pi_logo.png" alt="Logo Raspberry Pi" loading="lazy" width="250" height="316">
+        <picture>
+            <source srcset="../assets/Veille/Raspberry_Pi_logo.webp" type="image/webp">
+            <img src="../assets/Veille/Raspberry_Pi_logo.png" alt="Logo Raspberry Pi" loading="lazy" width="250" height="316">
+        </picture>
         <p class="texte-photo">Logo Raspberry Pi</p>
 
         <h2>Raspberry Pi ?</h2>
@@ -83,7 +84,10 @@
             économique pour ceux qui n'ont pas accès à des machines coûteuses.
         </p>
 
-        <img src="../assets/Veille/Raspberry_Pi_1_B.jpg" alt="Raspberry Pi 1 Modèle B" loading="lazy" width="1600" height="1091">
+        <picture>
+            <source srcset="../assets/Veille/Raspberry_Pi_1_B.webp" type="image/webp">
+            <img src="../assets/Veille/Raspberry_Pi_1_B.jpg" alt="Raspberry Pi 1 Modèle B" loading="lazy" width="1200" height="818">
+        </picture>
         <p class="texte-photo">Le tout premier modèle du Raspberry Pi : version 1 B</p>
 
         <h2>Histoire du Raspberry Pi</h2>
@@ -105,7 +109,10 @@
             Diplômé en physique et en ingénierie de l'Université de Cambridge, il a ensuite travaillé pour des
             entreprises prestigieuses telles que Broadcom, Intel et IBM.
         </p>
-        <img src="../assets/Veille/Eben_Upton.jpg" alt="Eben Upton" loading="lazy" width="800" height="900">
+        <picture>
+            <source srcset="../assets/Veille/Eben_Upton.webp" type="image/webp">
+            <img src="../assets/Veille/Eben_Upton.jpg" alt="Eben Upton" loading="lazy" width="800" height="900">
+        </picture>
         <p class="texte-photo">Eben Upton</p>
 
         <h2>Les premiers prototypes</h2>
@@ -115,8 +122,11 @@
             Inspiré par le BBC Micro, qu'il utilisait à l'école, il a voulu concevoir un ordinateur plus compact et
             moins cher.
         </p>
-        <img src="../assets/Veille/BBC_Micro_modèle_B.jpg"
-            alt="Le BBC Micro modèle B, créé par Acorn Computers et sortie en 1981" loading="lazy" width="200" height="229">
+        <picture>
+            <source srcset="../assets/Veille/BBC_Micro_modèle_B.webp" type="image/webp">
+            <img src="../assets/Veille/BBC_Micro_modèle_B.jpg"
+                alt="Le BBC Micro modèle B, créé par Acorn Computers et sortie en 1981" loading="lazy" width="200" height="229">
+        </picture>
         <p class="texte-photo">Le BBC Micro modèle B, créé par Acorn Computers et sortie en 1981</p>
 
         <p>
@@ -125,8 +135,11 @@
             Au début, ses prototypes étaient réalisés sur de grandes plaques de prototypage, permettant de tester et
             déboguer facilement.
         </p>
-        <img src="../assets/Veille/Prototype_Eben_Upton.jpg"
-            alt="Le prototype d'Eben Upton basé sur un processeur Atmel" loading="lazy" width="720" height="282">
+        <picture>
+            <source srcset="../assets/Veille/Prototype_Eben_Upton.webp" type="image/webp">
+            <img src="../assets/Veille/Prototype_Eben_Upton.jpg"
+                alt="Le prototype d'Eben Upton basé sur un processeur Atmel" loading="lazy" width="720" height="282">
+        </picture>
         <p class="texte-photo">Le prototype d'Eben Upton basé sur un processeur Atmel</p>
 
         <h2>L'idée et son origine</h2>
@@ -176,7 +189,10 @@
             <li>Satellite</li>
         </ul>
 
-        <img src="../assets/Veille/Raspberry_Pi_5.jpg" alt="Raspberry Pi 5" loading="lazy" width="960" height="640">
+        <picture>
+            <source srcset="../assets/Veille/Raspberry_Pi_5.webp" type="image/webp">
+            <img src="../assets/Veille/Raspberry_Pi_5.jpg" alt="Raspberry Pi 5" loading="lazy" width="960" height="640">
+        </picture>
         <p class="texte-photo">Raspberry Pi 5</p>
 
         <h2>Avantages et Inconvénients</h2>
@@ -217,8 +233,11 @@
             </tbody>
         </table>
 
-        <img src="../assets/Veille/Boitier_officiel_Fondation_Raspberry_Pi_2015.jpg"
-            alt="Boîtier officiel du Raspberry Pi" loading="lazy" width="600" height="900">
+        <picture>
+            <source srcset="../assets/Veille/Boitier_officiel_Fondation_Raspberry_Pi_2015.webp" type="image/webp">
+            <img src="../assets/Veille/Boitier_officiel_Fondation_Raspberry_Pi_2015.jpg"
+                alt="Boîtier officiel du Raspberry Pi" loading="lazy" width="600" height="900">
+        </picture>
         <p class="texte-photo">Boîtier officiel du Raspberry Pi</p>
 
         <h2>Innovations récentes (2024-2025)</h2>
@@ -266,7 +285,10 @@
 
         <h2>Évolution des modèles</h2>
         <hr>
-        <img id="evolution" src="../assets/Veille/Evolution_Of_Pi.jpg" alt="Évolution des modèles de Raspberry Pi" loading="lazy" width="1920" height="1080">
+        <picture>
+            <source srcset="../assets/Veille/Evolution_Of_Pi.webp" type="image/webp">
+            <img id="evolution" src="../assets/Veille/Evolution_Of_Pi.jpg" alt="Évolution des modèles de Raspberry Pi" loading="lazy" width="1200" height="675">
+        </picture>
         <ul class="timeline">
             <li class="timeline-group">Génération 1</li>
             <li><strong>Raspberry Pi B</strong> <span>Avril - Juin 2012</span></li>
@@ -310,7 +332,10 @@
             <li><strong>Raspberry Pi 500 (Clavier)</strong> <span>Décembre 2024</span></li>
         </ul>
 
-        <img src="../assets/Veille/Raspberry_Pi_500.jpg" alt="Raspberry Pi 500" loading="lazy" width="3758" height="2115">
+        <picture>
+            <source srcset="../assets/Veille/Raspberry_Pi_500.webp" type="image/webp">
+            <img src="../assets/Veille/Raspberry_Pi_500.jpg" alt="Raspberry Pi 500" loading="lazy" width="1200" height="675">
+        </picture>
         <p class="texte-photo">Raspberry Pi 500</p>
 
         <h2>Conclusion</h2>
@@ -321,14 +346,14 @@
             le monde, offrant des possibilités infinies pour des projets personnels ou professionnels.
         </p>
 
-        <img src="../assets/Veille/Raspberry_Pi_1,_Pi_5,_Pi_400,_Zero_2_and_Pico.jpg"
-            alt="Raspberry Pi 1, Pi 5, Pi 400, Zero 2 et Pico" loading="lazy" width="1280" height="852">
+        <picture>
+            <source srcset="../assets/Veille/Raspberry_Pi_1,_Pi_5,_Pi_400,_Zero_2_and_Pico.webp" type="image/webp">
+            <img src="../assets/Veille/Raspberry_Pi_1,_Pi_5,_Pi_400,_Zero_2_and_Pico.jpg"
+                alt="Raspberry Pi 1, Pi 5, Pi 400, Zero 2 et Pico" loading="lazy" width="1200" height="798">
+        </picture>
         <p class="texte-photo">Raspberry Pi 1, Pi 5, Pi 400, Zero 2 et Pico</p>
     </main>
 
-    <script>
-        genererFooter("../");
-    </script>
 
 </body>
 

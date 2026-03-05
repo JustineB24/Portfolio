@@ -7,8 +7,10 @@ if (toggleSwitch) {
     // Fonction pour activer/désactiver le mode sombre
     function toggleDarkMode(isDarkMode) {
         if (isDarkMode) {
+            document.documentElement.classList.add(darkModeClass);
             body.classList.add(darkModeClass);
         } else {
+            document.documentElement.classList.remove(darkModeClass);
             body.classList.remove(darkModeClass);
         }
     }

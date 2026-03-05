@@ -1,129 +1,97 @@
-# Ameliorations et fonctionnalites proposees
+# Améliorations et fonctionnalités proposées
 
-Liste des ameliorations et nouvelles fonctionnalites envisageables pour le portfolio.
-Classees par priorite et effort estime.
+Liste des améliorations et nouvelles fonctionnalités envisageables pour le portfolio.
+Classées par priorité et effort estimé.
 
----
-
-## Priorite haute
-
-### 3. Optimisation des images
-
-- **Effort** : Moyen
-- **Probleme actuel** : Les images des projets sont en PNG non optimise. Certaines pesent plusieurs centaines de Ko.
-- **Solution** :
-    - Convertir en WebP (reduction de 50-80% du poids)
-    - Utiliser `<picture>` avec fallback PNG pour compatibilite
-    - Redimensionner les captures d'ecran a une largeur max de 1200px
-- **Gain** : Chargement plus rapide, surtout sur mobile.
+**Légende** : ❌ = amélioration refusée pour le moment
 
 ---
 
-## Priorite moyenne
+## Priorité basse (nice-to-have)
 
-### 5. Formulaire de contact
+### 1. Multilingue (FR/EN)
 
-- **Effort** : Moyen
-- **Probleme actuel** : Pas de moyen de contact direct sur le site (juste les liens LinkedIn/GitHub/email dans le
-  footer).
-- **Solution** : Ajouter une page ou section de contact avec un formulaire. Utiliser un service comme Formspree ou
-  EmailJS pour envoyer les messages sans backend.
-- **Champs suggeres** : Nom, email, sujet, message.
+- **Effort** : Élevé
+- **Solution** : Ajouter un toggle FR/EN dans le header. Stocker la préférence dans localStorage. Dupliquer le contenu
+  texte en anglais (via un objet JS de traductions ou des fichiers HTML séparés).
+- **Gain** : Accessibilité pour les recruteurs internationaux.
 
-### 10. Prechargement du theme (eviter le flash blanc)
+### 2. Blog / Articles techniques
 
-- **Effort** : Faible
-- **Probleme actuel** : Si le mode sombre est active, la page s'affiche brievement en blanc avant que `theme.js` ne
-  charge et applique la classe `dark-theme`.
-- **Solution** : Ajouter un script inline minuscule dans le `<head>` (avant les CSS) qui lit `localStorage` et ajoute
-  `dark-theme` immediatement :
-  ```html
-  <script>
-    try { if(localStorage.getItem('dark-mode')==='true') document.documentElement.classList.add('dark-theme'); } catch(e){}
-  </script>
-  ```
-- **Gain** : Transition invisible, pas de flash blanc.
-
-### 11. Sitemap XML
-
-- **Effort** : Faible
-- **Probleme actuel** : Pas de sitemap pour les moteurs de recherche.
-- **Solution** : Creer un `sitemap.xml` a la racine listant toutes les pages. Ajouter un `robots.txt`.
-- **Gain** : Meilleur referencement Google.
-
----
-
-## Priorite basse (nice-to-have)
-
-### 12. Mode hors-ligne avec Service Worker
-
-- **Effort** : Eleve
-- **Solution** : Implementer un Service Worker qui met en cache les pages et assets. Le site resterait consultable sans
-  connexion internet.
-- **Gain** : Portfolio consultable en avion, dans le metro, etc.
-
-### 13. Multilingue (FR/EN)
-
-- **Effort** : Eleve
-- **Solution** : Ajouter un toggle FR/EN dans le header. Stocker la preference dans localStorage. Dupliquer le contenu
-  texte en anglais (via un objet JS de traductions ou des fichiers HTML separes).
-- **Gain** : Accessibilite pour les recruteurs internationaux.
-
-### 14. Animation de particules sur la page d'accueil
-
-- **Effort** : Moyen
-- **Solution** : Ajouter un canvas en arriere-plan de la section hero avec des particules animees (points connectes,
-  etoiles, etc.) via un script leger.
-- **Gain** : Effet visuel impactant.
-
-### 15. Statistiques GitHub en temps reel
-
-- **Effort** : Moyen
-- **Solution** : Utiliser l'API GitHub publique pour afficher dynamiquement le nombre de repos, de commits, les langages
-  les plus utilises, etc.
-- **Gain** : Contenu dynamique et a jour.
-
-### 16. Temoignages / Recommandations
-
-- **Effort** : Faible
-- **Solution** : Ajouter une section avec des citations de professeurs, tuteurs de stage ou collegues. Format simple
-  avec photo, nom, role et citation.
-- **Gain** : Credibilite et preuve sociale.
-
-### 17. Blog / Articles techniques
-
-- **Effort** : Eleve
-- **Solution** : Ajouter une section blog avec des articles techniques (tutoriels, retours d'experience). Chaque article
+- **Effort** : Élevé
+- **Solution** : Ajouter une section blog avec des articles techniques (tutoriels, retours d'expérience). Chaque article
   serait un fichier HTML dans un dossier `blog/`.
-- **Gain** : Demontre l'expertise, ameliore le SEO.
+- **Gain** : Démontre l'expertise, améliore le SEO.
 
-### 18. Indicateur de progression de lecture
-
-- **Effort** : Faible
-- **Solution** : Ajouter une barre de progression en haut de la page (sous le header) qui se remplit au fur et a mesure
-  du scroll. Particulierement utile sur la page veille technologique.
-- **Gain** : Repere visuel pour les pages longues.
-
-### 19. Easter egg / Page cachee
+### 3. Easter egg / Page cachée
 
 - **Effort** : Faible
-- **Solution** : Ajouter un easter egg declenche par une combinaison de touches (ex: Konami Code) ou un element
-  cliquable cache. Pourrait afficher une animation, un message humoristique ou une mini page "about the making of".
+- **Solution** : Ajouter un easter egg déclenché par une combinaison de touches (ex : Konami Code) ou un élément
+  cliquable caché. Pourrait afficher une animation, un message humoristique ou une mini page "about the making of".
 - **Gain** : Touche personnelle et fun.
 
-### 20. PWA (Progressive Web App)
+---
 
-- **Effort** : Moyen
-- **Solution** : Ajouter un `manifest.json` avec icones, nom et couleurs. Combine avec le Service Worker (#12), le site
-  pourrait etre "installe" sur mobile comme une app.
-- **Gain** : Experience native sur mobile.
+## Refusées pour le moment
+
+### ❌ Indicateur de progression de lecture
+
+- **Solution** : Barre de progression en haut de la page qui se remplit au scroll.
+- **Gain** : Repère visuel pour les longues pages.
+- **Raison du refus** : Jugé inutile.
+
+### ❌ Self-hosting de Font Awesome
+
+- **Solution** : Télécharger les icônes utilisées et les héberger localement.
+- **Gain** : Suppression de la dépendance au CDN, chargement plus rapide.
+- **Raison du refus** : Trop d'effort pour un gain minime, le CDN avec preconnect suffit.
+
+### ❌ Minification des CSS et JS
+
+- **Solution** : Générer des versions `.min.css` / `.min.js`.
+- **Gain** : Réduction du poids des fichiers et du temps de chargement.
+- **Raison du refus** : Fichiers déjà légers, gain négligeable sur un site statique de cette taille.
+
+### ❌ Témoignages / Recommandations
+
+- **Solution** : Ajouter une section avec des citations de professeurs, tuteurs de stage ou collègues. Format simple
+  avec photo, nom, rôle et citation.
+- **Gain** : Crédibilité et preuve sociale.
+- **Raison du refus** : Pas de témoignages disponibles pour le moment.
+
+### ❌ Mode hors-ligne avec Service Worker
+
+- **Solution** : Implémenter un Service Worker qui met en cache les pages et assets. Le site resterait consultable sans
+  connexion internet.
+- **Gain** : Portfolio consultable en avion, dans le métro, etc.
+- **Raison du refus** : Effort élevé pour un usage rare, non prioritaire.
+
+### ❌ PWA (Progressive Web App)
+
+- **Solution** : Ajouter un `manifest.json` avec icônes, nom et couleurs. Combiné avec le Service Worker, le site
+  pourrait être "installé" sur mobile comme une app.
+- **Gain** : Expérience native sur mobile.
+- **Raison du refus** : Dépend du Service Worker (également refusé), effort non justifié.
+
+### ❌ Animation de particules sur la page d'accueil
+
+- **Solution** : Ajouter un canvas en arrière-plan de la section hero avec des particules animées (points connectés,
+  étoiles, etc.) via un script léger.
+- **Gain** : Effet visuel impactant.
+- **Raison du refus** : Effet vu et revu, manque d'originalité.
+
+### ❌ Statistiques GitHub en temps réel
+
+- **Solution** : Utiliser l'API GitHub publique pour afficher dynamiquement le nombre de repos, de commits, les langages
+  les plus utilisés, etc.
+- **Gain** : Contenu dynamique et à jour.
+- **Raison du refus** : Trop peu de contenu GitHub pour que ce soit pertinent.
 
 ---
 
-## Resume par effort
+## Résumé par effort
 
-| Effort | Ameliorations                                                                                                            |
-|--------|--------------------------------------------------------------------------------------------------------------------------|
-| Faible | Page 404, Open Graph, Retour en haut, Precharger theme, Sitemap, Temoignages, Progression lecture, Easter egg            |
-| Moyen  | Refonte head, Optimisation images, Contact, Animations scroll, Filtres projets, Carrousel, Particules, Stats GitHub, PWA |
-| Eleve  | Service Worker, Multilingue, Blog                                                                                        |
+| Effort | Améliorations     |
+|--------|-------------------|
+| Faible | Easter egg        |
+| Élevé  | Multilingue, Blog |

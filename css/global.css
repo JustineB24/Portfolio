@@ -10,7 +10,7 @@
 }
 
 /* Variables pour le thème sombre */
-body.dark-theme {
+.dark-theme {
     --background-color: black;
     --text-color: white;
     --button-background-color: white;
@@ -20,6 +20,10 @@ body.dark-theme {
 }
 
 /* Principal */
+html {
+    overflow-y: scroll;
+}
+
 html,
 body {
     display: flex;
@@ -85,7 +89,7 @@ main {
 .titre-nom {
     font-size: 2rem;
     font-weight: 700;
-    color: black;
+    color: white;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 1rem;
@@ -97,7 +101,7 @@ main {
 }
 
 .titre-nom:hover {
-    color: white;
+    color: #ffcccc;
     text-shadow: 1px 1px 5px rgb(0 0 0 / 80%);
 }
 

@@ -41,6 +41,7 @@ function genererHeader(chemin) {
                     <li class="menu-item"><a class="onglet" href="${chemin}pages/projets.html">Projets</a></li>
                     <li class="menu-item"><a class="onglet" href="${chemin}pages/veille.html">Veille Technologique</a></li>
                     <li class="menu-item"><a class="onglet" href="${chemin}pages/documents.html">Documents</a></li>
+                    <li class="menu-item"><a class="onglet" href="${chemin}pages/contact.html">Contact</a></li>
                 </ul>
             </nav>
             <!-- Menu burger -->
@@ -70,6 +71,9 @@ function genererHeader(chemin) {
                         </li>
                         <li>
                             <a class="onglet-burger" href="${chemin}pages/documents.html">Documents</a>
+                        </li>
+                        <li>
+                            <a class="onglet-burger" href="${chemin}pages/contact.html">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -123,7 +127,7 @@ function genererFooter(chemin) {
 
     // Ajout automatique des scripts communs (theme.js puis menu-burger.js)
     // Chargement séquentiel pour garantir l'ordre d'exécution
-    const scripts = ['theme.js', 'menu-burger.js', 'scroll-animations.js'];
+    const scripts = ['theme.js', 'menu-burger.js', 'scroll-animations.js', 'easter-egg.js'];
     let index = 0;
 
     function chargerScriptSuivant() {
@@ -139,3 +143,10 @@ function genererFooter(chemin) {
 
     chargerScriptSuivant();
 }
+
+// Auto-exécution (ce script est chargé avec defer, le DOM est prêt)
+(function () {
+    const chemin = window.location.pathname.includes('/pages/') ? '../' : './';
+    genererHeader(chemin);
+    genererFooter(chemin);
+})();

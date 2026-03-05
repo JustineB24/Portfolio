@@ -20,20 +20,18 @@
     <meta property="og:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
     <meta property="og:url" content="https://justineb24.github.io/Portfolio/pages/apropos.html">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/Logo_portfolio.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/apropos.css" media="all" type="text/css">
-    <script src="../js/structure-globale.js"></script>
+    <script>try{if(localStorage.getItem('dark-mode')==='true')document.documentElement.classList.add('dark-theme')}catch(e){}</script>
+    <script src="../js/structure-globale.js" defer></script>
 
     <title>Portfolio | À propos</title>
 </head>
 
 <body>
-    <script>
-        genererHeader("../");
-    </script>
-
     <!-- Contenu principal -->
     <main>
         <h1>Profil</h1>
@@ -131,7 +129,10 @@
                     <div class="bloc-container">
                         <!-- Bloc SLAM -->
                         <div class="bloc-specialite">
-                            <img src="../assets/CodeSLAM.jpg" alt="Illustration de la spécialité SLAM">
+                            <picture>
+                                <source srcset="../assets/CodeSLAM.webp" type="image/webp">
+                                <img src="../assets/CodeSLAM.jpg" alt="Illustration de la spécialité SLAM">
+                            </picture>
                             <h3>SLAM :</h3>
                             <h4>Solutions Logicielles et Applications Métiers</h4>
                             <ul>
@@ -155,7 +156,10 @@
 
                         <!-- Bloc SISR -->
                         <div class="bloc-specialite">
-                            <img src="../assets/ServeurSISR.jpg" alt="Illustration de la spécialité SISR">
+                            <picture>
+                                <source srcset="../assets/ServeurSISR.webp" type="image/webp">
+                                <img src="../assets/ServeurSISR.jpg" alt="Illustration de la spécialité SISR">
+                            </picture>
                             <h3>SISR :</h3>
                             <h4>Solutions d'Infrastructure, Systèmes et Réseaux</h4>
                             <ul>
@@ -181,10 +185,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        genererFooter("../");
-    </script>
 
     <script>
         // Gestion de la popup BTS SIO

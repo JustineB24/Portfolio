@@ -20,20 +20,18 @@
     <meta property="og:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
     <meta property="og:url" content="https://justineb24.github.io/Portfolio/pages/projet-details.html">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/Logo_portfolio.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/projet-details.css" media="all" type="text/css">
-    <script src="../js/structure-globale.js"></script>
+    <script>try{if(localStorage.getItem('dark-mode')==='true')document.documentElement.classList.add('dark-theme')}catch(e){}</script>
+    <script src="../js/structure-globale.js" defer></script>
 
     <title>Portfolio | Détails du projet</title>
 </head>
 
 <body>
-    <script>
-        genererHeader("../");
-    </script>
-
     <!-- Contenu principal -->
     <main>
         <div class="projet-details">
@@ -41,7 +39,7 @@
             <!-- Titre du projet et flèche retour -->
             <div class="title-container">
                 <a href="projets.html" class="back-button">
-                    <img class="fleche" src="../assets/fleche-projet.png" alt="Retour aux projets">
+                    <img class="fleche" src="../assets/fleche-projet.png" alt="Retour aux projets" width="96" height="96">
                 </a>
                 <h1 id="projet-title"></h1>
             </div>
@@ -73,12 +71,8 @@
         </div>
     </main>
 
-    <script>
-        genererFooter("../");
-    </script>
-
     <!-- Lien JS -->
-    <script src="../js/projet-details.js"></script>
+    <script src="../js/projet-details.js" defer></script>
 </body>
 
 </html>

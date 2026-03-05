@@ -6,6 +6,16 @@ let currentIndex = 0;
 
 let dernierFocusAvantModale = null;
 
+// Récupère le srcset WebP depuis le <picture> parent, ou le src original
+function getWebpSrc(img) {
+    const picture = img.closest("picture");
+    if (picture) {
+        const source = picture.querySelector('source[type="image/webp"]');
+        if (source) return source.srcset;
+    }
+    return img.src;
+}
+
 // Ouvre la modale avec l'image
 function ouvrirModale(img) {
     const modal = document.getElementById("zoom-modal");
@@ -15,7 +25,7 @@ function ouvrirModale(img) {
     modal.classList.add("visible");
     document.body.style.overflow = 'hidden';
 
-    modalImg.src = img.src;
+    modalImg.src = getWebpSrc(img);
     currentIndex = Array.from(images).indexOf(img);
 
     // Donner le focus au bouton fermer
@@ -38,14 +48,14 @@ function closeModal() {
 // Passer à l'image suivante
 function nextImage() {
     currentIndex = (currentIndex + 1) % images.length;
-    document.getElementById("zoom-modal-img").src = images[currentIndex].src;
+    document.getElementById("zoom-modal-img").src = getWebpSrc(images[currentIndex]);
     resetTransform();
 }
 
 // Passer à l'image précédente
 function prevImage() {
     currentIndex = (currentIndex - 1 + images.length) % images.length;
-    document.getElementById("zoom-modal-img").src = images[currentIndex].src;
+    document.getElementById("zoom-modal-img").src = getWebpSrc(images[currentIndex]);
     resetTransform();
 }
 

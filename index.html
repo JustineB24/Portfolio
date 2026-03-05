@@ -9,10 +9,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio Justine BLIN BTS SIO">
-    <meta name="keywords" content="resume, cv, portfolio, personal, developer, designer, modern, web, bts, sio, slam, portfolio bts, portfolio bts sio, portfolio bts sio slam, portfolio bts sio sisr, bts, brevet, de, technicien, supérieur, services, informatiques, aux, organisations, lycée, bts sio, sio, option, slam, solutions logicielles et applications métiers, logiciels, applications, développement, justine, blin, justine blin">
+    <meta name="description" content="Portfolio de développement web et projets informatiques de Justine BLIN, étudiante en Bachelor Développement & IA.">
     <meta name="author" content="Justine BLIN">
     <meta name="theme-color" content="#a90000">
     <!-- Open Graph -->
@@ -27,7 +26,7 @@
     <meta name="twitter:title" content="Portfolio | Justine BLIN">
     <meta name="twitter:description" content="Portfolio de développement web et projets informatiques de Justine BLIN.">
     <meta name="twitter:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/Logo_portfolio.png">
+    <link rel="icon" type="image/png" href="./assets/Logo_portfolio.png">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="./css/global.css" media="all" type="text/css">
@@ -43,7 +42,11 @@
     <!-- Contenu principal -->
     <main>
         <section class="hero">
-            <img class="initials" src="assets/Logo_portfolio.png" alt="Logo JB" width="500" height="500">
+            <picture>
+                <source srcset="assets/Logo_portfolio.webp" type="image/webp">
+                <img class="initials" src="assets/Logo_portfolio.png" alt="Logo JB" width="500" height="500">
+            </picture>
+            <h1 class="sr-only">Portfolio de Justine BLIN</h1>
             <div class="txt-rotate" data-period="2000"
                 data-rotate='[ "Bienvenue sur mon portfolio !", "Découvrez mes projets.", "Explorez mon univers.", "Bonne visite !"]'>
             </div>
@@ -57,7 +60,7 @@
                     et compétences, mais aussi mon évolution constante dans le domaine du développement. Curieuse et
                     créative, je suis en permanence en quête d'apprentissage pour découvrir de nouvelles technologies et
                     perfectionner mes savoir-faire.</p>
-                <a class="btn-cv" href="cv_blin_justine.pdf" download target="_blank" rel="noopener noreferrer">📄 Télécharger mon CV</a>
+                <a class="btn-cv" href="cv_blin_justine.pdf" download>📄 Télécharger mon CV</a>
             </div>
             <div class="card-accueil">
                 <h2><a href="pages/competences.html">Compétences</a></h2>

@@ -9,17 +9,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio Justine BLIN BTS SIO">
+    <meta name="description" content="BTS SIO : spécialités SLAM et SISR, documents et tableau de synthèse de Justine BLIN.">
     <meta name="author" content="Justine BLIN">
     <meta name="theme-color" content="#a90000">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Portfolio | Documents">
-    <meta property="og:description" content="Documents et tableau de synthèse de Justine BLIN.">
+    <meta property="og:title" content="Portfolio | BTS SIO">
+    <meta property="og:description" content="BTS SIO : spécialités SLAM et SISR, documents et tableau de synthèse de Justine BLIN.">
     <meta property="og:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
     <meta property="og:url" content="https://justineb24.github.io/Portfolio/pages/documents.html">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/Logo_portfolio.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Portfolio | BTS SIO">
+    <meta name="twitter:description" content="BTS SIO : spécialités SLAM et SISR, documents et tableau de synthèse de Justine BLIN.">
+    <meta name="twitter:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
+    <link rel="icon" type="image/png" href="../assets/Logo_portfolio.png">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
@@ -28,7 +33,7 @@
     <script>try{if(localStorage.getItem('dark-mode')==='true')document.documentElement.classList.add('dark-theme')}catch(e){}</script>
     <script src="../js/structure-globale.js" defer></script>
 
-    <title>Portfolio | Documents</title>
+    <title>Portfolio | BTS SIO</title>
 </head>
 
 <body>
@@ -36,8 +41,63 @@
     <main>
         <section class="page-header">
             <div class="header-content">
-                <h1><i class="fas fa-file-alt" aria-hidden="true"></i> Documents</h1>
-                <p>Retrouvez ici mes documents importants : tableau de synthèse, ressources et fichiers utiles.</p>
+                <h1><i class="fas fa-graduation-cap" aria-hidden="true"></i> BTS SIO</h1>
+                <p>Découvrez le BTS SIO, ses spécialités et mes documents associés.</p>
+            </div>
+        </section>
+
+        <!-- Section BTS SIO -->
+        <section class="documents-container">
+            <div class="document-card">
+                <div class="document-header">
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                    <h2>BTS SIO</h2>
+                </div>
+                <p class="document-description">Le BTS SIO (Services Informatiques aux Organisations) est un diplôme
+                    national français de niveau Bac+2, qui forme des techniciens supérieurs capables de concevoir,
+                    développer, déployer et maintenir des solutions informatiques adaptées aux besoins des entreprises.
+                </p>
+
+                <div class="bts-specialites">
+                    <h3>Spécialités du BTS SIO</h3>
+                    <div class="specialites-container">
+                        <!-- Bloc SLAM -->
+                        <div class="specialite-card">
+                            <picture>
+                                <source srcset="../assets/CodeSLAM.webp" type="image/webp">
+                                <img src="../assets/CodeSLAM.jpg" alt="Illustration de la spécialité SLAM"
+                                     loading="lazy" width="800" height="450">
+                            </picture>
+                            <h4>SLAM — Solutions Logicielles et Applications Métiers</h4>
+                            <ul>
+                                <li>Conception et développement d'applications</li>
+                                <li>Programmation et bases de données</li>
+                                <li>Développement web et mobile</li>
+                                <li>Analyse des besoins utilisateurs et gestion de projets</li>
+                            </ul>
+                            <p><strong>Débouchés :</strong> Développeur informatique, Analyste-programmeur, Technicien
+                                informatique, Responsable des services applicatifs, Développeur d'applications.</p>
+                        </div>
+
+                        <!-- Bloc SISR -->
+                        <div class="specialite-card">
+                            <picture>
+                                <source srcset="../assets/ServeurSISR.webp" type="image/webp">
+                                <img src="../assets/ServeurSISR.jpg" alt="Illustration de la spécialité SISR"
+                                     loading="lazy" width="800" height="450">
+                            </picture>
+                            <h4>SISR — Solutions d'Infrastructure, Systèmes et Réseaux</h4>
+                            <ul>
+                                <li>Administration et gestion des réseaux informatiques</li>
+                                <li>Sécurité des systèmes d'information</li>
+                                <li>Virtualisation et maintenance des infrastructures</li>
+                                <li>Déploiement et supervision des systèmes</li>
+                            </ul>
+                            <p><strong>Débouchés :</strong> Administrateur systèmes et réseaux, Technicien
+                                d'infrastructure, Pilote d'exploitation, Technicien des réseaux de télécommunications.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -65,7 +125,7 @@
             <div class="pdf-viewer-card">
                 <h3>Aperçu du document</h3>
                 <div class="pdf-container">
-                    <iframe src="../tableau_de_synthese_blin_justine.pdf" title="Tableau de synthèse PDF"></iframe>
+                    <iframe src="../tableau_de_synthese_blin_justine.pdf" title="Tableau de synthèse PDF" loading="lazy"></iframe>
                 </div>
             </div>
         </section>

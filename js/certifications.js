@@ -1,3 +1,4 @@
+(function() {
 // Stocker toutes les images dans un tableau
 const images = document.querySelectorAll(".gallery .certif");
 
@@ -16,6 +17,19 @@ function getWebpSrc(img) {
     return img.src;
 }
 
+// Attacher les listeners sur chaque image (remplace les onclick inline)
+images.forEach(function (img) {
+    img.addEventListener("click", function () {
+        ouvrirModale(img);
+    });
+    img.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            ouvrirModale(img);
+        }
+    });
+});
+
 // Ouvre la modale avec l'image
 function ouvrirModale(img) {
     const modal = document.getElementById("zoom-modal");
@@ -23,7 +37,7 @@ function ouvrirModale(img) {
 
     dernierFocusAvantModale = document.activeElement;
     modal.classList.add("visible");
-    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
 
     modalImg.src = getWebpSrc(img);
     currentIndex = Array.from(images).indexOf(img);
@@ -38,7 +52,7 @@ function closeModal() {
     const modal = document.getElementById("zoom-modal");
     modal.classList.remove("visible");
     resetTransform();
-    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = '';
 
     if (dernierFocusAvantModale) {
         dernierFocusAvantModale.focus();
@@ -181,3 +195,4 @@ modalImg.addEventListener("mouseleave", function () {
     isDragging = false;
     modalImg.classList.remove("grabbing");
 });
+})();

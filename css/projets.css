@@ -20,14 +20,14 @@
 }
 
 .filtre-btn:hover {
-    border-color: #960000;
-    color: #960000;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .filtre-btn.active {
-    background-color: #960000;
-    color: white;
-    border-color: #960000;
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    border-color: var(--primary-color);
 }
 
 .projet-container {
@@ -40,7 +40,16 @@
 
 /* Animation show/hide des cartes */
 .card {
+    height: 20rem;
+    width: 30rem;
+    border-radius: 20px;
     transition: transform 0.3s, box-shadow 0.3s, opacity 0.4s, scale 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
 .card.hidden {
@@ -49,19 +58,6 @@
     pointer-events: none;
     position: absolute !important;
     visibility: hidden;
-}
-
-.card {
-    height: 20rem;
-    width: 30rem;
-    border-radius: 20px;
-    transition: transform .3s, box-shadow .3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem;
-    cursor: pointer;
-    flex-shrink: 0;
 }
 
 .card2 {
@@ -78,7 +74,7 @@
 }
 
 .card2 h2 {
-    color: white;
+    color: var(--button-text-color);
     font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: bold;

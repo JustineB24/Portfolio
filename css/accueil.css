@@ -39,14 +39,9 @@
     }
 }
 
-/* Curseur clignotant en mode clair */
+/* Curseur clignotant */
 .txt-rotate>.wrap {
-    border-right: 0.08em solid black;
-}
-
-/* Curseur clignotant en mode sombre */
-.dark-theme .txt-rotate>.wrap {
-    border-right: 0.08em solid white;
+    border-right: 0.08em solid var(--text-color);
 }
 
 .sections {
@@ -83,11 +78,11 @@
     display: inline-block;
     padding: 0.75rem 1.5rem;
     background: var(--primary-color);
-    color: white;
+    color: var(--button-text-color);
     border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
-    transition: background 0.3s;
+    transition: background-color 0.3s;
 }
 
 .btn-cv:hover {

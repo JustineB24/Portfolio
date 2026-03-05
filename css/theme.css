@@ -237,7 +237,7 @@
         --container-width: 2em;
         --container-height: 1em;
         --sun-moon-diameter: 0.75em;
-        --circle-container-diameter: 2.50;
+        --circle-container-diameter: 2.50em;
     }
 
     .theme-switch__container {

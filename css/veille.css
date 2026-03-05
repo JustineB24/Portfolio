@@ -1,11 +1,11 @@
 body {
-    background: url('../assets/Veille/raspberry-pi-os-logo-with-board-background-3.webp') no-repeat center center fixed;
+    background: url('../assets/Veille/raspberry-pi-os-logo-with-board-background-3.webp') no-repeat center center scroll;
     background-size: cover;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 1025px) {
     body {
-        background-attachment: scroll;
+        background-attachment: fixed;
     }
 }
 
@@ -34,7 +34,7 @@ main hr {
     display: inline-flex;
     border: none;
     height: 2px;
-    background: linear-gradient(to right, #ff0000, #000);
+    background: linear-gradient(to right, var(--primary-color), var(--text-color));
     margin: 20px 0;
     width: 30%;
     max-width: 50%;
@@ -93,9 +93,9 @@ main img {
 }
 
 .comparatif th {
-    background-color: rgb(150, 0, 0);
+    background-color: var(--primary-color);
     font-weight: bold;
-    color: white;
+    color: var(--button-text-color);
 }
 
 .comparatif tr {
@@ -111,7 +111,7 @@ main img {
 .innovations li {
     margin-bottom: 20px;
     background-color: var(--background-color);
-    border-left: 5px solid #c0392b;
+    border-left: 5px solid var(--primary-color);
     padding: 10px 15px;
     border-radius: 8px;
     transition: background-color 0.3s;
@@ -140,7 +140,7 @@ main img {
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--card-background);
 }
 
 .timeline li strong {
@@ -151,7 +151,7 @@ main img {
     margin-top: 20px;
     font-size: 1.2em;
     font-weight: bold;
-    color: #d32f2f;
+    color: var(--primary-color);
 }
 
 /* RESPONSIVE DESIGN */

@@ -37,7 +37,7 @@ filtreBtns.forEach(btn => {
             } else if (filtre === 'bts' || filtre === 'stage') {
                 visible = type === filtre;
             } else {
-                visible = techs.split(',').includes(filtre);
+                visible = techs ? techs.split(',').includes(filtre) : false;
             }
 
             if (visible) {

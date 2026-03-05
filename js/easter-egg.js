@@ -279,12 +279,24 @@
     function afficherModale(titre, contenu, onFermer) {
         const modale = document.createElement('div');
         modale.classList.add('ee-modale');
-        modale.innerHTML =
-            '<div class="ee-modale-contenu">' +
-                '<h2>' + titre + '</h2>' +
-                '<p>' + contenu + '</p>' +
-                '<span class="ee-fermer">Fermer</span>' +
-            '</div>';
+
+        const contenuDiv = document.createElement('div');
+        contenuDiv.classList.add('ee-modale-contenu');
+
+        const h2 = document.createElement('h2');
+        h2.textContent = titre;
+        contenuDiv.appendChild(h2);
+
+        const p = document.createElement('p');
+        p.innerHTML = contenu; // Contenu statique uniquement (pas de données utilisateur)
+        contenuDiv.appendChild(p);
+
+        const fermerBtn = document.createElement('button');
+        fermerBtn.classList.add('ee-fermer');
+        fermerBtn.textContent = 'Fermer';
+        contenuDiv.appendChild(fermerBtn);
+
+        modale.appendChild(contenuDiv);
         document.body.appendChild(modale);
         modale.offsetHeight;
         modale.classList.add('visible');
@@ -399,8 +411,9 @@
             gouttes[i] = Math.floor(Math.random() * -canvas.height / 16);
         }
         const chars = 'アイウエオカキクケコサシスセソタチツテト0123456789ABCDEF';
-        let animId;
+        let running = true;
         function dessiner() {
+            if (!running) return;
             ctx.fillStyle = 'rgba(0, 0, 0, 0.06)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = '#0f0';
@@ -410,21 +423,19 @@
                 if (gouttes[j] * 16 > canvas.height && Math.random() > 0.975) gouttes[j] = 0;
                 gouttes[j]++;
             }
-            animId = requestAnimationFrame(dessiner);
+            requestAnimationFrame(dessiner);
         }
         dessiner();
-        return { canvas: canvas, animId: animId };
+        return { canvas: canvas, stop: function() { running = false; } };
     }
 
     function lancerKonami() {
         easterEggActif = true;
         lancerConfettis();
         document.body.classList.add('ee-flip');
-        let matrixCanvas, matrixAnimId;
+        let matrixResult;
         setTimeout(function () {
-            const result = lancerMatrix();
-            matrixCanvas = result.canvas;
-            matrixAnimId = result.animId;
+            matrixResult = lancerMatrix();
         }, 500);
         setTimeout(function () {
             afficherModale(
@@ -432,8 +443,10 @@
                 'Tu as trouvé le secret !<br>Le fameux <span class="ee-code">\u2191 \u2191 \u2193 \u2193 \u2190 \u2192 \u2190 \u2192 B A</span><br>Merci d\'avoir exploré mon portfolio.',
                 function () {
                     document.body.classList.remove('ee-flip');
-                    if (matrixCanvas) matrixCanvas.remove();
-                    if (matrixAnimId) cancelAnimationFrame(matrixAnimId);
+                    if (matrixResult) {
+                        matrixResult.stop();
+                        matrixResult.canvas.remove();
+                    }
                     document.querySelectorAll('.ee-confetti').forEach(function (c) { c.remove(); });
                 }
             );
@@ -685,7 +698,7 @@
         easterEggActif = true;
         const result = lancerMatrix();
         setTimeout(function () {
-            cancelAnimationFrame(result.animId);
+            result.stop();
             result.canvas.remove();
             easterEggActif = false;
         }, 8000);
@@ -751,8 +764,8 @@
                     if (secousseCount >= 3) {
                         secousseCount = 0;
                         // Lancer un easter egg aleatoire parmi les visuels
-                        var eesMobiles = [lancerDisco, lancerGravity, lancerBarrelRoll, lancerRainbow];
-                        var ee = eesMobiles[Math.floor(Math.random() * eesMobiles.length)];
+                        const eesMobiles = [lancerDisco, lancerGravity, lancerBarrelRoll, lancerRainbow];
+                        const ee = eesMobiles[Math.floor(Math.random() * eesMobiles.length)];
                         ee();
                     }
                 }
@@ -764,7 +777,7 @@
         });
 
         // Reset du compteur si pas de secousse pendant 1s
-        setInterval(function () {
+        const resetInterval = setInterval(function () {
             if (Date.now() - dernierSecousse > 1000) {
                 secousseCount = 0;
             }

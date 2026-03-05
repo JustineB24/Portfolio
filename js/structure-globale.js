@@ -1,5 +1,5 @@
 function validerChemin(chemin) {
-    if (typeof chemin !== 'string' || !/^[./]+$/.test(chemin)) {
+    if (typeof chemin !== 'string' || !/^(\.\/|\.\.\/)+$/.test(chemin)) {
         throw new Error('Chemin invalide : ' + chemin);
     }
     return chemin;
@@ -7,6 +7,26 @@ function validerChemin(chemin) {
 
 function genererHeader(chemin) {
     chemin = validerChemin(chemin);
+
+    // Source unique pour les liens de navigation
+    const navItems = [
+        { href: 'index.html', label: 'Accueil' },
+        { href: 'pages/apropos.html', label: 'À propos' },
+        { href: 'pages/competences.html', label: 'Compétences' },
+        { href: 'pages/projets.html', label: 'Projets' },
+        { href: 'pages/veille.html', label: 'Veille Technologique' },
+        { href: 'pages/documents.html', label: 'BTS SIO' },
+        { href: 'pages/contact.html', label: 'Contact' }
+    ];
+
+    const menuDesktop = navItems.map(function (item) {
+        return '<li class="menu-item"><a class="onglet" href="' + chemin + item.href + '">' + item.label + '</a></li>';
+    }).join('\n                    ');
+
+    const menuBurger = navItems.map(function (item) {
+        return '<li>\n                            <a class="onglet-burger" href="' + chemin + item.href + '">' + item.label + '</a>\n                        </li>';
+    }).join('\n                        ');
+
     const headerHTML = `
         <header>
             <a class="titre-nom" href="${chemin}index.html"><img src="${chemin}assets/Logo_portfolio.png" alt="Logo JB" class="logo-header" width="50" height="50">Justine BLIN</a>
@@ -35,18 +55,12 @@ function genererHeader(chemin) {
             <!-- Menu de navigation -->
             <nav class="menu">
                 <ul class="nav-menu">
-                    <li class="menu-item"><a class="onglet" href="${chemin}index.html">Accueil</a></li>
-                    <li class="menu-item"><a class="onglet" href="${chemin}pages/apropos.html">À propos</a></li>
-                    <li class="menu-item"><a class="onglet" href="${chemin}pages/competences.html">Compétences</a></li>
-                    <li class="menu-item"><a class="onglet" href="${chemin}pages/projets.html">Projets</a></li>
-                    <li class="menu-item"><a class="onglet" href="${chemin}pages/veille.html">Veille Technologique</a></li>
-                    <li class="menu-item"><a class="onglet" href="${chemin}pages/documents.html">Documents</a></li>
-                    <li class="menu-item"><a class="onglet" href="${chemin}pages/contact.html">Contact</a></li>
+                    ${menuDesktop}
                 </ul>
             </nav>
             <!-- Menu burger -->
             <input class="check-icon" id="check-icon" name="check-icon" type="checkbox" aria-label="Ouvrir le menu de navigation">
-            <label class="icon-menu" for="check-icon" aria-label="Menu burger">
+            <label class="icon-menu" for="check-icon">
                 <div class="bar bar--1"></div>
                 <div class="bar bar--2"></div>
                 <div class="bar bar--3"></div>
@@ -54,27 +68,7 @@ function genererHeader(chemin) {
             <div class="menu-burger">
                 <div class="side-menu">
                     <ul>
-                        <li>
-                            <a class="onglet-burger" href="${chemin}index.html">Accueil</a>
-                        </li>
-                        <li>
-                            <a class="onglet-burger" href="${chemin}pages/apropos.html">À propos</a>
-                        </li>
-                        <li>
-                            <a class="onglet-burger" href="${chemin}pages/competences.html">Compétences</a>
-                        </li>
-                        <li>
-                            <a class="onglet-burger" href="${chemin}pages/projets.html">Projets</a>
-                        </li>
-                        <li>
-                            <a class="onglet-burger" href="${chemin}pages/veille.html">Veille Technologique</a>
-                        </li>
-                        <li>
-                            <a class="onglet-burger" href="${chemin}pages/documents.html">Documents</a>
-                        </li>
-                        <li>
-                            <a class="onglet-burger" href="${chemin}pages/contact.html">Contact</a>
-                        </li>
+                        ${menuBurger}
                     </ul>
                 </div>
             </div>
@@ -125,23 +119,21 @@ function genererFooter(chemin) {
     // Mise à jour de l'année automatiquement
     document.getElementById('year').textContent = new Date().getFullYear().toString();
 
-    // Ajout automatique des scripts communs (theme.js puis menu-burger.js)
-    // Chargement séquentiel pour garantir l'ordre d'exécution
-    const scripts = ['theme.js', 'menu-burger.js', 'scroll-animations.js', 'easter-egg.js'];
-    let index = 0;
-
-    function chargerScriptSuivant() {
-        if (index >= scripts.length) return;
-        const script = document.createElement('script');
-        script.src = `${chemin}js/${scripts[index]}`;
-        script.onload = function () {
-            index++;
-            chargerScriptSuivant();
-        };
-        document.body.appendChild(script);
-    }
-
-    chargerScriptSuivant();
+    // Chargement des scripts communs
+    // theme.js doit se charger en premier (séquentiel), puis les autres en parallèle
+    const scriptTheme = document.createElement('script');
+    scriptTheme.src = `${chemin}js/theme.js`;
+    scriptTheme.onerror = function () { console.error('Échec du chargement de theme.js'); };
+    scriptTheme.onload = function () {
+        const scriptsParalleles = ['menu-burger.js', 'scroll-animations.js', 'easter-egg.js'];
+        scriptsParalleles.forEach(function (nom) {
+            const s = document.createElement('script');
+            s.src = `${chemin}js/${nom}`;
+            s.onerror = function () { console.error('Échec du chargement de ' + nom); };
+            document.body.appendChild(s);
+        });
+    };
+    document.body.appendChild(scriptTheme);
 }
 
 // Auto-exécution (ce script est chargé avec defer, le DOM est prêt)

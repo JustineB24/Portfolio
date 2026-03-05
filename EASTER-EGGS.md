@@ -53,9 +53,43 @@ Liste des easter eggs cachés dans le site. Chut, c'est secret !
 - **Déclencheur** : Ouvrir la console développeur (F12)
 - **Effet** : ASCII art "JB" et message secret avec indices
 
+### Matrix standalone
+
+- **Déclencheur** : Taper "matrix" au clavier
+- **Effet** : Pluie de caractères verts style Matrix en plein écran (8 secondes)
+
+### Barrel Roll
+
+- **Déclencheur** : Taper "roll" au clavier
+- **Effet** : Le site entier fait une rotation 360° fluide (1.5 secondes)
+
+### Mode 90's
+
+- **Déclencheur** : Taper "90s" au clavier
+- **Effet** : Le site prend un look rétro GeoCities : Comic Sans, couleurs criardes, header arc-en-ciel, texte défilant en bas de page (8 secondes)
+
+### Secouer le téléphone (mobile)
+
+- **Déclencheur** : Secouer le téléphone 3 fois
+- **Effet** : Lance un easter egg visuel aléatoire parmi disco, gravité, barrel roll ou rainbow
+
+---
+
+## Améliorations UX
+
+### Barre de progression au scroll
+
+- **Localisation** : Barre fine en haut de la page, sous le header
+- **Effet** : Indique la position de lecture dans la page, couleur primaire
+
 ---
 
 ## Refusés / retirés
+
+### ❌ Morse sur le logo
+
+- **Déclencheur** : Cliquer sur "Justine BLIN" dans le header
+- **Effet** : Le texte clignote en morse pour épeler "JB" (jaune lumineux)
 
 ### ❌ Logo cliquable secret
 

@@ -3,7 +3,7 @@
 Liste des améliorations et nouvelles fonctionnalités envisageables pour le portfolio.
 Classées par priorité et effort estimé.
 
-**Légende** : ❌ = amélioration refusée pour le moment
+**Légende** : ❌ = Refusé / retiré
 
 ---
 
@@ -25,7 +25,7 @@ Classées par priorité et effort estimé.
 
 ---
 
-## Refusées pour le moment
+## Refusés / retirés
 
 ### ❌ Indicateur de progression de lecture
 

@@ -9,7 +9,7 @@ function genererHeader(chemin) {
     chemin = validerChemin(chemin);
     const headerHTML = `
         <header>
-            <a class="titre-nom" href="${chemin}index.html">Justine BLIN</a>
+            <a class="titre-nom" href="${chemin}index.html"><img src="${chemin}assets/Logo_portfolio.png" alt="Logo JB" class="logo-header" width="50" height="50">Justine BLIN</a>
             <!-- Conteneur des boutons réseaux sociaux -->
             <div class="reseaux">
                 <!-- From Uiverse.io by wilsondesouza -->

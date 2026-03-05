@@ -196,6 +196,56 @@
             font-size: 0.9rem;
             margin-top: 0.5rem;
         }
+        .ee-barrel-roll {
+            animation: ee-barrel-roll-anim 1.5s ease-in-out;
+        }
+        @keyframes ee-barrel-roll-anim {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .ee-90s {
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive !important;
+            background: #ff00ff !important;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text y="24" font-size="24">✨</text></svg>'), auto !important;
+        }
+        .ee-90s * {
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive !important;
+        }
+        .ee-90s h1, .ee-90s h2, .ee-90s h3, .ee-90s h4 {
+            color: #00ff00 !important;
+            text-shadow: 2px 2px #ff0000, -2px -2px #0000ff !important;
+        }
+        .ee-90s a {
+            color: #ffff00 !important;
+        }
+        .ee-90s header {
+            background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #8800ff) !important;
+            animation: ee-90s-header 1s linear infinite !important;
+            background-size: 200% 100% !important;
+        }
+        @keyframes ee-90s-header {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+        .ee-90s-marquee {
+            position: fixed;
+            bottom: 4rem;
+            left: 0;
+            width: 100%;
+            z-index: 10001;
+            pointer-events: none;
+            color: #ffff00;
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px #ff0000;
+            white-space: nowrap;
+            animation: ee-marquee 4s linear infinite;
+        }
+        @keyframes ee-marquee {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-100%); }
+        }
         .ee-pirate-flag {
             position: fixed;
             top: 50%;
@@ -271,7 +321,10 @@
         'gravity': lancerGravity,
         'arrr': lancerPirate,
         'snake': lancerSnake,
-        'rainbow': lancerRainbow
+        'rainbow': lancerRainbow,
+        'matrix': lancerMatrixStandalone,
+        'roll': lancerBarrelRoll,
+        '90s': lancer90s
     };
 
     document.addEventListener('keydown', function (e) {
@@ -622,6 +675,100 @@
         }
 
         document.addEventListener('keydown', handleKey);
+    }
+
+    // ==============================
+    // Matrix standalone
+    // ==============================
+
+    function lancerMatrixStandalone() {
+        easterEggActif = true;
+        const result = lancerMatrix();
+        setTimeout(function () {
+            cancelAnimationFrame(result.animId);
+            result.canvas.remove();
+            easterEggActif = false;
+        }, 8000);
+    }
+
+    // ==============================
+    // Barrel Roll
+    // ==============================
+
+    function lancerBarrelRoll() {
+        easterEggActif = true;
+        document.body.classList.add('ee-barrel-roll');
+        setTimeout(function () {
+            document.body.classList.remove('ee-barrel-roll');
+            easterEggActif = false;
+        }, 1500);
+    }
+
+    // ==============================
+    // Mode 90's
+    // ==============================
+
+    function lancer90s() {
+        easterEggActif = true;
+        document.body.classList.add('ee-90s');
+        const marquee = document.createElement('div');
+        marquee.classList.add('ee-90s-marquee');
+        marquee.textContent = '~ * ~ Bienvenue sur mon super site ~ * ~ Livre d\'or ~ * ~ Compteur de visiteurs : 999 999 ~ * ~';
+        document.body.appendChild(marquee);
+        setTimeout(function () {
+            document.body.classList.remove('ee-90s');
+            marquee.remove();
+            easterEggActif = false;
+        }, 8000);
+    }
+
+    // ==============================
+    // Easter egg mobile : secouer le telephone
+    // ==============================
+
+    let dernierX = null, dernierY = null, dernierZ = null;
+    let secousseCount = 0;
+    let dernierSecousse = 0;
+    const SEUIL_SECOUSSE = 25;
+
+    if (window.DeviceMotionEvent) {
+        window.addEventListener('devicemotion', function (e) {
+            if (easterEggActif) return;
+            const acc = e.accelerationIncludingGravity;
+            if (!acc || acc.x === null) return;
+
+            if (dernierX !== null) {
+                const deltaX = Math.abs(acc.x - dernierX);
+                const deltaY = Math.abs(acc.y - dernierY);
+                const deltaZ = Math.abs(acc.z - dernierZ);
+
+                if (deltaX + deltaY + deltaZ > SEUIL_SECOUSSE) {
+                    const maintenant = Date.now();
+                    if (maintenant - dernierSecousse > 300) {
+                        secousseCount++;
+                        dernierSecousse = maintenant;
+                    }
+                    if (secousseCount >= 3) {
+                        secousseCount = 0;
+                        // Lancer un easter egg aleatoire parmi les visuels
+                        var eesMobiles = [lancerDisco, lancerGravity, lancerBarrelRoll, lancerRainbow];
+                        var ee = eesMobiles[Math.floor(Math.random() * eesMobiles.length)];
+                        ee();
+                    }
+                }
+            }
+
+            dernierX = acc.x;
+            dernierY = acc.y;
+            dernierZ = acc.z;
+        });
+
+        // Reset du compteur si pas de secousse pendant 1s
+        setInterval(function () {
+            if (Date.now() - dernierSecousse > 1000) {
+                secousseCount = 0;
+            }
+        }, 1000);
     }
 
     // ==============================

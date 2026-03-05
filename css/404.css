@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 30vh;
+    min-height: 60vh;
     text-align: center;
     padding: 2rem;
 }
@@ -22,7 +22,7 @@
 
 .erreur-404 p {
     font-size: 1.2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     max-width: 500px;
 }
 
@@ -36,40 +36,13 @@
     font-size: 1.1rem;
     font-weight: bold;
     transition: background-color 0.3s;
+    margin-top: 1.5rem;
 }
 
 .btn-accueil:hover {
     background-color: #b30000;
 }
 
-/* Jeu du dino */
-.dino-game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 1rem 3rem;
-}
-
-.dino-invite {
-    font-size: 1rem;
-    color: var(--text-color);
-    opacity: 0.7;
-    margin-bottom: 0.5rem;
-}
-
-#dino-canvas {
-    border: 2px solid var(--text-color);
-    border-radius: 8px;
-    cursor: pointer;
-    max-width: 100%;
-}
-
-.dino-score {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: var(--text-color);
-    margin-top: 0.5rem;
-}
 
 @media (max-width: 480px) {
     .erreur-404 h1 {
@@ -78,9 +51,5 @@
 
     .erreur-404 h2 {
         font-size: 1.5rem;
-    }
-
-    .dino-invite {
-        font-size: 0.85rem;
     }
 }

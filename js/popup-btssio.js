@@ -42,7 +42,7 @@
         });
     });
 
-    // Fermer la popup au clic sur le bouton fermeture
+    // Fermer le popup au clic sur le bouton fermeture
     popupClose.addEventListener('click', fermerPopup);
 
     // Fermer la popup en cliquant en dehors

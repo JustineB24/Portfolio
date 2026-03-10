@@ -6,9 +6,8 @@
     min-height: 60vh;
     text-align: center;
     padding: 2rem;
-    background:
-        radial-gradient(ellipse at 50% 30%, rgba(150, 0, 0, 0.1) 0%, transparent 60%),
-        var(--background-color);
+    background: radial-gradient(ellipse at 50% 30%, rgba(150, 0, 0, 0.1) 0%, transparent 60%),
+    var(--background-color);
 }
 
 /* Illustration — écran cassé */
@@ -20,7 +19,7 @@
     width: 120px;
     height: 90px;
     border: 3px solid var(--text-color);
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     position: relative;
     display: flex;
     align-items: center;
@@ -55,9 +54,17 @@
     background: var(--text-color);
 }
 
-.ecran-ligne:nth-child(1) { width: 50px; }
-.ecran-ligne:nth-child(2) { width: 35px; }
-.ecran-ligne:nth-child(3) { width: 45px; }
+.ecran-ligne:nth-child(1) {
+    width: 50px;
+}
+
+.ecran-ligne:nth-child(2) {
+    width: 35px;
+}
+
+.ecran-ligne:nth-child(3) {
+    width: 45px;
+}
 
 .ecran-erreur {
     position: absolute;
@@ -71,8 +78,14 @@
 }
 
 @keyframes pulse-erreur {
-    0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.1); }
+    0%, 100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
 }
 
 .erreur-404 h1 {
@@ -84,11 +97,21 @@
 }
 
 @keyframes glitch {
-    0%, 95%, 100% { transform: none; }
-    96% { transform: translateX(-3px); }
-    97% { transform: translateX(3px); }
-    98% { transform: translateX(-2px); }
-    99% { transform: translateX(2px); }
+    0%, 95%, 100% {
+        transform: none;
+    }
+    96% {
+        transform: translateX(-3px);
+    }
+    97% {
+        transform: translateX(3px);
+    }
+    98% {
+        transform: translateX(-2px);
+    }
+    99% {
+        transform: translateX(2px);
+    }
 }
 
 .erreur-404 h2 {
@@ -115,7 +138,7 @@
     background: var(--primary-color);
     color: var(--button-text-color);
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-size: 1rem;
     font-weight: 600;
     margin-top: 1.5rem;
@@ -130,7 +153,7 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(135deg, #b30000, #960000);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -143,7 +166,7 @@
 
 .btn-accueil:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(150, 0, 0, 0.35);
+    box-shadow: var(--shadow-primary);
 }
 
 @media (max-width: 480px) {

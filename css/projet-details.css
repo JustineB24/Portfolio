@@ -7,8 +7,8 @@
 
 /* Hero du projet */
 .projet-hero {
-    background: linear-gradient(135deg, var(--hero-color, #960000), var(--hero-color-dark, #5a0000));
-    border-radius: 14px;
+    background: linear-gradient(135deg, var(--hero-color, var(--primary-color)), var(--hero-color-dark, var(--primary-dark)));
+    border-radius: var(--radius-xl);
     padding: 2.5rem 3rem;
     margin-bottom: 2rem;
     display: flex;
@@ -56,7 +56,7 @@
     border-radius: 2rem;
     font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     backdrop-filter: blur(4px);
 }
 
@@ -85,7 +85,7 @@
     min-width: 300px;
     background-color: var(--card-background);
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     animation: fadeInUp 0.6s ease both;
     box-sizing: border-box;
 }
@@ -112,7 +112,7 @@
 
 /* Changer la couleur du texte quand on survole le lien */
 #projet-link a:hover {
-    color: #d30000;
+    color: var(--primary-light);
     transform: scale(1.05);
 }
 
@@ -173,7 +173,7 @@
     max-width: 800px;
     margin: 5rem auto;
     display: block;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: fadeInUp 1s ease;
 }
@@ -188,7 +188,7 @@
 .carrousel-track {
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     background-color: var(--card-background);
     aspect-ratio: 16 / 10;
     display: flex;
@@ -296,7 +296,7 @@
     max-width: 90%;
     max-height: 90vh;
     object-fit: contain;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
 }
 
 /* Responsive */

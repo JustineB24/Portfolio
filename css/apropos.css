@@ -5,12 +5,10 @@
     line-height: 1.7;
     color: var(--text-color);
     padding: 2rem 3rem;
-    margin: 1rem 12rem;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     background: var(--card-background);
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 1rem auto;
 }
 
 /* Bouton CV — style cohérent avec .btn-download */
@@ -32,7 +30,7 @@
     font-family: inherit;
     color: var(--button-text-color);
     margin: 2rem;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
 }
 
@@ -41,7 +39,7 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(135deg, #b30000, #960000);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -54,7 +52,7 @@
 
 .btn-cv-outline:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(150, 0, 0, 0.35);
+    box-shadow: var(--shadow-primary);
 }
 
 /* BTS SIO */
@@ -78,7 +76,7 @@
 .bloc-specialite {
     background: var(--primary-color);
     background: linear-gradient(0deg, rgb(150, 0, 0) 0%, rgb(150, 37, 37) 28%, rgb(150, 59, 59) 46%, rgb(130, 50, 50) 68%, rgb(100, 30, 30) 100%);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     padding: 20px;
     width: 40rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
@@ -121,7 +119,7 @@
 
 .bloc-specialite img {
     width: 30rem;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     display: block;
     margin: 0 auto 1rem;
 }
@@ -208,7 +206,7 @@ a.timeline-link:hover .timeline-content {
 .timeline-content {
     background: var(--card-background);
     padding: 15px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     position: relative;
     animation: fadeInUp 0.6s ease-in-out;
@@ -373,7 +371,7 @@ main hr {
 
 .popup-content {
     background: var(--background-color);
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     padding: 30px;
     width: 90%;
     max-height: 80vh;

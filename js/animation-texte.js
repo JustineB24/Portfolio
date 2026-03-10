@@ -31,9 +31,9 @@ class TxtRotate {
             delta = 500;
         }
 
-        this.timeoutId = setTimeout(() => {
+        setTimeout(() => {
             if (document.hidden) {
-                document.addEventListener('visibilitychange', () => this.tick(), { once: true });
+                document.addEventListener('visibilitychange', () => this.tick(), {once: true});
             } else {
                 this.tick();
             }

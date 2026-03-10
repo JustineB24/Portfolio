@@ -9,6 +9,17 @@
     --main-bg-rgb: 255, 255, 255;
     --card-background: #e6e6e6;
     --primary-color: #960000;
+    --primary-light: #b30000;
+    --primary-dark: #6b0000;
+    --primary-darker: #3a0000;
+    --radius-sm: 8px;
+    --radius-md: 10px;
+    --radius-lg: 12px;
+    --radius-xl: 14px;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.15);
+    --shadow-primary: 0 6px 20px rgba(150, 0, 0, 0.35);
 }
 
 /* Variables pour le thème sombre */
@@ -99,7 +110,7 @@ a {
 main p a,
 main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn-cv):not(.btn-cv-outline):not(.btn-download):not(.btn-view):not(.btn-accueil):not(.btn-envoyer) {
     background-image: linear-gradient(var(--primary-color), var(--primary-color));
-    background-size: 0% 2px;
+    background-size: 0 2px;
     background-position: bottom left;
     background-repeat: no-repeat;
     transition: background-size 0.3s;
@@ -374,15 +385,15 @@ p {
     transition: bottom 200ms 100ms, transform 100ms;
 }
 
-.check-icon:checked+.icon-menu>.bar--1 {
+.check-icon:checked + .icon-menu > .bar--1 {
     transition: top 200ms, transform 200ms 100ms;
 }
 
-.check-icon:checked+.icon-menu>.bar--3 {
+.check-icon:checked + .icon-menu > .bar--3 {
     transition: bottom 200ms, transform 200ms 100ms;
 }
 
-.check-icon:checked+.icon-menu {
+.check-icon:checked + .icon-menu {
     --pos-y-bar-one: calc(var(--gap) + var(--height-bar));
     --pos-y-bar-three: calc(var(--gap) + var(--height-bar));
     --scale-bar: 0;
@@ -422,7 +433,7 @@ p {
 }
 
 /* Affichage du menu lorsque la case est cochée */
-.check-icon:checked~.menu-burger {
+.check-icon:checked ~ .menu-burger {
     top: 0;
 }
 
@@ -441,7 +452,7 @@ footer {
     align-items: center;
 }
 
-#footer>div {
+#footer > div {
     margin: 0 10px;
 }
 
@@ -698,7 +709,7 @@ footer {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #b30000;
+    background: var(--primary-light);
 }
 
 /* Firefox */
@@ -778,7 +789,7 @@ body::before {
     inset: -2px;
     z-index: -1;
     border-radius: inherit;
-    background: conic-gradient(from 0deg, #960000, #d30000, #960000, #6b0000, #960000);
+    background: conic-gradient(from 0deg, var(--primary-color), var(--primary-light), var(--primary-color), var(--primary-dark), var(--primary-color));
     background-size: 200% 200%;
     opacity: 0;
     transition: opacity 0.4s;
@@ -791,7 +802,9 @@ body::before {
 }
 
 @keyframes borderRotate {
-    to { background-position: 200% 200%; }
+    to {
+        background-position: 200% 200%;
+    }
 }
 
 /* Curseur personnalisé (desktop uniquement) */
@@ -942,8 +955,14 @@ body::before {
 }
 
 @keyframes loaderPulse {
-    from { transform: scale(0.9); opacity: 0.5; }
-    to { transform: scale(1.1); opacity: 1; }
+    from {
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+    to {
+        transform: scale(1.1);
+        opacity: 1;
+    }
 }
 
 /* Transitions entre pages */
@@ -1048,8 +1067,12 @@ body.page-exit main {
 }
 
 @keyframes skeleton-shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 /* CSS Container Queries pour les cards */

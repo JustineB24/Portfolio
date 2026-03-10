@@ -506,16 +506,16 @@
         let annee = anneeActuelle;
         const interval = setInterval(function () {
             annee--;
-            yearEl.textContent = annee;
+            yearEl.textContent = String(annee);
             if (annee <= 1990) {
                 clearInterval(interval);
                 setTimeout(function () {
                     const interval2 = setInterval(function () {
                         annee++;
-                        yearEl.textContent = annee;
+                        yearEl.textContent = String(annee);
                         if (annee >= anneeActuelle) {
                             clearInterval(interval2);
-                            yearEl.textContent = anneeActuelle;
+                            yearEl.textContent = String(anneeActuelle);
                             afficherModale(
                                 'Retour vers le futur !',
                                 'Voyage temporel terminé.<br>Bienvenue en ' + anneeActuelle + ' !'
@@ -808,7 +808,7 @@
         });
 
         // Reset du compteur si pas de secousse pendant 1s
-        const resetInterval = setInterval(function () {
+        setInterval(function () {
             if (Date.now() - dernierSecousse > 1000) {
                 secousseCount = 0;
             }

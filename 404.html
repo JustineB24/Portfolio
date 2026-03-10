@@ -29,20 +29,32 @@
     <link rel="stylesheet" href="./css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="./css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="./css/404.css" media="all" type="text/css">
-    <script>try{if(localStorage.getItem('dark-mode')==='true')document.documentElement.classList.add('dark-theme')}catch(e){}</script>
+    <script>try{var dm=localStorage.getItem('dark-mode');if(dm==='true'||(dm===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
     <script src="js/structure-globale.js" defer></script>
 
     <title>Portfolio | Page introuvable</title>
 </head>
 
 <body>
-<main>
+<div class="loader"><img class="loader-logo" src="assets/Logo_portfolio.png" alt="Chargement" width="80" height="80"></div>
+<main id="main">
     <div class="erreur-404">
+        <div class="erreur-illustration" aria-hidden="true">
+            <div class="ecran">
+                <div class="ecran-contenu">
+                    <span class="ecran-ligne"></span>
+                    <span class="ecran-ligne"></span>
+                    <span class="ecran-ligne"></span>
+                </div>
+                <div class="ecran-erreur">!</div>
+            </div>
+        </div>
         <h1>404</h1>
         <h2>Page introuvable</h2>
-        <p>La page que vous recherchez n'existe pas ou a été déplacée.</p>
+        <p>On dirait que cette page a été compilée avec des erreurs...</p>
+        <p class="erreur-sous-texte">La page que vous recherchez n'existe pas ou a été déplacée.</p>
 
-        <a href="./index.html" class="btn-accueil">Retour à l'accueil</a>
+        <a href="./index.html" class="btn-accueil"><i class="fas fa-home"></i> Retour à l'accueil</a>
     </div>
 </main>
 </body>

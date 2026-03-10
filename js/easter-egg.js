@@ -246,6 +246,20 @@
             0% { transform: translateX(100vw); }
             100% { transform: translateX(-100%); }
         }
+        .ee-a11y {
+            font-size: 200% !important;
+        }
+        .ee-a11y * {
+            outline: 3px solid red !important;
+            font-size: inherit !important;
+        }
+        .ee-a11y a {
+            text-decoration: underline !important;
+            color: blue !important;
+        }
+        .ee-a11y img {
+            border: 5px solid yellow !important;
+        }
         .ee-pirate-flag {
             position: fixed;
             top: 50%;
@@ -336,7 +350,8 @@
         'rainbow': lancerRainbow,
         'matrix': lancerMatrixStandalone,
         'roll': lancerBarrelRoll,
-        '90s': lancer90s
+        '90s': lancer90s,
+        'a11y': lancerA11y
     };
 
     document.addEventListener('keydown', function (e) {
@@ -733,6 +748,22 @@
             marquee.remove();
             easterEggActif = false;
         }, 8000);
+    }
+
+    // ==============================
+    // Mode ULTRA-accessible (a11y)
+    // ==============================
+
+    function lancerA11y() {
+        easterEggActif = true;
+        document.body.classList.add('ee-a11y');
+        afficherModale(
+            'Mode ULTRA-accessible activé !',
+            'Tout est GROS, tout est VISIBLE, tout est CONTRASTÉ.<br>L\'accessibilité, c\'est important !',
+            function () {
+                document.body.classList.remove('ee-a11y');
+            }
+        );
     }
 
     // ==============================

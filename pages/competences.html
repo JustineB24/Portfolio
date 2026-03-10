@@ -31,15 +31,16 @@
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/competences.css" media="all" type="text/css">
-    <script>try{if(localStorage.getItem('dark-mode')==='true')document.documentElement.classList.add('dark-theme')}catch(e){}</script>
+    <script>try{var dm=localStorage.getItem('dark-mode');if(dm==='true'||(dm===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
     <script src="../js/structure-globale.js" defer></script>
 
     <title>Portfolio | Compétences</title>
 </head>
 
 <body>
+<div class="loader"><img class="loader-logo" src="../assets/Logo_portfolio.png" alt="Chargement" width="80" height="80"></div>
 <!-- Contenu principal -->
-<main>
+<main id="main">
     <section>
         <h1>Certifications</h1>
         <div class="gallery">
@@ -157,44 +158,116 @@
     <h2>Langages de programmation</h2>
     <div class="card-container">
         <div class="card-competence html">
-            <img class="svg" src="../assets/SVG/html.svg" alt="HTML" width="80" height="80">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/SVG/html.svg" alt="HTML" width="80" height="80">
+                    <span class="competence-label">HTML</span>
+                </div>
+                <div class="card-back">Structure et balisage web</div>
+            </div>
         </div>
         <div class="card-competence css">
-            <img class="svg" src="../assets/SVG/css.svg" alt="CSS" width="80" height="80">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/SVG/css.svg" alt="CSS" width="80" height="80">
+                    <span class="competence-label">CSS</span>
+                </div>
+                <div class="card-back">Mise en forme et animations</div>
+            </div>
         </div>
         <div class="card-competence js">
-            <img class="svg" src="../assets/SVG/javascript.svg" alt="JavaScript" width="80" height="80">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/SVG/javascript.svg" alt="JavaScript" width="80" height="80">
+                    <span class="competence-label">JavaScript</span>
+                </div>
+                <div class="card-back">Interactivité et logique front-end</div>
+            </div>
         </div>
         <div class="card-competence php">
-            <img class="svg" src="../assets/SVG/php.svg" alt="PHP" width="80" height="80">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/SVG/php.svg" alt="PHP" width="80" height="80">
+                    <span class="competence-label">PHP</span>
+                </div>
+                <div class="card-back">Développement back-end</div>
+            </div>
         </div>
         <div class="card-competence python">
-            <img class="svg" src="../assets/SVG/python.svg" alt="Python" width="80" height="80">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/SVG/python.svg" alt="Python" width="80" height="80">
+                    <span class="competence-label">Python</span>
+                </div>
+                <div class="card-back">Scripts et automatisation</div>
+            </div>
         </div>
         <div class="card-competence c-sharp">
-            <img class="svg" src="../assets/SVG/c-sharp.svg" alt="C#" width="80" height="80">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/SVG/c-sharp.svg" alt="C#" width="80" height="80">
+                    <span class="competence-label">C#</span>
+                </div>
+                <div class="card-back">Applications Windows et web</div>
+            </div>
         </div>
         <div class="card-competence mysql">
-            <img class="svg" src="../assets/SVG/mysql.svg" alt="MySQL" width="80" height="80">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/SVG/mysql.svg" alt="MySQL" width="80" height="80">
+                    <span class="competence-label">MySQL</span>
+                </div>
+                <div class="card-back">Bases de données relationnelles</div>
+            </div>
         </div>
     </div>
 
     <h2>Outils & Environnements de développement</h2>
     <div class="card-container">
         <div class="card-competence vscode">
-            <img class="svg" src="../assets/SVG/visual-studio-code.svg" alt="Visual Studio Code" width="80" height="80">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/SVG/visual-studio-code.svg" alt="Visual Studio Code" width="80" height="80">
+                    <span class="competence-label">VS Code</span>
+                </div>
+                <div class="card-back">Éditeur de code principal</div>
+            </div>
         </div>
         <div class="card-competence vs">
-            <img class="svg" src="../assets/SVG/visual-studio.svg" alt="Visual Studio" width="80" height="80">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/SVG/visual-studio.svg" alt="Visual Studio" width="80" height="80">
+                    <span class="competence-label">Visual Studio</span>
+                </div>
+                <div class="card-back">IDE pour C# et .NET</div>
+            </div>
         </div>
         <div class="card-competence xampp">
-            <img class="svg" src="../assets/SVG/xampp.svg" alt="XAMPP" width="80" height="80">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/SVG/xampp.svg" alt="XAMPP" width="80" height="80">
+                    <span class="competence-label">XAMPP</span>
+                </div>
+                <div class="card-back">Serveur local PHP/MySQL</div>
+            </div>
         </div>
         <div class="card-competence git">
-            <img class="svg" src="../assets/SVG/git-icon.svg" alt="Git" width="80" height="80">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/SVG/git-icon.svg" alt="Git" width="80" height="80">
+                    <span class="competence-label">Git</span>
+                </div>
+                <div class="card-back">Gestion de versions</div>
+            </div>
         </div>
         <div class="card-competence github">
-            <img class="svg" src="../assets/SVG/github-icon.svg" alt="GitHub" width="80" height="80">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/SVG/github-icon.svg" alt="GitHub" width="80" height="80">
+                    <span class="competence-label">GitHub</span>
+                </div>
+                <div class="card-back">Hébergement et collaboration</div>
+            </div>
         </div>
     </div>
 </main>

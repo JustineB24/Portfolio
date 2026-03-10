@@ -13,6 +13,11 @@ if (toggleSwitch) {
             document.documentElement.classList.remove(darkModeClass);
             body.classList.remove(darkModeClass);
         }
+        // Meta theme-color dynamique selon le thème
+        const metaTheme = document.querySelector('meta[name="theme-color"]');
+        if (metaTheme) {
+            metaTheme.content = isDarkMode ? '#1a0000' : '#a90000';
+        }
     }
 
     // Sauvegarde le mode actuel dans localStorage
@@ -25,9 +30,20 @@ if (toggleSwitch) {
     // Applique le thème lors du chargement de la page
     function loadDarkModePreference() {
         let isDarkMode = false;
+        let hasPreference = false;
         try {
-            isDarkMode = localStorage.getItem('dark-mode') === 'true';
+            const stored = localStorage.getItem('dark-mode');
+            if (stored !== null) {
+                hasPreference = true;
+                isDarkMode = stored === 'true';
+            }
         } catch (e) { /* Navigation privée */ }
+
+        // Détection automatique du thème système si aucune préférence sauvegardée
+        if (!hasPreference && window.matchMedia) {
+            isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+
         toggleDarkMode(isDarkMode);
         toggleSwitch.checked = isDarkMode;
     }

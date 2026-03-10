@@ -30,26 +30,29 @@
     border-color: var(--primary-color);
 }
 
+/* Grille des projets */
 .projet-container {
-    display: flex;
-    justify-content: center;
-    gap: 5rem;
-    flex-wrap: wrap;
-    margin: 2rem 5rem 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 2rem 3rem 5rem;
 }
 
-/* Animation show/hide des cartes */
+/* Card projet */
 .card {
-    height: 20rem;
-    width: 30rem;
-    border-radius: 20px;
+    border-radius: 14px;
+    background: var(--card-background);
+    overflow: hidden;
+    cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s, opacity 0.4s, scale 0.4s;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem;
-    cursor: pointer;
-    flex-shrink: 0;
+    flex-direction: column;
+    border-left: 4px solid var(--card-accent, var(--primary-color));
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
 .card.hidden {
@@ -60,115 +63,88 @@
     visibility: hidden;
 }
 
-.card2 {
-    height: 18rem;
-    width: 28rem;
-    background-color: #1a1a1a;
-    border-radius: 20px;
-    transition: transform .2s;
+/* Image du projet */
+.card-thumbnail {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-thumbnail picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.card-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.card:hover .card-thumbnail img {
+    transform: scale(1.05);
+}
+
+/* Contenu texte */
+.card-body {
+    padding: 1.25rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
 }
 
-.card2 h2 {
-    color: var(--button-text-color);
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 2px;
-    cursor: pointer;
-    word-break: break-word;
+.card-body h2 {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin: 0;
 }
 
-/* Effet de survol sur la carte */
-.card:hover,
-.card2:hover {
-    transform: scale(0.98);
-    border-radius: 20px;
+.card-body .card-desc {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    line-height: 1.4;
+    padding: 0;
+    margin: 0;
 }
 
-/* Couleurs spécifiques pour chaque carte */
-.card-1 {
-    background-color: #ff0000;
+/* Tags technologies */
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
 }
 
-.card-1:hover {
-    box-shadow: 0 0 30px 1px rgb(255, 0, 0);
+.card-tags span {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    background: var(--background-color);
+    color: var(--text-color);
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
-.card-2 {
-    background-color: #ff6a00;
-}
+/* Couleurs d'accent par carte */
+.card-1 { --card-accent: #ff0000; }
+.card-2 { --card-accent: #ff6a00; }
+.card-3 { --card-accent: #ffd500; }
+.card-4 { --card-accent: #007a27; }
+.card-5 { --card-accent: #0b00d6; }
+.card-6 { --card-accent: #9c00b8; }
+.card-7 { --card-accent: #0f4c81; }
+.card-8 { --card-accent: #fc4400; }
 
-.card-2:hover {
-    box-shadow: 0 0 30px 1px rgb(255, 106, 0);
-}
-
-.card-3 {
-    background-color: #ffd500;
-}
-
-.card-3:hover {
-    box-shadow: 0 0 30px 1px rgb(255, 213, 0);
-}
-
-.card-4 {
-    background-color: #007a27;
-}
-
-.card-4:hover {
-    box-shadow: 0 0 30px 1px rgb(0, 122, 39);
-}
-
-.card-5 {
-    background-color: #0b00d6;
-}
-
-.card-5:hover {
-    box-shadow: 0 0 30px 1px rgb(11, 0, 214);
-}
-
-.card-6 {
-    background-color: #9c00b8;
-}
-
-.card-6:hover {
-    box-shadow: 0 0 30px 1px rgb(156, 0, 184);
-}
-
-.card-7 {
-    background-color: #0f4c81;
-}
-
-.card-7:hover {
-    box-shadow: 0 0 30px 1px rgb(15, 76, 129);
-}
-
-.card-8 {
-    background-color: #fc4400;
-}
-
-.card-8:hover {
-    box-shadow: 0 0 30px 1px rgb(252, 68, 0);
-}
-
-/* Responsive styles */
+/* Responsive */
 @media (max-width: 1024px) {
-    .card {
-        width: 24rem;
-        height: 18rem;
-    }
-
-    .card2 {
-        width: 22rem;
-        height: 16rem;
-    }
-
-    .card2 h2 {
-        font-size: 1.4rem;
+    .projet-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        margin: 2rem;
     }
 }
 
@@ -184,44 +160,30 @@
     }
 
     .projet-container {
-        margin: 2rem;
-        gap: 2rem;
+        grid-template-columns: 1fr;
+        margin: 1rem;
+        gap: 1.5rem;
     }
 
-    .card {
-        width: 90%;
-        height: 16rem;
-    }
-
-    .card2 {
-        width: 85%;
-        height: 14rem;
-    }
-
-    .card2 h2 {
-        font-size: 1.2rem;
+    .card-thumbnail {
+        height: 180px;
     }
 }
 
 @media (max-width: 480px) {
     .projet-container {
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-items: center;
-        margin: 1rem;
+        margin: 1rem 0.5rem;
     }
 
-    .card {
-        width: 100%;
-        height: 14rem;
+    .card-thumbnail {
+        height: 150px;
     }
 
-    .card2 {
-        width: 95%;
-        height: 12rem;
-    }
-
-    .card2 h2 {
+    .card-body h2 {
         font-size: 1.1rem;
+    }
+
+    .card-body .card-desc {
+        font-size: 0.85rem;
     }
 }

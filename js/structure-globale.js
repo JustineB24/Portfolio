@@ -27,7 +27,11 @@ function genererHeader(chemin) {
         return '<li>\n                            <a class="onglet-burger" href="' + chemin + item.href + '">' + item.label + '</a>\n                        </li>';
     }).join('\n                        ');
 
+    // Skip to content (accessibilité)
+    const skipLink = '<a href="#main" class="skip-link">Aller au contenu</a>';
+
     const headerHTML = `
+        ${skipLink}
         <header>
             <a class="titre-nom" href="${chemin}index.html"><img src="${chemin}assets/Logo_portfolio.png" alt="Logo JB" class="logo-header" width="50" height="50">Justine BLIN</a>
             <!-- Conteneur des boutons réseaux sociaux -->
@@ -100,6 +104,77 @@ function genererHeader(chemin) {
         </header>
     `;
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
+
+    // Lien actif dans la navigation
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.onglet, .onglet-burger').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && (currentPath.endsWith(href.replace(/^\.\.\/|\.\//, '')) ||
+            (href.includes('index.html') && (currentPath.endsWith('/') || currentPath.endsWith('/index.html'))))) {
+            link.classList.add('active');
+        }
+    });
+
+    // Header shrink au scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+            header.classList.add('header-scrolled');
+        } else {
+            header.classList.remove('header-scrolled');
+        }
+    }, { passive: true });
+
+    // Transitions entre pages — fade-out au clic sur un lien interne
+    document.addEventListener('click', function (e) {
+        const link = e.target.closest('a');
+        if (!link) return;
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('javascript:') ||
+            link.target === '_blank' || link.hasAttribute('download') || e.ctrlKey || e.metaKey) return;
+        // Lien interne uniquement
+        if (href.includes('.html')) {
+            e.preventDefault();
+            document.body.classList.add('page-exit');
+            setTimeout(function () {
+                window.location.href = href;
+            }, 250);
+        }
+    });
+
+    // Breadcrumbs sur les sous-pages
+    genererBreadcrumbs(chemin);
+}
+
+function genererBreadcrumbs(chemin) {
+    const path = window.location.pathname;
+    // Ne pas afficher sur la page d'accueil
+    if (path.endsWith('/') || path.endsWith('/index.html') || path.endsWith('index.html')) return;
+
+    const pageTitles = {
+        'apropos.html': 'À propos',
+        'competences.html': 'Compétences',
+        'projets.html': 'Projets',
+        'veille.html': 'Veille Technologique',
+        'documents.html': 'BTS SIO',
+        'contact.html': 'Contact',
+        'mentions-legales.html': 'Mentions légales',
+        'projet-details.html': 'Détails du projet'
+    };
+
+    const fileName = path.split('/').pop();
+    const pageTitle = pageTitles[fileName];
+    if (!pageTitle) return;
+
+    const breadcrumb = document.createElement('nav');
+    breadcrumb.classList.add('breadcrumb');
+    breadcrumb.setAttribute('aria-label', 'Fil d\'Ariane');
+    breadcrumb.innerHTML = '<a href="' + chemin + 'index.html">Accueil</a><span>/</span>' + pageTitle;
+
+    const main = document.querySelector('main');
+    if (main) {
+        main.parentNode.insertBefore(breadcrumb, main);
+    }
 }
 
 function genererFooter(chemin) {
@@ -125,7 +200,7 @@ function genererFooter(chemin) {
     scriptTheme.src = `${chemin}js/theme.js`;
     scriptTheme.onerror = function () { console.error('Échec du chargement de theme.js'); };
     scriptTheme.onload = function () {
-        const scriptsParalleles = ['menu-burger.js', 'scroll-animations.js', 'easter-egg.js'];
+        const scriptsParalleles = ['menu-burger.js', 'scroll-animations.js', 'easter-egg.js', 'interactions.js'];
         scriptsParalleles.forEach(function (nom) {
             const s = document.createElement('script');
             s.src = `${chemin}js/${nom}`;
@@ -141,4 +216,11 @@ function genererFooter(chemin) {
     const chemin = window.location.pathname.includes('/pages/') ? '../' : './';
     genererHeader(chemin);
     genererFooter(chemin);
+
+    // Loading screen — masquer après chargement
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        loader.classList.add('hidden');
+        setTimeout(function () { loader.remove(); }, 500);
+    }
 })();

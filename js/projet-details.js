@@ -109,9 +109,49 @@ if (!projetId || !projets[projetId]) {
     p.appendChild(a);
     main.appendChild(p);
 } else {
+    // Couleurs du hero par projet
+    const heroColors = {
+        "pendu": ["#cc0000", "#800000"],
+        "france-mobilier": ["#d45500", "#8a3500"],
+        "sio-shop": ["#c9a800", "#7a6600"],
+        "speedcubing": ["#006620", "#003d13"],
+        "meteo": ["#0900aa", "#05005a"],
+        "generateur-mdp": ["#7a0092", "#4a0058"],
+        "mairie-cauffry": ["#0f4c81", "#082a47"],
+        "panada-food": ["#c93800", "#7a2200"]
+    };
+
+    const hero = document.getElementById("projet-hero");
+    if (heroColors[projetId]) {
+        hero.style.setProperty("--hero-color", heroColors[projetId][0]);
+        hero.style.setProperty("--hero-color-dark", heroColors[projetId][1]);
+    }
+
     document.getElementById("projet-title").textContent = projets[projetId].title;
     document.title = "Portfolio | " + projets[projetId].title;
     document.getElementById("projet-description").textContent = projets[projetId].description;
+
+    // Tags dans le hero
+    const heroTags = document.getElementById("projet-hero-tags");
+    projets[projetId].technologies.forEach(tech => {
+        const span = document.createElement("span");
+        span.classList.add("tag");
+        span.textContent = tech;
+        heroTags.appendChild(span);
+    });
+
+    // Descriptions des technologies pour les tooltips
+    const techDescriptions = {
+        "HTML": "Structure et balisage des pages web",
+        "CSS": "Mise en forme et design visuel",
+        "JavaScript": "Interactivité et logique côté client",
+        "PHP": "Logique serveur et back-end",
+        "C#": "Applications Windows et web .NET",
+        "MYSQL": "Base de données relationnelle",
+        "XAML": "Interface déclarative .NET",
+        "MAUI": "Framework mobile multiplateforme",
+        "WinForms": "Interface graphique Windows"
+    };
 
     const techList = document.getElementById("projet-technologies");
 
@@ -134,6 +174,12 @@ if (!projetId || !projets[projetId]) {
         logo.width = 80;
         logo.height = 80;
         logo.classList.add("tech-logo");
+
+        // Tooltip
+        const desc = techDescriptions[tech.toUpperCase()] || techDescriptions[tech];
+        if (desc) {
+            li.setAttribute("data-tooltip", desc);
+        }
 
         // Ajout du logo et du texte
         li.appendChild(logo);
@@ -215,10 +261,16 @@ if (!projetId || !projets[projetId]) {
             dotsContainer.appendChild(dot);
         });
 
+        // Compteur
+        const counter = document.createElement("div");
+        counter.classList.add("carrousel-counter");
+        counter.textContent = "1 / " + images.length;
+
         carrousel.appendChild(btnPrev);
         carrousel.appendChild(track);
         carrousel.appendChild(btnNext);
         carrousel.appendChild(dotsContainer);
+        carrousel.appendChild(counter);
         imagesContainer.appendChild(carrousel);
 
         // Logique du carrousel
@@ -232,6 +284,7 @@ if (!projetId || !projets[projetId]) {
             currentSlide = (index + slides.length) % slides.length;
             slides[currentSlide].classList.add("active");
             dots[currentSlide].classList.add("active");
+            counter.textContent = (currentSlide + 1) + " / " + slides.length;
         }
 
         function slideSuivant() {
@@ -300,6 +353,28 @@ if (!projetId || !projets[projetId]) {
             if (document.querySelector(".carrousel-modale")) return;
             if (e.key === "ArrowRight") slideSuivant();
             if (e.key === "ArrowLeft") slidePrecedent();
+        });
+
+        // Auto-play avec pause au hover
+        let autoPlayInterval = setInterval(slideSuivant, 4000);
+
+        carrousel.addEventListener("mouseenter", function () {
+            clearInterval(autoPlayInterval);
+        });
+
+        carrousel.addEventListener("mouseleave", function () {
+            autoPlayInterval = setInterval(slideSuivant, 4000);
+        });
+
+        // Pause aussi lors d'interaction manuelle
+        btnNext.addEventListener("click", function () {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(slideSuivant, 4000);
+        });
+
+        btnPrev.addEventListener("click", function () {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(slideSuivant, 4000);
         });
     }
 

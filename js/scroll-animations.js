@@ -3,7 +3,7 @@
 // ==============================
 
 const elementsAAnimer = document.querySelectorAll(
-    '.timeline-item, .card-competence, .innovations, .comparatif, .card-container, .profil, .btn-cv'
+    '.timeline-item, .card-competence, .innovations, .comparatif, .card-container, .profil, .btn-cv, .card-accueil, .projet-container .card'
 );
 
 elementsAAnimer.forEach(el => {

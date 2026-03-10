@@ -32,40 +32,38 @@
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/contact.css" media="all" type="text/css">
-    <script>try {
-        if (localStorage.getItem('dark-mode') === 'true') document.documentElement.classList.add('dark-theme')
-    } catch (e) {
-    }</script>
+    <script>try{var dm=localStorage.getItem('dark-mode');if(dm==='true'||(dm===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
     <script src="../js/structure-globale.js" defer></script>
 
     <title>Portfolio | Contact</title>
 </head>
 
 <body>
+<div class="loader"><img class="loader-logo" src="../assets/Logo_portfolio.png" alt="Chargement" width="80" height="80"></div>
 <!-- Contenu principal -->
-<main>
+<main id="main">
     <h1>Contact</h1>
     <p class="contact-intro">N'hésitez pas à me contacter pour discuter d'un projet ou d'une collaboration.</p>
 
     <div class="contact-container">
         <form class="contact-form" id="contact-form">
             <div class="form-group">
+                <input type="text" id="nom" name="nom" required placeholder=" ">
                 <label for="nom">Nom</label>
-                <input type="text" id="nom" name="nom" required placeholder="Votre nom">
             </div>
             <div class="form-group">
+                <input type="email" id="email" name="email" required placeholder=" ">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required placeholder="Votre adresse email">
             </div>
             <div class="form-group">
+                <input type="text" id="sujet" name="sujet" required placeholder=" ">
                 <label for="sujet">Sujet</label>
-                <input type="text" id="sujet" name="sujet" required placeholder="Objet de votre message">
             </div>
             <div class="form-group">
+                <textarea id="message" name="message" rows="6" required placeholder=" "></textarea>
                 <label for="message">Message</label>
-                <textarea id="message" name="message" rows="6" required placeholder="Votre message"></textarea>
             </div>
-            <button type="submit" class="btn-envoyer">Envoyer</button>
+            <button type="submit" class="btn-envoyer"><i class="fas fa-paper-plane"></i> Envoyer</button>
             <p class="contact-info-mailto"><small>L'envoi ouvrira votre application de messagerie.</small></p>
         </form>
 

@@ -1,60 +1,60 @@
 /* Profil */
-/* Paragraphe */
 .profil,
 .bts-sio {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 1.05rem;
+    line-height: 1.7;
     color: var(--text-color);
-    background-color: var(--background-color);
-    padding: 15px;
+    padding: 2rem 3rem;
     margin: 1rem 12rem;
-    border-radius: 8px;
-    border: 2px solid var(--primary-color);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: var(--card-background);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Bouton CV */
+/* Bouton CV — style cohérent avec .btn-download */
 .btn-cv-outline {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     text-decoration: none;
-    padding: 0.8em 1.8em;
+    padding: 0.85rem 1.8rem;
     border: 2px solid var(--primary-color);
     position: relative;
     overflow: hidden;
-    background-color: transparent;
+    background: var(--primary-color);
     text-align: center;
-    text-transform: uppercase;
-    font-size: 16px;
-    transition: color .3s;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
     z-index: 1;
     font-family: inherit;
-    color: var(--primary-color);
-    margin: 3rem;
-    border-radius: 5px;
+    color: var(--button-text-color);
+    margin: 2rem;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-/* Animation de l'arrière-plan du bouton */
 .btn-cv-outline::before {
     content: '';
-    width: 0;
-    height: 500%;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    background: var(--primary-color);
-    transition: width .5s ease;
-    display: block;
+    inset: 0;
     z-index: -1;
+    background: linear-gradient(135deg, #b30000, #960000);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Effet au survol */
 .btn-cv-outline:hover::before {
-    width: 105%;
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 .btn-cv-outline:hover {
-    color: var(--button-text-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(150, 0, 0, 0.35);
 }
 
 /* BTS SIO */
@@ -185,6 +185,25 @@ a.timeline-link:hover .timeline-content {
     border: 3px solid var(--primary-color);
 }
 
+/* Indicateur "Aujourd'hui" — point pulsant */
+.timeline-current::before {
+    background: var(--primary-color);
+    box-shadow: 0 0 0 0 rgba(150, 0, 0, 0.4);
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0% {
+        box-shadow: 0 0 0 0 rgba(150, 0, 0, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(150, 0, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(150, 0, 0, 0);
+    }
+}
+
 /* Bloc de contenu */
 .timeline-content {
     background: var(--card-background);
@@ -225,8 +244,8 @@ main hr {
 
     .profil,
     .bts-sio {
-        margin: 1rem 3rem;
-        padding: 15px;
+        margin: 1rem 2rem;
+        padding: 1.5rem 2rem;
     }
 
     .bloc-container {
@@ -265,13 +284,13 @@ main hr {
     .profil,
     .bts-sio {
         margin: 1rem;
-        padding: 10px;
+        padding: 1.25rem;
         font-size: 0.95rem;
     }
 
     .btn-cv-outline {
-        font-size: 14px;
-        padding: 0.6em 1.2em;
+        font-size: 0.9rem;
+        padding: 0.7rem 1.4rem;
         margin: 1.5rem;
     }
 
@@ -301,15 +320,17 @@ main hr {
 
     .profil,
     .bts-sio {
-        margin: 1rem;
+        margin: 1rem 0.5rem;
         font-size: 0.9rem;
-        padding: 10px;
+        padding: 1rem;
     }
 
     .btn-cv-outline {
-        font-size: 12px;
-        padding: 0.5em 1em;
+        font-size: 0.85rem;
+        padding: 0.6rem 1.2rem;
         margin: 1.5rem;
+        width: 100%;
+        justify-content: center;
     }
 
     .bloc-specialite {

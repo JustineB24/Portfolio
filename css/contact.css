@@ -17,24 +17,18 @@
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.5rem;
 }
 
+/* Inputs animés — label flottant */
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-}
-
-.form-group label {
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--text-color);
+    position: relative;
 }
 
 .form-group input,
 .form-group textarea {
-    padding: 0.75rem 1rem;
+    width: 100%;
+    padding: 1.25rem 1rem 0.5rem;
     border: 2px solid var(--card-background);
     border-radius: 8px;
     font-size: 1rem;
@@ -42,12 +36,35 @@
     background: var(--card-background);
     color: var(--text-color);
     transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.form-group label {
+    position: absolute;
+    left: 1rem;
+    top: 0.9rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.5;
+    pointer-events: none;
+    transition: transform 0.2s, font-size 0.2s, opacity 0.2s;
+    transform-origin: left top;
+}
+
+/* Label remonté quand l'input est focus ou rempli */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label {
+    transform: translateY(-0.6rem);
+    font-size: 0.75rem;
+    opacity: 0.8;
+    font-weight: 700;
 }
 
 .form-group input:focus-visible,
 .form-group textarea:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+    outline: none;
     border-color: var(--primary-color);
 }
 
@@ -56,21 +73,43 @@
     min-height: 120px;
 }
 
+/* Bouton envoyer — style .btn-download */
 .btn-envoyer {
     padding: 0.85rem 2rem;
     background: var(--primary-color);
     color: var(--button-text-color);
-    border: none;
-    border-radius: 25px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 600;
+    font-family: inherit;
     cursor: pointer;
-    transition: background-color 0.3s;
     align-self: flex-start;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-envoyer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(135deg, #b30000, #960000);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-envoyer:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 .btn-envoyer:hover {
-    background: #d30000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(150, 0, 0, 0.35);
 }
 
 /* Infos de contact */
@@ -92,21 +131,34 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.5rem;
 }
 
 .contact-infos li {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1rem;
     font-size: 0.95rem;
 }
 
 .contact-infos li i {
+    font-size: 1.6rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--background-color);
     color: var(--primary-color);
-    font-size: 1.2rem;
-    width: 1.5rem;
-    text-align: center;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    flex-shrink: 0;
+}
+
+.contact-infos li:hover i {
+    background: var(--primary-color);
+    color: var(--button-text-color);
+    transform: scale(1.1);
 }
 
 .contact-infos li a {
@@ -116,6 +168,11 @@
 
 .contact-infos li a:hover {
     color: var(--primary-color);
+}
+
+.contact-info-mailto {
+    padding: 0;
+    margin: 0;
 }
 
 /* Responsive */

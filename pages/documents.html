@@ -34,18 +34,16 @@
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/documents.css" media="all" type="text/css">
-    <script>try {
-        if (localStorage.getItem('dark-mode') === 'true') document.documentElement.classList.add('dark-theme')
-    } catch (e) {
-    }</script>
+    <script>try{var dm=localStorage.getItem('dark-mode');if(dm==='true'||(dm===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
     <script src="../js/structure-globale.js" defer></script>
 
     <title>Portfolio | BTS SIO</title>
 </head>
 
 <body>
+<div class="loader"><img class="loader-logo" src="../assets/Logo_portfolio.png" alt="Chargement" width="80" height="80"></div>
 <!-- Contenu principal -->
-<main>
+<main id="main">
     <section class="page-header">
         <div class="header-content">
             <h1><i class="fas fa-graduation-cap" aria-hidden="true"></i> BTS SIO</h1>
@@ -136,9 +134,9 @@
         <!-- Aperçu PDF -->
         <div class="pdf-viewer-card doc-reveal">
             <h3>Aperçu du document</h3>
-            <div class="pdf-container">
+            <div class="pdf-container pdf-skeleton">
                 <iframe src="../tableau_de_synthese_blin_justine.pdf" title="Tableau de synthèse PDF"
-                        loading="lazy"></iframe>
+                        loading="lazy" onload="this.parentElement.classList.add('loaded')"></iframe>
             </div>
         </div>
     </section>

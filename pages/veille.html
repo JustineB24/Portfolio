@@ -33,29 +33,47 @@
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/veille.css" media="all" type="text/css">
-    <script>try {
-        if (localStorage.getItem('dark-mode') === 'true') document.documentElement.classList.add('dark-theme')
-    } catch (e) {
-    }</script>
+    <script>try{var dm=localStorage.getItem('dark-mode');if(dm==='true'||(dm===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
     <script src="../js/structure-globale.js" defer></script>
 
     <title>Portfolio | Veille technologique</title>
 </head>
 
 <body>
+<div class="loader"><img class="loader-logo" src="../assets/Logo_portfolio.png" alt="Chargement" width="80" height="80"></div>
 <!-- Contenu principal -->
-<main>
+<main id="main">
     <h1>Veille technologique</h1>
     <p>(Réalisée en 2024 - 2025)</p>
 
-    <h2>Qu'est-ce que c'est ?</h2>
+    <!-- Sommaire cliquable -->
+    <nav class="sommaire">
+        <h3><i class="fas fa-list"></i> Sommaire</h3>
+        <ol>
+            <li><a href="#definition">Qu'est-ce que c'est ?</a></li>
+            <li><a href="#outils">Outils et sources</a></li>
+            <li><a href="#raspberry-pi">Raspberry Pi ?</a></li>
+            <li><a href="#histoire">Histoire du Raspberry Pi</a></li>
+            <li><a href="#eben-upton">Eben Upton</a></li>
+            <li><a href="#prototypes">Les premiers prototypes</a></li>
+            <li><a href="#idee">L'idée et son origine</a></li>
+            <li><a href="#fondation">La Fondation Raspberry Pi</a></li>
+            <li><a href="#applications">Applications possibles</a></li>
+            <li><a href="#avantages">Avantages et Inconvénients</a></li>
+            <li><a href="#innovations">Innovations récentes</a></li>
+            <li><a href="#evolution">Évolution des modèles</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+        </ol>
+    </nav>
+
+    <h2 id="definition">Qu'est-ce que c'est ?</h2>
     <hr>
     <p>
         La veille technologique consiste à surveiller les évolutions technologiques pour identifier les nouvelles
         tendances et innovations dans un domaine.
     </p>
 
-    <h2>Outils et sources de ma veille</h2>
+    <h2 id="outils">Outils et sources de ma veille</h2>
     <hr>
     <ul>
         <li><a class="sources" href="https://feedly.com/homepage" target="_blank" rel="noopener noreferrer">Feedly
@@ -86,7 +104,7 @@
     </picture>
     <p class="texte-photo">Logo Raspberry Pi</p>
 
-    <h2>Raspberry Pi ?</h2>
+    <h2 id="raspberry-pi">Raspberry Pi ?</h2>
     <hr>
     <p>
         Le Raspberry Pi est un nano-ordinateur monocarte, de la taille d'une carte de crédit, conçu par la Fondation
@@ -110,7 +128,7 @@
     </picture>
     <p class="texte-photo">Le tout premier modèle du Raspberry Pi : version 1 B</p>
 
-    <h2>Histoire du Raspberry Pi</h2>
+    <h2 id="histoire">Histoire du Raspberry Pi</h2>
     <hr>
     <p>
         L'histoire du Raspberry Pi débute en 2006, avec la création des premiers prototypes inspirés par le BBC
@@ -120,7 +138,7 @@
         pour l'expérimentation personnelle.
     </p>
 
-    <h2>Eben Upton</h2>
+    <h2 id="eben-upton">Eben Upton</h2>
     <hr>
     <p>
         Pour mieux comprendre l'origine du Raspberry Pi, il est essentiel de se pencher sur son créateur, Eben
@@ -135,7 +153,7 @@
     </picture>
     <p class="texte-photo">Eben Upton</p>
 
-    <h2>Les premiers prototypes</h2>
+    <h2 id="prototypes">Les premiers prototypes</h2>
     <hr>
     <p>
         De 2006 à 2011, Eben Upton a créé des prototypes d'ordinateurs monocartes tout en travaillant chez Broadcom.
@@ -163,7 +181,7 @@
     </picture>
     <p class="texte-photo">Le prototype d'Eben Upton basé sur un processeur Atmel</p>
 
-    <h2>L'idée et son origine</h2>
+    <h2 id="idee">L'idée et son origine</h2>
     <hr>
     <p>
         En 2006, Eben Upton, lors de ses travaux sur des prototypes, a constaté que le coût élevé des ordinateurs
@@ -177,7 +195,7 @@
         langage de programmation Python, utilisé pour le premier design du Raspberry Pi.
     </p>
 
-    <h2>La Fondation Raspberry Pi</h2>
+    <h2 id="fondation">La Fondation Raspberry Pi</h2>
     <hr>
     <p>
         En 2009, Eben Upton fonde la Fondation Raspberry Pi, une organisation dédiée à l'éducation technologique.
@@ -196,7 +214,7 @@
         donations notables, on retrouve celle de Google, qui a offert 15 000 appareils en 2013.
     </p>
 
-    <h2>Applications possibles</h2>
+    <h2 id="applications">Applications possibles</h2>
     <hr>
     <ul>
         <li>Serveur web</li>
@@ -216,7 +234,7 @@
     </picture>
     <p class="texte-photo">Raspberry Pi 5</p>
 
-    <h2>Avantages et Inconvénients</h2>
+    <h2 id="avantages">Avantages et Inconvénients</h2>
     <hr>
     <table class="comparatif">
         <caption>Comparatif des avantages et inconvénients du Raspberry Pi</caption>
@@ -261,7 +279,7 @@
     </picture>
     <p class="texte-photo">Boîtier officiel du Raspberry Pi</p>
 
-    <h2>Innovations récentes (2024-2025)</h2>
+    <h2 id="innovations">Innovations récentes (2024-2025)</h2>
     <hr>
     <div class="innovations">
         <ul>
@@ -308,7 +326,7 @@
         </ul>
     </div>
 
-    <h2>Évolution des modèles</h2>
+    <h2 id="evolution">Évolution des modèles</h2>
     <hr>
     <picture>
         <source srcset="../assets/Veille/Evolution_Of_Pi.webp" type="image/webp">
@@ -365,7 +383,7 @@
     </picture>
     <p class="texte-photo">Raspberry Pi 500</p>
 
-    <h2>Conclusion</h2>
+    <h2 id="conclusion">Conclusion</h2>
     <hr>
     <p>
         Le Raspberry Pi continue d'évoluer et transforme l'éducation ainsi que la créativité

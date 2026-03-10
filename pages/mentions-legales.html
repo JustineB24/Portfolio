@@ -30,15 +30,16 @@
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/mentions-legales.css" media="all" type="text/css">
-    <script>try{if(localStorage.getItem('dark-mode')==='true')document.documentElement.classList.add('dark-theme')}catch(e){}</script>
+    <script>try{var dm=localStorage.getItem('dark-mode');if(dm==='true'||(dm===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
     <script src="../js/structure-globale.js" defer></script>
 
     <title>Portfolio | Mentions légales</title>
 </head>
 
 <body>
+<div class="loader"><img class="loader-logo" src="../assets/Logo_portfolio.png" alt="Chargement" width="80" height="80"></div>
     <!-- Contenu principal -->
-    <main>
+    <main id="main">
         <h1>Mentions légales</h1>
 
         <!-- Éditeur -->

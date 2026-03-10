@@ -96,7 +96,7 @@
     // Bounce sur les icônes des headers de documents
     const headerIcons = document.querySelectorAll('.document-header i');
     headerIcons.forEach(function (icon) {
-        icon.style.transition = 'transform 0.3s';
+        icon.classList.add('header-icon-transition');
         icon.parentElement.addEventListener('mouseenter', function () {
             icon.style.transform = 'scale(1.2) rotate(5deg)';
         });
@@ -107,9 +107,7 @@
 
     // Scale sur les boutons réseaux sociaux
     const reseaux = document.querySelectorAll('.btn-reseaux');
-    reseaux.forEach(function (btn) {
-        btn.style.transition = 'width 0.4s, border-radius 0.4s, transform 0.3s';
-    });
+    // La transition est définie dans global.css sur .btn-reseaux
 })();
 
 // ==============================
@@ -174,11 +172,11 @@
     };
 
     const preview = document.createElement('div');
-    preview.style.cssText = 'position:fixed;z-index:9999;pointer-events:none;opacity:0;transition:opacity 0.2s;background:var(--card-background);border-radius:8px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.3);width:200px;height:130px;';
+    preview.classList.add('link-preview');
     document.body.appendChild(preview);
 
     const previewImg = document.createElement('img');
-    previewImg.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+    previewImg.classList.add('link-preview-img');
     preview.appendChild(previewImg);
 
     projetLinks.forEach(function (link) {
@@ -213,16 +211,13 @@
 
     const texte = h1.textContent;
     h1.textContent = '';
-    h1.style.opacity = '1';
 
     for (let i = 0; i < texte.length; i++) {
         const span = document.createElement('span');
         span.textContent = texte[i];
-        span.style.opacity = '0';
-        span.style.display = 'inline-block';
-        span.style.animation = 'fadeInUp 0.4s ease forwards';
+        span.classList.add('letter-reveal');
         span.style.animationDelay = (i * 0.03) + 's';
-        if (texte[i] === ' ') span.style.width = '0.3em';
+        if (texte[i] === ' ') span.classList.add('letter-space');
         h1.appendChild(span);
     }
 })();

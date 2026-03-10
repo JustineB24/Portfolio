@@ -136,31 +136,13 @@
             <h3>Aperçu du document</h3>
             <div class="pdf-container pdf-skeleton">
                 <iframe src="../tableau_de_synthese_blin_justine.pdf" title="Tableau de synthèse PDF"
-                        loading="lazy" onload="this.parentElement.classList.add('loaded')"></iframe>
+                        loading="lazy"></iframe>
             </div>
         </div>
     </section>
 </main>
 
-<script>
-    (function () {
-        const reveals = document.querySelectorAll('.doc-reveal');
-        if (!reveals.length) return;
-
-        const observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
-
-        reveals.forEach(function (el) {
-            observer.observe(el);
-        });
-    })();
-</script>
+<script src="../js/documents.js" defer></script>
 </body>
 
 </html>

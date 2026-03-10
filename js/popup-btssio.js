@@ -21,7 +21,7 @@
     }
 
     timelineItems.forEach(function (item) {
-        item.style.cursor = 'pointer';
+        item.classList.add('cursor-pointer');
 
         function ouvrir() {
             const popupType = item.getAttribute('data-popup');

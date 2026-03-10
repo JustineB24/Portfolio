@@ -7,6 +7,6 @@ const html = document.documentElement;
 if (iconMenu && sideMenu) {
     iconMenu.addEventListener('click', function () {
         sideMenu.classList.toggle('open');
-        html.style.overflow = sideMenu.classList.contains('open') ? 'hidden' : '';
+        html.classList.toggle('overflow-hidden', sideMenu.classList.contains('open'));
     });
 }

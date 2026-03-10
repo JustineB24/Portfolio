@@ -235,7 +235,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: width 0.4s, border-radius 0.4s;
+    transition: width 0.4s, border-radius 0.4s, transform 0.3s;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -622,6 +622,60 @@ footer {
         font-size: 0.6rem;
         padding: 0.5rem;
     }
+}
+
+/* Classes utilitaires */
+.overflow-hidden {
+    overflow: hidden !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Preview hover sur liens projets */
+.link-preview {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    background: var(--card-background);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    width: 200px;
+    height: 130px;
+}
+
+.link-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Transition sur icônes des headers document */
+.header-icon-transition {
+    transition: transform 0.3s;
+}
+
+/* Animation lettre par lettre sur h1 */
+.letter-reveal {
+    opacity: 0;
+    display: inline-block;
+    animation: fadeInUp 0.4s ease forwards;
+}
+
+.letter-space {
+    width: 0.3em;
+}
+
+/* Message projet introuvable */
+.projet-introuvable {
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 1.2rem;
+    color: var(--text-color);
 }
 
 /* Classe utilitaire pour le contenu visuellement masqué mais accessible */

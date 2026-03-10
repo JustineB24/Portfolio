@@ -101,7 +101,7 @@ if (!projetId || !projets[projetId]) {
     const main = document.querySelector("main");
     main.textContent = "";
     const p = document.createElement("p");
-    p.style.cssText = "text-align:center;margin-top:5rem;font-size:1.2rem;color:var(--text-color)";
+    p.classList.add('projet-introuvable');
     p.textContent = "Projet introuvable. ";
     const a = document.createElement("a");
     a.href = "projets.html";
@@ -394,9 +394,9 @@ if (!projetId || !projets[projetId]) {
         projetLinkContainer.appendChild(linkElement);
 
         // Rendre le conteneur visible UNIQUEMENT s'il y a un lien
-        projetLinkContainer.style.display = 'block';
+        projetLinkContainer.removeAttribute('hidden');
     } else {
         // S'assurer que le conteneur est masqué s'il n'y a pas de lien
-        projetLinkContainer.style.display = 'none';
+        projetLinkContainer.setAttribute('hidden', '');
     }
 }

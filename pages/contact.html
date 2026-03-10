@@ -53,21 +53,22 @@
 
     <div class="contact-container">
         <form class="contact-form" id="contact-form">
+            <p class="note-obligatoire">* Champs obligatoires</p>
             <div class="form-group">
                 <input type="text" id="nom" name="nom" required placeholder=" ">
-                <label for="nom">Nom</label>
+                <label for="nom">Nom <span class="requis">*</span></label>
             </div>
             <div class="form-group">
                 <input type="email" id="email" name="email" required placeholder=" ">
-                <label for="email">Email</label>
+                <label for="email">Email <span class="requis">*</span></label>
             </div>
             <div class="form-group">
                 <input type="text" id="sujet" name="sujet" required placeholder=" ">
-                <label for="sujet">Sujet</label>
+                <label for="sujet">Sujet <span class="requis">*</span></label>
             </div>
             <div class="form-group">
                 <textarea id="message" name="message" rows="6" required placeholder=" "></textarea>
-                <label for="message">Message</label>
+                <label for="message">Message <span class="requis">*</span></label>
             </div>
             <button type="submit" class="btn-envoyer"><i class="fas fa-paper-plane"></i> Envoyer</button>
             <p class="contact-info-mailto"><small>L'envoi ouvrira votre application de messagerie.</small></p>

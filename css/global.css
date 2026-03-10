@@ -36,17 +36,19 @@
 html {
     overflow-y: scroll;
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--card-background);
 }
 
 /* Couleur de sélection de texte */
 ::selection {
     background: var(--primary-color);
-    color: white;
+    color: var(--button-text-color);
 }
 
 ::-moz-selection {
     background: var(--primary-color);
-    color: white;
+    color: var(--button-text-color);
 }
 
 /* Skip to content — accessibilité clavier */
@@ -56,7 +58,7 @@ html {
     left: 50%;
     transform: translateX(-50%);
     background: var(--primary-color);
-    color: white;
+    color: var(--button-text-color);
     padding: 0.75rem 1.5rem;
     border-radius: 0 0 8px 8px;
     font-weight: 700;
@@ -87,6 +89,7 @@ body {
     overflow-x: hidden;
     position: relative;
     min-height: 100vh;
+    isolation: isolate;
 }
 
 * {
@@ -633,6 +636,10 @@ footer {
     cursor: pointer;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Preview hover sur liens projets */
 .link-preview {
     position: fixed;
@@ -766,12 +773,6 @@ footer {
     background: var(--primary-light);
 }
 
-/* Firefox */
-html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) var(--card-background);
-}
-
 /* Thème sombre — transitions fluides sur éléments enfants */
 .card-accueil,
 .card-competence,
@@ -896,7 +897,7 @@ body::before {
     padding: 0.5rem 2rem;
     font-size: 0.85rem;
     color: var(--text-color);
-    opacity: 0.6;
+    opacity: 0.75;
     text-align: left;
 }
 
@@ -939,7 +940,7 @@ body::before {
     left: 50%;
     transform: translateX(-50%);
     background: var(--primary-color);
-    color: white;
+    color: var(--button-text-color);
     padding: 0.3rem 0.7rem;
     border-radius: 4px;
     font-size: 0.75rem;
@@ -1047,7 +1048,7 @@ body.page-exit main {
 }
 
 /* Parallaxe léger sur les hero (desktop uniquement) */
-@media (hover: hover) {
+@media (hover: hover) and (min-width: 1025px) {
     .hero,
     .page-header {
         background-attachment: fixed;
@@ -1058,7 +1059,7 @@ body.page-exit main {
 .temps-lecture {
     display: inline-block;
     font-size: 0.9rem;
-    opacity: 0.6;
+    opacity: 0.75;
     margin-bottom: 2rem;
     font-weight: 600;
 }
@@ -1073,8 +1074,9 @@ body.page-exit main {
     text-align: left;
 }
 
-.sommaire h3 {
+.sommaire .titre-sommaire {
     font-size: 1.1rem;
+    font-weight: bold;
     margin-bottom: 0.75rem;
     color: var(--primary-color);
 }

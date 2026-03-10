@@ -9,6 +9,8 @@
 
     function ouvrirPopup() {
         dernierFocusAvantPopup = document.activeElement;
+        btssioPopup.setAttribute('role', 'dialog');
+        btssioPopup.setAttribute('aria-modal', 'true');
         btssioPopup.classList.add('active');
         popupClose.focus();
     }

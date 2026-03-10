@@ -274,25 +274,25 @@ if (!projetId || !projets[projetId]) {
         imagesContainer.appendChild(carrousel);
 
         // Logique du carrousel
-        let currentSlide = 0;
+        let diapoCourante = 0;
         const slides = track.querySelectorAll(".carrousel-slide");
         const dots = dotsContainer.querySelectorAll(".carrousel-dot");
 
         function allerASlide(index) {
-            slides[currentSlide].classList.remove("active");
-            dots[currentSlide].classList.remove("active");
-            currentSlide = (index + slides.length) % slides.length;
-            slides[currentSlide].classList.add("active");
-            dots[currentSlide].classList.add("active");
-            counter.textContent = (currentSlide + 1) + " / " + slides.length;
+            slides[diapoCourante].classList.remove("active");
+            dots[diapoCourante].classList.remove("active");
+            diapoCourante = (index + slides.length) % slides.length;
+            slides[diapoCourante].classList.add("active");
+            dots[diapoCourante].classList.add("active");
+            counter.textContent = (diapoCourante + 1) + " / " + slides.length;
         }
 
         function slideSuivant() {
-            allerASlide(currentSlide + 1);
+            allerASlide(diapoCourante + 1);
         }
 
         function slidePrecedent() {
-            allerASlide(currentSlide - 1);
+            allerASlide(diapoCourante - 1);
         }
 
         btnNext.addEventListener("click", slideSuivant);
@@ -330,7 +330,7 @@ if (!projetId || !projets[projetId]) {
                 modale.setAttribute("tabindex", "-1");
                 modale.focus();
 
-                function escHandler(e) {
+                function gestionnaireEchap(e) {
                     if (e.key === "Escape") {
                         fermerModale();
                     }
@@ -338,12 +338,12 @@ if (!projetId || !projets[projetId]) {
 
                 function fermerModale() {
                     modale.classList.remove("active");
-                    document.removeEventListener("keydown", escHandler);
+                    document.removeEventListener("keydown", gestionnaireEchap);
                     modale.addEventListener("transitionend", () => modale.remove(), {once: true});
                 }
 
                 modale.addEventListener("click", fermerModale);
-                document.addEventListener("keydown", escHandler);
+                document.addEventListener("keydown", gestionnaireEchap);
             });
         });
 
@@ -356,25 +356,25 @@ if (!projetId || !projets[projetId]) {
         });
 
         // Auto-play avec pause au hover
-        let autoPlayInterval = setInterval(slideSuivant, 4000);
+        let intervalleLectureAuto = setInterval(slideSuivant, 4000);
 
         carrousel.addEventListener("mouseenter", function () {
-            clearInterval(autoPlayInterval);
+            clearInterval(intervalleLectureAuto);
         });
 
         carrousel.addEventListener("mouseleave", function () {
-            autoPlayInterval = setInterval(slideSuivant, 4000);
+            intervalleLectureAuto = setInterval(slideSuivant, 4000);
         });
 
         // Pause aussi lors d'interaction manuelle
         btnNext.addEventListener("click", function () {
-            clearInterval(autoPlayInterval);
-            autoPlayInterval = setInterval(slideSuivant, 4000);
+            clearInterval(intervalleLectureAuto);
+            intervalleLectureAuto = setInterval(slideSuivant, 4000);
         });
 
         btnPrev.addEventListener("click", function () {
-            clearInterval(autoPlayInterval);
-            autoPlayInterval = setInterval(slideSuivant, 4000);
+            clearInterval(intervalleLectureAuto);
+            intervalleLectureAuto = setInterval(slideSuivant, 4000);
         });
     }
 

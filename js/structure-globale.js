@@ -9,7 +9,7 @@ function genererHeader(chemin) {
     chemin = validerChemin(chemin);
 
     // Source unique pour les liens de navigation
-    const navItems = [
+    const elementsNav = [
         {href: 'index.html', label: 'Accueil'},
         {href: 'pages/apropos.html', label: 'À propos'},
         {href: 'pages/competences.html', label: 'Compétences'},
@@ -19,24 +19,24 @@ function genererHeader(chemin) {
         {href: 'pages/contact.html', label: 'Contact'}
     ];
 
-    const menuDesktop = navItems.map(function (item) {
+    const menuDesktop = elementsNav.map(function (item) {
         return '<li class="menu-item"><a class="onglet" href="' + chemin + item.href + '">' + item.label + '</a></li>';
     }).join('\n                    ');
 
-    const menuBurger = navItems.map(function (item) {
+    const menuBurger = elementsNav.map(function (item) {
         return '<li>\n                            <a class="onglet-burger" href="' + chemin + item.href + '">' + item.label + '</a>\n                        </li>';
     }).join('\n                        ');
 
     // Skip to content (accessibilité)
-    const skipLink = '<a href="#main" class="skip-link">Aller au contenu</a>';
+    const lienSaut = '<a href="#main" class="skip-link">Aller au contenu</a>';
 
     const headerHTML = `
-        ${skipLink}
+        ${lienSaut}
         <header>
             <a class="titre-nom" href="${chemin}index.html"><img src="${chemin}assets/Logo_portfolio.png" alt="Logo JB" class="logo-header" width="50" height="50">Justine BLIN</a>
             <!-- Conteneur des boutons réseaux sociaux -->
             <div class="reseaux">
-                <!-- From Uiverse.io by wilsondesouza -->
+                <!-- Source : Uiverse.io par wilsondesouza -->
                 <a href="https://www.linkedin.com/in/justine-blin-a88600292" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn" class="btn-reseaux" id="linkedin">
                         <svg class="svg-icon" viewBox="0 0 16 16" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -45,7 +45,7 @@ function genererHeader(chemin) {
                         </svg>
                         <span class="text">LinkedIn</span>
                 </a>
-                <!-- From Uiverse.io by vinodjangid07 -->
+                <!-- Source : Uiverse.io par vinodjangid07 -->
                 <a href="https://github.com/JustineB24" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub" class="btn-reseaux" id="github">
                         <svg class="svg-icon" viewBox="0 0 496 512" height="1.4em" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -78,7 +78,7 @@ function genererHeader(chemin) {
             </div>
             <!-- Fin menu -->
 
-            <!-- From Uiverse.io by Galahhad -->
+            <!-- Source : Uiverse.io par Galahhad -->
             <label class="theme-switch" aria-label="Basculer le thème sombre">
                 <input type="checkbox" class="theme-switch__checkbox" aria-label="Activer ou désactiver le thème sombre">
                 <div class="theme-switch__container">
@@ -106,11 +106,11 @@ function genererHeader(chemin) {
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
 
     // Lien actif dans la navigation
-    const currentPath = window.location.pathname;
+    const cheminActuel = window.location.pathname;
     document.querySelectorAll('.onglet, .onglet-burger').forEach(link => {
         const href = link.getAttribute('href');
-        if (href && (currentPath.endsWith(href.replace(/^\.\.\/|\.\//, '')) ||
-            (href.includes('index.html') && (currentPath.endsWith('/') || currentPath.endsWith('/index.html'))))) {
+        if (href && (cheminActuel.endsWith(href.replace(/^\.\.\/|\.\//, '')) ||
+            (href.includes('index.html') && (cheminActuel.endsWith('/') || currentPath.endsWith('/index.html'))))) {
             link.classList.add('active');
         }
     });
@@ -127,11 +127,11 @@ function genererHeader(chemin) {
 
     // Transitions entre pages — fade-out au clic sur un lien interne
     document.addEventListener('click', function (e) {
-        const link = e.target.closest('a');
-        if (!link) return;
-        const href = link.getAttribute('href');
+        const lien = e.target.closest('a');
+        if (!lien) return;
+        const href = lien.getAttribute('href');
         if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('javascript:') ||
-            link.target === '_blank' || link.hasAttribute('download') || e.ctrlKey || e.metaKey) return;
+            lien.target === '_blank' || lien.hasAttribute('download') || e.ctrlKey || e.metaKey) return;
         // Lien interne uniquement
         if (href.includes('.html')) {
             e.preventDefault();
@@ -146,12 +146,12 @@ function genererHeader(chemin) {
     genererBreadcrumbs(chemin);
 }
 
-function genererBreadcrumbs(chemin) {
-    const path = window.location.pathname;
+function genererBreadcrumbs(cheminBase) {
+    const cheminPage = window.location.pathname;
     // Ne pas afficher sur la page d'accueil
-    if (path.endsWith('/') || path.endsWith('/index.html') || path.endsWith('index.html')) return;
+    if (cheminPage.endsWith('/') || cheminPage.endsWith('/index.html') || cheminPage.endsWith('index.html')) return;
 
-    const pageTitles = {
+    const titresPages = {
         'apropos.html': 'À propos',
         'competences.html': 'Compétences',
         'projets.html': 'Projets',
@@ -162,18 +162,18 @@ function genererBreadcrumbs(chemin) {
         'projet-details.html': 'Détails du projet'
     };
 
-    const fileName = path.split('/').pop();
-    const pageTitle = pageTitles[fileName];
-    if (!pageTitle) return;
+    const nomFichier = cheminPage.split('/').pop();
+    const titrePage = titresPages[nomFichier];
+    if (!titrePage) return;
 
-    const breadcrumb = document.createElement('nav');
-    breadcrumb.classList.add('breadcrumb');
-    breadcrumb.setAttribute('aria-label', 'Fil d\'Ariane');
-    breadcrumb.innerHTML = '<a href="' + chemin + 'index.html">Accueil</a><span>/</span>' + pageTitle;
+    const filAriane = document.createElement('nav');
+    filAriane.classList.add('breadcrumb');
+    filAriane.setAttribute('aria-label', 'Fil d\'Ariane');
+    filAriane.innerHTML = '<a href="' + cheminBase + 'index.html">Accueil</a><span>/</span>' + titrePage;
 
     const main = document.querySelector('main');
     if (main) {
-        main.parentNode.insertBefore(breadcrumb, main);
+        main.parentNode.insertBefore(filAriane, main);
     }
 }
 

@@ -3,12 +3,12 @@
     const images = document.querySelectorAll(".gallery .certif");
 
 // Variable pour savoir sur quelle image on est
-    let currentIndex = 0;
+    let indexActuel = 0;
 
     let dernierFocusAvantModale = null;
 
 // Récupère le srcset WebP depuis le <picture> parent, ou le src original
-    function getWebpSrc(img) {
+    function obtenirSrcWebp(img) {
         const picture = img.closest("picture");
         if (picture) {
             const source = picture.querySelector('source[type="image/webp"]');
@@ -33,25 +33,25 @@
 // Ouvre la modale avec l'image
     function ouvrirModale(img) {
         const modal = document.getElementById("zoom-modal");
-        const modalImg = document.getElementById("zoom-modal-img");
+        const imgModale = document.getElementById("zoom-modal-img");
 
         dernierFocusAvantModale = document.activeElement;
         modal.classList.add("visible");
         document.documentElement.classList.add('overflow-hidden');
 
-        modalImg.src = getWebpSrc(img);
-        currentIndex = Array.from(images).indexOf(img);
+        imgModale.src = obtenirSrcWebp(img);
+        indexActuel = Array.from(images).indexOf(img);
 
         // Donner le focus au bouton fermer
-        const closeBtn = modal.querySelector(".close");
-        if (closeBtn) closeBtn.focus();
+        const boutonFermer = modal.querySelector(".close");
+        if (boutonFermer) boutonFermer.focus();
     }
 
 // Ferme la modale
-    function closeModal() {
+    function fermerModale() {
         const modal = document.getElementById("zoom-modal");
         modal.classList.remove("visible");
-        resetTransform();
+        reinitialiserTransformation();
         document.documentElement.classList.remove('overflow-hidden');
 
         if (dernierFocusAvantModale) {
@@ -60,32 +60,32 @@
     }
 
 // Passer à l'image suivante
-    function nextImage() {
-        currentIndex = (currentIndex + 1) % images.length;
-        document.getElementById("zoom-modal-img").src = getWebpSrc(images[currentIndex]);
-        resetTransform();
+    function imageSuivante() {
+        indexActuel = (indexActuel + 1) % images.length;
+        document.getElementById("zoom-modal-img").src = obtenirSrcWebp(images[indexActuel]);
+        reinitialiserTransformation();
     }
 
 // Passer à l'image précédente
-    function prevImage() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        document.getElementById("zoom-modal-img").src = getWebpSrc(images[currentIndex]);
-        resetTransform();
+    function imagePrecedente() {
+        indexActuel = (indexActuel - 1 + images.length) % images.length;
+        document.getElementById("zoom-modal-img").src = obtenirSrcWebp(images[indexActuel]);
+        reinitialiserTransformation();
     }
 
 // Événements de navigation
-    document.getElementById("next").addEventListener("click", nextImage);
-    document.getElementById("prev").addEventListener("click", prevImage);
+    document.getElementById("next").addEventListener("click", imageSuivante);
+    document.getElementById("prev").addEventListener("click", imagePrecedente);
 
 // Fermeture en cliquant sur l'arrière-plan (hors image)
     document.getElementById("zoom-modal").addEventListener("click", function (event) {
         if (event.target === this) {
-            closeModal();
+            fermerModale();
         }
     });
 
 // Fermeture avec la croix
-    document.querySelector(".close").addEventListener("click", closeModal);
+    document.querySelector(".close").addEventListener("click", fermerModale);
 
 // Navigation clavier et focus trap dans la modale
     document.addEventListener("keydown", function (e) {
@@ -93,11 +93,11 @@
         if (!modal.classList.contains("visible")) return;
 
         if (e.key === "Escape") {
-            closeModal();
+            fermerModale();
         } else if (e.key === "ArrowRight") {
-            nextImage();
+            imageSuivante();
         } else if (e.key === "ArrowLeft") {
-            prevImage();
+            imagePrecedente();
         } else if (e.key === "Tab") {
             const focusables = modal.querySelectorAll('[role="button"], [tabindex]:not([tabindex="-1"])');
             const premier = focusables[0];
@@ -118,81 +118,81 @@
     });
 
 // État du zoom et du déplacement
-    let currentScale = 1;
-    let currentTranslateX = 0;
-    let currentTranslateY = 0;
-    let isDragging = false;
-    let startX, startY;
+    let echelleCourante = 1;
+    let translationX = 0;
+    let translationY = 0;
+    let enGlissement = false;
+    let debutX, debutY;
     let initialX, initialY;
-    let rafId = null;
+    let idRaf = null;
 
-    const modalImg = document.getElementById("zoom-modal-img");
+    const imgModale = document.getElementById("zoom-modal-img");
 
 // Applique la transformation (appelé via requestAnimationFrame)
-    function applyTransform() {
-        modalImg.style.transform = `scale(${currentScale}) translate(${currentTranslateX}px, ${currentTranslateY}px)`;
-        rafId = null;
+    function appliquerTransformation() {
+        imgModale.style.transform = `scale(${echelleCourante}) translate(${translationX}px, ${translationY}px)`;
+        idRaf = null;
     }
 
-    function requestTransformUpdate() {
-        if (!rafId) {
-            rafId = requestAnimationFrame(applyTransform);
+    function demanderMiseAJourTransformation() {
+        if (!idRaf) {
+            idRaf = requestAnimationFrame(appliquerTransformation);
         }
     }
 
 // Réinitialiser le zoom et la position quand on change d'image
-    function resetTransform() {
-        currentScale = 1;
-        currentTranslateX = 0;
-        currentTranslateY = 0;
-        modalImg.style.transform = '';
+    function reinitialiserTransformation() {
+        echelleCourante = 1;
+        translationX = 0;
+        translationY = 0;
+        imgModale.style.transform = '';
     }
 
 // Zoom avec la molette
-    modalImg.addEventListener("wheel", function (event) {
+    imgModale.addEventListener("wheel", function (event) {
         if (event.deltaY < 0) {
-            currentScale *= 1.1;
+            echelleCourante *= 1.1;
         } else {
-            currentScale *= 0.9;
+            echelleCourante *= 0.9;
         }
-        currentScale = Math.min(Math.max(currentScale, 1), 2);
+        echelleCourante = Math.min(Math.max(echelleCourante, 1), 2);
 
         // Réinitialiser la position si on revient au zoom 1
-        if (currentScale === 1) {
-            currentTranslateX = 0;
-            currentTranslateY = 0;
+        if (echelleCourante === 1) {
+            translationX = 0;
+            translationY = 0;
         }
 
-        requestTransformUpdate();
+        demanderMiseAJourTransformation();
     });
 
 // Début du glisser-déposer
-    modalImg.addEventListener("mousedown", function (event) {
+    imgModale.addEventListener("mousedown", function (event) {
         event.preventDefault();
-        isDragging = true;
-        startX = event.clientX;
-        startY = event.clientY;
-        initialX = currentTranslateX;
-        initialY = currentTranslateY;
-        modalImg.classList.add("grabbing");
+        enGlissement = true;
+        debutX = event.clientX;
+        debutY = event.clientY;
+        initialX = translationX;
+        initialY = translationY;
+        imgModale.classList.add("grabbing");
     });
 
 // Déplacement de l'image (throttlé via requestAnimationFrame)
-    modalImg.addEventListener("mousemove", function (event) {
-        if (!isDragging) return;
-        currentTranslateX = initialX + (event.clientX - startX);
-        currentTranslateY = initialY + (event.clientY - startY);
-        requestTransformUpdate();
+    imgModale.addEventListener("mousemove", function (event) {
+        if (!enGlissement) return;
+        translationX = initialX + (event.clientX - debutX);
+        translationY = initialY + (event.clientY - debutY);
+        demanderMiseAJourTransformation();
     });
 
 // Fin du glisser-déposer
-    modalImg.addEventListener("mouseup", function () {
-        isDragging = false;
-        modalImg.classList.remove("grabbing");
+    imgModale.addEventListener("mouseup", function () {
+        enGlissement = false;
+        imgModale.classList.remove("grabbing");
     });
 
-    modalImg.addEventListener("mouseleave", function () {
-        isDragging = false;
-        modalImg.classList.remove("grabbing");
+    imgModale.addEventListener("mouseleave", function () {
+        enGlissement = false;
+        imgModale.classList.remove("grabbing");
     });
 })();

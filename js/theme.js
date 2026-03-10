@@ -1,62 +1,62 @@
 // Sélectionne les éléments nécessaires
-const toggleSwitch = document.querySelector('.theme-switch__checkbox');
+const boutonBascule = document.querySelector('.theme-switch__checkbox');
 const body = document.body;
-const darkModeClass = 'dark-theme';
+const classeModeObscur = 'dark-theme';
 
-if (toggleSwitch) {
+if (boutonBascule) {
     // Fonction pour activer/désactiver le mode sombre
-    function toggleDarkMode(isDarkMode) {
-        if (isDarkMode) {
-            document.documentElement.classList.add(darkModeClass);
-            body.classList.add(darkModeClass);
+    function basculerModeSombre(estModeSombre) {
+        if (estModeSombre) {
+            document.documentElement.classList.add(classeModeObscur);
+            body.classList.add(classeModeObscur);
         } else {
-            document.documentElement.classList.remove(darkModeClass);
-            body.classList.remove(darkModeClass);
+            document.documentElement.classList.remove(classeModeObscur);
+            body.classList.remove(classeModeObscur);
         }
         // Meta theme-color dynamique selon le thème
         const metaTheme = document.querySelector('meta[name="theme-color"]');
         if (metaTheme) {
-            metaTheme.content = isDarkMode ? '#1a0000' : '#a90000';
+            metaTheme.content = estModeSombre ? '#1a0000' : '#a90000';
         }
     }
 
     // Sauvegarde le mode actuel dans localStorage
-    function saveDarkModePreference(isDarkMode) {
+    function sauvegarderPreference(estModeSombre) {
         try {
-            localStorage.setItem('dark-mode', isDarkMode);
+            localStorage.setItem('dark-mode', estModeSombre);
         } catch (e) { /* Navigation privée ou stockage plein */
         }
     }
 
     // Applique le thème lors du chargement de la page
-    function loadDarkModePreference() {
-        let isDarkMode = false;
-        let hasPreference = false;
+    function chargerPreference() {
+        let estModeSombre = false;
+        let aPreference = false;
         try {
-            const stored = localStorage.getItem('dark-mode');
-            if (stored !== null) {
-                hasPreference = true;
-                isDarkMode = stored === 'true';
+            const stocke = localStorage.getItem('dark-mode');
+            if (stocke !== null) {
+                aPreference = true;
+                estModeSombre = stocke === 'true';
             }
         } catch (e) { /* Navigation privée */
         }
 
         // Détection automatique du thème système si aucune préférence sauvegardée
-        if (!hasPreference && window.matchMedia) {
-            isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (!aPreference && window.matchMedia) {
+            estModeSombre = window.matchMedia('(prefers-color-scheme: dark)').matches;
         }
 
-        toggleDarkMode(isDarkMode);
-        toggleSwitch.checked = isDarkMode;
+        basculerModeSombre(estModeSombre);
+        boutonBascule.checked = estModeSombre;
     }
 
     // Gestionnaire d'événement pour le basculement
-    toggleSwitch.addEventListener('change', (event) => {
-        const isDarkMode = event.target.checked;
-        toggleDarkMode(isDarkMode);
-        saveDarkModePreference(isDarkMode);
+    boutonBascule.addEventListener('change', (event) => {
+        const estModeSombre = event.target.checked;
+        basculerModeSombre(estModeSombre);
+        sauvegarderPreference(estModeSombre);
     });
 
     // Charge les préférences au démarrage
-    loadDarkModePreference();
+    chargerPreference();
 }

@@ -1,12 +1,12 @@
 // Navigation vers les détails du projet
-document.querySelectorAll('.card').forEach(card => {
+document.querySelectorAll('.card').forEach(carte => {
     function naviguer() {
-        const projetId = card.getAttribute('data-id');
+        const projetId = carte.getAttribute('data-id');
         window.location.href = `projet-details.html?id=${projetId}`;
     }
 
-    card.addEventListener('click', naviguer);
-    card.addEventListener('keydown', (e) => {
+    carte.addEventListener('click', naviguer);
+    carte.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             naviguer();
@@ -16,7 +16,7 @@ document.querySelectorAll('.card').forEach(card => {
 
 // Filtrage des projets
 const filtreBtns = document.querySelectorAll('.filtre-btn');
-const cards = document.querySelectorAll('.card');
+const cartes = document.querySelectorAll('.card');
 
 filtreBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -26,9 +26,9 @@ filtreBtns.forEach(btn => {
 
         const filtre = btn.getAttribute('data-filtre');
 
-        cards.forEach(card => {
-            const type = card.getAttribute('data-type');
-            const techs = card.getAttribute('data-tech');
+        cartes.forEach(carte => {
+            const type = carte.getAttribute('data-type');
+            const techs = carte.getAttribute('data-tech');
 
             let visible;
 
@@ -41,9 +41,9 @@ filtreBtns.forEach(btn => {
             }
 
             if (visible) {
-                card.classList.remove('hidden');
+                carte.classList.remove('hidden');
             } else {
-                card.classList.add('hidden');
+                carte.classList.add('hidden');
             }
         });
     });

@@ -91,14 +91,14 @@
         if (estDansChamp()) return;
 
         // Konami Code
-        if (e.key === konamiSequence[konamiPosition]) {
-            konamiPosition++;
-            if (konamiPosition === konamiSequence.length) {
-                konamiPosition = 0;
+        if (e.key === sequenceKonami[positionKonami]) {
+            positionKonami++;
+            if (positionKonami === sequenceKonami.length) {
+                positionKonami = 0;
                 if (!easterEggActif) lancerKonami();
             }
-        } else if (konamiSequence.indexOf(e.key) !== -1) {
-            konamiPosition = (e.key === konamiSequence[0]) ? 1 : 0;
+        } else if (sequenceKonami.indexOf(e.key) !== -1) {
+            positionKonami = (e.key === sequenceKonami[0]) ? 1 : 0;
         }
 
         // Mots-clés
@@ -121,8 +121,8 @@
     // Konami Code
     // ==============================
 
-    const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-    let konamiPosition = 0;
+    const sequenceKonami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let positionKonami = 0;
 
     function lancerConfettis() {
         const couleurs = ['#ff4444', '#44ff44', '#4444ff', '#ffff44', '#ff44ff', '#44ffff', '#ff8800', '#960000'];
@@ -158,32 +158,32 @@
         for (let i = 0; i < colonnes; i++) {
             gouttes[i] = Math.floor(Math.random() * -canvas.height / 16);
         }
-        const chars = 'アイウエオカキクケコサシスセソタチツテト0123456789ABCDEF';
-        let running = true;
+        const caracteres = 'アイウエオカキクケコサシスセソタチツテト0123456789ABCDEF';
+        let enCours = true;
         function dessiner() {
-            if (!running) return;
+            if (!enCours) return;
             ctx.fillStyle = 'rgba(0, 0, 0, 0.06)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = '#0f0';
             ctx.font = '14px monospace';
             for (let j = 0; j < gouttes.length; j++) {
-                ctx.fillText(chars[Math.floor(Math.random() * chars.length)], j * 16, gouttes[j] * 16);
+                ctx.fillText(caracteres[Math.floor(Math.random() * caracteres.length)], j * 16, gouttes[j] * 16);
                 if (gouttes[j] * 16 > canvas.height && Math.random() > 0.975) gouttes[j] = 0;
                 gouttes[j]++;
             }
             requestAnimationFrame(dessiner);
         }
         dessiner();
-        return { canvas: canvas, stop: function() { running = false; } };
+        return { canvas: canvas, stop: function() { enCours = false; } };
     }
 
     function lancerKonami() {
         easterEggActif = true;
         lancerConfettis();
         document.body.classList.add('ee-flip');
-        let matrixResult;
+        let resultatMatrix;
         setTimeout(function () {
-            matrixResult = lancerMatrix();
+            resultatMatrix = lancerMatrix();
         }, 500);
         setTimeout(function () {
             afficherModale(
@@ -191,9 +191,9 @@
                 'Tu as trouvé le secret !<br>Le fameux <span class="ee-code">\u2191 \u2191 \u2193 \u2193 \u2190 \u2192 \u2190 \u2192 B A</span><br>Merci d\'avoir exploré mon portfolio.',
                 function () {
                     document.body.classList.remove('ee-flip');
-                    if (matrixResult) {
-                        matrixResult.stop();
-                        matrixResult.canvas.remove();
+                    if (resultatMatrix) {
+                        resultatMatrix.stop();
+                        resultatMatrix.canvas.remove();
                     }
                     document.querySelectorAll('.ee-confetti').forEach(function (c) { c.remove(); });
                 }
@@ -313,12 +313,12 @@
 
     function lancerSnake() {
         easterEggActif = true;
-        const overlay = document.createElement('div');
-        overlay.classList.add('ee-snake-overlay');
+        const surcouche = document.createElement('div');
+        surcouche.classList.add('ee-snake-overlay');
 
-        const scoreEl = document.createElement('div');
-        scoreEl.classList.add('ee-snake-score');
-        scoreEl.textContent = 'Score : 0';
+        const eleScore = document.createElement('div');
+        eleScore.classList.add('ee-snake-score');
+        eleScore.textContent = 'Score : 0';
 
         const canvas = document.createElement('canvas');
         const TAILLE = Math.min(400, window.innerWidth - 40);
@@ -329,10 +329,10 @@
         info.classList.add('ee-snake-info');
         info.textContent = 'Flèches pour jouer \u2022 Echap pour quitter';
 
-        overlay.appendChild(scoreEl);
-        overlay.appendChild(canvas);
-        overlay.appendChild(info);
-        document.body.appendChild(overlay);
+        surcouche.appendChild(scoreEl);
+        surcouche.appendChild(canvas);
+        surcouche.appendChild(info);
+        document.body.appendChild(surcouche);
 
         const ctx = canvas.getContext('2d');
         const GRILLE = 20;
@@ -342,7 +342,7 @@
         let prochDirection = { x: 1, y: 0 };
         let pomme = placerPomme();
         let score = 0;
-        let gameOver = false;
+        let finDuJeu = false;
 
         function placerPomme() {
             let pos;
@@ -369,13 +369,13 @@
                 ctx.fillRect(s.x * CELLULE, s.y * CELLULE, CELLULE - 1, CELLULE - 1);
             });
 
-            if (gameOver) {
+            if (finDuJeu) {
                 ctx.fillStyle = 'rgba(0,0,0,0.7)';
                 ctx.fillRect(0, 0, TAILLE, TAILLE);
                 ctx.fillStyle = '#ff0000';
                 ctx.font = 'bold 30px monospace';
                 ctx.textAlign = 'center';
-                ctx.fillText('GAME OVER', TAILLE / 2, TAILLE / 2);
+                ctx.fillText('JEU TERMINÉ', TAILLE / 2, TAILLE / 2);
                 ctx.fillStyle = '#fff';
                 ctx.font = '16px monospace';
                 ctx.fillText('Score : ' + score, TAILLE / 2, TAILLE / 2 + 30);
@@ -383,7 +383,7 @@
         }
 
         function update() {
-            if (gameOver) return;
+            if (finDuJeu) return;
             direction = prochDirection;
             const tete = {
                 x: serpent[0].x + direction.x,
@@ -393,10 +393,10 @@
             // Collision mur ou soi-même
             if (tete.x < 0 || tete.x >= GRILLE || tete.y < 0 || tete.y >= GRILLE ||
                 serpent.some(function (s) { return s.x === tete.x && s.y === tete.y; })) {
-                gameOver = true;
+                finDuJeu = true;
                 dessiner();
                 setTimeout(function () {
-                    overlay.remove();
+                    surcouche.remove();
                     easterEggActif = false;
                 }, 2000);
                 return;
@@ -406,7 +406,7 @@
 
             if (tete.x === pomme.x && tete.y === pomme.y) {
                 score++;
-                scoreEl.textContent = 'Score : ' + score;
+                eleScore.textContent = 'Score : ' + score;
                 pomme = placerPomme();
             } else {
                 serpent.pop();
@@ -416,14 +416,14 @@
         }
 
         dessiner();
-        const gameInterval = setInterval(update, 180);
+        const intervalleJeu = setInterval(update, 180);
 
-        function handleKey(e) {
+        function gestionnaireClavier(e) {
             if (e.key === 'Escape') {
-                clearInterval(gameInterval);
-                overlay.remove();
+                clearInterval(intervalleJeu);
+                surcouche.remove();
                 easterEggActif = false;
-                document.removeEventListener('keydown', handleKey);
+                document.removeEventListener('keydown', gestionnaireClavier);
                 return;
             }
             if (e.key === 'ArrowUp' && direction.y !== 1) prochDirection = { x: 0, y: -1 };
@@ -435,7 +435,7 @@
             }
         }
 
-        document.addEventListener('keydown', handleKey);
+        document.addEventListener('keydown', gestionnaireClavier);
     }
 
     // ==============================
@@ -472,13 +472,13 @@
     function lancer90s() {
         easterEggActif = true;
         document.body.classList.add('ee-90s');
-        const marquee = document.createElement('div');
-        marquee.classList.add('ee-90s-marquee');
-        marquee.textContent = '~ * ~ Bienvenue sur mon super site ~ * ~ Livre d\'or ~ * ~ Compteur de visiteurs : 999 999 ~ * ~';
-        document.body.appendChild(marquee);
+        const defilement = document.createElement('div');
+        defilement.classList.add('ee-90s-marquee');
+        defilement.textContent = '~ * ~ Bienvenue sur mon super site ~ * ~ Livre d\'or ~ * ~ Compteur de visiteurs : 999 999 ~ * ~';
+        document.body.appendChild(defilement);
         setTimeout(function () {
             document.body.classList.remove('ee-90s');
-            marquee.remove();
+            defilement.remove();
             easterEggActif = false;
         }, 8000);
     }
@@ -504,7 +504,7 @@
     // ==============================
 
     let dernierX = null, dernierY = null, dernierZ = null;
-    let secousseCount = 0;
+    let compteurSecousses = 0;
     let dernierSecousse = 0;
     const SEUIL_SECOUSSE = 25;
 
@@ -522,11 +522,11 @@
                 if (deltaX + deltaY + deltaZ > SEUIL_SECOUSSE) {
                     const maintenant = Date.now();
                     if (maintenant - dernierSecousse > 300) {
-                        secousseCount++;
+                        compteurSecousses++;
                         dernierSecousse = maintenant;
                     }
-                    if (secousseCount >= 3) {
-                        secousseCount = 0;
+                    if (compteurSecousses >= 3) {
+                        compteurSecousses = 0;
                         // Lancer un easter egg aleatoire parmi les visuels
                         const eesMobiles = [lancerDisco, lancerGravity, lancerBarrelRoll, lancerRainbow];
                         const ee = eesMobiles[Math.floor(Math.random() * eesMobiles.length)];
@@ -543,7 +543,7 @@
         // Reset du compteur si pas de secousse pendant 1s
         setInterval(function () {
             if (Date.now() - dernierSecousse > 1000) {
-                secousseCount = 0;
+                compteurSecousses = 0;
             }
         }, 1000);
     }

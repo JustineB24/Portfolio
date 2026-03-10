@@ -1,12 +1,12 @@
 // Sélection des éléments
-const sideMenu = document.querySelector('.menu-burger');
-const iconMenu = document.querySelector('.icon-menu');
+const menuLateral = document.querySelector('.menu-burger');
+const iconeMenu = document.querySelector('.icon-menu');
 const html = document.documentElement;
 
 // Gestion du clic sur l'icône menu (ouvrir/fermer le menu)
-if (iconMenu && sideMenu) {
-    iconMenu.addEventListener('click', function () {
-        sideMenu.classList.toggle('open');
-        html.classList.toggle('overflow-hidden', sideMenu.classList.contains('open'));
+if (iconeMenu && menuLateral) {
+    iconeMenu.addEventListener('click', function () {
+        menuLateral.classList.toggle('open');
+        html.classList.toggle('overflow-hidden', menuLateral.classList.contains('open'));
     });
 }

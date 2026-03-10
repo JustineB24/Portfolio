@@ -1,33 +1,33 @@
-class TxtRotate {
-    constructor(el, toRotate, period) {
-        this.toRotate = toRotate;
+class TexteRotatif {
+    constructor(el, aRotationner, periode) {
+        this.aRotationner = aRotationner;
         this.el = el;
-        this.loopNum = 0;
-        this.period = parseInt(period, 10) || 2000;
+        this.numBoucle = 0;
+        this.periode = parseInt(periode, 10) || 2000;
         this.txt = '';
-        this.isDeleting = false;
-        this.wrap = document.createElement('span');
-        this.wrap.className = 'wrap';
+        this.enSuppression = false;
+        this.enveloppe = document.createElement('span');
+        this.enveloppe.className = 'wrap';
         this.el.textContent = '';
-        this.el.appendChild(this.wrap);
+        this.el.appendChild(this.enveloppe);
         this.tick();
     }
 
     tick() {
-        let i = this.loopNum % this.toRotate.length;
-        let fullTxt = this.toRotate[i];
+        let i = this.numBoucle % this.aRotationner.length;
+        let texteComplet = this.aRotationner[i];
 
-        this.txt = this.isDeleting ? fullTxt.substring(0, this.txt.length - 1) : fullTxt.substring(0, this.txt.length + 1);
-        this.wrap.textContent = this.txt;
+        this.txt = this.enSuppression ? texteComplet.substring(0, this.txt.length - 1) : texteComplet.substring(0, this.txt.length + 1);
+        this.enveloppe.textContent = this.txt;
 
-        let delta = this.isDeleting ? 75 : 150;
+        let delta = this.enSuppression ? 75 : 150;
 
-        if (!this.isDeleting && this.txt === fullTxt) {
-            delta = this.period;
-            this.isDeleting = true;
-        } else if (this.isDeleting && this.txt === '') {
-            this.isDeleting = false;
-            this.loopNum++;
+        if (!this.enSuppression && this.txt === texteComplet) {
+            delta = this.periode;
+            this.enSuppression = true;
+        } else if (this.enSuppression && this.txt === '') {
+            this.enSuppression = false;
+            this.numBoucle++;
             delta = 500;
         }
 
@@ -44,11 +44,11 @@ class TxtRotate {
 window.addEventListener('load', function () {
     let elements = document.getElementsByClassName('txt-rotate');
     for (let el of elements) {
-        let toRotate = el.getAttribute('data-rotate');
-        let period = el.getAttribute('data-period');
-        if (toRotate) {
+        let aRotationner = el.getAttribute('data-rotate');
+        let periode = el.getAttribute('data-period');
+        if (aRotationner) {
             try {
-                new TxtRotate(el, JSON.parse(toRotate), period);
+                new TexteRotatif(el, JSON.parse(aRotationner), periode);
             } catch (e) {
                 console.error('Erreur parsing data-rotate :', e);
             }

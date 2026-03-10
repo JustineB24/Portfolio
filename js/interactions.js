@@ -8,19 +8,19 @@
 
     function animerCompteur(el) {
         const nombre = el.querySelector('.compteur-nombre');
-        const target = parseInt(el.dataset.target, 10);
+        const objectif = parseInt(el.dataset.target, 10);
         const duree = 1500;
         const debut = performance.now();
 
-        function update(now) {
-            const progress = Math.min((now - debut) / duree, 1);
+        function mettreAJour(now) {
+            const progression = Math.min((now - debut) / duree, 1);
             // Ease-out
-            const eased = 1 - Math.pow(1 - progress, 3);
-            nombre.textContent = Math.round(target * eased);
-            if (progress < 1) requestAnimationFrame(update);
+            const courbe = 1 - Math.pow(1 - progression, 3);
+            nombre.textContent = Math.round(objectif * courbe);
+            if (progression < 1) requestAnimationFrame(mettreAJour);
         }
 
-        requestAnimationFrame(update);
+        requestAnimationFrame(mettreAJour);
     }
 
     const observer = new IntersectionObserver(function (entries) {
@@ -44,23 +44,23 @@
 (function () {
     if (!window.matchMedia('(hover: hover)').matches) return;
 
-    const cards = document.querySelectorAll('.projet-container .card');
-    if (!cards.length) return;
+    const cartes = document.querySelectorAll('.projet-container .card');
+    if (!cartes.length) return;
 
-    cards.forEach(function (card) {
-        card.addEventListener('mousemove', function (e) {
-            const rect = card.getBoundingClientRect();
+    cartes.forEach(function (carte) {
+        carte.addEventListener('mousemove', function (e) {
+            const rect = carte.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / centerY * -5;
-            const rotateY = (x - centerX) / centerX * 5;
-            card.style.transform = 'perspective(800px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-6px)';
+            const centreX = rect.width / 2;
+            const centreY = rect.height / 2;
+            const rotationX = (y - centreY) / centreY * -5;
+            const rotationY = (x - centreX) / centreX * 5;
+            carte.style.transform = 'perspective(800px) rotateX(' + rotationX + 'deg) rotateY(' + rotationY + 'deg) translateY(-6px)';
         });
 
-        card.addEventListener('mouseleave', function () {
-            card.style.transform = '';
+        carte.addEventListener('mouseleave', function () {
+            carte.style.transform = '';
         });
     });
 })();
@@ -72,18 +72,18 @@
 (function () {
     if (!window.matchMedia('(hover: hover)').matches) return;
 
-    const btns = document.querySelectorAll('.btn-download, .btn-cv, .btn-cv-outline, .btn-envoyer, .btn-accueil');
+    const boutons = document.querySelectorAll('.btn-download, .btn-cv, .btn-cv-outline, .btn-envoyer, .btn-accueil');
 
-    btns.forEach(function (btn) {
-        btn.addEventListener('mousemove', function (e) {
-            const rect = btn.getBoundingClientRect();
+    boutons.forEach(function (bouton) {
+        bouton.addEventListener('mousemove', function (e) {
+            const rect = bouton.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
-            btn.style.transform = 'translate(' + x * 0.15 + 'px, ' + y * 0.15 + 'px) translateY(-2px)';
+            bouton.style.transform = 'translate(' + x * 0.15 + 'px, ' + y * 0.15 + 'px) translateY(-2px)';
         });
 
-        btn.addEventListener('mouseleave', function () {
-            btn.style.transform = '';
+        bouton.addEventListener('mouseleave', function () {
+            bouton.style.transform = '';
         });
     });
 })();
@@ -94,8 +94,8 @@
 
 (function () {
     // Bounce sur les icônes des headers de documents
-    const headerIcons = document.querySelectorAll('.document-header i');
-    headerIcons.forEach(function (icon) {
+    const iconesEntete = document.querySelectorAll('.document-header i');
+    iconesEntete.forEach(function (icon) {
         icon.classList.add('header-icon-transition');
         icon.parentElement.addEventListener('mouseenter', function () {
             icon.style.transform = 'scale(1.2) rotate(5deg)';
@@ -115,23 +115,23 @@
 // ==============================
 
 (function () {
-    const emailLink = document.querySelector('.contact-infos a[href^="mailto:"]');
-    if (!emailLink) return;
+    const lienEmail = document.querySelector('.contact-infos a[href^="mailto:"]');
+    if (!lienEmail) return;
 
-    const email = emailLink.href.replace('mailto:', '');
-    const btn = document.createElement('button');
-    btn.classList.add('btn-copier-email');
-    btn.setAttribute('aria-label', 'Copier l\'adresse email');
-    btn.innerHTML = '<i class="fas fa-copy"></i><span class="tooltip-copie">Copié !</span>';
+    const email = lienEmail.href.replace('mailto:', '');
+    const bouton = document.createElement('button');
+    bouton.classList.add('btn-copier-email');
+    bouton.setAttribute('aria-label', 'Copier l\'adresse email');
+    bouton.innerHTML = '<i class="fas fa-copy"></i><span class="tooltip-copie">Copié !</span>';
 
-    emailLink.parentElement.appendChild(btn);
+    lienEmail.parentElement.appendChild(bouton);
 
-    btn.addEventListener('click', function () {
+    bouton.addEventListener('click', function () {
         navigator.clipboard.writeText(email).then(function () {
-            const tooltip = btn.querySelector('.tooltip-copie');
-            tooltip.classList.add('visible');
+            const infobulle = bouton.querySelector('.tooltip-copie');
+            infobulle.classList.add('visible');
             setTimeout(function () {
-                tooltip.classList.remove('visible');
+                infobulle.classList.remove('visible');
             }, 2000);
         });
     });
@@ -144,16 +144,16 @@
 (function () {
     const main = document.querySelector('main');
     const h1 = main ? main.querySelector('h1') : null;
-    if (!h1 || !document.querySelector('.timeline-group')) return; // Only on veille page
+    if (!h1 || !document.querySelector('.timeline-group')) return; // Seulement sur la page veille
 
     const texte = main.textContent || '';
     const mots = texte.trim().split(/\s+/).length;
     const minutes = Math.ceil(mots / 200);
 
-    const tempsEl = document.createElement('div');
-    tempsEl.classList.add('temps-lecture');
-    tempsEl.innerHTML = '<i class="fas fa-clock"></i> Temps de lecture : ~' + minutes + ' min';
-    h1.insertAdjacentElement('afterend', tempsEl);
+    const eleTemps = document.createElement('div');
+    eleTemps.classList.add('temps-lecture');
+    eleTemps.innerHTML = '<i class="fas fa-clock"></i> Temps de lecture : ~' + minutes + ' min';
+    h1.insertAdjacentElement('afterend', eleTemps);
 })();
 
 // ==============================
@@ -163,39 +163,39 @@
 (function () {
     if (!window.matchMedia('(hover: hover)').matches) return;
 
-    const projetLinks = document.querySelectorAll('a.timeline-link[href*="projet-details"]');
-    if (!projetLinks.length) return;
+    const liensProjet = document.querySelectorAll('a.timeline-link[href*="projet-details"]');
+    if (!liensProjet.length) return;
 
-    const projetImages = {
+    const imagesProjet = {
         'panada-food': '../projets/Panada_Food/Accueil.webp',
         'mairie-cauffry': '../projets/Mairie_de_cauffry/Accueil.webp'
     };
 
-    const preview = document.createElement('div');
-    preview.classList.add('link-preview');
-    document.body.appendChild(preview);
+    const apercu = document.createElement('div');
+    apercu.classList.add('link-preview');
+    document.body.appendChild(apercu);
 
-    const previewImg = document.createElement('img');
-    previewImg.classList.add('link-preview-img');
-    preview.appendChild(previewImg);
+    const imgApercu = document.createElement('img');
+    imgApercu.classList.add('link-preview-img');
+    apercu.appendChild(imgApercu);
 
-    projetLinks.forEach(function (link) {
-        const href = link.getAttribute('href');
+    liensProjet.forEach(function (lien) {
+        const href = lien.getAttribute('href');
         const id = href.split('id=')[1];
-        if (!id || !projetImages[id]) return;
+        if (!id || !imagesProjet[id]) return;
 
-        link.addEventListener('mouseenter', function () {
-            previewImg.src = projetImages[id];
-            preview.style.opacity = '1';
+        lien.addEventListener('mouseenter', function () {
+            imgApercu.src = imagesProjet[id];
+            apercu.style.opacity = '1';
         });
 
-        link.addEventListener('mousemove', function (e) {
-            preview.style.left = (e.clientX + 15) + 'px';
-            preview.style.top = (e.clientY + 15) + 'px';
+        lien.addEventListener('mousemove', function (e) {
+            apercu.style.left = (e.clientX + 15) + 'px';
+            apercu.style.top = (e.clientY + 15) + 'px';
         });
 
-        link.addEventListener('mouseleave', function () {
-            preview.style.opacity = '0';
+        lien.addEventListener('mouseleave', function () {
+            apercu.style.opacity = '0';
         });
     });
 })();

@@ -298,6 +298,21 @@
     100% { transform: translateX(-100%); }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .ee-disco,
+    .ee-disco *,
+    .ee-rainbow,
+    .ee-rainbow *,
+    .ee-gravity,
+    .ee-barrel-roll,
+    .ee-flip,
+    .ee-90s header,
+    .ee-90s-marquee,
+    .ee-terminal::after {
+        animation: none !important;
+    }
+}
+
 .ee-a11y {
     font-size: 200% !important;
 }

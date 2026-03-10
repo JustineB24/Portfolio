@@ -170,7 +170,7 @@ function genererBreadcrumbs(cheminBase) {
     const filAriane = document.createElement('nav');
     filAriane.classList.add('breadcrumb');
     filAriane.setAttribute('aria-label', 'Fil d\'Ariane');
-    filAriane.innerHTML = '<a href="' + cheminBase + 'index.html">Accueil</a><span>/</span>' + titrePage;
+    filAriane.innerHTML = '<a href="' + cheminBase + 'index.html">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">' + titrePage + '</span>';
 
     const main = document.querySelector('main');
     if (main) {

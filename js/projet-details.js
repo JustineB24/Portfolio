@@ -162,21 +162,22 @@ if (!projetId || !projets[projetId]) {
         let li = document.createElement("li");
 
         // Exception pour C#
-        let fileName = tech.toLowerCase();
-        if (fileName === "c#") {
-            fileName = "c-sharp";
+        let nomFichier = tech.toLowerCase();
+        if (nomFichier === "c#") {
+            nomFichier = "c-sharp";
         }
 
         // Création du logo
         let logo = document.createElement("img");
-        logo.src = `../assets/SVG/${fileName}.svg`;
+        logo.src = `../assets/SVG/${nomFichier}.svg`;
         logo.alt = String(tech);
         logo.width = 80;
         logo.height = 80;
         logo.classList.add("tech-logo");
 
-        // Tooltip
-        const desc = techDescriptions[tech.toUpperCase()] || techDescriptions[tech];
+        // Tooltip (lookup insensible à la casse)
+        const cleCorrespondante = Object.keys(techDescriptions).find(k => k.toLowerCase() === tech.toLowerCase());
+        const desc = cleCorrespondante ? techDescriptions[cleCorrespondante] : undefined;
         if (desc) {
             li.setAttribute("data-tooltip", desc);
         }
@@ -295,8 +296,16 @@ if (!projetId || !projets[projetId]) {
             allerASlide(diapoCourante - 1);
         }
 
-        btnNext.addEventListener("click", slideSuivant);
-        btnPrev.addEventListener("click", slidePrecedent);
+        btnNext.addEventListener("click", function () {
+            slideSuivant();
+            clearInterval(intervalleLectureAuto);
+            intervalleLectureAuto = setInterval(slideSuivant, 4000);
+        });
+        btnPrev.addEventListener("click", function () {
+            slidePrecedent();
+            clearInterval(intervalleLectureAuto);
+            intervalleLectureAuto = setInterval(slideSuivant, 4000);
+        });
 
         dots.forEach((dot, index) => {
             dot.addEventListener("click", () => allerASlide(index));
@@ -321,36 +330,68 @@ if (!projetId || !projets[projetId]) {
                 pictureModale.appendChild(sourceModale);
                 pictureModale.appendChild(imgModale);
 
+                // Bouton fermer pour la modale
+                const btnFermerModale = document.createElement("button");
+                btnFermerModale.classList.add("carrousel-modale-fermer");
+                btnFermerModale.setAttribute("aria-label", "Fermer");
+                btnFermerModale.textContent = "\u2715";
+
                 modale.appendChild(pictureModale);
+                modale.appendChild(btnFermerModale);
                 document.body.appendChild(modale);
 
                 // Forcer le reflow pour déclencher la transition
                 modale.offsetHeight;
                 modale.classList.add("active");
                 modale.setAttribute("tabindex", "-1");
-                modale.focus();
-
-                function gestionnaireEchap(e) {
-                    if (e.key === "Escape") {
-                        fermerModale();
-                    }
-                }
+                btnFermerModale.focus();
 
                 function fermerModale() {
                     modale.classList.remove("active");
-                    document.removeEventListener("keydown", gestionnaireEchap);
+                    document.removeEventListener("keydown", gestionnaireClavier);
                     modale.addEventListener("transitionend", () => modale.remove(), {once: true});
                 }
 
+                function gestionnaireClavier(e) {
+                    if (e.key === "Escape") {
+                        fermerModale();
+                    } else if (e.key === "Tab") {
+                        // Piège de focus dans la modale
+                        const elementsFocusables = modale.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
+                        const premier = elementsFocusables[0];
+                        const dernier = elementsFocusables[elementsFocusables.length - 1];
+                        if (e.shiftKey) {
+                            if (document.activeElement === premier) {
+                                e.preventDefault();
+                                dernier.focus();
+                            }
+                        } else {
+                            if (document.activeElement === dernier) {
+                                e.preventDefault();
+                                premier.focus();
+                            }
+                        }
+                    }
+                }
+
+                btnFermerModale.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    fermerModale();
+                });
                 modale.addEventListener("click", fermerModale);
-                document.addEventListener("keydown", gestionnaireEchap);
+                document.addEventListener("keydown", gestionnaireClavier);
             });
         });
 
-        // Navigation clavier
+        // Navigation clavier (flag pour éviter un querySelector à chaque frappe)
+        let modaleOuverte = false;
+        const observateurModale = new MutationObserver(function () {
+            modaleOuverte = !!document.querySelector(".carrousel-modale");
+        });
+        observateurModale.observe(document.body, { childList: true });
+
         document.addEventListener("keydown", (e) => {
-            if (!document.querySelector(".carrousel")) return;
-            if (document.querySelector(".carrousel-modale")) return;
+            if (modaleOuverte) return;
             if (e.key === "ArrowRight") slideSuivant();
             if (e.key === "ArrowLeft") slidePrecedent();
         });
@@ -366,16 +407,6 @@ if (!projetId || !projets[projetId]) {
             intervalleLectureAuto = setInterval(slideSuivant, 4000);
         });
 
-        // Pause aussi lors d'interaction manuelle
-        btnNext.addEventListener("click", function () {
-            clearInterval(intervalleLectureAuto);
-            intervalleLectureAuto = setInterval(slideSuivant, 4000);
-        });
-
-        btnPrev.addEventListener("click", function () {
-            clearInterval(intervalleLectureAuto);
-            intervalleLectureAuto = setInterval(slideSuivant, 4000);
-        });
     }
 
     const projetLinkContainer = document.getElementById("projet-link");

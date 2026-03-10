@@ -1,5 +1,8 @@
 // Navigation vers les détails du projet
 document.querySelectorAll('.card').forEach(carte => {
+    carte.setAttribute('tabindex', '0');
+    carte.setAttribute('role', 'button');
+
     function naviguer() {
         const projetId = carte.getAttribute('data-id');
         window.location.href = `projet-details.html?id=${projetId}`;

@@ -1,7 +1,7 @@
 /* Conteneur du projet */
 .projet-details {
     padding: 0 50px 50px;
-    display: inline-block;
+    display: block;
     box-sizing: border-box;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .projet-hero h1 {
-    color: white;
+    color: var(--button-text-color);
     margin: 0;
     line-height: 1.2;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -38,7 +38,7 @@
 }
 
 .back-button:hover {
-    color: white;
+    color: var(--button-text-color);
     transform: translateX(-4px);
 }
 
@@ -52,7 +52,7 @@
 .projet-hero-tags .tag {
     padding: 0.3rem 0.9rem;
     background: rgba(255, 255, 255, 0.2);
-    color: white;
+    color: var(--button-text-color);
     border-radius: 2rem;
     font-size: 0.85rem;
     font-weight: 600;
@@ -156,7 +156,7 @@
     margin-top: 0.5rem;
     font-size: 0.9rem;
     color: var(--text-color);
-    opacity: 0.6;
+    opacity: 0.75;
     font-weight: 600;
 }
 
@@ -297,6 +297,29 @@
     max-height: 90vh;
     object-fit: contain;
     border-radius: var(--radius-sm);
+}
+
+.carrousel-modale-fermer {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--button-text-color);
+    border: none;
+    font-size: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    z-index: 1;
+}
+
+.carrousel-modale-fermer:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
 
 /* Responsive */

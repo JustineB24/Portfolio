@@ -26,6 +26,8 @@
     function afficherModale(titre, contenu, onFermer) {
         const modale = document.createElement('div');
         modale.classList.add('ee-modale');
+        modale.setAttribute('role', 'dialog');
+        modale.setAttribute('aria-modal', 'true');
 
         const contenuDiv = document.createElement('div');
         contenuDiv.classList.add('ee-modale-contenu');
@@ -35,7 +37,11 @@
         contenuDiv.appendChild(h2);
 
         const p = document.createElement('p');
-        p.innerHTML = contenu; // Contenu statique uniquement (pas de données utilisateur)
+        // Insertion sécurisée via DOMParser (pas de scripts exécutés)
+        const doc = new DOMParser().parseFromString(contenu, 'text/html');
+        while (doc.body.firstChild) {
+            p.appendChild(doc.body.firstChild);
+        }
         contenuDiv.appendChild(p);
 
         const fermerBtn = document.createElement('button');
@@ -48,8 +54,12 @@
         modale.offsetHeight;
         modale.classList.add('visible');
 
+        // Donner le focus au bouton fermer
+        fermerBtn.focus();
+
         function fermer() {
             modale.classList.remove('visible');
+            document.removeEventListener('keydown', gestionnaireClavier);
             modale.addEventListener('transitionend', function () {
                 modale.remove();
                 easterEggActif = false;
@@ -57,16 +67,36 @@
             }, { once: true });
         }
 
+        // Piège de focus : Tab cycle entre les éléments focusables de la modale
+        function gestionnaireClavier(e) {
+            if (e.key === 'Escape') {
+                fermer();
+                return;
+            }
+            if (e.key === 'Tab') {
+                var focusables = modale.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])');
+                if (focusables.length === 0) return;
+                var premier = focusables[0];
+                var dernier = focusables[focusables.length - 1];
+                if (e.shiftKey) {
+                    if (document.activeElement === premier) {
+                        e.preventDefault();
+                        dernier.focus();
+                    }
+                } else {
+                    if (document.activeElement === dernier) {
+                        e.preventDefault();
+                        premier.focus();
+                    }
+                }
+            }
+        }
+
         modale.querySelector('.ee-fermer').addEventListener('click', fermer);
         modale.addEventListener('click', function (e) {
             if (e.target === modale) fermer();
         });
-        document.addEventListener('keydown', function handler(e) {
-            if (e.key === 'Escape') {
-                fermer();
-                document.removeEventListener('keydown', handler);
-            }
-        });
+        document.addEventListener('keydown', gestionnaireClavier);
     }
 
     // ==============================
@@ -316,9 +346,9 @@
         const surcouche = document.createElement('div');
         surcouche.classList.add('ee-snake-overlay');
 
-        const eleScore = document.createElement('div');
-        eleScore.classList.add('ee-snake-score');
-        eleScore.textContent = 'Score : 0';
+        const leScore = document.createElement('div');
+        leScore.classList.add('ee-snake-score');
+        leScore.textContent = 'Score : 0';
 
         const canvas = document.createElement('canvas');
         const TAILLE = Math.min(400, window.innerWidth - 40);
@@ -329,7 +359,7 @@
         info.classList.add('ee-snake-info');
         info.textContent = 'Flèches pour jouer \u2022 Echap pour quitter';
 
-        surcouche.appendChild(scoreEl);
+        surcouche.appendChild(leScore);
         surcouche.appendChild(canvas);
         surcouche.appendChild(info);
         document.body.appendChild(surcouche);
@@ -406,7 +436,7 @@
 
             if (tete.x === pomme.x && tete.y === pomme.y) {
                 score++;
-                eleScore.textContent = 'Score : ' + score;
+                leScore.textContent = 'Score : ' + score;
                 pomme = placerPomme();
             } else {
                 serpent.pop();
@@ -541,7 +571,7 @@
         });
 
         // Reset du compteur si pas de secousse pendant 1s
-        setInterval(function () {
+        const intervalleResetSecousses = setInterval(function () {
             if (Date.now() - dernierSecousse > 1000) {
                 compteurSecousses = 0;
             }

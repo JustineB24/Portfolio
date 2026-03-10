@@ -133,6 +133,9 @@
             setTimeout(function () {
                 infobulle.classList.remove('visible');
             }, 2000);
+        }).catch(function (erreur) {
+            console.warn('Impossible de copier l\'email :', erreur);
+            alert('Impossible de copier l\'email. Vous pouvez le copier manuellement : ' + email);
         });
     });
 })();

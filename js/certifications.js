@@ -40,6 +40,7 @@
         document.documentElement.classList.add('overflow-hidden');
 
         imgModale.src = obtenirSrcWebp(img);
+        imgModale.alt = img.alt;
         indexActuel = Array.from(images).indexOf(img);
 
         // Donner le focus au bouton fermer
@@ -62,14 +63,18 @@
 // Passer à l'image suivante
     function imageSuivante() {
         indexActuel = (indexActuel + 1) % images.length;
-        document.getElementById("zoom-modal-img").src = obtenirSrcWebp(images[indexActuel]);
+        var imgModaleNav = document.getElementById("zoom-modal-img");
+        imgModaleNav.src = obtenirSrcWebp(images[indexActuel]);
+        imgModaleNav.alt = images[indexActuel].alt;
         reinitialiserTransformation();
     }
 
 // Passer à l'image précédente
     function imagePrecedente() {
         indexActuel = (indexActuel - 1 + images.length) % images.length;
-        document.getElementById("zoom-modal-img").src = obtenirSrcWebp(images[indexActuel]);
+        var imgModaleNav = document.getElementById("zoom-modal-img");
+        imgModaleNav.src = obtenirSrcWebp(images[indexActuel]);
+        imgModaleNav.alt = images[indexActuel].alt;
         reinitialiserTransformation();
     }
 
@@ -99,7 +104,7 @@
         } else if (e.key === "ArrowLeft") {
             imagePrecedente();
         } else if (e.key === "Tab") {
-            const focusables = modal.querySelectorAll('[role="button"], [tabindex]:not([tabindex="-1"])');
+            const focusables = modal.querySelectorAll('button, [role="button"], [tabindex]:not([tabindex="-1"])');
             const premier = focusables[0];
             const dernier = focusables[focusables.length - 1];
 
@@ -150,6 +155,7 @@
 
 // Zoom avec la molette
     imgModale.addEventListener("wheel", function (event) {
+        event.preventDefault();
         if (event.deltaY < 0) {
             echelleCourante *= 1.1;
         } else {
@@ -164,7 +170,7 @@
         }
 
         demanderMiseAJourTransformation();
-    });
+    }, {passive: false});
 
 // Début du glisser-déposer
     imgModale.addEventListener("mousedown", function (event) {

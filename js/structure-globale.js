@@ -1,6 +1,7 @@
 function validerChemin(chemin) {
     if (typeof chemin !== 'string' || !/^(\.\/|\.\.\/)+$/.test(chemin)) {
-        throw new Error('Chemin invalide : ' + chemin);
+        console.warn('Chemin invalide : ' + chemin + ' — utilisation du chemin par défaut ./');
+        return './';
     }
     return chemin;
 }
@@ -79,7 +80,7 @@ function genererHeader(chemin) {
             <!-- Fin menu -->
 
             <!-- From Uiverse.io by Galahhad -->
-            <label class="theme-switch" aria-label="Basculer le thème sombre">
+            <label class="theme-switch">
                 <input type="checkbox" class="theme-switch__checkbox" aria-label="Activer ou désactiver le thème sombre">
                 <div class="theme-switch__container">
                     <div class="theme-switch__clouds"></div>
@@ -110,7 +111,7 @@ function genererHeader(chemin) {
     document.querySelectorAll('.onglet, .onglet-burger').forEach(link => {
         const href = link.getAttribute('href');
         if (href && (cheminActuel.endsWith(href.replace(/^\.\.\/|\.\//, '')) ||
-            (href.includes('index.html') && (cheminActuel.endsWith('/') || currentPath.endsWith('/index.html'))))) {
+            (href.includes('index.html') && (cheminActuel.endsWith('/') || cheminActuel.endsWith('/index.html'))))) {
             link.classList.add('active');
         }
     });
@@ -218,6 +219,24 @@ function genererFooter(chemin) {
 // Auto-exécution (ce script est chargé avec defer, le DOM est prêt)
 (function () {
     const chemin = window.location.pathname.includes('/pages/') ? '../' : './';
+
+    // Preconnect Google Fonts (injecté avant les liens CSS existants)
+    const preconnectGoogle = document.createElement('link');
+    preconnectGoogle.rel = 'preconnect';
+    preconnectGoogle.href = 'https://fonts.googleapis.com';
+    const preconnectGstatic = document.createElement('link');
+    preconnectGstatic.rel = 'preconnect';
+    preconnectGstatic.href = 'https://fonts.gstatic.com';
+    preconnectGstatic.crossOrigin = '';
+    const premierLienCSS = document.querySelector('head link[rel="stylesheet"]');
+    if (premierLienCSS) {
+        premierLienCSS.parentNode.insertBefore(preconnectGoogle, premierLienCSS);
+        premierLienCSS.parentNode.insertBefore(preconnectGstatic, premierLienCSS);
+    } else {
+        document.head.appendChild(preconnectGoogle);
+        document.head.appendChild(preconnectGstatic);
+    }
+
     genererHeader(chemin);
     genererFooter(chemin);
 

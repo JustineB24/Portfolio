@@ -8,8 +8,16 @@ class TexteRotatif {
         this.enSuppression = false;
         this.enveloppe = document.createElement('span');
         this.enveloppe.className = 'wrap';
+        this.enveloppe.setAttribute('aria-hidden', 'true');
         this.el.textContent = '';
         this.el.appendChild(this.enveloppe);
+
+        // Texte complet accessible aux lecteurs d'écran
+        const srTexte = document.createElement('span');
+        srTexte.className = 'sr-only';
+        srTexte.textContent = this.aRotationner.join(', ');
+        this.el.appendChild(srTexte);
+
         this.tick();
     }
 

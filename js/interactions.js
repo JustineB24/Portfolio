@@ -30,9 +30,11 @@
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.5 });
+    }, {threshold: 0.5});
 
-    compteurs.forEach(function (c) { observer.observe(c); });
+    compteurs.forEach(function (c) {
+        observer.observe(c);
+    });
 })();
 
 // ==============================

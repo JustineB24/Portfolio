@@ -30,7 +30,7 @@
     width: 100%;
     padding: 1.25rem 1rem 0.5rem;
     border: 2px solid var(--card-background);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-size: 1rem;
     font-family: inherit;
     background: var(--card-background);
@@ -79,7 +79,7 @@
     background: var(--primary-color);
     color: var(--button-text-color);
     border: 2px solid var(--primary-color);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-size: 1rem;
     font-weight: 600;
     font-family: inherit;
@@ -96,7 +96,7 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(135deg, #b30000, #960000);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -109,14 +109,14 @@
 
 .btn-envoyer:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(150, 0, 0, 0.35);
+    box-shadow: var(--shadow-primary);
 }
 
 /* Infos de contact */
 .contact-infos {
     padding: 2rem;
     background: var(--card-background);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     align-self: flex-start;
 }
 

@@ -10,13 +10,13 @@ function genererHeader(chemin) {
 
     // Source unique pour les liens de navigation
     const navItems = [
-        { href: 'index.html', label: 'Accueil' },
-        { href: 'pages/apropos.html', label: 'À propos' },
-        { href: 'pages/competences.html', label: 'Compétences' },
-        { href: 'pages/projets.html', label: 'Projets' },
-        { href: 'pages/veille.html', label: 'Veille Technologique' },
-        { href: 'pages/documents.html', label: 'BTS SIO' },
-        { href: 'pages/contact.html', label: 'Contact' }
+        {href: 'index.html', label: 'Accueil'},
+        {href: 'pages/apropos.html', label: 'À propos'},
+        {href: 'pages/competences.html', label: 'Compétences'},
+        {href: 'pages/projets.html', label: 'Projets'},
+        {href: 'pages/veille.html', label: 'Veille Technologique'},
+        {href: 'pages/documents.html', label: 'BTS SIO'},
+        {href: 'pages/contact.html', label: 'Contact'}
     ];
 
     const menuDesktop = navItems.map(function (item) {
@@ -123,7 +123,7 @@ function genererHeader(chemin) {
         } else {
             header.classList.remove('header-scrolled');
         }
-    }, { passive: true });
+    }, {passive: true});
 
     // Transitions entre pages — fade-out au clic sur un lien interne
     document.addEventListener('click', function (e) {
@@ -198,13 +198,17 @@ function genererFooter(chemin) {
     // theme.js doit se charger en premier (séquentiel), puis les autres en parallèle
     const scriptTheme = document.createElement('script');
     scriptTheme.src = `${chemin}js/theme.js`;
-    scriptTheme.onerror = function () { console.error('Échec du chargement de theme.js'); };
+    scriptTheme.onerror = function () {
+        console.error('Échec du chargement de theme.js');
+    };
     scriptTheme.onload = function () {
         const scriptsParalleles = ['menu-burger.js', 'scroll-animations.js', 'easter-egg.js', 'interactions.js'];
         scriptsParalleles.forEach(function (nom) {
             const s = document.createElement('script');
             s.src = `${chemin}js/${nom}`;
-            s.onerror = function () { console.error('Échec du chargement de ' + nom); };
+            s.onerror = function () {
+                console.error('Échec du chargement de ' + nom);
+            };
             document.body.appendChild(s);
         });
     };
@@ -221,6 +225,8 @@ function genererFooter(chemin) {
     const loader = document.querySelector('.loader');
     if (loader) {
         loader.classList.add('hidden');
-        setTimeout(function () { loader.remove(); }, 500);
+        setTimeout(function () {
+            loader.remove();
+        }, 500);
     }
 })();

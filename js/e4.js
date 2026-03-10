@@ -6,14 +6,14 @@ if (typeof pdfjsLib !== 'undefined') {
         return pdf.getPage(1);
     }).then(page => {
         const scale = 1.5;
-        const viewport = page.getViewport({ scale });
+        const viewport = page.getViewport({scale});
 
         const canvas = document.getElementById('pdfViewer');
         const context = canvas.getContext('2d');
         canvas.width = viewport.width;
         canvas.height = viewport.height;
 
-        const renderContext = { canvasContext: context, viewport: viewport };
+        const renderContext = {canvasContext: context, viewport: viewport};
         page.render(renderContext);
     }).catch(err => {
         console.error('Erreur lors du chargement du PDF :', err);

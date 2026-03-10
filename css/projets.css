@@ -40,7 +40,7 @@
 
 /* Card projet */
 .card {
-    border-radius: 14px;
+    border-radius: var(--radius-xl);
     background: var(--card-background);
     overflow: hidden;
     cursor: pointer;
@@ -52,7 +52,7 @@
 
 .card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
 }
 
 .card.hidden {
@@ -127,18 +127,41 @@
     background: var(--background-color);
     color: var(--text-color);
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
 }
 
 /* Couleurs d'accent par carte */
-.card-1 { --card-accent: #ff0000; }
-.card-2 { --card-accent: #ff6a00; }
-.card-3 { --card-accent: #ffd500; }
-.card-4 { --card-accent: #007a27; }
-.card-5 { --card-accent: #0b00d6; }
-.card-6 { --card-accent: #9c00b8; }
-.card-7 { --card-accent: #0f4c81; }
-.card-8 { --card-accent: #fc4400; }
+.card-1 {
+    --card-accent: #ff0000;
+}
+
+.card-2 {
+    --card-accent: #ff6a00;
+}
+
+.card-3 {
+    --card-accent: #ffd500;
+}
+
+.card-4 {
+    --card-accent: #007a27;
+}
+
+.card-5 {
+    --card-accent: #0b00d6;
+}
+
+.card-6 {
+    --card-accent: #9c00b8;
+}
+
+.card-7 {
+    --card-accent: #0f4c81;
+}
+
+.card-8 {
+    --card-accent: #fc4400;
+}
 
 /* Responsive */
 @media (max-width: 1024px) {

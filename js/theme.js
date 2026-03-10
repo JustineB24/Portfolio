@@ -24,7 +24,8 @@ if (toggleSwitch) {
     function saveDarkModePreference(isDarkMode) {
         try {
             localStorage.setItem('dark-mode', isDarkMode);
-        } catch (e) { /* Navigation privée ou stockage plein */ }
+        } catch (e) { /* Navigation privée ou stockage plein */
+        }
     }
 
     // Applique le thème lors du chargement de la page
@@ -37,7 +38,8 @@ if (toggleSwitch) {
                 hasPreference = true;
                 isDarkMode = stored === 'true';
             }
-        } catch (e) { /* Navigation privée */ }
+        } catch (e) { /* Navigation privée */
+        }
 
         // Détection automatique du thème système si aucune préférence sauvegardée
         if (!hasPreference && window.matchMedia) {

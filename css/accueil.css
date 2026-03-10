@@ -7,14 +7,12 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 2rem;
-    background:
-        radial-gradient(ellipse at 50% 0%, rgba(150, 0, 0, 0.15) 0%, transparent 60%),
-        var(--background-color);
+    background: radial-gradient(ellipse at 50% 0%, rgba(150, 0, 0, 0.15) 0%, transparent 60%),
+    var(--background-color);
     gap: 2rem;
     position: relative;
     margin-top: -10rem; /* compenser le margin-top du main */
-    padding-top: 10rem;
+    padding: 10rem 2rem 2rem;
 }
 
 .hero .initials {
@@ -161,7 +159,7 @@
 
 .card-accueil:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
 }
 
 .card-accueil .card-icon {
@@ -202,7 +200,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.85rem 1.8rem;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
@@ -221,7 +219,7 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(135deg, #b30000, #960000);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -234,7 +232,7 @@
 
 .btn-cv:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(150, 0, 0, 0.35);
+    box-shadow: var(--shadow-primary);
 }
 
 /* ==============================
@@ -262,9 +260,8 @@
 
 @media (max-width: 768px) {
     .hero {
-        padding: 6rem 1rem 2rem;
         margin-top: -100px;
-        padding-top: 100px;
+        padding: 100px 1rem 2rem;
     }
 
     .hero .initials {
@@ -293,9 +290,8 @@
 
 @media (max-width: 480px) {
     .hero {
-        padding: 5rem 1rem 2rem;
         margin-top: -90px;
-        padding-top: 90px;
+        padding: 90px 1rem 2rem;
     }
 
     .hero .initials {

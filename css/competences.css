@@ -170,22 +170,57 @@
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-color);
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
 }
 
 /* Couleurs au hover seulement */
-.html { --comp-color: #f16529; }
-.css { --comp-color: #2965f1; }
-.js { --comp-color: #f7df1e; }
-.php { --comp-color: #6181b6; }
-.python { --comp-color: #ffce3e; }
-.c-sharp { --comp-color: #390091; }
-.mysql { --comp-color: #00758f; }
-.vscode { --comp-color: #3aa8f1; }
-.vs { --comp-color: #b885f2; }
-.xampp { --comp-color: #fb7a24; }
-.git { --comp-color: #de4c36; }
-.github { --comp-color: #161614; }
+.html {
+    --comp-color: #f16529;
+}
+
+.css {
+    --comp-color: #2965f1;
+}
+
+.js {
+    --comp-color: #f7df1e;
+}
+
+.php {
+    --comp-color: #6181b6;
+}
+
+.python {
+    --comp-color: #ffce3e;
+}
+
+.c-sharp {
+    --comp-color: #390091;
+}
+
+.mysql {
+    --comp-color: #00758f;
+}
+
+.vscode {
+    --comp-color: #3aa8f1;
+}
+
+.vs {
+    --comp-color: #b885f2;
+}
+
+.xampp {
+    --comp-color: #fb7a24;
+}
+
+.git {
+    --comp-color: #de4c36;
+}
+
+.github {
+    --comp-color: #161614;
+}
 
 .card-competence:hover .card-front {
     border-color: var(--comp-color);

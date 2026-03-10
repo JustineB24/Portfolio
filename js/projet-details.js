@@ -136,7 +136,7 @@ if (!projetId || !projets[projetId]) {
     projets[projetId].technologies.forEach(tech => {
         const span = document.createElement("span");
         span.classList.add("tag");
-        span.textContent = tech;
+        span.textContent = String(tech);
         heroTags.appendChild(span);
     });
 
@@ -170,7 +170,7 @@ if (!projetId || !projets[projetId]) {
         // Création du logo
         let logo = document.createElement("img");
         logo.src = `../assets/SVG/${fileName}.svg`;
-        logo.alt = tech;
+        logo.alt = String(tech);
         logo.width = 80;
         logo.height = 80;
         logo.classList.add("tech-logo");
@@ -231,7 +231,7 @@ if (!projetId || !projets[projetId]) {
             source.srcset = imgSrc.replace(/\.(png|jpg|jpeg|PNG|JPG)$/i, ".webp");
             source.type = "image/webp";
             const img = document.createElement("img");
-            img.src = imgSrc;
+            img.src = String(imgSrc);
             img.alt = projets[projetId].title + " — capture " + (index + 1);
             img.classList.add("carrousel-slide");
             img.loading = "lazy";
@@ -339,7 +339,7 @@ if (!projetId || !projets[projetId]) {
                 function fermerModale() {
                     modale.classList.remove("active");
                     document.removeEventListener("keydown", escHandler);
-                    modale.addEventListener("transitionend", () => modale.remove(), { once: true });
+                    modale.addEventListener("transitionend", () => modale.remove(), {once: true});
                 }
 
                 modale.addEventListener("click", fermerModale);

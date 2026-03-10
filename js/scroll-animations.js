@@ -49,8 +49,8 @@ window.addEventListener('scroll', () => {
     } else {
         btnRetourHaut.classList.remove('visible');
     }
-}, { passive: true });
+}, {passive: true});
 
 btnRetourHaut.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({top: 0, behavior: 'smooth'});
 });

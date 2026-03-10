@@ -36,7 +36,7 @@ function genererHeader(chemin) {
             <a class="titre-nom" href="${chemin}index.html"><img src="${chemin}assets/Logo_portfolio.png" alt="Logo JB" class="logo-header" width="50" height="50">Justine BLIN</a>
             <!-- Conteneur des boutons réseaux sociaux -->
             <div class="reseaux">
-                <!-- Source : Uiverse.io par wilsondesouza -->
+                <!-- From Uiverse.io by wilsondesouza -->
                 <a href="https://www.linkedin.com/in/justine-blin-a88600292" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn" class="btn-reseaux" id="linkedin">
                         <svg class="svg-icon" viewBox="0 0 16 16" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -45,7 +45,7 @@ function genererHeader(chemin) {
                         </svg>
                         <span class="text">LinkedIn</span>
                 </a>
-                <!-- Source : Uiverse.io par vinodjangid07 -->
+                <!-- From Uiverse.io by vinodjangid07 -->
                 <a href="https://github.com/JustineB24" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub" class="btn-reseaux" id="github">
                         <svg class="svg-icon" viewBox="0 0 496 512" height="1.4em" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -78,7 +78,7 @@ function genererHeader(chemin) {
             </div>
             <!-- Fin menu -->
 
-            <!-- Source : Uiverse.io par Galahhad -->
+            <!-- From Uiverse.io by Galahhad -->
             <label class="theme-switch" aria-label="Basculer le thème sombre">
                 <input type="checkbox" class="theme-switch__checkbox" aria-label="Activer ou désactiver le thème sombre">
                 <div class="theme-switch__container">

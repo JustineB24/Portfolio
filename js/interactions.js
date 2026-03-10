@@ -70,13 +70,13 @@
 (function () {
     if (!window.matchMedia('(hover: hover)').matches) return;
 
-    var btns = document.querySelectorAll('.btn-download, .btn-cv, .btn-cv-outline, .btn-envoyer, .btn-accueil');
+    const btns = document.querySelectorAll('.btn-download, .btn-cv, .btn-cv-outline, .btn-envoyer, .btn-accueil');
 
     btns.forEach(function (btn) {
         btn.addEventListener('mousemove', function (e) {
-            var rect = btn.getBoundingClientRect();
-            var x = e.clientX - rect.left - rect.width / 2;
-            var y = e.clientY - rect.top - rect.height / 2;
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
             btn.style.transform = 'translate(' + x * 0.15 + 'px, ' + y * 0.15 + 'px) translateY(-2px)';
         });
 
@@ -92,7 +92,7 @@
 
 (function () {
     // Bounce sur les icônes des headers de documents
-    var headerIcons = document.querySelectorAll('.document-header i');
+    const headerIcons = document.querySelectorAll('.document-header i');
     headerIcons.forEach(function (icon) {
         icon.style.transition = 'transform 0.3s';
         icon.parentElement.addEventListener('mouseenter', function () {
@@ -104,7 +104,7 @@
     });
 
     // Scale sur les boutons réseaux sociaux
-    var reseaux = document.querySelectorAll('.btn-reseaux');
+    const reseaux = document.querySelectorAll('.btn-reseaux');
     reseaux.forEach(function (btn) {
         btn.style.transition = 'width 0.4s, border-radius 0.4s, transform 0.3s';
     });
@@ -115,11 +115,11 @@
 // ==============================
 
 (function () {
-    var emailLink = document.querySelector('.contact-infos a[href^="mailto:"]');
+    const emailLink = document.querySelector('.contact-infos a[href^="mailto:"]');
     if (!emailLink) return;
 
-    var email = emailLink.href.replace('mailto:', '');
-    var btn = document.createElement('button');
+    const email = emailLink.href.replace('mailto:', '');
+    const btn = document.createElement('button');
     btn.classList.add('btn-copier-email');
     btn.setAttribute('aria-label', 'Copier l\'adresse email');
     btn.innerHTML = '<i class="fas fa-copy"></i><span class="tooltip-copie">Copié !</span>';
@@ -128,7 +128,7 @@
 
     btn.addEventListener('click', function () {
         navigator.clipboard.writeText(email).then(function () {
-            var tooltip = btn.querySelector('.tooltip-copie');
+            const tooltip = btn.querySelector('.tooltip-copie');
             tooltip.classList.add('visible');
             setTimeout(function () {
                 tooltip.classList.remove('visible');
@@ -142,15 +142,15 @@
 // ==============================
 
 (function () {
-    var main = document.querySelector('main');
-    var h1 = main ? main.querySelector('h1') : null;
+    const main = document.querySelector('main');
+    const h1 = main ? main.querySelector('h1') : null;
     if (!h1 || !document.querySelector('.timeline-group')) return; // Only on veille page
 
-    var texte = main.textContent || '';
-    var mots = texte.trim().split(/\s+/).length;
-    var minutes = Math.ceil(mots / 200);
+    const texte = main.textContent || '';
+    const mots = texte.trim().split(/\s+/).length;
+    const minutes = Math.ceil(mots / 200);
 
-    var tempsEl = document.createElement('div');
+    const tempsEl = document.createElement('div');
     tempsEl.classList.add('temps-lecture');
     tempsEl.innerHTML = '<i class="fas fa-clock"></i> Temps de lecture : ~' + minutes + ' min';
     h1.insertAdjacentElement('afterend', tempsEl);
@@ -163,25 +163,25 @@
 (function () {
     if (!window.matchMedia('(hover: hover)').matches) return;
 
-    var projetLinks = document.querySelectorAll('a.timeline-link[href*="projet-details"]');
+    const projetLinks = document.querySelectorAll('a.timeline-link[href*="projet-details"]');
     if (!projetLinks.length) return;
 
-    var projetImages = {
+    const projetImages = {
         'panada-food': '../projets/Panada_Food/Accueil.webp',
         'mairie-cauffry': '../projets/Mairie_de_cauffry/Accueil.webp'
     };
 
-    var preview = document.createElement('div');
+    const preview = document.createElement('div');
     preview.style.cssText = 'position:fixed;z-index:9999;pointer-events:none;opacity:0;transition:opacity 0.2s;background:var(--card-background);border-radius:8px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.3);width:200px;height:130px;';
     document.body.appendChild(preview);
 
-    var previewImg = document.createElement('img');
+    const previewImg = document.createElement('img');
     previewImg.style.cssText = 'width:100%;height:100%;object-fit:cover;';
     preview.appendChild(previewImg);
 
     projetLinks.forEach(function (link) {
-        var href = link.getAttribute('href');
-        var id = href.split('id=')[1];
+        const href = link.getAttribute('href');
+        const id = href.split('id=')[1];
         if (!id || !projetImages[id]) return;
 
         link.addEventListener('mouseenter', function () {
@@ -206,15 +206,15 @@
 
 (function () {
     // Seulement sur les pages avec un h1 visible (pas le sr-only de l'accueil)
-    var h1 = document.querySelector('main > h1');
+    const h1 = document.querySelector('main > h1');
     if (!h1 || h1.classList.contains('sr-only')) return;
 
-    var texte = h1.textContent;
+    const texte = h1.textContent;
     h1.textContent = '';
     h1.style.opacity = '1';
 
-    for (var i = 0; i < texte.length; i++) {
-        var span = document.createElement('span');
+    for (let i = 0; i < texte.length; i++) {
+        const span = document.createElement('span');
         span.textContent = texte[i];
         span.style.opacity = '0';
         span.style.display = 'inline-block';

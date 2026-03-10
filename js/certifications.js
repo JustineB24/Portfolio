@@ -37,7 +37,7 @@
 
         dernierFocusAvantModale = document.activeElement;
         modal.classList.add("visible");
-        document.documentElement.style.overflow = 'hidden';
+        document.documentElement.classList.add('overflow-hidden');
 
         modalImg.src = getWebpSrc(img);
         currentIndex = Array.from(images).indexOf(img);
@@ -52,7 +52,7 @@
         const modal = document.getElementById("zoom-modal");
         modal.classList.remove("visible");
         resetTransform();
-        document.documentElement.style.overflow = '';
+        document.documentElement.classList.remove('overflow-hidden');
 
         if (dernierFocusAvantModale) {
             dernierFocusAvantModale.focus();

@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/documents.css" media="all" type="text/css">
-    <script>try{var dm=localStorage.getItem('dark-mode');if(dm==='true'||(dm===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
+    <script>try{let dm=localStorage.getItem('dark-mode');if(dm==='true'||(dm===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
     <script src="../js/structure-globale.js" defer></script>
 
     <title>Portfolio | BTS SIO</title>
@@ -144,10 +144,10 @@
 
 <script>
     (function () {
-        var reveals = document.querySelectorAll('.doc-reveal');
+        const reveals = document.querySelectorAll('.doc-reveal');
         if (!reveals.length) return;
 
-        var observer = new IntersectionObserver(function (entries) {
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');

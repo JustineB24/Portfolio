@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/veille.css" media="all" type="text/css">
-    <script>try{var dm=localStorage.getItem('dark-mode');if(dm==='true'||(dm===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
+    <script>try{let dm=localStorage.getItem('dark-mode');if(dm==='true'||(dm===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
     <script src="../js/structure-globale.js" defer></script>
 
     <title>Portfolio | Veille technologique</title>
@@ -330,7 +330,7 @@
     <hr>
     <picture>
         <source srcset="../assets/Veille/Evolution_Of_Pi.webp" type="image/webp">
-        <img id="evolution" src="../assets/Veille/Evolution_Of_Pi.jpg" alt="Évolution des modèles de Raspberry Pi"
+        <img id="img-evolution" src="../assets/Veille/Evolution_Of_Pi.jpg" alt="Évolution des modèles de Raspberry Pi"
              loading="lazy" width="1200" height="675">
     </picture>
     <ul class="timeline">

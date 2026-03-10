@@ -30,7 +30,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--button-text-color);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;

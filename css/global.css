@@ -160,6 +160,23 @@ header.header-scrolled .logo-header {
     height: 35px;
 }
 
+header.header-scrolled .onglet {
+    font-size: 0.95rem;
+}
+
+header.header-scrolled .theme-switch {
+    --toggle-size: 15px;
+}
+
+header.header-scrolled .btn-reseaux {
+    width: 35px;
+    height: 35px;
+}
+
+header.header-scrolled .reseaux {
+    gap: 6px;
+}
+
 /* Pour éviter que le contenu principal ne soit caché sous le header */
 main {
     margin: 10rem 1rem 1rem;
@@ -238,7 +255,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: width 0.4s, border-radius 0.4s, transform 0.3s;
+    transition: width 0.4s, height 0.3s, border-radius 0.4s, transform 0.3s;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -300,6 +317,7 @@ p {
     text-transform: uppercase;
     font-size: 1.2rem;
     padding: 0.5rem 0;
+    transition: font-size 0.3s;
 }
 
 .onglet:link,

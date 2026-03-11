@@ -440,28 +440,6 @@
     border: none;
 }
 
-/* ============================== */
-/*   Scroll reveal animations     */
-/* ============================== */
-
-.doc-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.doc-reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.doc-reveal:nth-child(2) {
-    transition-delay: 0.12s;
-}
-
-.doc-reveal:nth-child(3) {
-    transition-delay: 0.24s;
-}
 
 /* ============================== */
 /*   Responsive                   */
@@ -623,12 +601,6 @@
 
 /* Respect des preferences utilisateur */
 @media (prefers-reduced-motion: reduce) {
-    .doc-reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
-
     .page-header h1,
     .page-header p {
         animation: none;

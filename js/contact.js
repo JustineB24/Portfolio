@@ -1,6 +1,6 @@
 (function () {
     // Scroll reveal des éléments
-    var elementsReveal = document.querySelectorAll('.contact-reveal');
+    var elementsReveal = document.querySelectorAll('.scroll-reveal');
     if (elementsReveal.length) {
         var observateur = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {

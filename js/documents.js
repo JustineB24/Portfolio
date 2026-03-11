@@ -1,5 +1,5 @@
 (function () {
-    const elements = document.querySelectorAll('.doc-reveal');
+    const elements = document.querySelectorAll('.scroll-reveal:not(.visible)');
     if (!elements.length) return;
 
     const observer = new IntersectionObserver(function (entries) {

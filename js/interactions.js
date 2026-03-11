@@ -159,49 +159,6 @@
     h1.insertAdjacentElement('afterend', eleTemps);
 })();
 
-// ==============================
-// Hover preview sur liens projets (timeline à propos)
-// ==============================
-
-(function () {
-    if (!window.matchMedia('(hover: hover)').matches) return;
-
-    const liensProjet = document.querySelectorAll('a.timeline-link[href*="projet-details"]');
-    if (!liensProjet.length) return;
-
-    const imagesProjet = {
-        'panada-food': '../projets/Panada_Food/Accueil.webp',
-        'mairie-cauffry': '../projets/Mairie_de_cauffry/Accueil.webp'
-    };
-
-    const apercu = document.createElement('div');
-    apercu.classList.add('link-preview');
-    document.body.appendChild(apercu);
-
-    const imgApercu = document.createElement('img');
-    imgApercu.classList.add('link-preview-img');
-    apercu.appendChild(imgApercu);
-
-    liensProjet.forEach(function (lien) {
-        const href = lien.getAttribute('href');
-        const id = href.split('id=')[1];
-        if (!id || !imagesProjet[id]) return;
-
-        lien.addEventListener('mouseenter', function () {
-            imgApercu.src = imagesProjet[id];
-            apercu.style.opacity = '1';
-        });
-
-        lien.addEventListener('mousemove', function (e) {
-            apercu.style.left = (e.clientX + 15) + 'px';
-            apercu.style.top = (e.clientY + 15) + 'px';
-        });
-
-        lien.addEventListener('mouseleave', function () {
-            apercu.style.opacity = '0';
-        });
-    });
-})();
 
 // ==============================
 // Texte révélé lettre par lettre (titres h1)

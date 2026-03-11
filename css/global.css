@@ -768,7 +768,6 @@ footer {
 /* Thème sombre — transitions fluides sur éléments enfants */
 .card-accueil,
 .card-competence,
-.document-card,
 .specialite-card,
 .contact-infos,
 .profil,
@@ -829,8 +828,7 @@ body::before {
 }
 
 /* Bordures gradient animées sur les cards au hover */
-.card-accueil::before,
-.document-card::after {
+.card-accueil::before {
     content: "";
     position: absolute;
     inset: -2px;
@@ -842,8 +840,7 @@ body::before {
     transition: opacity 0.4s;
 }
 
-.card-accueil:hover::before,
-.document-card:hover::after {
+.card-accueil:hover::before {
     opacity: 1;
     animation: borderRotate 3s linear infinite;
 }
@@ -1176,7 +1173,7 @@ body.page-exit main {
         opacity: 0.6;
     }
 
-    .card, .card-accueil, .document-card {
+    .card, .card-accueil {
         break-inside: avoid;
         box-shadow: none !important;
     }

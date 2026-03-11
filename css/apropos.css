@@ -145,13 +145,13 @@ a.timeline-link:hover .timeline-content {
 /* Titres */
 .timeline h2,
 .timeline > h3 {
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     text-decoration: underline;
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
 }
 
-/* Durée de stage (remplace les anciens h3 de dates) */
-.duree-stage {
+/* Date/période dans la timeline */
+.timeline-date {
     margin: 10px;
     color: var(--primary-color);
     font-weight: 700;
@@ -166,7 +166,7 @@ a.timeline-link:hover .timeline-content {
 }
 
 /* Titre d'expérience après une durée de stage */
-.duree-stage + h4 {
+.timeline-date + h4 {
     color: var(--text-color);
 }
 

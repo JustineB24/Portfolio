@@ -157,9 +157,9 @@
     font-size: 0.8rem;
     font-weight: 600;
     text-align: center;
-    background: var(--primary-color);
+    background: var(--comp-color, var(--primary-color));
     color: var(--button-text-color);
-    border-color: var(--primary-color);
+    border-color: var(--comp-color, var(--primary-color));
 }
 
 .card-competence img {

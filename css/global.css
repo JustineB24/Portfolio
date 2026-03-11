@@ -435,8 +435,8 @@ p {
     color: var(--button-text-color);
 }
 
-/* Affichage du menu lorsque la case est cochée */
-.check-icon:checked ~ .menu-burger {
+/* Affichage du menu lorsque la classe open est ajoutée par JS */
+.menu-burger.open {
     top: 0;
 }
 
@@ -1055,9 +1055,9 @@ body.page-exit main {
     }
 }
 
-/* Temps de lecture */
-.temps-lecture {
-    display: inline-block;
+/* Temps de lecture et sous-titre de page */
+.temps-lecture,
+.sous-titre-page {
     font-size: 0.9rem;
     opacity: 0.75;
     margin-bottom: 2rem;

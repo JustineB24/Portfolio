@@ -70,13 +70,6 @@ function genererHeader(chemin) {
                 <div class="bar bar--2"></div>
                 <div class="bar bar--3"></div>
             </label>
-            <div class="menu-burger">
-                <div class="side-menu">
-                    <ul>
-                        ${menuBurger}
-                    </ul>
-                </div>
-            </div>
             <!-- Fin menu -->
 
             <!-- From Uiverse.io by Galahhad -->
@@ -105,6 +98,19 @@ function genererHeader(chemin) {
         </header>
     `;
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
+
+    // Menu burger inséré après le header (en dehors) pour éviter le
+    // containing block créé par backdrop-filter sur le header
+    const menuBurgerHTML = `
+        <div class="menu-burger">
+            <div class="side-menu">
+                <ul>
+                    ${menuBurger}
+                </ul>
+            </div>
+        </div>
+    `;
+    document.querySelector('header').insertAdjacentHTML('afterend', menuBurgerHTML);
 
     // Lien actif dans la navigation
     const cheminActuel = window.location.pathname;

@@ -51,49 +51,89 @@
     <h1>Contact</h1>
     <p class="contact-intro">N'hésitez pas à me contacter pour discuter d'un projet ou d'une collaboration.</p>
 
-    <div class="contact-container">
-        <form class="contact-form" id="contact-form">
-            <p class="note-obligatoire">* Champs obligatoires</p>
-            <div class="form-group">
-                <input type="text" id="nom" name="nom" required placeholder=" " autocomplete="name">
-                <label for="nom">Nom <span class="requis">*</span></label>
-            </div>
-            <div class="form-group">
-                <input type="email" id="email" name="email" required placeholder=" " autocomplete="email">
-                <label for="email">Email <span class="requis">*</span></label>
-            </div>
-            <div class="form-group">
-                <input type="text" id="sujet" name="sujet" required placeholder=" ">
-                <label for="sujet">Sujet <span class="requis">*</span></label>
-            </div>
-            <div class="form-group">
-                <textarea id="message" name="message" rows="6" required placeholder=" "></textarea>
-                <label for="message">Message <span class="requis">*</span></label>
-            </div>
-            <button type="submit" class="btn-envoyer"><i class="fas fa-paper-plane" aria-hidden="true"></i> Envoyer</button>
-            <p class="contact-info-mailto"><small>L'envoi ouvrira votre application de messagerie.</small></p>
-        </form>
+    <!-- Contenu principal contact -->
+    <section class="contact-section">
+        <div class="contact-grid">
+            <!-- Formulaire -->
+            <div class="contact-form-wrapper contact-reveal">
+                <form class="contact-form" id="contact-form">
+                    <p class="note-obligatoire">* Champs obligatoires</p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="nom" name="nom" required placeholder=" " autocomplete="name">
+                            <label for="nom">Nom <span class="requis">*</span></label>
+    
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required placeholder=" " autocomplete="email">
+                            <label for="email">Email <span class="requis">*</span></label>
+    
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="sujet" name="sujet" required placeholder=" ">
+                        <label for="sujet">Sujet <span class="requis">*</span></label>
 
-        <aside class="contact-infos">
-            <h2>Moyens de contact</h2>
-            <ul>
-                <li>
-                    <i class="fas fa-envelope" aria-hidden="true"></i>
-                    <a href="mailto:blin.justine.sio@gmail.com">blin.justine.sio@gmail.com</a>
-                </li>
-                <li>
-                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="6" required placeholder=" "></textarea>
+                        <label for="message">Message <span class="requis">*</span></label>
+
+                    </div>
+                    <div class="contact-form-footer">
+                        <button type="submit" class="btn-envoyer">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i> Envoyer
+                        </button>
+                        <p class="contact-info-mailto"><small>L'envoi ouvrira votre application de messagerie.</small>
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Infos de contact -->
+            <aside class="contact-aside contact-reveal">
+                <h2>Moyens de contact</h2>
+
+                <div class="contact-cards">
+                    <a href="mailto:blin.justine.sio@gmail.com" class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <div class="contact-card-text">
+                            <span class="contact-card-label">Email</span>
+                            <span class="contact-card-value">blin.justine.sio@gmail.com</span>
+                        </div>
+                        <i class="fas fa-arrow-right contact-card-arrow" aria-hidden="true"></i>
+                    </a>
+
                     <a href="https://www.linkedin.com/in/justine-blin-a88600292" target="_blank"
-                       rel="noopener noreferrer">LinkedIn</a>
-                </li>
-                <li>
-                    <i class="fab fa-github" aria-hidden="true"></i>
+                       rel="noopener noreferrer" class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </div>
+                        <div class="contact-card-text">
+                            <span class="contact-card-label">LinkedIn</span>
+                            <span class="contact-card-value">Justine BLIN</span>
+                        </div>
+                        <i class="fas fa-arrow-right contact-card-arrow" aria-hidden="true"></i>
+                    </a>
+
                     <a href="https://github.com/JustineB24" target="_blank"
-                       rel="noopener noreferrer">GitHub</a>
-                </li>
-            </ul>
-        </aside>
-    </div>
+                       rel="noopener noreferrer" class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </div>
+                        <div class="contact-card-text">
+                            <span class="contact-card-label">GitHub</span>
+                            <span class="contact-card-value">JustineB24</span>
+                        </div>
+                        <i class="fas fa-arrow-right contact-card-arrow" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+            </aside>
+        </div>
+    </section>
 </main>
 
 <script src="../js/contact.js" defer></script>

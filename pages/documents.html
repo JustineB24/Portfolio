@@ -44,83 +44,111 @@
 <div class="loader"><img class="loader-logo" src="../assets/Logo_portfolio.png" alt="Chargement" width="80" height="80"></div>
 <!-- Contenu principal -->
 <main id="main">
-    <section class="page-header">
-        <div class="header-content">
-            <h1><i class="fas fa-graduation-cap" aria-hidden="true"></i> BTS SIO</h1>
-            <p>Découvrez le BTS SIO, ses spécialités et mes documents associés.</p>
+    <!-- Hero -->
+    <section class="bts-hero">
+        <div class="bts-hero-inner">
+            <span class="bts-hero-tag">Diplôme national Bac+2</span>
+            <h1>BTS SIO</h1>
+            <p class="bts-hero-subtitle">Services Informatiques aux Organisations</p>
+            <p class="bts-hero-desc">Formation de techniciens supérieurs capables de concevoir, développer, déployer et
+                maintenir des solutions informatiques adaptées aux besoins des entreprises.</p>
+        </div>
+        <div class="bts-hero-decoration" aria-hidden="true">
+            <div class="bts-hero-line"></div>
+            <div class="bts-hero-line"></div>
+            <div class="bts-hero-line"></div>
         </div>
     </section>
 
-    <!-- Section BTS SIO -->
-    <section class="documents-container">
-        <div class="document-card doc-reveal">
-            <div class="document-header">
-                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                <h2>BTS SIO</h2>
+    <!-- Spécialités -->
+    <section class="bts-specialites-section">
+        <div class="bts-section-header doc-reveal">
+            <span class="bts-section-number" aria-hidden="true">01</span>
+            <div>
+                <h2>Les deux spécialités</h2>
+                <p class="bts-section-lead">Le BTS SIO propose deux parcours complémentaires, chacun ouvrant vers des
+                    métiers distincts du numérique.</p>
             </div>
-            <p class="document-description">Le BTS SIO (Services Informatiques aux Organisations) est un diplôme
-                national français de niveau Bac+2, qui forme des techniciens supérieurs capables de concevoir,
-                développer, déployer et maintenir des solutions informatiques adaptées aux besoins des entreprises.
-            </p>
+        </div>
 
-            <div class="bts-specialites">
-                <h3>Spécialités du BTS SIO</h3>
-                <div class="specialites-container">
-                    <!-- Bloc SLAM -->
-                    <div class="specialite-card">
-                        <picture>
-                            <source srcset="../assets/CodeSLAM.webp" type="image/webp">
-                            <img src="../assets/CodeSLAM.jpg" alt="Illustration de la spécialité SLAM"
-                                 loading="lazy" width="800" height="450">
-                        </picture>
-                        <h4>SLAM — Solutions Logicielles et Applications Métiers</h4>
-                        <ul>
-                            <li>Conception et développement d'applications</li>
-                            <li>Programmation et bases de données</li>
-                            <li>Développement web et mobile</li>
-                            <li>Analyse des besoins utilisateurs et gestion de projets</li>
-                        </ul>
-                        <p><strong>Débouchés :</strong> Développeur informatique, Analyste-programmeur, Technicien
-                            informatique, Responsable des services applicatifs, Développeur d'applications.</p>
-                    </div>
-
-                    <!-- Bloc SISR -->
-                    <div class="specialite-card">
-                        <picture>
-                            <source srcset="../assets/ServeurSISR.webp" type="image/webp">
-                            <img src="../assets/ServeurSISR.jpg" alt="Illustration de la spécialité SISR"
-                                 loading="lazy" width="800" height="450">
-                        </picture>
-                        <h4>SISR — Solutions d'Infrastructure, Systèmes et Réseaux</h4>
-                        <ul>
-                            <li>Administration et gestion des réseaux informatiques</li>
-                            <li>Sécurité des systèmes d'information</li>
-                            <li>Virtualisation et maintenance des infrastructures</li>
-                            <li>Déploiement et supervision des systèmes</li>
-                        </ul>
-                        <p><strong>Débouchés :</strong> Administrateur systèmes et réseaux, Technicien
-                            d'infrastructure, Pilote d'exploitation, Technicien des réseaux de télécommunications.</p>
+        <div class="bts-specialites-grid">
+            <!-- SLAM -->
+            <article class="bts-spe-card doc-reveal" id="slam">
+                <div class="bts-spe-visual">
+                    <picture>
+                        <source srcset="../assets/CodeSLAM.webp" type="image/webp">
+                        <img src="../assets/CodeSLAM.jpg" alt="Illustration de la spécialité SLAM"
+                             loading="lazy" width="800" height="450">
+                    </picture>
+                    <span class="bts-spe-badge">SLAM</span>
+                </div>
+                <div class="bts-spe-content">
+                    <h3>Solutions Logicielles et Applications Métiers</h3>
+                    <ul class="bts-spe-list">
+                        <li>Conception et développement d'applications</li>
+                        <li>Programmation et bases de données</li>
+                        <li>Développement web et mobile</li>
+                        <li>Analyse des besoins utilisateurs et gestion de projets</li>
+                    </ul>
+                    <div class="bts-spe-debouches">
+                        <span class="bts-spe-debouches-label"><i class="fas fa-briefcase" aria-hidden="true"></i> Débouchés</span>
+                        <p>Développeur informatique, Analyste-programmeur, Technicien informatique, Responsable des
+                            services applicatifs, Développeur d'applications.</p>
                     </div>
                 </div>
-            </div>
+            </article>
+
+            <!-- SISR -->
+            <article class="bts-spe-card doc-reveal" id="sisr">
+                <div class="bts-spe-visual">
+                    <picture>
+                        <source srcset="../assets/ServeurSISR.webp" type="image/webp">
+                        <img src="../assets/ServeurSISR.jpg" alt="Illustration de la spécialité SISR"
+                             loading="lazy" width="800" height="450">
+                    </picture>
+                    <span class="bts-spe-badge">SISR</span>
+                </div>
+                <div class="bts-spe-content">
+                    <h3>Solutions d'Infrastructure, Systèmes et Réseaux</h3>
+                    <ul class="bts-spe-list">
+                        <li>Administration et gestion des réseaux informatiques</li>
+                        <li>Sécurité des systèmes d'information</li>
+                        <li>Virtualisation et maintenance des infrastructures</li>
+                        <li>Déploiement et supervision des systèmes</li>
+                    </ul>
+                    <div class="bts-spe-debouches">
+                        <span class="bts-spe-debouches-label"><i class="fas fa-briefcase" aria-hidden="true"></i> Débouchés</span>
+                        <p>Administrateur systèmes et réseaux, Technicien d'infrastructure, Pilote d'exploitation,
+                            Technicien des réseaux de télécommunications.</p>
+                    </div>
+                </div>
+            </article>
         </div>
     </section>
 
-    <section class="documents-container">
-        <!-- Document Principal -->
-        <div class="document-card doc-reveal">
-            <div class="document-header">
-                <i class="fas fa-file-pdf" aria-hidden="true"></i>
+    <!-- Tableau de synthèse -->
+    <section class="bts-document-section">
+        <div class="bts-section-header doc-reveal">
+            <span class="bts-section-number" aria-hidden="true">02</span>
+            <div>
                 <h2>Tableau de Synthèse</h2>
-                <span class="document-type">PDF</span>
+                <p class="bts-section-lead">Ensemble de mes réalisations professionnelles durant le BTS SIO option SLAM,
+                    session 2025.</p>
             </div>
-            <p class="document-description">Ce tableau recense l'ensemble de mes réalisations professionnelles
-                effectuées durant mon BTS SIO option SLAM (session 2025), en formation comme en milieu professionnel.
-                Il met en correspondance chaque projet, que vous pouvez retrouver dans la section projets, avec les
-                six blocs de compétences du référentiel : gestion du patrimoine informatique, réponse aux incidents,
-                développement de la présence en ligne, travail en mode projet, mise à disposition d'un service
-                informatique et organisation de mon développement professionnel.</p>
-            <div class="document-actions">
+        </div>
+
+        <div class="bts-doc-card doc-reveal">
+            <div class="bts-doc-meta">
+                <span class="bts-doc-badge"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</span>
+                <span class="bts-doc-session">Session 2025</span>
+            </div>
+            <p class="bts-doc-description">Ce tableau recense l'ensemble de mes réalisations professionnelles effectuées
+                durant mon BTS SIO option SLAM, en formation comme en milieu professionnel. Il met en correspondance
+                chaque projet, que vous pouvez retrouver dans la section projets, avec les six blocs de compétences du
+                référentiel : gestion du patrimoine informatique, réponse aux incidents, développement de la présence en
+                ligne, travail en mode projet, mise à disposition d'un service informatique et organisation de mon
+                développement professionnel.</p>
+            <div class="bts-doc-actions">
                 <a href="../tableau_de_synthese_blin_justine.pdf" download class="btn btn-download">
                     <i class="fas fa-download" aria-hidden="true"></i> Télécharger
                 </a>
@@ -132,8 +160,11 @@
         </div>
 
         <!-- Aperçu PDF -->
-        <div class="pdf-viewer-card doc-reveal">
-            <h3>Aperçu du document</h3>
+        <div class="bts-pdf-viewer doc-reveal">
+            <div class="bts-pdf-header">
+                <i class="fas fa-expand" aria-hidden="true"></i>
+                <h3>Aperçu du document</h3>
+            </div>
             <div class="pdf-container pdf-skeleton">
                 <iframe src="../tableau_de_synthese_blin_justine.pdf" title="Tableau de synthèse PDF"
                         loading="lazy" width="100%" height="600"></iframe>

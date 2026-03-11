@@ -548,11 +548,6 @@ footer {
         opacity: 0;
     }
 
-    .side-menu {
-        left: -500px;
-        width: 90%;
-    }
-
     .nav-menu {
         display: none;
         /* Cache le menu de navigation classique */
@@ -656,27 +651,6 @@ footer {
 
 .hidden {
     display: none;
-}
-
-/* Preview hover sur liens projets */
-.link-preview {
-    position: fixed;
-    z-index: 9999;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s;
-    background: var(--card-background);
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-    width: 200px;
-    height: 130px;
-}
-
-.link-preview-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 /* Transition sur icônes des headers document */

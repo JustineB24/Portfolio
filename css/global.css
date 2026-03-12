@@ -823,22 +823,6 @@ footer {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-/* Texture de grain/noise subtile */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.03;
-    background-image: url("../assets/noise.png");
-    background-repeat: repeat;
-    background-size: 128px 128px;
-}
-
 /* Glow amplifié en mode sombre */
 .dark-theme .btn-download,
 .dark-theme .btn-cv,

@@ -1,151 +1,256 @@
+/* ── Conteneur principal ── */
 .erreur-404 {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 60vh;
+    min-height: 80vh;
     text-align: center;
     padding: 2rem;
-    background: radial-gradient(ellipse at 50% 30%, rgba(150, 0, 0, 0.1) 0%, transparent 60%),
-    var(--background-color);
-}
-
-/* Illustration — écran cassé */
-.erreur-illustration {
-    margin-bottom: 2rem;
-}
-
-.ecran {
-    width: 120px;
-    height: 90px;
-    border: 3px solid var(--text-color);
-    border-radius: var(--radius-md);
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.8;
+    overflow: hidden;
+    background: var(--background-color);
 }
 
-.ecran::after {
+/* Grille de fond subtile */
+.erreur-404::before {
     content: "";
     position: absolute;
-    bottom: -18px;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--primary-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--primary-color) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.04;
+    pointer-events: none;
+}
+
+/* Lueur rouge centrale */
+.erreur-404::after {
+    content: "";
+    position: absolute;
+    top: 20%;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 6px;
-    background: var(--text-color);
-    border-radius: 3px;
-    opacity: 0.5;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+    opacity: 0.07;
+    pointer-events: none;
+    filter: blur(60px);
 }
 
-.ecran-contenu {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    opacity: 0.3;
+/* ── Illustration — icône d'erreur ── */
+.erreur-illustration {
+    margin-bottom: 1.5rem;
+    z-index: 1;
 }
 
-.ecran-ligne {
-    display: block;
-    height: 3px;
-    border-radius: 2px;
-    background: var(--text-color);
-}
-
-.ecran-ligne:nth-child(1) {
-    width: 50px;
-}
-
-.ecran-ligne:nth-child(2) {
-    width: 35px;
-}
-
-.ecran-ligne:nth-child(3) {
-    width: 45px;
-}
-
-.ecran-erreur {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2rem;
-    font-weight: 800;
+.erreur-illustration .fa-triangle-exclamation {
+    font-size: 4.5rem;
     color: var(--primary-color);
-    animation: pulse-erreur 2s infinite;
+    text-shadow: 0 0 30px rgba(var(--primary-rgb), 0.4);
+    animation: pulse-erreur 2.5s ease-in-out infinite;
 }
 
 @keyframes pulse-erreur {
     0%, 100% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
+        transform: scale(1);
     }
     50% {
-        opacity: 0.5;
-        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.6;
+        transform: scale(1.08);
     }
 }
 
-.erreur-404 h1 {
-    font-size: 8rem;
-    color: var(--primary-color);
-    margin-bottom: 0;
+/* ── Titre 404 — effet glitch ── */
+.glitch-titre {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin: 0;
     line-height: 1;
-    animation: glitch 3s infinite;
+    z-index: 1;
 }
 
-@keyframes glitch {
-    0%, 95%, 100% {
+.glitch-chiffre {
+    font-size: 10rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 0 30px rgba(var(--primary-rgb), 0.2);
+}
+
+/* Couches glitch via pseudo-éléments — invisibles au repos */
+.glitch-chiffre::before,
+.glitch-chiffre::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.glitch-chiffre::before {
+    color: var(--primary-light);
+    text-shadow: -2px 0 var(--primary-light);
+    animation: glitch-haut 4s infinite linear;
+}
+
+.glitch-chiffre::after {
+    color: var(--primary-dark);
+    text-shadow: 2px 0 var(--primary-dark);
+    animation: glitch-bas 4s infinite linear;
+}
+
+/* Décalage de timing par chiffre */
+.glitch-chiffre:nth-child(1)::before { animation-delay: 0s; }
+.glitch-chiffre:nth-child(1)::after { animation-delay: 0.15s; }
+.glitch-chiffre:nth-child(2)::before { animation-delay: 0.3s; }
+.glitch-chiffre:nth-child(2)::after { animation-delay: 0.05s; }
+.glitch-chiffre:nth-child(3)::before { animation-delay: 0.1s; }
+.glitch-chiffre:nth-child(3)::after { animation-delay: 0.25s; }
+
+/* Tremblement global du titre */
+.glitch-titre {
+    animation: glitch-shake 5s infinite;
+}
+
+@keyframes glitch-haut {
+    0%, 88%, 93%, 100% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
         transform: none;
     }
-    96% {
+    89% {
+        opacity: 0.8;
+        clip-path: inset(10% 0 50% 0);
+        transform: translateX(-4px) skewX(-2deg);
+    }
+    90% {
+        opacity: 0.9;
+        clip-path: inset(30% 0 40% 0);
+        transform: translateX(4px) skewX(1deg);
+    }
+    91% {
+        opacity: 0.7;
+        clip-path: inset(5% 0 70% 0);
         transform: translateX(-3px);
     }
-    97% {
+    92% {
+        opacity: 0.85;
+        clip-path: inset(20% 0 55% 0);
+        transform: translateX(5px) skewX(-1deg);
+    }
+}
+
+@keyframes glitch-bas {
+    0%, 90%, 95%, 100% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: none;
+    }
+    91% {
+        opacity: 0.8;
+        clip-path: inset(50% 0 10% 0);
+        transform: translateX(5px) skewX(2deg);
+    }
+    92% {
+        opacity: 0.9;
+        clip-path: inset(60% 0 5% 0);
+        transform: translateX(-4px) skewX(-1deg);
+    }
+    93% {
+        opacity: 0.7;
+        clip-path: inset(45% 0 20% 0);
         transform: translateX(3px);
     }
-    98% {
+    94% {
+        opacity: 0.85;
+        clip-path: inset(70% 0 0 0);
+        transform: translateX(-5px) skewX(1deg);
+    }
+}
+
+@keyframes glitch-shake {
+    0%, 88%, 96%, 100% {
+        transform: none;
+    }
+    89% {
         transform: translateX(-2px);
     }
-    99% {
+    90% {
         transform: translateX(2px);
+    }
+    91% {
+        transform: translateX(-1px) skewX(-0.5deg);
+    }
+    92% {
+        transform: translateX(1px);
+    }
+    93% {
+        transform: none;
     }
 }
 
+/* ── Sous-titre ── */
 .erreur-404 h2 {
-    font-size: 2rem;
-    margin: 1rem 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 1.5rem 0 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-color);
+    z-index: 1;
+    opacity: 0.9;
 }
 
+/* ── Texte d'erreur style terminal ── */
 .erreur-404 p {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
     max-width: 500px;
+    z-index: 1;
+    color: var(--text-color);
+    opacity: 0.8;
 }
 
 .erreur-sous-texte {
-    font-size: 1rem !important;
-    opacity: 0.75;
+    font-family: "Courier New", monospace;
+    font-size: 0.9rem !important;
+    opacity: 0.5 !important;
+    letter-spacing: 0.03em;
+    padding: 0.4rem 1rem;
+    border-left: 2px solid var(--primary-color);
+    margin-top: 0.5rem;
+    text-align: left;
 }
 
+/* ── Bouton retour — même style que .btn-cv ── */
 .btn-accueil {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.85rem 1.8rem;
-    background: var(--primary-color);
-    color: var(--button-text-color);
-    text-decoration: none;
     border-radius: var(--radius-sm);
-    font-size: 1rem;
+    text-decoration: none;
     font-weight: 600;
-    margin-top: 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
     position: relative;
     overflow: hidden;
     z-index: 1;
-    transition: transform 0.3s, box-shadow 0.3s;
+    background: var(--primary-color);
+    color: var(--button-text-color);
+    border: 2px solid var(--primary-color);
+    margin-top: 2rem;
+    transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .btn-accueil::before {
@@ -169,17 +274,79 @@
     box-shadow: var(--shadow-primary);
 }
 
+/* ── Particules flottantes ── */
+.particule-404 {
+    position: absolute;
+    font-family: "Courier New", monospace;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+    animation: particule-float 20s linear infinite;
+    user-select: none;
+}
+
+@keyframes particule-float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    5% { opacity: 0.12; }
+    95% { opacity: 0.12; }
+    100% {
+        transform: translateY(-100vh) rotate(15deg);
+        opacity: 0;
+    }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .glitch-chiffre {
+        font-size: 8rem;
+    }
+}
+
 @media (max-width: 480px) {
-    .erreur-404 h1 {
-        font-size: 5rem;
+    .erreur-404 {
+        min-height: 70vh;
+        padding: 1.5rem;
+    }
+
+    .glitch-chiffre {
+        font-size: 5.5rem;
     }
 
     .erreur-404 h2 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        letter-spacing: 0.1em;
     }
 
-    .ecran {
-        width: 90px;
-        height: 68px;
+    .erreur-404 p {
+        font-size: 1rem;
+    }
+
+    .erreur-404::after {
+        width: 300px;
+        height: 300px;
+    }
+
+    .particule-404 {
+        display: none;
+    }
+}
+
+/* ── Accessibilité ── */
+@media (prefers-reduced-motion: reduce) {
+    .glitch-titre,
+    .glitch-chiffre::before,
+    .glitch-chiffre::after,
+    .erreur-illustration .fa-triangle-exclamation,
+    .particule-404 {
+        animation: none;
+    }
+
+    .particule-404 {
+        display: none;
     }
 }

@@ -73,7 +73,7 @@
     transform: translateY(-50%);
     z-index: 2;
     background: var(--primary-color);
-    color: white;
+    color: var(--button-text-color);
     border: none;
     border-radius: 50%;
     width: 3rem;
@@ -145,7 +145,7 @@
     top: 1rem;
     right: 1rem;
     background: var(--primary-color);
-    color: white;
+    color: var(--button-text-color);
     border: none;
     font-size: 1.5rem;
     width: 2.5rem;
@@ -194,8 +194,27 @@
     border-radius: 12px;
 }
 
-.card-competence:hover .card-competence-inner {
+.card-competence:hover .card-competence-inner,
+.card-competence:focus-within .card-competence-inner {
     transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card-competence-inner {
+        transition: none;
+    }
+
+    .card-competence:hover .card-competence-inner,
+    .card-competence:focus-within .card-competence-inner {
+        transform: none;
+    }
+
+    .card-front,
+    .card-back {
+        position: relative;
+        backface-visibility: visible;
+        transform: none;
+    }
 }
 
 .card-front,
@@ -210,19 +229,28 @@
     align-items: center;
     gap: 0.5rem;
     padding: 1rem;
+}
+
+.card-front {
     background-color: var(--card-background);
-    border: 2px solid transparent;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    border: 2px solid var(--comp-color, var(--primary-color));
+    box-shadow: 0 0 8px -2px var(--comp-color, var(--primary-color));
+    transition: box-shadow 0.3s;
+}
+
+.card-competence:hover .card-front {
+    box-shadow: 0 0 16px 2px var(--comp-color, var(--primary-color));
 }
 
 .card-back {
     transform: rotateY(180deg);
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
-    background: var(--comp-color, var(--primary-color));
-    color: var(--button-text-color);
-    border-color: var(--comp-color, var(--primary-color));
+    background: var(--comp-bg, var(--comp-color, var(--primary-color)));
+    color: var(--comp-text, white);
+    border: none;
+    text-shadow: var(--comp-shadow, 0 1px 4px rgba(0, 0, 0, 0.35));
 }
 
 .card-competence img {
@@ -240,57 +268,141 @@
 }
 
 /* Couleurs au hover seulement */
-.html {
+.comp-html {
     --comp-color: #f16529;
+    --comp-bg: linear-gradient(135deg, #e44d26, #f16529);
 }
 
-.css {
+.comp-css {
     --comp-color: #2965f1;
+    --comp-bg: linear-gradient(135deg, #264de4, #2965f1);
 }
 
-.js {
+.comp-js {
     --comp-color: #f7df1e;
+    --comp-bg: #f7df1e;
+    --comp-text: #000;
+    --comp-shadow: none;
 }
 
-.php {
+.comp-jquery {
+    --comp-color: #21609b;
+    --comp-bg: #21609b;
+}
+
+.comp-react {
+    --comp-color: #53c1de;
+    --comp-bg: #53c1de;
+}
+
+.comp-php {
     --comp-color: #6181b6;
+    --comp-bg: #6181b6;
 }
 
-.python {
-    --comp-color: #ffce3e;
+.comp-nodejs {
+    --comp-color: #3e863d;
+    --comp-bg: linear-gradient(135deg, #3e863d, #6bbf47);
 }
 
-.c-sharp {
+.comp-python {
+    --comp-color: #387eb8;
+    --comp-bg: linear-gradient(135deg, #387eb8, #ffe052);
+}
+
+.comp-c-sharp {
     --comp-color: #390091;
+    --comp-bg: linear-gradient(135deg, #280068, #a179dc);
 }
 
-.mysql {
+.comp-xaml {
+    --comp-color: #0d4fb2;
+    --comp-bg: linear-gradient(135deg, #0d4fb2, #3e89dc);
+}
+
+.comp-mysql {
     --comp-color: #00758f;
+    --comp-bg: linear-gradient(135deg, #00758f, #f29111);
 }
 
-.vscode {
-    --comp-color: #3aa8f1;
+.comp-postgresql {
+    --comp-color: #336791;
+    --comp-bg: #336791;
 }
 
-.vs {
-    --comp-color: #b885f2;
+.comp-vscode {
+    --comp-color: #007acc;
+    --comp-bg: linear-gradient(135deg, #0065a9, #1f9cf0);
 }
 
-.xampp {
+.comp-vs {
+    --comp-color: #6c33af;
+    --comp-bg: linear-gradient(135deg, #52218a, #b179f1);
+}
+
+.comp-phpstorm {
+    --comp-color: #b345f1;
+    --comp-bg: linear-gradient(135deg, #765af8, #fa3293);
+}
+
+.comp-xampp {
     --comp-color: #fb7a24;
+    --comp-bg: #fb7a24;
 }
 
-.git {
-    --comp-color: #de4c36;
+.comp-mamp {
+    --comp-color: #257dae;
+    --comp-bg: #257dae;
 }
 
-.github {
+.comp-git {
+    --comp-color: #f24e1e;
+    --comp-bg: #f24e1e;
+}
+
+.comp-github {
     --comp-color: #161614;
+    --comp-bg: #161614;
 }
 
-.card-competence:hover .card-front {
-    border-color: var(--comp-color);
-    box-shadow: 0 0 12px 3px var(--comp-color);
+.comp-gitlab {
+    --comp-color: #fc6d26;
+    --comp-bg: linear-gradient(135deg, #e24329, #fc6d26, #fca326);
+}
+
+.comp-figma {
+    --comp-color: #a259ff;
+    --comp-bg: linear-gradient(135deg, #f24e1e, #ff7262, #a259ff, #1abcfe, #0acf83);
+}
+
+.comp-canva {
+    --comp-color: #00c4cc;
+    --comp-bg: linear-gradient(135deg, #7d2ae7, #00c4cc);
+}
+
+.comp-asana {
+    --comp-color: #f95d8f;
+    --comp-bg: radial-gradient(circle, #ffb900, #f95d8f, #f95353);
+}
+
+.comp-jira {
+    --comp-color: #0052cc;
+    --comp-bg: linear-gradient(135deg, #0052cc, #2684ff);
+}
+
+.comp-odoo {
+    --comp-color: #714b67;
+    --comp-bg: #714b67;
+}
+
+.comp-postman {
+    --comp-color: #ff6c37;
+    --comp-bg: #ff6c37;
+}
+
+.comp-looping {
+    --comp-color: #0000ff;
+    --comp-bg: #0000ff;
 }
 
 /* Responsive */

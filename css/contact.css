@@ -2,13 +2,6 @@
 /*   Page Contact                 */
 /* ============================== */
 
-/* ---- Intro ---- */
-.contact-intro {
-    font-size: 1.1rem;
-    color: var(--text-color);
-    margin-bottom: 2rem;
-}
-
 /* ---- Section principale ---- */
 .contact-section {
     max-width: 1000px;
@@ -85,7 +78,8 @@
 
 .form-group input:focus-visible,
 .form-group textarea:focus-visible {
-    outline: none;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
     border-color: var(--primary-color);
 }
 
@@ -122,7 +116,7 @@
     font-weight: bold;
     margin-bottom: 0.5rem;
     padding: 0.8rem 1rem;
-    background: rgba(150, 0, 0, 0.08);
+    background: rgba(var(--primary-rgb), 0.08);
     border-radius: var(--radius-sm);
     border-left: 3px solid var(--primary-color);
     font-size: 0.9rem;
@@ -265,7 +259,7 @@
     font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     color: var(--primary-color);
     margin-bottom: 0.15rem;
 }

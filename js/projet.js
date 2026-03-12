@@ -24,8 +24,12 @@ const cartes = document.querySelectorAll('.card');
 filtreBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         // Mettre à jour le bouton actif
-        filtreBtns.forEach(b => b.classList.remove('active'));
+        filtreBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
 
         const filtre = btn.getAttribute('data-filtre');
 

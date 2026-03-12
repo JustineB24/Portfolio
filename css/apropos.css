@@ -77,19 +77,25 @@ a.timeline-link:hover .timeline-content {
 /* Indicateur "Aujourd'hui" — point pulsant */
 .timeline-current::before {
     background: var(--primary-color);
-    box-shadow: 0 0 0 0 rgba(150, 0, 0, 0.4);
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.4);
     animation: pulse-dot 2s infinite;
 }
 
 @keyframes pulse-dot {
     0% {
-        box-shadow: 0 0 0 0 rgba(150, 0, 0, 0.4);
+        box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.4);
     }
     70% {
-        box-shadow: 0 0 0 10px rgba(150, 0, 0, 0);
+        box-shadow: 0 0 0 10px rgba(var(--primary-rgb), 0);
     }
     100% {
-        box-shadow: 0 0 0 0 rgba(150, 0, 0, 0);
+        box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .timeline-current::before {
+        animation: none;
     }
 }
 

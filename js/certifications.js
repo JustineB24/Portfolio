@@ -3,6 +3,12 @@
     let indexActuel = 0;
     let dernierFocusAvantModale = null;
 
+    // Ajouter aria-label d'action sur chaque image cliquable
+    images.forEach(function (img) {
+        const nom = img.alt || 'cette certification';
+        img.setAttribute('aria-label', 'Ouvrir ' + nom);
+    });
+
     const modal = document.getElementById("zoom-modal");
     const imgModale = document.getElementById("zoom-modal-img");
     const dotsContainer = document.getElementById("zoom-dots");

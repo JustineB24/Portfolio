@@ -77,7 +77,7 @@ const projets = {
     "mairie-cauffry": {
         title: "Mairie de Cauffry",
         images: ["../projets/Mairie_de_cauffry/Accueil.png"],
-        description: "Réalisation d'un site web pour la commune de Cauffry dans le cadre d'un stage de 4 semaines avec Adico (Association pour le développement et l'innovation numérique des collectivités).",
+        description: "Réalisation d'un site web pour la commune de Cauffry dans le cadre d'un stage de 4 semaines en première année de BTS SIO, avec Adico (Association pour le développement et l'innovation numérique des collectivités).",
         technologies: ["HTML", "CSS"],
         link: "https://mairiecauffry.fr/"
     },
@@ -90,7 +90,7 @@ const projets = {
             "../projets/Panada_Food/Mentions_legales.png",
             "../projets/Panada_Food/Ecran_chargement.png"
         ],
-        description: "Développement d'un site web pour le restaurant Panada Food sur une durée de 6 semaines, en collaboration avec une collègue.",
+        description: "Développement d'un site web pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en collaboration avec une collègue.",
         technologies: ["HTML", "CSS", "JavaScript"],
         link: "https://panadafood.ovh"
     }
@@ -129,6 +129,15 @@ if (!projetId || !projets[projetId]) {
 
     document.getElementById("projet-title").textContent = projets[projetId].title;
     document.title = "Portfolio | " + projets[projetId].title;
+
+    // Mise à jour des meta OG dynamiquement
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogTitle) ogTitle.setAttribute('content', 'Portfolio | ' + projets[projetId].title);
+    if (ogDesc) ogDesc.setAttribute('content', projets[projetId].description.substring(0, 200));
+    if (ogUrl) ogUrl.setAttribute('content', window.location.href);
+
     document.getElementById("projet-description").textContent = projets[projetId].description;
 
     // Tags dans le hero
@@ -316,8 +325,10 @@ if (!projetId || !projets[projetId]) {
 
         // Clic sur image → modale plein écran avec navigation
         let indexModale = 0;
+        let dernierFocusAvantModale = null;
 
         function ouvrirModale(index) {
+            dernierFocusAvantModale = document.activeElement;
             indexModale = index;
 
             const modale = document.createElement("div");
@@ -395,6 +406,7 @@ if (!projetId || !projets[projetId]) {
                 modale.classList.remove("active");
                 document.removeEventListener("keydown", gestionnaireClavier);
                 modale.addEventListener("transitionend", () => modale.remove(), {once: true});
+                if (dernierFocusAvantModale) dernierFocusAvantModale.focus();
             }
 
             function gestionnaireClavier(e) {
@@ -437,7 +449,16 @@ if (!projetId || !projets[projetId]) {
         }
 
         slides.forEach((slide, index) => {
+            slide.setAttribute("tabindex", "0");
+            slide.setAttribute("role", "button");
+            slide.setAttribute("aria-label", "Agrandir l'image " + (index + 1));
             slide.addEventListener("click", () => ouvrirModale(index));
+            slide.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    ouvrirModale(index);
+                }
+            });
         });
 
         // Navigation clavier (flag pour éviter un querySelector à chaque frappe)

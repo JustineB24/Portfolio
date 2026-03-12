@@ -3,8 +3,18 @@
     // Animations au scroll (IntersectionObserver)
     // ==============================
 
+    // Respecter prefers-reduced-motion : rendre les éléments visibles sans animation
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll(
+            '.scroll-reveal, .timeline-item, .card-competence, .innovations, .comparatif, .card-container, .profil, .btn-cv, .projet-container .card, .qui-suis-je, .carte-apercu, .bandeau-competences'
+        ).forEach(function (el) {
+            el.classList.add('scroll-reveal', 'visible');
+        });
+        // Ne pas initialiser l'observer, passer directement au bouton retour en haut
+    } else {
+
     const elementsAAnimer = document.querySelectorAll(
-        '.timeline-item, .card-competence, .innovations, .comparatif, .card-container, .profil, .btn-cv, .projet-container .card, .qui-suis-je, .carte-apercu, .bandeau-competences'
+        '.scroll-reveal, .timeline-item, .card-competence, .innovations, .comparatif, .card-container, .profil, .btn-cv, .projet-container .card, .qui-suis-je, .carte-apercu, .bandeau-competences'
     );
 
     elementsAAnimer.forEach(el => {
@@ -33,6 +43,8 @@
             observer.observe(el);
         }
     });
+
+    } // fin du else (prefers-reduced-motion)
 
     // ==============================
     // Bouton "Retour en haut"

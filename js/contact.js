@@ -1,21 +1,4 @@
 (function () {
-    // Scroll reveal des éléments
-    const elementsReveal = document.querySelectorAll('.scroll-reveal');
-    if (elementsReveal.length) {
-        const observateur = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observateur.unobserve(entry.target);
-                }
-            });
-        }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
-
-        elementsReveal.forEach(function (el) {
-            observateur.observe(el);
-        });
-    }
-
     // Formulaire de contact
     const formulaireContact = document.getElementById('contact-form');
     if (!formulaireContact) return;

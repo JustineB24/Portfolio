@@ -75,7 +75,7 @@ function genererHeader(chemin) {
             <!-- From Uiverse.io by Galahhad -->
             <label class="theme-switch">
                 <input type="checkbox" class="theme-switch__checkbox" aria-label="Activer ou désactiver le thème sombre">
-                <div class="theme-switch__container">
+                <div class="theme-switch__container" aria-hidden="true">
                     <div class="theme-switch__clouds"></div>
                     <div class="theme-switch__stars-container">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
@@ -139,39 +139,6 @@ function genererHeader(chemin) {
         }
     });
 
-    // Breadcrumbs sur les sous-pages
-    genererBreadcrumbs(chemin);
-}
-
-function genererBreadcrumbs(cheminBase) {
-    const cheminPage = window.location.pathname;
-    // Ne pas afficher sur la page d'accueil
-    if (cheminPage.endsWith('/') || cheminPage.endsWith('/index.html') || cheminPage.endsWith('index.html')) return;
-
-    const titresPages = {
-        'apropos.html': 'À propos',
-        'competences.html': 'Compétences',
-        'projets.html': 'Projets',
-        'veille.html': 'Veille Technologique',
-        'documents.html': 'BTS SIO',
-        'contact.html': 'Contact',
-        'mentions-legales.html': 'Mentions légales',
-        'projet-details.html': 'Détails du projet'
-    };
-
-    const nomFichier = cheminPage.split('/').pop();
-    const titrePage = titresPages[nomFichier];
-    if (!titrePage) return;
-
-    const filAriane = document.createElement('nav');
-    filAriane.classList.add('breadcrumb');
-    filAriane.setAttribute('aria-label', 'Fil d\'Ariane');
-    filAriane.innerHTML = '<a href="' + cheminBase + 'index.html">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">' + titrePage + '</span>';
-
-    const main = document.querySelector('main');
-    if (main) {
-        main.parentNode.insertBefore(filAriane, main);
-    }
 }
 
 function genererFooter(chemin) {
@@ -220,17 +187,24 @@ function genererFooter(chemin) {
     const preconnectGoogle = document.createElement('link');
     preconnectGoogle.rel = 'preconnect';
     preconnectGoogle.href = 'https://fonts.googleapis.com';
+    preconnectGoogle.crossOrigin = '';
     const preconnectGstatic = document.createElement('link');
     preconnectGstatic.rel = 'preconnect';
     preconnectGstatic.href = 'https://fonts.gstatic.com';
     preconnectGstatic.crossOrigin = '';
+    // Lien Google Fonts en HTML (déplacé depuis @import CSS pour éviter la chaîne bloquante)
+    const lienGoogleFonts = document.createElement('link');
+    lienGoogleFonts.rel = 'stylesheet';
+    lienGoogleFonts.href = 'https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap';
     const premierLienCSS = document.querySelector('head link[rel="stylesheet"]');
     if (premierLienCSS) {
         premierLienCSS.parentNode.insertBefore(preconnectGoogle, premierLienCSS);
         premierLienCSS.parentNode.insertBefore(preconnectGstatic, premierLienCSS);
+        premierLienCSS.parentNode.insertBefore(lienGoogleFonts, premierLienCSS);
     } else {
         document.head.appendChild(preconnectGoogle);
         document.head.appendChild(preconnectGstatic);
+        document.head.appendChild(lienGoogleFonts);
     }
 
     genererHeader(chemin);

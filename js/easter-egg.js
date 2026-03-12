@@ -37,11 +37,12 @@
         contenuDiv.appendChild(h2);
 
         const p = document.createElement('p');
-        // Insertion sécurisée via DOMParser (pas de scripts exécutés)
-        const doc = new DOMParser().parseFromString(contenu, 'text/html');
-        while (doc.body.firstChild) {
-            p.appendChild(doc.body.firstChild);
-        }
+        // Insertion sécurisée : découpage sur <br> puis textContent
+        const parties = contenu.split(/<br\s*\/?>/i);
+        parties.forEach(function (partie, i) {
+            p.appendChild(document.createTextNode(partie));
+            if (i < parties.length - 1) p.appendChild(document.createElement('br'));
+        });
         contenuDiv.appendChild(p);
 
         const fermerBtn = document.createElement('button');
@@ -107,15 +108,15 @@
     const motsCles = {
         'disco': lancerDisco,
         'terminal': lancerTerminal,
-        'gravity': lancerGravity,
-        'arrr': lancerPirate,
         'snake': lancerSnake,
         'rainbow': lancerRainbow,
         'matrix': lancerMatrixStandalone,
         'roll': lancerBarrelRoll,
-        '90s': lancer90s,
-        'a11y': lancerA11y
+        '90s': lancer90s
     };
+
+    const sequenceKonami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let positionKonami = 0;
 
     document.addEventListener('keydown', function (e) {
         if (estDansChamp()) return;
@@ -151,11 +152,9 @@
     // Konami Code
     // ==============================
 
-    const sequenceKonami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-    let positionKonami = 0;
-
     function lancerConfettis() {
         const couleurs = ['#ff4444', '#44ff44', '#4444ff', '#ffff44', '#ff44ff', '#44ffff', '#ff8800', '#960000'];
+        const fragment = document.createDocumentFragment();
         for (let i = 0; i < 100; i++) {
             const confetti = document.createElement('div');
             confetti.classList.add('ee-confetti');
@@ -169,11 +168,12 @@
             confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
             confetti.style.animationDuration = duree + 's';
             confetti.style.animationDelay = delai + 's';
-            document.body.appendChild(confetti);
+            fragment.appendChild(confetti);
             (function (el, t) {
                 setTimeout(function () { el.remove(); }, t);
             })(confetti, (duree + delai) * 1000 + 500);
         }
+        document.body.appendChild(fragment);
     }
 
     function lancerMatrix() {
@@ -209,26 +209,57 @@
 
     function lancerKonami() {
         easterEggActif = true;
-        lancerConfettis();
-        document.body.classList.add('ee-flip');
-        let resultatMatrix;
+
+        // Phase 1 : Glitch sur la page
+        document.body.classList.add('ee-glitch');
+
+        // Phase 2 : Notification "Achievement Unlocked"
         setTimeout(function () {
-            resultatMatrix = lancerMatrix();
-        }, 500);
-        setTimeout(function () {
-            afficherModale(
-                'GG !',
-                'Tu as trouvé le secret !<br>Le fameux <span class="ee-code">\u2191 \u2191 \u2193 \u2193 \u2190 \u2192 \u2190 \u2192 B A</span><br>Merci d\'avoir exploré mon portfolio.',
-                function () {
-                    document.body.classList.remove('ee-flip');
-                    if (resultatMatrix) {
-                        resultatMatrix.stop();
-                        resultatMatrix.canvas.remove();
-                    }
-                    document.querySelectorAll('.ee-confetti').forEach(function (c) { c.remove(); });
-                }
-            );
-        }, 2500);
+            document.body.classList.remove('ee-glitch');
+
+            const notif = document.createElement('div');
+            notif.classList.add('ee-achievement');
+
+            const icone = document.createElement('div');
+            icone.classList.add('ee-achievement-icone');
+            icone.textContent = '\uD83C\uDFC6';
+
+            const textes = document.createElement('div');
+            textes.classList.add('ee-achievement-textes');
+
+            const titre = document.createElement('div');
+            titre.classList.add('ee-achievement-titre');
+            titre.textContent = 'Achievement Unlocked';
+
+            const desc = document.createElement('div');
+            desc.classList.add('ee-achievement-desc');
+            desc.textContent = '\u2191\u2191\u2193\u2193\u2190\u2192\u2190\u2192 B A — Pas mal, tu connais tes classiques !';
+
+            textes.appendChild(titre);
+            textes.appendChild(desc);
+            notif.appendChild(icone);
+            notif.appendChild(textes);
+            document.body.appendChild(notif);
+
+            // Forcer le reflow pour déclencher la transition
+            notif.offsetHeight;
+            notif.classList.add('visible');
+
+            // Barre de progression
+            const barre = document.createElement('div');
+            barre.classList.add('ee-achievement-barre');
+            notif.appendChild(barre);
+            setTimeout(function () { barre.classList.add('active'); }, 50);
+
+            // Disparition après 4s
+            setTimeout(function () {
+                notif.classList.remove('visible');
+                notif.addEventListener('transitionend', function () {
+                    notif.remove();
+                    easterEggActif = false;
+                }, { once: true });
+            }, 4000);
+        }, 800);
     }
 
     // ==============================
@@ -267,76 +298,96 @@
         easterEggActif = true;
         const anneeActuelle = new Date().getFullYear();
         let annee = anneeActuelle;
-        const interval = setInterval(function () {
-            annee--;
+
+        // Phase 1 : Descente de l'année actuelle → 0 avec accélération
+        let vitesse = 40;
+        function descendre() {
+            const pas = Math.max(1, Math.floor(annee / 100));
+            annee -= pas;
+            if (annee < 0) annee = 0;
             yearEl.textContent = String(annee);
-            if (annee <= 1990) {
-                clearInterval(interval);
-                setTimeout(function () {
-                    const interval2 = setInterval(function () {
-                        annee++;
-                        yearEl.textContent = String(annee);
-                        if (annee >= anneeActuelle) {
-                            clearInterval(interval2);
-                            yearEl.textContent = String(anneeActuelle);
-                            afficherModale(
-                                'Retour vers le futur !',
-                                'Voyage temporel terminé.<br>Bienvenue en ' + anneeActuelle + ' !'
-                            );
-                        }
-                    }, 30);
-                }, 500);
+
+            // Accélération progressive
+            if (annee > 1500) vitesse = 35;
+            else if (annee > 500) vitesse = 25;
+            else if (annee > 100) vitesse = 20;
+            else vitesse = 40;
+
+            // Tremblement du texte à l'approche de 0
+            if (annee <= 100) {
+                const intensite = (1 - annee / 100) * 4;
+                yearEl.style.transform = 'translateX(' + (Math.random() * intensite * 2 - intensite) + 'px)';
+                yearEl.style.color = '#' + Math.floor(Math.random() * 0x660000 + 0x990000).toString(16);
             }
-        }, 30);
+
+            if (annee <= 0) {
+                yearEl.textContent = '0';
+                yearEl.style.transform = '';
+                yearEl.style.color = '';
+                lancerExplosion(yearEl);
+            } else {
+                setTimeout(descendre, vitesse);
+            }
+        }
+        descendre();
+
+        // Phase 2 : Explosion de particules
+        function lancerExplosion(el) {
+            const rect = el.getBoundingClientRect();
+            const centreX = rect.left + rect.width / 2;
+            const centreY = rect.top + rect.height / 2;
+
+            // Flash blanc
+            const flash = document.createElement('div');
+            flash.classList.add('ee-explosion-flash');
+            document.body.appendChild(flash);
+            setTimeout(function () { flash.remove(); }, 400);
+
+            // Particules
+            const nbParticules = 30;
+            const symboles = ['0', '1', '∞', '⏳', '⚡', '✦', '◆', '●'];
+            const fragmentParticules = document.createDocumentFragment();
+            for (let i = 0; i < nbParticules; i++) {
+                const p = document.createElement('div');
+                p.classList.add('ee-explosion-particule');
+                p.textContent = symboles[Math.floor(Math.random() * symboles.length)];
+                const angle = (Math.PI * 2 * i) / nbParticules + (Math.random() - 0.5) * 0.5;
+                const distance = 80 + Math.random() * 200;
+                const dx = Math.cos(angle) * distance;
+                const dy = Math.sin(angle) * distance;
+                p.style.left = centreX + 'px';
+                p.style.top = centreY + 'px';
+                p.style.setProperty('--dx', dx + 'px');
+                p.style.setProperty('--dy', dy + 'px');
+                p.style.animationDuration = (0.6 + Math.random() * 0.6) + 's';
+                fragmentParticules.appendChild(p);
+                setTimeout(function () { p.remove(); }, 1200);
+            }
+            document.body.appendChild(fragmentParticules);
+
+            // Phase 3 : Pause puis remontée rapide vers l'année actuelle
+            yearEl.textContent = '💥';
+            setTimeout(function () {
+                let a = 0;
+                const interval2 = setInterval(function () {
+                    const pas = Math.max(1, Math.floor((anneeActuelle - a) / 50));
+                    a += pas;
+                    if (a >= anneeActuelle) {
+                        a = anneeActuelle;
+                        clearInterval(interval2);
+                        yearEl.textContent = String(anneeActuelle);
+                        afficherModale(
+                            'Big Bang temporel !',
+                            'Vous avez remonté jusqu\'à l\'an 0 et provoqué une explosion spatio-temporelle.<br>Heureusement, le continuum espace-temps a été restauré. Bienvenue en ' + anneeActuelle + ' !'
+                        );
+                    }
+                    yearEl.textContent = String(a);
+                }, 20);
+            }, 1200);
+        }
     });
 
     // ==============================
-    // Gravité inversée
-    // ==============================
-
-    function lancerGravity() {
-        easterEggActif = true;
-        document.body.classList.add('ee-gravity');
-        setTimeout(function () {
-            document.body.classList.remove('ee-gravity');
-            easterEggActif = false;
-        }, 2500);
-    }
-
-    // ==============================
-    // Mode pirate
-    // ==============================
-
-    function lancerPirate() {
-        easterEggActif = true;
-        const drapeau = document.createElement('div');
-        drapeau.classList.add('ee-pirate-flag');
-        drapeau.textContent = '\u2620\uFE0F';
-        document.body.appendChild(drapeau);
-        setTimeout(function () { drapeau.remove(); }, 3000);
-
-        const traductions = {
-            'Accueil': 'Port d\'attache',
-            'Projets': 'Butins',
-            'Compétences': 'Talents de flibustier',
-            'Contact': 'Envoyer un pigeon',
-            'Documents': 'Cartes au trésor',
-            'À propos': 'Le capitaine',
-            'Veille Technologique': 'Vigie du navire'
-        };
-        const originaux = [];
-        const onglets = document.querySelectorAll('.onglet, .onglet-burger');
-        onglets.forEach(function (el) {
-            originaux.push({ el: el, texte: el.textContent });
-            const txt = el.textContent.trim();
-            if (traductions[txt]) el.textContent = traductions[txt];
-        });
-        setTimeout(function () {
-            originaux.forEach(function (o) { o.el.textContent = o.texte; });
-            easterEggActif = false;
-        }, 5000);
-    }
-
     // ==============================
     // Snake
     // ==============================
@@ -350,10 +401,15 @@
         leScore.classList.add('ee-snake-score');
         leScore.textContent = 'Score : 0';
 
+        surcouche.setAttribute('role', 'dialog');
+        surcouche.setAttribute('aria-modal', 'true');
+        surcouche.setAttribute('aria-label', 'Jeu Snake');
+
         const canvas = document.createElement('canvas');
         const TAILLE = Math.min(400, window.innerWidth - 40);
         canvas.width = TAILLE;
         canvas.height = TAILLE;
+        canvas.setAttribute('aria-label', 'Zone de jeu Snake');
 
         const info = document.createElement('div');
         info.classList.add('ee-snake-info');
@@ -513,21 +569,6 @@
         }, 8000);
     }
 
-    // ==============================
-    // Mode ULTRA-accessible (a11y)
-    // ==============================
-
-    function lancerA11y() {
-        easterEggActif = true;
-        document.body.classList.add('ee-a11y');
-        afficherModale(
-            'Mode ULTRA-accessible activé !',
-            'Tout est GROS, tout est VISIBLE, tout est CONTRASTÉ.<br>L\'accessibilité, c\'est important !',
-            function () {
-                document.body.classList.remove('ee-a11y');
-            }
-        );
-    }
 
     // ==============================
     // Easter egg mobile : secouer le telephone
@@ -558,7 +599,7 @@
                     if (compteurSecousses >= 3) {
                         compteurSecousses = 0;
                         // Lancer un easter egg aleatoire parmi les visuels
-                        const eesMobiles = [lancerDisco, lancerGravity, lancerBarrelRoll, lancerRainbow];
+                        const eesMobiles = [lancerDisco, lancerBarrelRoll, lancerRainbow];
                         const ee = eesMobiles[Math.floor(Math.random() * eesMobiles.length)];
                         ee();
                     }
@@ -571,7 +612,7 @@
         });
 
         // Reset du compteur si pas de secousse pendant 1s
-        const intervalleResetSecousses = setInterval(function () {
+        setInterval(function () {
             if (Date.now() - dernierSecousse > 1000) {
                 compteurSecousses = 0;
             }
@@ -613,9 +654,33 @@
     );
     console.log(
         '%cHey, curieux(se) ! Tu cherches les secrets du code ? 👀\n' +
-        '%cEssaie le Konami Code... ou tape "snake" 🐍',
+        '%cTape %ceasterEggs()%c dans la console pour voir la liste complète !',
         'color: #960000; font-size: 16px; font-weight: bold;',
+        'color: #666; font-size: 12px;',
+        'color: #960000; font-size: 12px; font-weight: bold; background: #f0f0f0; padding: 2px 6px; border-radius: 3px;',
         'color: #666; font-size: 12px;'
     );
+
+    // Fonction globale pour lister les easter eggs depuis la console
+    window.easterEggs = function () {
+        const liste = [
+            { declencheur: '⬆ ⬆ ⬇ ⬇ ⬅ ➡ ⬅ ➡ B A', nom: 'Konami Code', description: 'Glitch + Achievement Unlocked — le classique des classiques.' },
+            { declencheur: 'Taper "disco"', nom: 'Mode Disco', description: 'La page se transforme en piste de danse pendant 5 secondes.' },
+            { declencheur: 'Taper "terminal"', nom: 'Mode Terminal', description: 'Le site prend un look de terminal rétro pendant 6 secondes.' },
+            { declencheur: 'Taper "snake"', nom: 'Snake', description: 'Un jeu de Snake jouable ! Flèches pour diriger, Echap pour quitter.' },
+            { declencheur: 'Taper "rainbow"', nom: 'Arc-en-ciel', description: 'La couleur primaire du site défile en arc-en-ciel pendant 10 secondes.' },
+            { declencheur: 'Taper "matrix"', nom: 'Matrix', description: 'Pluie de caractères verts style Matrix pendant 8 secondes.' },
+            { declencheur: 'Taper "roll"', nom: 'Barrel Roll', description: 'La page fait un tonneau à 360° !' },
+            { declencheur: 'Taper "90s"', nom: 'Mode 90\'s', description: 'Le site revient dans les années 90 avec un bandeau défilant.' },
+            { declencheur: 'Cliquer sur l\'année du copyright', nom: 'Big Bang temporel', description: 'L\'année recule jusqu\'à 0 avec accélération, explosion de particules, puis retour au présent.' },
+            { declencheur: 'Secouer le téléphone (mobile)', nom: 'Shake', description: 'Déclenche un easter egg visuel aléatoire sur mobile.' }
+        ];
+
+        console.log('%c🥚 Easter eggs du portfolio — Liste complète\n', 'color: #960000; font-size: 18px; font-weight: bold;');
+        console.table(liste.map(function (ee) {
+            return { 'Declencheur': ee.declencheur, 'Nom': ee.nom, 'Description': ee.description };
+        }));
+        console.log('%cBonne chasse ! 🎯', 'color: #960000; font-size: 14px; font-style: italic;');
+    };
 
 })();

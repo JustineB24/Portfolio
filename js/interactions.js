@@ -38,28 +38,6 @@
 })();
 
 
-// ==============================
-// Boutons magnétiques
-// ==============================
-
-(function () {
-    if (!window.matchMedia('(hover: hover)').matches) return;
-
-    const boutons = document.querySelectorAll('.btn-download, .btn-cv, .btn-envoyer, .btn-accueil');
-
-    boutons.forEach(function (bouton) {
-        bouton.addEventListener('mousemove', function (e) {
-            const rect = bouton.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            bouton.style.transform = 'translate(' + x * 0.15 + 'px, ' + y * 0.15 + 'px) translateY(-2px)';
-        });
-
-        bouton.addEventListener('mouseleave', function () {
-            bouton.style.transform = '';
-        });
-    });
-})();
 
 // ==============================
 // Micro-interactions sur les icônes
@@ -78,40 +56,9 @@
         });
     });
 
-    // Scale sur les boutons réseaux sociaux
-    const reseaux = document.querySelectorAll('.btn-reseaux');
-    // La transition est définie dans global.css sur .btn-reseaux
+    // Scale sur les boutons réseaux sociaux — transition définie dans global.css
 })();
 
-// ==============================
-// Copier email (page contact)
-// ==============================
-
-(function () {
-    const lienEmail = document.querySelector('.contact-infos a[href^="mailto:"]');
-    if (!lienEmail) return;
-
-    const email = lienEmail.href.replace('mailto:', '');
-    const bouton = document.createElement('button');
-    bouton.classList.add('btn-copier-email');
-    bouton.setAttribute('aria-label', 'Copier l\'adresse email');
-    bouton.innerHTML = '<i class="fas fa-copy"></i><span class="tooltip-copie">Copié !</span>';
-
-    lienEmail.parentElement.appendChild(bouton);
-
-    bouton.addEventListener('click', function () {
-        navigator.clipboard.writeText(email).then(function () {
-            const infobulle = bouton.querySelector('.tooltip-copie');
-            infobulle.classList.add('visible');
-            setTimeout(function () {
-                infobulle.classList.remove('visible');
-            }, 2000);
-        }).catch(function (erreur) {
-            console.warn('Impossible de copier l\'email :', erreur);
-            alert('Impossible de copier l\'email. Vous pouvez le copier manuellement : ' + email);
-        });
-    });
-})();
 
 // ==============================
 // Temps de lecture (page veille)
@@ -126,10 +73,11 @@
     const mots = texte.trim().split(/\s+/).length;
     const minutes = Math.ceil(mots / 200);
 
-    const eleTemps = document.createElement('div');
-    eleTemps.classList.add('temps-lecture');
-    eleTemps.innerHTML = '<i class="fas fa-clock"></i> Temps de lecture : ~' + minutes + ' min';
-    h1.insertAdjacentElement('afterend', eleTemps);
+    const meta = document.querySelector('.veille-meta');
+    if (!meta) return;
+    const eleTemps = document.createElement('span');
+    eleTemps.innerHTML = '<i class="fas fa-clock"></i> ~' + minutes + ' min de lecture';
+    meta.prepend(eleTemps);
 })();
 
 
@@ -169,4 +117,20 @@
         if (texte[i] === ' ') span.classList.add('letter-space');
         h1.appendChild(span);
     }
+})();
+
+// ==============================
+// Pause marquee hors viewport (PERF)
+// ==============================
+
+(function () {
+    const marqueeTrack = document.querySelector('.marquee-track');
+    if (!marqueeTrack) return;
+
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            marqueeTrack.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+        });
+    });
+    observer.observe(marqueeTrack);
 })();

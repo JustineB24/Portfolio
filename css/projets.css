@@ -65,26 +65,28 @@
 
 /* Contenu texte */
 .card-body {
-    padding: 1.25rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
     flex: 1;
 }
 
 .card-body h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--text-color);
-    margin: 0;
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--card-accent, var(--primary-color));
 }
 
 .card-body .card-desc {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--text-color);
-    opacity: 0.85;
-    line-height: 1.4;
+    opacity: 0.8;
+    line-height: 1.5;
     padding: 0;
     margin: 0;
+    flex: 1;
 }
 
 /* Tags technologies */
@@ -92,18 +94,17 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
-    margin-top: auto;
-    padding-top: 0.75rem;
+    margin-top: 0.8rem;
 }
 
 .card-tags span {
-    font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 1rem;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2rem;
+    border: 2px solid var(--text-color);
     background: var(--background-color);
     color: var(--text-color);
     font-weight: 600;
-    letter-spacing: 1px;
 }
 
 /* Couleurs d'accent par carte */

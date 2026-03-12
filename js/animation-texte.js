@@ -1,11 +1,12 @@
 class TexteRotatif {
-    constructor(el, aRotationner, periode) {
+    constructor(el, aRotationner, periode, reducedMotion) {
         this.aRotationner = aRotationner;
         this.el = el;
         this.numBoucle = 0;
         this.periode = parseInt(periode, 10) || 2000;
         this.txt = '';
         this.enSuppression = false;
+        this.tickEnCours = false;
         this.enveloppe = document.createElement('span');
         this.enveloppe.className = 'wrap';
         this.enveloppe.setAttribute('aria-hidden', 'true');
@@ -18,10 +19,20 @@ class TexteRotatif {
         srTexte.textContent = this.aRotationner.join(', ');
         this.el.appendChild(srTexte);
 
+        // Si reduced-motion, afficher le premier texte sans animation
+        if (reducedMotion) {
+            this.enveloppe.textContent = this.aRotationner[0];
+            return;
+        }
+
         this.tick();
     }
 
     tick() {
+        // Empêcher les appels multiples simultanés
+        if (this.tickEnCours) return;
+        this.tickEnCours = true;
+
         let i = this.numBoucle % this.aRotationner.length;
         let texteComplet = this.aRotationner[i];
 
@@ -39,24 +50,27 @@ class TexteRotatif {
             delta = 500;
         }
 
-        setTimeout(() => {
+        const self = this;
+        setTimeout(function () {
+            self.tickEnCours = false;
             if (document.hidden) {
-                document.addEventListener('visibilitychange', () => this.tick(), {once: true});
+                document.addEventListener('visibilitychange', function () { self.tick(); }, {once: true});
             } else {
-                this.tick();
+                self.tick();
             }
         }, delta);
     }
 }
 
 window.addEventListener('load', function () {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let elements = document.getElementsByClassName('txt-rotate');
     for (let el of elements) {
         let aRotationner = el.getAttribute('data-rotate');
         let periode = el.getAttribute('data-period');
         if (aRotationner) {
             try {
-                new TexteRotatif(el, JSON.parse(aRotationner), periode);
+                new TexteRotatif(el, JSON.parse(aRotationner), periode, reducedMotion);
             } catch (e) {
                 console.error('Erreur parsing data-rotate :', e);
             }

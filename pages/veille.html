@@ -1,6 +1,6 @@
 <!--    ===============================    -->
 <!--    | * Nom du projet : Portfolio |    -->
-<!--    | * Création : Juin 2024      |    -->
+<!--    | * Création : juin 2024      |    -->
 <!--    | * Auteur : Justine BLIN     |    -->
 <!--    ===============================    -->
 
@@ -50,13 +50,15 @@
 <!-- Contenu principal -->
 <main id="main">
     <h1><i class="fas fa-rss" aria-hidden="true"></i> Veille technologique</h1>
-    <p class="sous-titre-page">(Réalisée en 2024 - 2025)</p>
+    <div class="veille-meta">
+        <span><i class="fas fa-calendar-alt" aria-hidden="true"></i> 2024 - 2025</span>
+    </div>
 
     <!-- Sommaire + logo côte à côte -->
     <div class="veille-intro">
         <!-- Sommaire cliquable -->
         <div class="veille-intro-gauche">
-            <nav class="sommaire">
+            <nav class="sommaire" aria-label="Sommaire">
                 <p class="titre-sommaire"><i class="fas fa-list" aria-hidden="true"></i> Sommaire</p>
                 <ol>
                     <li><a href="#definition">Qu'est-ce que c'est ?</a></li>
@@ -76,25 +78,22 @@
             </nav>
         </div>
 
-        <div class="veille-intro-logo">
-            <picture>
-                <source srcset="../assets/Veille/Raspberry_Pi_logo.webp" type="image/webp">
-                <img src="../assets/Veille/Raspberry_Pi_logo.png" alt="Logo Raspberry Pi" loading="lazy" width="250"
-                     height="316">
-            </picture>
-            <p class="veille-intro-logo-texte">Raspberry Pi</p>
+        <div class="veille-intro-droite">
+            <div class="veille-intro-logo">
+                <picture>
+                    <source srcset="../assets/Veille/Raspberry_Pi_logo.webp" type="image/webp">
+                    <img src="../assets/Veille/Raspberry_Pi_logo.png" alt="Logo Raspberry Pi" loading="lazy" width="250"
+                         height="316">
+                </picture>
+                <p class="veille-intro-logo-texte">Raspberry Pi</p>
+            </div>
+            <h2 id="definition" class="veille-intro-titre">Qu'est-ce que c'est ?</h2>
+            <p class="veille-intro-desc">La veille technologique consiste à surveiller les évolutions technologiques pour identifier les nouvelles tendances et innovations dans un domaine.</p>
         </div>
     </div>
 
-    <h2 id="definition">Qu'est-ce que c'est ?</h2>
-    <hr>
-    <p>
-        La veille technologique consiste à surveiller les évolutions technologiques pour identifier les nouvelles
-        tendances et innovations dans un domaine.
-    </p>
-
     <h2 id="outils">Outils et sources de ma veille</h2>
-    <hr>
+
     <ul>
         <li><a class="sources" href="https://feedly.com/homepage" target="_blank" rel="noopener noreferrer">Feedly
             (agrégateur de flux RSS)</a></li>
@@ -116,7 +115,7 @@
     </ul>
 
     <h2 id="raspberry-pi">Raspberry Pi ?</h2>
-    <hr>
+
     <p>
         Le Raspberry Pi est un nano-ordinateur monocarte, de la taille d'une carte de crédit, conçu par la Fondation
         Raspberry Pi pour rendre l'informatique plus accessible à tous. Son coût abordable et sa
@@ -134,13 +133,13 @@
 
     <picture>
         <source srcset="../assets/Veille/Raspberry_Pi_1_B.webp" type="image/webp">
-        <img src="../assets/Veille/Raspberry_Pi_1_B.jpg" alt="Raspberry Pi 1 Modèle B" loading="lazy" width="1200"
+        <img class="veille-img" src="../assets/Veille/Raspberry_Pi_1_B.jpg" alt="Raspberry Pi 1 Modèle B" loading="lazy" width="1200"
              height="818">
     </picture>
     <p class="texte-photo">Le tout premier modèle du Raspberry Pi : version 1 B</p>
 
     <h2 id="histoire">Histoire du Raspberry Pi</h2>
-    <hr>
+
     <p>
         L'histoire du Raspberry Pi débute en 2006, avec la création des premiers prototypes inspirés par le BBC
         Micro. Après six années de développement, le premier Raspberry Pi voit le jour en 2012. Son objectif
@@ -150,7 +149,7 @@
     </p>
 
     <h2 id="eben-upton">Eben Upton</h2>
-    <hr>
+
     <p>
         Pour mieux comprendre l'origine du Raspberry Pi, il est essentiel de se pencher sur son créateur, Eben
         Upton.
@@ -160,12 +159,12 @@
     </p>
     <picture>
         <source srcset="../assets/Veille/Eben_Upton.webp" type="image/webp">
-        <img src="../assets/Veille/Eben_Upton.jpg" alt="Eben Upton" loading="lazy" width="800" height="900">
+        <img class="veille-img" src="../assets/Veille/Eben_Upton.jpg" alt="Eben Upton" loading="lazy" width="800" height="900">
     </picture>
     <p class="texte-photo">Eben Upton</p>
 
     <h2 id="prototypes">Les premiers prototypes</h2>
-    <hr>
+
     <p>
         De 2006 à 2011, Eben Upton a créé des prototypes d'ordinateurs monocartes tout en travaillant chez Broadcom.
         Inspiré par le BBC Micro, qu'il utilisait à l'école, il a voulu concevoir un ordinateur plus compact et
@@ -173,7 +172,7 @@
     </p>
     <picture>
         <source srcset="../assets/Veille/BBC_Micro_modèle_B.webp" type="image/webp">
-        <img src="../assets/Veille/BBC_Micro_modèle_B.jpg"
+        <img class="veille-img" src="../assets/Veille/BBC_Micro_modèle_B.jpg"
              alt="Le BBC Micro modèle B, créé par Acorn Computers et sorti en 1981" loading="lazy" width="200"
              height="229">
     </picture>
@@ -187,13 +186,13 @@
     </p>
     <picture>
         <source srcset="../assets/Veille/Prototype_Eben_Upton.webp" type="image/webp">
-        <img src="../assets/Veille/Prototype_Eben_Upton.jpg"
+        <img class="veille-img" src="../assets/Veille/Prototype_Eben_Upton.jpg"
              alt="Le prototype d'Eben Upton basé sur un processeur Atmel" loading="lazy" width="720" height="282">
     </picture>
     <p class="texte-photo">Le prototype d'Eben Upton basé sur un processeur Atmel</p>
 
     <h2 id="idee">L'idée et son origine</h2>
-    <hr>
+
     <p>
         En 2006, Eben Upton, lors de ses travaux sur des prototypes, a constaté que le coût élevé des ordinateurs
         freinait l'intérêt des jeunes pour l'informatique, contribuant ainsi à une pénurie de professionnels dans le
@@ -207,7 +206,7 @@
     </p>
 
     <h2 id="fondation">La Fondation Raspberry Pi</h2>
-    <hr>
+
     <p>
         En 2009, Eben Upton fonde la Fondation Raspberry Pi, une organisation dédiée à l'éducation technologique.
         L'objectif principal
@@ -226,7 +225,7 @@
     </p>
 
     <h2 id="applications">Applications possibles</h2>
-    <hr>
+
     <ul>
         <li>Serveur web</li>
         <li>Borne d'arcade rétro gaming</li>
@@ -241,12 +240,12 @@
 
     <picture>
         <source srcset="../assets/Veille/Raspberry_Pi_5.webp" type="image/webp">
-        <img src="../assets/Veille/Raspberry_Pi_5.jpg" alt="Raspberry Pi 5" loading="lazy" width="960" height="640">
+        <img class="veille-img" src="../assets/Veille/Raspberry_Pi_5.jpg" alt="Raspberry Pi 5" loading="lazy" width="960" height="640">
     </picture>
     <p class="texte-photo">Raspberry Pi 5</p>
 
     <h2 id="avantages">Avantages et Inconvénients</h2>
-    <hr>
+
     <table class="comparatif">
         <caption>Comparatif des avantages et inconvénients du Raspberry Pi</caption>
         <thead>
@@ -285,60 +284,62 @@
 
     <picture>
         <source srcset="../assets/Veille/Boitier_officiel_Fondation_Raspberry_Pi_2015.webp" type="image/webp">
-        <img src="../assets/Veille/Boitier_officiel_Fondation_Raspberry_Pi_2015.jpg"
+        <img class="veille-img" src="../assets/Veille/Boitier_officiel_Fondation_Raspberry_Pi_2015.jpg"
              alt="Boîtier officiel du Raspberry Pi" loading="lazy" width="600" height="900">
     </picture>
     <p class="texte-photo">Boîtier officiel du Raspberry Pi</p>
 
     <h2 id="innovations">Innovations récentes (2024-2025)</h2>
-    <hr>
+
     <div class="innovations">
         <ul>
             <li>
-                <a href="https://www.raspberrypi.com/products/compute-module-5/" target="_blank"
-                   rel="noopener noreferrer">
-                    <strong>Compute Module 5 - CM5 (novembre 2023, généralisé en 2024)</strong><br>
-                    Version compacte et puissante du Raspberry Pi 5 pour l'industrie et les systèmes embarqués.
+                <a href="https://www.raspberrypi.com/products/compute-module-5/" target="_blank" rel="noopener noreferrer">
+                    <strong>Compute Module 5 - CM5</strong>
+                    <span class="innovation-date">Novembre 2023</span>
+                    <span class="innovation-desc">Version compacte et puissante du Raspberry Pi 5 pour l'industrie et les systèmes embarqués.</span>
                 </a>
             </li>
             <li>
                 <a href="https://www.raspberrypi.com/products/ai-kit/" target="_blank" rel="noopener noreferrer">
-                    <strong>Raspberry Pi AI Kit (mars 2024)</strong><br>
-                    Permet d'exécuter de l'intelligence artificielle localement grâce au module Hailo-8L.
+                    <strong>Raspberry Pi AI Kit</strong>
+                    <span class="innovation-date">Mars 2024</span>
+                    <span class="innovation-desc">Permet d'exécuter de l'intelligence artificielle localement grâce au module Hailo-8L.</span>
                 </a>
             </li>
             <li>
                 <a href="https://www.raspberrypi.com/products/ai-camera/" target="_blank" rel="noopener noreferrer">
-                    <strong>Caméra IA avec capteur Sony IMX500 (septembre 2024)</strong><br>
-                    Analyse d'image en temps réel directement sur le capteur, sans calcul externe.
+                    <strong>Caméra IA - Sony IMX500</strong>
+                    <span class="innovation-date">Septembre 2024</span>
+                    <span class="innovation-desc">Analyse d'image en temps réel directement sur le capteur, sans calcul externe.</span>
                 </a>
             </li>
             <li>
-                <a href="https://pieeg.com/news/pieeg-16-measure-16-eeg-channels-with-raspberry-pi/" target="_blank"
-                   rel="noopener noreferrer">
-                    <strong>PiEEG-16 - Interface cerveau-machine (septembre 2024)</strong><br>
-                    Module pour capter des signaux bioélectriques en temps réel.
+                <a href="https://pieeg.com/news/pieeg-16-measure-16-eeg-channels-with-raspberry-pi/" target="_blank" rel="noopener noreferrer">
+                    <strong>PiEEG-16 - Interface cerveau-machine</strong>
+                    <span class="innovation-date">Septembre 2024</span>
+                    <span class="innovation-desc">Module pour capter des signaux bioélectriques en temps réel.</span>
                 </a>
             </li>
             <li>
-                <a href="https://www.raspberrypi.com/news/raspberry-pi-pico-2-w-on-sale-now/" target="_blank"
-                   rel="noopener noreferrer">
-                    <strong>Raspberry Pi Pico 2 W (novembre 2024)</strong><br>
-                    Microcontrôleur à bas prix avec Wi-Fi 4 et Bluetooth 5.2 pour les projets IoT.
+                <a href="https://www.raspberrypi.com/news/raspberry-pi-pico-2-w-on-sale-now/" target="_blank" rel="noopener noreferrer">
+                    <strong>Raspberry Pi Pico 2 W</strong>
+                    <span class="innovation-date">Novembre 2024</span>
+                    <span class="innovation-desc">Microcontrôleur à bas prix avec Wi-Fi 4 et Bluetooth 5.2 pour les projets IoT.</span>
                 </a>
             </li>
             <li>
-                <a href="https://www.raspberrypi.com/products/raspberry-pi-500/" target="_blank"
-                   rel="noopener noreferrer">
-                    <strong>Raspberry Pi 500 (décembre 2024)</strong><br>
-                    PC tout-en-un dans un clavier avec 8 Go de RAM et double sortie 4K.
+                <a href="https://www.raspberrypi.com/products/raspberry-pi-500/" target="_blank" rel="noopener noreferrer">
+                    <strong>Raspberry Pi 500</strong>
+                    <span class="innovation-date">Décembre 2024</span>
+                    <span class="innovation-desc">PC tout-en-un dans un clavier avec 8 Go de RAM et double sortie 4K.</span>
                 </a>
             </li>
         </ul>
     </div>
 
     <h2 id="evolution">Évolution des modèles</h2>
-    <hr>
+
     <picture>
         <source srcset="../assets/Veille/Evolution_Of_Pi.webp" type="image/webp">
         <img id="img-evolution" src="../assets/Veille/Evolution_Of_Pi.jpg" alt="Évolution des modèles de Raspberry Pi"
@@ -389,13 +390,13 @@
 
     <picture>
         <source srcset="../assets/Veille/Raspberry_Pi_500.webp" type="image/webp">
-        <img src="../assets/Veille/Raspberry_Pi_500.jpg" alt="Raspberry Pi 500" loading="lazy" width="1200"
+        <img class="veille-img" src="../assets/Veille/Raspberry_Pi_500.jpg" alt="Raspberry Pi 500" loading="lazy" width="1200"
              height="675">
     </picture>
     <p class="texte-photo">Raspberry Pi 500</p>
 
     <h2 id="conclusion">Conclusion</h2>
-    <hr>
+
     <p>
         Le Raspberry Pi continue d'évoluer et transforme l'éducation ainsi que la créativité
         technologique à travers
@@ -404,7 +405,7 @@
 
     <picture>
         <source srcset="../assets/Veille/Raspberry_Pi_1,_Pi_5,_Pi_400,_Zero_2_and_Pico.webp" type="image/webp">
-        <img src="../assets/Veille/Raspberry_Pi_1,_Pi_5,_Pi_400,_Zero_2_and_Pico.jpg"
+        <img class="veille-img" src="../assets/Veille/Raspberry_Pi_1,_Pi_5,_Pi_400,_Zero_2_and_Pico.jpg"
              alt="Raspberry Pi 1, Pi 5, Pi 400, Zero 2 et Pico" loading="lazy" width="1200" height="798">
     </picture>
     <p class="texte-photo">Raspberry Pi 1, Pi 5, Pi 400, Zero 2 et Pico</p>

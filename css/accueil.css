@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: radial-gradient(ellipse at 50% 0%, rgba(150, 0, 0, 0.15) 0%, transparent 60%),
+    background: radial-gradient(ellipse at 50% 0%, rgba(var(--primary-rgb), 0.15) 0%, transparent 60%),
     var(--background-color);
     gap: 2rem;
     position: relative;
@@ -21,7 +21,7 @@
     height: auto;
     animation: logoAppear 1s ease-out forwards;
     opacity: 0;
-    filter: drop-shadow(0 4px 24px rgba(150, 0, 0, 0.25));
+    filter: drop-shadow(0 4px 24px rgba(var(--primary-rgb), 0.25));
 }
 
 @keyframes logoAppear {
@@ -146,8 +146,8 @@
 
 .compteur:hover {
     transform: translateY(-5px);
-    border-color: rgba(150, 0, 0, 0.2);
-    box-shadow: 0 12px 32px rgba(150, 0, 0, 0.12);
+    border-color: rgba(var(--primary-rgb), 0.2);
+    box-shadow: 0 12px 32px rgba(var(--primary-rgb), 0.12);
 }
 
 .compteur:hover::before {
@@ -161,12 +161,12 @@
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    background: rgba(150, 0, 0, 0.1);
+    background: rgba(var(--primary-rgb), 0.1);
     transition: background 0.3s;
 }
 
 .compteur:hover .compteur-icon {
-    background: rgba(150, 0, 0, 0.18);
+    background: rgba(var(--primary-rgb), 0.18);
 }
 
 .compteur-icon i {
@@ -185,7 +185,7 @@
     font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     opacity: 0.7;
 }
 
@@ -256,44 +256,28 @@
 
 .carte-apercu {
     background: var(--card-background);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     padding: 1.5rem;
     text-decoration: none;
     color: var(--text-color);
-    position: relative;
     overflow: hidden;
-    border: 1px solid transparent;
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    border: 2px solid var(--card-accent, var(--primary-color));
+    transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
 }
 
-.carte-apercu::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--primary-color);
-    transform: scaleX(0);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 .carte-apercu:hover {
-    transform: translateY(-5px);
-    border-color: rgba(150, 0, 0, 0.2);
-    box-shadow: 0 12px 32px rgba(150, 0, 0, 0.12);
-}
-
-.carte-apercu:hover::before {
-    transform: scaleX(1);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
 }
 
 .carte-apercu h3 {
     font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--card-accent, var(--primary-color));
+    color: var(--text-color);
 }
 
 .carte-apercu p {
@@ -312,10 +296,11 @@
 
 .carte-apercu-tags span {
     font-size: 0.7rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    background: rgba(150, 0, 0, 0.1);
-    color: var(--primary-color);
+    padding: 0.25rem 0.6rem;
+    border-radius: 2rem;
+    border: 2px solid var(--text-color);
+    background: var(--background-color);
+    color: var(--text-color);
     font-weight: 600;
 }
 
@@ -408,6 +393,12 @@
     }
     100% {
         transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none;
     }
 }
 

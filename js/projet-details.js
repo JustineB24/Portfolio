@@ -7,22 +7,22 @@ const projetId = rawId && /^[a-z0-9-]+$/.test(rawId) ? rawId : null;
 const projets = {
     "pendu": {
         title: "Pendu",
-        images: ["../projets/Pendu/Menu.jpg",
-            "../projets/Pendu/Jeu.jpg",
-            "../projets/Pendu/Mots.jpg",
-            "../projets/Pendu/Scores.jpg"
+        images: ["../assets/projets/pendu/Menu.jpg",
+            "../assets/projets/pendu/Jeu.jpg",
+            "../assets/projets/pendu/Mots.jpg",
+            "../assets/projets/pendu/Scores.jpg"
         ],
         description: "Application mobile développée avec MAUI et XAML, recréant le célèbre jeu du pendu. L'utilisateur doit deviner un mot choisi aléatoirement, en proposant des lettres une par une. Chaque mauvaise réponse révèle progressivement une image du pendu. Le menu principal permet de jouer, de gérer la liste des mots à deviner, de consulter les meilleurs scores ou de quitter l'application. Les mots et les scores sont stockés localement, permettant une gestion dynamique des parties et une personnalisation du jeu. L'interface est responsive et s'adapte parfaitement aux différents formats mobiles.",
         technologies: ["XAML", "MAUI"]
     },
     "france-mobilier": {
         title: "France Mobilier",
-        images: ["../projets/France_mobilier/Accueil.png",
-            "../projets/France_mobilier/Meuble.png",
-            "../projets/France_mobilier/Magasins.png",
-            "../projets/France_mobilier/Admin.png",
-            "../projets/France_mobilier/AjoutProduit.png",
-            "../projets/France_mobilier/AjoutMagasin.png"
+        images: ["../assets/projets/france_mobilier/Accueil.png",
+            "../assets/projets/france_mobilier/Meuble.png",
+            "../assets/projets/france_mobilier/Magasins.png",
+            "../assets/projets/france_mobilier/Admin.png",
+            "../assets/projets/france_mobilier/AjoutProduit.png",
+            "../assets/projets/france_mobilier/AjoutMagasin.png"
         ],
         description: "Site e-commerce développé pour la société France Mobilier, spécialisée dans le mobilier d'intérieur. Conçu selon l'architecture MVC, il propose une page d'accueil présentant l'entreprise, un module de recherche de meubles par catégorie, ainsi qu'une page listant l'ensemble des magasins physiques. Le projet utilise une base de données pour gérer dynamiquement les meubles et les points de vente. Un panneau d'administration est également prévu pour permettre la modification des produits et des magasins. L'interface est pensée pour être claire et facilement maintenable.",
         technologies: ["HTML", "CSS", "PHP", "C#", "MYSQL"]
@@ -30,22 +30,22 @@ const projets = {
     "sio-shop": {
         title: "Sio Shop",
         images: [
-            "../projets/Sio_Shop/Connexion.png",
-            "../projets/Sio_Shop/Menu.png",
-            "../projets/Sio_Shop/PasAdmin.png",
-            "../projets/Sio_Shop/GestionClients.png",
-            "../projets/Sio_Shop/RechercheClient.png",
-            "../projets/Sio_Shop/Client.png",
-            "../projets/Sio_Shop/NouveauClient.png",
-            "../projets/Sio_Shop/GestionProduits.png",
-            "../projets/Sio_Shop/RechercheProduit.png",
-            "../projets/Sio_Shop/Produit.png",
-            "../projets/Sio_Shop/NouveauProduit.png",
-            "../projets/Sio_Shop/SaisirVente.png",
-            "../projets/Sio_Shop/Facture.png",
-            "../projets/Sio_Shop/GestionEmployes.png",
-            "../projets/Sio_Shop/Employe.png",
-            "../projets/Sio_Shop/AjoutEmploye.png"
+            "../assets/projets/sio_shop/Connexion.png",
+            "../assets/projets/sio_shop/Menu.png",
+            "../assets/projets/sio_shop/PasAdmin.png",
+            "../assets/projets/sio_shop/GestionClients.png",
+            "../assets/projets/sio_shop/RechercheClient.png",
+            "../assets/projets/sio_shop/Client.png",
+            "../assets/projets/sio_shop/NouveauClient.png",
+            "../assets/projets/sio_shop/GestionProduits.png",
+            "../assets/projets/sio_shop/RechercheProduit.png",
+            "../assets/projets/sio_shop/Produit.png",
+            "../assets/projets/sio_shop/NouveauProduit.png",
+            "../assets/projets/sio_shop/SaisirVente.png",
+            "../assets/projets/sio_shop/Facture.png",
+            "../assets/projets/sio_shop/GestionEmployes.png",
+            "../assets/projets/sio_shop/Employe.png",
+            "../assets/projets/sio_shop/AjoutEmploye.png"
         ],
         description: "Application de gestion commerciale développée sous Windows Forms pour une concession automobile. Ce projet propose une interface permettant aux employés de gérer les clients, les véhicules en stock et les ventes. L'application intègre une authentification sécurisée, une liaison directe avec une base de données SQL, ainsi qu'un module de création de factures au format PDF. Les utilisateurs peuvent rechercher, ajouter et modifier clients et produits, saisir des ventes avec calcul automatique du prix TTC, et suivre l'évolution des stocks en temps réel. La structure suit les principes de la programmation orientée objet, en assurant une navigation fluide et professionnelle entre les différentes fonctionnalités.",
         technologies: ["WinForms", "C#", "MYSQL"]
@@ -53,30 +53,30 @@ const projets = {
     "speedcubing": {
         title: "Speedcubing",
         images: [
-            "../projets/Speedcubing/Accueil.png",
-            "../projets/Speedcubing/Chrono.png",
-            "../projets/Speedcubing/Technique_3x3.png",
-            "../projets/Speedcubing/Def_Speedcubing.png",
-            "../projets/Speedcubing/Connexion.png"
+            "../assets/projets/speedcubing/Accueil.png",
+            "../assets/projets/speedcubing/Chrono.png",
+            "../assets/projets/speedcubing/Technique_3x3.png",
+            "../assets/projets/speedcubing/Def_Speedcubing.png",
+            "../assets/projets/speedcubing/Connexion.png"
         ],
         description: "Projet développé pour l'Association Française de SpeedCubing. Ce site permet aux passionnés de Rubik's Cube de s'entraîner en ligne, d'enregistrer leurs temps et de comparer leurs performances avec celles des autres. Il intègre un chronomètre interactif, une base de données des meilleurs temps et une section dédiée à la résolution d'un Rubik's Cube 3x3.",
         technologies: ["PHP", "CSS", "JavaScript", "MYSQL"]
     },
     "meteo": {
         title: "Application météo",
-        images: ["../projets/Meteo/Meteo.png"],
+        images: ["../assets/projets/meteo/Meteo.png"],
         description: "Application web développée pour afficher en temps réel les conditions météorologiques d'une ville choisie par l'utilisateur. En utilisant l'API OpenWeather, ce projet permet de consulter la température actuelle, l'humidité ainsi qu'une description du temps (ensoleillé, nuageux, etc.). L'interface propose une zone de recherche, un affichage centralisé des données principales, et un design épuré avec fond personnalisé. Le JavaScript assure la récupération dynamique des données météo et la mise à jour instantanée de l'affichage après chaque recherche.",
         technologies: ["HTML", "CSS", "JavaScript"]
     },
     "generateur-mdp": {
         title: "Générateur de mots de passe",
-        images: ["../projets/Generateur_mdp/Generateur_mdp.png"],
+        images: ["../assets/projets/generateur_mdp/Generateur_mdp.png"],
         description: "Outil conçu pour aider les utilisateurs à générer des mots de passe sécurisés en quelques clics. Ce générateur permet de créer des mots de passe aléatoires respectant des critères de sécurité stricts : majuscules, minuscules, chiffres et caractères spéciaux. Il intègre une interface interactive, incluant un slider pour définir la longueur du mot de passe (de 8 à 16 caractères), ainsi que des boutons pour copier rapidement le résultat.",
         technologies: ["HTML", "CSS", "JavaScript"]
     },
     "mairie-cauffry": {
         title: "Mairie de Cauffry",
-        images: ["../projets/Mairie_de_cauffry/Accueil.png"],
+        images: ["../assets/projets/mairie_de_cauffry/Accueil.png"],
         description: "Réalisation d'un site web pour la commune de Cauffry dans le cadre d'un stage de 4 semaines en première année de BTS SIO, avec Adico (Association pour le développement et l'innovation numérique des collectivités).",
         technologies: ["HTML", "CSS"],
         link: "https://mairiecauffry.fr/"
@@ -84,11 +84,11 @@ const projets = {
     "panada-food": {
         title: "Panada Food",
         images: [
-            "../projets/Panada_Food/Accueil.png",
-            "../projets/Panada_Food/Menu.png",
-            "../projets/Panada_Food/Contact.png",
-            "../projets/Panada_Food/Mentions_legales.png",
-            "../projets/Panada_Food/Ecran_chargement.png"
+            "../assets/projets/panada_food/Accueil.png",
+            "../assets/projets/panada_food/Menu.png",
+            "../assets/projets/panada_food/Contact.png",
+            "../assets/projets/panada_food/Mentions_legales.png",
+            "../assets/projets/panada_food/Ecran_chargement.png"
         ],
         description: "Développement d'un site web pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en collaboration avec une collègue.",
         technologies: ["HTML", "CSS", "JavaScript"],
@@ -178,7 +178,7 @@ if (!projetId || !projets[projetId]) {
 
         // Création du logo
         let logo = document.createElement("img");
-        logo.src = `../assets/SVG/${nomFichier}.svg`;
+        logo.src = `../assets/svg/${nomFichier}.svg`;
         logo.alt = String(tech);
         logo.width = 80;
         logo.height = 80;

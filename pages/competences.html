@@ -50,7 +50,7 @@
 <!-- Contenu principal -->
 <main id="main">
     <section>
-        <h1>Certifications</h1>
+        <h1><i class="fas fa-award" aria-hidden="true"></i> Certifications</h1>
         <div class="gallery">
             <picture>
                 <source srcset="../assets/Certif_en_jpg/SoloLearn_Coding_Foundations.webp" type="image/webp">
@@ -143,27 +143,22 @@
             </picture>
         </div>
 
-        <!-- Modale pour afficher les images agrandies -->
-        <div id="zoom-modal" class="hidden" role="dialog" aria-modal="true" aria-label="Image agrandie">
+        <!-- Modale carrousel pour afficher les images agrandies -->
+        <div id="zoom-modal" role="dialog" aria-modal="true" aria-label="Image agrandie">
+            <button id="prev" class="carrousel-btn carrousel-prev" aria-label="Image précédente">
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
             <img id="zoom-modal-img" src="" alt="Image agrandie">
-            <!-- Flèche gauche -->
-            <button id="prev" class="modal-arrow left" aria-label="Image précédente">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true">
-                    <path d="M15 18l-6-6 6-6" stroke="white" stroke-width="2" fill="none"/>
-                </svg>
+            <button id="next" class="carrousel-btn carrousel-next" aria-label="Image suivante">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
             </button>
-            <!-- Flèche droite -->
-            <button id="next" class="modal-arrow right" aria-label="Image suivante">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true">
-                    <path d="M9 18l6-6-6-6" stroke="white" stroke-width="2" fill="none"/>
-                </svg>
-            </button>
-            <!-- Croix de fermeture -->
-            <button class="close" aria-label="Fermer">&#10005;</button>
+            <div id="zoom-dots" class="carrousel-dots"></div>
+            <div id="zoom-counter" class="carrousel-counter"></div>
+            <button id="zoom-close" class="carrousel-modale-fermer" aria-label="Fermer">&#10005;</button>
         </div>
     </section>
 
-    <h2>Langages de programmation</h2>
+    <h2><i class="fas fa-code" aria-hidden="true"></i> Langages de programmation</h2>
     <div class="card-container">
         <div class="card-competence html">
             <div class="card-competence-inner">
@@ -230,7 +225,7 @@
         </div>
     </div>
 
-    <h2>Outils & Environnements de développement</h2>
+    <h2><i class="fas fa-toolbox" aria-hidden="true"></i> Outils & Environnements de développement</h2>
     <div class="card-container">
         <div class="card-competence vscode">
             <div class="card-competence-inner">

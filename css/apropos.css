@@ -10,48 +10,9 @@
     margin: 1rem auto;
 }
 
-/* Bouton CV — style cohérent avec .btn-download */
-.btn-cv-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    padding: 0.85rem 1.8rem;
-    border: 2px solid var(--primary-color);
-    position: relative;
-    overflow: hidden;
-    background: var(--primary-color);
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
-    z-index: 1;
-    font-family: inherit;
-    color: var(--button-text-color);
+/* Positionnement bouton CV sur cette page */
+.btn-cv {
     margin: 2rem;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-}
-
-.btn-cv-outline::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn-cv-outline:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-.btn-cv-outline:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-primary);
 }
 
 /* Parcours */
@@ -214,7 +175,7 @@ main hr {
         font-size: 0.95rem;
     }
 
-    .btn-cv-outline {
+    .btn-cv {
         font-size: 0.9rem;
         padding: 0.7rem 1.4rem;
         margin: 1.5rem;
@@ -239,11 +200,11 @@ main hr {
         padding: 1rem;
     }
 
-    .btn-cv-outline {
+    .btn-cv {
         font-size: 0.85rem;
         padding: 0.6rem 1.2rem;
-        margin: 1.5rem;
-        width: 100%;
+        margin: 1.5rem auto;
+        width: calc(100% - 1rem);
         justify-content: center;
     }
 

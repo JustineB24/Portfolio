@@ -4,7 +4,7 @@
     // ==============================
 
     const elementsAAnimer = document.querySelectorAll(
-        '.timeline-item, .card-competence, .innovations, .comparatif, .card-container, .profil, .btn-cv, .card-accueil, .projet-container .card'
+        '.timeline-item, .card-competence, .innovations, .comparatif, .card-container, .profil, .btn-cv, .projet-container .card, .qui-suis-je, .carte-apercu, .bandeau-competences'
     );
 
     elementsAAnimer.forEach(el => {

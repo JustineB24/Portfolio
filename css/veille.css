@@ -44,6 +44,95 @@ main hr {
     box-sizing: border-box;
 }
 
+/* Layout intro : sommaire + logo côte à côte */
+.veille-intro {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.veille-intro-logo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.veille-intro-logo img {
+    max-width: 200px;
+    height: auto;
+    margin: 0;
+}
+
+.veille-intro-logo-texte {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-top: 0.75rem;
+}
+
+/* Wrappers gauche/droite pour centrer le contenu dans chaque moitié */
+.veille-intro-gauche {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Sommaire */
+.sommaire {
+    background-color: var(--card-background);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+    width: 100%;
+    max-width: 420px;
+}
+
+.titre-sommaire {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0 0 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.sommaire ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: sommaire;
+}
+
+.sommaire ol li {
+    counter-increment: sommaire;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+.sommaire ol li a {
+    display: block;
+    padding: 0.4rem 0.6rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s, font-weight 0.2s;
+}
+
+.sommaire ol li a::before {
+    content: counter(sommaire) ". ";
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.sommaire ol li a:hover {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
 .sources {
     color: var(--text-color);
 }
@@ -170,6 +259,23 @@ main img {
 
     main img {
         max-width: 50%;
+    }
+
+    .veille-intro {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sommaire {
+        width: 100%;
+    }
+
+    .veille-intro-gauche {
+        width: 100%;
+    }
+
+    .veille-intro-logo img {
+        max-width: 150px;
     }
 }
 

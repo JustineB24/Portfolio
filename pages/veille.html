@@ -49,28 +49,42 @@
 </div>
 <!-- Contenu principal -->
 <main id="main">
-    <h1>Veille technologique</h1>
+    <h1><i class="fas fa-rss" aria-hidden="true"></i> Veille technologique</h1>
     <p class="sous-titre-page">(Réalisée en 2024 - 2025)</p>
 
-    <!-- Sommaire cliquable -->
-    <nav class="sommaire">
-        <p class="titre-sommaire"><i class="fas fa-list" aria-hidden="true"></i> Sommaire</p>
-        <ol>
-            <li><a href="#definition">Qu'est-ce que c'est ?</a></li>
-            <li><a href="#outils">Outils et sources</a></li>
-            <li><a href="#raspberry-pi">Raspberry Pi ?</a></li>
-            <li><a href="#histoire">Histoire du Raspberry Pi</a></li>
-            <li><a href="#eben-upton">Eben Upton</a></li>
-            <li><a href="#prototypes">Les premiers prototypes</a></li>
-            <li><a href="#idee">L'idée et son origine</a></li>
-            <li><a href="#fondation">La Fondation Raspberry Pi</a></li>
-            <li><a href="#applications">Applications possibles</a></li>
-            <li><a href="#avantages">Avantages et Inconvénients</a></li>
-            <li><a href="#innovations">Innovations récentes</a></li>
-            <li><a href="#evolution">Évolution des modèles</a></li>
-            <li><a href="#conclusion">Conclusion</a></li>
-        </ol>
-    </nav>
+    <!-- Sommaire + logo côte à côte -->
+    <div class="veille-intro">
+        <!-- Sommaire cliquable -->
+        <div class="veille-intro-gauche">
+            <nav class="sommaire">
+                <p class="titre-sommaire"><i class="fas fa-list" aria-hidden="true"></i> Sommaire</p>
+                <ol>
+                    <li><a href="#definition">Qu'est-ce que c'est ?</a></li>
+                    <li><a href="#outils">Outils et sources</a></li>
+                    <li><a href="#raspberry-pi">Raspberry Pi ?</a></li>
+                    <li><a href="#histoire">Histoire du Raspberry Pi</a></li>
+                    <li><a href="#eben-upton">Eben Upton</a></li>
+                    <li><a href="#prototypes">Les premiers prototypes</a></li>
+                    <li><a href="#idee">L'idée et son origine</a></li>
+                    <li><a href="#fondation">La Fondation Raspberry Pi</a></li>
+                    <li><a href="#applications">Applications possibles</a></li>
+                    <li><a href="#avantages">Avantages et Inconvénients</a></li>
+                    <li><a href="#innovations">Innovations récentes</a></li>
+                    <li><a href="#evolution">Évolution des modèles</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="veille-intro-logo">
+            <picture>
+                <source srcset="../assets/Veille/Raspberry_Pi_logo.webp" type="image/webp">
+                <img src="../assets/Veille/Raspberry_Pi_logo.png" alt="Logo Raspberry Pi" loading="lazy" width="250"
+                     height="316">
+            </picture>
+            <p class="veille-intro-logo-texte">Raspberry Pi</p>
+        </div>
+    </div>
 
     <h2 id="definition">Qu'est-ce que c'est ?</h2>
     <hr>
@@ -85,13 +99,11 @@
         <li><a class="sources" href="https://feedly.com/homepage" target="_blank" rel="noopener noreferrer">Feedly
             (agrégateur de flux RSS)</a></li>
         <li><a class="sources" href="https://www.raspberrypi.com/news/" target="_blank" rel="noopener noreferrer">Raspberry
-            Pi News (actualités
-            officielles)</a></li>
+            Pi News (actualités officielles)</a></li>
         <li><a class="sources" href="https://www.framboise314.fr/" target="_blank" rel="noopener noreferrer">Framboise314
             (blog projets Raspberry Pi)</a></li>
         <li><a class="sources" href="https://magazine.raspberrypi.com/" target="_blank" rel="noopener noreferrer">Raspberry
-            Pi Magazine (magazine de
-            projets)</a></li>
+            Pi Magazine (magazine de projets)</a></li>
         <li><a class="sources" href="https://raspberrytips.fr/" target="_blank" rel="noopener noreferrer">Raspberry Tips
             (guides pratiques Raspberry Pi)</a>
         </li>
@@ -102,13 +114,6 @@
             (tutoriels de projets DIY)</a>
         </li>
     </ul>
-
-    <picture>
-        <source srcset="../assets/Veille/Raspberry_Pi_logo.webp" type="image/webp">
-        <img src="../assets/Veille/Raspberry_Pi_logo.png" alt="Logo Raspberry Pi" loading="lazy" width="250"
-             height="316">
-    </picture>
-    <p class="texte-photo">Logo Raspberry Pi</p>
 
     <h2 id="raspberry-pi">Raspberry Pi ?</h2>
     <hr>

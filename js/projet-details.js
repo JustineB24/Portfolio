@@ -196,7 +196,9 @@ if (!projetId || !projets[projetId]) {
     const images = projets[projetId].images;
 
     if (images.length === 1) {
-        // Image unique : affichage simple
+        // Image unique : affichage dans un wrapper identique au carrousel
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("projet-image-wrapper");
         const picture = document.createElement("picture");
         const source = document.createElement("source");
         source.srcset = images[0].replace(/\.(png|jpg|jpeg|PNG|JPG)$/i, ".webp");
@@ -210,7 +212,8 @@ if (!projetId || !projets[projetId]) {
         img.height = 800;
         picture.appendChild(source);
         picture.appendChild(img);
-        imagesContainer.appendChild(picture);
+        wrapper.appendChild(picture);
+        imagesContainer.appendChild(wrapper);
     } else {
         // Carrousel
         const carrousel = document.createElement("div");
@@ -311,76 +314,130 @@ if (!projetId || !projets[projetId]) {
             dot.addEventListener("click", () => allerASlide(index));
         });
 
-        // Clic sur image → modale plein écran
-        slides.forEach(slide => {
-            slide.addEventListener("click", () => {
-                const modale = document.createElement("div");
-                modale.classList.add("carrousel-modale");
-                modale.setAttribute("role", "dialog");
-                modale.setAttribute("aria-modal", "true");
-                modale.setAttribute("aria-label", "Image en plein écran");
+        // Clic sur image → modale plein écran avec navigation
+        let indexModale = 0;
 
-                const pictureModale = document.createElement("picture");
-                const sourceModale = document.createElement("source");
-                sourceModale.srcset = slide.src.replace(/\.(png|jpg|jpeg|PNG|JPG)$/i, ".webp");
-                sourceModale.type = "image/webp";
-                const imgModale = document.createElement("img");
-                imgModale.src = slide.src;
-                imgModale.alt = slide.alt;
-                pictureModale.appendChild(sourceModale);
-                pictureModale.appendChild(imgModale);
+        function ouvrirModale(index) {
+            indexModale = index;
 
-                // Bouton fermer pour la modale
-                const btnFermerModale = document.createElement("button");
-                btnFermerModale.classList.add("carrousel-modale-fermer");
-                btnFermerModale.setAttribute("aria-label", "Fermer");
-                btnFermerModale.textContent = "\u2715";
+            const modale = document.createElement("div");
+            modale.classList.add("carrousel-modale");
+            modale.setAttribute("role", "dialog");
+            modale.setAttribute("aria-modal", "true");
+            modale.setAttribute("aria-label", "Image en plein écran");
 
-                modale.appendChild(pictureModale);
-                modale.appendChild(btnFermerModale);
-                document.body.appendChild(modale);
+            // Bouton précédent
+            const btnPrevModale = document.createElement("button");
+            btnPrevModale.classList.add("carrousel-btn", "carrousel-prev");
+            btnPrevModale.setAttribute("aria-label", "Image précédente");
+            btnPrevModale.innerHTML = '<i class="fas fa-chevron-left"></i>';
 
-                // Forcer le reflow pour déclencher la transition
-                modale.offsetHeight;
-                modale.classList.add("active");
-                modale.setAttribute("tabindex", "-1");
-                btnFermerModale.focus();
+            // Image
+            const pictureModale = document.createElement("picture");
+            const sourceModale = document.createElement("source");
+            sourceModale.srcset = slides[indexModale].src.replace(/\.(png|jpg|jpeg|PNG|JPG)$/i, ".webp");
+            sourceModale.type = "image/webp";
+            const imgModale = document.createElement("img");
+            imgModale.src = slides[indexModale].src;
+            imgModale.alt = slides[indexModale].alt;
+            pictureModale.appendChild(sourceModale);
+            pictureModale.appendChild(imgModale);
 
-                function fermerModale() {
-                    modale.classList.remove("active");
-                    document.removeEventListener("keydown", gestionnaireClavier);
-                    modale.addEventListener("transitionend", () => modale.remove(), {once: true});
-                }
+            // Bouton suivant
+            const btnNextModale = document.createElement("button");
+            btnNextModale.classList.add("carrousel-btn", "carrousel-next");
+            btnNextModale.setAttribute("aria-label", "Image suivante");
+            btnNextModale.innerHTML = '<i class="fas fa-chevron-right"></i>';
 
-                function gestionnaireClavier(e) {
-                    if (e.key === "Escape") {
-                        fermerModale();
-                    } else if (e.key === "Tab") {
-                        // Piège de focus dans la modale
-                        const elementsFocusables = modale.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
-                        const premier = elementsFocusables[0];
-                        const dernier = elementsFocusables[elementsFocusables.length - 1];
-                        if (e.shiftKey) {
-                            if (document.activeElement === premier) {
-                                e.preventDefault();
-                                dernier.focus();
-                            }
-                        } else {
-                            if (document.activeElement === dernier) {
-                                e.preventDefault();
-                                premier.focus();
-                            }
+            // Compteur
+            const compteurModale = document.createElement("div");
+            compteurModale.classList.add("carrousel-modale-counter");
+            compteurModale.textContent = (indexModale + 1) + " / " + slides.length;
+
+            // Bouton fermer
+            const btnFermerModale = document.createElement("button");
+            btnFermerModale.classList.add("carrousel-modale-fermer");
+            btnFermerModale.setAttribute("aria-label", "Fermer");
+            btnFermerModale.textContent = "\u2715";
+
+            modale.appendChild(btnPrevModale);
+            modale.appendChild(pictureModale);
+            modale.appendChild(btnNextModale);
+            modale.appendChild(compteurModale);
+            modale.appendChild(btnFermerModale);
+            document.body.appendChild(modale);
+
+            modale.offsetHeight;
+            modale.classList.add("active");
+            modale.setAttribute("tabindex", "-1");
+            btnFermerModale.focus();
+
+            function mettreAJourImage() {
+                imgModale.src = slides[indexModale].src;
+                imgModale.alt = slides[indexModale].alt;
+                sourceModale.srcset = slides[indexModale].src.replace(/\.(png|jpg|jpeg|PNG|JPG)$/i, ".webp");
+                compteurModale.textContent = (indexModale + 1) + " / " + slides.length;
+            }
+
+            function imageSuivante(e) {
+                e.stopPropagation();
+                indexModale = (indexModale + 1) % slides.length;
+                mettreAJourImage();
+            }
+
+            function imagePrecedente(e) {
+                e.stopPropagation();
+                indexModale = (indexModale - 1 + slides.length) % slides.length;
+                mettreAJourImage();
+            }
+
+            function fermerModale() {
+                modale.classList.remove("active");
+                document.removeEventListener("keydown", gestionnaireClavier);
+                modale.addEventListener("transitionend", () => modale.remove(), {once: true});
+            }
+
+            function gestionnaireClavier(e) {
+                if (e.key === "Escape") {
+                    fermerModale();
+                } else if (e.key === "ArrowRight") {
+                    indexModale = (indexModale + 1) % slides.length;
+                    mettreAJourImage();
+                } else if (e.key === "ArrowLeft") {
+                    indexModale = (indexModale - 1 + slides.length) % slides.length;
+                    mettreAJourImage();
+                } else if (e.key === "Tab") {
+                    const elementsFocusables = modale.querySelectorAll('button');
+                    const premier = elementsFocusables[0];
+                    const dernier = elementsFocusables[elementsFocusables.length - 1];
+                    if (e.shiftKey) {
+                        if (document.activeElement === premier) {
+                            e.preventDefault();
+                            dernier.focus();
+                        }
+                    } else {
+                        if (document.activeElement === dernier) {
+                            e.preventDefault();
+                            premier.focus();
                         }
                     }
                 }
+            }
 
-                btnFermerModale.addEventListener("click", function (e) {
-                    e.stopPropagation();
-                    fermerModale();
-                });
-                modale.addEventListener("click", fermerModale);
-                document.addEventListener("keydown", gestionnaireClavier);
+            btnPrevModale.addEventListener("click", imagePrecedente);
+            btnNextModale.addEventListener("click", imageSuivante);
+            btnFermerModale.addEventListener("click", function (e) {
+                e.stopPropagation();
+                fermerModale();
             });
+            modale.addEventListener("click", function (e) {
+                if (e.target === modale) fermerModale();
+            });
+            document.addEventListener("keydown", gestionnaireClavier);
+        }
+
+        slides.forEach((slide, index) => {
+            slide.addEventListener("click", () => ouvrirModale(index));
         });
 
         // Navigation clavier (flag pour éviter un querySelector à chaque frappe)

@@ -37,33 +37,6 @@
     });
 })();
 
-// ==============================
-// Effet 3D tilt sur les cartes projets
-// ==============================
-
-(function () {
-    if (!window.matchMedia('(hover: hover)').matches) return;
-
-    const cartes = document.querySelectorAll('.projet-container .card');
-    if (!cartes.length) return;
-
-    cartes.forEach(function (carte) {
-        carte.addEventListener('mousemove', function (e) {
-            const rect = carte.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centreX = rect.width / 2;
-            const centreY = rect.height / 2;
-            const rotationX = (y - centreY) / centreY * -5;
-            const rotationY = (x - centreX) / centreX * 5;
-            carte.style.transform = 'perspective(800px) rotateX(' + rotationX + 'deg) rotateY(' + rotationY + 'deg) translateY(-6px)';
-        });
-
-        carte.addEventListener('mouseleave', function () {
-            carte.style.transform = '';
-        });
-    });
-})();
 
 // ==============================
 // Boutons magnétiques
@@ -72,7 +45,7 @@
 (function () {
     if (!window.matchMedia('(hover: hover)').matches) return;
 
-    const boutons = document.querySelectorAll('.btn-download, .btn-cv, .btn-cv-outline, .btn-envoyer, .btn-accueil');
+    const boutons = document.querySelectorAll('.btn-download, .btn-cv, .btn-envoyer, .btn-accueil');
 
     boutons.forEach(function (bouton) {
         bouton.addEventListener('mousemove', function (e) {
@@ -166,11 +139,27 @@
 
 (function () {
     // Seulement sur les pages avec un h1 visible (pas le sr-only de l'accueil)
-    const h1 = document.querySelector('main > h1');
+    const h1 = document.querySelector('main h1');
     if (!h1 || h1.classList.contains('sr-only')) return;
 
-    const texte = h1.textContent;
+    // Préserver l'icône si présente
+    const icone = h1.querySelector('i');
+
+    // Récupérer uniquement le texte (sans l'icône)
+    let texte = '';
+    h1.childNodes.forEach(function (node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            texte += node.textContent;
+        }
+    });
+    texte = texte.trim();
+
+    // Vider le h1 et remettre l'icône
     h1.textContent = '';
+    if (icone) {
+        h1.appendChild(icone);
+        h1.appendChild(document.createTextNode(' '));
+    }
 
     for (let i = 0; i < texte.length; i++) {
         const span = document.createElement('span');

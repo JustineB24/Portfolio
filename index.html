@@ -75,53 +75,109 @@
             </a>
         </section>
 
-        <!-- Séparateur wave -->
-        <div class="wave-separator">
-            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-                <path d="M0,60 C360,100 1080,0 1440,60 L1440,100 L0,100 Z" fill="var(--card-background)"></path>
-            </svg>
-        </div>
-
         <!-- Compteurs animés -->
         <section class="compteurs" id="contenu">
-            <div class="compteur" data-target="8">
+            <a href="pages/projets.html" class="compteur" data-target="8">
+                <div class="compteur-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
                 <span class="compteur-nombre">0</span>
                 <span class="compteur-label">Projets</span>
-            </div>
-            <div class="compteur" data-target="15">
+            </a>
+            <a href="pages/competences.html" class="compteur" data-target="15">
+                <div class="compteur-icon"><i class="fas fa-award" aria-hidden="true"></i></div>
                 <span class="compteur-nombre">0</span>
                 <span class="compteur-label">Certifications</span>
-            </div>
-            <div class="compteur" data-target="3">
+            </a>
+            <a href="pages/competences.html" class="compteur" data-target="5">
+                <div class="compteur-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
                 <span class="compteur-nombre">0</span>
-                <span class="compteur-label">Stages</span>
-            </div>
-            <div class="compteur" data-target="7">
+                <span class="compteur-label">Outils</span>
+            </a>
+            <a href="pages/competences.html" class="compteur" data-target="7">
+                <div class="compteur-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
                 <span class="compteur-nombre">0</span>
                 <span class="compteur-label">Langages</span>
+            </a>
+        </section>
+
+        <!-- Qui suis-je -->
+        <section class="qui-suis-je">
+            <h2><i class="fas fa-user" aria-hidden="true"></i> Qui suis-je ?</h2>
+            <p>Développeuse en informatique passionnée par les nouvelles technologies, je suis actuellement en
+                Bachelor Développement & IA. Curieuse et créative, j'aime concevoir des solutions innovantes
+                et relever des défis techniques.</p>
+            <div class="qui-suis-je-btns">
+                <a class="btn-cv" href="cv_blin_justine.pdf" download><i class="fas fa-file-arrow-down" aria-hidden="true"></i> Télécharger mon CV</a>
+                <a class="btn-apropos" href="pages/apropos.html"><i class="fas fa-arrow-right" aria-hidden="true"></i> En savoir plus</a>
             </div>
         </section>
 
-        <section class="sections">
-            <div class="card-accueil">
-                <i class="fas fa-user card-icon" aria-hidden="true"></i>
-                <h2><a href="pages/apropos.html">À propos</a></h2>
-                <p>Développeuse en informatique passionnée par les nouvelles technologies, j'aime concevoir des
-                    solutions innovantes et relever des défis techniques. Ce portfolio reflète non seulement mes projets
-                    et compétences, mais aussi mon évolution constante dans le domaine du développement. Curieuse et
-                    créative, je suis en permanence en quête d'apprentissage pour découvrir de nouvelles technologies et
-                    perfectionner mes savoir-faire.</p>
-                <a class="btn-cv" href="cv_blin_justine.pdf" download><i class="fas fa-file-arrow-down"></i> Télécharger mon CV</a>
+        <!-- Aperçu projets -->
+        <section class="apercu-projets">
+            <h2><i class="fas fa-code" aria-hidden="true"></i> Mes projets</h2>
+            <div class="apercu-projets-grid">
+                <a href="pages/projet-details.html?id=france-mobilier" class="carte-apercu">
+                    <div class="carte-apercu-body">
+                        <h3>France Mobilier</h3>
+                        <p>Site e-commerce MVC pour une société de mobilier avec administration intégrée.</p>
+                        <div class="carte-apercu-tags"><span>HTML</span><span>CSS</span><span>PHP</span><span>C#</span><span>MySQL</span></div>
+                    </div>
+                </a>
+                <a href="pages/projet-details.html?id=speedcubing" class="carte-apercu">
+                    <div class="carte-apercu-body">
+                        <h3>Speedcubing</h3>
+                        <p>Site pour l'Association Française de SpeedCubing avec chronomètre et classement en ligne.</p>
+                        <div class="carte-apercu-tags"><span>PHP</span><span>CSS</span><span>JavaScript</span><span>MySQL</span></div>
+                    </div>
+                </a>
+                <a href="pages/projet-details.html?id=panada-food" class="carte-apercu">
+                    <div class="carte-apercu-body">
+                        <h3>Panada Food</h3>
+                        <p>Site web pour un restaurant, développé en binôme lors d'un stage de 6 semaines.</p>
+                        <div class="carte-apercu-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                    </div>
+                </a>
+                <a href="pages/projet-details.html?id=meteo" class="carte-apercu">
+                    <div class="carte-apercu-body">
+                        <h3>Application météo</h3>
+                        <p>Application web affichant la météo en temps réel via l'API OpenWeather.</p>
+                        <div class="carte-apercu-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                    </div>
+                </a>
             </div>
-            <div class="card-accueil">
-                <i class="fas fa-code card-icon" aria-hidden="true"></i>
-                <h2><a href="pages/competences.html">Compétences</a></h2>
-                <p>Découvrez mes compétences à travers ce portfolio, où je mets en avant mon savoir-faire en
-                    développement informatique. De la création de sites web aux applications logicielles, j'explore
-                    différentes technologies avec passion et créativité.</p>
-                <h3 class="titre-projets"><a href="pages/projets.html">Projets</a></h3>
-                <p>Retrouvez ici quelques-uns de mes projets réalisés durant mon parcours. Vous y trouverez des
-                    applications web, des scripts et bien plus encore.</p>
+            <a href="pages/projets.html" class="btn-voir-projets"><i class="fas fa-arrow-right" aria-hidden="true"></i> Voir tous les projets</a>
+        </section>
+
+        <!-- Bandeau compétences -->
+        <section class="bandeau-competences">
+            <h2><i class="fas fa-laptop-code" aria-hidden="true"></i> Technologies et Outils</h2>
+            <div class="marquee">
+                <div class="marquee-track">
+                    <img src="assets/SVG/html.svg" alt="HTML" width="48" height="48" loading="lazy">
+                    <img src="assets/SVG/css.svg" alt="CSS" width="48" height="48" loading="lazy">
+                    <img src="assets/SVG/javascript.svg" alt="JavaScript" width="48" height="48" loading="lazy">
+                    <img src="assets/SVG/php.svg" alt="PHP" width="48" height="48" loading="lazy">
+                    <img src="assets/SVG/python.svg" alt="Python" width="48" height="48" loading="lazy">
+                    <img src="assets/SVG/c-sharp.svg" alt="C#" width="48" height="48" loading="lazy">
+                    <img src="assets/SVG/mysql.svg" alt="MySQL" width="48" height="48" loading="lazy">
+                    <img src="assets/SVG/visual-studio-code.svg" alt="VS Code" width="48" height="48" loading="lazy">
+                    <img src="assets/SVG/visual-studio.svg" alt="Visual Studio" width="48" height="48" loading="lazy">
+                    <img src="assets/SVG/xampp.svg" alt="XAMPP" width="48" height="48" loading="lazy">
+                    <img src="assets/SVG/git-icon.svg" alt="Git" width="48" height="48" loading="lazy">
+                    <img src="assets/SVG/github-icon.svg" alt="GitHub" width="48" height="48" loading="lazy">
+                    <!-- Duplication pour boucle infinie -->
+                    <img src="assets/SVG/html.svg" alt="HTML" width="48" height="48" loading="lazy" aria-hidden="true">
+                    <img src="assets/SVG/css.svg" alt="CSS" width="48" height="48" loading="lazy" aria-hidden="true">
+                    <img src="assets/SVG/javascript.svg" alt="JavaScript" width="48" height="48" loading="lazy" aria-hidden="true">
+                    <img src="assets/SVG/php.svg" alt="PHP" width="48" height="48" loading="lazy" aria-hidden="true">
+                    <img src="assets/SVG/python.svg" alt="Python" width="48" height="48" loading="lazy" aria-hidden="true">
+                    <img src="assets/SVG/c-sharp.svg" alt="C#" width="48" height="48" loading="lazy" aria-hidden="true">
+                    <img src="assets/SVG/mysql.svg" alt="MySQL" width="48" height="48" loading="lazy" aria-hidden="true">
+                    <img src="assets/SVG/visual-studio-code.svg" alt="VS Code" width="48" height="48" loading="lazy" aria-hidden="true">
+                    <img src="assets/SVG/visual-studio.svg" alt="Visual Studio" width="48" height="48" loading="lazy" aria-hidden="true">
+                    <img src="assets/SVG/xampp.svg" alt="XAMPP" width="48" height="48" loading="lazy" aria-hidden="true">
+                    <img src="assets/SVG/git-icon.svg" alt="Git" width="48" height="48" loading="lazy" aria-hidden="true">
+                    <img src="assets/SVG/github-icon.svg" alt="GitHub" width="48" height="48" loading="lazy" aria-hidden="true">
+                </div>
             </div>
         </section>
 

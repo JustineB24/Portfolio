@@ -1,8 +1,8 @@
 (function () {
     // Scroll reveal des éléments
-    var elementsReveal = document.querySelectorAll('.scroll-reveal');
+    const elementsReveal = document.querySelectorAll('.scroll-reveal');
     if (elementsReveal.length) {
-        var observateur = new IntersectionObserver(function (entries) {
+        const observateur = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -17,24 +17,24 @@
     }
 
     // Formulaire de contact
-    var formulaireContact = document.getElementById('contact-form');
+    const formulaireContact = document.getElementById('contact-form');
     if (!formulaireContact) return;
 
     formulaireContact.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        var nom = document.getElementById('nom').value.trim();
-        var email = document.getElementById('email').value.trim();
-        var sujet = document.getElementById('sujet').value.trim();
-        var message = document.getElementById('message').value.trim();
+        const nom = document.getElementById('nom').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const sujet = document.getElementById('sujet').value.trim();
+        const message = document.getElementById('message').value.trim();
 
         // Suppression de l'ancien message d'erreur s'il existe
-        var ancienneErreur = document.querySelector('.erreur-formulaire');
+        const ancienneErreur = document.querySelector('.erreur-formulaire');
         if (ancienneErreur) ancienneErreur.remove();
 
         // Validation des champs
-        var regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        var erreurs = [];
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const erreurs = [];
 
         if (!nom) erreurs.push('Le nom est requis.');
         if (!email) {
@@ -46,7 +46,7 @@
         if (!message) erreurs.push('Le message est requis.');
 
         if (erreurs.length > 0) {
-            var divErreur = document.createElement('div');
+            const divErreur = document.createElement('div');
             divErreur.classList.add('erreur-formulaire');
             divErreur.setAttribute('role', 'alert');
             divErreur.textContent = erreurs.join(' ');

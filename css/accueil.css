@@ -38,12 +38,13 @@
 .hero .txt-rotate {
     font-size: 2.5rem;
     font-weight: 700;
-    height: 3.5rem;
-    overflow: hidden;
+    min-height: 3.5rem;
     color: var(--text-color);
     position: relative;
     opacity: 0;
     animation: fadeIn 1.5s ease-out forwards 0.6s;
+    text-align: center;
+    padding: 0 1rem;
 }
 
 @keyframes fadeIn {
@@ -103,14 +104,13 @@
 }
 
 /* ==============================
-   Compteurs animés
+   Compteurs animés (mini-cards)
    ============================== */
 .compteurs {
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    gap: 1.5rem;
     padding: 3rem 2rem;
-    background: var(--card-background);
     flex-wrap: wrap;
 }
 
@@ -118,84 +118,102 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    min-width: 100px;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 150px;
+    height: 150px;
+    background: var(--card-background);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.compteur::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.compteur:hover {
+    transform: translateY(-5px);
+    border-color: rgba(150, 0, 0, 0.2);
+    box-shadow: 0 12px 32px rgba(150, 0, 0, 0.12);
+}
+
+.compteur:hover::before {
+    transform: scaleX(1);
+}
+
+.compteur-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(150, 0, 0, 0.1);
+    transition: background 0.3s;
+}
+
+.compteur:hover .compteur-icon {
+    background: rgba(150, 0, 0, 0.18);
+}
+
+.compteur-icon i {
+    font-size: 1.2rem;
+    color: var(--primary-color);
 }
 
 .compteur-nombre {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-size: clamp(2rem, 5vw, 2.6rem);
     font-weight: 800;
     color: var(--primary-color);
     line-height: 1;
 }
 
 .compteur-label {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.8;
+    letter-spacing: 1.5px;
+    opacity: 0.7;
 }
 
 /* ==============================
-   Section cards
+   Qui suis-je
    ============================== */
-.sections {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    padding: 4rem 2rem;
-    max-width: 1100px;
+.qui-suis-je {
+    max-width: 750px;
     margin: 0 auto;
+    padding: 3rem 2rem;
+    text-align: center;
 }
 
-.card-accueil {
-    background: var(--card-background);
-    border-radius: 1rem;
-    padding: 2.5rem 2rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
+.qui-suis-je p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.85;
+    margin-bottom: 2rem;
 }
 
-.card-accueil:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lg);
+.qui-suis-je-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
-.card-accueil .card-icon {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    display: block;
-}
-
-.card-accueil h2 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.card-accueil h2 a {
-    color: inherit;
-}
-
-.titre-projets {
-    margin-top: 2rem;
-}
-
-/* Stagger au scroll */
-.card-accueil.scroll-reveal:nth-child(1) {
-    transition-delay: 0s;
-}
-
-.card-accueil.scroll-reveal:nth-child(2) {
-    transition-delay: 0.15s;
-}
-
-/* ==============================
-   Bouton CV (style cohérent avec .btn-download)
-   ============================== */
-.btn-cv {
-    margin-top: 2rem;
+.btn-apropos {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -204,18 +222,126 @@
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
-    cursor: pointer;
+    color: var(--text-color);
+    border: 2px solid var(--card-background);
+    background: var(--card-background);
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-apropos:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
+}
+
+/* ==============================
+   Aperçu projets
+   ============================== */
+.apercu-projets {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 2rem 3rem;
+}
+
+.apercu-projets h2 {
+    text-align: center;
+}
+
+.apercu-projets-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
+
+.carte-apercu {
+    background: var(--card-background);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.carte-apercu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carte-apercu:hover {
+    transform: translateY(-5px);
+    border-color: rgba(150, 0, 0, 0.2);
+    box-shadow: 0 12px 32px rgba(150, 0, 0, 0.12);
+}
+
+.carte-apercu:hover::before {
+    transform: scaleX(1);
+}
+
+.carte-apercu h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.carte-apercu p {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    opacity: 0.8;
+    flex: 1;
+}
+
+.carte-apercu-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+}
+
+.carte-apercu-tags span {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(150, 0, 0, 0.1);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.btn-voir-projets {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem auto 0;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--button-text-color);
+    background: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    width: fit-content;
     position: relative;
     overflow: hidden;
     z-index: 1;
-    background: var(--primary-color);
-    color: var(--button-text-color);
-    border: 2px solid var(--primary-color);
-    transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.btn-cv::before {
-    content: "";
+.btn-voir-projets::before {
+    content: '';
     position: absolute;
     inset: 0;
     z-index: -1;
@@ -225,14 +351,64 @@
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn-cv:hover::before {
+.btn-voir-projets:hover::before {
     transform: scaleX(1);
     transform-origin: left;
 }
 
-.btn-cv:hover {
+.btn-voir-projets:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-primary);
+}
+
+/* ==============================
+   Bandeau compétences (marquee)
+   ============================== */
+.bandeau-competences {
+    padding: 2rem 0 3rem;
+    overflow: hidden;
+}
+
+.bandeau-competences h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.marquee {
+    overflow: hidden;
+    padding: 1rem 0;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    width: max-content;
+    animation: marquee-scroll 30s linear infinite;
+}
+
+.marquee-track img {
+    width: 48px;
+    height: 48px;
+    opacity: 0.7;
+    transition: opacity 0.3s, transform 0.3s;
+    flex-shrink: 0;
+}
+
+.marquee-track img:hover {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* ==============================
@@ -250,11 +426,11 @@
 
     .hero .txt-rotate {
         font-size: 2.2rem;
-        height: 3rem;
+        min-height: 3rem;
     }
 
-    .sections {
-        grid-template-columns: 1fr 1fr;
+    .apercu-projets-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -270,19 +446,19 @@
 
     .hero .txt-rotate {
         font-size: 1.8rem;
-        height: 2.5rem;
+        min-height: 2.5rem;
     }
 
-    .sections {
-        grid-template-columns: 1fr;
-        padding: 2rem 1rem;
-    }
-
-    .card-accueil {
-        padding: 2rem 1.5rem;
+    .apercu-projets-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .btn-cv {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-apropos {
         width: 100%;
         justify-content: center;
     }
@@ -300,14 +476,18 @@
 
     .hero .txt-rotate {
         font-size: 1.5rem;
-        height: 2rem;
+        min-height: 2rem;
     }
 
-    .sections {
-        padding: 1.5rem 1rem;
+    .apercu-projets-grid {
+        grid-template-columns: 1fr;
     }
 
-    .card-accueil {
-        padding: 1.5rem 1rem;
+    .qui-suis-je {
+        padding: 2rem 1rem;
+    }
+
+    .apercu-projets {
+        padding: 2rem 1rem;
     }
 }

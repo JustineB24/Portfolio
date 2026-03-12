@@ -1,37 +1,48 @@
-/* Conteneur principal de la galerie */
+/* Conteneur principal de la galerie — layout masonry */
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    gap: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    column-count: 3;
+    column-gap: 1.25rem;
+    padding: 1.25rem;
+}
+
+/* Chaque picture est un bloc du masonry */
+.gallery picture {
+    display: block;
+    break-inside: avoid;
+    margin-bottom: 1.25rem;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.gallery picture:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
 }
 
 /* Style des images des certifications */
 .gallery .certif {
     width: 100%;
-    height: 25rem;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-md);
     cursor: pointer;
+    transition: opacity 0.3s;
 }
 
 .gallery .certif:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
 }
 
-/* Modale pour afficher l'image en grand */
+/* Modale carrousel certifications */
 #zoom-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,7 +52,6 @@
     transition: opacity 0.3s, visibility 0s linear 0.3s;
 }
 
-/* Afficher la modale */
 #zoom-modal.visible {
     visibility: visible;
     opacity: 1;
@@ -50,59 +60,112 @@
 
 #zoom-modal img {
     max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-    transform-origin: center center;
-    cursor: grab;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    transition: opacity 0.4s;
 }
 
-/* Quand l'image est en train d'être déplacée */
-#zoom-modal img.grabbing {
-    cursor: grabbing;
-}
-
-#zoom-modal .close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 40px;
-    color: var(--button-text-color);
-    cursor: pointer;
-}
-
-#zoom-modal .close:focus-visible {
-    outline: 2px solid #ffd700;
-    outline-offset: 4px;
-    border-radius: 4px;
-}
-
-
-/* Flèches de navigation */
-.modal-arrow {
+/* Boutons prev/next — même style que carrousel projet */
+#zoom-modal .carrousel-btn {
     position: absolute;
     top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--primary-color);
+    transform: translateY(-50%);
+    z-index: 2;
+    background: var(--primary-color);
+    color: white;
+    border: none;
     border-radius: 50%;
-    padding: 10px;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
     cursor: pointer;
-    z-index: 1100;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.3s;
 }
 
-/* Flèche gauche */
-.modal-arrow.left {
-    left: 10px;
-    transform: translateY(-50%);
+#zoom-modal .carrousel-btn:hover {
+    background: var(--primary-light);
 }
 
-/* Flèche droite */
-.modal-arrow.right {
-    right: 10px;
-    transform: translateY(-50%);
+#zoom-modal .carrousel-prev {
+    left: 1rem;
+}
+
+#zoom-modal .carrousel-next {
+    right: 1rem;
+}
+
+/* Dots */
+#zoom-modal .carrousel-dots {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+}
+
+#zoom-modal .carrousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#zoom-modal .carrousel-dot:hover {
+    border-color: var(--primary-color);
+}
+
+#zoom-modal .carrousel-dot.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Compteur */
+#zoom-modal .carrousel-counter {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+}
+
+/* Bouton fermer */
+#zoom-modal .carrousel-modale-fermer {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    z-index: 1;
+}
+
+#zoom-modal .carrousel-modale-fermer:hover {
+    background: var(--primary-light);
+}
+
+#zoom-modal .carrousel-modale-fermer:focus-visible {
+    outline: 2px solid #ffd700;
+    outline-offset: 4px;
 }
 
 /* Card pour langages et outils */
@@ -234,7 +297,7 @@
 @media (max-width: 1024px) {
 
     .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        column-count: 2;
     }
 
     .card-container {
@@ -251,8 +314,8 @@
 @media (max-width: 768px) {
 
     .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-        padding: 15px;
+        column-count: 2;
+        padding: 1rem;
     }
 
     .card-container {
@@ -266,15 +329,17 @@
         height: 110px;
     }
 
-    .modal-arrow {
-        padding: 8px;
+    #zoom-modal .carrousel-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
 
     .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+        column-count: 1;
     }
 
     .card-container {
@@ -297,7 +362,14 @@
         font-size: 0.75rem;
     }
 
-    .modal-arrow {
-        padding: 6px;
+    #zoom-modal .carrousel-btn {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.8rem;
+    }
+
+    #zoom-modal .carrousel-dot {
+        width: 10px;
+        height: 10px;
     }
 }

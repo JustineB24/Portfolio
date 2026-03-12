@@ -74,10 +74,10 @@
                 return;
             }
             if (e.key === 'Tab') {
-                var focusables = modale.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])');
+                const focusables = modale.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])');
                 if (focusables.length === 0) return;
-                var premier = focusables[0];
-                var dernier = focusables[focusables.length - 1];
+                const premier = focusables[0];
+                const dernier = focusables[focusables.length - 1];
                 if (e.shiftKey) {
                     if (document.activeElement === premier) {
                         e.preventDefault();

@@ -109,14 +109,29 @@
         h1.appendChild(document.createTextNode(' '));
     }
 
-    for (let i = 0; i < texte.length; i++) {
-        const span = document.createElement('span');
-        span.textContent = texte[i];
-        span.classList.add('letter-reveal');
-        span.style.animationDelay = (i * 0.03) + 's';
-        if (texte[i] === ' ') span.classList.add('letter-space');
-        h1.appendChild(span);
-    }
+    const mots = texte.split(' ');
+    let index = 0;
+    mots.forEach((mot, m) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.classList.add('word-wrap');
+        for (let i = 0; i < mot.length; i++) {
+            const span = document.createElement('span');
+            span.textContent = mot[i];
+            span.classList.add('letter-reveal');
+            span.style.animationDelay = (index * 0.03) + 's';
+            wordSpan.appendChild(span);
+            index++;
+        }
+        h1.appendChild(wordSpan);
+        if (m < mots.length - 1) {
+            const space = document.createElement('span');
+            space.textContent = ' ';
+            space.classList.add('letter-reveal', 'letter-space');
+            space.style.animationDelay = (index * 0.03) + 's';
+            h1.appendChild(space);
+            index++;
+        }
+    });
 })();
 
 // ==============================

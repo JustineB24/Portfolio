@@ -140,6 +140,11 @@ header {
 }
 
 
+/* Compensation du header fixe pour les ancres */
+[id] {
+    scroll-margin-top: 120px;
+}
+
 /* Pour éviter que le contenu principal ne soit caché sous le header */
 main {
     margin: 10rem 1rem 1rem;
@@ -509,6 +514,8 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 #footer > div {
@@ -679,6 +686,7 @@ footer {
     footer {
         font-size: 0.6rem;
         padding: 0.5rem;
+        justify-content: center;
     }
 }
 
@@ -708,7 +716,11 @@ footer {
 }
 
 .letter-space {
-    width: 0.3em;
+    width: 0.20em;
+}
+
+.word-wrap {
+    display: inline-flex;
 }
 
 /* Message projet introuvable */

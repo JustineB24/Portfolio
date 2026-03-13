@@ -403,6 +403,42 @@
     }
 }
 
+/* Responsive */
+@media (max-width: 480px) {
+    .ee-achievement {
+        left: 1rem;
+        right: 1rem;
+        transform: translateX(0) translateY(150%);
+        white-space: normal;
+    }
+
+    .ee-achievement.visible {
+        transform: translateX(0) translateY(0);
+    }
+
+    .ee-achievement-icone {
+        font-size: 2rem;
+    }
+
+    .ee-achievement-desc {
+        font-size: 0.8rem;
+    }
+
+    .ee-modale-contenu h2 {
+        font-size: 2rem;
+    }
+
+    .ee-modale-contenu p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .ee-snake-overlay canvas {
+        max-width: calc(100vw - 2rem);
+        max-height: 50vh;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .ee-disco,
     .ee-disco *,

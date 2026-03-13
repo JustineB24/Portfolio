@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="./css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="./css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="css/accueil.css" media="all" type="text/css">
+    <link rel="stylesheet" href="css/projets.css" media="all" type="text/css">
     <script>try{let dm=localStorage.getItem('dark-mode');if(dm==='true'||(dm===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
     <script src="js/structure-globale.js" defer></script>
 
@@ -115,34 +116,34 @@
         <section class="apercu-projets">
             <h2><i class="fas fa-code" aria-hidden="true"></i> Mes projets</h2>
             <div class="apercu-projets-grid">
-                <a href="pages/projet-details.html?id=france-mobilier" class="carte-apercu" style="--card-accent: #ff6a00">
-                    <div class="carte-apercu-body">
+                <div class="card card-2" data-id="france-mobilier" tabindex="0" role="button">
+                    <div class="card-body">
                         <h3>France Mobilier</h3>
-                        <p>Site e-commerce MVC pour une société de mobilier avec administration intégrée.</p>
-                        <div class="carte-apercu-tags"><span>HTML</span><span>CSS</span><span>PHP</span><span>C#</span><span>MySQL</span></div>
+                        <p class="card-desc">Site e-commerce MVC pour une société de mobilier avec administration intégrée.</p>
+                        <div class="card-tags"><span class="tag-html">HTML</span><span class="tag-css">CSS</span><span class="tag-php">PHP</span><span class="tag-csharp">C#</span><span class="tag-mysql">MySQL</span></div>
                     </div>
-                </a>
-                <a href="pages/projet-details.html?id=speedcubing" class="carte-apercu" style="--card-accent: #007a27">
-                    <div class="carte-apercu-body">
+                </div>
+                <div class="card card-4" data-id="speedcubing" tabindex="0" role="button">
+                    <div class="card-body">
                         <h3>Speedcubing</h3>
-                        <p>Site pour l'Association Française de SpeedCubing avec chronomètre et classement en ligne.</p>
-                        <div class="carte-apercu-tags"><span>PHP</span><span>CSS</span><span>JavaScript</span><span>MySQL</span></div>
+                        <p class="card-desc">Site pour l'Association Française de SpeedCubing avec chronomètre et classement en ligne.</p>
+                        <div class="card-tags"><span class="tag-php">PHP</span><span class="tag-css">CSS</span><span class="tag-js">JavaScript</span><span class="tag-mysql">MySQL</span></div>
                     </div>
-                </a>
-                <a href="pages/projet-details.html?id=panada-food" class="carte-apercu" style="--card-accent: #fc4400">
-                    <div class="carte-apercu-body">
+                </div>
+                <div class="card card-8" data-id="panada-food" tabindex="0" role="button">
+                    <div class="card-body">
                         <h3>Panada Food</h3>
-                        <p>Site web pour un restaurant, développé en binôme lors d'un stage de 6 semaines en deuxième année de BTS SIO.</p>
-                        <div class="carte-apercu-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                        <p class="card-desc">Site web pour un restaurant, développé en binôme lors d'un stage de 6 semaines en deuxième année de BTS SIO.</p>
+                        <div class="card-tags"><span class="tag-html">HTML</span><span class="tag-css">CSS</span><span class="tag-js">JavaScript</span></div>
                     </div>
-                </a>
-                <a href="pages/projet-details.html?id=meteo" class="carte-apercu" style="--card-accent: #0b00d6">
-                    <div class="carte-apercu-body">
+                </div>
+                <div class="card card-5" data-id="meteo" tabindex="0" role="button">
+                    <div class="card-body">
                         <h3>Application météo</h3>
-                        <p>Application web affichant la météo en temps réel via l'API OpenWeather.</p>
-                        <div class="carte-apercu-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                        <p class="card-desc">Application web affichant la météo en temps réel via l'API OpenWeather.</p>
+                        <div class="card-tags"><span class="tag-html">HTML</span><span class="tag-css">CSS</span><span class="tag-js">JavaScript</span></div>
                     </div>
-                </a>
+                </div>
             </div>
             <a href="pages/projets.html" class="btn-voir-projets"><i class="fas fa-arrow-right" aria-hidden="true"></i> Voir tous les projets</a>
         </section>
@@ -218,6 +219,17 @@
 
     <!-- Lien JS -->
     <script src="js/animation-texte.js" defer></script>
+    <script defer>
+        document.querySelectorAll('.apercu-projets-grid .card').forEach(function(carte) {
+            function naviguer() {
+                window.location.href = 'pages/projet-details.html?id=' + carte.getAttribute('data-id');
+            }
+            carte.addEventListener('click', naviguer);
+            carte.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); naviguer(); }
+            });
+        });
+    </script>
 </body>
 
 </html>

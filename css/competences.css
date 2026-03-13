@@ -183,6 +183,11 @@
     height: 130px;
     perspective: 600px;
     cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.card-competence:hover {
+    transform: translateY(-5px);
 }
 
 .card-competence-inner {
@@ -200,6 +205,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .card-competence {
+        transition: none;
+    }
+
+    .card-competence:hover {
+        transform: none;
+    }
+
     .card-competence-inner {
         transition: none;
     }
@@ -234,17 +247,17 @@
 .card-front {
     background-color: var(--card-background);
     border: 2px solid var(--comp-color, var(--primary-color));
-    box-shadow: 0 0 8px -2px var(--comp-color, var(--primary-color));
     transition: box-shadow 0.3s;
 }
 
-.card-competence:hover .card-front {
-    box-shadow: 0 0 16px 2px var(--comp-color, var(--primary-color));
+
+.card-competence:hover img {
+    transform: scale(1.1);
 }
 
 .card-back {
     transform: rotateY(180deg);
-    font-size: 0.8rem;
+    font-size: clamp(0.55rem, 1.5vw, 0.8rem);
     font-weight: 700;
     text-align: center;
     background: var(--comp-bg, var(--comp-color, var(--primary-color)));
@@ -271,11 +284,13 @@
 .comp-html {
     --comp-color: #f16529;
     --comp-bg: linear-gradient(135deg, #e44d26, #f16529);
+
 }
 
 .comp-css {
     --comp-color: #2965f1;
     --comp-bg: linear-gradient(135deg, #264de4, #2965f1);
+
 }
 
 .comp-js {

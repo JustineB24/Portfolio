@@ -855,9 +855,6 @@ footer {
     text-shadow: 0 0 20px rgba(var(--primary-rgb), 0.15);
 }
 
-.dark-theme .card-competence:hover {
-    box-shadow: 0 0 18px 5px var(--comp-color);
-}
 
 .dark-theme .btn-retour-haut {
     box-shadow: 0 0 12px rgba(var(--primary-rgb), 0.5);

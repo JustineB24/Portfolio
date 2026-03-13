@@ -249,59 +249,22 @@
 
 .apercu-projets-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
     margin-top: 1rem;
 }
 
-.carte-apercu {
-    background: var(--card-background);
-    border-radius: var(--radius-xl);
-    padding: 1.5rem;
-    text-decoration: none;
-    color: var(--text-color);
-    overflow: hidden;
-    border: 2px solid var(--card-accent, var(--primary-color));
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
-}
-
-.carte-apercu:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lg);
-}
-
-.carte-apercu h3 {
+.apercu-projets-grid .card-body h3 {
     font-size: 1.1rem;
-    margin-bottom: 0.75rem;
+    color: var(--text-color);
+    margin: 0 0 0.75rem;
     padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--card-accent, var(--primary-color));
-    color: var(--text-color);
+    border-bottom: 2px solid color-mix(in srgb, var(--card-accent, var(--primary-color)) 30%, transparent);
+    transition: border-color 0.3s;
 }
 
-.carte-apercu p {
-    font-size: 0.88rem;
-    line-height: 1.5;
-    opacity: 0.8;
-    flex: 1;
-}
-
-.carte-apercu-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.8rem;
-}
-
-.carte-apercu-tags span {
-    font-size: 0.7rem;
-    padding: 0.25rem 0.6rem;
-    border-radius: 2rem;
-    border: 2px solid var(--text-color);
-    background: var(--background-color);
-    color: var(--text-color);
-    font-weight: 600;
+.apercu-projets-grid .card:hover .card-body h3 {
+    border-color: var(--card-accent, var(--primary-color));
 }
 
 .btn-voir-projets {
@@ -421,7 +384,7 @@
     }
 
     .apercu-projets-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
 }
 
@@ -438,10 +401,6 @@
     .hero .txt-rotate {
         font-size: 1.8rem;
         min-height: 2.5rem;
-    }
-
-    .apercu-projets-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 
     .btn-cv {
@@ -473,10 +432,6 @@
     .hero .txt-rotate {
         font-size: 1.5rem;
         min-height: 2rem;
-    }
-
-    .apercu-projets-grid {
-        grid-template-columns: 1fr;
     }
 
     .qui-suis-je {

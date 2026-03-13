@@ -218,8 +218,26 @@ main hr {
         gap: 20px;
     }
 
+    .timeline {
+        min-width: auto;
+        padding: 10px 0;
+    }
+
+    .timeline-item {
+        padding: 0 0 20px 15px;
+    }
+
     .timeline-content {
         padding: 10px;
+    }
+
+    .timeline-date {
+        margin: 5px;
+        font-size: 0.85rem;
+    }
+
+    .timeline-content h4 {
+        margin: 5px;
     }
 }
 

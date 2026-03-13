@@ -307,6 +307,21 @@
     }
 }
 
+@media (max-width: 768px) {
+    .glitch-chiffre {
+        font-size: 6.5rem;
+    }
+
+    .erreur-404 h2 {
+        font-size: 1.4rem;
+    }
+
+    .btn-accueil {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
 @media (max-width: 480px) {
     .erreur-404 {
         min-height: 70vh;

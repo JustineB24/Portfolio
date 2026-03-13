@@ -140,14 +140,6 @@ if (!projetId || !projets[projetId]) {
 
     document.getElementById("projet-description").textContent = projets[projetId].description;
 
-    // Tags dans le hero
-    const heroTags = document.getElementById("projet-hero-tags");
-    projets[projetId].technologies.forEach(tech => {
-        const span = document.createElement("span");
-        span.classList.add("tag");
-        span.textContent = String(tech);
-        heroTags.appendChild(span);
-    });
 
     // Descriptions des technologies pour les tooltips
     const techDescriptions = {
@@ -175,6 +167,15 @@ if (!projetId || !projets[projetId]) {
         if (nomFichier === "c#") {
             nomFichier = "c-sharp";
         }
+
+        // Classe de couleur par technologie
+        const tagClasses = {
+            "html": "tag-html", "css": "tag-css", "javascript": "tag-js",
+            "php": "tag-php", "c#": "tag-csharp", "mysql": "tag-mysql",
+            "xaml": "tag-xaml", "maui": "tag-maui", "winforms": "tag-winforms"
+        };
+        const tagClass = tagClasses[tech.toLowerCase()];
+        if (tagClass) li.classList.add(tagClass);
 
         // Création du logo
         let logo = document.createElement("img");

@@ -145,38 +145,63 @@
 .card-tags .tag-xaml { border-color: rgba(13, 79, 178, 0.7); color: rgba(13, 79, 178, 1); }
 .card-tags .tag-maui { border-color: rgba(108, 51, 175, 0.7); color: rgba(108, 51, 175, 1); }
 .card-tags .tag-winforms { border-color: rgba(0, 101, 169, 0.7); color: rgba(0, 101, 169, 1); }
+.card-tags .tag-figma { border-color: rgba(162, 89, 255, 0.7); color: rgba(162, 89, 255, 1); }
+.card-tags .tag-git { border-color: rgba(240, 80, 51, 0.7); color: rgba(240, 80, 51, 1); }
+
+/* Badge en cours de développement */
+.card .badge-en-cours {
+    display: inline-block;
+    margin-bottom: 0.6rem;
+    padding: 0.25rem 0.7rem;
+    background: color-mix(in srgb, var(--card-accent, var(--primary-color)) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--card-accent, var(--primary-color)) 40%, transparent);
+    border-radius: 100px;
+    color: var(--card-accent, var(--primary-color));
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
 
 /* Couleurs d'accent par carte */
+/* Ordre : YABT, Grimoire, Panada Food, Pendu, France Mobilier, Sio Shop, Speedcubing, Météo, Générateur MDP, Mairie Cauffry */
 .card-1 {
-    --card-accent: #ff0000;
+    --card-accent: #FDC800;
 }
 
 .card-2 {
-    --card-accent: #ff6a00;
+    --card-accent: #c2703e;
 }
 
 .card-3 {
-    --card-accent: #ffd500;
+    --card-accent: #ff6600;
 }
 
 .card-4 {
-    --card-accent: #007a27;
+    --card-accent: #b71c1c;
 }
 
 .card-5 {
-    --card-accent: #0b00d6;
+    --card-accent: #e91e63;
 }
 
 .card-6 {
-    --card-accent: #9c00b8;
+    --card-accent: #607d8b;
 }
 
 .card-7 {
-    --card-accent: #0f4c81;
+    --card-accent: #e64a19;
 }
 
 .card-8 {
-    --card-accent: #fc4400;
+    --card-accent: #4a148c;
+}
+
+.card-9 {
+    --card-accent: #e991bd;
+}
+
+.card-10 {
+    --card-accent: #1a5276;
 }
 
 /* Responsive */

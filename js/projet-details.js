@@ -5,8 +5,44 @@ const projetId = rawId && /^[a-z0-9-]+$/.test(rawId) ? rawId : null;
 
 // Base de données des projets
 const projets = {
+    "yabt": {
+        title: "YABT — Yet Another Blind Test",
+        date: "2025 — en cours",
+        images: [
+            "../assets/projets/yabt/Logo.png",
+            "../assets/projets/yabt/Mascotte.png",
+            "../assets/projets/yabt/Nuancier.png"
+        ],
+        description: "Projet de groupe réalisé à 4 durant l'année de Bachelor Développement & IA. YABT est une application web de blind test et quiz musical multijoueur en temps réel. Les joueurs créent ou rejoignent des parties via un code ou un QR code, et s'affrontent sur des extraits musicaux provenant de l'API Deezer. L'application propose plusieurs modes de jeu (Classique, Speedrun, Battle Royale, Jackpot, Combo Breaker), un système de comptes avec progression par niveaux, des avatars déblocables, ainsi qu'un créateur de QCM personnalisés. L'identité visuelle (logo, mascotte animée, icônes néon) a été entièrement conçue par l'équipe. Le projet suit une méthodologie Agile et sera présenté devant un jury en fin d'année.",
+        technologies: ["HTML", "CSS", "JavaScript", "Figma", "Git"],
+        enCours: true
+    },
+    "grimoire-recettes": {
+        title: "Le Grimoire des Recettes",
+        date: "2025 — en cours",
+        images: ["../assets/projets/grimoire_recettes/Maquette.png"],
+        description: "Projet personnel réalisé dans le but de tester les capacités des intelligences artificielles en développement. Le point de départ : une simple idée de carnet de recettes numérique et une maquette rapide dessinée sur tablette. Le cahier des charges a été rédigé avec Gemini (Google), puis l'intégralité du code a été générée par Claude Code (Anthropic). Le résultat est une application web complète (PWA — installable comme une appli sur téléphone et utilisable hors ligne) avec recherche en temps réel, calculateur de portions, timer intégré, mode sombre et liste de courses — le tout en HTML, CSS et JavaScript vanilla, sans aucune ligne de code écrite manuellement.",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        link: "https://github.com/JustineB24/site-de-cuisine",
+        enCours: true
+    },
+    "panada-food": {
+        title: "Panada Food",
+        date: "12/11/2024 — 20/12/2024",
+        images: [
+            "../assets/projets/panada_food/Accueil.png",
+            "../assets/projets/panada_food/Menu.png",
+            "../assets/projets/panada_food/Contact.png",
+            "../assets/projets/panada_food/Mentions_legales.png",
+            "../assets/projets/panada_food/Ecran_chargement.png"
+        ],
+        description: "Développement d'un site web pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en collaboration avec une collègue.",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        link: "https://panadafood.ovh"
+    },
     "pendu": {
         title: "Pendu",
+        date: "Mars 2025",
         images: ["../assets/projets/pendu/Menu.jpg",
             "../assets/projets/pendu/Jeu.jpg",
             "../assets/projets/pendu/Mots.jpg",
@@ -17,6 +53,7 @@ const projets = {
     },
     "france-mobilier": {
         title: "France Mobilier",
+        date: "Février 2025",
         images: ["../assets/projets/france_mobilier/Accueil.png",
             "../assets/projets/france_mobilier/Meuble.png",
             "../assets/projets/france_mobilier/Magasins.png",
@@ -29,6 +66,7 @@ const projets = {
     },
     "sio-shop": {
         title: "Sio Shop",
+        date: "Janvier 2025",
         images: [
             "../assets/projets/sio_shop/Connexion.png",
             "../assets/projets/sio_shop/Menu.png",
@@ -52,6 +90,7 @@ const projets = {
     },
     "speedcubing": {
         title: "Speedcubing",
+        date: "Novembre — Décembre 2024",
         images: [
             "../assets/projets/speedcubing/Accueil.png",
             "../assets/projets/speedcubing/Chrono.png",
@@ -64,35 +103,25 @@ const projets = {
     },
     "meteo": {
         title: "Application météo",
+        date: "Septembre 2024",
         images: ["../assets/projets/meteo/Meteo.png"],
         description: "Application web développée pour afficher en temps réel les conditions météorologiques d'une ville choisie par l'utilisateur. En utilisant l'API OpenWeather, ce projet permet de consulter la température actuelle, l'humidité ainsi qu'une description du temps (ensoleillé, nuageux, etc.). L'interface propose une zone de recherche, un affichage centralisé des données principales, et un design épuré avec fond personnalisé. Le JavaScript assure la récupération dynamique des données météo et la mise à jour instantanée de l'affichage après chaque recherche.",
         technologies: ["HTML", "CSS", "JavaScript"]
     },
     "generateur-mdp": {
         title: "Générateur de mots de passe",
+        date: "Septembre — Octobre 2024",
         images: ["../assets/projets/generateur_mdp/Generateur_mdp.png"],
         description: "Outil conçu pour aider les utilisateurs à générer des mots de passe sécurisés en quelques clics. Ce générateur permet de créer des mots de passe aléatoires respectant des critères de sécurité stricts : majuscules, minuscules, chiffres et caractères spéciaux. Il intègre une interface interactive, incluant un slider pour définir la longueur du mot de passe (de 8 à 16 caractères), ainsi que des boutons pour copier rapidement le résultat.",
         technologies: ["HTML", "CSS", "JavaScript"]
     },
     "mairie-cauffry": {
         title: "Mairie de Cauffry",
+        date: "27/05/2024 — 21/06/2024",
         images: ["../assets/projets/mairie_de_cauffry/Accueil.png"],
         description: "Réalisation d'un site web pour la commune de Cauffry dans le cadre d'un stage de 4 semaines en première année de BTS SIO, avec Adico (Association pour le développement et l'innovation numérique des collectivités).",
         technologies: ["HTML", "CSS"],
         link: "https://mairiecauffry.fr/"
-    },
-    "panada-food": {
-        title: "Panada Food",
-        images: [
-            "../assets/projets/panada_food/Accueil.png",
-            "../assets/projets/panada_food/Menu.png",
-            "../assets/projets/panada_food/Contact.png",
-            "../assets/projets/panada_food/Mentions_legales.png",
-            "../assets/projets/panada_food/Ecran_chargement.png"
-        ],
-        description: "Développement d'un site web pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en collaboration avec une collègue.",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        link: "https://panadafood.ovh"
     }
 };
 
@@ -111,24 +140,49 @@ if (!projetId || !projets[projetId]) {
 } else {
     // Couleurs du hero par projet
     const heroColors = {
-        "pendu": ["#cc0000", "#800000"],
-        "france-mobilier": ["#d45500", "#8a3500"],
-        "sio-shop": ["#c9a800", "#7a6600"],
-        "speedcubing": ["#006620", "#003d13"],
-        "meteo": ["#0900aa", "#05005a"],
-        "generateur-mdp": ["#7a0092", "#4a0058"],
-        "mairie-cauffry": ["#0f4c81", "#082a47"],
-        "panada-food": ["#c93800", "#7a2200"]
+        "pendu": ["#b71c1c", "#7f0000"],
+        "france-mobilier": ["#e91e63", "#880e4f"],
+        "sio-shop": ["#607d8b", "#37474f"],
+        "speedcubing": ["#e64a19", "#bf360c"],
+        "meteo": ["#4a148c", "#2a0054"],
+        "generateur-mdp": ["#e991bd", "#bb6090"],
+        "mairie-cauffry": ["#1a5276", "#e6a817"],
+        "panada-food": ["#ff6600", "#cc4400"],
+        "yabt": ["#FDC800", "#E95F3F", "#E3312D", "#CF07FF", "#0409AA"],
+        "grimoire-recettes": ["#c2703e", "#6b7c3e"]
     };
 
     const hero = document.getElementById("projet-hero");
     if (heroColors[projetId]) {
-        hero.style.setProperty("--hero-color", heroColors[projetId][0]);
-        hero.style.setProperty("--hero-color-dark", heroColors[projetId][1]);
+        const colors = heroColors[projetId];
+        if (colors.length > 2) {
+            hero.style.background = "linear-gradient(135deg, " + colors.join(", ") + ")";
+        } else {
+            hero.style.setProperty("--hero-color", colors[0]);
+            hero.style.setProperty("--hero-color-dark", colors[1]);
+        }
     }
 
     document.getElementById("projet-title").textContent = projets[projetId].title;
     document.title = "Portfolio | " + projets[projetId].title;
+
+    // Date du projet
+    if (projets[projetId].date) {
+        const dateEl = document.createElement("span");
+        dateEl.classList.add("projet-date");
+        dateEl.textContent = projets[projetId].date;
+        document.getElementById("projet-title").after(dateEl);
+    }
+
+    // Badge "En cours de développement"
+    if (projets[projetId].enCours) {
+        const badge = document.createElement("span");
+        badge.classList.add("badge-en-cours");
+        badge.textContent = "En cours de développement";
+        // Insérer après la date si elle existe, sinon après le titre
+        const afterEl = hero.querySelector(".projet-date") || document.getElementById("projet-title");
+        afterEl.after(badge);
+    }
 
     // Mise à jour des meta OG dynamiquement
     const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -151,7 +205,9 @@ if (!projetId || !projets[projetId]) {
         "MYSQL": "Base de données relationnelle",
         "XAML": "Interface déclarative .NET",
         "MAUI": "Framework mobile multiplateforme",
-        "WinForms": "Interface graphique Windows"
+        "WinForms": "Interface graphique Windows",
+        "Figma": "Conception d'interfaces et prototypage",
+        "Git": "Gestion de versions et travail collaboratif"
     };
 
     const techList = document.getElementById("projet-technologies");
@@ -172,7 +228,8 @@ if (!projetId || !projets[projetId]) {
         const tagClasses = {
             "html": "tag-html", "css": "tag-css", "javascript": "tag-js",
             "php": "tag-php", "c#": "tag-csharp", "mysql": "tag-mysql",
-            "xaml": "tag-xaml", "maui": "tag-maui", "winforms": "tag-winforms"
+            "xaml": "tag-xaml", "maui": "tag-maui", "winforms": "tag-winforms",
+            "figma": "tag-figma", "git": "tag-git"
         };
         const tagClass = tagClasses[tech.toLowerCase()];
         if (tagClass) li.classList.add(tagClass);
@@ -499,7 +556,13 @@ if (!projetId || !projets[projetId]) {
         linkElement.href = projets[projetId].link;
         linkElement.target = "_blank";
         linkElement.rel = "noopener noreferrer";
-        linkElement.textContent = "Voir le projet en ligne";
+
+        const isGithub = projets[projetId].link.includes("github.com");
+        const icon = document.createElement("i");
+        icon.classList.add(isGithub ? "fab" : "fas", isGithub ? "fa-github" : "fa-external-link-alt");
+        icon.setAttribute("aria-hidden", "true");
+        linkElement.appendChild(icon);
+        linkElement.append(isGithub ? " Voir sur GitHub" : " Voir le projet en ligne");
 
         projetLinkContainer.appendChild(linkElement);
 

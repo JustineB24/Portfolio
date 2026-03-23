@@ -41,7 +41,7 @@ filtreBtns.forEach(btn => {
 
             if (filtre === 'tous') {
                 visible = true;
-            } else if (filtre === 'bts' || filtre === 'stage') {
+            } else if (filtre === 'bts' || filtre === 'stage' || filtre === 'ia' || filtre === 'bachelor') {
                 visible = type === filtre;
             } else {
                 visible = techs ? techs.split(',').includes(filtre) : false;

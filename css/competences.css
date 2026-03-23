@@ -415,6 +415,16 @@
     --comp-bg: #ff6c37;
 }
 
+.comp-bootstrap {
+    --comp-color: #7952b3;
+    --comp-bg: linear-gradient(135deg, #563d7c, #7952b3);
+}
+
+.comp-docker {
+    --comp-color: #2496ed;
+    --comp-bg: linear-gradient(135deg, #0db7ed, #2496ed);
+}
+
 .comp-looping {
     --comp-color: #0000ff;
     --comp-bg: #0000ff;

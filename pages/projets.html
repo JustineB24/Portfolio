@@ -59,49 +59,76 @@
         <button class="filtre-btn" data-filtre="php" aria-pressed="false">PHP</button>
         <button class="filtre-btn" data-filtre="csharp" aria-pressed="false">C#</button>
         <button class="filtre-btn" data-filtre="mysql" aria-pressed="false">MySQL</button>
+        <button class="filtre-btn" data-filtre="bachelor" aria-pressed="false">Bachelor</button>
+        <button class="filtre-btn" data-filtre="ia" aria-pressed="false">IA</button>
     </div>
 
     <div class="projet-container">
-        <div class="card card-1" data-id="pendu" data-type="bts" data-tech="csharp,xaml,maui" tabindex="0" role="button">
+        <div class="card card-1" data-id="yabt" data-type="bachelor" data-tech="html,css,javascript,figma,git" tabindex="0"
+             role="button">
+            <div class="card-body">
+                <span class="badge-en-cours">En cours de développement</span>
+                <h2>YABT — Blind Test</h2>
+                <p class="card-desc">Application web de blind test et quiz musical multijoueur en temps réel, réalisée en groupe de 4 durant le Bachelor.</p>
+                <div class="card-tags"><span class="tag-html">HTML</span><span class="tag-css">CSS</span><span class="tag-js">JavaScript</span><span class="tag-figma">Figma</span><span class="tag-git">Git</span></div>
+            </div>
+        </div>
+
+        <div class="card card-2" data-id="grimoire-recettes" data-type="ia" data-tech="html,css,javascript" tabindex="0"
+             role="button">
+            <div class="card-body">
+                <span class="badge-en-cours">En cours de développement</span>
+                <h2>Le Grimoire des Recettes</h2>
+                <p class="card-desc">PWA de recettes créée entièrement par IA : idée et maquette en entrée, CDC par Gemini, code par Claude Code.</p>
+                <div class="card-tags"><span class="tag-html">HTML</span><span class="tag-css">CSS</span><span class="tag-js">JavaScript</span></div>
+            </div>
+        </div>
+
+        <div class="card card-3" data-id="panada-food" data-type="stage" data-tech="html,css,javascript" tabindex="0"
+             role="button">
+            <div class="card-body">
+                <h2>Panada Food</h2>
+                <p class="card-desc">Site web pour un restaurant, développé en binôme lors d'un stage de 6 semaines en deuxième année de BTS SIO.</p>
+                <div class="card-tags"><span class="tag-html">HTML</span><span class="tag-css">CSS</span><span class="tag-js">JavaScript</span></div>
+            </div>
+        </div>
+
+        <div class="card card-4" data-id="pendu" data-type="bts" data-tech="csharp,xaml,maui" tabindex="0" role="button">
             <div class="card-body">
                 <h2>Pendu</h2>
-                <p class="card-desc">Application mobile recréant le jeu du pendu avec gestion des scores et des
-                    mots.</p>
+                <p class="card-desc">Application mobile recréant le jeu du pendu avec gestion des scores et des mots.</p>
                 <div class="card-tags"><span class="tag-xaml">XAML</span><span class="tag-maui">MAUI</span></div>
             </div>
         </div>
 
-        <div class="card card-2" data-id="france-mobilier" data-type="bts" data-tech="html,css,php,csharp,mysql"
+        <div class="card card-5" data-id="france-mobilier" data-type="bts" data-tech="html,css,php,csharp,mysql"
              tabindex="0" role="button">
             <div class="card-body">
                 <h2>France Mobilier</h2>
                 <p class="card-desc">Site e-commerce MVC pour une société de mobilier avec administration intégrée.</p>
-                <div class="card-tags">
-                    <span class="tag-html">HTML</span><span class="tag-css">CSS</span><span class="tag-php">PHP</span><span class="tag-csharp">C#</span><span class="tag-mysql">MySQL</span></div>
+                <div class="card-tags"><span class="tag-html">HTML</span><span class="tag-css">CSS</span><span class="tag-php">PHP</span><span class="tag-csharp">C#</span><span class="tag-mysql">MySQL</span></div>
             </div>
         </div>
 
-        <div class="card card-3" data-id="sio-shop" data-type="bts" data-tech="winforms,csharp,mysql" tabindex="0"
+        <div class="card card-6" data-id="sio-shop" data-type="bts" data-tech="winforms,csharp,mysql" tabindex="0"
              role="button">
             <div class="card-body">
                 <h2>Sio Shop</h2>
-                <p class="card-desc">Application de gestion commerciale pour une concession automobile avec facturation
-                    PDF.</p>
+                <p class="card-desc">Application de gestion commerciale pour une concession automobile avec facturation PDF.</p>
                 <div class="card-tags"><span class="tag-winforms">WinForms</span><span class="tag-csharp">C#</span><span class="tag-mysql">MySQL</span></div>
             </div>
         </div>
 
-        <div class="card card-4" data-id="speedcubing" data-type="bts" data-tech="php,css,javascript,mysql" tabindex="0"
+        <div class="card card-7" data-id="speedcubing" data-type="bts" data-tech="php,css,javascript,mysql" tabindex="0"
              role="button">
             <div class="card-body">
                 <h2>Speedcubing</h2>
-                <p class="card-desc">Site pour l'Association Française de SpeedCubing avec chronomètre et classement en
-                    ligne.</p>
+                <p class="card-desc">Site pour l'Association Française de SpeedCubing avec chronomètre et classement en ligne.</p>
                 <div class="card-tags"><span class="tag-php">PHP</span><span class="tag-css">CSS</span><span class="tag-js">JavaScript</span><span class="tag-mysql">MySQL</span></div>
             </div>
         </div>
 
-        <div class="card card-5" data-id="meteo" data-type="bts" data-tech="html,css,javascript" tabindex="0"
+        <div class="card card-8" data-id="meteo" data-type="bts" data-tech="html,css,javascript" tabindex="0"
              role="button">
             <div class="card-body">
                 <h2>Application météo</h2>
@@ -110,7 +137,7 @@
             </div>
         </div>
 
-        <div class="card card-6" data-id="generateur-mdp" data-type="bts" data-tech="html,css,javascript" tabindex="0"
+        <div class="card card-9" data-id="generateur-mdp" data-type="bts" data-tech="html,css,javascript" tabindex="0"
              role="button">
             <div class="card-body">
                 <h2>Générateur de mots de passe</h2>
@@ -119,21 +146,12 @@
             </div>
         </div>
 
-        <div class="card card-7" data-id="mairie-cauffry" data-type="stage" data-tech="html,css" tabindex="0"
+        <div class="card card-10" data-id="mairie-cauffry" data-type="stage" data-tech="html,css" tabindex="0"
              role="button">
             <div class="card-body">
                 <h2>Mairie de Cauffry</h2>
                 <p class="card-desc">Site web municipal réalisé lors d'un stage de première année de BTS SIO avec Adico pour la commune de Cauffry.</p>
                 <div class="card-tags"><span class="tag-html">HTML</span><span class="tag-css">CSS</span></div>
-            </div>
-        </div>
-
-        <div class="card card-8" data-id="panada-food" data-type="stage" data-tech="html,css,javascript" tabindex="0"
-             role="button">
-            <div class="card-body">
-                <h2>Panada Food</h2>
-                <p class="card-desc">Site web pour un restaurant, développé en binôme lors d'un stage de 6 semaines en deuxième année de BTS SIO.</p>
-                <div class="card-tags"><span class="tag-html">HTML</span><span class="tag-css">CSS</span><span class="tag-js">JavaScript</span></div>
             </div>
         </div>
     </div>

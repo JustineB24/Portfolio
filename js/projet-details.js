@@ -14,7 +14,15 @@ const projets = {
             "../assets/projets/yabt/Nuancier.png"
         ],
         description: "Projet de groupe réalisé à 4 durant l'année de Bachelor Développement & IA. YABT est une application web de blind test et quiz musical multijoueur en temps réel. Les joueurs créent ou rejoignent des parties via un code ou un QR code, et s'affrontent sur des extraits musicaux provenant de l'API Deezer. L'application propose plusieurs modes de jeu (Classique, Speedrun, Battle Royale, Jackpot, Combo Breaker), un système de comptes avec progression par niveaux, des avatars déblocables, ainsi qu'un créateur de QCM personnalisés. L'identité visuelle (logo, mascotte animée, icônes néon) a été entièrement conçue par l'équipe. Le projet suit une méthodologie Agile et sera présenté devant un jury en fin d'année.",
-        technologies: ["HTML", "CSS", "JavaScript", "Figma", "Git"],
+        technologies: ["React", "Node.js", "Socket.io", "MySQL", "Docker", "Figma", "GitHub"],
+        enCours: true
+    },
+    "gecko": {
+        title: "Gecko — Plateforme de gestion interne",
+        date: "Septembre 2025 — aujourd'hui",
+        images: [],
+        description: "Application web métier développée en alternance chez Litesoft pour un client du secteur de l'édition et de la distribution. Cette plateforme intranet, sur laquelle je travaille à temps plein depuis mon arrivée, centralise la gestion commerciale, la facturation, le suivi des activités et la logistique. Je travaille en mode ticketing via Asana et j'ai repris un projet legacy existant que je modernise progressivement : refactoring de fichiers monolithiques (6000+ lignes) en classes dédiées, mise en place de l'autoload PSR-4 sur l'ensemble du projet (336 fichiers), passage aux standards de nommage PSR-1/4/12, et remplacement systématique des pratiques obsolètes (jointures SQL implicites, paramètres ambigus, comparaisons lâches). Parmi les développements majeurs : refonte complète du système de filtres avancés sur tous les tableaux de l'application (recherche par colonne, filtres favoris, opérateurs multiples), migration des tableaux du mode server-side vers client-side, ajout de fonctionnalités métier (traductions multi-langue, import Excel, gestion de stock, prévisualisation d'articles), audits de sécurité (prévention XSS, échappement systématique), et optimisations SQL (élimination de requêtes N+1, insertions batch). Pour améliorer ma productivité, j'utilise Claude Code au quotidien comme assistant technique : j'ai mis en place un fichier de conventions servant de référence complète du projet, des commandes personnalisées pour lancer des audits techniques automatisés (sécurité, performance, qualité) et générer des récapitulatifs de modifications, ainsi qu'un plan de résolution organisé pour prioriser la dette technique. Le projet repose sur une architecture MVC en PHP 8.3 avec PostgreSQL, un frontend en JavaScript, jQuery, Bootstrap et DataTables, du temps réel via Node.js et Socket.IO, et un pipeline CI/CD sur GitLab.",
+        technologies: ["PHP", "JavaScript", "CSS", "PostgreSQL", "jQuery", "Bootstrap", "DataTables", "Node.js", "Socket.io", "GitLab"],
         enCours: true
     },
     "grimoire-recettes": {
@@ -149,6 +157,7 @@ if (!projetId || !projets[projetId]) {
         "mairie-cauffry": ["#1a5276", "#e6a817"],
         "panada-food": ["#ff6600", "#cc4400"],
         "yabt": ["#FDC800", "#E95F3F", "#E3312D", "#CF07FF", "#0409AA"],
+        "gecko": ["#4e73df", "#2e59d9"],
         "grimoire-recettes": ["#c2703e", "#6b7c3e"]
     };
 
@@ -206,8 +215,18 @@ if (!projetId || !projets[projetId]) {
         "XAML": "Interface déclarative .NET",
         "MAUI": "Framework mobile multiplateforme",
         "WinForms": "Interface graphique Windows",
+        "jQuery": "Bibliothèque JavaScript",
+        "Bootstrap": "Framework CSS responsive",
+        "DataTables": "Plugin de tableaux interactifs",
+        "PostgreSQL": "Base de données avancée",
+        "React": "Bibliothèque front-end",
+        "Node.js": "JavaScript côté serveur",
+        "Socket.io": "Communication temps réel (WebSockets)",
+        "Docker": "Conteneurisation et environnements de développement",
         "Figma": "Conception d'interfaces et prototypage",
-        "Git": "Gestion de versions et travail collaboratif"
+        "Git": "Gestion de versions et travail collaboratif",
+        "GitHub": "Hébergement et collaboration",
+        "GitLab": "Plateforme DevOps et CI/CD"
     };
 
     const techList = document.getElementById("projet-technologies");
@@ -218,10 +237,15 @@ if (!projetId || !projets[projetId]) {
     projets[projetId].technologies.forEach(tech => {
         let li = document.createElement("li");
 
-        // Exception pour C#
+        // Exceptions pour les noms de fichiers SVG
         let nomFichier = tech.toLowerCase();
-        if (nomFichier === "c#") {
-            nomFichier = "c-sharp";
+        const nomsSpeciaux = {
+            "c#": "c-sharp",
+            "node.js": "nodejs",
+            "socket.io": "socket-io"
+        };
+        if (nomsSpeciaux[nomFichier]) {
+            nomFichier = nomsSpeciaux[nomFichier];
         }
 
         // Classe de couleur par technologie
@@ -229,14 +253,20 @@ if (!projetId || !projets[projetId]) {
             "html": "tag-html", "css": "tag-css", "javascript": "tag-js",
             "php": "tag-php", "c#": "tag-csharp", "mysql": "tag-mysql",
             "xaml": "tag-xaml", "maui": "tag-maui", "winforms": "tag-winforms",
-            "figma": "tag-figma", "git": "tag-git"
+            "jquery": "tag-jquery", "bootstrap": "tag-bootstrap", "datatables": "tag-datatables",
+            "react": "tag-react", "node.js": "tag-nodejs",
+            "socket.io": "tag-socketio", "postgresql": "tag-postgresql",
+            "docker": "tag-docker", "figma": "tag-figma", "git": "tag-git",
+            "github": "tag-github", "gitlab": "tag-gitlab"
         };
         const tagClass = tagClasses[tech.toLowerCase()];
         if (tagClass) li.classList.add(tagClass);
 
         // Création du logo
+        const extensionsSpeciales = { "datatables": "png" };
+        const ext = extensionsSpeciales[nomFichier] || "svg";
         let logo = document.createElement("img");
-        logo.src = `../assets/svg/${nomFichier}.svg`;
+        logo.src = `../assets/competences/${nomFichier}.${ext}`;
         logo.alt = String(tech);
         logo.width = 80;
         logo.height = 80;
@@ -262,7 +292,12 @@ if (!projetId || !projets[projetId]) {
 
     const images = projets[projetId].images;
 
-    if (images.length === 1) {
+    // Masquer la section aperçu s'il n'y a pas d'images
+    const titreApercu = document.querySelector(".projet-img");
+    if (images.length === 0) {
+        if (titreApercu) titreApercu.setAttribute("hidden", "");
+        imagesContainer.setAttribute("hidden", "");
+    } else if (images.length === 1) {
         // Image unique : affichage dans un wrapper identique au carrousel
         const wrapper = document.createElement("div");
         wrapper.classList.add("projet-image-wrapper");

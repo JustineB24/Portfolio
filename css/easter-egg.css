@@ -403,6 +403,255 @@
     }
 }
 
+/* ==============================
+   Mode Présentation
+   ============================== */
+.ee-presentation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a0a0f;
+    z-index: 10003;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.ee-presentation.visible {
+    opacity: 1;
+}
+
+.ee-pres-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.ee-pres-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 4rem;
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.5s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+}
+
+.ee-pres-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.ee-pres-slide.sortie-gauche {
+    opacity: 0;
+    transform: translateX(-60px);
+}
+
+.ee-pres-slide.sortie-droite {
+    opacity: 0;
+    transform: translateX(60px);
+}
+
+/* Style du contenu dans les slides */
+.ee-pres-slide > * {
+    max-width: 900px;
+    width: 100%;
+    color: #e0e0e0;
+}
+
+.ee-pres-slide h1,
+.ee-pres-slide h2 {
+    color: #fff;
+    border-color: #960000;
+    text-shadow: 0 0 30px rgba(150, 0, 0, 0.3);
+}
+
+.ee-pres-slide h2 i {
+    color: #960000;
+}
+
+.ee-pres-slide p {
+    color: #ccc;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.ee-pres-slide a {
+    color: #ff6666;
+}
+
+.ee-pres-slide .card {
+    background: #1a1a2e;
+    border-color: rgba(150, 0, 0, 0.4);
+}
+
+.ee-pres-slide .card-body h3 {
+    color: #fff;
+}
+
+.ee-pres-slide .card-desc {
+    color: #bbb;
+}
+
+.ee-pres-slide .card-tags span {
+    color: #ddd;
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.ee-pres-slide .compteur {
+    background: #1a1a2e;
+    border-color: rgba(150, 0, 0, 0.3);
+}
+
+.ee-pres-slide .compteur-label {
+    color: #aaa;
+}
+
+.ee-pres-slide .btn-cv,
+.ee-pres-slide .btn-voir-projets,
+.ee-pres-slide .btn-apropos {
+    border-color: #960000;
+}
+
+.ee-pres-slide .btn-apropos {
+    background: #1a1a2e;
+    color: #e0e0e0;
+    border-color: #1a1a2e;
+}
+
+.ee-pres-slide .marquee-track img {
+    opacity: 0.85;
+    filter: brightness(1.1);
+}
+
+/* Barre de navigation */
+.ee-pres-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.ee-pres-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s, background 0.3s, transform 0.2s;
+}
+
+.ee-pres-btn:hover:not(:disabled) {
+    border-color: #960000;
+    background: rgba(150, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.ee-pres-btn:disabled {
+    opacity: 0.25;
+    cursor: default;
+}
+
+.ee-pres-indicateur {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ee-pres-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.ee-pres-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.ee-pres-dot.active {
+    background: #960000;
+    transform: scale(1.3);
+}
+
+.ee-pres-dot:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.ee-pres-compteur {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* Bouton fermer */
+.ee-pres-fermer {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    font-family: 'Raleway', sans-serif;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.3s, border-color 0.3s;
+    z-index: 1;
+}
+
+.ee-pres-fermer:hover {
+    color: #fff;
+    border-color: #960000;
+}
+
+/* Barre de progression en haut */
+.ee-pres-progression {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.ee-pres-progression-barre {
+    height: 100%;
+    background: #960000;
+    width: 0;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Responsive */
 @media (max-width: 480px) {
     .ee-achievement {
@@ -437,6 +686,22 @@
         max-width: calc(100vw - 2rem);
         max-height: 50vh;
     }
+
+    .ee-pres-slide {
+        padding: 2rem 1.5rem;
+    }
+
+    .ee-pres-nav {
+        gap: 1rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .ee-pres-fermer {
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 0.7rem;
+        padding: 0.3rem 0.7rem;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -455,6 +720,10 @@
     .ee-explosion-flash,
     .ee-explosion-particule {
         animation: none !important;
+    }
+
+    .ee-pres-slide {
+        transition: none !important;
     }
 }
 

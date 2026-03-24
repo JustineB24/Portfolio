@@ -162,6 +162,8 @@ _Aucune amélioration en attente._
 
 - Section `.compteurs` avec 4 indicateurs (Projets, Certifications, Outils, Langages)
 - Animation IntersectionObserver + requestAnimationFrame avec courbe ease-out
+- **Micro-interactions au hover** : scale bounce élastique sur le chiffre (×1.15) et rotation de l'icône (-10°)
+  avec `cubic-bezier(0.34, 1.56, 0.64, 1)`
 
 ### ✅ 23. Détection automatique du thème système
 
@@ -288,6 +290,13 @@ _Aucune amélioration en attente._
 
 - **Déclencheur** : Secouer le téléphone 3 fois
 - **Effet** : Lance un easter egg visuel aléatoire parmi disco, gravité, barrel roll ou rainbow
+
+### Mode présentation
+
+- **Déclencheur** : Taper "present" au clavier
+- **Effet** : Transforme les sections de la page courante en slides plein écran avec fond sombre. Navigation par
+  flèches gauche/droite, Espace, dots cliquables, Home/End. Barre de progression en haut, compteur de slides,
+  bouton Échap pour quitter
 
 ### Fonction `easterEggs()` dans la console
 
@@ -453,3 +462,29 @@ _Aucune amélioration en attente._
 - **Solution** : Jeu du dinosaure jouable sur la page 404 (Espace/clic pour sauter, éviter les cactus).
 - **Gain** : Expérience ludique sur une page d'erreur.
 - **Raison du retrait** : Effort élevé pour une page rarement visitée.
+
+### ❌ Section "En cours d'apprentissage"
+
+- **Solution** : Ajouter une zone sur la page compétences pour les technos en cours d'exploration, avec un style
+  différent (opacité réduite, badge "Learning").
+- **Gain** : Montrer la progression et la curiosité.
+- **Raison du refus** : On ne maîtrise jamais une techno à 100%, la distinction n'a pas de sens. Demanderait des mises
+  à jour fréquentes.
+
+### ❌ Filtres par niveau de compétence
+
+- **Solution** : Ajouter des filtres débutant/intermédiaire/avancé sur la page compétences.
+- **Gain** : Donner plus de contexte sur le niveau réel.
+- **Raison du refus** : On ne maîtrise jamais une techno à 100%, catégoriser par niveau n'est pas pertinent.
+
+### ❌ Page "Mon setup / Outils"
+
+- **Solution** : Page dédiée à l'environnement de travail (IDE, extensions, configuration, bureau).
+- **Gain** : Contenu apprécié par les recruteurs techniques.
+- **Raison du refus** : Setup différent entre l'école, le boulot et chez soi, et variable selon les projets.
+
+### ❌ Veille technologique enrichie
+
+- **Solution** : Ajouter 2-3 autres sujets de veille en plus de l'article Raspberry Pi.
+- **Gain** : Page moins vide, plus de contenu.
+- **Raison du refus** : Pas d'idées de sujets supplémentaires, la veille était une obligation BTS SIO.

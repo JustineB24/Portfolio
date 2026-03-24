@@ -209,6 +209,127 @@
 #projet-technologies .tag-github { border-color: rgba(110, 84, 148, 0.7); color: rgba(110, 84, 148, 1); }
 #projet-technologies .tag-gitlab { border-color: rgba(226, 67, 41, 0.7); color: rgba(226, 67, 41, 1); }
 
+/* ==============================
+   Étude de cas
+   ============================== */
+.etude-de-cas {
+    max-width: 800px;
+    margin: 3rem auto 0;
+    animation: fadeInUp 0.6s ease both;
+}
+
+.etude-de-cas .title-blocs i {
+    color: var(--primary-color);
+}
+
+.etude-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+/* Ligne verticale */
+.etude-timeline::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary-color), rgba(var(--primary-rgb), 0.15));
+    border-radius: 1px;
+}
+
+.etude-etape {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.etude-etape:last-child {
+    margin-bottom: 0;
+}
+
+.etude-etape-icone {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: var(--button-text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 4px var(--background-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.etude-etape:hover .etude-etape-icone {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 4px var(--background-color), 0 0 12px rgba(var(--primary-rgb), 0.3);
+}
+
+.etude-etape-contenu {
+    flex: 1;
+    background: var(--card-background);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.etude-etape:hover .etude-etape-contenu {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.etude-etape-contenu h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.etude-etape-contenu p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    padding: 0;
+    color: var(--text-color);
+    opacity: 0.85;
+}
+
+.etude-etape-contenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.etude-etape-contenu li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.85;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.etude-etape-contenu li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
 /* Compteur du carrousel */
 .carrousel-counter {
     text-align: center;
@@ -481,6 +602,29 @@
 }
 
 @media (max-width: 480px) {
+    .etude-timeline {
+        padding-left: 1rem;
+    }
+
+    .etude-timeline::before {
+        left: 0.5rem;
+    }
+
+    .etude-etape {
+        gap: 1rem;
+    }
+
+    .etude-etape-icone {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        font-size: 0.75rem;
+    }
+
+    .etude-etape-contenu {
+        padding: 1rem;
+    }
+
     .projet-hero h1 {
         font-size: 1.4rem;
     }

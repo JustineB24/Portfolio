@@ -16,7 +16,18 @@ const projets = {
         description: "Projet de groupe réalisé à 4 durant l'année de Bachelor Développement & IA. YABT est une application web de blind test et quiz musical multijoueur en temps réel. Les joueurs créent ou rejoignent des parties via un code ou un QR code, et s'affrontent sur des extraits musicaux provenant de l'API Deezer. L'application propose plusieurs modes de jeu (Classique, Speedrun, Battle Royale, Jackpot, Combo Breaker), un système de comptes avec progression par niveaux, des avatars déblocables, ainsi qu'un créateur de QCM personnalisés. L'identité visuelle (logo, mascotte animée, icônes néon) a été entièrement conçue par l'équipe. Le projet suit une méthodologie Agile et sera présenté devant un jury en fin d'année.",
         technologies: ["React", "Node.js", "Socket.io", "MySQL", "Docker", "Figma", "GitHub"],
         link: "https://github.com/OujidKarim/YABT_main",
-        enCours: true
+        enCours: true,
+        etudeDeCas: {
+            contexte: "Les blind tests entre amis se font souvent sur des applications payantes, limitées en fonctionnalités ou sans vrai mode multijoueur en temps réel. On voulait créer une alternative gratuite, fun et complète, jouable directement dans le navigateur.",
+            reflexion: "Avant d'écrire la moindre ligne de code, on a passé plusieurs semaines à structurer le projet comme un vrai projet professionnel : cahier des charges, maquettes Figma complètes (wireframes, design system, prototypes interactifs), choix des technologies, répartition des rôles et méthodologie Agile. C'est grâce à ce projet que j'ai appris à utiliser Figma et à concevoir une identité visuelle cohérente (logo, mascotte, nuancier, icônes néon).",
+            defis: [
+                "Structurer un projet ambitieux de zéro — cahier des charges, maquettes, architecture technique — avant même de coder",
+                "Apprendre Figma en partant de rien pour concevoir des maquettes professionnelles et un design system complet",
+                "Se coordonner à 4 avec Git et une méthodologie Agile, en se répartissant les rôles clairement",
+                "Faire des choix techniques adaptés (React, Socket.io, Docker) en anticipant les contraintes du temps réel multijoueur"
+            ],
+            resultat: "Projet encore en phase de conception et de maquettage. L'identité visuelle est finalisée (logo, mascotte, nuancier) et les maquettes Figma sont complètes. Le projet sera présenté devant un jury en fin d'année de Bachelor."
+        }
     },
     "gecko": {
         title: "Gecko — Plateforme de gestion interne",
@@ -45,9 +56,20 @@ const projets = {
             "../assets/projets/panada_food/Mentions_legales.png",
             "../assets/projets/panada_food/Ecran_chargement.png"
         ],
-        description: "Développement d'un site web pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en collaboration avec une collègue.",
+        description: "Développement d'un site web vitrine pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en binôme avec une collègue. Le restaurant venait d'ouvrir et ne possédait aucune présence en ligne. On s'est déplacées sur place pour récolter les informations et comprendre les attentes du gérant, puis on a conçu et développé le site de A à Z. Le site inclut une page d'accueil, le menu du restaurant, un formulaire de contact et les mentions légales conformes au RGPD. Il a été mis en ligne via un hébergement OVH.",
         technologies: ["HTML", "CSS", "JavaScript"],
-        link: "https://panadafood.ovh"
+        link: "https://panadafood.ovh",
+        etudeDeCas: {
+            contexte: "Panada Food est un restaurant de restauration rapide à Amiens qui venait d'ouvrir et ne possédait pas encore de site web. En binôme avec une collègue, on s'est proposées pour leur en créer un durant notre stage de 6 semaines en deuxième année de BTS SIO.",
+            reflexion: "Le restaurant n'ayant aucune présence en ligne, il fallait partir de zéro : se déplacer sur place pour récolter les informations (menu, photos, attentes du gérant), concevoir le design, développer le site, gérer la conformité RGPD et les mentions légales, puis mettre en ligne via un hébergement OVH.",
+            defis: [
+                "Travailler en grande autonomie — le maître de stage n'était présent que de 11h à 14h et les délais de réponse étaient longs",
+                "Se coordonner en binôme, en partie en télétravail, pour se répartir les tâches efficacement",
+                "Partir de zéro sans maquette ni cahier des charges fourni — il a fallu aller chercher les informations directement auprès du gérant",
+                "Assurer la conformité légale du site : mentions légales, crédits photographiques, respect du RGPD"
+            ],
+            resultat: "Site vitrine livré dans les temps et mis en ligne sur panadafood.ovh. Ce stage a renforcé notre autonomie, notre esprit d'équipe et nos compétences en programmation dans un contexte professionnel réel."
+        }
     },
     "pendu": {
         title: "Pendu",
@@ -127,10 +149,27 @@ const projets = {
     "mairie-cauffry": {
         title: "Mairie de Cauffry",
         date: "27/05/2024 — 21/06/2024",
-        images: ["../assets/projets/mairie_de_cauffry/Accueil.png"],
-        description: "Réalisation d'un site web pour la commune de Cauffry dans le cadre d'un stage de 4 semaines en première année de BTS SIO, avec Adico (Association pour le développement et l'innovation numérique des collectivités).",
+        images: [
+            "../assets/projets/mairie_de_cauffry/Accueil.png",
+            "../assets/projets/mairie_de_cauffry/Adico_collectivite.png",
+            "../assets/projets/mairie_de_cauffry/Adico_arborescence.png",
+            "../assets/projets/mairie_de_cauffry/Adicloud.png",
+            "../assets/projets/mairie_de_cauffry/Visuel_site.png"
+        ],
+        description: "Réalisation d'un site web pour la commune de Cauffry dans le cadre d'un stage de 4 semaines en première année de BTS SIO, en partenariat avec l'Adico (Association pour le développement et l'innovation numérique des collectivités). L'ancien site étant devenu indisponible, j'ai récupéré son contenu via la Wayback Machine, rempli le recueil de besoins Adico, conçu l'arborescence et alimenté les pages via Adicloud. En parallèle, j'ai aussi géré la sauvegarde des mails de la maire vers un disque dur externe et proposé des prototypes de logo pour la commune.",
         technologies: ["HTML", "CSS"],
-        link: "https://mairiecauffry.fr/"
+        link: "https://mairiecauffry.fr/",
+        etudeDeCas: {
+            contexte: "Le site web de la mairie de Cauffry était devenu indisponible peu avant le début du stage. La commune avait besoin d'un nouveau site, développé en partenariat avec l'Adico, une plateforme mutualisée de services numériques pour les collectivités territoriales.",
+            reflexion: "L'ancien site étant hors ligne, il fallait retrouver son contenu pour ne pas repartir de zéro. J'ai utilisé la Wayback Machine pour récupérer les pages de l'ancien site, en vérifiant que les informations étaient encore à jour avant de les réinjecter. Le travail s'est ensuite organisé autour de l'outil Adico : création du recueil de besoins, définition de l'arborescence, puis envoi des dossiers sur Adicloud pour alimenter les pages.",
+            defis: [
+                "Récupérer le contenu d'un site totalement disparu grâce à la Wayback Machine",
+                "Corriger une erreur dans l'arborescence Adico — le dossier « Services aux administrés » était manquant, ce qui a nécessité un appel au support",
+                "Gérer en parallèle d'autres missions : sauvegarde des mails Gmail de la maire vers un disque dur avec Mbox Viewer, et propositions de prototypes de logo",
+                "Respecter un délai serré de 4 semaines pour livrer le site complet"
+            ],
+            resultat: "Site livré dans les temps et mis en ligne. Ce stage m'a appris à travailler avec un prestataire externe (Adico), à gérer la pression des délais en contexte professionnel, et m'a fait découvrir le fonctionnement d'une collectivité territoriale de l'intérieur."
+        }
     }
 };
 
@@ -264,7 +303,7 @@ if (!projetId || !projets[projetId]) {
         if (tagClass) li.classList.add(tagClass);
 
         // Création du logo
-        const extensionsSpeciales = { "datatables": "png" };
+        const extensionsSpeciales = {"datatables": "png"};
         const ext = extensionsSpeciales[nomFichier] || "svg";
         let logo = document.createElement("img");
         logo.src = `../assets/competences/${nomFichier}.${ext}`;
@@ -286,6 +325,69 @@ if (!projetId || !projets[projetId]) {
 
         techList.appendChild(li);
     });
+
+    // Étude de cas (si disponible)
+    if (projets[projetId].etudeDeCas) {
+        const etude = projets[projetId].etudeDeCas;
+        const sectionEtude = document.createElement("div");
+        sectionEtude.classList.add("etude-de-cas");
+
+        const titreEtude = document.createElement("h2");
+        titreEtude.classList.add("title-blocs");
+        titreEtude.innerHTML = '<i class="fas fa-lightbulb" aria-hidden="true"></i> Étude de cas';
+        sectionEtude.appendChild(titreEtude);
+
+        const etapes = [
+            {icone: "fa-crosshairs", titre: "Le contexte", contenu: etude.contexte},
+            {icone: "fa-brain", titre: "La réflexion", contenu: etude.reflexion},
+            {icone: "fa-mountain", titre: "Les défis rencontrés", contenu: etude.defis},
+            {icone: "fa-flag-checkered", titre: "Le résultat", contenu: etude.resultat}
+        ];
+
+        const timeline = document.createElement("div");
+        timeline.classList.add("etude-timeline");
+
+        etapes.forEach(function (etape) {
+            const bloc = document.createElement("div");
+            bloc.classList.add("etude-etape");
+
+            const iconeDiv = document.createElement("div");
+            iconeDiv.classList.add("etude-etape-icone");
+            iconeDiv.innerHTML = '<i class="fas ' + etape.icone + '"></i>';
+            bloc.appendChild(iconeDiv);
+
+            const contenuDiv = document.createElement("div");
+            contenuDiv.classList.add("etude-etape-contenu");
+
+            const h3 = document.createElement("h3");
+            h3.textContent = etape.titre;
+            contenuDiv.appendChild(h3);
+
+            if (Array.isArray(etape.contenu)) {
+                const ul = document.createElement("ul");
+                etape.contenu.forEach(function (item) {
+                    const li = document.createElement("li");
+                    li.textContent = item;
+                    ul.appendChild(li);
+                });
+                contenuDiv.appendChild(ul);
+            } else {
+                const p = document.createElement("p");
+                p.textContent = etape.contenu;
+                contenuDiv.appendChild(p);
+            }
+
+            bloc.appendChild(contenuDiv);
+            timeline.appendChild(bloc);
+        });
+
+        sectionEtude.appendChild(timeline);
+
+        // Insérer avant la section images
+        const projetDetails = document.querySelector(".projet-details");
+        const titreApercu2 = document.querySelector(".projet-img");
+        projetDetails.insertBefore(sectionEtude, titreApercu2);
+    }
 
     // Ajouter les images dans le div "projet-images"
     const imagesContainer = document.getElementById("projet-images");
@@ -560,7 +662,7 @@ if (!projetId || !projets[projetId]) {
         const observateurModale = new MutationObserver(function () {
             modaleOuverte = !!document.querySelector(".carrousel-modale");
         });
-        observateurModale.observe(document.body, { childList: true });
+        observateurModale.observe(document.body, {childList: true});
 
         document.addEventListener("keydown", (e) => {
             if (modaleOuverte) return;

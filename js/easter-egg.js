@@ -112,7 +112,8 @@
         'rainbow': lancerRainbow,
         'matrix': lancerMatrixStandalone,
         'roll': lancerBarrelRoll,
-        '90s': lancer90s
+        '90s': lancer90s,
+        'present': lancerPresentation
     };
 
     const sequenceKonami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
@@ -571,6 +572,199 @@
 
 
     // ==============================
+    // Mode présentation
+    // ==============================
+
+    function lancerPresentation() {
+        easterEggActif = true;
+
+        // Récupérer les sections de la page
+        const sections = document.querySelectorAll('main > section');
+        if (sections.length === 0) {
+            easterEggActif = false;
+            return;
+        }
+
+        let slideActuel = 0;
+
+        // Créer l'overlay
+        const overlay = document.createElement('div');
+        overlay.classList.add('ee-presentation');
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        overlay.setAttribute('aria-label', 'Mode présentation');
+
+        // Container des slides
+        const slideContainer = document.createElement('div');
+        slideContainer.classList.add('ee-pres-container');
+
+        // Créer les slides à partir des sections
+        sections.forEach(function (section, i) {
+            const slide = document.createElement('div');
+            slide.classList.add('ee-pres-slide');
+            if (i === 0) slide.classList.add('active');
+
+            const contenu = section.cloneNode(true);
+            // Nettoyage des animations et styles inline du clone
+            contenu.querySelectorAll('[style]').forEach(function (el) {
+                el.removeAttribute('style');
+            });
+            contenu.querySelectorAll('.scroll-reveal').forEach(function (el) {
+                el.classList.add('visible');
+            });
+            slide.appendChild(contenu);
+            slideContainer.appendChild(slide);
+        });
+
+        overlay.appendChild(slideContainer);
+
+        // Barre de navigation du bas
+        const barreNav = document.createElement('div');
+        barreNav.classList.add('ee-pres-nav');
+
+        // Flèche gauche
+        const btnPrec = document.createElement('button');
+        btnPrec.classList.add('ee-pres-btn');
+        btnPrec.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        btnPrec.setAttribute('aria-label', 'Slide précédent');
+
+        // Indicateur de slide
+        const indicateur = document.createElement('div');
+        indicateur.classList.add('ee-pres-indicateur');
+
+        // Dots
+        const dotsContainer = document.createElement('div');
+        dotsContainer.classList.add('ee-pres-dots');
+        sections.forEach(function (_, i) {
+            const dot = document.createElement('button');
+            dot.classList.add('ee-pres-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.setAttribute('aria-label', 'Aller au slide ' + (i + 1));
+            dot.addEventListener('click', function () { allerAuSlide(i); });
+            dotsContainer.appendChild(dot);
+        });
+
+        const compteurSlide = document.createElement('span');
+        compteurSlide.classList.add('ee-pres-compteur');
+        compteurSlide.textContent = '1 / ' + sections.length;
+
+        indicateur.appendChild(dotsContainer);
+        indicateur.appendChild(compteurSlide);
+
+        // Flèche droite
+        const btnSuiv = document.createElement('button');
+        btnSuiv.classList.add('ee-pres-btn');
+        btnSuiv.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        btnSuiv.setAttribute('aria-label', 'Slide suivant');
+
+        barreNav.appendChild(btnPrec);
+        barreNav.appendChild(indicateur);
+        barreNav.appendChild(btnSuiv);
+        overlay.appendChild(barreNav);
+
+        // Bouton fermer
+        const btnFermer = document.createElement('button');
+        btnFermer.classList.add('ee-pres-fermer');
+        btnFermer.innerHTML = '<i class="fas fa-times"></i> Échap';
+        btnFermer.setAttribute('aria-label', 'Quitter la présentation');
+        overlay.appendChild(btnFermer);
+
+        // Barre de progression
+        const progression = document.createElement('div');
+        progression.classList.add('ee-pres-progression');
+        const progressionBarre = document.createElement('div');
+        progressionBarre.classList.add('ee-pres-progression-barre');
+        progression.appendChild(progressionBarre);
+        overlay.appendChild(progression);
+
+        document.body.appendChild(overlay);
+        document.body.classList.add('overflow-hidden');
+
+        // Forcer reflow puis animer l'entrée
+        overlay.offsetHeight;
+        overlay.classList.add('visible');
+
+        function mettreAJour() {
+            const slides = slideContainer.querySelectorAll('.ee-pres-slide');
+            slides.forEach(function (s, i) {
+                s.classList.remove('active', 'sortie-gauche', 'sortie-droite');
+                if (i === slideActuel) {
+                    s.classList.add('active');
+                } else if (i < slideActuel) {
+                    s.classList.add('sortie-gauche');
+                } else {
+                    s.classList.add('sortie-droite');
+                }
+            });
+
+            // Dots
+            dotsContainer.querySelectorAll('.ee-pres-dot').forEach(function (d, i) {
+                d.classList.toggle('active', i === slideActuel);
+            });
+
+            // Compteur
+            compteurSlide.textContent = (slideActuel + 1) + ' / ' + sections.length;
+
+            // Barre de progression
+            const pourcent = ((slideActuel + 1) / sections.length) * 100;
+            progressionBarre.style.width = pourcent + '%';
+
+            // Désactiver les boutons aux extrémités
+            btnPrec.disabled = slideActuel === 0;
+            btnSuiv.disabled = slideActuel === sections.length - 1;
+        }
+
+        function allerAuSlide(index) {
+            if (index < 0 || index >= sections.length) return;
+            slideActuel = index;
+            mettreAJour();
+        }
+
+        function slideSuivant() {
+            if (slideActuel < sections.length - 1) allerAuSlide(slideActuel + 1);
+        }
+
+        function slidePrecedent() {
+            if (slideActuel > 0) allerAuSlide(slideActuel - 1);
+        }
+
+        function fermerPresentation() {
+            overlay.classList.remove('visible');
+            document.body.classList.remove('overflow-hidden');
+            document.removeEventListener('keydown', gestionClavier);
+            overlay.addEventListener('transitionend', function () {
+                overlay.remove();
+                easterEggActif = false;
+            }, { once: true });
+        }
+
+        function gestionClavier(e) {
+            if (e.key === 'Escape') {
+                fermerPresentation();
+            } else if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                slideSuivant();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                slidePrecedent();
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                allerAuSlide(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                allerAuSlide(sections.length - 1);
+            }
+        }
+
+        btnSuiv.addEventListener('click', slideSuivant);
+        btnPrec.addEventListener('click', slidePrecedent);
+        btnFermer.addEventListener('click', fermerPresentation);
+        document.addEventListener('keydown', gestionClavier);
+
+        mettreAJour();
+    }
+
+    // ==============================
     // Easter egg mobile : secouer le telephone
     // ==============================
 
@@ -673,7 +867,8 @@
             { declencheur: 'Taper "roll"', nom: 'Barrel Roll', description: 'La page fait un tonneau à 360° !' },
             { declencheur: 'Taper "90s"', nom: 'Mode 90\'s', description: 'Le site revient dans les années 90 avec un bandeau défilant.' },
             { declencheur: 'Cliquer sur l\'année du copyright', nom: 'Big Bang temporel', description: 'L\'année recule jusqu\'à 0 avec accélération, explosion de particules, puis retour au présent.' },
-            { declencheur: 'Secouer le téléphone (mobile)', nom: 'Shake', description: 'Déclenche un easter egg visuel aléatoire sur mobile.' }
+            { declencheur: 'Secouer le téléphone (mobile)', nom: 'Shake', description: 'Déclenche un easter egg visuel aléatoire sur mobile.' },
+            { declencheur: 'Taper "present"', nom: 'Mode Présentation', description: 'Transforme la page en slides navigables (flèches, Espace, Échap).' }
         ];
 
         console.log('%c🥚 Easter eggs du portfolio — Liste complète\n', 'color: #960000; font-size: 18px; font-weight: bold;');

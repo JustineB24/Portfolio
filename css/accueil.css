@@ -172,6 +172,11 @@
 .compteur-icon i {
     font-size: 1.2rem;
     color: var(--primary-color);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.compteur:hover .compteur-icon i {
+    transform: scale(1.2) rotate(-10deg);
 }
 
 .compteur-nombre {
@@ -179,6 +184,11 @@
     font-weight: 800;
     color: var(--primary-color);
     line-height: 1;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.compteur:hover .compteur-nombre {
+    transform: scale(1.15);
 }
 
 .compteur-label {

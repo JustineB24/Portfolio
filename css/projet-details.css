@@ -1,3 +1,7 @@
+/* ==============================
+   projet-details.css — Page détail d'un projet : hero, carrousel, technologies
+   ============================== */
+
 /* Conteneur du projet */
 .projet-details {
     padding: 0 50px 50px;
@@ -186,28 +190,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Couleurs des tags technologies */
-#projet-technologies .tag-html { border-color: rgba(241, 101, 41, 0.7); color: rgba(241, 101, 41, 1); }
-#projet-technologies .tag-css { border-color: rgba(41, 101, 241, 0.7); color: rgba(41, 101, 241, 1); }
-#projet-technologies .tag-js { border-color: rgba(247, 223, 30, 0.7); color: rgba(200, 180, 0, 1); }
-#projet-technologies .tag-php { border-color: rgba(97, 129, 182, 0.7); color: rgba(97, 129, 182, 1); }
-#projet-technologies .tag-csharp { border-color: rgba(57, 0, 145, 0.7); color: rgba(57, 0, 145, 1); }
-#projet-technologies .tag-mysql { border-color: rgba(0, 117, 143, 0.7); color: rgba(0, 117, 143, 1); }
-#projet-technologies .tag-xaml { border-color: rgba(13, 79, 178, 0.7); color: rgba(13, 79, 178, 1); }
-#projet-technologies .tag-maui { border-color: rgba(108, 51, 175, 0.7); color: rgba(108, 51, 175, 1); }
-#projet-technologies .tag-winforms { border-color: rgba(0, 101, 169, 0.7); color: rgba(0, 101, 169, 1); }
-#projet-technologies .tag-jquery { border-color: rgba(0, 108, 174, 0.7); color: rgba(0, 108, 174, 1); }
-#projet-technologies .tag-bootstrap { border-color: rgba(121, 82, 179, 0.7); color: rgba(121, 82, 179, 1); }
-#projet-technologies .tag-datatables { border-color: rgba(51, 102, 153, 0.7); color: rgba(51, 102, 153, 1); }
-#projet-technologies .tag-postgresql { border-color: rgba(51, 103, 145, 0.7); color: rgba(51, 103, 145, 1); }
-#projet-technologies .tag-react { border-color: rgba(97, 218, 251, 0.7); color: rgba(47, 178, 211, 1); }
-#projet-technologies .tag-nodejs { border-color: rgba(104, 159, 56, 0.7); color: rgba(104, 159, 56, 1); }
-#projet-technologies .tag-socketio { border-color: rgba(1, 1, 1, 0.7); color: rgba(80, 80, 80, 1); }
-#projet-technologies .tag-docker { border-color: rgba(35, 150, 237, 0.7); color: rgba(35, 150, 237, 1); }
-#projet-technologies .tag-figma { border-color: rgba(162, 89, 255, 0.7); color: rgba(162, 89, 255, 1); }
-#projet-technologies .tag-git { border-color: rgba(240, 80, 51, 0.7); color: rgba(240, 80, 51, 1); }
-#projet-technologies .tag-github { border-color: rgba(110, 84, 148, 0.7); color: rgba(110, 84, 148, 1); }
-#projet-technologies .tag-gitlab { border-color: rgba(226, 67, 41, 0.7); color: rgba(226, 67, 41, 1); }
+/* Couleurs des tags technologies : centralisées dans global.css */
 
 /* ==============================
    Étude de cas

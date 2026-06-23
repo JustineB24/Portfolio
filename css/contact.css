@@ -1,6 +1,6 @@
-/* ============================== */
-/*   Page Contact                 */
-/* ============================== */
+/* ==============================
+   contact.css — Page contact : formulaire + cartes de contact
+   ============================== */
 
 /* ---- Section principale ---- */
 .contact-section {
@@ -13,7 +13,7 @@
     display: grid;
     grid-template-columns: 1.6fr 1fr;
     gap: 3rem;
-    align-items: start;
+    align-items: center;
 }
 
 /* ---- Formulaire ---- */
@@ -52,10 +52,9 @@
     left: 1rem;
     top: 0.9rem;
     font-size: 1rem;
-    color: var(--text-color);
-    opacity: 0.55;
+    color: var(--text-muted);
     pointer-events: none;
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), font-size 0.25s, opacity 0.25s;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), font-size 0.25s, color 0.25s;
     transform-origin: left top;
 }
 
@@ -66,7 +65,7 @@
 .form-group textarea:not(:placeholder-shown) + label {
     transform: translateY(-0.6rem);
     font-size: 0.75rem;
-    opacity: 0.8;
+    color: var(--text-color);
     font-weight: 700;
 }
 
@@ -100,8 +99,7 @@
 
 .note-obligatoire {
     font-size: 0.82rem;
-    color: var(--text-color);
-    opacity: 0.55;
+    color: var(--text-muted);
     margin: 0;
     padding: 0;
 }
@@ -135,7 +133,7 @@
     padding: 0;
     margin: 0;
     font-size: 0.85rem;
-    opacity: 0.55;
+    color: var(--text-muted);
 }
 
 /* ---- Bouton envoyer ---- */

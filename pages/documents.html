@@ -9,8 +9,8 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description"
           content="BTS SIO : spécialités SLAM et SISR, documents et tableau de synthèse de Justine BLIN.">
     <meta name="author" content="Justine BLIN">
@@ -28,20 +28,30 @@
           content="BTS SIO : spécialités SLAM et SISR, documents et tableau de synthèse de Justine BLIN.">
     <meta name="twitter:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
     <link rel="icon" type="image/png" href="../assets/Logo_portfolio.png">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    <link rel="stylesheet" href="../assets/fonts/fa/css/all.min.css"
           media="print" onload="this.media='all'">
+    <link rel="preload" href="../assets/fonts/google/raleway-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/google/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../assets/fonts/google/fonts.css">
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/documents.css" media="all" type="text/css">
-    <script>try{let dm=localStorage.getItem('dark-mode');if(dm==='true'||(dm===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
+    <script>try {
+        let dm = localStorage.getItem('dark-mode');
+        if (dm === 'true' || (dm === null && window.matchMedia('(prefers-color-scheme:dark)').matches)) document.documentElement.classList.add('dark-theme')
+    } catch (e) {
+    }</script>
     <script src="../js/structure-globale.js" defer></script>
 
     <title>Portfolio | BTS SIO</title>
 </head>
 
 <body>
-<div class="loader"><img class="loader-logo" src="../assets/Logo_portfolio.png" alt="Chargement" width="80" height="80"></div>
+<div class="loader">
+    <picture>
+        <source srcset="../assets/Logo_portfolio.webp" type="image/webp">
+        <img class="loader-logo" src="../assets/Logo_portfolio.png" alt="Chargement" width="500" height="500"></picture>
+</div>
 <!-- Contenu principal -->
 <main id="main">
     <h1><i class="fas fa-laptop-code" aria-hidden="true"></i> BTS SIO</h1>
@@ -111,42 +121,42 @@
         <h2 class="bts-section-title scroll-reveal">Tableau de Synthèse</h2>
 
         <div class="bts-doc-card scroll-reveal">
-            <div class="bts-doc-meta">
-                <span class="bts-doc-badge"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</span>
-                <span class="bts-doc-session">Session 2025</span>
+            <div class="bts-doc-infos">
+                <div class="bts-doc-meta">
+                    <span class="bts-doc-badge"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</span>
+                    <span class="bts-doc-session">Session 2025</span>
+                </div>
+                <p class="bts-doc-description">Ce tableau recense l'ensemble de mes réalisations professionnelles
+                    effectuées durant mon BTS SIO option SLAM, en formation comme en milieu professionnel. Il met en
+                    correspondance chaque projet, que vous pouvez retrouver dans la section projets, avec les six blocs
+                    de compétences du référentiel : gestion du patrimoine informatique, réponse aux incidents,
+                    développement de la présence en ligne, travail en mode projet, mise à disposition d'un service
+                    informatique et organisation de mon développement professionnel.</p>
+                <div class="bts-doc-actions">
+                    <a href="../assets/bts/tableau_de_synthese_blin_justine.pdf" download class="btn btn-download">
+                        <i class="fas fa-download" aria-hidden="true"></i> Télécharger
+                    </a>
+                    <a href="../assets/bts/tableau_de_synthese_blin_justine.pdf" target="_blank"
+                       rel="noopener noreferrer" class="btn btn-view">
+                        <i class="fas fa-eye" aria-hidden="true"></i> Visualiser
+                    </a>
+                </div>
             </div>
-            <p class="bts-doc-description">Ce tableau recense l'ensemble de mes réalisations professionnelles effectuées
-                durant mon BTS SIO option SLAM, en formation comme en milieu professionnel. Il met en correspondance
-                chaque projet, que vous pouvez retrouver dans la section projets, avec les six blocs de compétences du
-                référentiel : gestion du patrimoine informatique, réponse aux incidents, développement de la présence en
-                ligne, travail en mode projet, mise à disposition d'un service informatique et organisation de mon
-                développement professionnel.</p>
-            <div class="bts-doc-actions">
-                <a href="../assets/bts/tableau_de_synthese_blin_justine.pdf" download class="btn btn-download">
-                    <i class="fas fa-download" aria-hidden="true"></i> Télécharger
-                </a>
-                <a href="../assets/bts/tableau_de_synthese_blin_justine.pdf" target="_blank" rel="noopener noreferrer"
-                   class="btn btn-view">
-                    <i class="fas fa-eye" aria-hidden="true"></i> Visualiser
-                </a>
-            </div>
-        </div>
 
-        <!-- Aperçu PDF -->
-        <div class="bts-pdf-viewer scroll-reveal">
-            <div class="bts-pdf-header">
-                <i class="fas fa-expand" aria-hidden="true"></i>
-                <h3>Aperçu du document</h3>
-            </div>
-            <div class="pdf-container pdf-skeleton">
-                <iframe src="../assets/bts/tableau_de_synthese_blin_justine.pdf" title="Tableau de synthèse PDF"
-                        loading="lazy" width="100%" height="600"></iframe>
-            </div>
+            <a href="../assets/bts/tableau_de_synthese_blin_justine.pdf" target="_blank" rel="noopener noreferrer"
+               class="pdf-apercu" aria-label="Ouvrir le tableau de synthèse (PDF) dans un nouvel onglet">
+                <picture>
+                    <source srcset="../assets/bts/apercu-tableau-synthese.webp" type="image/webp">
+                    <img src="../assets/bts/apercu-tableau-synthese.png"
+                         alt="Aperçu de la première page du tableau de synthèse"
+                         width="1131" height="1600" loading="lazy">
+                </picture>
+                <span class="pdf-apercu-overlay"><i class="fas fa-expand" aria-hidden="true"></i> Ouvrir le PDF</span>
+            </a>
         </div>
     </section>
 </main>
 
-<script src="../js/documents.js" defer></script>
 </body>
 
 </html>

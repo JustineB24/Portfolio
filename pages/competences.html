@@ -9,8 +9,8 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description"
           content="Certifications et compétences techniques de Justine BLIN en développement web et informatique.">
     <meta name="author" content="Justine BLIN">
@@ -28,9 +28,11 @@
           content="Certifications et compétences techniques de Justine BLIN en développement web et informatique.">
     <meta name="twitter:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
     <link rel="icon" type="image/png" href="../assets/Logo_portfolio.png">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    <link rel="stylesheet" href="../assets/fonts/fa/css/all.min.css"
           media="print" onload="this.media='all'">
+    <link rel="preload" href="../assets/fonts/google/raleway-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/google/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../assets/fonts/google/fonts.css">
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/competences.css" media="all" type="text/css">
@@ -45,12 +47,17 @@
 </head>
 
 <body>
-<div class="loader"><img class="loader-logo" src="../assets/Logo_portfolio.png" alt="Chargement" width="80" height="80">
+<div class="loader">
+    <picture>
+        <source srcset="../assets/Logo_portfolio.webp" type="image/webp">
+        <img class="loader-logo" src="../assets/Logo_portfolio.png" alt="Chargement" width="500" height="500"></picture>
 </div>
 <!-- Contenu principal -->
 <main id="main">
+    <h1><i class="fas fa-laptop-code" aria-hidden="true"></i> Compétences</h1>
+
     <section>
-        <h1><i class="fas fa-award" aria-hidden="true"></i> Certifications</h1>
+        <h2><i class="fas fa-award" aria-hidden="true"></i> Certifications</h2>
         <div class="gallery">
             <picture>
                 <source srcset="../assets/certifications/SoloLearn_Coding_Foundations.webp" type="image/webp">
@@ -145,11 +152,11 @@
 
         <!-- Modale carrousel pour afficher les images agrandies -->
         <div id="zoom-modal" role="dialog" aria-modal="true" aria-label="Image agrandie">
-            <button id="prev" class="carrousel-btn carrousel-prev" aria-label="Image précédente">
+            <button id="zoom-prev" class="carrousel-btn carrousel-prev" aria-label="Image précédente">
                 <i class="fas fa-chevron-left" aria-hidden="true"></i>
             </button>
             <img id="zoom-modal-img" src="" alt="Image agrandie">
-            <button id="next" class="carrousel-btn carrousel-next" aria-label="Image suivante">
+            <button id="zoom-next" class="carrousel-btn carrousel-next" aria-label="Image suivante">
                 <i class="fas fa-chevron-right" aria-hidden="true"></i>
             </button>
             <div id="zoom-dots" class="carrousel-dots"></div>
@@ -157,6 +164,8 @@
             <button id="zoom-close" class="carrousel-modale-fermer" aria-label="Fermer">&#10005;</button>
         </div>
     </section>
+
+    <hr>
 
     <h2><i class="fas fa-code" aria-hidden="true"></i> Langages de programmation</h2>
     <div class="card-container">
@@ -203,6 +212,15 @@
                     <span class="competence-label">React</span>
                 </div>
                 <div class="card-back">Bibliothèque front-end</div>
+            </div>
+        </div>
+        <div class="card-competence comp-react-native">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/competences/react.svg" alt="React Native" width="80" height="80">
+                    <span class="competence-label">React Native</span>
+                </div>
+                <div class="card-back">Framework mobile</div>
             </div>
         </div>
         <div class="card-competence comp-php">
@@ -270,12 +288,15 @@
         </div>
     </div>
 
+    <hr>
+
     <h2><i class="fas fa-toolbox" aria-hidden="true"></i> Outils & Environnements de développement</h2>
     <div class="card-container">
         <div class="card-competence comp-vscode">
             <div class="card-competence-inner">
                 <div class="card-front">
-                    <img class="svg" src="../assets/competences/visual-studio-code.svg" alt="Visual Studio Code" width="80"
+                    <img class="svg" src="../assets/competences/visual-studio-code.svg" alt="Visual Studio Code"
+                         width="80"
                          height="80">
                     <span class="competence-label">VS Code</span>
                 </div>
@@ -285,7 +306,8 @@
         <div class="card-competence comp-vs">
             <div class="card-competence-inner">
                 <div class="card-front">
-                    <img class="svg" src="../assets/competences/visual-studio.svg" alt="Visual Studio" width="80" height="80">
+                    <img class="svg" src="../assets/competences/visual-studio.svg" alt="Visual Studio" width="80"
+                         height="80">
                     <span class="competence-label">Visual Studio</span>
                 </div>
                 <div class="card-back">IDE pour C# et .NET</div>
@@ -415,6 +437,15 @@
                     <span class="competence-label">Postman</span>
                 </div>
                 <div class="card-back">Test d'API REST</div>
+            </div>
+        </div>
+        <div class="card-competence comp-expo">
+            <div class="card-competence-inner">
+                <div class="card-front">
+                    <img class="svg" src="../assets/competences/expo.svg" alt="Expo" width="80" height="80">
+                    <span class="competence-label">Expo</span>
+                </div>
+                <div class="card-back">Outil de dév mobile (React Native)</div>
             </div>
         </div>
         <div class="card-competence comp-looping">

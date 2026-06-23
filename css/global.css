@@ -1,11 +1,17 @@
+/* ==============================
+   global.css — Styles globaux : variables de thème, header, footer, éléments partagés
+   ============================== */
+
 /* Variables pour le thème clair */
 :root {
-    --background-color: white;
-    --text-color: black;
-    --button-background-color: black;
-    --button-text-color: white;
-    --main-bg-rgb: 255, 255, 255;
-    --card-background: #e6e6e6;
+    --background-color: #fafafa;
+    --text-color: #1a1a1a;
+    --button-background-color: #1a1a1a;
+    --button-text-color: #fafafa;
+    --main-bg-rgb: 250, 250, 250;
+    --card-background: #e8eaf1;
+    /* Texte secondaire : assez foncé pour rester conforme WCAG AA (≈7:1) */
+    --text-muted: #595959;
     --primary-color: #960000;
     --primary-light: #b30000;
     --primary-dark: #6b0000;
@@ -19,21 +25,30 @@
     --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.15);
     --shadow-primary: 0 6px 20px rgba(var(--primary-rgb), 0.35);
     --primary-rgb: 150, 0, 0;
+    /* Texte posé sur le header rouge : toujours clair, ne s'inverse pas selon le thème */
+    --header-text-color: #fafafa;
+    /* Texte posé sur un fond de couleur opaque (filtres actifs, tags) : toujours clair */
+    --tag-text-on-color: #fff;
+    /* Typographie : Raleway pour les titres / navbar, Inter pour le corps de texte */
+    --font-titre: 'Raleway', sans-serif;
+    --font-corps: 'Inter', sans-serif;
 }
 
 /* Variables pour le thème sombre */
 .dark-theme {
-    --background-color: black;
-    --text-color: white;
-    --button-background-color: white;
-    --button-text-color: black;
-    --main-bg-rgb: 30, 30, 30;
-    --card-background: #2a2a2a;
+    --background-color: #121212;
+    --text-color: #e6e6e6;
+    --button-background-color: #e6e6e6;
+    --button-text-color: #121212;
+    --main-bg-rgb: 18, 18, 18;
+    --card-background: #23242b;
+    --text-muted: #9e9e9e;
 }
 
 /* Principal */
 html {
     overflow-y: scroll;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--primary-color) var(--card-background);
@@ -73,7 +88,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font-corps);
     letter-spacing: 1px;
     transition: background-color 0.3s, color 0.3s;
     text-align: center;
@@ -81,7 +96,6 @@ body {
     color: var(--text-color);
     box-sizing: border-box;
     max-width: 100%;
-    overflow-x: hidden;
     position: relative;
     min-height: 100vh;
     isolation: isolate;
@@ -153,9 +167,10 @@ main {
 
 /* Titres */
 .titre-nom {
+    font-family: var(--font-titre);
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--button-text-color);
+    color: var(--header-text-color);
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 1rem;
@@ -176,6 +191,7 @@ main {
 }
 
 h1, h2, h3 {
+    font-family: var(--font-titre);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -293,12 +309,12 @@ p {
 }
 
 .btn-reseaux .svg-icon path {
-    fill: var(--button-text-color);
+    fill: var(--header-text-color);
 }
 
 .btn-reseaux .text {
     position: absolute;
-    color: var(--button-text-color);
+    color: var(--header-text-color);
     width: 120px;
     font-weight: 600;
     opacity: 0;
@@ -340,6 +356,7 @@ p {
 
 .onglet {
     position: relative;
+    font-family: var(--font-titre);
     margin: 0 1.5rem;
     text-transform: uppercase;
     font-size: 1.2rem;
@@ -350,7 +367,7 @@ p {
 .onglet:link,
 .onglet:visited,
 .onglet:hover {
-    color: var(--button-text-color);
+    color: var(--header-text-color);
 }
 
 .onglet::after {
@@ -363,7 +380,7 @@ p {
     width: 100%;
     height: 3px;
     transition: transform 250ms;
-    background-color: var(--button-text-color);
+    background-color: var(--header-text-color);
 }
 
 .onglet:hover::after,
@@ -412,7 +429,7 @@ p {
     height: var(--height-bar);
     width: 100%;
     border-radius: .5rem;
-    background-color: var(--button-text-color);
+    background-color: var(--header-text-color);
 }
 
 .bar--1 {
@@ -703,11 +720,6 @@ footer {
     display: none;
 }
 
-/* Transition sur icônes des headers document */
-.header-icon-transition {
-    transition: transform 0.3s;
-}
-
 /* Animation lettre par lettre sur h1 */
 .letter-reveal {
     opacity: 0;
@@ -716,11 +728,19 @@ footer {
 }
 
 .letter-space {
-    width: 0.20em;
+    width: 0.30em;
 }
 
 .word-wrap {
     display: inline-flex;
+}
+
+/* Conteneur du titre animé : aligne les mots sans subir le `gap` flex du h1 */
+.titre-anime {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Message projet introuvable */
@@ -827,7 +847,6 @@ footer {
 .profil,
 .timeline-content,
 .card,
-.pdf-container,
 .filtre-btn,
 .form-group input,
 .form-group textarea,
@@ -859,8 +878,6 @@ footer {
 .dark-theme .btn-retour-haut {
     box-shadow: 0 0 12px rgba(var(--primary-rgb), 0.5);
 }
-
-
 
 
 /* Tooltip sur badges technos */
@@ -1016,37 +1033,6 @@ body.page-exit main {
     color: var(--primary-color);
 }
 
-/* Skeleton loading pour iframe PDF */
-.pdf-skeleton {
-    position: relative;
-    min-height: 600px;
-    background: var(--card-background);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.pdf-skeleton::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent 0%, rgba(var(--primary-rgb), 0.08) 50%, transparent 100%);
-    background-size: 200% 100%;
-    animation: skeleton-shimmer 1.5s ease-in-out infinite;
-}
-
-.pdf-skeleton.loaded::before {
-    display: none;
-}
-
-@keyframes skeleton-shimmer {
-    0% {
-        background-position: 200% 0;
-    }
-    100% {
-        background-position: -200% 0;
-    }
-}
-
 /* CSS Container Queries pour les cards */
 .projet-container,
 .card-container {
@@ -1117,4 +1103,93 @@ body.page-exit main {
     html {
         scroll-behavior: auto;
     }
+}
+
+/* ==============================
+   Couleurs des tags technologies (centralisées)
+   Utilisées à la fois sur les cartes projets (.card-tags) et la page détail
+   projet (#projet-technologies). Source unique — ne pas dupliquer ailleurs.
+   ============================== */
+.card-tags .tag-html, #projet-technologies .tag-html {
+    border-color: rgba(241, 101, 41, 0.7);
+}
+
+.card-tags .tag-css, #projet-technologies .tag-css {
+    border-color: rgba(41, 101, 241, 0.7);
+}
+
+.card-tags .tag-js, #projet-technologies .tag-js {
+    border-color: rgba(247, 223, 30, 0.7);
+}
+
+.card-tags .tag-php, #projet-technologies .tag-php {
+    border-color: rgba(97, 129, 182, 0.7);
+}
+
+.card-tags .tag-csharp, #projet-technologies .tag-csharp {
+    border-color: rgba(57, 0, 145, 0.7);
+}
+
+.card-tags .tag-mysql, #projet-technologies .tag-mysql {
+    border-color: rgba(0, 117, 143, 0.7);
+}
+
+.card-tags .tag-xaml, #projet-technologies .tag-xaml {
+    border-color: rgba(13, 79, 178, 0.7);
+}
+
+.card-tags .tag-maui, #projet-technologies .tag-maui {
+    border-color: rgba(108, 51, 175, 0.7);
+}
+
+.card-tags .tag-winforms, #projet-technologies .tag-winforms {
+    border-color: rgba(0, 101, 169, 0.7);
+}
+
+.card-tags .tag-jquery, #projet-technologies .tag-jquery {
+    border-color: rgba(0, 108, 174, 0.7);
+}
+
+.card-tags .tag-bootstrap, #projet-technologies .tag-bootstrap {
+    border-color: rgba(121, 82, 179, 0.7);
+}
+
+.card-tags .tag-datatables, #projet-technologies .tag-datatables {
+    border-color: rgba(51, 102, 153, 0.7);
+}
+
+.card-tags .tag-postgresql, #projet-technologies .tag-postgresql {
+    border-color: rgba(51, 103, 145, 0.7);
+}
+
+.card-tags .tag-react, #projet-technologies .tag-react {
+    border-color: rgba(97, 218, 251, 0.7);
+}
+
+.card-tags .tag-nodejs, #projet-technologies .tag-nodejs {
+    border-color: rgba(104, 159, 56, 0.7);
+}
+
+.card-tags .tag-socketio, #projet-technologies .tag-socketio {
+    border-color: rgba(1, 1, 1, 0.7);
+}
+
+.card-tags .tag-docker, #projet-technologies .tag-docker {
+    border-color: rgba(35, 150, 237, 0.7);
+}
+
+.card-tags .tag-figma, #projet-technologies .tag-figma {
+    border-color: rgba(162, 89, 255, 0.7);
+}
+
+.card-tags .tag-git, #projet-technologies .tag-git {
+    border-color: rgba(240, 80, 51, 0.7);
+}
+
+.card-tags .tag-github, #projet-technologies .tag-github {
+    border-color: rgba(110, 84, 148, 0.7);
+}
+
+.card-tags .tag-gitlab, #projet-technologies .tag-gitlab {
+    border-color: rgba(226, 67, 41, 0.7);
 }

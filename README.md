@@ -19,10 +19,9 @@ de projets.
 
 ## 👋 À propos
 
-Actuellement étudiante en **Bachelor Chef de Projet Développement et IA** à La Manu (Lacroix-Saint-Ouen), je me
-spécialise dans le développement d'applications et la gestion de projets informatiques. Passionnée par la technologie et
-la création d'outils numériques, j'ai choisi cette filière pour approfondir mes compétences techniques et découvrir les
-bonnes pratiques du développement logiciel.
+Développeuse passionnée par la création d'outils numériques, je me spécialise dans le développement d'applications et
+la gestion de projets informatiques. Curieuse de technologie, j'aime approfondir mes compétences techniques et
+appliquer les bonnes pratiques du développement logiciel.
 
 **Parcours :**
 
@@ -44,7 +43,7 @@ bonnes pratiques du développement logiciel.
 | 🎬 **Animations fluides**        | Texte rotatif, compteurs animés, effets de survol 3D (tilt) |
 | 📜 **Timeline interactive**      | Parcours scolaire et professionnel présenté visuellement    |
 | 🏅 **Galerie de certifications** | Modale avec navigation clavier/flèches et zoom/déplacement  |
-| 📄 **Viewer PDF intégré**        | Consultation des documents directement dans le navigateur   |
+| 📄 **Aperçu de documents**       | Image d'aperçu cliquable qui ouvre le PDF du document       |
 | 🧭 **Fil d'Ariane**              | Navigation contextuelle générée dynamiquement               |
 | ♿ **Accessibilité**              | Lien d'évitement, navigation au clavier, attributs ARIA     |
 | 🧲 **Boutons magnétiques**       | Effet d'attraction au survol sur les boutons et icônes      |
@@ -62,14 +61,14 @@ bonnes pratiques du développement logiciel.
 | **HTML5**              | Structure sémantique, accessibilité              |
 | **CSS3**               | Animations, Flexbox, Grid, variables CSS (thème) |
 | **JavaScript vanilla** | Interactivité, génération dynamique du DOM       |
+| **Inter + Raleway**    | Typographie : Inter (corps), Raleway (titres)    |
 
 ### Librairies externes
 
-| Librairie                  | Rôle                         |
-|----------------------------|------------------------------|
-| **Font Awesome 6**         | Icônes                       |
-| **Google Fonts (Raleway)** | Typographie                  |
-| **pdf.js**                 | Rendu PDF dans le navigateur |
+| Librairie              | Rôle        | Hébergement                       |
+|------------------------|-------------|-----------------------------------|
+| **Font Awesome 6.7.2** | Icônes      | Self-hébergé (local, plus de CDN) |
+| **Inter + Raleway**    | Typographie | Self-hébergées (local, RGPD)      |
 
 ### Outils
 
@@ -96,8 +95,13 @@ Portfolio/
 │   └── mentions-legales.html
 ├── css/                        # Feuilles de style (une par page + global + thème)
 ├── js/                         # Scripts (un par fonctionnalité)
-├── assets/                     # Images, SVG, certifications
-└── Projets/                    # Études de cas des projets
+└── assets/                     # Images, SVG, certifications
+    ├── competences/            # Logos technos
+    ├── projets/                # Captures et études de cas des projets
+    ├── certifications/
+    ├── bts/                    # Documents BTS + aperçu image
+    ├── veille/
+    └── fonts/                  # Polices self-hébergées (fa + google)
 ```
 
 ---

@@ -1,5 +1,5 @@
 // ==============================
-// Easter eggs du portfolio
+// easter-egg.js — Easter eggs du portfolio (Konami, terminal, snake, rainbow, matrix, 90's…)
 // ==============================
 
 (function () {
@@ -65,7 +65,7 @@
                 modale.remove();
                 easterEggActif = false;
                 if (onFermer) onFermer();
-            }, { once: true });
+            }, {once: true});
         }
 
         // Piège de focus : Tab cycle entre les éléments focusables de la modale
@@ -106,14 +106,11 @@
 
     let motsTapes = '';
     const motsCles = {
-        'disco': lancerDisco,
         'terminal': lancerTerminal,
         'snake': lancerSnake,
         'rainbow': lancerRainbow,
         'matrix': lancerMatrixStandalone,
-        'roll': lancerBarrelRoll,
-        '90s': lancer90s,
-        'present': lancerPresentation
+        '90s': lancer90s
     };
 
     const sequenceKonami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
@@ -153,30 +150,6 @@
     // Konami Code
     // ==============================
 
-    function lancerConfettis() {
-        const couleurs = ['#ff4444', '#44ff44', '#4444ff', '#ffff44', '#ff44ff', '#44ffff', '#ff8800', '#960000'];
-        const fragment = document.createDocumentFragment();
-        for (let i = 0; i < 100; i++) {
-            const confetti = document.createElement('div');
-            confetti.classList.add('ee-confetti');
-            const taille = Math.random() * 8 + 6;
-            const duree = Math.random() * 2 + 2;
-            const delai = Math.random() * 1.5;
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.width = taille + 'px';
-            confetti.style.height = taille + 'px';
-            confetti.style.backgroundColor = couleurs[Math.floor(Math.random() * couleurs.length)];
-            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-            confetti.style.animationDuration = duree + 's';
-            confetti.style.animationDelay = delai + 's';
-            fragment.appendChild(confetti);
-            (function (el, t) {
-                setTimeout(function () { el.remove(); }, t);
-            })(confetti, (duree + delai) * 1000 + 500);
-        }
-        document.body.appendChild(fragment);
-    }
-
     function lancerMatrix() {
         const canvas = document.createElement('canvas');
         canvas.classList.add('ee-matrix-canvas');
@@ -191,6 +164,7 @@
         }
         const caracteres = 'アイウエオカキクケコサシスセソタチツテト0123456789ABCDEF';
         let enCours = true;
+
         function dessiner() {
             if (!enCours) return;
             ctx.fillStyle = 'rgba(0, 0, 0, 0.06)';
@@ -204,8 +178,13 @@
             }
             requestAnimationFrame(dessiner);
         }
+
         dessiner();
-        return { canvas: canvas, stop: function() { enCours = false; } };
+        return {
+            canvas: canvas, stop: function () {
+                enCours = false;
+            }
+        };
     }
 
     function lancerKonami() {
@@ -250,7 +229,9 @@
             const barre = document.createElement('div');
             barre.classList.add('ee-achievement-barre');
             notif.appendChild(barre);
-            setTimeout(function () { barre.classList.add('active'); }, 50);
+            setTimeout(function () {
+                barre.classList.add('active');
+            }, 50);
 
             // Disparition après 4s
             setTimeout(function () {
@@ -258,22 +239,9 @@
                 notif.addEventListener('transitionend', function () {
                     notif.remove();
                     easterEggActif = false;
-                }, { once: true });
+                }, {once: true});
             }, 4000);
         }, 800);
-    }
-
-    // ==============================
-    // Mode disco
-    // ==============================
-
-    function lancerDisco() {
-        easterEggActif = true;
-        document.body.classList.add('ee-disco');
-        setTimeout(function () {
-            document.body.classList.remove('ee-disco');
-            easterEggActif = false;
-        }, 5000);
     }
 
     // ==============================
@@ -302,6 +270,7 @@
 
         // Phase 1 : Descente de l'année actuelle → 0 avec accélération
         let vitesse = 40;
+
         function descendre() {
             const pas = Math.max(1, Math.floor(annee / 100));
             annee -= pas;
@@ -330,6 +299,7 @@
                 setTimeout(descendre, vitesse);
             }
         }
+
         descendre();
 
         // Phase 2 : Explosion de particules
@@ -342,7 +312,9 @@
             const flash = document.createElement('div');
             flash.classList.add('ee-explosion-flash');
             document.body.appendChild(flash);
-            setTimeout(function () { flash.remove(); }, 400);
+            setTimeout(function () {
+                flash.remove();
+            }, 400);
 
             // Particules
             const nbParticules = 30;
@@ -362,7 +334,9 @@
                 p.style.setProperty('--dy', dy + 'px');
                 p.style.animationDuration = (0.6 + Math.random() * 0.6) + 's';
                 fragmentParticules.appendChild(p);
-                setTimeout(function () { p.remove(); }, 1200);
+                setTimeout(function () {
+                    p.remove();
+                }, 1200);
             }
             document.body.appendChild(fragmentParticules);
 
@@ -424,9 +398,9 @@
         const ctx = canvas.getContext('2d');
         const GRILLE = 20;
         const CELLULE = TAILLE / GRILLE;
-        const serpent = [{ x: 10, y: 10 }];
-        let direction = { x: 1, y: 0 };
-        let prochDirection = { x: 1, y: 0 };
+        const serpent = [{x: 10, y: 10}];
+        let direction = {x: 1, y: 0};
+        let prochDirection = {x: 1, y: 0};
         let pomme = placerPomme();
         let score = 0;
         let finDuJeu = false;
@@ -438,7 +412,9 @@
                     x: Math.floor(Math.random() * GRILLE),
                     y: Math.floor(Math.random() * GRILLE)
                 };
-            } while (serpent.some(function (s) { return s.x === pos.x && s.y === pos.y; }));
+            } while (serpent.some(function (s) {
+                return s.x === pos.x && s.y === pos.y;
+            }));
             return pos;
         }
 
@@ -479,7 +455,9 @@
 
             // Collision mur ou soi-même
             if (tete.x < 0 || tete.x >= GRILLE || tete.y < 0 || tete.y >= GRILLE ||
-                serpent.some(function (s) { return s.x === tete.x && s.y === tete.y; })) {
+                serpent.some(function (s) {
+                    return s.x === tete.x && s.y === tete.y;
+                })) {
                 finDuJeu = true;
                 dessiner();
                 setTimeout(function () {
@@ -513,10 +491,10 @@
                 document.removeEventListener('keydown', gestionnaireClavier);
                 return;
             }
-            if (e.key === 'ArrowUp' && direction.y !== 1) prochDirection = { x: 0, y: -1 };
-            else if (e.key === 'ArrowDown' && direction.y !== -1) prochDirection = { x: 0, y: 1 };
-            else if (e.key === 'ArrowLeft' && direction.x !== 1) prochDirection = { x: -1, y: 0 };
-            else if (e.key === 'ArrowRight' && direction.x !== -1) prochDirection = { x: 1, y: 0 };
+            if (e.key === 'ArrowUp' && direction.y !== 1) prochDirection = {x: 0, y: -1};
+            else if (e.key === 'ArrowDown' && direction.y !== -1) prochDirection = {x: 0, y: 1};
+            else if (e.key === 'ArrowLeft' && direction.x !== 1) prochDirection = {x: -1, y: 0};
+            else if (e.key === 'ArrowRight' && direction.x !== -1) prochDirection = {x: 1, y: 0};
             if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].indexOf(e.key) !== -1) {
                 e.preventDefault();
             }
@@ -540,19 +518,6 @@
     }
 
     // ==============================
-    // Barrel Roll
-    // ==============================
-
-    function lancerBarrelRoll() {
-        easterEggActif = true;
-        document.body.classList.add('ee-barrel-roll');
-        setTimeout(function () {
-            document.body.classList.remove('ee-barrel-roll');
-            easterEggActif = false;
-        }, 1500);
-    }
-
-    // ==============================
     // Mode 90's
     // ==============================
 
@@ -572,199 +537,6 @@
 
 
     // ==============================
-    // Mode présentation
-    // ==============================
-
-    function lancerPresentation() {
-        easterEggActif = true;
-
-        // Récupérer les sections de la page
-        const sections = document.querySelectorAll('main > section');
-        if (sections.length === 0) {
-            easterEggActif = false;
-            return;
-        }
-
-        let slideActuel = 0;
-
-        // Créer l'overlay
-        const overlay = document.createElement('div');
-        overlay.classList.add('ee-presentation');
-        overlay.setAttribute('role', 'dialog');
-        overlay.setAttribute('aria-modal', 'true');
-        overlay.setAttribute('aria-label', 'Mode présentation');
-
-        // Container des slides
-        const slideContainer = document.createElement('div');
-        slideContainer.classList.add('ee-pres-container');
-
-        // Créer les slides à partir des sections
-        sections.forEach(function (section, i) {
-            const slide = document.createElement('div');
-            slide.classList.add('ee-pres-slide');
-            if (i === 0) slide.classList.add('active');
-
-            const contenu = section.cloneNode(true);
-            // Nettoyage des animations et styles inline du clone
-            contenu.querySelectorAll('[style]').forEach(function (el) {
-                el.removeAttribute('style');
-            });
-            contenu.querySelectorAll('.scroll-reveal').forEach(function (el) {
-                el.classList.add('visible');
-            });
-            slide.appendChild(contenu);
-            slideContainer.appendChild(slide);
-        });
-
-        overlay.appendChild(slideContainer);
-
-        // Barre de navigation du bas
-        const barreNav = document.createElement('div');
-        barreNav.classList.add('ee-pres-nav');
-
-        // Flèche gauche
-        const btnPrec = document.createElement('button');
-        btnPrec.classList.add('ee-pres-btn');
-        btnPrec.innerHTML = '<i class="fas fa-chevron-left"></i>';
-        btnPrec.setAttribute('aria-label', 'Slide précédent');
-
-        // Indicateur de slide
-        const indicateur = document.createElement('div');
-        indicateur.classList.add('ee-pres-indicateur');
-
-        // Dots
-        const dotsContainer = document.createElement('div');
-        dotsContainer.classList.add('ee-pres-dots');
-        sections.forEach(function (_, i) {
-            const dot = document.createElement('button');
-            dot.classList.add('ee-pres-dot');
-            if (i === 0) dot.classList.add('active');
-            dot.setAttribute('aria-label', 'Aller au slide ' + (i + 1));
-            dot.addEventListener('click', function () { allerAuSlide(i); });
-            dotsContainer.appendChild(dot);
-        });
-
-        const compteurSlide = document.createElement('span');
-        compteurSlide.classList.add('ee-pres-compteur');
-        compteurSlide.textContent = '1 / ' + sections.length;
-
-        indicateur.appendChild(dotsContainer);
-        indicateur.appendChild(compteurSlide);
-
-        // Flèche droite
-        const btnSuiv = document.createElement('button');
-        btnSuiv.classList.add('ee-pres-btn');
-        btnSuiv.innerHTML = '<i class="fas fa-chevron-right"></i>';
-        btnSuiv.setAttribute('aria-label', 'Slide suivant');
-
-        barreNav.appendChild(btnPrec);
-        barreNav.appendChild(indicateur);
-        barreNav.appendChild(btnSuiv);
-        overlay.appendChild(barreNav);
-
-        // Bouton fermer
-        const btnFermer = document.createElement('button');
-        btnFermer.classList.add('ee-pres-fermer');
-        btnFermer.innerHTML = '<i class="fas fa-times"></i> Échap';
-        btnFermer.setAttribute('aria-label', 'Quitter la présentation');
-        overlay.appendChild(btnFermer);
-
-        // Barre de progression
-        const progression = document.createElement('div');
-        progression.classList.add('ee-pres-progression');
-        const progressionBarre = document.createElement('div');
-        progressionBarre.classList.add('ee-pres-progression-barre');
-        progression.appendChild(progressionBarre);
-        overlay.appendChild(progression);
-
-        document.body.appendChild(overlay);
-        document.body.classList.add('overflow-hidden');
-
-        // Forcer reflow puis animer l'entrée
-        overlay.offsetHeight;
-        overlay.classList.add('visible');
-
-        function mettreAJour() {
-            const slides = slideContainer.querySelectorAll('.ee-pres-slide');
-            slides.forEach(function (s, i) {
-                s.classList.remove('active', 'sortie-gauche', 'sortie-droite');
-                if (i === slideActuel) {
-                    s.classList.add('active');
-                } else if (i < slideActuel) {
-                    s.classList.add('sortie-gauche');
-                } else {
-                    s.classList.add('sortie-droite');
-                }
-            });
-
-            // Dots
-            dotsContainer.querySelectorAll('.ee-pres-dot').forEach(function (d, i) {
-                d.classList.toggle('active', i === slideActuel);
-            });
-
-            // Compteur
-            compteurSlide.textContent = (slideActuel + 1) + ' / ' + sections.length;
-
-            // Barre de progression
-            const pourcent = ((slideActuel + 1) / sections.length) * 100;
-            progressionBarre.style.width = pourcent + '%';
-
-            // Désactiver les boutons aux extrémités
-            btnPrec.disabled = slideActuel === 0;
-            btnSuiv.disabled = slideActuel === sections.length - 1;
-        }
-
-        function allerAuSlide(index) {
-            if (index < 0 || index >= sections.length) return;
-            slideActuel = index;
-            mettreAJour();
-        }
-
-        function slideSuivant() {
-            if (slideActuel < sections.length - 1) allerAuSlide(slideActuel + 1);
-        }
-
-        function slidePrecedent() {
-            if (slideActuel > 0) allerAuSlide(slideActuel - 1);
-        }
-
-        function fermerPresentation() {
-            overlay.classList.remove('visible');
-            document.body.classList.remove('overflow-hidden');
-            document.removeEventListener('keydown', gestionClavier);
-            overlay.addEventListener('transitionend', function () {
-                overlay.remove();
-                easterEggActif = false;
-            }, { once: true });
-        }
-
-        function gestionClavier(e) {
-            if (e.key === 'Escape') {
-                fermerPresentation();
-            } else if (e.key === 'ArrowRight' || e.key === ' ') {
-                e.preventDefault();
-                slideSuivant();
-            } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                slidePrecedent();
-            } else if (e.key === 'Home') {
-                e.preventDefault();
-                allerAuSlide(0);
-            } else if (e.key === 'End') {
-                e.preventDefault();
-                allerAuSlide(sections.length - 1);
-            }
-        }
-
-        btnSuiv.addEventListener('click', slideSuivant);
-        btnPrec.addEventListener('click', slidePrecedent);
-        btnFermer.addEventListener('click', fermerPresentation);
-        document.addEventListener('keydown', gestionClavier);
-
-        mettreAJour();
-    }
-
-    // ==============================
     // Easter egg mobile : secouer le telephone
     // ==============================
 
@@ -773,7 +545,10 @@
     let dernierSecousse = 0;
     const SEUIL_SECOUSSE = 25;
 
-    if (window.DeviceMotionEvent) {
+    // Uniquement sur appareil tactile : inutile (et bloqué par le navigateur) sur desktop
+    const estTactile = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+
+    if (estTactile && window.DeviceMotionEvent) {
         window.addEventListener('devicemotion', function (e) {
             if (easterEggActif) return;
             const acc = e.accelerationIncludingGravity;
@@ -793,7 +568,7 @@
                     if (compteurSecousses >= 3) {
                         compteurSecousses = 0;
                         // Lancer un easter egg aleatoire parmi les visuels
-                        const eesMobiles = [lancerDisco, lancerBarrelRoll, lancerRainbow];
+                        const eesMobiles = [lancerRainbow];
                         const ee = eesMobiles[Math.floor(Math.random() * eesMobiles.length)];
                         ee();
                     }
@@ -827,7 +602,9 @@
         }, 300);
         setTimeout(function () {
             clearInterval(interval);
-            document.documentElement.style.setProperty('--primary-color', '#960000');
+            // Retirer le style inline pour rendre la main à la cascade CSS
+            // (la valeur revient à celle définie dans :root)
+            document.documentElement.style.removeProperty('--primary-color');
             easterEggActif = false;
         }, 10000);
     }
@@ -858,22 +635,51 @@
     // Fonction globale pour lister les easter eggs depuis la console
     window.easterEggs = function () {
         const liste = [
-            { declencheur: '⬆ ⬆ ⬇ ⬇ ⬅ ➡ ⬅ ➡ B A', nom: 'Konami Code', description: 'Glitch + Achievement Unlocked — le classique des classiques.' },
-            { declencheur: 'Taper "disco"', nom: 'Mode Disco', description: 'La page se transforme en piste de danse pendant 5 secondes.' },
-            { declencheur: 'Taper "terminal"', nom: 'Mode Terminal', description: 'Le site prend un look de terminal rétro pendant 6 secondes.' },
-            { declencheur: 'Taper "snake"', nom: 'Snake', description: 'Un jeu de Snake jouable ! Flèches pour diriger, Echap pour quitter.' },
-            { declencheur: 'Taper "rainbow"', nom: 'Arc-en-ciel', description: 'La couleur primaire du site défile en arc-en-ciel pendant 10 secondes.' },
-            { declencheur: 'Taper "matrix"', nom: 'Matrix', description: 'Pluie de caractères verts style Matrix pendant 8 secondes.' },
-            { declencheur: 'Taper "roll"', nom: 'Barrel Roll', description: 'La page fait un tonneau à 360° !' },
-            { declencheur: 'Taper "90s"', nom: 'Mode 90\'s', description: 'Le site revient dans les années 90 avec un bandeau défilant.' },
-            { declencheur: 'Cliquer sur l\'année du copyright', nom: 'Big Bang temporel', description: 'L\'année recule jusqu\'à 0 avec accélération, explosion de particules, puis retour au présent.' },
-            { declencheur: 'Secouer le téléphone (mobile)', nom: 'Shake', description: 'Déclenche un easter egg visuel aléatoire sur mobile.' },
-            { declencheur: 'Taper "present"', nom: 'Mode Présentation', description: 'Transforme la page en slides navigables (flèches, Espace, Échap).' }
+            {
+                declencheur: '⬆ ⬆ ⬇ ⬇ ⬅ ➡ ⬅ ➡ B A',
+                nom: 'Konami Code',
+                description: 'Glitch + Achievement Unlocked — le classique des classiques.'
+            },
+            {
+                declencheur: 'Taper "terminal"',
+                nom: 'Mode Terminal',
+                description: 'Le site prend un look de terminal rétro pendant 6 secondes.'
+            },
+            {
+                declencheur: 'Taper "snake"',
+                nom: 'Snake',
+                description: 'Un jeu de Snake jouable ! Flèches pour diriger, Echap pour quitter.'
+            },
+            {
+                declencheur: 'Taper "rainbow"',
+                nom: 'Arc-en-ciel',
+                description: 'La couleur primaire du site défile en arc-en-ciel pendant 10 secondes.'
+            },
+            {
+                declencheur: 'Taper "matrix"',
+                nom: 'Matrix',
+                description: 'Pluie de caractères verts style Matrix pendant 8 secondes.'
+            },
+            {
+                declencheur: 'Taper "90s"',
+                nom: 'Mode 90\'s',
+                description: 'Le site revient dans les années 90 avec un bandeau défilant.'
+            },
+            {
+                declencheur: 'Cliquer sur l\'année du copyright',
+                nom: 'Big Bang temporel',
+                description: 'L\'année recule jusqu\'à 0 avec accélération, explosion de particules, puis retour au présent.'
+            },
+            {
+                declencheur: 'Secouer le téléphone (mobile)',
+                nom: 'Shake',
+                description: 'Déclenche un easter egg visuel aléatoire sur mobile.'
+            }
         ];
 
         console.log('%c🥚 Easter eggs du portfolio — Liste complète\n', 'color: #960000; font-size: 18px; font-weight: bold;');
         console.table(liste.map(function (ee) {
-            return { 'Declencheur': ee.declencheur, 'Nom': ee.nom, 'Description': ee.description };
+            return {'Declencheur': ee.declencheur, 'Nom': ee.nom, 'Description': ee.description};
         }));
         console.log('%cBonne chasse ! 🎯', 'color: #960000; font-size: 14px; font-style: italic;');
     };

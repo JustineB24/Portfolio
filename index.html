@@ -9,15 +9,17 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de développement web et projets informatiques de Justine BLIN, étudiante en Bachelor Développement & IA.">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description"
+          content="Portfolio de développement web et projets informatiques de Justine BLIN, développeuse passionnée par les nouvelles technologies.">
     <meta name="author" content="Justine BLIN">
     <meta name="theme-color" content="#a90000">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Portfolio | Justine BLIN">
-    <meta property="og:description" content="Portfolio de développement web et projets informatiques de Justine BLIN, étudiante en Bachelor Développement & IA.">
+    <meta property="og:description"
+          content="Portfolio de développement web et projets informatiques de Justine BLIN, développeuse passionnée par les nouvelles technologies.">
     <meta property="og:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
     <meta property="og:url" content="https://justineb24.github.io/Portfolio/">
     <meta property="og:locale" content="fr_FR">
@@ -27,212 +29,283 @@
     <meta name="twitter:description" content="Portfolio de développement web et projets informatiques de Justine BLIN.">
     <meta name="twitter:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
     <link rel="icon" type="image/png" href="./assets/Logo_portfolio.png">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./assets/fonts/fa/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="preload" href="./assets/fonts/google/raleway-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./assets/fonts/google/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="./assets/fonts/google/fonts.css">
     <link rel="stylesheet" href="./css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="./css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="css/accueil.css" media="all" type="text/css">
     <link rel="stylesheet" href="css/projets.css" media="all" type="text/css">
-    <script>try{let dm=localStorage.getItem('dark-mode');if(dm==='true'||(dm===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark-theme')}catch(e){}</script>
+    <script>try {
+        let dm = localStorage.getItem('dark-mode');
+        if (dm === 'true' || (dm === null && window.matchMedia('(prefers-color-scheme:dark)').matches)) document.documentElement.classList.add('dark-theme')
+    } catch (e) {
+    }</script>
     <script src="js/structure-globale.js" defer></script>
 
     <title>Portfolio | Justine BLIN</title>
 
     <!-- Données structurées JSON-LD -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Justine BLIN",
-        "url": "https://justineb24.github.io/Portfolio/",
-        "jobTitle": "Développeuse informatique",
-        "description": "Étudiante en Bachelor Développement & IA, passionnée par le développement web et les nouvelles technologies.",
-        "sameAs": [
-            "https://www.linkedin.com/in/justine-blin-a88600292",
-            "https://github.com/JustineB24"
-        ],
-        "image": "https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png"
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Justine BLIN",
+            "url": "https://justineb24.github.io/Portfolio/",
+            "jobTitle": "Développeuse informatique",
+            "description": "Développeuse passionnée par le développement web et les nouvelles technologies.",
+            "sameAs": [
+                "https://www.linkedin.com/in/justine-blin-a88600292",
+                "https://github.com/JustineB24"
+            ],
+            "image": "https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png"
+        }
     </script>
 </head>
 
 <body>
-    <!-- Loading screen -->
-    <div class="loader"><img class="loader-logo" src="assets/Logo_portfolio.png" alt="Chargement" width="80" height="80"></div>
-    <!-- Contenu principal -->
-    <main id="main">
-        <section class="hero">
-            <picture>
-                <source srcset="assets/Logo_portfolio.webp" type="image/webp">
-                <img class="initials" src="assets/Logo_portfolio.png" alt="Logo JB" width="500" height="500" fetchpriority="high">
-            </picture>
-            <h1 class="sr-only">Portfolio de Justine BLIN</h1>
-            <div class="txt-rotate" data-period="2000"
-                data-rotate='[ "Bienvenue sur mon portfolio !", "Découvrez mes projets.", "Explorez mon univers.", "Bonne visite !"]'>
-            </div>
-            <a href="#contenu" class="scroll-arrow" aria-label="Défiler vers le contenu">
-                <span>Explorer</span>
-                <i class="fas fa-chevron-down" aria-hidden="true"></i>
-            </a>
-        </section>
+<!-- Loading screen -->
+<div class="loader">
+    <picture>
+        <source srcset="./assets/Logo_portfolio.webp" type="image/webp">
+        <img class="loader-logo" src="./assets/Logo_portfolio.png" alt="Chargement" width="500" height="500"></picture>
+</div>
+<!-- Contenu principal -->
+<main id="main">
+    <section class="hero">
+        <picture>
+            <source srcset="assets/Logo_portfolio.webp" type="image/webp">
+            <img class="initials" src="assets/Logo_portfolio.png" alt="Logo JB" width="500" height="500"
+                 fetchpriority="high">
+        </picture>
+        <h1 class="sr-only">Portfolio de Justine BLIN</h1>
+        <div class="txt-rotate" data-period="2000"
+             data-rotate='[ "Bienvenue sur mon portfolio !", "Découvrez mes projets.", "Explorez mon univers.", "Bonne visite !"]'>
+        </div>
+        <a href="#contenu" class="scroll-arrow" aria-label="Défiler vers le contenu">
+            <span>Explorer</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </a>
+    </section>
 
-        <!-- Compteurs animés -->
-        <section class="compteurs" id="contenu">
-            <a href="pages/projets.html" class="compteur" data-target="11">
-                <div class="compteur-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
-                <span class="compteur-nombre">0</span>
-                <span class="compteur-label">Projets</span>
-            </a>
-            <a href="pages/competences.html" class="compteur" data-target="15">
-                <div class="compteur-icon"><i class="fas fa-award" aria-hidden="true"></i></div>
-                <span class="compteur-nombre">0</span>
-                <span class="compteur-label">Certifications</span>
-            </a>
-            <a href="pages/competences.html" class="compteur" data-target="15">
-                <div class="compteur-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
-                <span class="compteur-nombre">0</span>
-                <span class="compteur-label">Outils</span>
-            </a>
-            <a href="pages/competences.html" class="compteur" data-target="12">
-                <div class="compteur-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
-                <span class="compteur-nombre">0</span>
-                <span class="compteur-label">Langages</span>
-            </a>
-        </section>
+    <!-- Compteurs animés -->
+    <section class="compteurs" id="contenu">
+        <a href="pages/projets.html" class="compteur" data-target="11">
+            <div class="compteur-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+            <span class="compteur-nombre">0</span>
+            <span class="compteur-label">Projets</span>
+        </a>
+        <a href="pages/competences.html" class="compteur" data-target="15">
+            <div class="compteur-icon"><i class="fas fa-award" aria-hidden="true"></i></div>
+            <span class="compteur-nombre">0</span>
+            <span class="compteur-label">Certifications</span>
+        </a>
+        <a href="pages/competences.html" class="compteur" data-target="18">
+            <div class="compteur-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
+            <span class="compteur-nombre">0</span>
+            <span class="compteur-label">Outils</span>
+        </a>
+        <a href="pages/competences.html" class="compteur" data-target="13">
+            <div class="compteur-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
+            <span class="compteur-nombre">0</span>
+            <span class="compteur-label">Langages</span>
+        </a>
+    </section>
 
-        <!-- Qui suis-je -->
-        <section class="qui-suis-je">
-            <h2><i class="fas fa-user" aria-hidden="true"></i> Qui suis-je ?</h2>
-            <p>Développeuse en informatique passionnée par les nouvelles technologies, je suis actuellement en
-                Bachelor Développement & IA. Curieuse et créative, j'aime concevoir des solutions innovantes
-                et relever des défis techniques.</p>
-            <div class="qui-suis-je-btns">
-                <a class="btn-cv" href="cv_blin_justine.pdf" download><i class="fas fa-file-arrow-down" aria-hidden="true"></i> Télécharger mon CV</a>
-                <a class="btn-apropos" href="pages/apropos.html"><i class="fas fa-arrow-right" aria-hidden="true"></i> En savoir plus</a>
-            </div>
-        </section>
+    <!-- Qui suis-je -->
+    <section class="qui-suis-je">
+        <h2><i class="fas fa-user" aria-hidden="true"></i> Qui suis-je ?</h2>
+        <p>Développeuse en informatique animée par les nouvelles technologies et la création d'outils
+            numériques, je me spécialise dans le développement d'applications web et la gestion de projets.
+            J'aime transformer une idée en solution concrète, soigner aussi bien le code que l'expérience
+            utilisateur, et apprendre de chaque projet. Curieuse, créative et rigoureuse, je cherche toujours
+            à relever de nouveaux défis techniques.</p>
+        <div class="qui-suis-je-btns">
+            <a class="btn-cv" href="cv_blin_justine.pdf" download><i class="fas fa-file-arrow-down"
+                                                                     aria-hidden="true"></i> Télécharger mon CV</a>
+            <a class="btn-apropos" href="pages/apropos.html"><i class="fas fa-arrow-right" aria-hidden="true"></i> En
+                savoir plus</a>
+        </div>
+    </section>
 
-        <!-- Aperçu projets -->
-        <section class="apercu-projets">
-            <h2><i class="fas fa-code" aria-hidden="true"></i> Mes projets</h2>
-            <div class="apercu-projets-grid">
-                <div class="card card-1" data-id="yabt" tabindex="0" role="button">
-                    <div class="card-body">
-                        <span class="badge-en-cours">En cours de développement</span>
-                        <h3>YABT — Blind Test</h3>
-                        <p class="card-desc">Application web de blind test et quiz musical multijoueur en temps réel, réalisée en groupe de 4 durant le Bachelor.</p>
-                        <div class="card-tags"><span class="tag-react">React</span><span class="tag-nodejs">Node.js</span><span class="tag-socketio">Socket.io</span><span class="tag-mysql">MySQL</span><span class="tag-docker">Docker</span><span class="tag-github">GitHub</span></div>
-                    </div>
-                </div>
-                <div class="card card-3" data-id="panada-food" tabindex="0" role="button">
-                    <div class="card-body">
-                        <h3>Panada Food</h3>
-                        <p class="card-desc">Site web pour un restaurant, développé en binôme lors d'un stage de 6 semaines en deuxième année de BTS SIO.</p>
-                        <div class="card-tags"><span class="tag-html">HTML</span><span class="tag-css">CSS</span><span class="tag-js">JavaScript</span></div>
-                    </div>
-                </div>
-                <div class="card card-5" data-id="france-mobilier" tabindex="0" role="button">
-                    <div class="card-body">
-                        <h3>France Mobilier</h3>
-                        <p class="card-desc">Site e-commerce MVC pour une société de mobilier avec administration intégrée.</p>
-                        <div class="card-tags"><span class="tag-html">HTML</span><span class="tag-css">CSS</span><span class="tag-php">PHP</span><span class="tag-csharp">C#</span><span class="tag-mysql">MySQL</span></div>
-                    </div>
-                </div>
-                <div class="card card-7" data-id="speedcubing" tabindex="0" role="button">
-                    <div class="card-body">
-                        <h3>Speedcubing</h3>
-                        <p class="card-desc">Site pour l'Association Française de SpeedCubing avec chronomètre et classement en ligne.</p>
-                        <div class="card-tags"><span class="tag-php">PHP</span><span class="tag-css">CSS</span><span class="tag-js">JavaScript</span><span class="tag-mysql">MySQL</span></div>
-                    </div>
+    <!-- Aperçu projets -->
+    <section class="apercu-projets">
+        <h2><i class="fas fa-code" aria-hidden="true"></i> Mes projets</h2>
+        <div class="apercu-projets-grid">
+            <div class="card card-1" data-id="yabt" tabindex="0" role="link"
+                 aria-label="Voir le projet : YABT — Yet Another Blind Test">
+                <div class="card-body">
+                    <span class="badge-en-cours">En cours de développement</span>
+                    <h3>YABT — Yet Another Blind Test</h3>
+                    <p class="card-desc">Application web de blind test et quiz musical multijoueur en temps réel,
+                        réalisée en groupe de 4 durant le Bachelor.</p>
+                    <div class="card-tags"><span class="tag-react">React</span><span
+                            class="tag-nodejs">Node.js</span><span class="tag-socketio">Socket.io</span><span
+                            class="tag-mysql">MySQL</span><span class="tag-docker">Docker</span><span
+                            class="tag-github">GitHub</span></div>
                 </div>
             </div>
-            <a href="pages/projets.html" class="btn-voir-projets"><i class="fas fa-arrow-right" aria-hidden="true"></i> Voir tous les projets</a>
-        </section>
-
-        <!-- Bandeau compétences -->
-        <section class="bandeau-competences">
-            <h2><i class="fas fa-laptop-code" aria-hidden="true"></i> Technologies et Outils</h2>
-            <div class="marquee">
-                <div class="marquee-track">
-                    <img src="assets/competences/html.svg" alt="HTML" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/css.svg" alt="CSS" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/javascript.svg" alt="JavaScript" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/jquery.svg" alt="jQuery" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/react.svg" alt="React" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/php.svg" alt="PHP" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/nodejs.svg" alt="Node.js" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/python.svg" alt="Python" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/c-sharp.svg" alt="C#" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/xaml.svg" alt="XAML" width="48" height="48" loading="lazy">
-
-                    <img src="assets/competences/mysql.svg" alt="MySQL" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/postgresql.svg" alt="PostgreSQL" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/visual-studio-code.svg" alt="VS Code" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/visual-studio.svg" alt="Visual Studio" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/phpstorm.svg" alt="PhpStorm" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/xampp.svg" alt="XAMPP" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/mamp.svg" alt="MAMP" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/git.svg" alt="Git" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/github.svg" alt="GitHub" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/gitlab.svg" alt="GitLab" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/figma.svg" alt="Figma" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/canva.svg" alt="Canva" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/asana.svg" alt="Asana" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/jira.svg" alt="Jira" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/odoo.svg" alt="Odoo" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/docker.svg" alt="Docker" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/postman.svg" alt="Postman" width="48" height="48" loading="lazy">
-                    <img src="assets/competences/looping.svg" alt="Looping" width="48" height="48" loading="lazy">
-
-                    <!-- Duplication pour boucle infinie -->
-                    <img src="assets/competences/html.svg" alt="HTML" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/css.svg" alt="CSS" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/javascript.svg" alt="JavaScript" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/jquery.svg" alt="jQuery" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/react.svg" alt="React" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/php.svg" alt="PHP" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/nodejs.svg" alt="Node.js" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/python.svg" alt="Python" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/c-sharp.svg" alt="C#" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/xaml.svg" alt="XAML" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/mysql.svg" alt="MySQL" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/postgresql.svg" alt="PostgreSQL" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/visual-studio-code.svg" alt="VS Code" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/visual-studio.svg" alt="Visual Studio" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/phpstorm.svg" alt="PhpStorm" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/xampp.svg" alt="XAMPP" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/mamp.svg" alt="MAMP" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/git.svg" alt="Git" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/github.svg" alt="GitHub" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/gitlab.svg" alt="GitLab" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/figma.svg" alt="Figma" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/canva.svg" alt="Canva" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/asana.svg" alt="Asana" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/jira.svg" alt="Jira" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/odoo.svg" alt="Odoo" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/docker.svg" alt="Docker" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/postman.svg" alt="Postman" width="48" height="48" loading="lazy" aria-hidden="true">
-                    <img src="assets/competences/looping.svg" alt="Looping" width="48" height="48" loading="lazy" aria-hidden="true">
-
+            <div class="card card-3" data-id="panada-food" tabindex="0" role="link"
+                 aria-label="Voir le projet : Panada Food">
+                <div class="card-body">
+                    <h3>Panada Food</h3>
+                    <p class="card-desc">Site web pour un restaurant, développé en binôme lors du stage de 6 semaines en
+                        deuxième année de BTS SIO.</p>
+                    <div class="card-tags"><span class="tag-html">HTML</span><span class="tag-css">CSS</span><span
+                            class="tag-js">JavaScript</span></div>
                 </div>
             </div>
-        </section>
+            <div class="card card-5" data-id="france-mobilier" tabindex="0" role="link"
+                 aria-label="Voir le projet : France Mobilier">
+                <div class="card-body">
+                    <h3>France Mobilier</h3>
+                    <p class="card-desc">Site e-commerce MVC pour une société de mobilier avec administration
+                        intégrée.</p>
+                    <div class="card-tags"><span class="tag-html">HTML</span><span class="tag-css">CSS</span><span
+                            class="tag-php">PHP</span><span class="tag-csharp">C#</span><span
+                            class="tag-mysql">MySQL</span></div>
+                </div>
+            </div>
+            <div class="card card-7" data-id="speedcubing" tabindex="0" role="link"
+                 aria-label="Voir le projet : Speedcubing">
+                <div class="card-body">
+                    <h3>Speedcubing</h3>
+                    <p class="card-desc">Site pour l'Association Française de SpeedCubing avec chronomètre et classement
+                        en ligne.</p>
+                    <div class="card-tags"><span class="tag-php">PHP</span><span class="tag-css">CSS</span><span
+                            class="tag-js">JavaScript</span><span class="tag-mysql">MySQL</span></div>
+                </div>
+            </div>
+        </div>
+        <a href="pages/projets.html" class="btn-voir-projets"><i class="fas fa-arrow-right" aria-hidden="true"></i> Voir
+            tous les projets</a>
+    </section>
 
-    </main>
+    <!-- Bandeau compétences -->
+    <section class="bandeau-competences">
+        <h2><i class="fas fa-laptop-code" aria-hidden="true"></i> Technologies et Outils</h2>
+        <div class="marquee">
+            <div class="marquee-track">
+                <img src="assets/competences/html.svg" alt="HTML" width="48" height="48" loading="lazy">
+                <img src="assets/competences/css.svg" alt="CSS" width="48" height="48" loading="lazy">
+                <img src="assets/competences/javascript.svg" alt="JavaScript" width="48" height="48" loading="lazy">
+                <img src="assets/competences/jquery.svg" alt="jQuery" width="48" height="48" loading="lazy">
+                <img src="assets/competences/react.svg" alt="React" width="48" height="48" loading="lazy">
+                <img src="assets/competences/php.svg" alt="PHP" width="48" height="48" loading="lazy">
+                <img src="assets/competences/nodejs.svg" alt="Node.js" width="48" height="48" loading="lazy">
+                <img src="assets/competences/python.svg" alt="Python" width="48" height="48" loading="lazy">
+                <img src="assets/competences/c-sharp.svg" alt="C#" width="48" height="48" loading="lazy">
+                <img src="assets/competences/xaml.svg" alt="XAML" width="48" height="48" loading="lazy">
 
-    <!-- Lien JS -->
-    <script src="js/animation-texte.js" defer></script>
-    <script defer>
-        document.querySelectorAll('.apercu-projets-grid .card').forEach(function(carte) {
-            function naviguer() {
-                window.location.href = 'pages/projet-details.html?id=' + carte.getAttribute('data-id');
+                <img src="assets/competences/mysql.svg" alt="MySQL" width="48" height="48" loading="lazy">
+                <img src="assets/competences/postgresql.svg" alt="PostgreSQL" width="48" height="48" loading="lazy">
+                <img src="assets/competences/visual-studio-code.svg" alt="VS Code" width="48" height="48"
+                     loading="lazy">
+                <img src="assets/competences/visual-studio.svg" alt="Visual Studio" width="48" height="48"
+                     loading="lazy">
+                <img src="assets/competences/phpstorm.svg" alt="PhpStorm" width="48" height="48" loading="lazy">
+                <img src="assets/competences/xampp.svg" alt="XAMPP" width="48" height="48" loading="lazy">
+                <img src="assets/competences/mamp.svg" alt="MAMP" width="48" height="48" loading="lazy">
+                <img src="assets/competences/git.svg" alt="Git" width="48" height="48" loading="lazy">
+                <img src="assets/competences/github.svg" alt="GitHub" width="48" height="48" loading="lazy">
+                <img src="assets/competences/gitlab.svg" alt="GitLab" width="48" height="48" loading="lazy">
+                <img src="assets/competences/figma.svg" alt="Figma" width="48" height="48" loading="lazy">
+                <img src="assets/competences/canva.svg" alt="Canva" width="48" height="48" loading="lazy">
+                <img src="assets/competences/asana.svg" alt="Asana" width="48" height="48" loading="lazy">
+                <img src="assets/competences/jira.svg" alt="Jira" width="48" height="48" loading="lazy">
+                <img src="assets/competences/odoo.svg" alt="Odoo" width="48" height="48" loading="lazy">
+                <img src="assets/competences/docker.svg" alt="Docker" width="48" height="48" loading="lazy">
+                <img src="assets/competences/postman.svg" alt="Postman" width="48" height="48" loading="lazy">
+                <img src="assets/competences/looping.svg" alt="Looping" width="48" height="48" loading="lazy">
+                <img src="assets/competences/react.svg" alt="React Native" width="48" height="48" loading="lazy">
+                <img src="assets/competences/expo.svg" alt="Expo" width="48" height="48" loading="lazy">
+
+                <!-- Duplication pour boucle infinie -->
+                <img src="assets/competences/html.svg" alt="HTML" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/css.svg" alt="CSS" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/javascript.svg" alt="JavaScript" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/jquery.svg" alt="jQuery" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/react.svg" alt="React" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/php.svg" alt="PHP" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/nodejs.svg" alt="Node.js" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/python.svg" alt="Python" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/c-sharp.svg" alt="C#" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/xaml.svg" alt="XAML" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/mysql.svg" alt="MySQL" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/postgresql.svg" alt="PostgreSQL" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/visual-studio-code.svg" alt="VS Code" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/visual-studio.svg" alt="Visual Studio" width="48" height="48"
+                     loading="lazy" aria-hidden="true">
+                <img src="assets/competences/phpstorm.svg" alt="PhpStorm" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/xampp.svg" alt="XAMPP" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/mamp.svg" alt="MAMP" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/git.svg" alt="Git" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/github.svg" alt="GitHub" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/gitlab.svg" alt="GitLab" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/figma.svg" alt="Figma" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/canva.svg" alt="Canva" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/asana.svg" alt="Asana" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/jira.svg" alt="Jira" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/odoo.svg" alt="Odoo" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/docker.svg" alt="Docker" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/postman.svg" alt="Postman" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/looping.svg" alt="Looping" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/react.svg" alt="React Native" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+                <img src="assets/competences/expo.svg" alt="Expo" width="48" height="48" loading="lazy"
+                     aria-hidden="true">
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Lien JS -->
+<script src="js/animation-texte.js" defer></script>
+<script defer>
+    document.querySelectorAll('.apercu-projets-grid .card').forEach(function (carte) {
+        function naviguer() {
+            window.location.href = 'pages/projet-details.html?id=' + carte.getAttribute('data-id');
+        }
+
+        carte.addEventListener('click', naviguer);
+        carte.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                naviguer();
             }
-            carte.addEventListener('click', naviguer);
-            carte.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); naviguer(); }
-            });
         });
-    </script>
+    });
+</script>
 </body>
 
 </html>

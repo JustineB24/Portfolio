@@ -1,3 +1,7 @@
+// ==============================
+// animation-texte.js — Animation du texte tournant (page d'accueil)
+// ==============================
+
 class TexteRotatif {
     constructor(el, aRotationner, periode, reducedMotion) {
         this.aRotationner = aRotationner;
@@ -7,6 +11,8 @@ class TexteRotatif {
         this.txt = '';
         this.enSuppression = false;
         this.tickEnCours = false;
+        this.planifie = false;        // un tick est-il déjà planifié ?
+        this.dansViewport = true;     // l'élément est-il visible à l'écran ?
         this.enveloppe = document.createElement('span');
         this.enveloppe.className = 'wrap';
         this.enveloppe.setAttribute('aria-hidden', 'true');
@@ -25,7 +31,26 @@ class TexteRotatif {
             return;
         }
 
+        this.observerViewport();
         this.tick();
+    }
+
+    // Suspend la rotation quand le hero sort du viewport, la reprend au retour.
+    // Un seul observer/listener par instance : aucun empilement de listeners.
+    observerViewport() {
+        if (!('IntersectionObserver' in window)) return;
+        const self = this;
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                self.dansViewport = entry.isIntersecting;
+                // Reprendre uniquement si on redevient visible et qu'aucun tick
+                // n'est déjà planifié (évite les ticks en double).
+                if (self.dansViewport && !self.planifie && !document.hidden) {
+                    self.tick();
+                }
+            });
+        });
+        observer.observe(this.el);
     }
 
     tick() {
@@ -51,10 +76,18 @@ class TexteRotatif {
         }
 
         const self = this;
+        this.planifie = true;
         setTimeout(function () {
             self.tickEnCours = false;
+            self.planifie = false;
             if (document.hidden) {
-                document.addEventListener('visibilitychange', function () { self.tick(); }, {once: true});
+                // Onglet caché : reprendre au retour de visibilité (une seule fois)
+                document.addEventListener('visibilitychange', function () {
+                    self.tick();
+                }, {once: true});
+            } else if (!self.dansViewport) {
+                // Hero hors viewport : la reprise est gérée par l'IntersectionObserver
+                return;
             } else {
                 self.tick();
             }

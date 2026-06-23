@@ -1,3 +1,7 @@
+/* ==============================
+   404.css — Page 404 : illustration glitch + particules
+   ============================== */
+
 /* ── Conteneur principal ── */
 .erreur-404 {
     display: flex;
@@ -17,9 +21,8 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image:
-        linear-gradient(var(--primary-color) 1px, transparent 1px),
-        linear-gradient(90deg, var(--primary-color) 1px, transparent 1px);
+    background-image: linear-gradient(var(--primary-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--primary-color) 1px, transparent 1px);
     background-size: 60px 60px;
     opacity: 0.04;
     pointer-events: none;
@@ -110,12 +113,29 @@
 }
 
 /* Décalage de timing par chiffre */
-.glitch-chiffre:nth-child(1)::before { animation-delay: 0s; }
-.glitch-chiffre:nth-child(1)::after { animation-delay: 0.15s; }
-.glitch-chiffre:nth-child(2)::before { animation-delay: 0.3s; }
-.glitch-chiffre:nth-child(2)::after { animation-delay: 0.05s; }
-.glitch-chiffre:nth-child(3)::before { animation-delay: 0.1s; }
-.glitch-chiffre:nth-child(3)::after { animation-delay: 0.25s; }
+.glitch-chiffre:nth-child(1)::before {
+    animation-delay: 0s;
+}
+
+.glitch-chiffre:nth-child(1)::after {
+    animation-delay: 0.15s;
+}
+
+.glitch-chiffre:nth-child(2)::before {
+    animation-delay: 0.3s;
+}
+
+.glitch-chiffre:nth-child(2)::after {
+    animation-delay: 0.05s;
+}
+
+.glitch-chiffre:nth-child(3)::before {
+    animation-delay: 0.1s;
+}
+
+.glitch-chiffre:nth-child(3)::after {
+    animation-delay: 0.25s;
+}
 
 /* Tremblement global du titre */
 .glitch-titre {
@@ -221,17 +241,6 @@
     opacity: 0.8;
 }
 
-.erreur-sous-texte {
-    font-family: "Courier New", monospace;
-    font-size: 0.9rem !important;
-    opacity: 0.5 !important;
-    letter-spacing: 0.03em;
-    padding: 0.4rem 1rem;
-    border-left: 2px solid var(--primary-color);
-    margin-top: 0.5rem;
-    text-align: left;
-}
-
 /* ── Bouton retour — même style que .btn-cv ── */
 .btn-accueil {
     display: inline-flex;
@@ -292,8 +301,12 @@
         transform: translateY(0) rotate(0deg);
         opacity: 0;
     }
-    5% { opacity: 0.12; }
-    95% { opacity: 0.12; }
+    5% {
+        opacity: 0.12;
+    }
+    95% {
+        opacity: 0.12;
+    }
     100% {
         transform: translateY(-100vh) rotate(15deg);
         opacity: 0;

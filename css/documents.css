@@ -1,6 +1,6 @@
-/* ============================== */
-/*   Page BTS SIO                 */
-/* ============================== */
+/* ==============================
+   documents.css — Page BTS SIO : spécialités + carte du tableau de synthèse
+   ============================== */
 
 /* ---- Sections ---- */
 .bts-specialites-section,
@@ -171,6 +171,14 @@
     margin-bottom: 2rem;
     border-left: 5px solid var(--primary-color);
     transition: box-shadow 0.3s, transform 0.3s;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.bts-doc-infos {
+    min-width: 0;
 }
 
 .bts-doc-card:hover {
@@ -191,7 +199,7 @@
     align-items: center;
     gap: 0.4rem;
     background: var(--primary-color);
-    color: var(--button-text-color);
+    color: var(--header-text-color);
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 1px;
@@ -203,8 +211,7 @@
 .bts-doc-session {
     font-size: 0.82rem;
     font-weight: 600;
-    color: var(--text-color);
-    opacity: 0.6;
+    color: var(--text-muted);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -295,52 +302,62 @@
     box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.25);
 }
 
-/* ---- Viewer PDF ---- */
-.bts-pdf-viewer {
-    background: var(--card-background);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    margin-bottom: 3rem;
-}
-
-.bts-pdf-header {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 1.2rem;
-    color: var(--primary-color);
-}
-
-.bts-pdf-header i {
-    font-size: 1rem;
-    opacity: 0.7;
-}
-
-.bts-pdf-header h3 {
-    margin: 0;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-transform: none;
-}
-
-.pdf-container {
-    background: var(--background-color);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    min-height: 600px;
-    border: 2px solid transparent;
-    transition: border-color 0.3s;
-}
-
-.pdf-container:hover {
-    border-color: var(--primary-color);
-}
-
-.pdf-container iframe {
+/* Aperçu image cliquable (1ʳᵉ page) → ouvre le vrai PDF */
+.pdf-apercu {
+    display: block;
+    position: relative;
     width: 100%;
-    height: 600px;
-    border: none;
+    max-height: 440px;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    border: 2px solid transparent;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.pdf-apercu img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Fondu en bas : suggère qu'il y a plus de contenu */
+.pdf-apercu::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 130px;
+    background: linear-gradient(to bottom, transparent, var(--card-background));
+    pointer-events: none;
+}
+
+.pdf-apercu-overlay {
+    position: absolute;
+    left: 50%;
+    bottom: 1.2rem;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    background: var(--primary-color);
+    color: var(--header-text-color);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pdf-apercu:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+}
+
+.pdf-apercu:hover .pdf-apercu-overlay {
+    transform: translateX(-50%) translateY(-3px);
+    box-shadow: var(--shadow-primary);
 }
 
 
@@ -363,12 +380,8 @@
         justify-content: center;
     }
 
-    .pdf-container iframe {
-        height: 500px;
-    }
-
-    .pdf-container {
-        min-height: 500px;
+    .pdf-apercu {
+        max-height: 460px;
     }
 }
 
@@ -385,6 +398,8 @@
     }
 
     .bts-doc-card {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
         padding: 1.5rem;
     }
 
@@ -399,16 +414,8 @@
         padding: 0.7rem 1.2rem;
     }
 
-    .bts-pdf-viewer {
-        padding: 1.2rem;
-    }
-
-    .pdf-container iframe {
-        height: 400px;
-    }
-
-    .pdf-container {
-        min-height: 400px;
+    .pdf-apercu {
+        max-height: 400px;
     }
 }
 
@@ -441,16 +448,8 @@
         padding: 0.6rem 1rem;
     }
 
-    .bts-pdf-viewer {
-        padding: 1rem;
-    }
-
-    .pdf-container iframe {
-        height: 300px;
-    }
-
-    .pdf-container {
-        min-height: 300px;
+    .pdf-apercu {
+        max-height: 340px;
     }
 }
 

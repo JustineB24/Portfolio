@@ -1,7 +1,11 @@
+// ==============================
+// projet.js — Cartes projet : navigation vers la page détail
+// ==============================
+
 // Navigation vers les détails du projet
 document.querySelectorAll('.card').forEach(carte => {
     carte.setAttribute('tabindex', '0');
-    carte.setAttribute('role', 'button');
+    carte.setAttribute('role', 'link');
 
     function naviguer() {
         const projetId = carte.getAttribute('data-id');

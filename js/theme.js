@@ -1,5 +1,10 @@
+// ==============================
+// theme.js — Thème sombre/clair : toggle + persistance localStorage
+// ==============================
+
 // Sélectionne les éléments nécessaires
 const boutonBascule = document.querySelector('.theme-switch__checkbox');
+const body = document.body;
 const classeModeObscur = 'dark-theme';
 
 if (boutonBascule) {

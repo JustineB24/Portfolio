@@ -1,3 +1,7 @@
+// ==============================
+// contact.js — Formulaire de contact : validation + ouverture mailto
+// ==============================
+
 (function () {
     // Formulaire de contact
     const formulaireContact = document.getElementById('contact-form');

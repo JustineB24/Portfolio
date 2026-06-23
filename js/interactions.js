@@ -1,5 +1,5 @@
 // ==============================
-// Compteurs animés (page d'accueil)
+// interactions.js — Compteurs animés, temps de lecture, marquee de l'accueil
 // ==============================
 
 (function () {
@@ -35,28 +35,6 @@
     compteurs.forEach(function (c) {
         observer.observe(c);
     });
-})();
-
-
-
-// ==============================
-// Micro-interactions sur les icônes
-// ==============================
-
-(function () {
-    // Bounce sur les icônes des headers de documents
-    const iconesEntete = document.querySelectorAll('.document-header i');
-    iconesEntete.forEach(function (icon) {
-        icon.classList.add('header-icon-transition');
-        icon.parentElement.addEventListener('mouseenter', function () {
-            icon.style.transform = 'scale(1.2) rotate(5deg)';
-        });
-        icon.parentElement.addEventListener('mouseleave', function () {
-            icon.style.transform = '';
-        });
-    });
-
-    // Scale sur les boutons réseaux sociaux — transition définie dans global.css
 })();
 
 
@@ -106,8 +84,13 @@
     h1.textContent = '';
     if (icone) {
         h1.appendChild(icone);
-        h1.appendChild(document.createTextNode(' '));
     }
+
+    // Conteneur unique pour le texte animé : évite que le `gap` flex du h1
+    // ne s'applique entre chaque mot (l'espacement des mots est géré par .letter-space)
+    const conteneurTitre = document.createElement('span');
+    conteneurTitre.classList.add('titre-anime');
+    h1.appendChild(conteneurTitre);
 
     const mots = texte.split(' ');
     let index = 0;
@@ -122,30 +105,63 @@
             wordSpan.appendChild(span);
             index++;
         }
-        h1.appendChild(wordSpan);
+        conteneurTitre.appendChild(wordSpan);
         if (m < mots.length - 1) {
             const space = document.createElement('span');
             space.textContent = ' ';
             space.classList.add('letter-reveal', 'letter-space');
             space.style.animationDelay = (index * 0.03) + 's';
-            h1.appendChild(space);
+            conteneurTitre.appendChild(space);
             index++;
         }
     });
 })();
 
 // ==============================
-// Pause marquee hors viewport (PERF)
+// Marquee compétences : pause (hors viewport + survol) + nom au survol
 // ==============================
 
 (function () {
+    const marquee = document.querySelector('.marquee');
     const marqueeTrack = document.querySelector('.marquee-track');
     if (!marqueeTrack) return;
 
+    // Envelopper chaque logo pour afficher son nom (alt) au survol
+    marqueeTrack.querySelectorAll('img').forEach(function (img) {
+        const item = document.createElement('span');
+        item.className = 'techno-item';
+        item.dataset.nom = img.getAttribute('alt') || '';
+        if (img.getAttribute('aria-hidden') === 'true') {
+            item.setAttribute('aria-hidden', 'true');
+        }
+        img.parentNode.insertBefore(item, img);
+        item.appendChild(img);
+    });
+
+    let visible = true;
+    let survol = false;
+
+    function majAnimation() {
+        // Le défilement tourne uniquement s'il est visible ET non survolé
+        marqueeTrack.style.animationPlayState = (visible && !survol) ? 'running' : 'paused';
+    }
+
     const observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-            marqueeTrack.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+            visible = entry.isIntersecting;
+            majAnimation();
         });
     });
     observer.observe(marqueeTrack);
+
+    if (marquee) {
+        marquee.addEventListener('mouseenter', function () {
+            survol = true;
+            majAnimation();
+        });
+        marquee.addEventListener('mouseleave', function () {
+            survol = false;
+            majAnimation();
+        });
+    }
 })();

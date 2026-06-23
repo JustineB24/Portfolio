@@ -1,4 +1,8 @@
 /* ==============================
+   accueil.css — Page d'accueil : hero, compteurs, qui-suis-je, marquee
+   ============================== */
+
+/* ==============================
    Hero plein écran
    ============================== */
 .hero {
@@ -334,7 +338,7 @@
 
 .marquee {
     overflow: hidden;
-    padding: 1rem 0;
+    padding: 1rem 0 2.75rem;
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
@@ -347,6 +351,38 @@
     animation: marquee-scroll 30s linear infinite;
 }
 
+/* Conteneur d'un logo : permet d'afficher le nom au survol */
+.techno-item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.techno-item::after {
+    content: attr(data-nom);
+    position: absolute;
+    top: calc(100% + 0.4rem);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    white-space: nowrap;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-color);
+    background: var(--card-background);
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+}
+
+.techno-item:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
 .marquee-track img {
     width: 48px;
     height: 48px;
@@ -355,7 +391,7 @@
     flex-shrink: 0;
 }
 
-.marquee-track img:hover {
+.techno-item:hover img {
     opacity: 1;
     transform: scale(1.15);
 }

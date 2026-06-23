@@ -14,13 +14,14 @@ _Aucune amélioration en attente._
 
 ## ✅ Améliorations en place
 
-### ✅ 1. Typographie Raleway (global)
+### ✅ 1. Typographie Inter + Raleway (global)
 
-- **`@import` Google Fonts** (Raleway 400/600/700/800) ajouté dans `css/global.css`
-- **`font-family: 'Raleway', sans-serif`** appliqué sur `html, body` (fallback `sans-serif` conservé)
+- **Inter** pour le corps de texte, **Raleway** pour les titres et la navbar, via les variables `--font-corps` et
+  `--font-titre` (plus de `@import` Google Fonts)
+- **Polices self-hébergées** (woff2 latin + latin-ext) dans `assets/fonts/google/` avec un `fonts.css` local — aucun
+  appel à Google Fonts (conformité RGPD)
 - **Titres `h1`, `h2`, `h3`** : `font-weight: 800`, `text-transform: uppercase`, `letter-spacing: 2px`
 - **`h4`** : `font-weight: 700`
-- `font-family: sans-serif` redondant supprimé de `.titre-nom`
 
 ### ✅ 2. Refonte page d'accueil
 
@@ -56,7 +57,11 @@ _Aucune amélioration en attente._
 - **Face arrière** : gradient/couleur exacte du logo de chaque techno (pas de rouge générique)
     - Gradients multi-couleurs pour les logos multi-tons (MySQL, GitLab, Figma, Python, PhpStorm, etc.)
     - Texte blanc avec `text-shadow` pour lisibilité, texte noir sur fond jaune (JavaScript)
-- **27 compétences** réparties en Langages (12) et Outils (15), classées par catégorie logique
+- **31 compétences** réparties en Langages (13) et Outils (18), classées par catégorie logique
+- **Ajout de React Native** (langage, même couleur que React) et **Expo** (outil, logo officiel local
+  `assets/competences/expo.svg`, inversé en blanc en mode sombre comme GitHub)
+- **Séparateurs `<hr>` pointillés** entre les 3 blocs
+- **Hiérarchie de titres** : titre de page `<h1>` "Compétences" + "Certifications" en `<h2>`
 - **Labels texte** sous chaque icône
 - **Grille CSS** : `grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))`
 
@@ -99,13 +104,18 @@ _Aucune amélioration en attente._
 
 ### ✅ 10. Page Veille technologique
 
-- **Bandeau meta** : temps de lecture (calculé automatiquement ~200 mots/min) + période (2024-2025) en pills côte à côte
-- **Sommaire** : numéros dans des pastilles rondes avec contour rouge, remplissage au hover, texte en gras au hover
-- **Section "Qu'est-ce que c'est"** intégrée à côté du sommaire (logo + titre + description)
+- **Restructuration complète** via un nouveau `js/veille.js`
+- **Sommaire latéral collant** (sticky) pleine hauteur à gauche, avec **scroll-spy** : le lien de la section courante
+  est surligné (état actif rouge, cercles numérotés) et la liste défile pour le suivre
+- **Sections repliables** (accordéon, dépliées par défaut, titres alignés à gauche avec chevron) ; "Qu'est-ce que
+  c'est" est devenue la 1re section repliable (logo inclus)
+- **Colonne de lecture** : paragraphes alignés à gauche, `max-width: 720px`, `line-height: 1.7` (au lieu de centrés
+  pleine largeur)
+- **Correction technique** : `overflow-x: hidden` déplacé de `body` vers `html` (réparait le sticky)
+- **Corrections factuelles** : tableau Concurrents (ODROID série H en x86, Banana Pi certains modèles 10G, Jetson
+  jusqu'à 67 TOPS ex. Orin Nano), GASPACS (université d'État de l'Utah, Raspberry Pi Zero), phrase Sony reformulée,
+  lien "Satellite" → cubesatsim.org (AMSAT)
 - **Titres h2** : `border-bottom` gradient rouge → noir (spécifique à la page veille)
-- **Innovations** : cartes en ligne avec bordure rouge à gauche, titre en rouge, date en uppercase, description
-- **Image évolution** : pleine largeur (`max-width: 100%`)
-- **Tableau comparatif** : espacement caption/tableau corrigé
 - **Liens sources** : plus de double underline au hover
 
 ### ✅ 11. Mentions légales
@@ -230,6 +240,58 @@ _Aucune amélioration en attente._
 - Tous les fichiers SVG renommés en noms courts (`asana.svg`, `figma.svg`, etc.)
 - Ordre logique : front-end → back-end → BDD → IDE → serveurs → versioning → design → gestion projet
 
+### ✅ 38. Polices self-hébergées (RGPD)
+
+- **Inter + Raleway** téléchargées en local (woff2 latin + latin-ext) dans `assets/fonts/google/` avec un `fonts.css`
+  local — plus aucun appel à Google Fonts
+- **Font Awesome 6.7.2** (version stable) self-hébergé dans `assets/fonts/fa/` (`css/all.min.css` + webfonts
+  solid/brands) — plus de CDN cdnjs, plus de `preconnect`, plus de version beta3
+- `structure-globale.js` charge les CSS locaux ; conformité RGPD (aucune requête tierce)
+
+### ✅ 39. Thème adouci (couleurs cassées)
+
+- Plus de blanc/noir purs : clair fond `#fafafa` / texte `#1a1a1a` / card `#e8eaf1` (gris légèrement froid) ; sombre
+  fond `#121212` / texte `#e6e6e6` / card `#23242b`
+- **`--text-muted`** (`#595959` clair / `#9e9e9e` sombre, conforme WCAG AA) pour les textes secondaires
+- **`--header-text-color`** (`#fafafa`) : le texte du header rouge (titre, onglets, burger, icônes réseaux) ne
+  s'inverse jamais entre les thèmes
+- Variables `--font-titre` (Raleway) et `--font-corps` (Inter)
+- Bug `theme.js` corrigé (`const body = document.body`) ; `.dark-theme` posé sur `<html>` ET `<body>`
+
+### ✅ 40. Accessibilité renforcée
+
+- `--text-muted` (WCAG AA) remplace les `opacity` 0.55/0.6 sur les textes secondaires (labels contact, note champs
+  obligatoires, "session 2025")
+- Cartes projets : `role="button"` → `role="link"` (navigation)
+- `aria-hidden` ajouté sur l'icône flèche retour de projet-details
+- Texte du header non inversé (lisibilité garantie dans les deux thèmes)
+
+### ✅ 41. Page Documents / BTS — aperçu image
+
+- L'aperçu PDF (iframe pdf.js) a été remplacé par une **image statique cliquable**
+  (`assets/bts/apercu-tableau-synthese.png`) qui ouvre le PDF
+- Carte description et aperçu **fusionnés** en une seule carte 2 colonnes
+- `js/documents.js` supprimé ; styles `.pdf-skeleton` / `.pdf-container` et keyframe `skeleton-shimmer` retirés de
+  `global.css` (pdf.js n'est plus utilisé)
+
+### ✅ 42. Profil / accueil intemporels
+
+- Profil de la page À propos, bloc "Qui suis-je" de l'accueil (enrichi), meta description + og:description et JSON-LD
+  rendus intemporels (plus de mention d'une formation précise) — plus besoin de les modifier à chaque changement
+  d'études
+
+### ✅ 43. Page Projets — tri et dates
+
+- Projets réordonnés du plus récent au plus ancien
+- Dates corrigées (Générateur de mots de passe = "Septembre 2024", Application météo = "Septembre — Octobre 2024",
+  YABT = "Novembre 2025 — en cours")
+- YABT affiché en entier "Yet Another Blind Test" sur les cartes ; "un stage" → "le/du stage"
+
+### ✅ 44. Marquee accueil — pause + nom au survol
+
+- Le bandeau des technos se met en pause au survol et affiche le nom de la techno sous le logo
+  (`interactions.js` + `.techno-item`)
+
 ---
 
 ## ✅ Easter eggs actifs
@@ -240,11 +302,6 @@ _Aucune amélioration en attente._
 - **Effet** : Glitch visuel (hue-rotate + tremblement) suivi d'une notification "Achievement Unlocked" style arcade avec
   trophée animé, barre de progression et disparition automatique après 4 secondes
 
-### Mode disco
-
-- **Déclencheur** : Taper "disco" au clavier
-- **Effet** : Le fond du site change de couleur en boucle, les éléments rebondissent (5 secondes)
-
 ### Mode terminal
 
 - **Déclencheur** : Taper "terminal" au clavier
@@ -253,7 +310,8 @@ _Aucune amélioration en attente._
 ### Big Bang temporel
 
 - **Déclencheur** : Cliquer sur l'année dans le footer
-- **Effet** : L'année recule jusqu'à 0 avec accélération + tremblement, explosion de particules (flash + 30 symboles projetés), emoji 💥, puis remontée rapide vers l'année actuelle avec modale "Big Bang temporel !"
+- **Effet** : L'année recule jusqu'à 0 avec accélération + tremblement, explosion de particules (flash + 30 symboles
+  projetés), emoji 💥, puis remontée rapide vers l'année actuelle avec modale "Big Bang temporel !"
 
 ### Snake
 
@@ -275,11 +333,6 @@ _Aucune amélioration en attente._
 - **Déclencheur** : Taper "matrix" au clavier
 - **Effet** : Pluie de caractères verts style Matrix en plein écran (8 secondes)
 
-### Barrel Roll
-
-- **Déclencheur** : Taper "roll" au clavier
-- **Effet** : Le site entier fait une rotation 360° fluide (1.5 secondes)
-
 ### Mode 90's
 
 - **Déclencheur** : Taper "90s" au clavier
@@ -288,15 +341,8 @@ _Aucune amélioration en attente._
 
 ### Secouer le téléphone (mobile)
 
-- **Déclencheur** : Secouer le téléphone 3 fois
-- **Effet** : Lance un easter egg visuel aléatoire parmi disco, gravité, barrel roll ou rainbow
-
-### Mode présentation
-
-- **Déclencheur** : Taper "present" au clavier
-- **Effet** : Transforme les sections de la page courante en slides plein écran avec fond sombre. Navigation par
-  flèches gauche/droite, Espace, dots cliquables, Home/End. Barre de progression en haut, compteur de slides,
-  bouton Échap pour quitter
+- **Déclencheur** : Secouer le téléphone 3 fois (uniquement sur appareils tactiles, `pointer: coarse`)
+- **Effet** : Lance l'easter egg arc-en-ciel (rainbow)
 
 ### Fonction `easterEggs()` dans la console
 
@@ -306,6 +352,25 @@ _Aucune amélioration en attente._
 ---
 
 ## ❌ Refusés / retirés
+
+### ❌ Mode disco (easter egg)
+
+- **Solution** : Taper "disco" au clavier pour faire changer le fond de couleur en boucle et faire rebondir les
+  éléments.
+- **Gain** : Effet visuel fun.
+- **Raison du retrait** : Risque d'épilepsie (flashs colorés rapides) et pas esthétique.
+
+### ❌ Barrel Roll (easter egg)
+
+- **Solution** : Taper "roll" au clavier pour faire pivoter le site de 360°.
+- **Gain** : Clin d'œil à l'easter egg Google.
+- **Raison du retrait** : Jugé superflu.
+
+### ❌ Mode présentation (easter egg)
+
+- **Solution** : Taper "present" au clavier pour transformer les sections en slides plein écran navigables.
+- **Gain** : Mode démonstration du portfolio.
+- **Raison du retrait** : Jugé superflu.
 
 ### ❌ Barre de progression au scroll
 
@@ -366,12 +431,6 @@ _Aucune amélioration en attente._
 - **Solution** : Barre de progression en haut de la page qui se remplit au scroll.
 - **Gain** : Repère visuel pour les longues pages.
 - **Raison du refus** : Jugé inutile.
-
-### ❌ Self-hosting de Font Awesome
-
-- **Solution** : Télécharger les icônes utilisées et les héberger localement.
-- **Gain** : Suppression de la dépendance au CDN, chargement plus rapide.
-- **Raison du refus** : Trop d'effort pour un gain minime, le CDN avec preconnect suffit.
 
 ### ❌ Minification des CSS et JS
 

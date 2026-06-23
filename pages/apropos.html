@@ -9,16 +9,16 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description"
-          content="Parcours et expériences de Justine BLIN, étudiante en Bachelor Développement & IA.">
+          content="Parcours et expériences de Justine BLIN, étudiante en Bachelor Développement &amp; IA.">
     <meta name="author" content="Justine BLIN">
     <meta name="theme-color" content="#a90000">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Portfolio | À propos">
     <meta property="og:description"
-          content="Parcours et expériences de Justine BLIN, étudiante en Bachelor Développement & IA.">
+          content="Parcours et expériences de Justine BLIN, étudiante en Bachelor Développement &amp; IA.">
     <meta property="og:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
     <meta property="og:url" content="https://justineb24.github.io/Portfolio/pages/apropos.html">
     <meta property="og:locale" content="fr_FR">
@@ -28,9 +28,11 @@
           content="Parcours et expériences de Justine BLIN, étudiante en Bachelor Développement &amp; IA.">
     <meta name="twitter:image" content="https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png">
     <link rel="icon" type="image/png" href="../assets/Logo_portfolio.png">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    <link rel="stylesheet" href="../assets/fonts/fa/css/all.min.css"
           media="print" onload="this.media='all'">
+    <link rel="preload" href="../assets/fonts/google/raleway-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/google/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../assets/fonts/google/fonts.css">
     <link rel="stylesheet" href="../css/global.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/theme.css" media="all" type="text/css">
     <link rel="stylesheet" href="../css/apropos.css" media="all" type="text/css">
@@ -45,21 +47,24 @@
 </head>
 
 <body>
-<div class="loader"><img class="loader-logo" src="../assets/Logo_portfolio.png" alt="Chargement" width="80" height="80">
+<div class="loader">
+    <picture>
+        <source srcset="../assets/Logo_portfolio.webp" type="image/webp">
+        <img class="loader-logo" src="../assets/Logo_portfolio.png" alt="Chargement" width="500" height="500"></picture>
 </div>
 <!-- Contenu principal -->
 <main id="main">
     <h1><i class="fas fa-user" aria-hidden="true"></i> Profil</h1>
 
     <div>
-        <p class="profil">Actuellement étudiante en Bachelor Chef de Projet Développement et IA, à La Manu à
-            Lacroix-Saint-Ouen, je me spécialise dans le développement d'applications et la gestion de projets
-            informatiques. Passionnée par la technologie et la création d'outils numériques, j'ai choisi cette
-            filière pour
-            approfondir mes compétences techniques et découvrir les bonnes pratiques du développement logiciel.
+        <p class="profil">Développeuse passionnée par la création d'outils numériques, je me spécialise dans le
+            développement d'applications et la gestion de projets informatiques. Curieuse et rigoureuse, j'aime
+            concevoir des solutions concrètes, approfondir mes compétences techniques et appliquer les bonnes
+            pratiques du développement logiciel.
         </p>
 
-        <a href="../cv_blin_justine.pdf" download class="btn-cv"><i class="fas fa-file-arrow-down" aria-hidden="true"></i> Télécharger mon CV</a>
+        <a href="../cv_blin_justine.pdf" download class="btn-cv"><i class="fas fa-file-arrow-down"
+                                                                    aria-hidden="true"></i> Télécharger mon CV</a>
     </div>
 
     <hr>
@@ -68,11 +73,12 @@
     <div class="timeline-container">
         <section class="timeline">
             <h3>Cursus scolaire</h3>
-            <a class="timeline-item timeline-link timeline-current" href="https://lamanu.fr/" target="_blank" rel="noopener noreferrer">
+            <a class="timeline-item timeline-link timeline-current" href="https://lamanu.fr/" target="_blank"
+               rel="noopener noreferrer">
                 <div class="timeline-content">
                     <p class="timeline-date">2025 - 2026</p>
                     <h4>Bachelor spécialité Développement & IA</h4>
-                    <p>La Manu, Lacroix-Saint-Ouen 60610</p>
+                    <p>La Manu,<br>Lacroix-Saint-Ouen 60610</p>
                 </div>
             </a>
 
@@ -82,7 +88,7 @@
                 <div class="timeline-content">
                     <p class="timeline-date">2023 - 2025</p>
                     <h4>BTS SIO - SLAM</h4>
-                    <p>Lycée Édouard Gand, Amiens 80000</p>
+                    <p>Lycée Édouard Gand,<br>Amiens 80000</p>
                 </div>
             </a>
 
@@ -91,7 +97,7 @@
                 <div class="timeline-content">
                     <p class="timeline-date">2020 - 2023</p>
                     <h4>Baccalauréat Général (Maths, NSI)</h4>
-                    <p>Lycée Marie Curie, Nogent-sur-Oise 60180</p>
+                    <p>Lycée Marie Curie,<br>Nogent-sur-Oise 60180</p>
                 </div>
             </a>
 
@@ -100,7 +106,7 @@
                 <div class="timeline-content">
                     <p class="timeline-date">2016 - 2020</p>
                     <h4>Diplôme National du Brevet</h4>
-                    <p>Collège Simone Veil, Cauffry 60290</p>
+                    <p>Collège Simone Veil,<br>Cauffry 60290</p>
                 </div>
             </a>
         </section>
@@ -116,7 +122,8 @@
                     <p>Actuellement en alternance chez Litesoft dans le cadre de mon Bachelor Développement et IA, je
                         travaille sur un projet de gestion commerciale pour un client, en full stack (front-end et
                         back-end). Cette expérience me permet de mettre en pratique les compétences acquises durant ma
-                        formation, tout en continuant à apprendre et à évoluer chaque jour dans le développement web.</p>
+                        formation, tout en continuant à apprendre et à évoluer chaque jour dans le développement
+                        web.</p>
                 </div>
             </a>
 
@@ -133,7 +140,7 @@
                 <div class="timeline-content">
                     <p class="timeline-date">Mai - Juin 2024</p>
                     <h4>Mairie de Cauffry</h4>
-                    <p>Réalisation d'un site web pour la commune de Cauffry dans le cadre d'un stage de 4 semaines avec
+                    <p>Réalisation d'un site web pour la commune de Cauffry dans le cadre du stage de 4 semaines avec
                         Adico (Association pour le développement et l'innovation numérique des collectivités).</p>
                 </div>
             </a>

@@ -1,3 +1,7 @@
+/* ==============================
+   mentions-legales.css — Page mentions légales
+   ============================== */
+
 main p,
 main a {
     color: var(--text-color);
@@ -6,6 +10,12 @@ main a {
 main section {
     max-width: 700px;
     margin: 0 auto;
+}
+
+/* Paragraphes alignés à gauche pour une lecture confortable (titres restent centrés) */
+main section p {
+    text-align: left;
+    line-height: 1.7;
 }
 
 main section h2 {

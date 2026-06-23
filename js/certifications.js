@@ -1,3 +1,7 @@
+// ==============================
+// certifications.js — Galerie de certifications : modale + navigation clavier
+// ==============================
+
 (function () {
     const images = document.querySelectorAll(".gallery .certif");
     let indexActuel = 0;
@@ -13,6 +17,12 @@
     const imgModale = document.getElementById("zoom-modal-img");
     const dotsContainer = document.getElementById("zoom-dots");
     const counter = document.getElementById("zoom-counter");
+
+    // Garde précoce : sans éléments essentiels de la modale ou sans image de
+    // certification (galerie vide), inutile d'initialiser le carrousel.
+    if (!images.length || !modal || !imgModale || !dotsContainer || !counter) {
+        return;
+    }
 
     // Créer les dots
     images.forEach(function (_, i) {
@@ -45,11 +55,18 @@
         counter.textContent = (indexActuel + 1) + " / " + images.length;
     }
 
+    // Met à jour l'aria-label du dialog avec le nom de la certification courante
+    function majAriaLabelModale() {
+        const nom = images[indexActuel].alt;
+        modal.setAttribute("aria-label", nom ? "Image agrandie : " + nom : "Image agrandie");
+    }
+
     // Aller à une image spécifique
     function allerAImage(index) {
         indexActuel = (index + images.length) % images.length;
         imgModale.src = obtenirSrcWebp(images[indexActuel]);
         imgModale.alt = images[indexActuel].alt;
+        majAriaLabelModale();
         mettreAJourIndicateurs();
     }
 
@@ -59,6 +76,7 @@
         indexActuel = Array.from(images).indexOf(img);
         imgModale.src = obtenirSrcWebp(img);
         imgModale.alt = img.alt;
+        majAriaLabelModale();
         modal.classList.add("visible");
         document.documentElement.classList.add("overflow-hidden");
         mettreAJourIndicateurs();
@@ -90,12 +108,18 @@
     });
 
     // Navigation
-    document.getElementById("next").addEventListener("click", function () {
-        allerAImage(indexActuel + 1);
-    });
-    document.getElementById("prev").addEventListener("click", function () {
-        allerAImage(indexActuel - 1);
-    });
+    const boutonSuivant = document.getElementById("zoom-next");
+    const boutonPrecedent = document.getElementById("zoom-prev");
+    if (boutonSuivant) {
+        boutonSuivant.addEventListener("click", function () {
+            allerAImage(indexActuel + 1);
+        });
+    }
+    if (boutonPrecedent) {
+        boutonPrecedent.addEventListener("click", function () {
+            allerAImage(indexActuel - 1);
+        });
+    }
 
     // Fermeture
     document.getElementById("zoom-close").addEventListener("click", fermerModale);

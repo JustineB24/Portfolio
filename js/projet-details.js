@@ -1,3 +1,7 @@
+// ==============================
+// projet-details.js — Détails d'un projet : données, carrousel, modale
+// ==============================
+
 // Récupérer l'ID du projet depuis l'URL (lettres, chiffres et tirets uniquement)
 const urlParams = new URLSearchParams(window.location.search);
 const rawId = urlParams.get("id");
@@ -7,7 +11,7 @@ const projetId = rawId && /^[a-z0-9-]+$/.test(rawId) ? rawId : null;
 const projets = {
     "yabt": {
         title: "YABT — Yet Another Blind Test",
-        date: "2025 — en cours",
+        date: "Novembre 2025 — en cours",
         images: [
             "../assets/projets/yabt/Logo.png",
             "../assets/projets/yabt/Mascotte.png",
@@ -93,7 +97,7 @@ const projets = {
             "../assets/projets/france_mobilier/AjoutMagasin.png"
         ],
         description: "Site e-commerce développé pour la société France Mobilier, spécialisée dans le mobilier d'intérieur. Conçu selon l'architecture MVC, il propose une page d'accueil présentant l'entreprise, un module de recherche de meubles par catégorie, ainsi qu'une page listant l'ensemble des magasins physiques. Le projet utilise une base de données pour gérer dynamiquement les meubles et les points de vente. Un panneau d'administration est également prévu pour permettre la modification des produits et des magasins. L'interface est pensée pour être claire et facilement maintenable.",
-        technologies: ["HTML", "CSS", "PHP", "C#", "MYSQL"]
+        technologies: ["HTML", "CSS", "PHP", "C#", "MySQL"]
     },
     "sio-shop": {
         title: "Sio Shop",
@@ -117,7 +121,7 @@ const projets = {
             "../assets/projets/sio_shop/AjoutEmploye.png"
         ],
         description: "Application de gestion commerciale développée sous Windows Forms pour une concession automobile. Ce projet propose une interface permettant aux employés de gérer les clients, les véhicules en stock et les ventes. L'application intègre une authentification sécurisée, une liaison directe avec une base de données SQL, ainsi qu'un module de création de factures au format PDF. Les utilisateurs peuvent rechercher, ajouter et modifier clients et produits, saisir des ventes avec calcul automatique du prix TTC, et suivre l'évolution des stocks en temps réel. La structure suit les principes de la programmation orientée objet, en assurant une navigation fluide et professionnelle entre les différentes fonctionnalités.",
-        technologies: ["WinForms", "C#", "MYSQL"]
+        technologies: ["WinForms", "C#", "MySQL"]
     },
     "speedcubing": {
         title: "Speedcubing",
@@ -130,18 +134,18 @@ const projets = {
             "../assets/projets/speedcubing/Connexion.png"
         ],
         description: "Projet développé pour l'Association Française de SpeedCubing. Ce site permet aux passionnés de Rubik's Cube de s'entraîner en ligne, d'enregistrer leurs temps et de comparer leurs performances avec celles des autres. Il intègre un chronomètre interactif, une base de données des meilleurs temps et une section dédiée à la résolution d'un Rubik's Cube 3x3.",
-        technologies: ["PHP", "CSS", "JavaScript", "MYSQL"]
+        technologies: ["PHP", "CSS", "JavaScript", "MySQL"]
     },
     "meteo": {
         title: "Application météo",
-        date: "Septembre 2024",
+        date: "Septembre — Octobre 2024",
         images: ["../assets/projets/meteo/Meteo.png"],
         description: "Application web développée pour afficher en temps réel les conditions météorologiques d'une ville choisie par l'utilisateur. En utilisant l'API OpenWeather, ce projet permet de consulter la température actuelle, l'humidité ainsi qu'une description du temps (ensoleillé, nuageux, etc.). L'interface propose une zone de recherche, un affichage centralisé des données principales, et un design épuré avec fond personnalisé. Le JavaScript assure la récupération dynamique des données météo et la mise à jour instantanée de l'affichage après chaque recherche.",
         technologies: ["HTML", "CSS", "JavaScript"]
     },
     "generateur-mdp": {
         title: "Générateur de mots de passe",
-        date: "Septembre — Octobre 2024",
+        date: "Septembre 2024",
         images: ["../assets/projets/generateur_mdp/Generateur_mdp.png"],
         description: "Outil conçu pour aider les utilisateurs à générer des mots de passe sécurisés en quelques clics. Ce générateur permet de créer des mots de passe aléatoires respectant des critères de sécurité stricts : majuscules, minuscules, chiffres et caractères spéciaux. Il intègre une interface interactive, incluant un slider pour définir la longueur du mot de passe (de 8 à 16 caractères), ainsi que des boutons pour copier rapidement le résultat.",
         technologies: ["HTML", "CSS", "JavaScript"]
@@ -156,7 +160,7 @@ const projets = {
             "../assets/projets/mairie_de_cauffry/Adicloud.png",
             "../assets/projets/mairie_de_cauffry/Visuel_site.png"
         ],
-        description: "Réalisation d'un site web pour la commune de Cauffry dans le cadre d'un stage de 4 semaines en première année de BTS SIO, en partenariat avec l'Adico (Association pour le développement et l'innovation numérique des collectivités). L'ancien site étant devenu indisponible, j'ai récupéré son contenu via la Wayback Machine, rempli le recueil de besoins Adico, conçu l'arborescence et alimenté les pages via Adicloud. En parallèle, j'ai aussi géré la sauvegarde des mails de la maire vers un disque dur externe et proposé des prototypes de logo pour la commune.",
+        description: "Réalisation d'un site web pour la commune de Cauffry dans le cadre du stage de 4 semaines de première année de BTS SIO, en partenariat avec l'Adico (Association pour le développement et l'innovation numérique des collectivités). L'ancien site étant devenu indisponible, j'ai récupéré son contenu via la Wayback Machine, rempli le recueil de besoins Adico, conçu l'arborescence et alimenté les pages via Adicloud. En parallèle, j'ai aussi géré la sauvegarde des mails de la maire vers un disque dur externe et proposé des prototypes de logo pour la commune.",
         technologies: ["HTML", "CSS"],
         link: "https://mairiecauffry.fr/",
         etudeDeCas: {
@@ -202,7 +206,7 @@ if (!projetId || !projets[projetId]) {
     };
 
     const hero = document.getElementById("projet-hero");
-    if (heroColors[projetId]) {
+    if (hero && heroColors[projetId]) {
         const colors = heroColors[projetId];
         if (colors.length > 2) {
             hero.style.background = "linear-gradient(135deg, " + colors.join(", ") + ")";
@@ -212,36 +216,49 @@ if (!projetId || !projets[projetId]) {
         }
     }
 
-    document.getElementById("projet-title").textContent = projets[projetId].title;
+    const titreProjet = document.getElementById("projet-title");
+    if (titreProjet) titreProjet.textContent = projets[projetId].title;
     document.title = "Portfolio | " + projets[projetId].title;
 
     // Date du projet
-    if (projets[projetId].date) {
+    if (titreProjet && projets[projetId].date) {
         const dateEl = document.createElement("span");
         dateEl.classList.add("projet-date");
         dateEl.textContent = projets[projetId].date;
-        document.getElementById("projet-title").after(dateEl);
+        titreProjet.after(dateEl);
     }
 
     // Badge "En cours de développement"
     if (projets[projetId].enCours) {
-        const badge = document.createElement("span");
-        badge.classList.add("badge-en-cours");
-        badge.textContent = "En cours de développement";
         // Insérer après la date si elle existe, sinon après le titre
-        const afterEl = hero.querySelector(".projet-date") || document.getElementById("projet-title");
-        afterEl.after(badge);
+        const afterEl = (hero && hero.querySelector(".projet-date")) || titreProjet;
+        if (afterEl) {
+            const badge = document.createElement("span");
+            badge.classList.add("badge-en-cours");
+            badge.textContent = "En cours de développement";
+            afterEl.after(badge);
+        }
     }
 
-    // Mise à jour des meta OG dynamiquement
+    // Mise à jour des meta sociales dynamiquement (Open Graph + Twitter Cards)
+    const metaTitre = 'Portfolio | ' + projets[projetId].title;
+    const metaDesc = projets[projetId].description.substring(0, 200);
+
     const ogTitle = document.querySelector('meta[property="og:title"]');
     const ogDesc = document.querySelector('meta[property="og:description"]');
     const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogTitle) ogTitle.setAttribute('content', 'Portfolio | ' + projets[projetId].title);
-    if (ogDesc) ogDesc.setAttribute('content', projets[projetId].description.substring(0, 200));
+    if (ogTitle) ogTitle.setAttribute('content', metaTitre);
+    if (ogDesc) ogDesc.setAttribute('content', metaDesc);
     if (ogUrl) ogUrl.setAttribute('content', window.location.href);
 
-    document.getElementById("projet-description").textContent = projets[projetId].description;
+    // Twitter accepte aussi bien property="twitter:*" que name="twitter:*"
+    const twitterTitle = document.querySelector('meta[name="twitter:title"], meta[property="twitter:title"]');
+    const twitterDesc = document.querySelector('meta[name="twitter:description"], meta[property="twitter:description"]');
+    if (twitterTitle) twitterTitle.setAttribute('content', metaTitre);
+    if (twitterDesc) twitterDesc.setAttribute('content', metaDesc);
+
+    const descriptionEl = document.getElementById("projet-description");
+    if (descriptionEl) descriptionEl.textContent = projets[projetId].description;
 
 
     // Descriptions des technologies pour les tooltips
@@ -272,9 +289,10 @@ if (!projetId || !projets[projetId]) {
     const techList = document.getElementById("projet-technologies");
 
     // Vider la liste avant d'ajouter les nouvelles technologies
-    techList.innerHTML = "";
+    if (techList) techList.innerHTML = "";
 
-    projets[projetId].technologies.forEach(tech => {
+    const technologies = projets[projetId].technologies || [];
+    if (techList) technologies.forEach(tech => {
         let li = document.createElement("li");
 
         // Exceptions pour les noms de fichiers SVG
@@ -317,6 +335,10 @@ if (!projetId || !projets[projetId]) {
         const desc = cleCorrespondante ? techDescriptions[cleCorrespondante] : undefined;
         if (desc) {
             li.setAttribute("data-tooltip", desc);
+            // Accessibilité : focusable au clavier (déclenche le tooltip CSS via :focus)
+            // et description exposée aux lecteurs d'écran via aria-label.
+            li.setAttribute("tabindex", "0");
+            li.setAttribute("aria-label", tech + " — " + desc);
         }
 
         // Ajout du logo et du texte
@@ -386,21 +408,23 @@ if (!projetId || !projets[projetId]) {
         // Insérer avant la section images
         const projetDetails = document.querySelector(".projet-details");
         const titreApercu2 = document.querySelector(".projet-img");
-        projetDetails.insertBefore(sectionEtude, titreApercu2);
+        if (projetDetails) projetDetails.insertBefore(sectionEtude, titreApercu2);
     }
 
     // Ajouter les images dans le div "projet-images"
     const imagesContainer = document.getElementById("projet-images");
-    imagesContainer.innerHTML = "";
-
-    const images = projets[projetId].images;
+    const images = projets[projetId].images || [];
 
     // Masquer la section aperçu s'il n'y a pas d'images
     const titreApercu = document.querySelector(".projet-img");
-    if (images.length === 0) {
+    if (!imagesContainer) {
+        // Pas de conteneur d'images : on saute tout le rendu d'images
+    } else if (images.length === 0) {
+        imagesContainer.innerHTML = "";
         if (titreApercu) titreApercu.setAttribute("hidden", "");
         imagesContainer.setAttribute("hidden", "");
     } else if (images.length === 1) {
+        imagesContainer.innerHTML = "";
         // Image unique : affichage dans un wrapper identique au carrousel
         const wrapper = document.createElement("div");
         wrapper.classList.add("projet-image-wrapper");
@@ -420,9 +444,14 @@ if (!projetId || !projets[projetId]) {
         wrapper.appendChild(picture);
         imagesContainer.appendChild(wrapper);
     } else {
+        imagesContainer.innerHTML = "";
         // Carrousel
         const carrousel = document.createElement("div");
         carrousel.classList.add("carrousel");
+        // Conteneur focusable + sémantique de groupe pour les lecteurs d'écran
+        carrousel.setAttribute("role", "group");
+        carrousel.setAttribute("aria-label", "Galerie d'images du projet");
+        carrousel.setAttribute("tabindex", "0");
 
         // Bouton précédent
         const btnPrev = document.createElement("button");
@@ -435,6 +464,24 @@ if (!projetId || !projets[projetId]) {
         track.classList.add("carrousel-track");
 
         images.forEach((imgSrc, index) => {
+            // Bouton réel rendant l'image cliquable (navigation clavier native Entrée/Espace).
+            // Styles inline pour reprendre, sans toucher au CSS, le positionnement que
+            // `.carrousel-track picture` appliquait auparavant (empilement des slides).
+            const boutonSlide = document.createElement("button");
+            boutonSlide.type = "button";
+            boutonSlide.classList.add("carrousel-slide-btn");
+            boutonSlide.setAttribute("aria-label", "Agrandir : " + projets[projetId].title + " — image " + (index + 1));
+            boutonSlide.style.position = index === 0 ? "relative" : "absolute";
+            boutonSlide.style.top = "0";
+            boutonSlide.style.left = "0";
+            boutonSlide.style.width = "100%";
+            boutonSlide.style.height = "100%";
+            boutonSlide.style.padding = "0";
+            boutonSlide.style.border = "none";
+            boutonSlide.style.background = "none";
+            boutonSlide.style.cursor = "pointer";
+            boutonSlide.style.display = "block";
+
             const picture = document.createElement("picture");
             const source = document.createElement("source");
             source.srcset = imgSrc.replace(/\.(png|jpg|jpeg|PNG|JPG)$/i, ".webp");
@@ -449,7 +496,8 @@ if (!projetId || !projets[projetId]) {
             if (index === 0) img.classList.add("active");
             picture.appendChild(source);
             picture.appendChild(img);
-            track.appendChild(picture);
+            boutonSlide.appendChild(picture);
+            track.appendChild(boutonSlide);
         });
 
         // Bouton suivant
@@ -473,6 +521,8 @@ if (!projetId || !projets[projetId]) {
         // Compteur
         const counter = document.createElement("div");
         counter.classList.add("carrousel-counter");
+        counter.setAttribute("aria-live", "polite");
+        counter.setAttribute("aria-atomic", "true");
         counter.textContent = "1 / " + images.length;
 
         carrousel.appendChild(btnPrev);
@@ -487,12 +537,20 @@ if (!projetId || !projets[projetId]) {
         const slides = track.querySelectorAll(".carrousel-slide");
         const dots = dotsContainer.querySelectorAll(".carrousel-dot");
 
+        function boutonDeSlide(slide) {
+            return slide.closest(".carrousel-slide-btn");
+        }
+
         function allerASlide(index) {
             slides[diapoCourante].classList.remove("active");
             dots[diapoCourante].classList.remove("active");
+            const ancienBouton = boutonDeSlide(slides[diapoCourante]);
+            if (ancienBouton) ancienBouton.style.position = "absolute";
             diapoCourante = (index + slides.length) % slides.length;
             slides[diapoCourante].classList.add("active");
             dots[diapoCourante].classList.add("active");
+            const nouveauBouton = boutonDeSlide(slides[diapoCourante]);
+            if (nouveauBouton) nouveauBouton.style.position = "relative";
             counter.textContent = (diapoCourante + 1) + " / " + slides.length;
         }
 
@@ -522,10 +580,13 @@ if (!projetId || !projets[projetId]) {
         // Clic sur image → modale plein écran avec navigation
         let indexModale = 0;
         let dernierFocusAvantModale = null;
+        // Flag indiquant si la modale plein écran est ouverte (remplace l'ancien MutationObserver)
+        let modaleOuverte = false;
 
         function ouvrirModale(index) {
             dernierFocusAvantModale = document.activeElement;
             indexModale = index;
+            modaleOuverte = true;
 
             const modale = document.createElement("div");
             modale.classList.add("carrousel-modale");
@@ -559,6 +620,8 @@ if (!projetId || !projets[projetId]) {
             // Compteur
             const compteurModale = document.createElement("div");
             compteurModale.classList.add("carrousel-modale-counter");
+            compteurModale.setAttribute("aria-live", "polite");
+            compteurModale.setAttribute("aria-atomic", "true");
             compteurModale.textContent = (indexModale + 1) + " / " + slides.length;
 
             // Bouton fermer
@@ -599,6 +662,7 @@ if (!projetId || !projets[projetId]) {
             }
 
             function fermerModale() {
+                modaleOuverte = false;
                 modale.classList.remove("active");
                 document.removeEventListener("keydown", gestionnaireClavier);
                 modale.addEventListener("transitionend", () => modale.remove(), {once: true});
@@ -644,30 +708,27 @@ if (!projetId || !projets[projetId]) {
             document.addEventListener("keydown", gestionnaireClavier);
         }
 
-        slides.forEach((slide, index) => {
-            slide.setAttribute("tabindex", "0");
-            slide.setAttribute("role", "button");
-            slide.setAttribute("aria-label", "Agrandir l'image " + (index + 1));
-            slide.addEventListener("click", () => ouvrirModale(index));
-            slide.addEventListener("keydown", (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    ouvrirModale(index);
-                }
-            });
+        // L'image cliquable est enveloppée dans un vrai <button> :
+        // la navigation clavier (Entrée/Espace) est gérée nativement.
+        const boutonsSlide = track.querySelectorAll(".carrousel-slide-btn");
+        boutonsSlide.forEach((bouton, index) => {
+            bouton.addEventListener("click", () => ouvrirModale(index));
         });
 
-        // Navigation clavier (flag pour éviter un querySelector à chaque frappe)
-        let modaleOuverte = false;
-        const observateurModale = new MutationObserver(function () {
-            modaleOuverte = !!document.querySelector(".carrousel-modale");
-        });
-        observateurModale.observe(document.body, {childList: true});
-
+        // Navigation clavier des flèches : restreinte au focus dans le carrousel
         document.addEventListener("keydown", (e) => {
             if (modaleOuverte) return;
-            if (e.key === "ArrowRight") slideSuivant();
-            if (e.key === "ArrowLeft") slidePrecedent();
+            if (!carrousel.contains(document.activeElement)) return;
+            if (e.key === "ArrowRight") {
+                slideSuivant();
+                clearInterval(intervalleLectureAuto);
+                intervalleLectureAuto = setInterval(slideSuivant, 4000);
+            }
+            if (e.key === "ArrowLeft") {
+                slidePrecedent();
+                clearInterval(intervalleLectureAuto);
+                intervalleLectureAuto = setInterval(slideSuivant, 4000);
+            }
         });
 
         // Auto-play avec pause au hover
@@ -686,10 +747,10 @@ if (!projetId || !projets[projetId]) {
     const projetLinkContainer = document.getElementById("projet-link");
 
     // Efface tout contenu précédent dans le conteneur du lien
-    projetLinkContainer.innerHTML = "";
+    if (projetLinkContainer) projetLinkContainer.innerHTML = "";
 
     // Vérifier si un lien existe pour ce projet
-    if (projets[projetId].link) {
+    if (projetLinkContainer && projets[projetId].link) {
         const linkElement = document.createElement("a");
         linkElement.href = projets[projetId].link;
         linkElement.target = "_blank";
@@ -706,7 +767,7 @@ if (!projetId || !projets[projetId]) {
 
         // Rendre le conteneur visible UNIQUEMENT s'il y a un lien
         projetLinkContainer.removeAttribute('hidden');
-    } else {
+    } else if (projetLinkContainer) {
         // S'assurer que le conteneur est masqué s'il n'y a pas de lien
         projetLinkContainer.setAttribute('hidden', '');
     }

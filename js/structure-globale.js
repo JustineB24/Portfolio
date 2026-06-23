@@ -1,3 +1,7 @@
+// ==============================
+// structure-globale.js — Structure commune : header, footer, chargement des scripts
+// ==============================
+
 function validerChemin(chemin) {
     if (typeof chemin !== 'string' || !/^(\.\/|\.\.\/)+$/.test(chemin)) {
         console.warn('Chemin invalide : ' + chemin + ' — utilisation du chemin par défaut ./');
@@ -64,7 +68,7 @@ function genererHeader(chemin) {
                 </ul>
             </nav>
             <!-- Menu burger -->
-            <input class="check-icon" id="check-icon" name="check-icon" type="checkbox" aria-label="Ouvrir le menu de navigation">
+            <input class="check-icon" id="check-icon" name="check-icon" type="checkbox" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="menu-navigation">
             <label class="icon-menu" for="check-icon">
                 <div class="bar bar--1"></div>
                 <div class="bar bar--2"></div>
@@ -102,7 +106,7 @@ function genererHeader(chemin) {
     // Menu burger inséré après le header (en dehors) pour éviter le
     // containing block créé par backdrop-filter sur le header
     const menuBurgerHTML = `
-        <div class="menu-burger">
+        <div class="menu-burger" id="menu-navigation">
             <div class="side-menu">
                 <ul>
                     ${menuBurger}
@@ -122,13 +126,28 @@ function genererHeader(chemin) {
         }
     });
 
+    // Accessibilité — mise à jour de l'aria-label de la bascule de thème
+    // (le toggle réel du thème est géré par theme.js)
+    const caseTheme = document.querySelector('.theme-switch__checkbox');
+    if (caseTheme) {
+        const majAriaLabelTheme = function () {
+            caseTheme.setAttribute('aria-label',
+                caseTheme.checked ? 'Activer le thème clair' : 'Activer le thème sombre');
+        };
+        majAriaLabelTheme();
+        caseTheme.addEventListener('change', majAriaLabelTheme);
+    }
+
     // Transitions entre pages — fade-out au clic sur un lien interne
     document.addEventListener('click', function (e) {
+        // Ne déclencher la transition que pour un clic gauche simple
+        // (préserve clic-molette, Ctrl/Cmd-clic, ouvrir dans un nouvel onglet, etc.)
+        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
         const lien = e.target.closest('a');
         if (!lien) return;
         const href = lien.getAttribute('href');
         if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('javascript:') ||
-            lien.target === '_blank' || lien.hasAttribute('download') || e.ctrlKey || e.metaKey) return;
+            lien.target === '_blank' || lien.hasAttribute('download')) return;
         // Lien interne uniquement
         if (href.includes('.html')) {
             e.preventDefault();
@@ -183,29 +202,8 @@ function genererFooter(chemin) {
 (function () {
     const chemin = window.location.pathname.includes('/pages/') ? '../' : './';
 
-    // Preconnect Google Fonts (injecté avant les liens CSS existants)
-    const preconnectGoogle = document.createElement('link');
-    preconnectGoogle.rel = 'preconnect';
-    preconnectGoogle.href = 'https://fonts.googleapis.com';
-    preconnectGoogle.crossOrigin = '';
-    const preconnectGstatic = document.createElement('link');
-    preconnectGstatic.rel = 'preconnect';
-    preconnectGstatic.href = 'https://fonts.gstatic.com';
-    preconnectGstatic.crossOrigin = '';
-    // Lien Google Fonts en HTML (déplacé depuis @import CSS pour éviter la chaîne bloquante)
-    const lienGoogleFonts = document.createElement('link');
-    lienGoogleFonts.rel = 'stylesheet';
-    lienGoogleFonts.href = 'https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap';
-    const premierLienCSS = document.querySelector('head link[rel="stylesheet"]');
-    if (premierLienCSS) {
-        premierLienCSS.parentNode.insertBefore(preconnectGoogle, premierLienCSS);
-        premierLienCSS.parentNode.insertBefore(preconnectGstatic, premierLienCSS);
-        premierLienCSS.parentNode.insertBefore(lienGoogleFonts, premierLienCSS);
-    } else {
-        document.head.appendChild(preconnectGoogle);
-        document.head.appendChild(preconnectGstatic);
-        document.head.appendChild(lienGoogleFonts);
-    }
+    // Les polices self-hébergées sont désormais chargées via un <link rel="stylesheet">
+    // statique dans le <head> de chaque page (meilleure performance, pas d'injection JS).
 
     genererHeader(chemin);
     genererFooter(chemin);

@@ -1,3 +1,7 @@
+/* ==============================
+   veille.css — Page veille technologique : sommaire, colonne de lecture, timeline
+   ============================== */
+
 body {
     background-color: var(--background-color);
     background-image: url('../assets/veille/raspberry-pi-os-logo-with-board-background-3.webp');
@@ -98,11 +102,8 @@ main h2 {
     margin-top: 0;
 }
 
-.veille-intro-desc {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-top: 0.75rem;
-}
+/* .veille-intro-desc : volontairement sans style propre — il hérite de
+   la règle commune .veille-section-body > p, identique au reste du texte. */
 
 /* Wrappers gauche/droite pour centrer le contenu dans chaque moitié */
 .veille-intro-gauche {
@@ -149,12 +150,15 @@ main h2 {
 .sommaire ol li a {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 0.6rem;
+    gap: 0.7rem;
+    padding: 0.5rem 0.7rem;
+    min-height: 2.5rem;
+    line-height: 1.3;
+    box-sizing: border-box;
     color: var(--text-color);
     text-decoration: none;
     background-image: none !important;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     transition: background-color 0.2s, color 0.2s;
 }
 
@@ -163,9 +167,9 @@ main h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 1.6rem;
-    height: 1.6rem;
-    font-size: 0.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.78rem;
     font-weight: 800;
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
@@ -175,12 +179,13 @@ main h2 {
 }
 
 .sommaire ol li a:hover {
+    background-color: rgba(var(--primary-rgb), 0.06);
     font-weight: 700;
 }
 
 .sommaire ol li a:hover::before {
     background-color: var(--primary-color);
-    color: var(--button-text-color);
+    color: var(--header-text-color);
 }
 
 .sources {
@@ -199,9 +204,127 @@ main .timeline .sources {
     color: var(--primary-color);
 }
 
+/* ==============================
+   Layout article : sommaire collant + contenu
+   ============================== */
+.veille-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.veille-toc {
+    position: sticky;
+    top: 120px;
+    align-self: start;
+    height: calc(100vh - 140px);
+}
+
+.veille-toc .sommaire {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* Lien actif (scroll-spy) */
+.sommaire ol li a.active {
+    background-color: rgba(var(--primary-rgb), 0.12);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.sommaire ol li a.active::before {
+    background-color: var(--primary-color);
+    color: var(--header-text-color);
+}
+
+/* Sections repliables (titres à gauche, chevron à droite) */
+.veille-section-title {
+    margin-top: 4rem;
+    text-align: left;
+}
+
+/* La première section (Définition) colle au sommaire, pas de grande marge */
+.veille-article > .veille-section:first-child .veille-section-title {
+    margin-top: 0;
+}
+
+/* Logo Raspberry Pi centré dans le corps de la 1re section */
+.veille-section-body .veille-intro-logo {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.veille-section-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.3rem 0;
+    margin: 0;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: inherit;
+}
+
+.veille-section-chevron {
+    flex-shrink: 0;
+    color: var(--primary-color);
+    font-size: 0.65em;
+    transition: transform 0.3s;
+}
+
+.veille-section.is-collapsed .veille-section-chevron {
+    transform: rotate(-90deg);
+}
+
+.veille-section.is-collapsed .veille-section-body {
+    display: none;
+}
+
+/* Colonne de lecture : texte de l'article aligné à gauche, largeur confortable */
+.veille-section-body > p,
+.veille-section-body > ul,
+.veille-article > p {
+    max-width: 720px;
+    margin-top: 0;
+    text-align: left;
+    line-height: 1.7;
+}
+
+/* Les légendes de photos restent centrées sous leur image */
+.veille-section-body > p.texte-photo {
+    max-width: none;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Images et tableaux : centrés dans la colonne d'article */
+.veille-section-body picture {
+    display: block;
+    text-align: center;
+}
+
+.veille-section-body table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 main ul {
     list-style-type: none;
-    text-align: center;
+    padding: 0;
 }
 
 main ul li {
@@ -363,6 +486,28 @@ main .innovations li a:hover {
 
     main img {
         max-width: 50%;
+    }
+
+    /* Le sommaire repasse en haut, en pleine largeur */
+    .veille-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .veille-toc {
+        position: static;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .veille-toc .sommaire {
+        height: auto;
+        overflow: visible;
+    }
+
+    .veille-section-title {
+        margin-top: 3rem;
     }
 
     .veille-intro {

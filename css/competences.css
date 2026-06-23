@@ -1,3 +1,14 @@
+/* ==============================
+   competences.css — Page compétences : galerie de certifications + cartes flip
+   ============================== */
+
+/* Séparateur entre les 3 blocs (même style que la page À propos) */
+main hr {
+    border: none;
+    border-top: 2px dashed var(--card-background);
+    margin: 3rem 0;
+}
+
 /* Conteneur principal de la galerie — layout masonry */
 .gallery {
     column-count: 3;
@@ -310,6 +321,11 @@
     --comp-bg: #53c1de;
 }
 
+.comp-react-native {
+    --comp-color: #53c1de;
+    --comp-bg: #53c1de;
+}
+
 .comp-php {
     --comp-color: #6181b6;
     --comp-bg: #6181b6;
@@ -378,6 +394,17 @@
 .comp-github {
     --comp-color: #161614;
     --comp-bg: #161614;
+}
+
+.comp-expo {
+    --comp-color: #000020;
+    --comp-bg: #000020;
+}
+
+/* Logos monochromes noirs : rendus blancs en mode sombre pour rester visibles */
+body.dark-theme .comp-expo .svg,
+body.dark-theme .comp-github .svg {
+    filter: invert(1);
 }
 
 .comp-gitlab {

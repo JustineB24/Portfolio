@@ -163,7 +163,8 @@
 .filtre-btn[data-filtre="bts"]:not(.active),
 .filtre-btn[data-filtre="stage"]:not(.active),
 .filtre-btn[data-filtre="bachelor"]:not(.active),
-.filtre-btn[data-filtre="entreprise"]:not(.active) {
+.filtre-btn[data-filtre="entreprise"]:not(.active),
+.filtre-btn[data-filtre="perso"]:not(.active) {
     border-color: var(--primary-color);
     color: var(--primary-color);
 }
@@ -171,7 +172,8 @@
 .filtre-btn[data-filtre="bts"]:hover:not(.active),
 .filtre-btn[data-filtre="stage"]:hover:not(.active),
 .filtre-btn[data-filtre="bachelor"]:hover:not(.active),
-.filtre-btn[data-filtre="entreprise"]:hover:not(.active) {
+.filtre-btn[data-filtre="entreprise"]:hover:not(.active),
+.filtre-btn[data-filtre="perso"]:hover:not(.active) {
     background: rgba(var(--primary-rgb), 0.1);
 }
 
@@ -180,7 +182,8 @@
 .dark-theme .filtre-btn[data-filtre="bts"]:not(.active),
 .dark-theme .filtre-btn[data-filtre="stage"]:not(.active),
 .dark-theme .filtre-btn[data-filtre="bachelor"]:not(.active),
-.dark-theme .filtre-btn[data-filtre="entreprise"]:not(.active) {
+.dark-theme .filtre-btn[data-filtre="entreprise"]:not(.active),
+.dark-theme .filtre-btn[data-filtre="perso"]:not(.active) {
     border-color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
     color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
 }

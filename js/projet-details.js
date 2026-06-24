@@ -206,13 +206,17 @@ if (!projetId || !projets[projetId]) {
     };
 
     const hero = document.getElementById("projet-hero");
-    if (hero && heroColors[projetId]) {
+    const detailsWrap = document.querySelector(".projet-details");
+    if (heroColors[projetId]) {
         const colors = heroColors[projetId];
-        if (colors.length > 2) {
+        // Dégradé du hero (toutes les couleurs si la marque en compte plusieurs)
+        if (hero) {
             hero.style.background = "linear-gradient(135deg, " + colors.join(", ") + ")";
-        } else {
-            hero.style.setProperty("--hero-color", colors[0]);
-            hero.style.setProperty("--hero-color-dark", colors[1]);
+        }
+        // Couleur du projet propagée à toute la page (eyebrows, spine, filets…)
+        if (detailsWrap) {
+            detailsWrap.style.setProperty("--hero-color", colors[0]);
+            detailsWrap.style.setProperty("--hero-color-dark", colors[colors.length > 1 ? 1 : 0]);
         }
     }
 
@@ -405,10 +409,11 @@ if (!projetId || !projets[projetId]) {
 
         sectionEtude.appendChild(timeline);
 
-        // Insérer avant la section images
-        const projetDetails = document.querySelector(".projet-details");
-        const titreApercu2 = document.querySelector(".projet-img");
-        if (projetDetails) projetDetails.insertBefore(sectionEtude, titreApercu2);
+        // Insérer avant la section Aperçu (dans la colonne de lecture)
+        const apercu = document.getElementById("projet-apercu");
+        if (apercu && apercu.parentNode) {
+            apercu.parentNode.insertBefore(sectionEtude, apercu);
+        }
     }
 
     // Ajouter les images dans le div "projet-images"
@@ -564,17 +569,18 @@ if (!projetId || !projets[projetId]) {
 
         btnNext.addEventListener("click", function () {
             slideSuivant();
-            clearInterval(intervalleLectureAuto);
-            intervalleLectureAuto = setInterval(slideSuivant, 4000);
+            relancerAuto();
         });
         btnPrev.addEventListener("click", function () {
             slidePrecedent();
-            clearInterval(intervalleLectureAuto);
-            intervalleLectureAuto = setInterval(slideSuivant, 4000);
+            relancerAuto();
         });
 
         dots.forEach((dot, index) => {
-            dot.addEventListener("click", () => allerASlide(index));
+            dot.addEventListener("click", () => {
+                allerASlide(index);
+                relancerAuto();
+            });
         });
 
         // Clic sur image → modale plein écran avec navigation
@@ -721,26 +727,33 @@ if (!projetId || !projets[projetId]) {
             if (!carrousel.contains(document.activeElement)) return;
             if (e.key === "ArrowRight") {
                 slideSuivant();
-                clearInterval(intervalleLectureAuto);
-                intervalleLectureAuto = setInterval(slideSuivant, 4000);
+                relancerAuto();
             }
             if (e.key === "ArrowLeft") {
                 slidePrecedent();
-                clearInterval(intervalleLectureAuto);
-                intervalleLectureAuto = setInterval(slideSuivant, 4000);
+                relancerAuto();
             }
         });
 
-        // Auto-play avec pause au hover
-        let intervalleLectureAuto = setInterval(slideSuivant, 4000);
+        // Auto-play (4 s) avec pause au survol — un SEUL timer à la fois.
+        // arreterAuto/relancerAuto nettoient toujours l'intervalle existant avant
+        // d'en créer un nouveau, pour éviter l'empilement de timers (accélération).
+        let intervalleLectureAuto = null;
 
-        carrousel.addEventListener("mouseenter", function () {
+        function arreterAuto() {
             clearInterval(intervalleLectureAuto);
-        });
+            intervalleLectureAuto = null;
+        }
 
-        carrousel.addEventListener("mouseleave", function () {
+        function relancerAuto() {
+            arreterAuto();
             intervalleLectureAuto = setInterval(slideSuivant, 4000);
-        });
+        }
+
+        relancerAuto(); // démarrage de l'auto-play
+
+        carrousel.addEventListener("mouseenter", arreterAuto);
+        carrousel.addEventListener("mouseleave", relancerAuto);
 
     }
 

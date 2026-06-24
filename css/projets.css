@@ -125,6 +125,31 @@
     border-color: rgba(0, 117, 143, 0.7);
 }
 
+/* Filtres « catégories » (contexte de réalisation : BTS SIO, Stages,
+   Bachelor) — couleur de marque, distincte du nuancier des technologies.
+   L'état actif rouge est géré par .filtre-btn.active (d'où le :not). */
+.filtre-btn[data-filtre="bts"]:not(.active),
+.filtre-btn[data-filtre="stage"]:not(.active),
+.filtre-btn[data-filtre="bachelor"]:not(.active) {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.filtre-btn[data-filtre="bts"]:hover:not(.active),
+.filtre-btn[data-filtre="stage"]:hover:not(.active),
+.filtre-btn[data-filtre="bachelor"]:hover:not(.active) {
+    background: rgba(var(--primary-rgb), 0.1);
+}
+
+/* En thème sombre, on éclaircit le rouge (fixe) pour rester lisible
+   sur fond foncé. Repli silencieux si color-mix n'est pas supporté. */
+.dark-theme .filtre-btn[data-filtre="bts"]:not(.active),
+.dark-theme .filtre-btn[data-filtre="stage"]:not(.active),
+.dark-theme .filtre-btn[data-filtre="bachelor"]:not(.active) {
+    border-color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
+    color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
+}
+
 /* Grille des projets */
 .projet-container {
     display: grid;
@@ -194,6 +219,7 @@
 .card-tags {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center; /* alignés sur le titre et la description, centrés */
     gap: 0.4rem;
     margin-top: 0.8rem;
 }

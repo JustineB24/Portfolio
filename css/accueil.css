@@ -39,14 +39,56 @@
     }
 }
 
-.hero .txt-rotate {
-    font-size: 2.5rem;
-    font-weight: 700;
-    min-height: 3.5rem;
+/* Bloc texte du hero : nom + rôle + accroche tournante */
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+/* Eyebrow : le rôle, annoncé d'emblée */
+.hero-eyebrow {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-titre);
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--primary-color);
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards 0.4s;
+}
+
+/* Rouge éclairci en thème sombre pour rester lisible sur fond foncé */
+.dark-theme .hero-eyebrow {
+    color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
+}
+
+/* Nom : la thèse du hero (h1 visible) */
+.hero-nom {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: block;
+    text-align: center;
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    line-height: 1.05;
     color: var(--text-color);
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards 0.55s;
+}
+
+/* Accroche tournante : sous-titre, secondaire au nom */
+.hero .txt-rotate {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-weight: 600;
+    min-height: 2.2rem;
+    color: var(--text-muted);
     position: relative;
     opacity: 0;
-    animation: fadeIn 1.5s ease-out forwards 0.6s;
+    animation: fadeIn 1s ease-out forwards 0.8s;
     text-align: center;
     padding: 0 1rem;
 }
@@ -116,6 +158,13 @@
     gap: 1.5rem;
     padding: 3rem 2rem;
     flex-wrap: wrap;
+    --c-accent: var(--primary-color);
+}
+
+/* Rouge éclairci en thème sombre pour le contraste (chiffres, icônes,
+   bordure de survol) sur les cartes foncées */
+.dark-theme .compteurs {
+    --c-accent: color-mix(in srgb, var(--primary-color) 62%, #ffffff);
 }
 
 .compteur {
@@ -123,84 +172,75 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
-    width: 150px;
-    height: 150px;
+    gap: 0.55rem;
+    width: 160px;
+    padding: 1.7rem 1rem;
     background: var(--card-background);
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     text-decoration: none;
     color: var(--text-color);
     position: relative;
     overflow: hidden;
-    border: 1px solid transparent;
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    border: 1px solid color-mix(in srgb, var(--primary-color) 14%, transparent);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s, box-shadow 0.35s;
 }
 
-.compteur::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--primary-color);
-    transform: scaleX(0);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
+/* Au survol : bordure d'accent épaisse sur les 4 côtés. Le filet intérieur
+   est dessiné en box-shadow (inset) pour épaissir sans décaler la mise en
+   page ; combiné à la bordure 1px qui passe en accent. + élévation. */
 .compteur:hover {
-    transform: translateY(-5px);
-    border-color: rgba(var(--primary-rgb), 0.2);
-    box-shadow: 0 12px 32px rgba(var(--primary-rgb), 0.12);
-}
-
-.compteur:hover::before {
-    transform: scaleX(1);
+    transform: translateY(-6px);
+    border-color: var(--c-accent);
+    box-shadow: inset 0 0 0 2px var(--c-accent), 0 16px 36px rgba(var(--primary-rgb), 0.16);
 }
 
 .compteur-icon {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
+    border-radius: 50%;
     background: rgba(var(--primary-rgb), 0.1);
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.3s;
 }
 
 .compteur:hover .compteur-icon {
-    background: rgba(var(--primary-rgb), 0.18);
+    background: rgba(var(--primary-rgb), 0.16);
+    transform: scale(1.06);
 }
 
 .compteur-icon i {
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.compteur:hover .compteur-icon i {
-    transform: scale(1.2) rotate(-10deg);
+    font-size: 1.05rem;
+    color: var(--c-accent);
 }
 
 .compteur-nombre {
-    font-size: clamp(2rem, 5vw, 2.6rem);
+    font-family: var(--font-titre);
+    font-size: clamp(2.5rem, 6vw, 3.2rem);
     font-weight: 800;
-    color: var(--primary-color);
+    color: var(--c-accent);
     line-height: 1;
+    letter-spacing: -0.02em;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .compteur:hover .compteur-nombre {
-    transform: scale(1.15);
+    transform: scale(1.08);
 }
 
 .compteur-label {
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-family: var(--font-titre);
+    font-size: 0.72rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0.7;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    transition: color 0.3s;
+}
+
+.compteur:hover .compteur-label {
+    color: var(--text-color);
 }
 
 /* ==============================
@@ -424,11 +464,6 @@
         width: 10rem;
     }
 
-    .hero .txt-rotate {
-        font-size: 2.2rem;
-        min-height: 3rem;
-    }
-
     .apercu-projets-grid {
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
@@ -442,11 +477,6 @@
 
     .hero .initials {
         width: 8rem;
-    }
-
-    .hero .txt-rotate {
-        font-size: 1.8rem;
-        min-height: 2.5rem;
     }
 
     .btn-cv {
@@ -475,11 +505,6 @@
         width: 7rem;
     }
 
-    .hero .txt-rotate {
-        font-size: 1.5rem;
-        min-height: 2rem;
-    }
-
     .qui-suis-je {
         padding: 2rem 1rem;
     }
@@ -494,14 +519,13 @@
     }
 
     .compteur {
-        width: 120px;
-        height: 120px;
+        width: 135px;
+        padding: 1.3rem 0.8rem;
     }
 
     .compteur-icon {
         width: 36px;
         height: 36px;
-        border-radius: 10px;
     }
 
     .compteur-icon i {
@@ -509,8 +533,8 @@
     }
 
     .compteur-label {
-        font-size: 0.7rem;
-        letter-spacing: 1px;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
     }
 
     .marquee-track {

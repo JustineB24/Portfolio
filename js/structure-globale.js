@@ -19,13 +19,14 @@ function genererHeader(chemin) {
         {href: 'pages/apropos.html', label: 'À propos'},
         {href: 'pages/competences.html', label: 'Compétences'},
         {href: 'pages/projets.html', label: 'Projets'},
-        {href: 'pages/veille.html', label: 'Veille Technologique'},
+        {href: 'pages/veille.html', label: 'Veille Technologique', labelCourt: 'Veille'},
         {href: 'pages/documents.html', label: 'BTS SIO'},
         {href: 'pages/contact.html', label: 'Contact'}
     ];
 
     const menuDesktop = elementsNav.map(function (item) {
-        return '<li class="menu-item"><a class="onglet" href="' + chemin + item.href + '">' + item.label + '</a></li>';
+        // Label court éventuel sur le desktop (ex. « Veille ») ; le burger garde le label complet
+        return '<li class="menu-item"><a class="onglet" href="' + chemin + item.href + '">' + (item.labelCourt || item.label) + '</a></li>';
     }).join('\n                    ');
 
     const menuBurger = elementsNav.map(function (item) {

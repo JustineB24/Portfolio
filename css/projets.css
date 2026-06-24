@@ -125,6 +125,38 @@
     border-color: rgba(0, 117, 143, 0.7);
 }
 
+/* React & Node.js — bordure = couleur de marque (comme les pastilles),
+   texte assombri pour rester lisible (même approche que JavaScript) */
+.filtre-btn[data-filtre="react"] {
+    border-color: rgba(97, 218, 251, 0.7);
+    color: #157f9c;
+}
+
+.filtre-btn[data-filtre="nodejs"] {
+    border-color: rgba(104, 159, 56, 0.7);
+    color: #557f2e;
+}
+
+.filtre-btn[data-filtre="react"]:hover {
+    background: rgba(97, 218, 251, 0.15);
+}
+
+.filtre-btn[data-filtre="nodejs"]:hover {
+    background: rgba(104, 159, 56, 0.15);
+}
+
+.filtre-btn[data-filtre="react"].active {
+    background: rgba(97, 218, 251, 0.7);
+    color: var(--tag-text-on-color);
+    border-color: rgba(97, 218, 251, 0.7);
+}
+
+.filtre-btn[data-filtre="nodejs"].active {
+    background: rgba(104, 159, 56, 0.7);
+    color: var(--tag-text-on-color);
+    border-color: rgba(104, 159, 56, 0.7);
+}
+
 /* Filtres « catégories » (contexte de réalisation : BTS SIO, Stages,
    Bachelor) — couleur de marque, distincte du nuancier des technologies.
    L'état actif rouge est géré par .filtre-btn.active (d'où le :not). */

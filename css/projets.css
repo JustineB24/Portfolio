@@ -162,14 +162,16 @@
    L'état actif rouge est géré par .filtre-btn.active (d'où le :not). */
 .filtre-btn[data-filtre="bts"]:not(.active),
 .filtre-btn[data-filtre="stage"]:not(.active),
-.filtre-btn[data-filtre="bachelor"]:not(.active) {
+.filtre-btn[data-filtre="bachelor"]:not(.active),
+.filtre-btn[data-filtre="entreprise"]:not(.active) {
     border-color: var(--primary-color);
     color: var(--primary-color);
 }
 
 .filtre-btn[data-filtre="bts"]:hover:not(.active),
 .filtre-btn[data-filtre="stage"]:hover:not(.active),
-.filtre-btn[data-filtre="bachelor"]:hover:not(.active) {
+.filtre-btn[data-filtre="bachelor"]:hover:not(.active),
+.filtre-btn[data-filtre="entreprise"]:hover:not(.active) {
     background: rgba(var(--primary-rgb), 0.1);
 }
 
@@ -177,7 +179,8 @@
    sur fond foncé. Repli silencieux si color-mix n'est pas supporté. */
 .dark-theme .filtre-btn[data-filtre="bts"]:not(.active),
 .dark-theme .filtre-btn[data-filtre="stage"]:not(.active),
-.dark-theme .filtre-btn[data-filtre="bachelor"]:not(.active) {
+.dark-theme .filtre-btn[data-filtre="bachelor"]:not(.active),
+.dark-theme .filtre-btn[data-filtre="entreprise"]:not(.active) {
     border-color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
     color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
 }

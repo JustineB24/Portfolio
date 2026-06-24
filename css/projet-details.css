@@ -2,184 +2,167 @@
    projet-details.css — Page détail d'un projet : hero, carrousel, technologies
    ============================== */
 
-/* Conteneur du projet */
+/* ==============================
+   Mise en page éditoriale (alignée à gauche)
+   --hero-color / --hero-color-dark : couleur du projet, posée par le JS
+   sur .projet-details → sert de fil conducteur (eyebrows, spine, filets).
+   ============================== */
 .projet-details {
-    padding: 0 50px 50px;
+    padding: 0 0 4rem;
     display: block;
     box-sizing: border-box;
+    text-align: left; /* sort du centrage global du body */
+    /* --hero-color : couleur vive du projet (posée par le JS), utilisée
+       telle quelle pour le dégradé du hero.
+       --accent : version au contraste garanti pour le corps de page. On
+       mélange la couleur du projet vers --text-color (qui s'inverse selon
+       le thème), ce qui reste lisible aussi bien en clair qu'en sombre,
+       que la couleur d'origine soit très claire (jaune) ou très foncée.
+       Repli silencieux sur la couleur brute si color-mix est absent. */
+    --accent: var(--hero-color, var(--primary-color));
+    --accent: color-mix(in srgb, var(--hero-color, var(--primary-color)) 45%, var(--text-color));
+    --accent-dark: var(--hero-color-dark, var(--primary-dark));
 }
 
-/* Hero du projet */
+/* ---- Hero : la thèse du projet, à gauche sur un bandeau dégradé ---- */
+/* Le padding latéral recentre le contenu sur la même colonne (860px) que le
+   corps de page, tout en gardant le dégradé pleine largeur. */
 .projet-hero {
     position: relative;
     background: linear-gradient(135deg, var(--hero-color, var(--primary-color)), var(--hero-color-dark, var(--primary-dark)));
-    border-radius: var(--radius-xl);
-    padding: 2.5rem 3rem;
-    margin-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 5.5rem max(2rem, calc(50% - 430px)) 2.75rem;
+    margin-bottom: 0;
     animation: fadeInUp 0.6s ease both;
+}
+
+.projet-hero h1 {
+    color: var(--header-text-color);
+    margin: 0;
+    line-height: 1.1;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    letter-spacing: 0.01em;
+    padding-bottom: 0;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+    border: none;
+    text-align: left;
+    display: block;
 }
 
 .projet-date {
     display: inline-block;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--button-text-color);
-    opacity: 0.8;
-    font-weight: 500;
-    letter-spacing: 0.5px;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--header-text-color);
+    font-family: var(--font-titre);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    opacity: 0.92;
 }
 
 .badge-en-cours {
-    display: inline-block;
-    margin-top: 0.8rem;
-    padding: 0.4rem 1rem;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 1rem;
+    margin-left: 0.85rem;
+    padding: 0.35rem 0.9rem;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.45);
     border-radius: 100px;
-    color: var(--button-text-color);
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
+    color: var(--header-text-color);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
     backdrop-filter: blur(4px);
 }
 
-.projet-hero h1 {
-    color: var(--button-text-color);
-    margin: 0;
-    line-height: 1.2;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    border: none;
-    text-align: center;
-    max-width: 100%;
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: center;
-    gap: 0.20em;
-}
-
-/* Bouton retour */
+/* Bouton retour : ancré en haut à gauche du hero */
 .back-button {
     position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
+    top: 1.6rem;
+    left: max(2rem, calc(50% - 430px));
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--button-text-color);
+    color: var(--header-text-color);
     text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: color 0.3s, transform 0.3s;
+    font-family: var(--font-titre);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: opacity 0.3s, transform 0.3s;
 }
 
 .back-button:hover {
-    color: var(--button-text-color);
+    color: var(--header-text-color);
+    opacity: 0.8;
+}
+
+.back-button i {
+    transition: transform 0.3s;
+}
+
+.back-button:hover i {
     transform: translateX(-4px);
 }
 
-/* Tags dans le hero */
-.projet-hero-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.projet-hero-tags .tag {
-    padding: 0.3rem 0.9rem;
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--button-text-color);
-    border-radius: 2rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    backdrop-filter: blur(4px);
-}
-
-/* Contenu principal */
-.projet-content {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    align-items: stretch;
-    flex-wrap: wrap;
-    max-width: 100rem;
-    margin-top: 2rem;
-}
-
-/* Titre blocs */
-.title-blocs {
-    margin-bottom: 2rem;
-    text-align: center;
-    color: var(--text-color);
-}
-
-/* Présentation et technologies */
-.projet-presentation,
-.projet-technologies {
-    flex: 1;
-    min-width: 300px;
-    background-color: var(--card-background);
-    padding: 2rem;
-    border-radius: var(--radius-md);
-    animation: fadeInUp 0.6s ease both;
+/* ---- Colonne de lecture ---- */
+.projet-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
     box-sizing: border-box;
 }
 
-/* Lien */
-#projet-link {
-    display: none;
-
-    border: 2px solid var(--text-color);
-    border-radius: 1rem;
-    background-color: var(--background-color);
-    padding: 10px 20px;
-    text-align: center;
-    margin-top: 20px;
+/* Étiquette de section (eyebrow) — fil conducteur couleur projet */
+.eyebrow {
+    display: block;
+    margin: 0 0 0.5rem;
+    font-family: var(--font-titre);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
 }
 
-/* Effet au survol du lien */
-#projet-link a {
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: bold;
-    transition: color 0.3s ease, transform 0.3s ease;
+/* ---- Barre méta : technologies ---- */
+.projet-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1.75rem 0;
+    border-bottom: 2px solid var(--card-background);
+    animation: fadeInUp 0.6s ease both;
 }
 
-/* Changer la couleur du texte quand on survole le lien */
-#projet-link a:hover {
-    color: var(--primary-light);
-    transform: scale(1.05);
-}
-
-/* Liste technologies — pill badges */
 .tech-logo {
-    width: 2rem;
-    height: 2rem;
+    width: 1.4rem;
+    height: 1.4rem;
     vertical-align: middle;
 }
 
 #projet-technologies {
     list-style: none;
     padding: 0;
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
+    gap: 0.6rem;
+    justify-content: flex-start;
 }
 
 #projet-technologies li {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: rgba(var(--main-bg-rgb), 0.7);
-    padding: 0.5rem 1rem;
+    gap: 0.45rem;
+    background: var(--card-background);
+    padding: 0.4rem 0.85rem;
     border-radius: 2rem;
-    border: 2px solid var(--text-color);
-    font-size: 1rem;
+    border: 1px solid transparent;
+    font-size: 0.88rem;
     font-weight: 600;
     color: var(--text-color);
     transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
@@ -187,101 +170,199 @@
 
 #projet-technologies li:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 /* Couleurs des tags technologies : centralisées dans global.css */
 
-/* ==============================
-   Étude de cas
-   ============================== */
-.etude-de-cas {
-    max-width: 800px;
-    margin: 3rem auto 0;
+/* ---- Sections de contenu ---- */
+.projet-section {
+    margin-top: 3rem;
     animation: fadeInUp 0.6s ease both;
 }
 
+/* Titres de section : à gauche, avec filet d'accent */
+.projet-section-titre,
+.projet-img {
+    font-family: var(--font-titre);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--text-color);
+    text-align: left;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.6rem;
+    border: none;
+    display: block;
+    position: relative;
+}
+
+.projet-section-titre::after,
+.projet-img::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 2.5rem;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--accent);
+}
+
+/* Paragraphe d'introduction */
+.projet-lead {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+/* Lien projet en ligne */
+#projet-link {
+    display: none;
+    margin-top: 1.5rem;
+}
+
+#projet-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 700;
+    padding: 0.7rem 1.4rem;
+    border: 2px solid var(--accent);
+    border-radius: var(--radius-sm);
+    transition: color 0.3s, background-color 0.3s, transform 0.3s;
+}
+
+#projet-link a:hover {
+    color: var(--button-text-color);
+    background-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   Étude de cas — colonne numérotée (signature de la page)
+   Le déroulé contexte → réflexion → défis → résultat est une vraie
+   séquence : les numéros 01→04 encodent l'ordre de lecture.
+   ============================== */
+.etude-de-cas {
+    margin-top: 3.5rem;
+    animation: fadeInUp 0.6s ease both;
+}
+
+.etude-de-cas .title-blocs {
+    font-family: var(--font-titre);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--text-color);
+    text-align: left;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    border: none;
+    display: block;
+    margin: 0 0 2rem;
+}
+
 .etude-de-cas .title-blocs i {
-    color: var(--primary-color);
+    color: var(--accent);
+    margin-right: 0.4rem;
 }
 
 .etude-timeline {
     position: relative;
-    padding-left: 2rem;
+    counter-reset: etape;
+    padding-left: 3.5rem;
 }
 
-/* Ligne verticale */
+/* Filet vertical reliant les étapes */
 .etude-timeline::before {
     content: '';
     position: absolute;
-    left: 1rem;
-    top: 0;
-    bottom: 0;
+    left: 1.1rem;
+    top: 0.3rem;
+    bottom: 0.3rem;
     width: 2px;
-    background: linear-gradient(to bottom, var(--primary-color), rgba(var(--primary-rgb), 0.15));
+    background: linear-gradient(to bottom, var(--accent), rgba(var(--primary-rgb), 0.12));
     border-radius: 1px;
 }
 
 .etude-etape {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
     position: relative;
+    counter-increment: etape;
+    margin-bottom: 2.5rem;
 }
 
 .etude-etape:last-child {
     margin-bottom: 0;
 }
 
+/* Marqueur numéroté 01 → 04, sur le filet */
 .etude-etape-icone {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    border-radius: 50%;
-    background: var(--primary-color);
-    color: var(--button-text-color);
+    position: absolute;
+    left: -3.5rem;
+    top: -0.1rem;
+    width: 2.25rem;
+    height: 2.25rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
-    position: relative;
+    background: var(--background-color);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
     z-index: 1;
-    box-shadow: 0 0 0 4px var(--background-color);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.etude-etape-icone i {
+    display: none; /* on remplace l'icône par le numéro d'étape */
+}
+
+.etude-etape-icone::before {
+    content: counter(etape, decimal-leading-zero);
+    font-family: var(--font-titre);
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--accent);
+    transition: color 0.3s;
 }
 
 .etude-etape:hover .etude-etape-icone {
-    transform: scale(1.15);
-    box-shadow: 0 0 0 4px var(--background-color), 0 0 12px rgba(var(--primary-rgb), 0.3);
+    transform: scale(1.08);
+    background: var(--accent);
 }
 
+.etude-etape:hover .etude-etape-icone::before {
+    color: var(--button-text-color);
+}
+
+/* Contenu de l'étape : plus de carte grise, lecture directe */
 .etude-etape-contenu {
-    flex: 1;
-    background: var(--card-background);
-    border-radius: var(--radius-md);
-    padding: 1.5rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.etude-etape:hover .etude-etape-contenu {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
+    padding-top: 0.1rem;
 }
 
 .etude-etape-contenu h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
-    color: var(--primary-color);
+    font-family: var(--font-titre);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 0.6rem;
+    color: var(--text-color);
+    text-align: left;
     text-transform: none;
     letter-spacing: 0;
 }
 
 .etude-etape-contenu p {
-    font-size: 0.95rem;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0;
     padding: 0;
-    color: var(--text-color);
-    opacity: 0.85;
+    color: var(--text-muted);
+    text-align: left;
 }
 
 .etude-etape-contenu ul {
@@ -290,16 +371,16 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.65rem;
 }
 
 .etude-etape-contenu li {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-color);
-    opacity: 0.85;
-    padding-left: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    padding-left: 1.4rem;
     position: relative;
+    text-align: left;
 }
 
 .etude-etape-contenu li::before {
@@ -310,7 +391,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--primary-color);
+    background: var(--accent);
 }
 
 /* Compteur du carrousel */
@@ -324,16 +405,9 @@
 }
 
 /* Images du projet */
-.projet-img {
-    margin-top: 5rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
 .projet-image-wrapper {
-    max-width: 800px;
-    margin: 2rem auto;
+    max-width: 100%;
+    margin: 0 0 1.5rem;
     aspect-ratio: 16 / 10;
     background-color: var(--card-background);
     border-radius: var(--radius-md);
@@ -356,8 +430,8 @@
 /* Carrousel */
 .carrousel {
     position: relative;
-    max-width: 800px;
-    margin: 2rem auto;
+    max-width: 100%;
+    margin: 0;
 }
 
 .carrousel-track {
@@ -548,33 +622,22 @@
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-    .projet-hero h1 {
-        font-size: 1.8rem;
-    }
-}
-
 @media (max-width: 768px) {
-    .projet-details {
-        padding: 0 1rem 2rem;
-    }
-
     .projet-hero {
-        padding: 2rem 1.5rem;
-        border-radius: 0 0 14px 14px;
+        padding: 4.5rem 1.25rem 2.25rem;
     }
 
-    .projet-hero h1 {
-        font-size: 1.6rem;
+    .projet-wrap {
+        padding: 0 1.25rem;
     }
 
-    .projet-presentation,
-    .projet-technologies {
-        min-width: auto;
+    .back-button {
+        left: 1.25rem;
+        top: 1.3rem;
     }
 
-    .projet-image-wrapper {
-        margin: 1.5rem auto;
+    .badge-en-cours {
+        margin-left: 0;
     }
 
     .carrousel-btn {
@@ -585,79 +648,53 @@
 }
 
 @media (max-width: 480px) {
-    .etude-timeline {
-        padding-left: 1rem;
-    }
-
-    .etude-timeline::before {
-        left: 0.5rem;
-    }
-
-    .etude-etape {
-        gap: 1rem;
-    }
-
-    .etude-etape-icone {
-        width: 30px;
-        height: 30px;
-        min-width: 30px;
-        font-size: 0.75rem;
-    }
-
-    .etude-etape-contenu {
-        padding: 1rem;
-    }
-
-    .projet-hero h1 {
-        font-size: 1.4rem;
-    }
-
     .projet-hero {
-        padding: 1.5rem 1rem;
-        border-radius: 0 0 10px 10px;
+        padding: 4rem 1rem 2rem;
+    }
+
+    .projet-wrap {
+        padding: 0 1rem;
     }
 
     .back-button {
-        top: 1rem;
         left: 1rem;
-        font-size: 0.85rem;
+        font-size: 0.75rem;
     }
 
-    .projet-content {
-        gap: 1rem;
-        margin-top: 1rem;
+    .projet-section {
+        margin-top: 2.25rem;
     }
 
-    .projet-presentation,
-    .projet-technologies {
-        padding: 1rem;
-        min-width: auto;
+    .etude-timeline {
+        padding-left: 2.75rem;
     }
 
-    .title-blocs {
-        margin-bottom: 1rem;
+    .etude-timeline::before {
+        left: 0.85rem;
+    }
+
+    .etude-etape-icone {
+        left: -2.75rem;
+        width: 1.85rem;
+        height: 1.85rem;
+    }
+
+    .etude-etape-icone::before {
+        font-size: 0.75rem;
+    }
+
+    .projet-lead {
+        font-size: 1.02rem;
     }
 
     #projet-technologies li {
-        font-size: 0.85rem;
-        padding: 6px 10px;
+        font-size: 0.82rem;
+        padding: 0.35rem 0.7rem;
     }
 
     .tech-logo {
-        width: 1.5rem;
-        height: 1.5rem;
-    }
-
-    .projet-image-wrapper {
-        margin: 1rem auto;
-    }
-
-    .projet-img {
-        margin-top: 2rem;
-    }
-
-    .carrousel {
-        margin: 1rem auto;
+        width: 1.25rem;
+        height: 1.25rem;
     }
 
     .carrousel-btn {

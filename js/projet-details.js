@@ -277,6 +277,10 @@ if (!projetId || !projets[projetId]) {
     if (ogDesc) ogDesc.setAttribute('content', metaDesc);
     if (ogUrl) ogUrl.setAttribute('content', window.location.href);
 
+    // Canonical propre à chaque projet (inclut le ?id=)
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute('href', window.location.href);
+
     // Twitter accepte aussi bien property="twitter:*" que name="twitter:*"
     const twitterTitle = document.querySelector('meta[name="twitter:title"], meta[property="twitter:title"]');
     const twitterDesc = document.querySelector('meta[name="twitter:description"], meta[property="twitter:description"]');

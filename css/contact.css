@@ -345,3 +345,15 @@
     }
 }
 
+/* ==============================
+   Thème sombre : on éclaircit le rouge de marque (fixe) sur les petits
+   textes pour garder un contraste lisible sur fond foncé.
+   ============================== */
+.dark-theme .contact-aside h2,
+.dark-theme .contact-card-label,
+.dark-theme .contact-card-icon,
+.dark-theme .requis,
+.dark-theme .erreur-formulaire {
+    color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
+}
+

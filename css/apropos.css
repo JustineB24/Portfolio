@@ -245,3 +245,12 @@ main hr {
     }
 }
 
+/* ==============================
+   Thème sombre : rouge de marque éclairci pour le contraste des dates et
+   titres de la timeline sur fond foncé.
+   ============================== */
+.dark-theme .timeline-date,
+.dark-theme .timeline-content h4 {
+    color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
+}
+

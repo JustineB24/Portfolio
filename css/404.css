@@ -220,7 +220,7 @@
 }
 
 /* ── Sous-titre ── */
-.erreur-404 h2 {
+.erreur-404 h1 {
     font-size: 1.6rem;
     font-weight: 700;
     margin: 1.5rem 0 0.8rem;
@@ -229,6 +229,9 @@
     color: var(--text-color);
     z-index: 1;
     opacity: 0.9;
+    /* Neutralise les styles globaux de h1 (soulignement rouge, inline-flex) */
+    border: none;
+    display: block;
 }
 
 /* ── Texte d'erreur style terminal ── */
@@ -325,7 +328,7 @@
         font-size: 6.5rem;
     }
 
-    .erreur-404 h2 {
+    .erreur-404 h1 {
         font-size: 1.4rem;
     }
 
@@ -345,7 +348,7 @@
         font-size: 5.5rem;
     }
 
-    .erreur-404 h2 {
+    .erreur-404 h1 {
         font-size: 1.2rem;
         letter-spacing: 0.1em;
     }

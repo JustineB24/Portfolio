@@ -48,7 +48,17 @@ const projets = {
         description: "Projet personnel réalisé dans le but de tester les capacités des intelligences artificielles en développement. Le point de départ : une simple idée de carnet de recettes numérique et une maquette rapide dessinée sur tablette. Le cahier des charges a été rédigé avec Gemini (Google), puis l'intégralité du code a été générée par Claude Code (Anthropic). Le résultat est une application web complète (PWA — installable comme une appli sur téléphone et utilisable hors ligne) avec recherche en temps réel, calculateur de portions, timer intégré, mode sombre et liste de courses — le tout en HTML, CSS et JavaScript vanilla, sans aucune ligne de code écrite manuellement.",
         technologies: ["HTML", "CSS", "JavaScript"],
         link: "https://github.com/JustineB24/site-de-cuisine",
-        enCours: true
+        enCours: true,
+        etudeDeCas: {
+            contexte: "Un projet 100 % personnel, né d'une question : jusqu'où une IA peut-elle aller en développement ? Le point de départ était volontairement simple — une idée de carnet de recettes numérique et une maquette griffonnée sur tablette — avec l'hypothèse que le résultat pourrait être réellement utile au quotidien, et pas seulement un prototype jetable.",
+            reflexion: "J'ai séparé les rôles : le cahier des charges a été rédigé avec Gemini (cadrage des besoins et des fonctionnalités), puis l'intégralité du code générée par Claude Code. J'ai choisi le HTML/CSS/JavaScript vanilla et une PWA (installable, utilisable hors ligne) pour garder un projet léger, sans dépendance ni framework, et hébergeable simplement.",
+            defis: [
+                "Piloter l'IA avec des consignes assez précises pour obtenir un résultat cohérent, sans écrire le code moi-même",
+                "Relire et valider le code généré plutôt que de l'accepter aveuglément — comprendre ce qui était produit",
+                "Obtenir une vraie PWA fonctionnelle (recherche en temps réel, calculateur de portions, timer, mode sombre, liste de courses, hors ligne) et non une simple démo"
+            ],
+            resultat: "Une application web complète et installable, livrée sans une seule ligne écrite à la main. Au-delà du résultat, le projet m'a appris à cadrer un besoin clairement, à piloter des outils d'IA et surtout à évaluer d'un œil critique le code qu'ils produisent."
+        }
     },
     "panada-food": {
         title: "Panada Food",

@@ -25,7 +25,7 @@ const projets = {
             contexte: "Les blind tests entre amis se font souvent sur des applications payantes, limitées en fonctionnalités ou sans vrai mode multijoueur en temps réel. On voulait créer une alternative gratuite, fun et complète, jouable directement dans le navigateur.",
             reflexion: "Avant d'écrire la moindre ligne de code, on a passé plusieurs semaines à structurer le projet comme un vrai projet professionnel : cahier des charges, maquettes Figma complètes (wireframes, design system, prototypes interactifs), choix des technologies, répartition des rôles et méthodologie Agile. C'est grâce à ce projet que j'ai appris à utiliser Figma et à concevoir une identité visuelle cohérente (logo, mascotte, nuancier, icônes néon).",
             defis: [
-                "Structurer un projet ambitieux de zéro — cahier des charges, maquettes, architecture technique — avant même de coder",
+                "Structurer un projet ambitieux de zéro (cahier des charges, maquettes, architecture technique) avant même de coder",
                 "Apprendre Figma en partant de rien pour concevoir des maquettes professionnelles et un design system complet",
                 "Se coordonner à 4 avec Git et une méthodologie Agile, en se répartissant les rôles clairement",
                 "Faire des choix techniques adaptés (React, Socket.io, Docker) en anticipant les contraintes du temps réel multijoueur"
@@ -37,24 +37,35 @@ const projets = {
         title: "Gecko — Plateforme de gestion interne",
         date: "Septembre 2025 — aujourd'hui",
         images: [],
-        description: "Application web métier développée en alternance chez Litesoft pour un client du secteur de l'édition et de la distribution. Cette plateforme intranet, sur laquelle je travaille à temps plein depuis mon arrivée, centralise la gestion commerciale, la facturation, le suivi des activités et la logistique. Je travaille en mode ticketing via Asana et j'ai repris un projet legacy existant que je modernise progressivement : refactoring de fichiers monolithiques en classes dédiées, mise en place de l'autoload PSR-4 sur l'ensemble du projet, passage aux standards de nommage PSR-1/4/12, et remplacement systématique des pratiques obsolètes (jointures SQL implicites, paramètres ambigus, comparaisons lâches). Parmi les développements majeurs : refonte complète du système de filtres avancés sur tous les tableaux de l'application (recherche par colonne, filtres favoris, opérateurs multiples), migration des tableaux du mode server-side vers client-side, ajout de fonctionnalités métier (traductions multi-langue, import Excel, gestion de stock, prévisualisation d'articles), audits de sécurité (prévention XSS, échappement systématique), et optimisations SQL (élimination de requêtes N+1, insertions batch). Pour améliorer ma productivité, j'utilise Claude Code au quotidien comme assistant technique : j'ai mis en place un fichier de conventions servant de référence complète du projet, des commandes personnalisées pour lancer des audits techniques automatisés (sécurité, performance, qualité) et générer des récapitulatifs de modifications, ainsi qu'un plan de résolution organisé pour prioriser la dette technique. Le projet repose sur une architecture MVC en PHP 8.3 avec PostgreSQL, un frontend en JavaScript, jQuery, Bootstrap et DataTables, du temps réel via Node.js et Socket.IO, et un pipeline CI/CD sur GitLab.",
-        technologies: ["PHP", "JavaScript", "CSS", "PostgreSQL", "jQuery", "Bootstrap", "DataTables", "Node.js", "Socket.io", "GitLab"],
-        enCours: true
+        description: "Application web métier développée en alternance chez Litesoft pour un client du secteur de l'édition et de la distribution. Cette plateforme intranet, sur laquelle je travaille à temps plein depuis mon arrivée, centralise la gestion commerciale, la facturation, le suivi des activités et la logistique. Je travaille en mode ticketing via Asana et je contribue à la modernisation progressive de ce projet existant et toujours actif : refactoring de fichiers monolithiques en classes dédiées, mise en place de l'autoload PSR-4 sur l'ensemble du projet, passage aux standards de nommage PSR-1/4/12, et remplacement systématique des pratiques obsolètes (jointures SQL implicites, paramètres ambigus, comparaisons lâches). Parmi les développements majeurs : refonte complète du système de filtres avancés sur tous les tableaux de l'application (recherche par colonne, filtres favoris, opérateurs multiples), migration des tableaux du mode server-side vers client-side, ajout de fonctionnalités métier (traductions multi-langue, import Excel, gestion de stock, prévisualisation d'articles), audits de sécurité (prévention XSS, échappement systématique), et optimisations SQL (élimination de requêtes N+1, insertions batch). Pour améliorer ma productivité, j'utilise Claude Code au quotidien comme assistant technique : j'ai mis en place un fichier de conventions servant de référence complète du projet, des commandes personnalisées pour lancer des audits techniques automatisés (sécurité, performance, qualité) et générer des récapitulatifs de modifications, ainsi qu'un plan de résolution organisé pour prioriser la dette technique. Le projet repose sur une architecture MVC en PHP 8.3 avec PostgreSQL, un frontend en JavaScript, jQuery, Bootstrap et DataTables, du temps réel via Node.js et Socket.IO, et un pipeline CI/CD sur GitLab.",
+        technologies: ["PHP", "JavaScript", "PostgreSQL", "jQuery", "Bootstrap", "Tailwind CSS", "DataTables", "Node.js", "Socket.io", "GitLab"],
+        enCours: true,
+        etudeDeCas: {
+            contexte: "Gecko est l'ERP interne d'un éditeur-distributeur de livres, utilisé par environ 350 personnes réparties sur plusieurs sites. Développé par l'équipe Litesoft depuis 2021, il couvre toute la chaîne : catalogue, CRM, facturation, fabrication, stock et expédition. Je l'ai rejoint en septembre 2025 dans le cadre de mon alternance. L'enjeu n'est donc pas de partir d'une page blanche, mais de m'intégrer efficacement dans un gros projet existant et toujours très actif, et d'y contribuer en full-stack.",
+            reflexion: "Intervenir sur une application de cette taille, c'est d'abord savoir naviguer dans l'existant. Je travaille par tickets, en touchant souvent toute la chaîne (contrôleur PHP, classe métier, requête SQL, interface). Mon fil conducteur : moderniser et fiabiliser l'existant plutôt que d'empiler du code, en passant par la standardisation (autoload PSR-4, conventions PSR-1/4/12), la sécurité et la performance.",
+            defis: [
+                "Concevoir un moteur de filtres avancés réutilisé sur tous les tableaux de l'application : recherche par colonne, opérateurs adaptés au type de donnée (texte, nombre, date, EAN), filtres favoris sauvegardables. C'est mon plus gros chantier, environ 237 h.",
+                "Mener la migration en cours de l'interface de Bootstrap vers Tailwind CSS sur près de 190 pages sans régression, en réécrivant moi-même les composants d'UI (modales, menus, popovers, onglets) avec Floating UI pour remplacer le JavaScript de Bootstrap. Pour éviter les régressions, je m'appuie sur une centaine de tests navigateur (constitués en grande partie lors des optimisations), rejoués avant et après mes changements.",
+                "Faire passer le projet à l'autoload PSR-4 (≈ 336 fichiers) et extraire les imports en classes dédiées, supprimant plusieurs milliers de lignes de contrôleurs monolithiques.",
+                "Mener une campagne d'optimisation perf et sécurité sur ~25 pages : élimination de requêtes N+1, requêtes groupées, échappement XSS systématique."
+            ],
+            resultat: "Au fil de mon alternance, j'ai contribué en continu à un ERP en production : un système de filtres déployé sur toute l'application, une migration d'interface d'envergure, des composants d'UI maison, une base de code assainie (PSR-4) et un nouveau module de gestion des stocks pour le site de Paris. J'y apprends surtout à être autonome dans une grande base de code d'équipe, avec une vraie exigence de non-régression, de sécurité et de performance."
+        }
     },
     "grimoire-recettes": {
         title: "Le Grimoire des Recettes",
         date: "2025 — en cours",
         images: ["../assets/projets/grimoire_recettes/Maquette.png"],
-        description: "Projet personnel réalisé dans le but de tester les capacités des intelligences artificielles en développement. Le point de départ : une simple idée de carnet de recettes numérique et une maquette rapide dessinée sur tablette. Le cahier des charges a été rédigé avec Gemini (Google), puis l'intégralité du code a été générée par Claude Code (Anthropic). Le résultat est une application web complète (PWA — installable comme une appli sur téléphone et utilisable hors ligne) avec recherche en temps réel, calculateur de portions, timer intégré, mode sombre et liste de courses — le tout en HTML, CSS et JavaScript vanilla, sans aucune ligne de code écrite manuellement.",
+        description: "Projet personnel réalisé dans le but de tester les capacités des intelligences artificielles en développement. Le point de départ : une simple idée de carnet de recettes numérique et une maquette rapide dessinée sur tablette. Le cahier des charges a été rédigé avec Gemini (Google), puis l'intégralité du code a été générée par Claude Code (Anthropic). Le résultat est une application web complète (PWA installable comme une appli sur téléphone et utilisable hors ligne) avec recherche en temps réel, calculateur de portions, timer intégré, mode sombre et liste de courses, le tout en HTML, CSS et JavaScript vanilla, sans aucune ligne de code écrite manuellement.",
         technologies: ["HTML", "CSS", "JavaScript"],
         link: "https://github.com/JustineB24/site-de-cuisine",
         enCours: true,
         etudeDeCas: {
-            contexte: "Un projet 100 % personnel, né d'une question : jusqu'où une IA peut-elle aller en développement ? Le point de départ était volontairement simple — une idée de carnet de recettes numérique et une maquette griffonnée sur tablette — avec l'hypothèse que le résultat pourrait être réellement utile au quotidien, et pas seulement un prototype jetable.",
+            contexte: "Un projet 100 % personnel, né d'une question : jusqu'où une IA peut-elle aller en développement ? Le point de départ était volontairement simple : une idée de carnet de recettes numérique et une maquette griffonnée sur tablette, avec l'hypothèse que le résultat pourrait être réellement utile au quotidien, et pas seulement un prototype jetable.",
             reflexion: "J'ai séparé les rôles : le cahier des charges a été rédigé avec Gemini (cadrage des besoins et des fonctionnalités), puis l'intégralité du code générée par Claude Code. J'ai choisi le HTML/CSS/JavaScript vanilla et une PWA (installable, utilisable hors ligne) pour garder un projet léger, sans dépendance ni framework, et hébergeable simplement.",
             defis: [
                 "Piloter l'IA avec des consignes assez précises pour obtenir un résultat cohérent, sans écrire le code moi-même",
-                "Relire et valider le code généré plutôt que de l'accepter aveuglément — comprendre ce qui était produit",
+                "Relire et valider le code généré plutôt que de l'accepter aveuglément, pour comprendre ce qui était produit",
                 "Obtenir une vraie PWA fonctionnelle (recherche en temps réel, calculateur de portions, timer, mode sombre, liste de courses, hors ligne) et non une simple démo"
             ],
             resultat: "Une application web complète et installable, livrée sans une seule ligne écrite à la main. Au-delà du résultat, le projet m'a appris à cadrer un besoin clairement, à piloter des outils d'IA et surtout à évaluer d'un œil critique le code qu'ils produisent."
@@ -77,9 +88,9 @@ const projets = {
             contexte: "Panada Food est un restaurant de restauration rapide à Amiens qui venait d'ouvrir et ne possédait pas encore de site web. En binôme avec une collègue, on s'est proposées pour leur en créer un durant notre stage de 6 semaines en deuxième année de BTS SIO.",
             reflexion: "Le restaurant n'ayant aucune présence en ligne, il fallait partir de zéro : se déplacer sur place pour récolter les informations (menu, photos, attentes du gérant), concevoir le design, développer le site, gérer la conformité RGPD et les mentions légales, puis mettre en ligne via un hébergement OVH.",
             defis: [
-                "Travailler en grande autonomie — le maître de stage n'était présent que de 11h à 14h et les délais de réponse étaient longs",
+                "Travailler en grande autonomie, le maître de stage n'étant présent que de 11h à 14h et les délais de réponse étant longs",
                 "Se coordonner en binôme, en partie en télétravail, pour se répartir les tâches efficacement",
-                "Partir de zéro sans maquette ni cahier des charges fourni — il a fallu aller chercher les informations directement auprès du gérant",
+                "Partir de zéro sans maquette ni cahier des charges fourni : il a fallu aller chercher les informations directement auprès du gérant",
                 "Assurer la conformité légale du site : mentions légales, crédits photographiques, respect du RGPD"
             ],
             resultat: "Site vitrine livré dans les temps et mis en ligne sur panadafood.ovh. Ce stage a renforcé notre autonomie, notre esprit d'équipe et nos compétences en programmation dans un contexte professionnel réel."
@@ -178,7 +189,7 @@ const projets = {
             reflexion: "L'ancien site étant hors ligne, il fallait retrouver son contenu pour ne pas repartir de zéro. J'ai utilisé la Wayback Machine pour récupérer les pages de l'ancien site, en vérifiant que les informations étaient encore à jour avant de les réinjecter. Le travail s'est ensuite organisé autour de l'outil Adico : création du recueil de besoins, définition de l'arborescence, puis envoi des dossiers sur Adicloud pour alimenter les pages.",
             defis: [
                 "Récupérer le contenu d'un site totalement disparu grâce à la Wayback Machine",
-                "Corriger une erreur dans l'arborescence Adico — le dossier « Services aux administrés » était manquant, ce qui a nécessité un appel au support",
+                "Corriger une erreur dans l'arborescence Adico : le dossier « Services aux administrés » était manquant, ce qui a nécessité un appel au support",
                 "Gérer en parallèle d'autres missions : sauvegarde des mails Gmail de la maire vers un disque dur avec Mbox Viewer, et propositions de prototypes de logo",
                 "Respecter un délai serré de 4 semaines pour livrer le site complet"
             ],
@@ -288,6 +299,7 @@ if (!projetId || !projets[projetId]) {
         "WinForms": "Interface graphique Windows",
         "jQuery": "Bibliothèque JavaScript",
         "Bootstrap": "Framework CSS responsive",
+        "Tailwind CSS": "Framework CSS utilitaire",
         "DataTables": "Plugin de tableaux interactifs",
         "PostgreSQL": "Base de données avancée",
         "React": "Bibliothèque front-end",
@@ -314,7 +326,8 @@ if (!projetId || !projets[projetId]) {
         const nomsSpeciaux = {
             "c#": "c-sharp",
             "node.js": "nodejs",
-            "socket.io": "socket-io"
+            "socket.io": "socket-io",
+            "tailwind css": "tailwind"
         };
         if (nomsSpeciaux[nomFichier]) {
             nomFichier = nomsSpeciaux[nomFichier];
@@ -325,7 +338,7 @@ if (!projetId || !projets[projetId]) {
             "html": "tag-html", "css": "tag-css", "javascript": "tag-js",
             "php": "tag-php", "c#": "tag-csharp", "mysql": "tag-mysql",
             "xaml": "tag-xaml", "maui": "tag-maui", "winforms": "tag-winforms",
-            "jquery": "tag-jquery", "bootstrap": "tag-bootstrap", "datatables": "tag-datatables",
+            "jquery": "tag-jquery", "bootstrap": "tag-bootstrap", "tailwind css": "tag-tailwind", "datatables": "tag-datatables",
             "react": "tag-react", "node.js": "tag-nodejs",
             "socket.io": "tag-socketio", "postgresql": "tag-postgresql",
             "docker": "tag-docker", "figma": "tag-figma", "git": "tag-git",

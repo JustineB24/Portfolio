@@ -202,15 +202,17 @@ const projets = {
 // Vérifier si l'ID existe et mettre à jour la page
 if (!projetId || !projets[projetId]) {
     const main = document.querySelector("main");
-    main.textContent = "";
-    const p = document.createElement("p");
-    p.classList.add('projet-introuvable');
-    p.textContent = "Projet introuvable. ";
-    const a = document.createElement("a");
-    a.href = "projets.html";
-    a.textContent = "Retour aux projets";
-    p.appendChild(a);
-    main.appendChild(p);
+    if (main) {
+        main.textContent = "";
+        const p = document.createElement("p");
+        p.classList.add('projet-introuvable');
+        p.textContent = "Projet introuvable. ";
+        const a = document.createElement("a");
+        a.href = "projets.html";
+        a.textContent = "Retour aux projets";
+        p.appendChild(a);
+        main.appendChild(p);
+    }
 } else {
     // Couleurs du hero par projet
     const heroColors = {

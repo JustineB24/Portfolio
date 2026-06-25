@@ -122,7 +122,8 @@
     }
 
     // Fermeture
-    document.getElementById("zoom-close").addEventListener("click", fermerModale);
+    const btnFermer = document.getElementById("zoom-close");
+    if (btnFermer) btnFermer.addEventListener("click", fermerModale);
     modal.addEventListener("click", function (event) {
         if (event.target === modal) {
             fermerModale();

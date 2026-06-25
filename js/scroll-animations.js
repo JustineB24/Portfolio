@@ -64,6 +64,7 @@
     }, {passive: true});
 
     btnRetourHaut.addEventListener('click', () => {
-        window.scrollTo({top: 0, behavior: 'smooth'});
+        const mvtReduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({top: 0, behavior: mvtReduit ? 'auto' : 'smooth'});
     });
 })();

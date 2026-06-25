@@ -999,7 +999,7 @@ body.page-exit main {
 /* Temps de lecture et sous-titre de page */
 .temps-lecture {
     font-size: 0.9rem;
-    opacity: 0.75;
+    color: var(--text-muted);
     margin-bottom: 2rem;
     font-weight: 600;
 }

@@ -292,6 +292,22 @@ if (!projetId || !projets[projetId]) {
     const descriptionEl = document.getElementById("projet-description");
     if (descriptionEl) descriptionEl.textContent = projets[projetId].description;
 
+    // Données structurées du projet (JSON-LD CreativeWork) pour le SEO
+    const donneesProjet = {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": projets[projetId].title,
+        "description": projets[projetId].description.substring(0, 300),
+        "author": {"@type": "Person", "name": "Justine BLIN"},
+        "keywords": (projets[projetId].technologies || []).join(", "),
+        "inLanguage": "fr",
+        "url": window.location.href
+    };
+    const scriptLd = document.createElement("script");
+    scriptLd.type = "application/ld+json";
+    scriptLd.textContent = JSON.stringify(donneesProjet);
+    document.head.appendChild(scriptLd);
+
 
     // Descriptions des technologies pour les tooltips
     const techDescriptions = {

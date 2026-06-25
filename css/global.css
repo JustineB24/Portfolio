@@ -1167,6 +1167,10 @@ body.page-exit main {
     border-color: rgba(121, 82, 179, 0.7);
 }
 
+.card-tags .tag-tailwind, #projet-technologies .tag-tailwind {
+    border-color: rgba(56, 189, 248, 0.7);
+}
+
 .card-tags .tag-datatables, #projet-technologies .tag-datatables {
     border-color: rgba(51, 102, 153, 0.7);
 }

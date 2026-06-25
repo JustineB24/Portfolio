@@ -107,7 +107,8 @@
             e.preventDefault();
             const section = cible.closest('.veille-section');
             if (section) setExpanded(section, true);
-            cible.scrollIntoView({behavior: 'smooth', block: 'start'});
+            const mvtReduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            cible.scrollIntoView({behavior: mvtReduit ? 'auto' : 'smooth', block: 'start'});
             history.replaceState(null, '', '#' + id);
         });
     });

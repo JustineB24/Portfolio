@@ -1210,3 +1210,47 @@ body.page-exit main {
 .card-tags .tag-gitlab, #projet-technologies .tag-gitlab {
     border-color: rgba(226, 67, 41, 0.7);
 }
+
+/* ==============================
+   Icônes dans les pastilles des cartes projet (.card-tags).
+   La page détail (#projet-technologies) a déjà ses <img>, on ne la touche pas.
+   L'icône est posée en ::before (l'URL est relative à ce fichier CSS).
+   ============================== */
+.card-tags span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.card-tags span::before {
+    content: "";
+    width: 0.95rem;
+    height: 0.95rem;
+    flex-shrink: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.card-tags .tag-html::before { background-image: url(../assets/competences/html.svg); }
+.card-tags .tag-css::before { background-image: url(../assets/competences/css.svg); }
+.card-tags .tag-js::before { background-image: url(../assets/competences/javascript.svg); }
+.card-tags .tag-php::before { background-image: url(../assets/competences/php.svg); }
+.card-tags .tag-csharp::before { background-image: url(../assets/competences/c-sharp.svg); }
+.card-tags .tag-mysql::before { background-image: url(../assets/competences/mysql.svg); }
+.card-tags .tag-xaml::before { background-image: url(../assets/competences/xaml.svg); }
+.card-tags .tag-maui::before { background-image: url(../assets/competences/maui.svg); }
+.card-tags .tag-winforms::before { background-image: url(../assets/competences/winforms.svg); }
+.card-tags .tag-jquery::before { background-image: url(../assets/competences/jquery.svg); }
+.card-tags .tag-bootstrap::before { background-image: url(../assets/competences/bootstrap.svg); }
+.card-tags .tag-tailwind::before { background-image: url(../assets/competences/tailwind.svg); }
+.card-tags .tag-datatables::before { background-image: url(../assets/competences/datatables.png); }
+.card-tags .tag-react::before { background-image: url(../assets/competences/react.svg); }
+.card-tags .tag-nodejs::before { background-image: url(../assets/competences/nodejs.svg); }
+.card-tags .tag-socketio::before { background-image: url(../assets/competences/socket-io.svg); }
+.card-tags .tag-postgresql::before { background-image: url(../assets/competences/postgresql.svg); }
+.card-tags .tag-docker::before { background-image: url(../assets/competences/docker.svg); }
+.card-tags .tag-figma::before { background-image: url(../assets/competences/figma.svg); }
+.card-tags .tag-git::before { background-image: url(../assets/competences/git.svg); }
+.card-tags .tag-github::before { background-image: url(../assets/competences/github.svg); }
+.card-tags .tag-gitlab::before { background-image: url(../assets/competences/gitlab.svg); }

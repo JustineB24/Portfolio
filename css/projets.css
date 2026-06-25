@@ -282,7 +282,9 @@
     background: color-mix(in srgb, var(--card-accent, var(--primary-color)) 15%, transparent);
     border: 1px solid color-mix(in srgb, var(--card-accent, var(--primary-color)) 40%, transparent);
     border-radius: 100px;
-    color: var(--card-accent, var(--primary-color));
+    /* Texte assombri/éclairci vers --text-color pour un contraste lisible
+       quel que soit l'accent (ex. jaune card-1) et le thème */
+    color: color-mix(in srgb, var(--card-accent, var(--primary-color)) 50%, var(--text-color));
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.3px;

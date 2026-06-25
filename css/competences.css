@@ -447,6 +447,11 @@ body.dark-theme .comp-github .svg {
     --comp-bg: linear-gradient(135deg, #563d7c, #7952b3);
 }
 
+.comp-tailwind {
+    --comp-color: #38bdf8;
+    --comp-bg: linear-gradient(135deg, #38bdf8, #0ea5e9);
+}
+
 .comp-docker {
     --comp-color: #2496ed;
     --comp-bg: linear-gradient(135deg, #0db7ed, #2496ed);

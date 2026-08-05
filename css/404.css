@@ -381,3 +381,12 @@
         display: none;
     }
 }
+
+/* ==============================
+   Rouge éclairci en thème sombre pour rester lisible sur fond foncé
+   ============================== */
+.dark-theme .erreur-illustration .fa-triangle-exclamation,
+.dark-theme .glitch-chiffre,
+.dark-theme .particule-404 {
+    color: var(--primary-on-dark);
+}

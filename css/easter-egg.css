@@ -98,7 +98,9 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--primary-color);
+    /* La notification a un fond sombre dans les deux thèmes : le rouge est
+       éclairci en permanence, pas seulement en thème sombre. */
+    color: var(--primary-on-dark);
 }
 
 .ee-achievement-desc {

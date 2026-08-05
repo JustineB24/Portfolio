@@ -617,3 +617,23 @@ main .innovations li a:hover {
         background-attachment: scroll;
     }
 }
+
+/* ==============================
+   Rouge éclairci en thème sombre pour rester lisible sur fond foncé.
+   Les liens `.sources` reprennent la liste de sélecteurs d'origine :
+   `main p .sources` est plus spécifique que `.dark-theme .sources`.
+   ============================== */
+.dark-theme .veille-meta i,
+.dark-theme .titre-sommaire i,
+.dark-theme .sommaire ol li a::before,
+.dark-theme .sommaire ol li a.active,
+.dark-theme .veille-section-chevron,
+.dark-theme .innovations strong,
+.dark-theme main p .sources,
+.dark-theme main ul .sources,
+.dark-theme main table .sources,
+.dark-theme main .timeline .sources {
+    color: var(--primary-on-dark);
+}
+
+/* ==============================

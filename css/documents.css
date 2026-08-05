@@ -360,7 +360,6 @@
     box-shadow: var(--shadow-primary);
 }
 
-
 /* ============================== */
 /*   Responsive                   */
 /* ============================== */
@@ -453,3 +452,12 @@
     }
 }
 
+/* ==============================
+   Rouge éclairci en thème sombre pour rester lisible sur fond foncé
+   (.btn-view est exclu au survol : il passe alors sur fond rouge plein)
+   ============================== */
+.dark-theme .bts-section-title,
+.dark-theme .bts-spe-debouches-label,
+.dark-theme .btn-view:not(:hover) {
+    color: var(--primary-on-dark);
+}

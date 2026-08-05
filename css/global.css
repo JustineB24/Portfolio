@@ -1066,6 +1066,26 @@ body.page-exit main {
     font-size: 1.1rem;
     color: var(--text-color);
     margin-bottom: 2rem;
+    /* Sans borne, un sous-titre un peu long s'étire sur toute la largeur de la
+       page (plus de 1200px), bien au-delà du confort de lecture. On le limite à
+       une longueur de ligne raisonnable, centrée comme le reste de l'en-tête. */
+    max-width: 68ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Le site n'a pas de couleur globale pour les liens de contenu : la règle
+   `main p a` ne pose qu'un soulignement animé, sans couleur, et les liens
+   retombent donc sur le bleu du navigateur. On la donne ici pour le composant
+   partagé, sans toucher à la règle globale dont le sélecteur très spécifique
+   (`main li a:not(…)` neuf fois) écraserait les liens déjà colorés ailleurs. */
+.sous-titre-page a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.dark-theme .sous-titre-page a {
+    color: var(--primary-on-dark);
 }
 
 /* Sommaire veille */

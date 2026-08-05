@@ -377,7 +377,7 @@ main ul li {
 .comparatif th {
     background-color: var(--primary-color);
     font-weight: bold;
-    color: var(--button-text-color);
+    color: var(--tag-text-on-color);
 }
 
 .comparatif tr {
@@ -432,7 +432,7 @@ main .innovations li a:hover {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--button-text-color);
+    color: var(--tag-text-on-color);
     background-color: var(--primary-color);
     padding: 0.25rem 0.75rem;
     border-radius: 2rem;

@@ -252,6 +252,37 @@ h3 {
 }
 
 /* ==============================
+   Eyebrow de section (partagé)
+   Étiquette courte placée juste au-dessus d'un titre de section, sur le
+   modèle éditorial du détail projet : elle annonce la nature du bloc
+   ("Parcours", "Backend"…) et allège la charge du titre lui-même.
+   Le détail projet garde sa propre classe `.eyebrow`, colorée par la
+   couleur du projet (--accent) ; ici on reste sur le rouge de marque.
+   ============================== */
+.section-eyebrow {
+    display: block;
+    margin: 0 0 0.4rem;
+    font-family: var(--font-titre);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--primary-color);
+}
+
+/* Rouge éclairci en sombre pour rester lisible sur fond foncé */
+.dark-theme .section-eyebrow {
+    color: var(--primary-on-dark);
+}
+
+/* L'eyebrow forme un bloc avec le titre qui le suit : on absorbe la
+   marge haute du titre pour éviter un trou entre les deux. */
+.section-eyebrow + h1,
+.section-eyebrow + h2 {
+    margin-top: 0;
+}
+
+/* ==============================
    Bouton CV (partagé)
    ============================== */
 .btn-cv {

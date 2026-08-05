@@ -253,7 +253,11 @@
     text-align: center;
 }
 
-.qui-suis-je p {
+/* Le `:not()` protège l'eyebrow de section : `.qui-suis-je p` est plus
+   spécifique que `.section-eyebrow` et se charge après global.css, donc sans
+   cette exclusion l'étiquette héritait de la taille du paragraphe (17,6 px au
+   lieu de 11,52 px) et paraissait plus grosse que sur les autres sections. */
+.qui-suis-je p:not(.section-eyebrow) {
     font-size: 1.1rem;
     line-height: 1.8;
     opacity: 0.85;

@@ -113,12 +113,20 @@ a.timeline-link:hover .timeline-content {
     animation: fadeInUp 0.6s ease-in-out;
 }
 
-/* Titres */
-.timeline h2,
+/* Étiquettes de colonne de la timeline.
+   Ce sont des libellés de colonne, pas des titres de section : soulignés et à
+   1,6rem, ils pesaient presque autant que le h2 « Parcours » juste au-dessus.
+   On retire le soulignement, on descend la taille et le poids, et on passe en
+   --text-muted pour installer la hiérarchie. Effet de bord voulu : à cette
+   taille « Expériences professionnelles » tient sur une seule ligne comme
+   « Cursus scolaire », les deux colonnes ne sont plus décalées.
+   (`.timeline h2` a été retiré du sélecteur : aucun h2 dans une timeline.) */
 .timeline > h3 {
-    padding-bottom: 20px;
-    text-decoration: underline;
-    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    margin-bottom: 1.5rem;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
 }
 
 /* Date/période dans la timeline */

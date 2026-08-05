@@ -18,6 +18,40 @@
 <!--    |     --out assets/og/og-nom.jpg                           |    -->
 <!--    ==========================================================    -->
 
+<!--
+    ==========================================================================
+    OÙ SONT LES TEXTES DES CARTES
+    ==========================================================================
+    Dans l'objet `CARTES` en bas de ce fichier : c'est la SEULE source de
+    vérité. Volontairement pas recopiés ici, un commentaire finirait par
+    diverger (c'est déjà arrivé aux images elles-mêmes).
+
+    Ouvrir generateur.html sans paramètre affiche la liste des cartes.
+
+    ==========================================================================
+    RÉGÉNÉRER UNE CARTE
+    ==========================================================================
+      cd <racine du dépôt> && python3 -m http.server 8000 &
+      NOM=formation      # une des clés de l'objet CARTES
+      chrome --headless --disable-gpu --hide-scrollbars \
+             --virtual-time-budget=7000 --window-size=1200,630 \
+             --screenshot=/tmp/carte.png \
+             "http://localhost:8000/assets/og/generateur.html?carte=$NOM"
+      sips -s format jpeg -s formatOptions 88 /tmp/carte.png \
+           --out "assets/og/og-$NOM.jpg"
+
+    Qualité 88 : les dégradés du fond sont coûteux, en dessous ils marbrent.
+
+    Une carte est une image, elle ne suit pas les modifications des pages.
+    Quand un eyebrow ou un titre de page change : corriger `CARTES`, PUIS
+    régénérer l'image.
+
+    Les paramètres eyebrow / titre / accroche / icone restent acceptés, seuls
+    ou en surcharge d'une carte nommée, pour essayer une variante sans
+    toucher au fichier.
+    ==========================================================================
+-->
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -212,20 +246,128 @@
 </div>
 
 <script>
-    // Les textes viennent de l'URL : ?eyebrow=…&titre=…&accroche=…&icone=fa-rss
-    const p = new URLSearchParams(location.search);
-    const mettre = (id, valeur) => {
-        if (valeur !== null) document.getElementById(id).textContent = valeur;
+    // ======================================================================
+    // SOURCE UNIQUE DE VÉRITÉ des 10 cartes.
+    //
+    // La clé est le suffixe du fichier : "formation" -> og-formation.jpg.
+    // Règle de contenu : `eyebrow` et `titre` reprennent l'eyebrow et le h1
+    // de la page, pour que la carte et la page racontent la même chose.
+    //
+    // À GARDER À JOUR : une carte est une image, elle ne suit pas les
+    // modifications des pages. Quand un eyebrow ou un titre de page change,
+    // corriger ici PUIS régénérer l'image (voir l'en-tête du fichier).
+    // ======================================================================
+    const CARTES = {
+        "accueil": {
+            eyebrow: "Développeuse web",
+            titre: "Justine Blin",
+            accroche: "Portfolio : projets, compétences et parcours en développement web.",
+            icone: "fas fa-code"
+        },
+        "apropos": {
+            eyebrow: "Parcours et expériences",
+            titre: "Profil",
+            accroche: "Formations, expériences professionnelles et CV.",
+            icone: "fas fa-user"
+        },
+        "competences": {
+            eyebrow: "Langages, outils et certifications",
+            titre: "Compétences",
+            accroche: "Ce que j'utilise, et où le voir en projet.",
+            icone: "fas fa-laptop-code"
+        },
+        "projets": {
+            eyebrow: "Du BTS SIO à l'alternance",
+            titre: "Mes projets",
+            accroche: "Projets de Bachelor, de BTS SIO, de stage et personnels.",
+            icone: "fas fa-folder-open"
+        },
+        // eyebrow et titre volontairement inversés par rapport à la page :
+        // « Raspberry Pi » en grand est plus parlant dans un flux.
+        "veille": {
+            eyebrow: "Sujet suivi",
+            titre: "Raspberry Pi",
+            accroche: "Historique, innovations et applications d'un nano-ordinateur.",
+            icone: "fas fa-rss"
+        },
+        "formation": {
+            eyebrow: "Développement, data et IA",
+            titre: "Formation",
+            accroche: "Mastère Expert IT à venir, Bachelor Chef de projet développement et data, BTS SIO option SLAM.",
+            icone: "fas fa-graduation-cap"
+        },
+        "contact": {
+            eyebrow: "Oise (60), Hauts-de-France",
+            titre: "Contact",
+            accroche: "Pour discuter d'un projet ou d'une collaboration.",
+            icone: "fas fa-paper-plane"
+        },
+        "mentions-legales": {
+            eyebrow: "Aucun cookie, aucune donnée collectée",
+            titre: "Mentions légales",
+            accroche: "Éditeur, hébergement et données personnelles.",
+            icone: "fas fa-scale-balanced"
+        },
+        // Carte générique : la page est dynamique (?id=…) et projet-details.js
+        // remplace og:image par la 1re capture du projet quand il en a une.
+        "projet-details": {
+            eyebrow: "Réalisations",
+            titre: "Détail d'un projet",
+            accroche: "Contexte, technologies et étude de cas.",
+            icone: "fas fa-diagram-project"
+        },
+        "404": {
+            eyebrow: "Erreur 404",
+            titre: "Page introuvable",
+            accroche: "Cette page n'existe pas ou a été déplacée.",
+            icone: "fas fa-triangle-exclamation"
+        }
     };
-    mettre('eyebrow', p.get('eyebrow'));
-    mettre('titre', p.get('titre'));
-    mettre('accroche', p.get('accroche'));
+
+    const p = new URLSearchParams(location.search);
+    const nom = p.get('carte');
+
+    // Sans paramètre : on liste les cartes disponibles au lieu d'afficher
+    // une carte vide, pour qu'on n'ait pas à ouvrir le code pour les trouver.
+    if (!nom && !p.get('titre')) {
+        document.body.innerHTML =
+            '<div style="padding:3rem;font:16px/1.7 monospace;color:#e6e6e6">' +
+            '<p style="color:#ca8080;font-weight:700">generateur.html?carte=&lt;nom&gt;</p>' +
+            '<p>Cartes disponibles :</p><ul>' +
+            Object.keys(CARTES).map(function (c) {
+                return '<li><a style="color:#ca8080" href="?carte=' + c + '">' + c +
+                    '</a> &nbsp;&rarr;&nbsp; og-' + c + '.jpg</li>';
+            }).join('') +
+            '</ul><p>Les paramètres eyebrow / titre / accroche / icone restent ' +
+            'acceptés, seuls ou en surcharge d\'une carte.</p></div>';
+        throw new Error('liste affichée');   // stoppe le reste du script
+    }
+
+    if (nom && !CARTES[nom]) {
+        document.title = 'CARTE INCONNUE';
+        document.body.innerHTML =
+            '<p style="padding:3rem;font:16px monospace;color:#ca8080">Carte inconnue : ' +
+            nom.replace(/[<>&]/g, '') + '<br>Attendu : ' + Object.keys(CARTES).join(', ') + '</p>';
+        throw new Error('carte inconnue');
+    }
+
+    // Une carte nommée fournit les valeurs par défaut ; chaque paramètre
+    // d'URL peut encore les surcharger, pratique pour essayer une variante.
+    const base = CARTES[nom] || {};
+    const valeur = (cle) => p.get(cle) !== null ? p.get(cle) : base[cle];
+
+    const mettre = (id, v) => {
+        if (v !== undefined && v !== null) document.getElementById(id).textContent = v;
+    };
+    mettre('eyebrow', valeur('eyebrow'));
+    mettre('titre', valeur('titre'));
+    mettre('accroche', valeur('accroche'));
     mettre('role', p.get('role'));
 
-    const icone = p.get('icone');
+    const icone = valeur('icone');
     if (icone) document.getElementById('icone').className = 'icone ' + icone;
 
-    const titre = p.get('titre') || '';
+    const titre = valeur('titre') || '';
     if (titre.length > 18) document.body.classList.add('titre-long');
 </script>
 </body>

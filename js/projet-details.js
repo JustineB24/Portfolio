@@ -289,6 +289,30 @@ if (!projetId || !projets[projetId]) {
     if (twitterTitle) twitterTitle.setAttribute('content', metaTitre);
     if (twitterDesc) twitterDesc.setAttribute('content', metaDesc);
 
+    // Image de partage : la première capture du projet quand il y en a une,
+    // sinon on garde la carte générique déclarée en dur dans le <head>.
+    // Attention : LinkedIn et Facebook ne lisent pas le HTML modifié par JS et
+    // resteront sur la carte générique. Cette mise à jour ne sert qu'aux
+    // consommateurs qui exécutent le JS (Google, aperçus internes).
+    const premiereImage = (projets[projetId].images || [])[0];
+    if (premiereImage) {
+        // Les balises Open Graph exigent une URL absolue
+        const imageAbsolue = new URL(premiereImage, window.location.href).href;
+        const ogImage = document.querySelector('meta[property="og:image"]');
+        const ogImageAlt = document.querySelector('meta[property="og:image:alt"]');
+        const twitterImage = document.querySelector('meta[name="twitter:image"], meta[property="twitter:image"]');
+        if (ogImage) ogImage.setAttribute('content', imageAbsolue);
+        if (twitterImage) twitterImage.setAttribute('content', imageAbsolue);
+        if (ogImageAlt) ogImageAlt.setAttribute('content', 'Aperçu du projet ' + projets[projetId].title);
+
+        // Les dimensions déclarées dans le <head> valent pour la carte 1200x630,
+        // pas pour la capture : on les retire plutôt que d'annoncer un faux format.
+        document.querySelectorAll('meta[property="og:image:width"], meta[property="og:image:height"]')
+            .forEach(function (m) {
+                m.remove();
+            });
+    }
+
     const descriptionEl = document.getElementById("projet-description");
     if (descriptionEl) descriptionEl.textContent = projets[projetId].description;
 

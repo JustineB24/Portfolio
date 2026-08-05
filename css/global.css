@@ -144,7 +144,7 @@ main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link)
 }
 
 /* Entête — glassmorphism */
-header {
+body > header {
     background: rgba(var(--primary-rgb), 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -605,7 +605,7 @@ footer {
 
 /* Tablettes (768px et moins) */
 @media (max-width: 768px) {
-    header {
+    body > header {
         height: 80px;
         padding: 5px 10px;
     }
@@ -680,7 +680,7 @@ footer {
 
 /* Mobiles (480px et moins) */
 @media (max-width: 480px) {
-    header {
+    body > header {
         height: 60px;
         padding: 5px;
     }

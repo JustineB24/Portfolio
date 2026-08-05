@@ -362,3 +362,12 @@
     color: var(--primary-on-dark);
 }
 
+/* ==============================
+   Les colonnes de la grille ne doivent pas être bloquées par la largeur
+   min-content de leur contenu : un champ de formulaire a une largeur
+   intrinsèque d'environ 320px, et sans min-width: 0 le grid item refuse de
+   descendre en dessous, ce qui provoquait un scroll horizontal à 320px.
+   ============================== */
+.contact-grid > * {
+    min-width: 0;
+}

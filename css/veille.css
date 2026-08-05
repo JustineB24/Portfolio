@@ -277,6 +277,12 @@ main .timeline .sources {
     text-align: left;
     text-transform: inherit;
     letter-spacing: inherit;
+    /* Le titre est un nœud texte anonyme : impossible de lui poser un
+       min-width: 0. `anywhere` (contrairement à `break-word`) réduit aussi la
+       largeur min-content, ce qui laisse un mot long comme
+       « PROFESSIONNELLES » se couper au lieu de pousser la page en scroll
+       horizontal à 320px. La coupure ne se déclenche que si nécessaire. */
+    overflow-wrap: anywhere;
 }
 
 .veille-section-chevron {
@@ -637,3 +643,9 @@ main .innovations li a:hover {
 }
 
 /* ==============================
+   Même garde-fou que sur la grille de contact : les colonnes doivent pouvoir
+   descendre sous la largeur min-content de leur contenu sur écran étroit.
+   ============================== */
+.veille-layout > * {
+    min-width: 0;
+}

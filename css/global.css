@@ -214,6 +214,14 @@ h1 {
     margin-bottom: 2rem;
     padding-bottom: 0.75rem;
     border-bottom: 3px solid var(--primary-color);
+    /* Les titres sont en capitales avec du letter-spacing : sur écran étroit,
+       un mot long ("TECHNOLOGIQUE") dépassait la largeur de l'écran et créait
+       un scroll horizontal. On borne la largeur, on autorise l'icône à passer
+       à la ligne, et on coupe le mot en dernier recours. */
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-wrap: break-word;
 }
 
 h1 i,
@@ -234,6 +242,9 @@ h2 {
     display: inline-block;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--primary-color);
+    /* Même garde-fou que h1 contre le débordement des mots longs */
+    max-width: 100%;
+    overflow-wrap: break-word;
 }
 
 h3 {
@@ -718,6 +729,13 @@ footer {
     }
 
     button {
+        /* Titres redimensionnés pour tenir sur les petits écrans (320px)
+           sans avoir à couper les mots */
+        font-size: clamp(1.5rem, 6.5vw, 2rem);
+    }
+
+    h2 {
+        font-size: clamp(1.35rem, 5.5vw, 1.75rem);
         font-size: 0.8rem;
         padding: 6px 12px;
     }
@@ -1273,3 +1291,30 @@ body.page-exit main {
 }
 
 /* ==============================
+   Très petits mobiles (360px et moins)
+   À 320px, le header ne tenait plus : burger + logo + titre + réseaux +
+   sélecteur de thème dépassaient, et le sélecteur se retrouvait coupé au bord
+   droit. On resserre uniquement les éléments du header à cette largeur.
+   ============================== */
+@media (max-width: 360px) {
+    .titre-nom {
+        font-size: 1rem;
+        padding: 2px 4px;
+        margin-left: 2.25rem;
+        gap: 0.4rem;
+    }
+
+    .logo-header {
+        width: 26px;
+        height: 26px;
+    }
+
+    .reseaux {
+        gap: 3px;
+    }
+
+    .btn-reseaux {
+        width: 28px;
+        height: 28px;
+    }
+}

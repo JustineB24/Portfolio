@@ -225,7 +225,7 @@ if (!projetId || !projets[projetId]) {
         "mairie-cauffry": ["#1a5276", "#e6a817"],
         "panada-food": ["#ff6600", "#cc4400"],
         "yabt": ["#FDC800", "#E95F3F", "#E3312D", "#CF07FF", "#0409AA"],
-        "gecko": ["#4e73df", "#2e59d9"],
+        "gecko": ["#4c7c13", "#4e73df"],   // local -> prod (vert assombri pour le contraste)
         "grimoire-recettes": ["#c2703e", "#6b7c3e"]
     };
 

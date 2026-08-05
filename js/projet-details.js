@@ -14,7 +14,7 @@ const projets = {
         date: "Novembre 2025 — en cours",
         images: [
             "../assets/projets/yabt/Logo.png",
-            "../assets/projets/yabt/Mascotte.png",
+            "../assets/projets/yabt/Mascotte.jpg",
             "../assets/projets/yabt/Nuancier.png"
         ],
         description: "Projet de groupe réalisé à 4 durant l'année de Bachelor Développement & IA. YABT est une application web de blind test et quiz musical multijoueur en temps réel. Les joueurs créent ou rejoignent des parties via un code ou un QR code, et s'affrontent sur des extraits musicaux provenant de l'API Deezer. L'application propose plusieurs modes de jeu (Classique, Speedrun, Battle Royale, Jackpot, Combo Breaker), un système de comptes avec progression par niveaux, des avatars déblocables, ainsi qu'un créateur de QCM personnalisés. L'identité visuelle (logo, mascotte animée, icônes néon) a été entièrement conçue par l'équipe. Le projet suit une méthodologie Agile et sera présenté devant un jury en fin d'année.",
@@ -76,11 +76,11 @@ const projets = {
         title: "Panada Food",
         date: "12/11/2024 — 20/12/2024",
         images: [
-            "../assets/projets/panada_food/Accueil.png",
-            "../assets/projets/panada_food/Menu.png",
-            "../assets/projets/panada_food/Contact.png",
-            "../assets/projets/panada_food/Mentions_legales.png",
-            "../assets/projets/panada_food/Ecran_chargement.png"
+            "../assets/projets/panada_food/Accueil.jpg",
+            "../assets/projets/panada_food/Menu.jpg",
+            "../assets/projets/panada_food/Contact.jpg",
+            "../assets/projets/panada_food/Mentions_legales.jpg",
+            "../assets/projets/panada_food/Ecran_chargement.jpg"
         ],
         description: "Développement d'un site web vitrine pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en binôme avec une collègue. Le restaurant venait d'ouvrir et ne possédait aucune présence en ligne. On s'est déplacées sur place pour récolter les informations et comprendre les attentes du gérant, puis on a conçu et développé le site de A à Z. Le site inclut une page d'accueil, le menu du restaurant, un formulaire de contact et les mentions légales conformes au RGPD. Il a été mis en ligne via un hébergement OVH.",
         technologies: ["HTML", "CSS", "JavaScript"],
@@ -112,7 +112,7 @@ const projets = {
         title: "France Mobilier",
         date: "Février 2025",
         images: ["../assets/projets/france_mobilier/Accueil.png",
-            "../assets/projets/france_mobilier/Meuble.png",
+            "../assets/projets/france_mobilier/Meuble.jpg",
             "../assets/projets/france_mobilier/Magasins.png",
             "../assets/projets/france_mobilier/Admin.png",
             "../assets/projets/france_mobilier/AjoutProduit.png",
@@ -149,11 +149,11 @@ const projets = {
         title: "Speedcubing",
         date: "Novembre — Décembre 2024",
         images: [
-            "../assets/projets/speedcubing/Accueil.png",
-            "../assets/projets/speedcubing/Chrono.png",
-            "../assets/projets/speedcubing/Technique_3x3.png",
-            "../assets/projets/speedcubing/Def_Speedcubing.png",
-            "../assets/projets/speedcubing/Connexion.png"
+            "../assets/projets/speedcubing/Accueil.jpg",
+            "../assets/projets/speedcubing/Chrono.jpg",
+            "../assets/projets/speedcubing/Technique_3x3.jpg",
+            "../assets/projets/speedcubing/Def_Speedcubing.jpg",
+            "../assets/projets/speedcubing/Connexion.jpg"
         ],
         description: "Projet développé pour l'Association Française de SpeedCubing. Ce site permet aux passionnés de Rubik's Cube de s'entraîner en ligne, d'enregistrer leurs temps et de comparer leurs performances avec celles des autres. Il intègre un chronomètre interactif, une base de données des meilleurs temps et une section dédiée à la résolution d'un Rubik's Cube 3x3.",
         technologies: ["PHP", "CSS", "JavaScript", "MySQL"]
@@ -161,7 +161,7 @@ const projets = {
     "meteo": {
         title: "Application météo",
         date: "Septembre — Octobre 2024",
-        images: ["../assets/projets/meteo/Meteo.png"],
+        images: ["../assets/projets/meteo/Meteo.jpg"],
         description: "Application web développée pour afficher en temps réel les conditions météorologiques d'une ville choisie par l'utilisateur. En utilisant l'API OpenWeather, ce projet permet de consulter la température actuelle, l'humidité ainsi qu'une description du temps (ensoleillé, nuageux, etc.). L'interface propose une zone de recherche, un affichage centralisé des données principales, et un design épuré avec fond personnalisé. Le JavaScript assure la récupération dynamique des données météo et la mise à jour instantanée de l'affichage après chaque recherche.",
         technologies: ["HTML", "CSS", "JavaScript"]
     },
@@ -176,11 +176,11 @@ const projets = {
         title: "Mairie de Cauffry",
         date: "27/05/2024 — 21/06/2024",
         images: [
-            "../assets/projets/mairie_de_cauffry/Accueil.png",
+            "../assets/projets/mairie_de_cauffry/Accueil.jpg",
             "../assets/projets/mairie_de_cauffry/Adico_collectivite.png",
             "../assets/projets/mairie_de_cauffry/Adico_arborescence.png",
-            "../assets/projets/mairie_de_cauffry/Adicloud.png",
-            "../assets/projets/mairie_de_cauffry/Visuel_site.png"
+            "../assets/projets/mairie_de_cauffry/Adicloud.jpg",
+            "../assets/projets/mairie_de_cauffry/Visuel_site.jpg"
         ],
         description: "Réalisation d'un site web pour la commune de Cauffry dans le cadre du stage de 4 semaines de première année de BTS SIO, en partenariat avec l'Adico (Association pour le développement et l'innovation numérique des collectivités). L'ancien site étant devenu indisponible, j'ai récupéré son contenu via la Wayback Machine, rempli le recueil de besoins Adico, conçu l'arborescence et alimenté les pages via Adicloud. En parallèle, j'ai aussi géré la sauvegarde des mails de la maire vers un disque dur externe et proposé des prototypes de logo pour la commune.",
         technologies: ["HTML", "CSS"],

@@ -63,7 +63,7 @@
 
 /* Rouge éclairci en thème sombre pour rester lisible sur fond foncé */
 .dark-theme .hero-eyebrow {
-    color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
+    color: var(--primary-on-dark);
 }
 
 /* Nom : la thèse du hero (h1 visible) */

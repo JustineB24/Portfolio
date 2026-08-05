@@ -291,7 +291,6 @@
     transform: translateX(0);
 }
 
-
 /* ============================== */
 /*   Responsive                   */
 /* ============================== */
@@ -360,6 +359,6 @@
 .dark-theme .contact-card-icon,
 .dark-theme .requis,
 .dark-theme .erreur-formulaire {
-    color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
+    color: var(--primary-on-dark);
 }
 

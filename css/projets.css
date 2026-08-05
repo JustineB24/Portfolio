@@ -178,14 +178,14 @@
 }
 
 /* En thème sombre, on éclaircit le rouge (fixe) pour rester lisible
-   sur fond foncé. Repli silencieux si color-mix n'est pas supporté. */
+   sur fond foncé (voir --primary-on-dark dans global.css). */
 .dark-theme .filtre-btn[data-filtre="bts"]:not(.active),
 .dark-theme .filtre-btn[data-filtre="stage"]:not(.active),
 .dark-theme .filtre-btn[data-filtre="bachelor"]:not(.active),
 .dark-theme .filtre-btn[data-filtre="entreprise"]:not(.active),
 .dark-theme .filtre-btn[data-filtre="perso"]:not(.active) {
-    border-color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
-    color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
+    border-color: var(--primary-on-dark);
+    color: var(--primary-on-dark);
 }
 
 /* Grille des projets */

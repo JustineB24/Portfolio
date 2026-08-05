@@ -251,6 +251,6 @@ main hr {
    ============================== */
 .dark-theme .timeline-date,
 .dark-theme .timeline-content h4 {
-    color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
+    color: var(--primary-on-dark);
 }
 

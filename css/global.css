@@ -27,6 +27,15 @@
     --primary-rgb: 150, 0, 0;
     /* Texte posé sur le header rouge : toujours clair, ne s'inverse pas selon le thème */
     --header-text-color: #fafafa;
+    /* Rouge de marque éclairci, à utiliser dès que le rouge sert de couleur de
+       TEXTE sur une surface sombre : thème sombre, ou surface sombre en
+       permanence (notification easter egg). Le rouge brut n'y monte qu'à
+       2:1 ; ce dosage donne 6,2:1 sur le fond de page et 5,1:1 sur les
+       cartes, soit WCAG AA dans les deux cas.
+       La première déclaration est le repli statique pour les navigateurs sans
+       color-mix : ils ignorent la seconde et gardent la valeur en dur. */
+    --primary-on-dark: #ca8080;
+    --primary-on-dark: color-mix(in srgb, var(--primary-color) 50%, #ffffff);
     /* Texte posé sur un fond de couleur opaque (filtres actifs, tags) : toujours clair */
     --tag-text-on-color: #fff;
     /* Typographie : Raleway pour les titres / navbar, Inter pour le corps de texte */
@@ -216,7 +225,7 @@ h2 i {
 /* Icônes de titres : rouge éclairci en thème sombre pour le contraste */
 .dark-theme h1 i,
 .dark-theme h2 i {
-    color: color-mix(in srgb, var(--primary-color) 60%, #ffffff);
+    color: var(--primary-on-dark);
 }
 
 h2 {
@@ -1254,3 +1263,13 @@ body.page-exit main {
 .card-tags .tag-git::before { background-image: url(../assets/competences/git.svg); }
 .card-tags .tag-github::before { background-image: url(../assets/competences/github.svg); }
 .card-tags .tag-gitlab::before { background-image: url(../assets/competences/gitlab.svg); }
+
+/* ==============================
+   Sommaire veille — rouge éclairci en sombre (généralisation A2)
+   ============================== */
+.dark-theme .sommaire .titre-sommaire,
+.dark-theme .sommaire a:hover {
+    color: var(--primary-on-dark);
+}
+
+/* ==============================

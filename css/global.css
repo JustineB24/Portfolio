@@ -57,7 +57,7 @@ html {
 /* Couleur de sélection de texte */
 ::selection {
     background: var(--primary-color);
-    color: var(--button-text-color);
+    color: var(--tag-text-on-color);
 }
 
 
@@ -68,7 +68,7 @@ html {
     left: 50%;
     transform: translateX(-50%);
     background: var(--primary-color);
-    color: var(--button-text-color);
+    color: var(--tag-text-on-color);
     padding: 0.75rem 1.5rem;
     border-radius: 0 0 8px 8px;
     font-weight: 700;
@@ -248,7 +248,7 @@ h3 {
     overflow: hidden;
     z-index: 1;
     background: var(--primary-color);
-    color: var(--button-text-color);
+    color: var(--tag-text-on-color);
     border: 2px solid var(--primary-color);
     transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
     font-family: inherit;
@@ -812,7 +812,7 @@ footer {
     border-radius: 50%;
     border: none;
     background-color: var(--primary-color);
-    color: var(--button-text-color);
+    color: var(--tag-text-on-color);
     font-size: 1.2rem;
     cursor: pointer;
     display: flex;

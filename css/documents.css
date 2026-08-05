@@ -79,7 +79,7 @@
     bottom: 0.8rem;
     left: 0.8rem;
     background: var(--primary-color);
-    color: var(--button-text-color);
+    color: var(--tag-text-on-color);
     font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 3px;
@@ -259,7 +259,7 @@
 
 .btn-download {
     background: var(--primary-color);
-    color: var(--button-text-color);
+    color: var(--tag-text-on-color);
     border-color: var(--primary-color);
 }
 
@@ -297,7 +297,7 @@
 }
 
 .btn-view:hover {
-    color: var(--button-text-color);
+    color: var(--tag-text-on-color);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.25);
 }

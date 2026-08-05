@@ -332,7 +332,7 @@
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
-    color: var(--button-text-color);
+    color: var(--tag-text-on-color);
     background: var(--primary-color);
     border: 2px solid var(--primary-color);
     width: fit-content;

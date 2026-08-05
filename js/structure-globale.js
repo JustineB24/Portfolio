@@ -20,7 +20,7 @@ function genererHeader(chemin) {
         {href: 'pages/competences.html', label: 'Compétences'},
         {href: 'pages/projets.html', label: 'Projets'},
         {href: 'pages/veille.html', label: 'Veille Technologique', labelCourt: 'Veille'},
-        {href: 'pages/documents.html', label: 'BTS SIO'},
+        {href: 'pages/formation.html', label: 'Formation'},
         {href: 'pages/contact.html', label: 'Contact'}
     ];
 

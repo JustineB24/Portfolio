@@ -262,3 +262,13 @@ main hr {
     color: var(--primary-on-dark);
 }
 
+
+/* ==============================
+   Renvoi vers la page Formation, sous la timeline.
+   La timeline reste l'index du parcours ; le détail de chaque diplôme vit sur
+   la page Formation, et ce bouton fait le lien entre les deux.
+   ============================== */
+.apropos-vers-formation {
+    margin: 3rem 0 1rem;
+    text-align: center;
+}

@@ -1,6 +1,155 @@
 /* ==============================
-   documents.css — Page BTS SIO : spécialités + carte du tableau de synthèse
+   formation.css — Page Formation : un bloc par diplôme (Bachelor, BTS SIO),
+   spécialités du BTS et carte du tableau de synthèse
    ============================== */
+
+/* ==============================
+   Bloc diplôme
+   Un bloc par diplôme, du plus récent au plus ancien. Le filet vertical rouge
+   tient le rôle de fil chronologique et permet d'en ajouter un (mastère) sans
+   rien changer d'autre.
+   ============================== */
+.formation-diplome {
+    max-width: 1100px;
+    margin: 0 auto 4.5rem;
+    padding-left: 1.75rem;
+    border-left: 3px solid var(--primary-color);
+    text-align: left;
+}
+
+.formation-diplome:last-of-type {
+    margin-bottom: 2rem;
+}
+
+.formation-tete {
+    margin-bottom: 1.25rem;
+}
+
+/* Le titre du diplôme : à gauche, sans le soulignement pleine largeur des h2
+   globaux, qui écraserait la hiérarchie face aux sous-titres de section. */
+.formation-titre {
+    display: block;
+    margin: 0 0 0.9rem;
+    padding: 0;
+    border: none;
+    text-align: left;
+    font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+    letter-spacing: 0.01em;
+    color: var(--text-color);
+}
+
+/* L'eyebrow du bloc s'aligne à gauche, contrairement au composant centré */
+.formation-tete .section-eyebrow {
+    text-align: left;
+}
+
+/* Pastilles d'information : lieu, niveau, statut */
+.formation-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.formation-meta li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 2rem;
+    background: var(--card-background);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.formation-meta i {
+    color: var(--primary-color);
+    font-size: 0.85em;
+}
+
+.dark-theme .formation-meta i {
+    color: var(--primary-on-dark);
+}
+
+.formation-texte {
+    max-width: 68ch;
+    margin: 0 0 1.5rem;
+    line-height: 1.7;
+    text-align: left;
+}
+
+/* Points saillants du diplôme, chacun renvoyant vers la preuve (un projet) */
+.formation-points {
+    list-style: none;
+    margin: 0 0 2.5rem;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+    /* `min(280px, 100%)` et non `280px` seul : sinon la piste garde 280px de
+       large même quand le conteneur est plus étroit (274px à 320px de viewport)
+       et la page part en scroll horizontal. `min-width: 0` sur les items ne
+       suffit pas, il borne le contenu, pas la piste. */
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+}
+
+.formation-points > li {
+    /* min-width: 0 : sans ça un item de grille refuse de descendre sous la
+       largeur min-content de son texte et pousse la page en scroll horizontal */
+    min-width: 0;
+    padding: 1.1rem 1.3rem;
+    background: var(--card-background);
+    border-radius: var(--radius-lg);
+}
+
+.formation-point-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-family: var(--font-titre);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--primary-color);
+}
+
+.dark-theme .formation-point-label {
+    color: var(--primary-on-dark);
+}
+
+.formation-points p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* Liens de contenu de la page : rouge de marque, éclairci en thème sombre
+   (le soulignement animé vient de la règle globale `main p a`). */
+.formation-texte a,
+.formation-points a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.dark-theme .formation-texte a,
+.dark-theme .formation-points a {
+    color: var(--primary-on-dark);
+}
+
+@media screen and (max-width: 480px) {
+    .formation-diplome {
+        padding-left: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .formation-meta li {
+        font-size: 0.78rem;
+        padding: 0.3rem 0.7rem;
+    }
+}
 
 /* ---- Sections ---- */
 .bts-specialites-section,
@@ -94,7 +243,7 @@
     padding: 1.8rem;
 }
 
-.bts-spe-content h3 {
+.bts-spe-content h4 {
     margin: 0 0 1rem;
     font-size: 1.1rem;
     font-weight: 700;
@@ -429,7 +578,7 @@
         padding: 1.2rem;
     }
 
-    .bts-spe-content h3 {
+    .bts-spe-content h4 {
         font-size: 1rem;
     }
 

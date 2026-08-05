@@ -1,0 +1,232 @@
+<!--    ==========================================================    -->
+<!--    | * Générateur des cartes de partage (Open Graph)         |    -->
+<!--    | * Auteur : Justine BLIN                                 |    -->
+<!--    |                                                          |    -->
+<!--    | Page outil, non liée depuis le site. Elle sert à         |    -->
+<!--    | régénérer les images og-*.jpg de ce dossier.             |    -->
+<!--    |                                                          |    -->
+<!--    | Les textes se passent en paramètres d'URL :              |    -->
+<!--    |   generateur.html?eyebrow=Formation&titre=BTS%20SIO      |    -->
+<!--    |     &accroche=Une%20phrase&icone=fas%20fa-graduation-cap |    -->
+<!--    |                                                          |    -->
+<!--    | Pour exporter en 1200x630 (format attendu par LinkedIn   |    -->
+<!--    | et X), depuis la racine du dépôt :                       |    -->
+<!--    |   python3 -m http.server 8000                            |    -->
+<!--    |   chrome --headless --window-size=1200,630 \             |    -->
+<!--    |     --screenshot=carte.png "http://localhost:8000/…"     |    -->
+<!--    |   sips -s format jpeg -s formatOptions 88 carte.png \    |    -->
+<!--    |     --out assets/og/og-nom.jpg                           |    -->
+<!--    ==========================================================    -->
+
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Carte sociale</title>
+    <link rel="stylesheet" href="../fonts/fa/css/all.min.css">
+    <link rel="stylesheet" href="../fonts/google/fonts.css">
+    <style>
+        /* Carte Open Graph — 1200x630, l'aspect attendu par LinkedIn et X.
+           Reprend l'identité du site : fond anthracite, rouge de marque,
+           Raleway pour le titre, Inter pour le corps, et le motif
+           eyebrow + titre + filet déjà utilisé sur les pages. */
+        :root {
+            --rouge: #960000;
+            --rouge-clair: #ca8080;
+            --fond: #121212;
+            --texte: #e6e6e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 1200px;
+            height: 630px;
+        }
+
+        body {
+            position: relative;
+            overflow: hidden;
+            background: var(--fond);
+            font-family: 'Inter', sans-serif;
+            color: var(--texte);
+        }
+
+        /* Halo rouge en diagonale : rappelle le header rouge sans l'imiter */
+        .halo {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(120% 100% at 100% 0%, rgba(150, 0, 0, 0.55) 0%, rgba(150, 0, 0, 0) 60%),
+            radial-gradient(80% 80% at 0% 100%, rgba(150, 0, 0, 0.18) 0%, rgba(150, 0, 0, 0) 70%);
+        }
+
+        /* Trame de points discrète, clin d'œil au pixel-art du logo */
+        .trame {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(230, 230, 230, 0.07) 1.5px, transparent 1.5px);
+            background-size: 26px 26px;
+        }
+
+        .bande {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 14px;
+            height: 100%;
+            background: var(--rouge);
+        }
+
+        .carte {
+            position: relative;
+            height: 100%;
+            padding: 72px 80px 64px 96px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .haut {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 48px;
+        }
+
+        .eyebrow {
+            font-family: 'Raleway', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.24em;
+            color: var(--rouge-clair);
+            margin-bottom: 22px;
+        }
+
+        .titre {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            line-height: 1.04;
+            font-size: 86px;
+            max-width: 800px;
+            overflow-wrap: break-word;
+        }
+
+        /* Titres longs : on descend d'un cran pour rester sur deux lignes */
+        body.titre-long .titre {
+            font-size: 68px;
+        }
+
+        .filet {
+            width: 132px;
+            height: 7px;
+            border-radius: 7px;
+            background: var(--rouge);
+            margin-top: 30px;
+        }
+
+        .accroche {
+            font-size: 27px;
+            line-height: 1.45;
+            color: #b9b9b9;
+            max-width: 760px;
+            margin-top: 30px;
+        }
+
+        /* Grande icône fantôme à droite : identifie la page d'un coup d'œil */
+        .icone {
+            font-size: 210px;
+            line-height: 1;
+            color: rgba(202, 128, 128, 0.22);
+            flex-shrink: 0;
+        }
+
+        .bas {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .bas img {
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nom {
+            font-family: 'Raleway', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .role {
+            font-size: 22px;
+            color: #a8a8a8;
+            margin-top: 4px;
+        }
+
+        .url {
+            margin-left: auto;
+            font-family: 'Raleway', sans-serif;
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rouge-clair);
+        }
+    </style>
+</head>
+<body>
+<div class="halo"></div>
+<div class="trame"></div>
+<div class="bande"></div>
+
+<div class="carte">
+    <div class="haut">
+        <div>
+            <p class="eyebrow" id="eyebrow">Portfolio</p>
+            <h1 class="titre" id="titre">Titre</h1>
+            <div class="filet"></div>
+            <p class="accroche" id="accroche"></p>
+        </div>
+        <i class="icone" id="icone" aria-hidden="true"></i>
+    </div>
+
+    <div class="bas">
+        <img src="../Logo_portfolio.png" alt="">
+        <div>
+            <div class="nom">Justine Blin</div>
+            <div class="role" id="role">Développeuse web</div>
+        </div>
+        <div class="url">justineb24.github.io/Portfolio</div>
+    </div>
+</div>
+
+<script>
+    // Les textes viennent de l'URL : ?eyebrow=…&titre=…&accroche=…&icone=fa-rss
+    const p = new URLSearchParams(location.search);
+    const mettre = (id, valeur) => {
+        if (valeur !== null) document.getElementById(id).textContent = valeur;
+    };
+    mettre('eyebrow', p.get('eyebrow'));
+    mettre('titre', p.get('titre'));
+    mettre('accroche', p.get('accroche'));
+    mettre('role', p.get('role'));
+
+    const icone = p.get('icone');
+    if (icone) document.getElementById('icone').className = 'icone ' + icone;
+
+    const titre = p.get('titre') || '';
+    if (titre.length > 18) document.body.classList.add('titre-long');
+</script>
+</body>
+</html>

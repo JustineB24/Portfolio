@@ -213,7 +213,7 @@
     border-color: #00ff00 !important;
 }
 
-.ee-terminal header {
+.ee-terminal > header {
     background: #0a0a0a !important;
     border-bottom: 1px solid #00ff00;
 }
@@ -332,7 +332,7 @@
     color: #ffff00 !important;
 }
 
-.ee-90s header {
+.ee-90s > header {
     background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #8800ff) !important;
     animation: ee-90s-header 1s linear infinite !important;
     background-size: 200% 100% !important;

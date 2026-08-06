@@ -53,6 +53,24 @@ const projets = {
             resultat: "Au fil de mon alternance, j'ai contribué en continu à un ERP en production : un système de filtres déployé sur toute l'application, une migration d'interface d'envergure, des composants d'UI maison, une base de code assainie (PSR-4), un nouveau module de gestion des stocks pour le site de Paris et une page modèle réutilisable servant de référence à l'équipe pour créer de nouvelles interfaces. J'y apprends surtout à être autonome dans une grande base de code d'équipe, avec une vraie exigence de non-régression, de sécurité et de performance."
         }
     },
+    "flouflix": {
+        title: "Flouflix — concevoir la pire interface possible",
+        date: "Juillet 2026",
+        images: [],
+        description: "Application mobile de recherche de films et de séries, construite à deux en deux jours pendant le Bachelor, avec une contrainte inversée : produire volontairement l'interface la plus laide et la moins utilisable possible. L'exercice avait deux objectifs, découvrir React Native et Expo Go, et pousser assez loin les mauvaises pratiques d'ergonomie pour comprendre pourquoi ce sont de mauvaises pratiques. Sous la couche volontairement ratée, l'application fonctionne vraiment : trois écrans (liste, détail, favoris), recherche et filtres construits à partir des données de l'API TVmaze, et gestion de favoris en CRUD dont l'état est partagé entre les écrans par un contexte React.",
+        technologies: ["React Native", "Expo", "JavaScript"],
+        etudeDeCas: {
+            contexte: "Le sujet était d'apprendre React Native et Expo Go sur un temps très court. Plutôt qu'une application vitrine de plus, le parti pris a été d'inverser la consigne habituelle : au lieu de viser la meilleure interface, viser la pire. Chaque anti-patron devait rester fonctionnel, sinon l'exercice n'aurait été qu'une application cassée.",
+            reflexion: "Concevoir mal demande de savoir ce qui est bien. Chaque décision est un principe d'ergonomie retourné : un bouton de retour qui exige six appuis inverse la loi de Fitts, des libellés en phrases entières à la place de « Valider » inversent la règle de concision, des boutons gris qui ont l'air désactivés sans l'être détournent une convention visuelle établie, et une barre de navigation qui change de côté d'une page à l'autre casse la cohérence spatiale. La liste des travers a été écrite avant le code, comme un vrai cahier des charges.",
+            defis: [
+                "Découvrir React Native, Expo Go et la navigation par fichiers d'Expo Router en deux jours, à deux",
+                "Partager l'état des favoris entre trois écrans indépendants, résolu par un contexte React plutôt qu'en faisant redescendre les données écran par écran",
+                "Construire les filtres à partir des données renvoyées par l'API TVmaze, dont les genres varient d'une fiche à l'autre",
+                "Garder une application réellement utilisable malgré les anti-patrons : chaque obstacle devait être contournable, jamais bloquant"
+            ],
+            resultat: "Une application de trois écrans qui interroge une API réelle, gère des favoris persistants le temps de la session et applique une douzaine d'anti-patrons assumés : texte rouge clignotant, pop-up de tutoriel à chaque page, opacité gênante sur les visuels, validation demandée à chaque action, libellés interminables. C'est le projet qui m'a servi d'entrée dans le développement mobile multiplateforme, et celui qui m'a le plus appris sur l'ergonomie, en la prenant à l'envers."
+        }
+    },
     "grimoire-recettes": {
         title: "Le Grimoire des Recettes",
         date: "2025 — en cours",
@@ -226,7 +244,11 @@ if (!projetId || !projets[projetId]) {
         "panada-food": ["#ff6600", "#cc4400"],
         "yabt": ["#FDC800", "#E95F3F", "#E3312D", "#CF07FF", "#0409AA"],
         "gecko": ["#4c7c13", "#4e73df"],   // local -> prod (vert assombri pour le contraste)
-        "grimoire-recettes": ["#c2703e", "#6b7c3e"]
+        "grimoire-recettes": ["#c2703e", "#6b7c3e"],
+        // Les deux couleurs de l'app (#FF0000 et #00FF00), assombries à teinte et
+        // saturation constantes : brutes, elles donnent 3,8:1 et 1,3:1 avec le titre
+        // clair du hero, contre 4,5:1 ici.
+        "flouflix": ["#e80000", "#008700"]
     };
 
     const hero = document.getElementById("projet-hero");
@@ -374,7 +396,7 @@ if (!projetId || !projets[projetId]) {
             "c#": "c-sharp",
             "node.js": "nodejs",
             "socket.io": "socket-io",
-            "tailwind css": "tailwind"
+            "tailwind css": "tailwind", "react native": "react", "expo": "expo"
         };
         if (nomsSpeciaux[nomFichier]) {
             nomFichier = nomsSpeciaux[nomFichier];
@@ -388,7 +410,8 @@ if (!projetId || !projets[projetId]) {
             "jquery": "tag-jquery", "bootstrap": "tag-bootstrap", "tailwind css": "tag-tailwind", "datatables": "tag-datatables",
             "react": "tag-react", "node.js": "tag-nodejs",
             "socket.io": "tag-socketio", "postgresql": "tag-postgresql",
-            "docker": "tag-docker", "xampp": "tag-xampp", "mamp": "tag-mamp", "figma": "tag-figma", "git": "tag-git",
+            "docker": "tag-docker", "xampp": "tag-xampp", "mamp": "tag-mamp",
+            "react native": "tag-react-native", "expo": "tag-expo", "figma": "tag-figma", "git": "tag-git",
             "github": "tag-github", "gitlab": "tag-gitlab"
         };
         const tagClass = tagClasses[tech.toLowerCase()];

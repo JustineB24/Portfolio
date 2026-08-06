@@ -37,6 +37,17 @@
     --texte-md: 0.85rem;
     --texte-sm: 0.8rem;
     --texte-xs: 0.75rem;
+    /* Mouvement des cartes au survol : même hauteur de levée et même rythme
+       partout. Les cartes montaient de 6px, 5px ou 3px selon la page, sur des
+       durées de 0,3 / 0,35 / 0,4s, la moitié avec la courbe d'accélération du
+       site et la moitié sans.
+       Les ombres, elles, restent propres à chaque contexte et ne sont pas
+       tokenisées : certaines sont teintées de rouge, une porte un liseré
+       intérieur, elles portent une intention par page.
+       Une carte qui a d'autres propriétés à animer les ajoute après le jeton :
+       `transition: var(--transition-carte), border-color 0.3s;`. */
+    --carte-levee: -6px;
+    --transition-carte: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.12);
     --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.15);

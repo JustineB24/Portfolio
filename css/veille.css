@@ -404,11 +404,11 @@ main ul li {
     border-radius: var(--radius-md);
     border: 2px solid rgba(var(--primary-rgb), 0.3);
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    transition: var(--transition-carte), border-color 0.3s;
 }
 
 .innovations li:hover {
-    transform: translateY(-5px);
+    transform: translateY(var(--carte-levee));
     box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.25);
     border-color: var(--primary-color);
 }

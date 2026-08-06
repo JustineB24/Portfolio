@@ -202,14 +202,14 @@
     background: var(--card-background);
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, opacity 0.4s, scale 0.4s;
+    transition: var(--transition-carte), border-color 0.3s, opacity 0.4s, scale 0.4s;
     display: flex;
     flex-direction: column;
     border: 2px solid color-mix(in srgb, var(--card-accent, var(--primary-color)) 30%, transparent);
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(var(--carte-levee));
     box-shadow: 0 8px 20px color-mix(in srgb, var(--card-accent, var(--primary-color)) 25%, transparent);
     border-color: var(--card-accent, var(--primary-color));
 }

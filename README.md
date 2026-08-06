@@ -25,11 +25,12 @@ appliquer les bonnes pratiques du développement logiciel.
 
 **Parcours :**
 
-| 🎓 Formation                               | 📅 Période  |
-|--------------------------------------------|-------------|
-| Bachelor Chef de Projet Développement & IA | 2025 – 2026 |
-| BTS SIO option SLAM                        | 2023 – 2025 |
-| Baccalauréat Général (Maths, NSI)          | 2020 – 2023 |
+| 🎓 Formation                                         | 📅 Période     |
+|------------------------------------------------------|----------------|
+| Mastère Expert IT, applications intelligentes et Big Data | 2026 – 2028 (à venir) |
+| Bachelor Chef de projet développement et data        | 2025 – 2026    |
+| BTS SIO, option SLAM                                 | 2023 – 2025    |
+| Baccalauréat Général (Maths, NSI)                    | 2020 – 2023    |
 
 ---
 
@@ -43,7 +44,7 @@ appliquer les bonnes pratiques du développement logiciel.
 | 🎬 **Animations fluides**        | Texte rotatif, compteurs animés, effets de survol 3D (tilt) |
 | 📜 **Timeline interactive**      | Parcours scolaire et professionnel présenté visuellement    |
 | 🏅 **Galerie de certifications** | Modale avec navigation clavier/flèches et zoom/déplacement  |
-| 📄 **Aperçu de documents**       | Image d'aperçu cliquable qui ouvre le PDF du document       |
+| 🎓 **Page Formation**            | Un bloc par diplôme, du plus récent au plus ancien          |
 | 🧭 **Fil d'Ariane**              | Navigation contextuelle générée dynamiquement               |
 | ♿ **Accessibilité**              | Lien d'évitement, navigation au clavier, attributs ARIA     |
 | 🧲 **Boutons magnétiques**       | Effet d'attraction au survol sur les boutons et icônes      |
@@ -84,13 +85,16 @@ appliquer les bonnes pratiques du développement logiciel.
 ```
 Portfolio/
 ├── index.html                  # Page d'accueil
+├── 404.html                    # Page d'erreur
+├── robots.txt · sitemap.xml    # Référencement
 ├── pages/                      # Pages du site
 │   ├── apropos.html
 │   ├── competences.html
 │   ├── projets.html
-│   ├── projet-details.html
+│   ├── projet-details.html     # Fiche d'un projet, chargée via ?id=
 │   ├── veille.html
-│   ├── documents.html
+│   ├── formation.html
+│   ├── documents.html          # Relais vers formation.html (ancienne URL)
 │   ├── contact.html
 │   └── mentions-legales.html
 ├── css/                        # Feuilles de style (une par page + global + thème)
@@ -100,6 +104,7 @@ Portfolio/
     ├── projets/                # Captures et études de cas des projets
     ├── certifications/
     ├── bts/                    # Documents BTS + aperçu image
+    ├── og/                     # Cartes de partage + générateur
     ├── veille/
     └── fonts/                  # Polices self-hébergées (fa + google)
 ```

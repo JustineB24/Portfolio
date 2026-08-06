@@ -32,8 +32,8 @@ _Aucune amélioration en attente._
 - **Compteurs animés** : 4 mini-cards carrées (150×150px) avec icônes (Projets, Certifications, Outils, Langages), liens
   cliquables vers les pages dédiées, animation IntersectionObserver + requestAnimationFrame
 - **Section "Qui suis-je"** : texte de présentation centré + boutons CV et "En savoir plus" empilés
-- **Aperçu projets** : grille de 4 cartes avec contour coloré par projet (même couleurs que la page projets),
-  trait séparateur coloré sous le titre, tags en pills avec fond `--background-color`
+- **Aperçu projets** : grille de 4 cartes avec contour coloré par projet (même couleurs que la page projets), trait
+  séparateur coloré sous le titre, tags en pills avec fond `--background-color`
 - **Bandeau compétences** : marquee infini avec 27 logos SVG (dupliqués pour boucle), masque gradient sur les bords
 - **Bouton CV** : style partagé dans `global.css` (border-radius 8px, font-weight 600, effet `::before` gradient
   glissant)
@@ -52,18 +52,25 @@ _Aucune amélioration en attente._
 
 ### ✅ 4. Page Compétences
 
-- **Cards flip 3D** : structure front/back avec `perspective: 600px` et `transform-style: preserve-3d`
-- **Face avant** : contour coloré permanent + glow (couleur de la marque), intensifié au hover
-- **Face arrière** : gradient/couleur exacte du logo de chaque techno (pas de rouge générique)
-    - Gradients multi-couleurs pour les logos multi-tons (MySQL, GitLab, Figma, Python, PhpStorm, etc.)
-    - Texte blanc avec `text-shadow` pour lisibilité, texte noir sur fond jaune (JavaScript)
-- **31 compétences** réparties en Langages (13) et Outils (18), classées par catégorie logique
-- **Ajout de React Native** (langage, même couleur que React) et **Expo** (outil, logo officiel local
-  `assets/competences/expo.svg`, inversé en blanc en mode sombre comme GitHub)
-- **Séparateurs `<hr>` pointillés** entre les 3 blocs
-- **Hiérarchie de titres** : titre de page `<h1>` "Compétences" + "Certifications" en `<h2>`
-- **Labels texte** sous chaque icône
-- **Grille CSS** : `grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))`
+_Refaite entièrement le 06/08/2026. Les cartes retournables 3D décrites ici auparavant ont été supprimées :
+leur description n'était atteignable ni au tactile ni au clavier, aucune carte ne contenant d'élément
+focusable, donc 32 descriptions étaient invisibles sur téléphone._
+
+- **Trois blocs** : Technologies, Outils, Certifications, séparés par des `<hr>` pointillés
+- **22 technologies en 4 familles** : langages, frameworks et bibliothèques, bases de données,
+  environnements et conteneurs. Classement par famille technique et non par usage réel
+- **14 outils à part** : un éditeur ou un client d'API ne se compare pas à un langage
+- **Rien n'est caché** : le nom et la description sont du texte visible, en permanence
+- **Accent de marque** : filet gauche de 3px coloré par `--comp-color`, la seule variable lue par la mise en
+  page. Cinq marques ont une correction par thème, leur couleur étant illisible sur l'un des deux fonds
+  (C#, GitHub, Expo et Socket.io en sombre, JavaScript en clair)
+- **15 certifications en liste unique**, groupées par organisme du plus au moins reconnu, puis par date.
+  Pas de mise en avant ni de section « autres parcours » : l'ordre porte seul la hiérarchie
+- **Métadonnées complètes** pour chaque certification : organisme, intitulé, date, détail (centre, score,
+  durée, identifiant) et lien de vérification quand il existe
+- **En-tête de section centré** (eyebrow, titre, intro), **contenu aligné à gauche** sur le bord des cartes
+- **Échelle de titres** : `h1` 48px, `h2` 25,6px, `h3` 19,2px, nom de techno 16px
+- **Modale** : la vignette garde la classe `.certif`, contrat sur lequel `certifications.js` s'appuie
 
 ### ✅ 5. Page À propos
 
@@ -107,14 +114,14 @@ _Aucune amélioration en attente._
 - **Restructuration complète** via un nouveau `js/veille.js`
 - **Sommaire latéral collant** (sticky) pleine hauteur à gauche, avec **scroll-spy** : le lien de la section courante
   est surligné (état actif rouge, cercles numérotés) et la liste défile pour le suivre
-- **Sections repliables** (accordéon, dépliées par défaut, titres alignés à gauche avec chevron) ; "Qu'est-ce que
-  c'est" est devenue la 1re section repliable (logo inclus)
+- **Sections repliables** (accordéon, dépliées par défaut, titres alignés à gauche avec chevron) ; "Qu'est-ce que c'est"
+  est devenue la 1re section repliable (logo inclus)
 - **Colonne de lecture** : paragraphes alignés à gauche, `max-width: 720px`, `line-height: 1.7` (au lieu de centrés
   pleine largeur)
 - **Correction technique** : `overflow-x: hidden` déplacé de `body` vers `html` (réparait le sticky)
 - **Corrections factuelles** : tableau Concurrents (ODROID série H en x86, Banana Pi certains modèles 10G, Jetson
-  jusqu'à 67 TOPS ex. Orin Nano), GASPACS (université d'État de l'Utah, Raspberry Pi Zero), phrase Sony reformulée,
-  lien "Satellite" → cubesatsim.org (AMSAT)
+  jusqu'à 67 TOPS ex. Orin Nano), GASPACS (université d'État de l'Utah, Raspberry Pi Zero), phrase Sony reformulée, lien
+  "Satellite" → cubesatsim.org (AMSAT)
 - **Titres h2** : `border-bottom` gradient rouge → noir (spécifique à la page veille)
 - **Liens sources** : plus de double underline au hover
 
@@ -253,8 +260,8 @@ _Aucune amélioration en attente._
 - Plus de blanc/noir purs : clair fond `#fafafa` / texte `#1a1a1a` / card `#e8eaf1` (gris légèrement froid) ; sombre
   fond `#121212` / texte `#e6e6e6` / card `#23242b`
 - **`--text-muted`** (`#595959` clair / `#9e9e9e` sombre, conforme WCAG AA) pour les textes secondaires
-- **`--header-text-color`** (`#fafafa`) : le texte du header rouge (titre, onglets, burger, icônes réseaux) ne
-  s'inverse jamais entre les thèmes
+- **`--header-text-color`** (`#fafafa`) : le texte du header rouge (titre, onglets, burger, icônes réseaux) ne s'inverse
+  jamais entre les thèmes
 - Variables `--font-titre` (Raleway) et `--font-corps` (Inter)
 - Bug `theme.js` corrigé (`const body = document.body`) ; `.dark-theme` posé sur `<html>` ET `<body>`
 
@@ -289,10 +296,52 @@ _Aucune amélioration en attente._
 
 ### ✅ 44. Marquee accueil — pause + nom au survol
 
-- Le bandeau des technos se met en pause au survol et affiche le nom de la techno sous le logo
-  (`interactions.js` + `.techno-item`)
+- Le bandeau des technos se met en pause au survol et affiche le nom de la techno sous le logo (`interactions.js` +
+  `.techno-item`)
 
 ---
+
+### ✅ 45. Composants partagés extraits (06/08/2026)
+
+Cinq motifs qui étaient recopiés de feuille en feuille, remontés dans `global.css` après mesure. Les
+duplications sont chiffrées dans les messages de commit correspondants.
+
+- **Boutons** : socle `.btn` + variantes `.btn-primaire`, `.btn-secondaire`, `.btn-neutre`. Le même bouton
+  était écrit 7 fois dans 6 feuilles sous 7 noms, pour 388 lignes et 62 règles, ramenées à 32
+- **Liens de contenu** : un seul traitement pour tout le site, rouge sans soulignement au repos, souligné au
+  survol **et au focus clavier**. Il y avait 4 traitements différents, et tout lien non prévu retombait sur
+  le bleu du navigateur
+- **Échelle de texte** : `--texte-xs` à `--texte-xl`, cinq échelons de 0,05rem qui remplacent 13 valeurs
+  distinctes sous 1rem réparties sur 84 usages
+- **Survol des cartes** : `--carte-levee` et `--transition-carte`. Sept cartes montaient de 6, 5 ou 3px sur
+  des durées de 0,3 à 0,4s, moitié avec la courbe du site et moitié sans
+- **Jeton `--radius-pill`** : huit badges se partageaient `2rem` et `100px` pour la même intention
+- **Séparateurs `<hr>` et contenu masqué aux voyants** : trois copies chacun, réunies
+
+_Écarté après mesure : un composant `.carte`. Sur les 21 blocs à fond de carte, aucune déclaration n'est
+commune aux 21 et `padding` compte 16 valeurs pour 16 blocs. Le seul point commun réel est déjà un jeton._
+
+### ✅ 46. Douzième projet : Flouflix (06/08/2026)
+
+- Application mobile React Native / Expo Go sur l'API TVmaze, faite à deux en deux jours
+- **La consigne était de produire volontairement la pire interface possible** : le titre de la fiche l'assume,
+  « concevoir la pire interface possible ». C'était la condition pour la publier
+- Résout le dernier écart entre les technologies annoncées et les projets montrés : React Native et Expo
+  étaient listés sans aucun projet
+
+### ✅ 47. Fiches projet remises d'aplomb (06/08/2026)
+
+Quatre corrections d'écarts entre ce qu'une fiche annonçait et ce que le projet contenait, dans les deux sens.
+
+- **Mairie de Cauffry** sur-annonçait : « site réalisé » avec HTML et CSS déclarés, alors que le site est un
+  WordPress de l'Adico et que le travail a porté sur le contenu. La fiche dit maintenant « je n'en ai pas
+  écrit le code »
+- **France Mobilier** déclarait C# : 41 fichiers PHP, aucun fichier C#, retiré
+- **Panada Food** : la version PHP avec base de données trouvée dans le dossier de stage est un prototype de
+  commande en ligne jamais abouti, pas le site livré. Technologies laissées à HTML, CSS, JavaScript, et le
+  prototype raconté comme une piste non terminée
+- **Python** : la description promettait « scripts et automatisation » sans rien pour l'appuyer. Elle devient
+  « algorithmique, en cours de mathématiques », ce que montrent les 600 lignes écrites en première année
 
 ## ✅ Easter eggs actifs
 
@@ -527,8 +576,8 @@ _Aucune amélioration en attente._
 - **Solution** : Ajouter une zone sur la page compétences pour les technos en cours d'exploration, avec un style
   différent (opacité réduite, badge "Learning").
 - **Gain** : Montrer la progression et la curiosité.
-- **Raison du refus** : On ne maîtrise jamais une techno à 100%, la distinction n'a pas de sens. Demanderait des mises
-  à jour fréquentes.
+- **Raison du refus** : On ne maîtrise jamais une techno à 100%, la distinction n'a pas de sens. Demanderait des mises à
+  jour fréquentes.
 
 ### ❌ Filtres par niveau de compétence
 

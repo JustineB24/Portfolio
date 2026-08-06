@@ -1070,6 +1070,12 @@ footer {
 }
 
 
+/* Logo Expo monochrome noir : inversé en thème sombre pour rester visible,
+   même traitement que sur la page Compétences. */
+.dark-theme .card-tags .tag-expo::before {
+    filter: invert(1);
+}
+
 /* Tooltip sur badges technos */
 [data-tooltip] {
     position: relative;
@@ -1412,6 +1418,14 @@ body.page-exit main {
     border-color: rgba(35, 150, 237, 0.7);
 }
 
+.card-tags .tag-react-native, #projet-technologies .tag-react-native {
+    border-color: rgba(83, 193, 222, 0.7);
+}
+
+.card-tags .tag-expo, #projet-technologies .tag-expo {
+    border-color: rgba(0, 0, 32, 0.7);
+}
+
 .card-tags .tag-xampp, #projet-technologies .tag-xampp {
     border-color: rgba(251, 122, 36, 0.7);
 }
@@ -1475,6 +1489,8 @@ body.page-exit main {
 .card-tags .tag-socketio::before { background-image: url(../assets/competences/socket-io.svg); }
 .card-tags .tag-postgresql::before { background-image: url(../assets/competences/postgresql.svg); }
 .card-tags .tag-docker::before { background-image: url(../assets/competences/docker.svg); }
+.card-tags .tag-react-native::before { background-image: url(../assets/competences/react.svg); }
+.card-tags .tag-expo::before { background-image: url(../assets/competences/expo.svg); }
 .card-tags .tag-xampp::before { background-image: url(../assets/competences/xampp.svg); }
 .card-tags .tag-mamp::before { background-image: url(../assets/competences/mamp.svg); }
 .card-tags .tag-figma::before { background-image: url(../assets/competences/figma.svg); }

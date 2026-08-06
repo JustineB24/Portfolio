@@ -11,21 +11,26 @@
     margin: 1rem 2rem 2rem;
 }
 
+/* Contour et libellé partagent `--filtre-color`, posée par techno plus bas.
+   Repli sur `--text-color` pour les filtres de catégorie, qui n'en ont pas. */
 .filtre-btn {
     padding: 0.5rem 1.2rem;
-    border: 2px solid var(--text-color);
+    border: 2px solid var(--filtre-color, var(--text-color));
     border-radius: var(--radius-pill);
     background: transparent;
-    color: var(--text-color);
+    color: var(--filtre-color, var(--text-color));
     font-size: 1rem;
     font-family: inherit;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
+/* Un filtre techno garde sa couleur au survol, seul le fond se teinte : la
+   passer en rouge décrocherait le libellé de son contour, qui lui ne change
+   pas. Les filtres de catégorie, sans `--filtre-color`, tombent sur le rouge. */
 .filtre-btn:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+    border-color: var(--filtre-color, var(--primary-color));
+    color: var(--filtre-color, var(--primary-color));
 }
 
 .filtre-btn.active {
@@ -35,84 +40,85 @@
 }
 
 /* ==============================
-   Filtres « technologies » — couleur de marque sur la bordure seulement.
+   Filtres « technologies » — la couleur de marque habille le contour ET le
+   libellé, via `--filtre-color`.
 
-   Le libellé était auparavant écrit dans la couleur de la marque : les huit
-   filtres échouaient au contraste dans au moins un thème, jusqu'à 1,30:1 pour
-   le jaune JavaScript en clair et 1,41:1 pour le violet C# en sombre. Un
-   libellé est du texte, donc 4,5:1 est exigé, et certaines couleurs de marque
-   ne peuvent pas l'atteindre en restant reconnaissables : le jaune JavaScript
-   devrait virer à l'olive foncé.
+   Le seuil applicable est donc celui du texte, 4,5:1 (WCAG 1.4.3), et non
+   celui d'un contour, 3:1 (1.4.11). Les couleurs brutes ne l'atteignent pas
+   toutes : chacune est ramenée au seuil en n'ajustant que la clarté HSL, à
+   teinte et saturation constantes. Trois dérivent visiblement et c'est
+   assumé : le jaune JavaScript vire à l'olive en clair (1,30:1 brut), le cyan
+   React au bleu canard en clair (1,56:1), le violet C# s'éclaircit en sombre
+   (1,41:1). Les autres bougent peu ou pas.
 
-   Le texte reste donc en `var(--text-color)`, soit 16:1 en clair et 15:1 en
-   sombre, et c'est la bordure qui porte la couleur, à pleine opacité et non
-   plus à 70 %. Une bordure est un élément non textuel, son seuil est 3:1, que
-   cinq marques sur huit atteignent telles quelles ; les trois autres sont
-   corrigées par thème plus bas.
-
-   L'état actif n'est plus redéfini par techno : il retombe sur `.filtre-btn.active`,
-   c'est-à-dire fond rouge et texte clair, comme les filtres de catégorie.
-   Auparavant c'était du blanc sur la couleur de marque à 70 %, soit 1,27:1 pour
-   JavaScript, du blanc sur jaune pâle.
+   L'état actif reste rouge à texte clair : `.filtre-btn.active` l'emporte sur
+   `.filtre-btn` par la spécificité, sans avoir besoin de `:not(.active)`.
    ============================== */
 .filtre-btn[data-filtre="html"] {
-    border-color: rgb(241, 101, 41);
+    --filtre-color: rgb(204, 70, 13);
 }
 
 .filtre-btn[data-filtre="css"] {
-    border-color: rgb(41, 101, 241);
+    --filtre-color: rgb(41, 101, 241);
 }
 
 .filtre-btn[data-filtre="javascript"] {
-    border-color: rgb(247, 223, 30);
+    --filtre-color: rgb(130, 116, 5);
 }
 
 .filtre-btn[data-filtre="php"] {
-    border-color: rgb(97, 129, 182);
+    --filtre-color: rgb(81, 116, 175);
 }
 
 .filtre-btn[data-filtre="csharp"] {
-    border-color: rgb(57, 0, 145);
+    --filtre-color: rgb(57, 0, 145);
 }
 
 .filtre-btn[data-filtre="mysql"] {
-    border-color: rgb(0, 117, 143);
+    --filtre-color: rgb(0, 117, 143);
 }
 
 .filtre-btn[data-filtre="react"],
 .filtre-btn[data-filtre="react-native"] {
-    border-color: rgb(97, 218, 251);
+    --filtre-color: rgb(4, 125, 159);
 }
 
 .filtre-btn[data-filtre="nodejs"] {
-    border-color: rgb(104, 159, 56);
+    --filtre-color: rgb(83, 127, 45);
 }
 
-/* Les trois marques dont la bordure passe sous 3:1 sur l'un des deux fonds.
-   Assombries ou éclaircies à teinte et saturation constantes, méthode déjà
-   utilisée pour les accents de la page Compétences et le dégradé de Gecko.
-   Jaune JavaScript 1,30:1 et cyan React 1,56:1 sur fond clair, violet C#
-   1,41:1 sur fond sombre ; les trois valeurs ci-dessous donnent 3,0:1. */
-.filtre-btn[data-filtre="javascript"] {
-    border-color: rgb(163, 146, 6);
+/* Thème sombre */
+.dark-theme .filtre-btn[data-filtre="html"] {
+    --filtre-color: rgb(241, 101, 41);
 }
 
-.filtre-btn[data-filtre="react"],
-.filtre-btn[data-filtre="react-native"] {
-    border-color: rgb(5, 156, 197);
+.dark-theme .filtre-btn[data-filtre="css"] {
+    --filtre-color: rgb(64, 117, 242);
 }
 
 .dark-theme .filtre-btn[data-filtre="javascript"] {
-    border-color: rgb(247, 223, 30);
+    --filtre-color: rgb(247, 223, 30);
+}
+
+.dark-theme .filtre-btn[data-filtre="php"] {
+    --filtre-color: rgb(97, 129, 182);
+}
+
+.dark-theme .filtre-btn[data-filtre="csharp"] {
+    --filtre-color: rgb(152, 85, 255);
+}
+
+.dark-theme .filtre-btn[data-filtre="mysql"] {
+    --filtre-color: rgb(0, 136, 166);
 }
 
 .dark-theme .filtre-btn[data-filtre="react"],
 .dark-theme .filtre-btn[data-filtre="react-native"] {
-    border-color: rgb(97, 218, 251);
+    --filtre-color: rgb(97, 218, 251);
 }
 
-.dark-theme .filtre-btn[data-filtre="csharp"] {
-    border-color: rgb(118, 29, 255);
+.dark-theme .filtre-btn[data-filtre="nodejs"] {
+    --filtre-color: rgb(104, 159, 56);
 }
 
 /* Teinte discrète au survol : décorative, aucun texte ne repose dessus. */
@@ -254,13 +260,15 @@
     margin-top: 0.8rem;
 }
 
+/* Contour et libellé partagent `--tag-color`, posée par techno dans global.css.
+   Le repli sur `--text-color` sert aux pastilles sans techno reconnue. */
 .card-tags span {
     font-size: var(--texte-xs);
     padding: 0.25rem 0.6rem;
     border-radius: var(--radius-pill);
-    border: 2px solid var(--text-color);
+    border: 2px solid var(--tag-color, var(--text-color));
     background: rgba(var(--main-bg-rgb), 0.7);
-    color: var(--text-color);
+    color: var(--tag-color, var(--text-color));
     font-weight: 600;
 }
 

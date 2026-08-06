@@ -154,9 +154,9 @@ a.timeline-link:hover .timeline-content {
     margin: 20px 0;
 }
 
+/* Apparence dans global.css ; ici la page resserre seulement l'espacement et
+   laisse le filet occuper toute la largeur. */
 main hr {
-    border: none;
-    border-top: 2px dashed var(--card-background);
     margin: 20px 0;
 }
 

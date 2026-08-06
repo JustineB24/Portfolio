@@ -63,17 +63,8 @@
     border-radius: var(--container-radius)
 }
 
-.theme-switch__checkbox {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
+/* La case du thème est masquée par la règle `.sr-only` de `global.css`, qui
+   regroupe les trois éléments du site utilisant cette technique. */
 
 .theme-switch__circle-container {
     width: var(--circle-container-diameter);

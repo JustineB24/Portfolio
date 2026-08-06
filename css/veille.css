@@ -22,7 +22,7 @@ main {
     margin: 10rem auto 20px;
     padding: 30px;
     background-color: rgba(var(--main-bg-rgb), 0.9);
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -57,7 +57,7 @@ main h2 {
     opacity: 0.75;
     padding: 0.4rem 1rem;
     background: var(--card-background);
-    border-radius: 2rem;
+    border-radius: var(--radius-pill);
 }
 
 .veille-meta i {
@@ -441,7 +441,7 @@ main .innovations li a:hover {
     color: var(--tag-text-on-color);
     background-color: var(--primary-color);
     padding: 0.25rem 0.75rem;
-    border-radius: 2rem;
+    border-radius: var(--radius-pill);
     width: fit-content;
     align-self: center;
 }

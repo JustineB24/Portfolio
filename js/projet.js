@@ -2,24 +2,10 @@
 // projet.js — Cartes projet : navigation vers la page détail
 // ==============================
 
-// Navigation vers les détails du projet
-document.querySelectorAll('.card').forEach(carte => {
-    carte.setAttribute('tabindex', '0');
-    carte.setAttribute('role', 'link');
-
-    function naviguer() {
-        const projetId = carte.getAttribute('data-id');
-        window.location.href = `projet-details.html?id=${projetId}`;
-    }
-
-    carte.addEventListener('click', naviguer);
-    carte.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            naviguer();
-        }
-    });
-});
+// La navigation ne passe plus par JavaScript : le titre de chaque carte est un
+// vrai lien, étendu à toute la carte par le `::after` de `.card-lien`. On y gagne
+// l'ouverture dans un nouvel onglet, le clic du milieu, la copie de l'adresse et
+// l'aperçu de l'URL au survol, qu'un `div` en `role="link"` ne peut pas offrir.
 
 // Filtrage des projets
 const filtreBtns = document.querySelectorAll('.filtre-btn');

@@ -15,6 +15,8 @@
 }
 
 /* Positionnement bouton CV sur cette page */
+/* Apparence dans global.css (`.btn` + `.btn-primaire`) ; la page ne pose que
+   l'écart avec le contenu autour. */
 .btn-cv {
     margin: 2rem;
 }

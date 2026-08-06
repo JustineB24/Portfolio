@@ -271,26 +271,8 @@
     gap: 1rem;
 }
 
-.btn-apropos {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1.8rem;
-    border-radius: var(--radius-sm);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--text-color);
-    border: 2px solid var(--card-background);
-    background: var(--card-background);
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-
-.btn-apropos:hover {
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-primary);
-}
+/* Apparence dans global.css (`.btn` + `.btn-neutre`). La page n'a plus rien à
+   dire sur ce bouton hors de la règle mobile plus bas. */
 
 /* ==============================
    Aperçu projets
@@ -325,46 +307,14 @@
     border-color: var(--card-accent, var(--primary-color));
 }
 
+/* Apparence dans global.css (`.btn` + `.btn-primaire`). Ne restent ici que le
+   centrage en bas de section et un padding un peu plus large que le socle. */
 .btn-voir-projets {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    width: fit-content;
     margin: 2rem auto 0;
     padding: 0.85rem 2rem;
-    border-radius: var(--radius-sm);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--tag-text-on-color);
-    background: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    width: fit-content;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.btn-voir-projets::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn-voir-projets:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-.btn-voir-projets:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-primary);
 }
 
 /* ==============================

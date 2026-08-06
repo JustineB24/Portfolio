@@ -136,7 +136,9 @@ a {
    Liens de contenu — traitement unique pour tout le site.
    Rouge de marque, sans soulignement au repos, souligné au survol et au focus
    clavier. La liste de `:not()` écarte ce qui est un bouton ou un onglet et se
-   trouve dans un `li`.
+   trouve dans un `li` ; elle tient en cinq exclusions depuis que tous les
+   boutons portent le socle `.btn`, contre neuf quand il fallait les nommer un
+   par un.
 
    La graisse n'est pas décorative, ne pas la retirer sans remettre un
    soulignement permanent : le rouge ne se détache du texte courant que de
@@ -150,7 +152,7 @@ a {
    ============================== */
 main p a,
 main td a,
-main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn-cv):not(.btn-download):not(.btn-view):not(.btn-accueil):not(.btn-envoyer) {
+main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn) {
     color: var(--primary-color);
     font-weight: 600;
     background-image: linear-gradient(currentColor, currentColor);
@@ -163,7 +165,7 @@ main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link)
 
 .dark-theme :is(main p a,
 main td a,
-main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn-cv):not(.btn-download):not(.btn-view):not(.btn-accueil):not(.btn-envoyer)) {
+main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn)) {
     color: var(--primary-on-dark);
 }
 
@@ -172,7 +174,7 @@ main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link)
    couleur. */
 :is(main p a,
 main td a,
-main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn-cv):not(.btn-download):not(.btn-view):not(.btn-accueil):not(.btn-envoyer)):is(:hover, :focus-visible) {
+main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn)):is(:hover, :focus-visible) {
     background-size: 100% 2px;
 }
 
@@ -326,47 +328,112 @@ h3 {
 }
 
 /* ==============================
-   Bouton CV (partagé)
+   Bouton (partagé)
+
+   Un socle `.btn` plus une variante d'apparence. Le même bouton était écrit
+   sept fois dans six feuilles, sous sept noms différents, avec des écarts qui
+   n'étaient pas des choix : `flex` au lieu de `inline-flex`, un padding à
+   2rem au lieu de 1,8rem, une transition qui oubliait `color`. Le patron vient
+   de `formation.css`, qui l'avait déjà pour ses deux boutons.
+
+   Usage : `class="btn btn-primaire"`. Les anciens noms (`btn-cv`,
+   `btn-voir-projets`…) subsistent uniquement comme points d'accroche pour les
+   réglages propres à une page (marge, largeur en mobile), jamais pour
+   l'apparence.
+
+   Le balayage au survol est un `::before` en `scaleX` : le socle en pose la
+   mécanique, la variante ne fournit que le fond. Un bouton sans fond de
+   variante n'affiche donc rien, ce qui est le cas voulu pour `.btn-neutre`.
    ============================== */
-.btn-cv {
+.btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.85rem 1.8rem;
     border-radius: var(--radius-sm);
     text-decoration: none;
-    font-weight: 600;
+    font-family: inherit;
     font-size: 1rem;
+    font-weight: 600;
+    border: 2px solid transparent;
     cursor: pointer;
     position: relative;
     overflow: hidden;
     z-index: 1;
-    background: var(--primary-color);
-    color: var(--tag-text-on-color);
-    border: 2px solid var(--primary-color);
-    transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
-    font-family: inherit;
+    transition: color 0.3s, transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
 
-.btn-cv::before {
-    content: '';
+.btn::before {
+    content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn-cv:hover::before {
+.btn:hover::before {
     transform: scaleX(1);
     transform-origin: left;
 }
 
-.btn-cv:hover {
+.btn:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-primary);
+}
+
+/* Variante pleine : l'action principale d'une page */
+.btn-primaire {
+    background: var(--primary-color);
+    color: var(--tag-text-on-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primaire::before {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+}
+
+/* Variante contour : action secondaire, se remplit au survol */
+.btn-secondaire {
+    background: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondaire::before {
+    background: var(--primary-color);
+}
+
+/* Après `.btn:hover`, à spécificité égale : c'est l'ordre qui tranche. */
+.btn-secondaire:hover {
+    color: var(--tag-text-on-color);
+    box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.25);
+}
+
+.dark-theme .btn-secondaire:not(:hover) {
+    color: var(--primary-on-dark);
+}
+
+/* Variante neutre : action tertiaire, se borde de rouge au survol */
+.btn-neutre {
+    background: var(--card-background);
+    color: var(--text-color);
+    border-color: var(--card-background);
+}
+
+.btn-neutre:hover {
+    border-color: var(--primary-color);
+}
+
+/* Halo en thème sombre, sur les boutons pleins uniquement : sur fond foncé,
+   le rouge a besoin d'être détaché du fond. */
+.dark-theme .btn-primaire {
+    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.4);
+}
+
+.dark-theme .btn-primaire:hover {
+    box-shadow: 0 0 25px rgba(var(--primary-rgb), 0.6);
 }
 
 h4 {
@@ -965,20 +1032,9 @@ footer {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-/* Glow amplifié en mode sombre */
-.dark-theme .btn-download,
-.dark-theme .btn-cv,
-.dark-theme .btn-envoyer,
-.dark-theme .btn-accueil {
-    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.4);
-}
-
-.dark-theme .btn-download:hover,
-.dark-theme .btn-cv:hover,
-.dark-theme .btn-envoyer:hover,
-.dark-theme .btn-accueil:hover {
-    box-shadow: 0 0 25px rgba(var(--primary-rgb), 0.6);
-}
+/* Le halo en thème sombre est posé avec la variante `.btn-primaire`, plus haut
+   dans ce fichier. Il était listé ici bouton par bouton, et le bouton
+   « Voir tous les projets » de l'accueil avait été oublié. */
 
 .dark-theme h1,
 .dark-theme h2 {

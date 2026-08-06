@@ -69,6 +69,12 @@
 </head>
 
 <body>
+<noscript>
+    <!-- Le loader est opaque et plein écran, et seul structure-globale.js lui pose la
+         classe `hidden`. Sans JavaScript il ne partirait jamais : la page entière
+         serait blanche, alors que tout le contenu est bien dans le HTML. -->
+    <style>.loader { display: none; }</style>
+</noscript>
 <!-- Loading screen -->
 <div class="loader">
     <picture>

@@ -11,26 +11,25 @@
     margin: 1rem 2rem 2rem;
 }
 
-/* Contour et libellé partagent `--filtre-color`, posée par techno plus bas.
-   Repli sur `--text-color` pour les filtres de catégorie, qui n'en ont pas. */
+/* Même traitement que les pastilles de carte : fond teinté à 15 %, contour et
+   libellé en `--tech-libelle`. Les jetons des technos viennent de
+   `css/technos.css`, ceux des catégories sont posés plus bas. */
 .filtre-btn {
     padding: 0.5rem 1.2rem;
-    border: 2px solid var(--filtre-color, var(--text-color));
+    border: 2px solid var(--tech-libelle, var(--text-color));
     border-radius: var(--radius-pill);
-    background: transparent;
-    color: var(--filtre-color, var(--text-color));
+    background: color-mix(in srgb, var(--tech-brut, transparent) 15%, transparent);
+    color: var(--tech-libelle, var(--text-color));
     font-size: 1rem;
     font-family: inherit;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-/* Un filtre techno garde sa couleur au survol, seul le fond se teinte : la
-   passer en rouge décrocherait le libellé de son contour, qui lui ne change
-   pas. Les filtres de catégorie, sans `--filtre-color`, tombent sur le rouge. */
-.filtre-btn:hover {
-    border-color: var(--filtre-color, var(--primary-color));
-    color: var(--filtre-color, var(--primary-color));
+/* Au survol la teinte de fond se renforce, la couleur du libellé ne bouge pas :
+   la passer en rouge la décrocherait de son contour, qui lui ne change pas. */
+.filtre-btn:hover:not(.active) {
+    background: color-mix(in srgb, var(--tech-brut, var(--primary-color)) 30%, transparent);
 }
 
 .filtre-btn.active {
@@ -58,74 +57,6 @@
    L'état actif reste rouge à texte clair : `.filtre-btn.active` l'emporte sur
    `.filtre-btn` par la spécificité, sans avoir besoin de `:not(.active)`.
    ============================== */
-/* Technologies — thème clair */
-.filtre-btn[data-filtre="html"] {
-    --filtre-color: rgb(209, 64, 26);
-}
-
-.filtre-btn[data-filtre="css"] {
-    --filtre-color: rgb(38, 77, 228);
-}
-
-.filtre-btn[data-filtre="javascript"] {
-    --filtre-color: rgb(130, 116, 5);
-}
-
-.filtre-btn[data-filtre="php"] {
-    --filtre-color: rgb(81, 116, 175);
-}
-
-.filtre-btn[data-filtre="csharp"] {
-    --filtre-color: rgb(57, 0, 145);
-}
-
-.filtre-btn[data-filtre="mysql"] {
-    --filtre-color: rgb(0, 117, 143);
-}
-
-.filtre-btn[data-filtre="react"],
-.filtre-btn[data-filtre="react-native"] {
-    --filtre-color: rgb(29, 125, 151);
-}
-
-.filtre-btn[data-filtre="nodejs"] {
-    --filtre-color: rgb(60, 130, 59);
-}
-
-/* Technologies — thème sombre */
-.dark-theme .filtre-btn[data-filtre="html"] {
-    --filtre-color: rgb(228, 77, 38);
-}
-
-.dark-theme .filtre-btn[data-filtre="css"] {
-    --filtre-color: rgb(85, 116, 234);
-}
-
-.dark-theme .filtre-btn[data-filtre="javascript"] {
-    --filtre-color: rgb(247, 223, 30);
-}
-
-.dark-theme .filtre-btn[data-filtre="php"] {
-    --filtre-color: rgb(97, 129, 182);
-}
-
-.dark-theme .filtre-btn[data-filtre="csharp"] {
-    --filtre-color: rgb(161, 121, 220);
-}
-
-.dark-theme .filtre-btn[data-filtre="mysql"] {
-    --filtre-color: rgb(0, 136, 166);
-}
-
-.dark-theme .filtre-btn[data-filtre="react"],
-.dark-theme .filtre-btn[data-filtre="react-native"] {
-    --filtre-color: rgb(83, 193, 222);
-}
-
-.dark-theme .filtre-btn[data-filtre="nodejs"] {
-    --filtre-color: rgb(65, 140, 64);
-}
-
 /* Catégories — contexte de réalisation. Les trois premières portent la couleur
    de l'institution derrière elles : le bleu d'action de Litesoft pour
    l'alternance, et une teinte par diplôme. « Stages » et « Perso » n'ont pas
@@ -133,69 +64,53 @@
    restent distinctes ; les teintes sont choisies aux deux plus grands écarts
    libres, 151° et 262°, les trois autres occupant 0°, 204° et 319°. */
 .filtre-btn[data-filtre="entreprise"] {
-    --filtre-color: rgb(0, 119, 198);
+    --tech-brut: #009aff;
+    --tech-libelle: rgb(0, 108, 180);
 }
 
 .filtre-btn[data-filtre="bachelor"] {
-    --filtre-color: rgb(220, 0, 148);
+    --tech-brut: #e10098;
+    --tech-libelle: rgb(188, 0, 127);
 }
 
 .filtre-btn[data-filtre="bts"] {
-    --filtre-color: rgb(230, 15, 15);
+    --tech-brut: #f34141;
+    --tech-libelle: rgb(205, 13, 13);
 }
 
 .filtre-btn[data-filtre="stage"] {
-    --filtre-color: rgb(13, 132, 74);
+    --tech-brut: #0f9d58;
+    --tech-libelle: rgb(11, 119, 67);
 }
 
 .filtre-btn[data-filtre="perso"] {
-    --filtre-color: rgb(124, 58, 237);
+    --tech-brut: #7c3aed;
+    --tech-libelle: rgb(121, 54, 237);
 }
 
 .dark-theme .filtre-btn[data-filtre="entreprise"] {
-    --filtre-color: rgb(0, 154, 255);
+    --tech-brut: #009aff;
+    --tech-libelle: rgb(0, 154, 255);
 }
 
 .dark-theme .filtre-btn[data-filtre="bachelor"] {
-    --filtre-color: rgb(236, 0, 159);
+    --tech-brut: #e10098;
+    --tech-libelle: rgb(248, 0, 167);
 }
 
 .dark-theme .filtre-btn[data-filtre="bts"] {
-    --filtre-color: rgb(243, 65, 65);
+    --tech-brut: #f34141;
+    --tech-libelle: rgb(243, 73, 73);
 }
 
 .dark-theme .filtre-btn[data-filtre="stage"] {
-    --filtre-color: rgb(15, 157, 88);
+    --tech-brut: #0f9d58;
+    --tech-libelle: rgb(15, 158, 88);
 }
 
 .dark-theme .filtre-btn[data-filtre="perso"] {
-    --filtre-color: rgb(147, 93, 240);
-}
-
-/* Teinte de survol : une seule règle pour tous les filtres, dérivée de
-   `--filtre-color`. Elle remplace les dix règles par techno qui répétaient la
-   couleur de marque en dur — elles avaient déjà divergé de la palette, et
-   c'était une deuxième valeur à maintenir par techno. Décorative : aucun texte
-   ne repose sur ce fond, le libellé garde son contraste sur le fond de page. */
-.filtre-btn:hover:not(.active) {
-    background: color-mix(in srgb, var(--filtre-color, var(--primary-color)) 15%, transparent);
-}
-
-/* JavaScript, exception assumée, même raison que la pastille du même nom dans
-   `global.css` : #f7df1e est à 1,30:1 sur le fond de page clair, illisible en
-   texte comme en contour. Seul un fond jaune à texte sombre restitue le vrai
-   jaune (13,8:1). Placé après la règle de survol pour que la teinte de 15 % ne
-   vienne pas effacer le fond, et en `:not(.active)` pour laisser l'état actif
-   rouge l'emporter. En sombre le jaune passe en texte, traitement commun. */
-.filtre-btn[data-filtre="javascript"]:not(.active) {
-    --filtre-color: #f7df1e;
-    background: #f7df1e;
-    color: #1a1a1a;
-}
-
-.dark-theme .filtre-btn[data-filtre="javascript"]:not(.active) {
-    background: transparent;
-    color: #f7df1e;
+    --tech-brut: #7c3aed;
+    --tech-libelle: rgb(154, 104, 241);
 }
 
 /* Grille des projets */
@@ -272,19 +187,24 @@
     margin-top: 0.8rem;
 }
 
-/* Contour et libellé partagent `--tag-color`, posée par techno dans global.css.
-   Le repli sur `--text-color` sert aux pastilles sans techno reconnue. */
+/* Un style unique pour toutes les pastilles, la couleur seule les distingue.
+   Le fond porte la teinte du logo à 15 % — c'est lui qui fait le rappel avec
+   l'icône, et il permet de garder la vraie couleur des marques pâles, qu'un
+   simple libellé coloré ne pourrait pas rendre lisibles. Contour et texte
+   prennent la même teinte assombrie juste assez, `--tech-libelle`. Les trois
+   jetons viennent de `css/technos.css`. Le repli sert aux pastilles sans
+   techno reconnue. */
 .card-tags span {
     font-size: var(--texte-xs);
     padding: 0.25rem 0.6rem;
     border-radius: var(--radius-pill);
-    border: 2px solid var(--tag-color, var(--text-color));
-    background: rgba(var(--main-bg-rgb), 0.7);
-    color: var(--tag-color, var(--text-color));
+    border: 2px solid var(--tech-libelle, var(--text-color));
+    background: color-mix(in srgb, var(--tech-brut, transparent) 15%, rgba(var(--main-bg-rgb), 0.7));
+    color: var(--tech-libelle, var(--text-color));
     font-weight: 600;
 }
 
-/* Couleurs des tags technologies : centralisées dans global.css */
+/* Couleurs des technos : centralisées dans `css/technos.css` */
 
 /* Badge en cours de développement */
 .card .badge-en-cours {

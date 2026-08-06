@@ -1,0 +1,601 @@
+/* ==============================
+   technos.css — Couleur de chaque technologie. Source unique du site.
+
+   Une techno = une couleur, celle de son logo, pour que sa pastille et son
+   filet fassent rappel avec l'icône affichée à côté. Les valeurs viennent de la
+   couleur réellement dominante de chaque SVG de `assets/competences/`, mesurée
+   en comptant les pixels après rendu — et non de la couleur de marque telle
+   qu'on la retient, qui s'en écarte souvent. Six exceptions gardent la couleur
+   de marque, la dominante n'y étant pas la bonne : sur Python c'est le jaune
+   du serpent, sur Asana le bleu nuit du fond, sur Node.js le milieu d'un
+   dégradé, sur jQuery elle n'est échantillonnée que sur 14 px (logo noir), et
+   C# comme XAML ont deux teintes voisines dont on exploite déjà les deux.
+
+   Trois jetons par techno, parce que la couleur sert à des usages qui n'ont
+   pas le même seuil d'accessibilité :
+
+     --tech-brut     la couleur du logo, telle quelle. Sert de fond de pastille
+                     à 15 % d'opacité : c'est elle qui fait le rappel visuel,
+                     et à cette dose elle ne porte aucun texte.
+     --tech-libelle  contour et texte de la pastille. C'est du texte, seuil
+                     4,5:1 (WCAG 1.4.3), calculé sur le fond teinté ci-dessus
+                     et non sur la carte nue.
+     --tech-filet    filet de 3px de la page Compétences. Élément non textuel,
+                     seuil 3:1 (WCAG 1.4.11), calculé sur la carte nue.
+
+   Les deux valeurs dérivées gardent la teinte et la saturation du logo : seule
+   la clarté HSL est ajustée. Le calcul porte sur `--card-background`, le fond
+   le plus défavorable de chaque thème, pour qu'une seule valeur serve les
+   trois surfaces où ces éléments apparaissent — d'où deux jeux complets. Sur
+   les 36 technos, 20 filets passaient sous 3:1 dans un thème avant ce calcul.
+
+   Ce fond teinté est ce qui permet de garder la vraie couleur des marques
+   pâles. Le jaune JavaScript #f7df1e est à 1,13:1 en texte sur une carte
+   claire, donc inutilisable comme libellé ; en fond à 15 % il reste
+   parfaitement identifiable, et le libellé prend la même teinte assombrie.
+
+   Les logos monochromes noirs (GitHub, Expo, Socket.io) passent au gris clair
+   #c9c9c9 en thème sombre, où leur image est aussi inversée par un filtre.
+
+   **Modifier une couleur ici et nulle part ailleurs.** C'est le fichier qui
+   empêche les pages de diverger, ce qu'elles avaient fini par faire sur neuf
+   technos.
+   ============================== */
+
+/* ---- Thème clair ---- */
+
+.comp-html,
+.filtre-btn[data-filtre="html"],
+.card-tags .tag-html,
+#projet-technologies .tag-html {
+    --tech-brut: rgb(228, 77, 38);
+    --tech-libelle: rgb(171, 52, 21);
+    --tech-filet: rgb(228, 77, 38);
+}
+
+.comp-css,
+.filtre-btn[data-filtre="css"],
+.card-tags .tag-css,
+#projet-technologies .tag-css {
+    --tech-brut: rgb(38, 77, 228);
+    --tech-libelle: rgb(32, 72, 227);
+    --tech-filet: rgb(38, 77, 228);
+}
+
+.comp-js,
+.filtre-btn[data-filtre="javascript"],
+.card-tags .tag-js,
+#projet-technologies .tag-js {
+    --tech-brut: rgb(247, 223, 30);
+    --tech-libelle: rgb(117, 104, 4);
+    --tech-filet: rgb(152, 135, 5);
+}
+
+.comp-jquery,
+.card-tags .tag-jquery,
+#projet-technologies .tag-jquery {
+    --tech-brut: rgb(33, 96, 155);
+    --tech-libelle: rgb(32, 94, 153);
+    --tech-filet: rgb(33, 96, 155);
+}
+
+.comp-react,
+.filtre-btn[data-filtre="react"],
+.card-tags .tag-react,
+#projet-technologies .tag-react {
+    --tech-brut: rgb(83, 193, 222);
+    --tech-libelle: rgb(25, 109, 132);
+    --tech-filet: rgb(34, 146, 176);
+}
+
+.comp-react-native,
+.filtre-btn[data-filtre="react-native"],
+.card-tags .tag-react-native,
+#projet-technologies .tag-react-native {
+    --tech-brut: rgb(83, 193, 222);
+    --tech-libelle: rgb(25, 109, 132);
+    --tech-filet: rgb(34, 146, 176);
+}
+
+.comp-php,
+.filtre-btn[data-filtre="php"],
+.card-tags .tag-php,
+#projet-technologies .tag-php {
+    --tech-brut: rgb(97, 129, 182);
+    --tech-libelle: rgb(67, 96, 145);
+    --tech-filet: rgb(97, 129, 182);
+}
+
+.comp-nodejs,
+.filtre-btn[data-filtre="nodejs"],
+.card-tags .tag-nodejs,
+#projet-technologies .tag-nodejs {
+    --tech-brut: rgb(62, 134, 61);
+    --tech-libelle: rgb(49, 106, 48);
+    --tech-filet: rgb(62, 134, 61);
+}
+
+.comp-socketio,
+.card-tags .tag-socketio,
+#projet-technologies .tag-socketio {
+    --tech-brut: rgb(1, 1, 1);
+    --tech-libelle: rgb(1, 1, 1);
+    --tech-filet: rgb(1, 1, 1);
+}
+
+.comp-datatables,
+.card-tags .tag-datatables,
+#projet-technologies .tag-datatables {
+    --tech-brut: rgb(76, 76, 224);
+    --tech-libelle: rgb(68, 68, 223);
+    --tech-filet: rgb(76, 76, 224);
+}
+
+.comp-python {
+    --tech-brut: rgb(56, 126, 184);
+    --tech-libelle: rgb(44, 98, 144);
+    --tech-filet: rgb(56, 126, 184);
+}
+
+.comp-c-sharp,
+.filtre-btn[data-filtre="csharp"],
+.card-tags .tag-csharp,
+#projet-technologies .tag-csharp {
+    --tech-brut: rgb(57, 0, 145);
+    --tech-libelle: rgb(57, 0, 145);
+    --tech-filet: rgb(57, 0, 145);
+}
+
+.comp-xaml,
+.card-tags .tag-xaml,
+#projet-technologies .tag-xaml {
+    --tech-brut: rgb(13, 79, 178);
+    --tech-libelle: rgb(13, 79, 178);
+    --tech-filet: rgb(13, 79, 178);
+}
+
+.comp-maui,
+.card-tags .tag-maui,
+#projet-technologies .tag-maui {
+    --tech-brut: rgb(162, 19, 236);
+    --tech-libelle: rgb(140, 16, 204);
+    --tech-filet: rgb(162, 19, 236);
+}
+
+.comp-winforms,
+.card-tags .tag-winforms,
+#projet-technologies .tag-winforms {
+    --tech-brut: rgb(0, 131, 143);
+    --tech-libelle: rgb(0, 104, 114);
+    --tech-filet: rgb(0, 131, 143);
+}
+
+.comp-mysql,
+.filtre-btn[data-filtre="mysql"],
+.card-tags .tag-mysql,
+#projet-technologies .tag-mysql {
+    --tech-brut: rgb(0, 117, 143);
+    --tech-libelle: rgb(0, 101, 124);
+    --tech-filet: rgb(0, 117, 143);
+}
+
+.comp-postgresql,
+.card-tags .tag-postgresql,
+#projet-technologies .tag-postgresql {
+    --tech-brut: rgb(51, 103, 145);
+    --tech-libelle: rgb(48, 96, 136);
+    --tech-filet: rgb(51, 103, 145);
+}
+
+.comp-vscode {
+    --tech-brut: rgb(0, 122, 204);
+    --tech-libelle: rgb(0, 96, 161);
+    --tech-filet: rgb(0, 122, 204);
+}
+
+.comp-vs {
+    --tech-brut: rgb(108, 51, 175);
+    --tech-libelle: rgb(108, 51, 175);
+    --tech-filet: rgb(108, 51, 175);
+}
+
+.comp-phpstorm {
+    --tech-brut: rgb(179, 69, 241);
+    --tech-libelle: rgb(143, 16, 215);
+    --tech-filet: rgb(179, 69, 241);
+}
+
+.comp-xampp,
+.card-tags .tag-xampp,
+#projet-technologies .tag-xampp {
+    --tech-brut: rgb(251, 122, 36);
+    --tech-libelle: rgb(164, 68, 3);
+    --tech-filet: rgb(226, 93, 4);
+}
+
+.comp-mamp,
+.card-tags .tag-mamp,
+#projet-technologies .tag-mamp {
+    --tech-brut: rgb(37, 125, 174);
+    --tech-libelle: rgb(30, 100, 140);
+    --tech-filet: rgb(37, 125, 174);
+}
+
+.comp-git,
+.card-tags .tag-git,
+#projet-technologies .tag-git {
+    --tech-brut: rgb(222, 76, 54);
+    --tech-libelle: rgb(174, 47, 28);
+    --tech-filet: rgb(222, 76, 54);
+}
+
+.comp-github,
+.card-tags .tag-github,
+#projet-technologies .tag-github {
+    --tech-brut: rgb(22, 22, 20);
+    --tech-libelle: rgb(22, 22, 20);
+    --tech-filet: rgb(22, 22, 20);
+}
+
+.comp-expo,
+.card-tags .tag-expo,
+#projet-technologies .tag-expo {
+    --tech-brut: rgb(0, 0, 32);
+    --tech-libelle: rgb(0, 0, 32);
+    --tech-filet: rgb(0, 0, 32);
+}
+
+.comp-gitlab,
+.card-tags .tag-gitlab,
+#projet-technologies .tag-gitlab {
+    --tech-brut: rgb(226, 67, 41);
+    --tech-libelle: rgb(175, 45, 24);
+    --tech-filet: rgb(226, 67, 41);
+}
+
+.comp-figma,
+.card-tags .tag-figma,
+#projet-technologies .tag-figma {
+    --tech-brut: rgb(162, 89, 255);
+    --tech-libelle: rgb(119, 13, 255);
+    --tech-filet: rgb(162, 89, 255);
+}
+
+.comp-canva {
+    --tech-brut: rgb(0, 196, 204);
+    --tech-libelle: rgb(0, 110, 115);
+    --tech-filet: rgb(0, 149, 155);
+}
+
+.comp-asana {
+    --tech-brut: rgb(249, 93, 143);
+    --tech-libelle: rgb(192, 7, 66);
+    --tech-filet: rgb(248, 56, 118);
+}
+
+.comp-jira {
+    --tech-brut: rgb(0, 82, 204);
+    --tech-libelle: rgb(0, 82, 204);
+    --tech-filet: rgb(0, 82, 204);
+}
+
+.comp-odoo {
+    --tech-brut: rgb(113, 75, 103);
+    --tech-libelle: rgb(113, 75, 103);
+    --tech-filet: rgb(113, 75, 103);
+}
+
+.comp-postman {
+    --tech-brut: rgb(255, 108, 55);
+    --tech-libelle: rgb(180, 48, 0);
+    --tech-filet: rgb(249, 66, 0);
+}
+
+.comp-bootstrap,
+.card-tags .tag-bootstrap,
+#projet-technologies .tag-bootstrap {
+    --tech-brut: rgb(115, 17, 246);
+    --tech-libelle: rgb(109, 9, 244);
+    --tech-filet: rgb(115, 17, 246);
+}
+
+.comp-tailwind,
+.card-tags .tag-tailwind,
+#projet-technologies .tag-tailwind {
+    --tech-brut: rgb(56, 189, 248);
+    --tech-libelle: rgb(5, 106, 151);
+    --tech-filet: rgb(7, 143, 204);
+}
+
+.comp-docker,
+.card-tags .tag-docker,
+#projet-technologies .tag-docker {
+    --tech-brut: rgb(37, 96, 255);
+    --tech-libelle: rgb(0, 67, 249);
+    --tech-filet: rgb(37, 96, 255);
+}
+
+.comp-looping {
+    --tech-brut: rgb(0, 0, 255);
+    --tech-libelle: rgb(0, 0, 255);
+    --tech-filet: rgb(0, 0, 255);
+}
+
+/* ---- Thème sombre ---- */
+
+.dark-theme .comp-html,
+.dark-theme .filtre-btn[data-filtre="html"],
+.dark-theme .card-tags .tag-html,
+.dark-theme #projet-technologies .tag-html {
+    --tech-brut: rgb(228, 77, 38);
+    --tech-libelle: rgb(234, 116, 85);
+    --tech-filet: rgb(228, 77, 38);
+}
+
+.dark-theme .comp-css,
+.dark-theme .filtre-btn[data-filtre="css"],
+.dark-theme .card-tags .tag-css,
+.dark-theme #projet-technologies .tag-css {
+    --tech-brut: rgb(38, 77, 228);
+    --tech-libelle: rgb(115, 141, 238);
+    --tech-filet: rgb(63, 98, 231);
+}
+
+.dark-theme .comp-js,
+.dark-theme .filtre-btn[data-filtre="javascript"],
+.dark-theme .card-tags .tag-js,
+.dark-theme #projet-technologies .tag-js {
+    --tech-brut: rgb(247, 223, 30);
+    --tech-libelle: rgb(247, 223, 30);
+    --tech-filet: rgb(247, 223, 30);
+}
+
+.dark-theme .comp-jquery,
+.dark-theme .card-tags .tag-jquery,
+.dark-theme #projet-technologies .tag-jquery {
+    --tech-brut: rgb(33, 96, 155);
+    --tech-libelle: rgb(81, 152, 218);
+    --tech-filet: rgb(39, 112, 182);
+}
+
+.dark-theme .comp-react,
+.dark-theme .filtre-btn[data-filtre="react"],
+.dark-theme .card-tags .tag-react,
+.dark-theme #projet-technologies .tag-react {
+    --tech-brut: rgb(83, 193, 222);
+    --tech-libelle: rgb(83, 193, 222);
+    --tech-filet: rgb(83, 193, 222);
+}
+
+.dark-theme .comp-react-native,
+.dark-theme .filtre-btn[data-filtre="react-native"],
+.dark-theme .card-tags .tag-react-native,
+.dark-theme #projet-technologies .tag-react-native {
+    --tech-brut: rgb(83, 193, 222);
+    --tech-libelle: rgb(83, 193, 222);
+    --tech-filet: rgb(83, 193, 222);
+}
+
+.dark-theme .comp-php,
+.dark-theme .filtre-btn[data-filtre="php"],
+.dark-theme .card-tags .tag-php,
+.dark-theme #projet-technologies .tag-php {
+    --tech-brut: rgb(97, 129, 182);
+    --tech-libelle: rgb(129, 155, 197);
+    --tech-filet: rgb(97, 129, 182);
+}
+
+.dark-theme .comp-nodejs,
+.dark-theme .filtre-btn[data-filtre="nodejs"],
+.dark-theme .card-tags .tag-nodejs,
+.dark-theme #projet-technologies .tag-nodejs {
+    --tech-brut: rgb(62, 134, 61);
+    --tech-libelle: rgb(79, 171, 78);
+    --tech-filet: rgb(62, 134, 61);
+}
+
+.dark-theme .comp-socketio,
+.dark-theme .card-tags .tag-socketio,
+.dark-theme #projet-technologies .tag-socketio {
+    --tech-brut: rgb(201, 201, 201);
+    --tech-libelle: rgb(201, 201, 201);
+    --tech-filet: rgb(201, 201, 201);
+}
+
+.dark-theme .comp-datatables,
+.dark-theme .card-tags .tag-datatables,
+.dark-theme #projet-technologies .tag-datatables {
+    --tech-brut: rgb(76, 76, 224);
+    --tech-libelle: rgb(137, 137, 234);
+    --tech-filet: rgb(92, 92, 227);
+}
+
+.dark-theme .comp-python {
+    --tech-brut: rgb(56, 126, 184);
+    --tech-libelle: rgb(98, 158, 207);
+    --tech-filet: rgb(56, 126, 184);
+}
+
+.dark-theme .comp-c-sharp,
+.dark-theme .filtre-btn[data-filtre="csharp"],
+.dark-theme .card-tags .tag-csharp,
+.dark-theme #projet-technologies .tag-csharp {
+    --tech-brut: rgb(161, 121, 220);
+    --tech-libelle: rgb(174, 140, 225);
+    --tech-filet: rgb(161, 121, 220);
+}
+
+.dark-theme .comp-xaml,
+.dark-theme .card-tags .tag-xaml,
+.dark-theme #projet-technologies .tag-xaml {
+    --tech-brut: rgb(13, 79, 178);
+    --tech-libelle: rgb(78, 144, 242);
+    --tech-filet: rgb(17, 102, 231);
+}
+
+.dark-theme .comp-maui,
+.dark-theme .card-tags .tag-maui,
+.dark-theme #projet-technologies .tag-maui {
+    --tech-brut: rgb(162, 19, 236);
+    --tech-libelle: rgb(196, 104, 243);
+    --tech-filet: rgb(167, 33, 237);
+}
+
+.dark-theme .comp-winforms,
+.dark-theme .card-tags .tag-winforms,
+.dark-theme #projet-technologies .tag-winforms {
+    --tech-brut: rgb(0, 131, 143);
+    --tech-libelle: rgb(0, 166, 181);
+    --tech-filet: rgb(0, 131, 143);
+}
+
+.dark-theme .comp-mysql,
+.dark-theme .filtre-btn[data-filtre="mysql"],
+.dark-theme .card-tags .tag-mysql,
+.dark-theme #projet-technologies .tag-mysql {
+    --tech-brut: rgb(0, 117, 143);
+    --tech-libelle: rgb(0, 162, 198);
+    --tech-filet: rgb(0, 120, 146);
+}
+
+.dark-theme .comp-postgresql,
+.dark-theme .card-tags .tag-postgresql,
+.dark-theme #projet-technologies .tag-postgresql {
+    --tech-brut: rgb(51, 103, 145);
+    --tech-libelle: rgb(97, 153, 199);
+    --tech-filet: rgb(56, 114, 160);
+}
+
+.dark-theme .comp-vscode {
+    --tech-brut: rgb(0, 122, 204);
+    --tech-libelle: rgb(5, 155, 255);
+    --tech-filet: rgb(0, 122, 204);
+}
+
+.dark-theme .comp-vs {
+    --tech-brut: rgb(108, 51, 175);
+    --tech-libelle: rgb(168, 125, 217);
+    --tech-filet: rgb(137, 80, 204);
+}
+
+.dark-theme .comp-phpstorm {
+    --tech-brut: rgb(179, 69, 241);
+    --tech-libelle: rgb(198, 115, 244);
+    --tech-filet: rgb(179, 69, 241);
+}
+
+.dark-theme .comp-xampp,
+.dark-theme .card-tags .tag-xampp,
+.dark-theme #projet-technologies .tag-xampp {
+    --tech-brut: rgb(251, 122, 36);
+    --tech-libelle: rgb(251, 122, 36);
+    --tech-filet: rgb(251, 122, 36);
+}
+
+.dark-theme .comp-mamp,
+.dark-theme .card-tags .tag-mamp,
+.dark-theme #projet-technologies .tag-mamp {
+    --tech-brut: rgb(37, 125, 174);
+    --tech-libelle: rgb(60, 159, 214);
+    --tech-filet: rgb(37, 125, 174);
+}
+
+.dark-theme .comp-git,
+.dark-theme .card-tags .tag-git,
+.dark-theme #projet-technologies .tag-git {
+    --tech-brut: rgb(222, 76, 54);
+    --tech-libelle: rgb(230, 118, 101);
+    --tech-filet: rgb(222, 76, 54);
+}
+
+.dark-theme .comp-github,
+.dark-theme .card-tags .tag-github,
+.dark-theme #projet-technologies .tag-github {
+    --tech-brut: rgb(201, 201, 201);
+    --tech-libelle: rgb(201, 201, 201);
+    --tech-filet: rgb(201, 201, 201);
+}
+
+.dark-theme .comp-expo,
+.dark-theme .card-tags .tag-expo,
+.dark-theme #projet-technologies .tag-expo {
+    --tech-brut: rgb(201, 201, 201);
+    --tech-libelle: rgb(201, 201, 201);
+    --tech-filet: rgb(201, 201, 201);
+}
+
+.dark-theme .comp-gitlab,
+.dark-theme .card-tags .tag-gitlab,
+.dark-theme #projet-technologies .tag-gitlab {
+    --tech-brut: rgb(226, 67, 41);
+    --tech-libelle: rgb(233, 115, 95);
+    --tech-filet: rgb(226, 67, 41);
+}
+
+.dark-theme .comp-figma,
+.dark-theme .card-tags .tag-figma,
+.dark-theme #projet-technologies .tag-figma {
+    --tech-brut: rgb(162, 89, 255);
+    --tech-libelle: rgb(181, 124, 255);
+    --tech-filet: rgb(162, 89, 255);
+}
+
+.dark-theme .comp-canva {
+    --tech-brut: rgb(0, 196, 204);
+    --tech-libelle: rgb(0, 196, 204);
+    --tech-filet: rgb(0, 196, 204);
+}
+
+.dark-theme .comp-asana {
+    --tech-brut: rgb(249, 93, 143);
+    --tech-libelle: rgb(249, 106, 152);
+    --tech-filet: rgb(249, 93, 143);
+}
+
+.dark-theme .comp-jira {
+    --tech-brut: rgb(0, 82, 204);
+    --tech-libelle: rgb(69, 144, 255);
+    --tech-filet: rgb(0, 99, 245);
+}
+
+.dark-theme .comp-odoo {
+    --tech-brut: rgb(113, 75, 103);
+    --tech-libelle: rgb(175, 134, 164);
+    --tech-filet: rgb(142, 95, 130);
+}
+
+.dark-theme .comp-postman {
+    --tech-brut: rgb(255, 108, 55);
+    --tech-libelle: rgb(255, 112, 60);
+    --tech-filet: rgb(255, 108, 55);
+}
+
+.dark-theme .comp-bootstrap,
+.dark-theme .card-tags .tag-bootstrap,
+.dark-theme #projet-technologies .tag-bootstrap {
+    --tech-brut: rgb(115, 17, 246);
+    --tech-libelle: rgb(171, 113, 250);
+    --tech-filet: rgb(139, 59, 248);
+}
+
+.dark-theme .comp-tailwind,
+.dark-theme .card-tags .tag-tailwind,
+.dark-theme #projet-technologies .tag-tailwind {
+    --tech-brut: rgb(56, 189, 248);
+    --tech-libelle: rgb(56, 189, 248);
+    --tech-filet: rgb(56, 189, 248);
+}
+
+.dark-theme .comp-docker,
+.dark-theme .card-tags .tag-docker,
+.dark-theme #projet-technologies .tag-docker {
+    --tech-brut: rgb(37, 96, 255);
+    --tech-libelle: rgb(102, 144, 255);
+    --tech-filet: rgb(37, 96, 255);
+}
+
+.dark-theme .comp-looping {
+    --tech-brut: rgb(0, 0, 255);
+    --tech-libelle: rgb(123, 123, 255);
+    --tech-filet: rgb(84, 84, 255);
+}

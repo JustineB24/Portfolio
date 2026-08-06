@@ -106,7 +106,7 @@ const projets = {
             "../assets/projets/pendu/Scores.jpg"
         ],
         description: "Application mobile développée avec MAUI et XAML, recréant le célèbre jeu du pendu. L'utilisateur doit deviner un mot choisi aléatoirement, en proposant des lettres une par une. Chaque mauvaise réponse révèle progressivement une image du pendu. Le menu principal permet de jouer, de gérer la liste des mots à deviner, de consulter les meilleurs scores ou de quitter l'application. Les mots et les scores sont stockés localement, permettant une gestion dynamique des parties et une personnalisation du jeu. L'interface est responsive et s'adapte parfaitement aux différents formats mobiles.",
-        technologies: ["XAML", "MAUI"]
+        technologies: ["C#", "XAML", "MAUI"]
     },
     "france-mobilier": {
         title: "France Mobilier",

@@ -25,7 +25,7 @@ const projets = {
         ],
         description: "Projet de groupe réalisé à 4 durant l'année de Bachelor Développement & IA. YABT est une application web de blind test et quiz musical multijoueur en temps réel. Les joueurs créent ou rejoignent des parties via un code ou un QR code, et s'affrontent sur des extraits musicaux provenant de l'API Deezer. L'application propose plusieurs modes de jeu (Classique, Speedrun, Battle Royale, Jackpot, Combo Breaker), un système de comptes avec progression par niveaux, des avatars déblocables, ainsi qu'un créateur de QCM personnalisés. L'identité visuelle (logo, mascotte animée, icônes néon) a été entièrement conçue par l'équipe. Le projet suit une méthodologie Agile et sera présenté devant un jury en fin d'année.",
         technologies: ["React", "Tailwind CSS", "Node.js", "Socket.io", "MySQL", "Docker", "Figma", "GitHub"],
-        link: "https://github.com/OujidKarim/YABT_main",
+        // Dépôt du coéquipier, privé : 404 pour un visiteur. Retiré le 06/08/2026.
         enCours: true,
         etudeDeCas: {
             contexte: "Les blind tests entre amis se font souvent sur des applications payantes, limitées en fonctionnalités ou sans vrai mode multijoueur en temps réel. On voulait créer une alternative gratuite, fun et complète, jouable directement dans le navigateur.",
@@ -83,7 +83,8 @@ const projets = {
         images: ["../assets/projets/grimoire_recettes/Maquette.png"],
         description: "Projet personnel réalisé dans le but de tester les capacités des intelligences artificielles en développement. Le point de départ : une simple idée de carnet de recettes numérique et une maquette rapide dessinée sur tablette. Le cahier des charges a été rédigé avec Gemini (Google), puis l'intégralité du code a été générée par Claude Code (Anthropic). Le résultat est une application web complète (PWA installable comme une appli sur téléphone et utilisable hors ligne) avec recherche en temps réel, calculateur de portions, timer intégré, mode sombre et liste de courses, le tout en HTML, CSS et JavaScript vanilla, sans aucune ligne de code écrite manuellement.",
         technologies: ["HTML", "CSS", "JavaScript"],
-        link: "https://github.com/JustineB24/site-de-cuisine",
+        // Dépôt privé : le lien renvoyait un 404 à tout visiteur. Retiré le 06/08/2026,
+        // à remettre si le dépôt passe public.
         enCours: true,
         etudeDeCas: {
             contexte: "Un projet 100 % personnel, né d'une question : jusqu'où une IA peut-elle aller en développement ? Le point de départ était volontairement simple : une idée de carnet de recettes numérique et une maquette griffonnée sur tablette, avec l'hypothèse que le résultat pourrait être réellement utile au quotidien, et pas seulement un prototype jetable.",
@@ -106,9 +107,10 @@ const projets = {
             "../assets/projets/panada_food/Mentions_legales.jpg",
             "../assets/projets/panada_food/Ecran_chargement.jpg"
         ],
-        description: "Développement d'un site web vitrine pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en binôme avec une collègue. Le restaurant venait d'ouvrir et ne possédait aucune présence en ligne. On s'est déplacées sur place pour récolter les informations et comprendre les attentes du gérant, puis on a conçu et développé le site de A à Z. Le site inclut une page d'accueil, le menu du restaurant, un formulaire de contact et les mentions légales conformes au RGPD. Il a été mis en ligne via un hébergement OVH. Le gérant souhaitait aussi pouvoir prendre les commandes en ligne : on a commencé une seconde version en PHP avec une base MySQL, où le menu, les boissons et les sauces devenaient des tables et où un panier apparaissait. Elle n'a pas abouti, faute de temps sur six semaines, et n'a jamais été mise en ligne. C'est la version statique qui tourne.",
+        description: "Développement d'un site web vitrine pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en binôme avec une collègue. Le restaurant venait d'ouvrir et ne possédait aucune présence en ligne. On s'est déplacées sur place pour récolter les informations et comprendre les attentes du gérant, puis on a conçu et développé le site de A à Z. Le site inclut une page d'accueil, le menu du restaurant, un formulaire de contact et les mentions légales conformes au RGPD. Il a été mis en ligne via un hébergement OVH, sur un domaine que le restaurant n'a pas renouvelé depuis. Le gérant souhaitait aussi pouvoir prendre les commandes en ligne : on a commencé une seconde version en PHP avec une base MySQL, où le menu, les boissons et les sauces devenaient des tables et où un panier apparaissait. Elle n'a pas abouti, faute de temps sur six semaines, et n'a jamais été mise en ligne. C'est la version statique qui tourne.",
         technologies: ["HTML", "CSS", "JavaScript"],
-        link: "https://panadafood.ovh",
+        // panadafood.ovh ne résout plus (NXDOMAIN au 06/08/2026) : le restaurant n'a pas
+        // renouvelé le domaine. Lien retiré, la description dit que le site a été mis en ligne.
         etudeDeCas: {
             contexte: "Panada Food est un restaurant de restauration rapide à Amiens qui venait d'ouvrir et ne possédait pas encore de site web. En binôme avec une collègue, on s'est proposées pour leur en créer un durant notre stage de 6 semaines en deuxième année de BTS SIO.",
             reflexion: "Le restaurant n'ayant aucune présence en ligne, il fallait partir de zéro : se déplacer sur place pour récolter les informations (menu, photos, attentes du gérant), concevoir le design, développer le site, gérer la conformité RGPD et les mentions légales, puis mettre en ligne via un hébergement OVH.",

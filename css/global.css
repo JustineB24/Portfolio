@@ -127,10 +127,28 @@ a {
     text-decoration: none;
 }
 
-/* Animated underline sur les liens dans le contenu */
+/* ==============================
+   Liens de contenu — traitement unique pour tout le site.
+   Rouge de marque, sans soulignement au repos, souligné au survol et au focus
+   clavier. La liste de `:not()` écarte ce qui est un bouton ou un onglet et se
+   trouve dans un `li`.
+
+   La graisse n'est pas décorative, ne pas la retirer sans remettre un
+   soulignement permanent : le rouge ne se détache du texte courant que de
+   1,90:1 en clair et 2,43:1 en sombre, sous les 3:1 qu'exige WCAG 1.4.1 pour un
+   lien reconnaissable à sa seule couleur. C'est elle qui fournit le second
+   indice au repos, le soulignement prenant le relais au survol et au focus.
+
+   Le dégradé du soulignement est en `currentColor` et non en `--primary-color` :
+   sinon il resterait rouge foncé en thème sombre, soit 2:1 sur le fond de page,
+   presque invisible.
+   ============================== */
 main p a,
+main td a,
 main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn-cv):not(.btn-download):not(.btn-view):not(.btn-accueil):not(.btn-envoyer) {
-    background-image: linear-gradient(var(--primary-color), var(--primary-color));
+    color: var(--primary-color);
+    font-weight: 600;
+    background-image: linear-gradient(currentColor, currentColor);
     background-size: 0 2px;
     background-position: bottom left;
     background-repeat: no-repeat;
@@ -138,8 +156,18 @@ main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link)
     padding-bottom: 2px;
 }
 
-main p a:hover,
-main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn-cv):not(.btn-download):not(.btn-view):not(.btn-accueil):not(.btn-envoyer):hover {
+.dark-theme :is(main p a,
+main td a,
+main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn-cv):not(.btn-download):not(.btn-view):not(.btn-accueil):not(.btn-envoyer)) {
+    color: var(--primary-on-dark);
+}
+
+/* `:focus-visible` autant que `:hover` : sans lui, l'indice non coloré
+   n'existerait qu'à la souris et un parcours au clavier n'aurait que la
+   couleur. */
+:is(main p a,
+main td a,
+main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn-cv):not(.btn-download):not(.btn-view):not(.btn-accueil):not(.btn-envoyer)):is(:hover, :focus-visible) {
     background-size: 100% 2px;
 }
 
@@ -1074,19 +1102,8 @@ body.page-exit main {
     margin-right: auto;
 }
 
-/* Le site n'a pas de couleur globale pour les liens de contenu : la règle
-   `main p a` ne pose qu'un soulignement animé, sans couleur, et les liens
-   retombent donc sur le bleu du navigateur. On la donne ici pour le composant
-   partagé, sans toucher à la règle globale dont le sélecteur très spécifique
-   (`main li a:not(…)` neuf fois) écraserait les liens déjà colorés ailleurs. */
-.sous-titre-page a {
-    color: var(--primary-color);
-    font-weight: 600;
-}
-
-.dark-theme .sous-titre-page a {
-    color: var(--primary-on-dark);
-}
+/* Les liens du sous-titre n'ont plus de règle propre : `.sous-titre-page` est un
+   `p`, donc la règle de lien de contenu plus haut les couvre. */
 
 /* Sommaire veille */
 .sommaire {

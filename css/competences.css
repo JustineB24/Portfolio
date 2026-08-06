@@ -269,16 +269,10 @@ main hr {
     text-align: left;
 }
 
-.certif-verif a {
-    color: var(--primary-color);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    font-weight: 600;
-}
-
-.dark-theme .certif-verif a {
-    color: var(--primary-on-dark);
-}
+/* Les liens de vérification n'ont plus de règle propre : `.certif-verif` est un
+   `p`, donc la règle de lien de contenu de `global.css` les couvre. Leur
+   soulignement permanent est tombé avec, pour que le site n'ait qu'un seul
+   traitement de lien. */
 
 .certif-verif code {
     font-size: 0.95em;

@@ -201,6 +201,54 @@ main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link)
     background-size: 100% 2px;
 }
 
+/* ==============================
+   Carte projet entièrement cliquable.
+
+   Le titre porte un vrai `<a>` et son `::after` recouvre la carte, si bien que
+   cliquer n'importe où suit le lien. Auparavant la carte était un `div` en
+   `role="link"` rendu cliquable par un écouteur JavaScript : elle imitait un
+   lien sans en avoir les comportements. On récupère l'ouverture dans un nouvel
+   onglet, le clic du milieu, la copie de l'adresse, l'aperçu de l'URL au
+   survol, et le nom accessible devient le titre lui-même.
+
+   Contrepartie assumée du motif : le recouvrement empêche de sélectionner le
+   texte de la carte. L'implémentation précédente avait déjà ce défaut, un clic
+   n'importe où déclenchant la navigation.
+   ============================== */
+.card {
+    position: relative;
+}
+
+.card-lien {
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-lien::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* `z-index: 1` est nécessaire, pas décoratif : la description de la carte
+       porte `opacity: 0.8`, ce qui crée un contexte d'empilement et la fait
+       peindre au niveau 0, donc au-dessus de ce recouvrement qui la précède
+       dans l'arbre. Sans ça, le milieu de la carte n'est pas cliquable. */
+    z-index: 1;
+}
+
+/* L'anneau de focus doit entourer la carte et non le seul titre, puisque c'est
+   la carte entière qui est cliquable. Le tout sous `@supports` : sans `:has()`,
+   retirer l'anneau du lien le priverait de tout repère visible au clavier. */
+@supports selector(:has(*)) {
+    .card:has(.card-lien:focus-visible) {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    .card-lien:focus-visible {
+        outline: none;
+    }
+}
+
 /* Séparateur de rubrique.
    Les trois pages qui en posent (À propos, Compétences, Mentions légales)
    recopiaient les deux mêmes déclarations. L'apparence est ici, chaque page ne

@@ -476,11 +476,11 @@ main hr {
    regroupées après la liste, pour que l'ordre du cascade reste évident.
    ============================== */
 .comp-html {
-    --comp-color: #f16529;
+    --comp-color: #e44d26;
 }
 
 .comp-css {
-    --comp-color: #2965f1;
+    --comp-color: #264de4;
 }
 
 .comp-js {
@@ -565,7 +565,7 @@ main hr {
 }
 
 .comp-git {
-    --comp-color: #f24e1e;
+    --comp-color: #de4c36;
 }
 
 .comp-github {
@@ -577,7 +577,7 @@ main hr {
 }
 
 .comp-gitlab {
-    --comp-color: #fc6d26;
+    --comp-color: #e24329;
 }
 
 .comp-figma {
@@ -605,7 +605,7 @@ main hr {
 }
 
 .comp-bootstrap {
-    --comp-color: #7952b3;
+    --comp-color: #7311f6;
 }
 
 .comp-tailwind {
@@ -613,7 +613,7 @@ main hr {
 }
 
 .comp-docker {
-    --comp-color: #2496ed;
+    --comp-color: #2560ff;
 }
 
 .comp-looping {

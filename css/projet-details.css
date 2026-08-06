@@ -167,14 +167,15 @@
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    background: var(--card-background);
+    background: color-mix(in srgb, var(--tech-brut, transparent) 15%, var(--card-background));
     padding: 0.4rem 0.85rem;
     border-radius: var(--radius-pill);
-    /* Contour et libellé partagent `--tag-color`, posée par techno dans global.css. */
-    border: 1px solid var(--tag-color, transparent);
+    /* Même style que les pastilles des cartes projet : fond teinté à 15 %,
+       contour et libellé en `--tech-libelle`. Jetons dans `css/technos.css`. */
+    border: 1px solid var(--tech-libelle, transparent);
     font-size: var(--texte-lg);
     font-weight: 600;
-    color: var(--tag-color, var(--text-color));
+    color: var(--tech-libelle, var(--text-color));
     transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
 
@@ -183,7 +184,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
-/* Couleurs des tags technologies : centralisées dans global.css */
+/* Couleurs des technos : centralisées dans `css/technos.css` */
 
 /* ---- Sections de contenu ---- */
 .projet-section {

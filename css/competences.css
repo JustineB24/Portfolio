@@ -126,7 +126,7 @@ main hr {
     padding: 1rem 1.1rem;
     background: var(--card-background);
     border-radius: var(--radius-lg);
-    border-left: 3px solid var(--comp-color, var(--primary-color));
+    border-left: 3px solid var(--tech-filet, var(--primary-color));
 }
 
 .tech-logo {
@@ -180,8 +180,8 @@ main hr {
     background: var(--card-background);
     border-radius: var(--radius-md);
     /* Même accent de marque que les cartes technos : les classes .comp-* sont
-       déjà posées sur les <li>, elles fournissent --comp-color. */
-    border-left: 3px solid var(--comp-color, var(--primary-color));
+       déjà posées sur les <li>, elles fournissent --tech-filet. */
+    border-left: 3px solid var(--tech-filet, var(--primary-color));
 }
 
 .outil-logo {
@@ -468,193 +468,10 @@ main hr {
     outline-offset: 4px;
 }
 
-/* ==============================
-   Couleur de marque par technologie.
-   Ce sont des données, pas de la mise en page : chaque classe pose
-   `--comp-color`, la seule variable lue par la mise en page (l'accent de 3px
-   à gauche des cartes .tech et .outil). Les corrections par thème sont
-   regroupées après la liste, pour que l'ordre du cascade reste évident.
-   ============================== */
-.comp-html {
-    --comp-color: #e44d26;
-}
-
-.comp-css {
-    --comp-color: #264de4;
-}
-
-.comp-js {
-    --comp-color: #f7df1e;
-}
-
-.comp-jquery {
-    --comp-color: #21609b;
-}
-
-.comp-react {
-    --comp-color: #53c1de;
-}
-
-.comp-react-native {
-    --comp-color: #53c1de;
-}
-
-.comp-php {
-    --comp-color: #6181b6;
-}
-
-.comp-nodejs {
-    --comp-color: #3e863d;
-}
-
-/* Logo monochrome noir : traité plus bas comme GitHub et Expo. */
-.comp-socketio {
-    --comp-color: #010101;
-}
-
-.comp-datatables {
-    --comp-color: #4c4ce0;
-}
-
-.comp-python {
-    --comp-color: #387eb8;
-}
-
-.comp-c-sharp {
-    --comp-color: #390091;
-}
-
-.comp-xaml {
-    --comp-color: #0d4fb2;
-}
-
-.comp-maui {
-    --comp-color: #a213ec;
-}
-
-.comp-winforms {
-    --comp-color: #00838f;
-}
-
-.comp-mysql {
-    --comp-color: #00758f;
-}
-
-.comp-postgresql {
-    --comp-color: #336791;
-}
-
-.comp-vscode {
-    --comp-color: #007acc;
-}
-
-.comp-vs {
-    --comp-color: #6c33af;
-}
-
-.comp-phpstorm {
-    --comp-color: #b345f1;
-}
-
-.comp-xampp {
-    --comp-color: #fb7a24;
-}
-
-.comp-mamp {
-    --comp-color: #257dae;
-}
-
-.comp-git {
-    --comp-color: #de4c36;
-}
-
-.comp-github {
-    --comp-color: #161614;
-}
-
-.comp-expo {
-    --comp-color: #000020;
-}
-
-.comp-gitlab {
-    --comp-color: #e24329;
-}
-
-.comp-figma {
-    --comp-color: #a259ff;
-}
-
-.comp-canva {
-    --comp-color: #00c4cc;
-}
-
-.comp-asana {
-    --comp-color: #f95d8f;
-}
-
-.comp-jira {
-    --comp-color: #0052cc;
-}
-
-.comp-odoo {
-    --comp-color: #714b67;
-}
-
-.comp-postman {
-    --comp-color: #ff6c37;
-}
-
-.comp-bootstrap {
-    --comp-color: #7311f6;
-}
-
-.comp-tailwind {
-    --comp-color: #38bdf8;
-}
-
-.comp-docker {
-    --comp-color: #2560ff;
-}
-
-.comp-looping {
-    --comp-color: #0000ff;
-}
-
-/* ==============================
-   Corrections par thème.
-   Cinq marques ont un accent illisible sur l'un des deux fonds de carte
-   (#e8eaf1 en clair, #23242b en sombre). Contrastes mesurés, arrondis :
-     C#       #390091  11,0:1 en clair  mais 1,2:1 en sombre
-     GitHub   #161614  15,1:1           mais 1,2:1
-     Socket.io #010101 17,4:1           mais 1,4:1
-     Expo     #000020  17,1:1           mais 1,3:1
-     JS       #f7df1e   1,1:1 en clair  mais 11,4:1 en sombre
-   La barre est décorative (le logo et le nom portent l'information), donc on
-   vise la perceptibilité et non les 3:1 d'un élément porteur de sens.
-   ============================== */
-
-/* Le jaune de marque ne devient lisible que sur fond sombre : version
-   assombrie par défaut (2,8:1 au lieu de 1,1:1), jaune brut en thème sombre. */
-.comp-js {
-    --comp-color: #a08e00;
-}
-
-body.dark-theme .comp-js {
-    --comp-color: #f7df1e;
-}
-
-/* Marques monochromes noires : accent gris clair (9,3:1), à l'image de leurs
-   logos qui passent en blanc juste en dessous. */
-body.dark-theme .comp-github,
-body.dark-theme .comp-expo,
-body.dark-theme .comp-socketio {
-    --comp-color: #c9c9c9;
-}
-
-/* C# : le violet clair du haut de son propre dégradé de marque (4,6:1). */
-body.dark-theme .comp-c-sharp {
-    --comp-color: #a179dc;
-}
+/* Les couleurs des technos vivent dans `css/technos.css`, source unique du
+   site : elles servent aussi aux pastilles des projets, et les deux pages
+   avaient fini par diverger. Le filet lit `--tech-filet`, calibré pour le
+   seuil de 3:1 d'un élément non textuel. */
 
 /* Logos monochromes noirs : rendus blancs en mode sombre pour rester visibles */
 body.dark-theme .comp-expo img,

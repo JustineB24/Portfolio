@@ -208,13 +208,4 @@ function genererFooter(chemin) {
 
     genererHeader(chemin);
     genererFooter(chemin);
-
-    // Loading screen — masquer après chargement
-    const loader = document.querySelector('.loader');
-    if (loader) {
-        loader.classList.add('hidden');
-        setTimeout(function () {
-            loader.remove();
-        }, 500);
-    }
 })();

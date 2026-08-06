@@ -100,8 +100,8 @@ const projets = {
             "../assets/projets/panada_food/Mentions_legales.jpg",
             "../assets/projets/panada_food/Ecran_chargement.jpg"
         ],
-        description: "Développement d'un site web vitrine pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en binôme avec une collègue. Le restaurant venait d'ouvrir et ne possédait aucune présence en ligne. On s'est déplacées sur place pour récolter les informations et comprendre les attentes du gérant, puis on a conçu et développé le site de A à Z. Le site inclut une page d'accueil, le menu du restaurant, un formulaire de contact et les mentions légales conformes au RGPD. Il a été mis en ligne via un hébergement OVH.",
-        technologies: ["HTML", "CSS", "JavaScript"],
+        description: "Développement d'un site web pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en binôme avec une collègue. Le restaurant venait d'ouvrir et ne possédait aucune présence en ligne. On s'est déplacées sur place pour récolter les informations et comprendre les attentes du gérant, puis on a conçu et développé le site de A à Z : page d'accueil, menu, formulaire de contact et mentions légales conformes au RGPD. Le site a d'abord été écrit en pages statiques, puis basculé en PHP avec une base de données MySQL : le menu, les boissons et les sauces sont devenus des tables plutôt que du HTML en dur, le formulaire de contact enregistre en base, et un bouton d'ajout au panier a été ajouté. Il a été mis en ligne via un hébergement OVH.",
+        technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "XAMPP"],
         link: "https://panadafood.ovh",
         etudeDeCas: {
             contexte: "Panada Food est un restaurant de restauration rapide à Amiens qui venait d'ouvrir et ne possédait pas encore de site web. En binôme avec une collègue, on s'est proposées pour leur en créer un durant notre stage de 6 semaines en deuxième année de BTS SIO.",
@@ -110,7 +110,8 @@ const projets = {
                 "Travailler en grande autonomie, le maître de stage n'étant présent que de 11h à 14h et les délais de réponse étant longs",
                 "Se coordonner en binôme, en partie en télétravail, pour se répartir les tâches efficacement",
                 "Partir de zéro sans maquette ni cahier des charges fourni : il a fallu aller chercher les informations directement auprès du gérant",
-                "Assurer la conformité légale du site : mentions légales, crédits photographiques, respect du RGPD"
+                "Assurer la conformité légale du site : mentions légales, crédits photographiques, respect du RGPD",
+                "Reprendre des pages statiques déjà écrites pour les basculer en PHP, et modéliser le menu du restaurant en base de données plutôt que de le laisser figé dans le HTML"
             ],
             resultat: "Site vitrine livré dans les temps et mis en ligne sur panadafood.ovh. Ce stage a renforcé notre autonomie, notre esprit d'équipe et nos compétences en programmation dans un contexte professionnel réel."
         }

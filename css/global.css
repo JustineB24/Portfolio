@@ -1356,7 +1356,14 @@ body.page-exit main {
    Utilisées sur les cartes projets (.card-tags) et la page détail projet
    (#projet-technologies). Source unique — ne pas dupliquer ailleurs.
 
-   Pourquoi deux jeux de valeurs. La couleur habille désormais du texte, donc
+   **La page Compétences est la référence.** Chaque valeur descend du
+   `--comp-color` de la techno correspondante dans `competences.css` : une même
+   techno ne doit pas changer de teinte d'une page à l'autre. Huit divergeaient
+   (jQuery, Node.js, DataTables, MAUI, WinForms, Git, GitHub, GitLab, React),
+   elles sont alignées. Modifier une couleur ici sans la modifier là-bas
+   recréerait l'écart.
+
+   Pourquoi deux jeux de valeurs malgré tout. La couleur habille du texte, donc
    son seuil passe de 3:1 (contour, WCAG 1.4.11) à 4,5:1 (texte, 1.4.3). Les
    couleurs de marque brutes ne l'atteignent pas toutes : chacune est ramenée
    au seuil à teinte et saturation constantes, en n'ajustant que la clarté
@@ -1403,15 +1410,15 @@ body.page-exit main {
 }
 
 .card-tags .tag-maui, #projet-technologies .tag-maui {
-    --tag-color: rgb(108, 51, 175);
+    --tag-color: rgb(162, 19, 236);
 }
 
 .card-tags .tag-winforms, #projet-technologies .tag-winforms {
-    --tag-color: rgb(0, 101, 169);
+    --tag-color: rgb(0, 117, 128);
 }
 
 .card-tags .tag-jquery, #projet-technologies .tag-jquery {
-    --tag-color: rgb(0, 108, 174);
+    --tag-color: rgb(33, 96, 155);
 }
 
 .card-tags .tag-bootstrap, #projet-technologies .tag-bootstrap {
@@ -1423,7 +1430,7 @@ body.page-exit main {
 }
 
 .card-tags .tag-datatables, #projet-technologies .tag-datatables {
-    --tag-color: rgb(51, 102, 153);
+    --tag-color: rgb(76, 76, 224);
 }
 
 .card-tags .tag-postgresql, #projet-technologies .tag-postgresql {
@@ -1431,11 +1438,11 @@ body.page-exit main {
 }
 
 .card-tags .tag-react, #projet-technologies .tag-react {
-    --tag-color: rgb(4, 115, 146);
+    --tag-color: rgb(27, 115, 139);
 }
 
 .card-tags .tag-nodejs, #projet-technologies .tag-nodejs {
-    --tag-color: rgb(76, 116, 41);
+    --tag-color: rgb(55, 119, 54);
 }
 
 .card-tags .tag-socketio, #projet-technologies .tag-socketio {
@@ -1467,15 +1474,15 @@ body.page-exit main {
 }
 
 .card-tags .tag-git, #projet-technologies .tag-git {
-    --tag-color: rgb(202, 44, 15);
+    --tag-color: rgb(196, 53, 11);
 }
 
 .card-tags .tag-github, #projet-technologies .tag-github {
-    --tag-color: rgb(110, 84, 148);
+    --tag-color: rgb(22, 22, 20);
 }
 
 .card-tags .tag-gitlab, #projet-technologies .tag-gitlab {
-    --tag-color: rgb(197, 51, 27);
+    --tag-color: rgb(188, 64, 3);
 }
 
 /* Thème sombre */
@@ -1496,7 +1503,7 @@ body.page-exit main {
 }
 
 .dark-theme .card-tags .tag-csharp, .dark-theme #projet-technologies .tag-csharp {
-    --tag-color: rgb(165, 107, 255);
+    --tag-color: rgb(161, 121, 220);
 }
 
 .dark-theme .card-tags .tag-mysql, .dark-theme #projet-technologies .tag-mysql {
@@ -1508,15 +1515,15 @@ body.page-exit main {
 }
 
 .dark-theme .card-tags .tag-maui, .dark-theme #projet-technologies .tag-maui {
-    --tag-color: rgb(163, 118, 215);
+    --tag-color: rgb(192, 94, 242);
 }
 
 .dark-theme .card-tags .tag-winforms, .dark-theme #projet-technologies .tag-winforms {
-    --tag-color: rgb(0, 143, 239);
+    --tag-color: rgb(0, 153, 167);
 }
 
 .dark-theme .card-tags .tag-jquery, .dark-theme #projet-technologies .tag-jquery {
-    --tag-color: rgb(0, 144, 231);
+    --tag-color: rgb(66, 143, 215);
 }
 
 .dark-theme .card-tags .tag-bootstrap, .dark-theme #projet-technologies .tag-bootstrap {
@@ -1528,7 +1535,7 @@ body.page-exit main {
 }
 
 .dark-theme .card-tags .tag-datatables, .dark-theme #projet-technologies .tag-datatables {
-    --tag-color: rgb(86, 143, 199);
+    --tag-color: rgb(127, 127, 233);
 }
 
 .dark-theme .card-tags .tag-postgresql, .dark-theme #projet-technologies .tag-postgresql {
@@ -1536,19 +1543,19 @@ body.page-exit main {
 }
 
 .dark-theme .card-tags .tag-react, .dark-theme #projet-technologies .tag-react {
-    --tag-color: rgb(97, 218, 251);
+    --tag-color: rgb(83, 193, 222);
 }
 
 .dark-theme .card-tags .tag-nodejs, .dark-theme #projet-technologies .tag-nodejs {
-    --tag-color: rgb(104, 159, 56);
+    --tag-color: rgb(72, 156, 71);
 }
 
 .dark-theme .card-tags .tag-socketio, .dark-theme #projet-technologies .tag-socketio {
-    --tag-color: rgb(255, 255, 255);
+    --tag-color: rgb(201, 201, 201);
 }
 
 .dark-theme .card-tags .tag-docker, .dark-theme #projet-technologies .tag-docker {
-    --tag-color: rgb(35, 150, 237);
+    --tag-color: rgb(36, 150, 237);
 }
 
 .dark-theme .card-tags .tag-react-native, .dark-theme #projet-technologies .tag-react-native {
@@ -1556,7 +1563,7 @@ body.page-exit main {
 }
 
 .dark-theme .card-tags .tag-expo, .dark-theme #projet-technologies .tag-expo {
-    --tag-color: rgb(255, 255, 255);
+    --tag-color: rgb(201, 201, 201);
 }
 
 .dark-theme .card-tags .tag-xampp, .dark-theme #projet-technologies .tag-xampp {
@@ -1572,15 +1579,15 @@ body.page-exit main {
 }
 
 .dark-theme .card-tags .tag-git, .dark-theme #projet-technologies .tag-git {
-    --tag-color: rgb(241, 86, 58);
+    --tag-color: rgb(243, 85, 39);
 }
 
 .dark-theme .card-tags .tag-github, .dark-theme #projet-technologies .tag-github {
-    --tag-color: rgb(151, 129, 183);
+    --tag-color: rgb(201, 201, 201);
 }
 
 .dark-theme .card-tags .tag-gitlab, .dark-theme #projet-technologies .tag-gitlab {
-    --tag-color: rgb(230, 96, 74);
+    --tag-color: rgb(252, 109, 38);
 }
 
 /* ==============================

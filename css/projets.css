@@ -40,20 +40,24 @@
 }
 
 /* ==============================
-   Filtres « technologies » — la couleur de marque habille le contour ET le
-   libellé, via `--filtre-color`.
+   Couleur des filtres — `--filtre-color` habille le contour ET le libellé.
 
-   Le seuil applicable est donc celui du texte, 4,5:1 (WCAG 1.4.3), et non
-   celui d'un contour, 3:1 (1.4.11). Les couleurs brutes ne l'atteignent pas
-   toutes : chacune est ramenée au seuil en n'ajustant que la clarté HSL, à
-   teinte et saturation constantes. Trois dérivent visiblement et c'est
-   assumé : le jaune JavaScript vire à l'olive en clair (1,30:1 brut), le cyan
-   React au bleu canard en clair (1,56:1), le violet C# s'éclaircit en sombre
-   (1,41:1). Les autres bougent peu ou pas.
+   **La page Compétences est la référence** pour les technologies : chaque
+   valeur descend du `--comp-color` de la techno dans `competences.css`, pour
+   qu'une même techno ne change pas de teinte d'une page à l'autre. Ne pas
+   modifier une couleur ici sans la modifier là-bas.
+
+   Le seuil applicable est celui du texte, 4,5:1 (WCAG 1.4.3), et non celui
+   d'un contour, 3:1 (1.4.11). Les couleurs de marque brutes ne l'atteignent
+   pas toutes : chacune est ramenée au seuil en n'ajustant que la clarté HSL,
+   à teinte et saturation constantes. Deux dérivent visiblement et c'est
+   assumé, le jaune JavaScript virant à l'olive en clair (1,30:1 brut) et le
+   cyan React au bleu canard (1,89:1).
 
    L'état actif reste rouge à texte clair : `.filtre-btn.active` l'emporte sur
    `.filtre-btn` par la spécificité, sans avoir besoin de `:not(.active)`.
    ============================== */
+/* Technologies — thème clair */
 .filtre-btn[data-filtre="html"] {
     --filtre-color: rgb(204, 70, 13);
 }
@@ -80,14 +84,14 @@
 
 .filtre-btn[data-filtre="react"],
 .filtre-btn[data-filtre="react-native"] {
-    --filtre-color: rgb(4, 125, 159);
+    --filtre-color: rgb(29, 125, 151);
 }
 
 .filtre-btn[data-filtre="nodejs"] {
-    --filtre-color: rgb(83, 127, 45);
+    --filtre-color: rgb(60, 130, 59);
 }
 
-/* Thème sombre */
+/* Technologies — thème sombre */
 .dark-theme .filtre-btn[data-filtre="html"] {
     --filtre-color: rgb(241, 101, 41);
 }
@@ -105,7 +109,7 @@
 }
 
 .dark-theme .filtre-btn[data-filtre="csharp"] {
-    --filtre-color: rgb(152, 85, 255);
+    --filtre-color: rgb(161, 121, 220);
 }
 
 .dark-theme .filtre-btn[data-filtre="mysql"] {
@@ -114,76 +118,62 @@
 
 .dark-theme .filtre-btn[data-filtre="react"],
 .dark-theme .filtre-btn[data-filtre="react-native"] {
-    --filtre-color: rgb(97, 218, 251);
+    --filtre-color: rgb(83, 193, 222);
 }
 
 .dark-theme .filtre-btn[data-filtre="nodejs"] {
-    --filtre-color: rgb(104, 159, 56);
+    --filtre-color: rgb(65, 140, 64);
 }
 
-/* Teinte discrète au survol : décorative, aucun texte ne repose dessus. */
-.filtre-btn[data-filtre="html"]:hover:not(.active) {
-    background: rgba(241, 101, 41, 0.15);
+/* Catégories — contexte de réalisation. Trois portent une couleur propre,
+   choisie par Justine : le bleu d'action de Litesoft pour l'alternance, et deux
+   teintes pour les deux diplômes. « Stages » et « Perso » n'en ont pas et
+   retombent sur le rouge de marque par le repli du `var()`. */
+.filtre-btn[data-filtre="entreprise"] {
+    --filtre-color: rgb(0, 119, 198);
 }
 
-.filtre-btn[data-filtre="css"]:hover:not(.active) {
-    background: rgba(41, 101, 241, 0.15);
+.filtre-btn[data-filtre="bachelor"] {
+    --filtre-color: rgb(220, 0, 148);
 }
 
-.filtre-btn[data-filtre="javascript"]:hover:not(.active) {
-    background: rgba(247, 223, 30, 0.15);
+.filtre-btn[data-filtre="bts"] {
+    --filtre-color: rgb(230, 15, 15);
 }
 
-.filtre-btn[data-filtre="php"]:hover:not(.active) {
-    background: rgba(97, 129, 182, 0.15);
+.dark-theme .filtre-btn[data-filtre="entreprise"] {
+    --filtre-color: rgb(0, 154, 255);
 }
 
-.filtre-btn[data-filtre="csharp"]:hover:not(.active) {
-    background: rgba(57, 0, 145, 0.15);
+.dark-theme .filtre-btn[data-filtre="bachelor"] {
+    --filtre-color: rgb(236, 0, 159);
 }
 
-.filtre-btn[data-filtre="mysql"]:hover:not(.active) {
-    background: rgba(0, 117, 143, 0.15);
+.dark-theme .filtre-btn[data-filtre="bts"] {
+    --filtre-color: rgb(243, 65, 65);
 }
 
-.filtre-btn[data-filtre="react"]:hover:not(.active),
-.filtre-btn[data-filtre="react-native"]:hover:not(.active) {
-    background: rgba(97, 218, 251, 0.15);
+/* Teinte de survol : une seule règle pour tous les filtres, dérivée de
+   `--filtre-color`. Elle remplace les dix règles par techno qui répétaient la
+   couleur de marque en dur — elles avaient déjà divergé de la palette, et
+   c'était une deuxième valeur à maintenir par techno. Décorative : aucun texte
+   ne repose sur ce fond, le libellé garde son contraste sur le fond de page. */
+.filtre-btn:hover:not(.active) {
+    background: color-mix(in srgb, var(--filtre-color, var(--primary-color)) 15%, transparent);
 }
 
-.filtre-btn[data-filtre="nodejs"]:hover:not(.active) {
-    background: rgba(104, 159, 56, 0.15);
-}
-
-/* Filtres « catégories » (contexte de réalisation : BTS SIO, Stages,
-   Bachelor) — couleur de marque, distincte du nuancier des technologies.
-   L'état actif rouge est géré par .filtre-btn.active (d'où le :not). */
-.filtre-btn[data-filtre="bts"]:not(.active),
+/* « Stages » et « Perso » n'ont pas de couleur propre et gardent le rouge de
+   marque, éclairci en thème sombre. Les trois autres catégories ont la leur,
+   posée plus haut ; elles ne doivent donc plus figurer ici, sinon ce sélecteur,
+   plus spécifique que `.filtre-btn`, les repasserait en rouge. */
 .filtre-btn[data-filtre="stage"]:not(.active),
-.filtre-btn[data-filtre="bachelor"]:not(.active),
-.filtre-btn[data-filtre="entreprise"]:not(.active),
 .filtre-btn[data-filtre="perso"]:not(.active) {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+    --filtre-color: var(--primary-color);
 }
 
-.filtre-btn[data-filtre="bts"]:hover:not(.active),
-.filtre-btn[data-filtre="stage"]:hover:not(.active),
-.filtre-btn[data-filtre="bachelor"]:hover:not(.active),
-.filtre-btn[data-filtre="entreprise"]:hover:not(.active),
-.filtre-btn[data-filtre="perso"]:hover:not(.active) {
-    background: rgba(var(--primary-rgb), 0.1);
-}
-
-/* En thème sombre, on éclaircit le rouge (fixe) pour rester lisible
-   sur fond foncé (voir --primary-on-dark dans global.css). */
-.dark-theme .filtre-btn[data-filtre="bts"]:not(.active),
 .dark-theme .filtre-btn[data-filtre="stage"]:not(.active),
-.dark-theme .filtre-btn[data-filtre="bachelor"]:not(.active),
-.dark-theme .filtre-btn[data-filtre="entreprise"]:not(.active),
 .dark-theme .filtre-btn[data-filtre="perso"]:not(.active) {
-    border-color: var(--primary-on-dark);
-    color: var(--primary-on-dark);
+    --filtre-color: var(--primary-on-dark);
 }
 
 /* Grille des projets */

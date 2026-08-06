@@ -59,11 +59,11 @@ a.timeline-link {
 }
 
 a.timeline-link .timeline-content {
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: var(--transition-carte);
 }
 
 a.timeline-link:hover .timeline-content {
-    transform: translateY(-3px);
+    transform: translateY(var(--carte-levee));
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 

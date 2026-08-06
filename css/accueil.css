@@ -182,14 +182,14 @@
     position: relative;
     overflow: hidden;
     border: 1px solid color-mix(in srgb, var(--primary-color) 14%, transparent);
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s, box-shadow 0.35s;
+    transition: var(--transition-carte), border-color 0.3s;
 }
 
 /* Au survol : bordure d'accent épaisse sur les 4 côtés. Le filet intérieur
    est dessiné en box-shadow (inset) pour épaissir sans décaler la mise en
    page ; combiné à la bordure 1px qui passe en accent. + élévation. */
 .compteur:hover {
-    transform: translateY(-6px);
+    transform: translateY(var(--carte-levee));
     border-color: var(--c-accent);
     box-shadow: inset 0 0 0 2px var(--c-accent), 0 16px 36px rgba(var(--primary-rgb), 0.16);
 }

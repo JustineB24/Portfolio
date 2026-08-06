@@ -183,7 +183,7 @@
     border-radius: var(--radius-md);
     text-decoration: none;
     color: var(--text-color);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s, background-color 0.3s;
+    transition: var(--transition-carte), background-color 0.3s;
     position: relative;
     overflow: hidden;
 }

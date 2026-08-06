@@ -38,7 +38,7 @@ const projets = {
         date: "Septembre 2025 — aujourd'hui",
         images: [],
         description: "Application web métier d'un client du secteur de l'édition et de la distribution, développée par l'équipe de Litesoft où je suis en alternance. Cette plateforme intranet, sur laquelle je travaille à temps plein depuis mon arrivée, centralise la gestion commerciale, la facturation, le suivi des activités et la logistique. Je traite les tickets en développement au sein d'un pipeline de support semi-automatisé mis en place par l'équipe — un agent de premier niveau trie les urgences et qualifie la demande auprès du client avant qu'un ticket n'arrive en développement —, et je contribue à la modernisation progressive de ce projet existant et toujours actif : refactoring de fichiers monolithiques en classes dédiées, mise en place de l'autoload PSR-4 sur l'ensemble du projet, passage aux standards de nommage PSR-1/4/12, et remplacement systématique des pratiques obsolètes (jointures SQL implicites, paramètres ambigus, comparaisons lâches). Parmi les développements majeurs : refonte complète du système de filtres avancés sur tous les tableaux de l'application (recherche par colonne, filtres favoris, opérateurs multiples), migration des tableaux du mode server-side vers client-side, ajout de fonctionnalités métier (traductions multi-langue, import Excel, gestion de stock, prévisualisation d'articles), audits de sécurité (prévention XSS, échappement systématique), et optimisations SQL (élimination de requêtes N+1, insertions batch). Pour améliorer ma productivité, j'utilise Claude Code au quotidien comme assistant technique : j'ai mis en place un fichier de conventions servant de référence complète du projet, des commandes personnalisées pour lancer des audits techniques automatisés (sécurité, performance, qualité) et générer des récapitulatifs de modifications, ainsi qu'un plan de résolution organisé pour prioriser la dette technique. Le projet repose sur une architecture MVC en PHP 8.3 avec PostgreSQL, un frontend en JavaScript, jQuery, Bootstrap et DataTables, du temps réel via Node.js et Socket.IO, et un pipeline CI/CD sur GitLab.",
-        technologies: ["PHP", "JavaScript", "PostgreSQL", "jQuery", "Bootstrap", "Tailwind CSS", "DataTables", "Node.js", "Socket.io", "GitLab"],
+        technologies: ["PHP", "JavaScript", "PostgreSQL", "jQuery", "Bootstrap", "Tailwind CSS", "DataTables", "Node.js", "Socket.io", "GitLab", "MAMP"],
         enCours: true,
         etudeDeCas: {
             contexte: "Gecko est l'ERP interne d'un éditeur-distributeur de livres, utilisé par environ 350 personnes réparties sur plusieurs sites. Développé par l'équipe Litesoft depuis 2021, il couvre toute la chaîne : catalogue, CRM, facturation, fabrication, stock et expédition. Je l'ai rejoint en septembre 2025 dans le cadre de mon alternance. L'enjeu n'est donc pas de partir d'une page blanche, mais de m'intégrer efficacement dans un gros projet existant et toujours très actif, et d'y contribuer en full-stack.",
@@ -119,7 +119,7 @@ const projets = {
             "../assets/projets/france_mobilier/AjoutMagasin.png"
         ],
         description: "Site e-commerce développé pour la société France Mobilier, spécialisée dans le mobilier d'intérieur. Conçu selon l'architecture MVC, il propose une page d'accueil présentant l'entreprise, un module de recherche de meubles par catégorie, ainsi qu'une page listant l'ensemble des magasins physiques. Le projet utilise une base de données pour gérer dynamiquement les meubles et les points de vente. Un panneau d'administration est également prévu pour permettre la modification des produits et des magasins. L'interface est pensée pour être claire et facilement maintenable.",
-        technologies: ["HTML", "CSS", "PHP", "C#", "MySQL"]
+        technologies: ["HTML", "CSS", "PHP", "C#", "MySQL", "XAMPP"]
     },
     "sio-shop": {
         title: "Sio Shop",
@@ -143,7 +143,7 @@ const projets = {
             "../assets/projets/sio_shop/AjoutEmploye.png"
         ],
         description: "Application de gestion commerciale développée sous Windows Forms pour une concession automobile. Ce projet propose une interface permettant aux employés de gérer les clients, les véhicules en stock et les ventes. L'application intègre une authentification sécurisée, une liaison directe avec une base de données SQL, ainsi qu'un module de création de factures au format PDF. Les utilisateurs peuvent rechercher, ajouter et modifier clients et produits, saisir des ventes avec calcul automatique du prix TTC, et suivre l'évolution des stocks en temps réel. La structure suit les principes de la programmation orientée objet, en assurant une navigation fluide et professionnelle entre les différentes fonctionnalités.",
-        technologies: ["WinForms", "C#", "MySQL"]
+        technologies: ["WinForms", "C#", "MySQL", "XAMPP"]
     },
     "speedcubing": {
         title: "Speedcubing",
@@ -156,7 +156,7 @@ const projets = {
             "../assets/projets/speedcubing/Connexion.jpg"
         ],
         description: "Projet développé pour l'Association Française de SpeedCubing. Ce site permet aux passionnés de Rubik's Cube de s'entraîner en ligne, d'enregistrer leurs temps et de comparer leurs performances avec celles des autres. Il intègre un chronomètre interactif, une base de données des meilleurs temps et une section dédiée à la résolution d'un Rubik's Cube 3x3.",
-        technologies: ["PHP", "CSS", "JavaScript", "MySQL"]
+        technologies: ["PHP", "CSS", "JavaScript", "MySQL", "XAMPP"]
     },
     "meteo": {
         title: "Application météo",
@@ -388,7 +388,7 @@ if (!projetId || !projets[projetId]) {
             "jquery": "tag-jquery", "bootstrap": "tag-bootstrap", "tailwind css": "tag-tailwind", "datatables": "tag-datatables",
             "react": "tag-react", "node.js": "tag-nodejs",
             "socket.io": "tag-socketio", "postgresql": "tag-postgresql",
-            "docker": "tag-docker", "figma": "tag-figma", "git": "tag-git",
+            "docker": "tag-docker", "xampp": "tag-xampp", "mamp": "tag-mamp", "figma": "tag-figma", "git": "tag-git",
             "github": "tag-github", "gitlab": "tag-gitlab"
         };
         const tagClass = tagClasses[tech.toLowerCase()];

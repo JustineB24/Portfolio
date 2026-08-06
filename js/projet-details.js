@@ -13,6 +13,12 @@ const projets = {
         title: "YABT — Yet Another Blind Test",
         date: "Novembre 2025 — en cours",
         images: [
+            "../assets/projets/yabt/Maquette_accueil.png",
+            "../assets/projets/yabt/Maquette_creation.png",
+            "../assets/projets/yabt/Maquette_lobby.png",
+            "../assets/projets/yabt/Maquette_en_partie.png",
+            "../assets/projets/yabt/Maquette_resultats.png",
+            "../assets/projets/yabt/Maquette_profil.png",
             "../assets/projets/yabt/Logo.png",
             "../assets/projets/yabt/Mascotte.jpg",
             "../assets/projets/yabt/Nuancier.png"
@@ -30,7 +36,7 @@ const projets = {
                 "Se coordonner à 4 avec Git et une méthodologie Agile, en se répartissant les rôles clairement",
                 "Faire des choix techniques adaptés (React, Socket.io, Docker) en anticipant les contraintes du temps réel multijoueur"
             ],
-            resultat: "Projet encore en phase de conception et de maquettage. L'identité visuelle est finalisée (logo, mascotte, nuancier) et les maquettes Figma sont complètes. Le projet sera présenté devant un jury en fin d'année de Bachelor."
+            resultat: "La phase de conception est terminée : identité visuelle finalisée, 52 maquettes Figma couvrant chaque écran en version bureau et téléphone, cahier des charges fonctionnel et technique, user stories et modèle de données. Le développement a suivi, de mars à juillet 2026, sur une cinquantaine de commits à quatre : une soixantaine de composants React côté navigateur, un serveur Node avec Socket.io pour le temps réel, et un environnement conteneurisé avec Docker Compose. Les visuels ci-dessus sont les maquettes, pas des captures de l'application. Le projet sera présenté devant un jury en fin d'année de Bachelor."
         }
     },
     "gecko": {

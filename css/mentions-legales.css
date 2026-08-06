@@ -34,23 +34,12 @@ main section h2 {
     margin-bottom: 0.75rem;
 }
 
-/* Liens de contenu.
-   Ils étaient rendus dans la couleur exacte du texte, sans soulignement, et le
-   soulignement animé de `main p a` reste à background-size: 0 au repos : les
-   6 liens de la page (téléphone, e-mails, hébergeur) n'avaient donc AUCUNE
-   affordance. Couleur de marque + soulignement permanent : deux indices, pas
-   seulement la couleur (WCAG 1.4.1). */
-main section a {
-    color: var(--primary-color);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-    font-weight: 600;
-}
-
-.dark-theme main section a {
-    color: var(--primary-on-dark);
-}
+/* Les 6 liens de la page (téléphone, e-mails, hébergeur) n'ont plus de règle
+   propre : ils sont dans des `p`, donc la règle de lien de contenu de
+   `global.css` les couvre. Ils y gagnent le même traitement que partout
+   ailleurs et perdent leur soulignement permanent ; le second indice non
+   coloré reste assuré par la graisse, puis par le soulignement au survol et au
+   focus. */
 
 /* Séparateurs entre rubriques.
    Ils étaient déclarés `border: none` sans rien d'autre, donc invisibles

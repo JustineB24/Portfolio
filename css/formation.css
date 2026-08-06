@@ -126,18 +126,10 @@
     text-align: left;
 }
 
-/* Liens de contenu de la page : rouge de marque, éclairci en thème sombre
-   (le soulignement animé vient de la règle globale `main p a`). */
-.formation-texte a,
-.formation-points a {
-    color: var(--primary-color);
-    font-weight: 600;
-}
-
-.dark-theme .formation-texte a,
-.dark-theme .formation-points a {
-    color: var(--primary-on-dark);
-}
+/* Les liens de la page n'ont plus de règle propre : `.formation-texte` est un
+   `p` et ceux de `.formation-points` sont dans un `p`, donc la règle de lien de
+   contenu de `global.css` les couvre, couleur et soulignement au survol
+   compris. */
 
 @media screen and (max-width: 480px) {
     .formation-diplome {

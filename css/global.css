@@ -1412,6 +1412,14 @@ body.page-exit main {
     border-color: rgba(35, 150, 237, 0.7);
 }
 
+.card-tags .tag-xampp, #projet-technologies .tag-xampp {
+    border-color: rgba(251, 122, 36, 0.7);
+}
+
+.card-tags .tag-mamp, #projet-technologies .tag-mamp {
+    border-color: rgba(37, 125, 174, 0.7);
+}
+
 .card-tags .tag-figma, #projet-technologies .tag-figma {
     border-color: rgba(162, 89, 255, 0.7);
 }
@@ -1467,6 +1475,8 @@ body.page-exit main {
 .card-tags .tag-socketio::before { background-image: url(../assets/competences/socket-io.svg); }
 .card-tags .tag-postgresql::before { background-image: url(../assets/competences/postgresql.svg); }
 .card-tags .tag-docker::before { background-image: url(../assets/competences/docker.svg); }
+.card-tags .tag-xampp::before { background-image: url(../assets/competences/xampp.svg); }
+.card-tags .tag-mamp::before { background-image: url(../assets/competences/mamp.svg); }
 .card-tags .tag-figma::before { background-image: url(../assets/competences/figma.svg); }
 .card-tags .tag-git::before { background-image: url(../assets/competences/git.svg); }
 .card-tags .tag-github::before { background-image: url(../assets/competences/github.svg); }

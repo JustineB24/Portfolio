@@ -109,8 +109,11 @@ const projets = {
         ],
         description: "Développement d'un site web vitrine pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en binôme avec une collègue. Le restaurant venait d'ouvrir et ne possédait aucune présence en ligne. On s'est déplacées sur place pour récolter les informations et comprendre les attentes du gérant, puis on a conçu et développé le site de A à Z. Le site inclut une page d'accueil, le menu du restaurant, un formulaire de contact et les mentions légales conformes au RGPD. Il a été mis en ligne via un hébergement OVH, sur un domaine que le restaurant n'a pas renouvelé depuis. Le gérant souhaitait aussi pouvoir prendre les commandes en ligne : on a commencé une seconde version en PHP avec une base MySQL, où le menu, les boissons et les sauces devenaient des tables et où un panier apparaissait. Elle n'a pas abouti, faute de temps sur six semaines, et n'a jamais été mise en ligne. C'est la version statique qui tourne.",
         technologies: ["HTML", "CSS", "JavaScript"],
-        // panadafood.ovh ne résout plus (NXDOMAIN au 06/08/2026) : le restaurant n'a pas
-        // renouvelé le domaine. Lien retiré, la description dit que le site a été mis en ligne.
+        // Le domaine ne résout plus (NXDOMAIN au 06/08/2026), le restaurant ne l'a pas
+        // renouvelé. Lien conservé à la demande de Justine : il documente l'adresse à
+        // laquelle le site a vécu. La description prévient juste avant, donc un visiteur
+        // sait à quoi s'attendre avant de cliquer.
+        link: "https://panadafood.ovh",
         etudeDeCas: {
             contexte: "Panada Food est un restaurant de restauration rapide à Amiens qui venait d'ouvrir et ne possédait pas encore de site web. En binôme avec une collègue, on s'est proposées pour leur en créer un durant notre stage de 6 semaines en deuxième année de BTS SIO.",
             reflexion: "Le restaurant n'ayant aucune présence en ligne, il fallait partir de zéro : se déplacer sur place pour récolter les informations (menu, photos, attentes du gérant), concevoir le design, développer le site, gérer la conformité RGPD et les mentions légales, puis mettre en ligne via un hébergement OVH.",

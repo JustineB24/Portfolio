@@ -138,7 +138,7 @@ const projets = {
             "../assets/projets/france_mobilier/AjoutMagasin.png"
         ],
         description: "Site e-commerce développé pour la société France Mobilier, spécialisée dans le mobilier d'intérieur. Conçu selon l'architecture MVC, il propose une page d'accueil présentant l'entreprise, un module de recherche de meubles par catégorie, ainsi qu'une page listant l'ensemble des magasins physiques. Le projet utilise une base de données pour gérer dynamiquement les meubles et les points de vente. Un panneau d'administration est également prévu pour permettre la modification des produits et des magasins. L'interface est pensée pour être claire et facilement maintenable.",
-        technologies: ["HTML", "CSS", "PHP", "C#", "MySQL", "XAMPP"]
+        technologies: ["HTML", "CSS", "PHP", "MySQL", "XAMPP"]
     },
     "sio-shop": {
         title: "Sio Shop",

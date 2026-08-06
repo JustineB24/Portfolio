@@ -94,7 +94,6 @@ Portfolio/
 │   ├── projet-details.html     # Fiche d'un projet, chargée via ?id=
 │   ├── veille.html
 │   ├── formation.html
-│   ├── documents.html          # Relais vers formation.html (ancienne URL)
 │   ├── contact.html
 │   └── mentions-legales.html
 ├── css/                        # Feuilles de style (une par page + global + thème)

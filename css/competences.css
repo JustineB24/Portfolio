@@ -79,7 +79,7 @@ main hr {
     max-width: 68ch;
     padding-left: 0;
     padding-right: 0;
-    font-size: 0.95rem;
+    font-size: var(--texte-xl);
     color: var(--text-muted);
 }
 
@@ -153,7 +153,7 @@ main hr {
 .tech-desc {
     margin: 0;
     padding: 0;
-    font-size: 0.88rem;
+    font-size: var(--texte-lg);
     line-height: 1.45;
     color: var(--text-muted);
     text-align: left;
@@ -193,13 +193,13 @@ main hr {
 
 .outil-nom {
     font-family: var(--font-titre);
-    font-size: 0.9rem;
+    font-size: var(--texte-lg);
     font-weight: 700;
     color: var(--text-color);
 }
 
 .outil-desc {
-    font-size: 0.78rem;
+    font-size: var(--texte-sm);
     line-height: 1.35;
     color: var(--text-muted);
 }
@@ -233,7 +233,7 @@ main hr {
     margin: 0 0 0.15rem;
     padding: 0;
     font-family: var(--font-titre);
-    font-size: 0.72rem;
+    font-size: var(--texte-xs);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -260,7 +260,7 @@ main hr {
 .certif-verif {
     margin: 0;
     padding: 0;
-    font-size: 0.82rem;
+    font-size: var(--texte-sm);
     line-height: 1.5;
     color: var(--text-muted);
     text-align: left;
@@ -434,7 +434,7 @@ main hr {
     bottom: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.9rem;
+    font-size: var(--texte-lg);
     color: rgba(255, 255, 255, 0.75);
     font-weight: 600;
 }

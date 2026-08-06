@@ -25,6 +25,18 @@
        le navigateur ramène à cette moitié. Elle remplace un mélange de `2rem` et
        de `100px` qui rendaient pareil tant que l'élément reste sous 64px. */
     --radius-pill: 100px;
+    /* Échelle du texte secondaire, sous la taille du corps.
+       Le site utilisait 13 valeurs différentes sous 1rem pour 84 usages, avec
+       des écarts de 0,3px entre voisines : aucune page n'était d'accord avec
+       une autre. Cinq échelons réguliers de 0,05rem les remplacent.
+       Du plus grand au plus petit : note et intro de section, texte secondaire
+       courant, mention dense, badge, étiquette en capitales.
+       Les titres gardent leurs `clamp()`, qui relèvent d'une autre mécanique. */
+    --texte-xl: 0.95rem;
+    --texte-lg: 0.9rem;
+    --texte-md: 0.85rem;
+    --texte-sm: 0.8rem;
+    --texte-xs: 0.75rem;
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.12);
     --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.15);
@@ -308,7 +320,7 @@ h3 {
     display: block;
     margin: 0 0 0.4rem;
     font-family: var(--font-titre);
-    font-size: 0.72rem;
+    font-size: var(--texte-xs);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -684,7 +696,7 @@ p {
 
 /* Bas de page */
 footer {
-    font-size: 0.8rem;
+    font-size: var(--texte-sm);
     padding: 1rem;
     position: relative;
     bottom: 0;
@@ -755,7 +767,7 @@ footer {
     }
 
     p {
-        font-size: 0.9rem;
+        font-size: var(--texte-lg);
         padding: 10px;
     }
 
@@ -799,12 +811,12 @@ footer {
     }
 
     button {
-        font-size: 0.9rem;
+        font-size: var(--texte-lg);
         padding: 8px 16px;
     }
 
     footer {
-        font-size: 0.7rem;
+        font-size: var(--texte-xs);
         padding: 0.8rem;
     }
 }
@@ -847,7 +859,7 @@ footer {
     }
 
     p {
-        font-size: 0.85rem;
+        font-size: var(--texte-md);
         padding: 8px;
     }
 
@@ -867,12 +879,12 @@ footer {
     }
 
     button {
-        font-size: 0.8rem;
+        font-size: var(--texte-sm);
         padding: 6px 12px;
     }
 
     footer {
-        font-size: 0.6rem;
+        font-size: var(--texte-xs);
         padding: 0.5rem;
         justify-content: center;
     }
@@ -1062,7 +1074,7 @@ footer {
     color: var(--background-color);
     padding: 0.4rem 0.8rem;
     border-radius: 6px;
-    font-size: 0.75rem;
+    font-size: var(--texte-xs);
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
@@ -1152,7 +1164,7 @@ body.page-exit main {
 
 /* Temps de lecture et sous-titre de page */
 .temps-lecture {
-    font-size: 0.9rem;
+    font-size: var(--texte-lg);
     color: var(--text-muted);
     margin-bottom: 2rem;
     font-weight: 600;
@@ -1201,7 +1213,7 @@ body.page-exit main {
 
 .sommaire a {
     color: var(--text-color);
-    font-size: 0.95rem;
+    font-size: var(--texte-xl);
     transition: color 0.3s;
 }
 
@@ -1221,7 +1233,7 @@ body.page-exit main {
     }
 
     .card-body .card-desc {
-        font-size: 0.8rem;
+        font-size: var(--texte-sm);
     }
 
     .card-thumbnail {

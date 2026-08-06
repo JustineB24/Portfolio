@@ -136,7 +136,7 @@ a.timeline-link:hover .timeline-content {
     margin: 10px;
     color: var(--primary-color);
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: var(--texte-lg);
     letter-spacing: 1px;
 }
 
@@ -192,11 +192,11 @@ main hr {
     .profil {
         margin: 1rem;
         padding: 1.25rem;
-        font-size: 0.95rem;
+        font-size: var(--texte-xl);
     }
 
     .btn-cv {
-        font-size: 0.9rem;
+        font-size: var(--texte-lg);
         padding: 0.7rem 1.4rem;
         margin: 1.5rem;
     }
@@ -216,12 +216,12 @@ main hr {
 
     .profil {
         margin: 1rem 0.5rem;
-        font-size: 0.9rem;
+        font-size: var(--texte-lg);
         padding: 1rem;
     }
 
     .btn-cv {
-        font-size: 0.85rem;
+        font-size: var(--texte-md);
         padding: 0.6rem 1.2rem;
         margin: 1.5rem auto;
         width: calc(100% - 1rem);
@@ -247,7 +247,7 @@ main hr {
 
     .timeline-date {
         margin: 5px;
-        font-size: 0.85rem;
+        font-size: var(--texte-md);
     }
 
     .timeline-content h4 {

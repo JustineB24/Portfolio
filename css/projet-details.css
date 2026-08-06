@@ -52,7 +52,7 @@
 .projet-date {
     display: inline-block;
     margin-top: 1rem;
-    font-size: 0.8rem;
+    font-size: var(--texte-sm);
     color: var(--header-text-color);
     font-family: var(--font-titre);
     font-weight: 700;
@@ -72,7 +72,7 @@
     border: 1px solid rgba(255, 255, 255, 0.45);
     border-radius: var(--radius-pill);
     color: var(--header-text-color);
-    font-size: 0.78rem;
+    font-size: var(--texte-sm);
     font-weight: 700;
     letter-spacing: 0.04em;
     backdrop-filter: blur(4px);
@@ -90,7 +90,7 @@
     text-decoration: none;
     font-family: var(--font-titre);
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: var(--texte-sm);
     text-transform: uppercase;
     letter-spacing: 0.12em;
     transition: opacity 0.3s, transform 0.3s;
@@ -122,7 +122,7 @@
     display: block;
     margin: 0 0 0.5rem;
     font-family: var(--font-titre);
-    font-size: 0.72rem;
+    font-size: var(--texte-xs);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -163,7 +163,7 @@
     padding: 0.4rem 0.85rem;
     border-radius: var(--radius-pill);
     border: 1px solid transparent;
-    font-size: 0.88rem;
+    font-size: var(--texte-lg);
     font-weight: 600;
     color: var(--text-color);
     transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
@@ -326,7 +326,7 @@
 .etude-etape-icone::before {
     content: counter(etape, decimal-leading-zero);
     font-family: var(--font-titre);
-    font-size: 0.85rem;
+    font-size: var(--texte-md);
     font-weight: 800;
     color: var(--accent);
     transition: color 0.3s;
@@ -399,7 +399,7 @@
 .carrousel-counter {
     text-align: center;
     margin-top: 0.5rem;
-    font-size: 0.9rem;
+    font-size: var(--texte-lg);
     color: var(--text-color);
     opacity: 0.75;
     font-weight: 600;
@@ -617,7 +617,7 @@
     bottom: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.9rem;
+    font-size: var(--texte-lg);
     color: rgba(255, 255, 255, 0.75);
     font-weight: 600;
 }
@@ -659,7 +659,7 @@
 
     .back-button {
         left: 1rem;
-        font-size: 0.75rem;
+        font-size: var(--texte-xs);
     }
 
     .projet-section {
@@ -681,7 +681,7 @@
     }
 
     .etude-etape-icone::before {
-        font-size: 0.75rem;
+        font-size: var(--texte-xs);
     }
 
     .projet-lead {
@@ -689,7 +689,7 @@
     }
 
     #projet-technologies li {
-        font-size: 0.82rem;
+        font-size: var(--texte-sm);
         padding: 0.35rem 0.7rem;
     }
 
@@ -701,7 +701,7 @@
     .carrousel-btn {
         width: 2rem;
         height: 2rem;
-        font-size: 0.8rem;
+        font-size: var(--texte-sm);
     }
 
     .carrousel-dot {

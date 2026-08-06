@@ -1075,6 +1075,21 @@ footer {
     position: relative;
 }
 
+/* `display: none` au repos, et pas seulement `opacity: 0` : une infobulle
+   transparente reste dans la mise en page. Large de 194px à cause du
+   `white-space: nowrap` et centrée sur une pastille proche du bord droit, elle
+   étendait la largeur du document de 25px sur la page détail projet à 320 et
+   390px. Le débordement était invisible, `overflow-x: hidden` sur `html` le
+   masquant sans permettre de faire défiler, donc le contenu dépassant était
+   simplement coupé.
+
+   La largeur est bornée à l'écran et le texte peut passer à la ligne, pour que
+   l'infobulle affichée ne sorte pas non plus. À 16rem, les libellés actuels
+   tiennent toujours sur une ligne : le rendu ne change pas sur grand écran.
+
+   `allow-discrete` et `@starting-style` conservent le fondu malgré le passage
+   par `display`. Sans leur prise en charge, l'infobulle apparaît d'un coup, ce
+   qui reste correct. */
 [data-tooltip]::after {
     content: attr(data-tooltip);
     position: absolute;
@@ -1086,10 +1101,17 @@ footer {
     padding: 0.4rem 0.8rem;
     border-radius: 6px;
     font-size: var(--texte-xs);
-    white-space: nowrap;
+    /* `width: max-content` est indispensable avec `white-space: normal` : sans
+       lui, la boîte se replie sur la largeur de sa pastille, soit 84px et trois
+       lignes. Avec lui elle prend la largeur de son texte, donc une seule
+       ligne, et `max-width` ne la replie que si l'écran l'exige. */
+    width: max-content;
+    max-width: min(16rem, calc(100vw - 2rem));
+    white-space: normal;
+    display: none;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, display 0.3s allow-discrete;
     z-index: 10;
     margin-bottom: 0.5rem;
 }
@@ -1097,7 +1119,16 @@ footer {
 [data-tooltip]:hover::after,
 [data-tooltip]:focus::after,
 [data-tooltip]:focus-within::after {
+    display: block;
     opacity: 1;
+}
+
+@starting-style {
+    [data-tooltip]:hover::after,
+    [data-tooltip]:focus::after,
+    [data-tooltip]:focus-within::after {
+        opacity: 0;
+    }
 }
 
 /* Loading screen */

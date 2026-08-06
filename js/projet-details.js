@@ -200,8 +200,11 @@ const projets = {
             "../assets/projets/mairie_de_cauffry/Adicloud.jpg",
             "../assets/projets/mairie_de_cauffry/Visuel_site.jpg"
         ],
-        description: "Réalisation d'un site web pour la commune de Cauffry dans le cadre du stage de 4 semaines de première année de BTS SIO, en partenariat avec l'Adico (Association pour le développement et l'innovation numérique des collectivités). L'ancien site étant devenu indisponible, j'ai récupéré son contenu via la Wayback Machine, rempli le recueil de besoins Adico, conçu l'arborescence et alimenté les pages via Adicloud. En parallèle, j'ai aussi géré la sauvegarde des mails de la maire vers un disque dur externe et proposé des prototypes de logo pour la commune.",
-        technologies: ["HTML", "CSS"],
+        description: "Stage de 4 semaines en première année de BTS SIO, chez l'Adico (Association pour le développement et l'innovation numérique des collectivités), pour le nouveau site de la commune de Cauffry. Le site lui-même est un produit de l'Adico, bâti sur leur plateforme mutualisée : je n'en ai pas écrit le code. Mon travail portait sur le contenu et la structure. L'ancien site étant devenu indisponible, j'ai récupéré ses pages via la Wayback Machine, rempli le recueil de besoins, conçu l'arborescence des rubriques, puis préparé les documents et les ai déposés sur Adicloud en les structurant pour qu'ils s'affichent correctement. En parallèle, j'ai sauvegardé les mails de la maire vers un disque dur externe et proposé des prototypes de logo pour la commune.",
+        // Aucune technologie déclarée, volontairement : le site est un produit de
+        // l'Adico et le travail a porté sur le contenu, pas sur le code. La barre
+        // « Technologies » se masque d'elle-même quand la liste est vide.
+        technologies: [],
         link: "https://mairiecauffry.fr/",
         etudeDeCas: {
             contexte: "Le site web de la mairie de Cauffry était devenu indisponible peu avant le début du stage. La commune avait besoin d'un nouveau site, développé en partenariat avec l'Adico, une plateforme mutualisée de services numériques pour les collectivités territoriales.",
@@ -210,9 +213,9 @@ const projets = {
                 "Récupérer le contenu d'un site totalement disparu grâce à la Wayback Machine",
                 "Corriger une erreur dans l'arborescence Adico : le dossier « Services aux administrés » était manquant, ce qui a nécessité un appel au support",
                 "Gérer en parallèle d'autres missions : sauvegarde des mails Gmail de la maire vers un disque dur avec Mbox Viewer, et propositions de prototypes de logo",
-                "Respecter un délai serré de 4 semaines pour livrer le site complet"
+                "Tenir un délai de 4 semaines pour que le contenu de toutes les rubriques soit prêt"
             ],
-            resultat: "Site livré dans les temps et mis en ligne. Ce stage m'a appris à travailler avec un prestataire externe (Adico), à gérer la pression des délais en contexte professionnel, et m'a fait découvrir le fonctionnement d'une collectivité territoriale de l'intérieur."
+            resultat: "Le site a été mis en ligne dans les délais, avec son contenu et son arborescence. C'est un stage de découverte, pas un projet de développement : ce que j'en retiens tient au métier plus qu'au code. Travailler avec un prestataire externe et son outil, tenir un délai de quatre semaines en contexte professionnel, et voir fonctionner une collectivité territoriale de l'intérieur."
         }
     }
 };
@@ -387,6 +390,14 @@ if (!projetId || !projets[projetId]) {
     if (techList) techList.innerHTML = "";
 
     const technologies = projets[projetId].technologies || [];
+
+    // Un projet peut n'avoir aucune technologie à déclarer : c'est le cas de la
+    // Mairie de Cauffry, où le travail a porté sur le contenu et non sur le
+    // code. Sans ça, l'étiquette « Technologies » resterait seule au-dessus
+    // d'une liste vide, avec le filet de séparation de la barre méta.
+    const barreMeta = techList ? techList.closest(".projet-meta") : null;
+    if (barreMeta) barreMeta.hidden = technologies.length === 0;
+
     if (techList) technologies.forEach(tech => {
         let li = document.createElement("li");
 

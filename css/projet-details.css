@@ -130,6 +130,14 @@
 }
 
 /* ---- Barre méta : technologies ---- */
+/* L'attribut `hidden` est posé par le JS quand le projet n'a aucune technologie
+   à déclarer. Sans cette règle il ne ferait rien : `[hidden] { display: none }`
+   est une règle par défaut du navigateur, que le `display: flex` ci-dessous
+   écrase, étant plus spécifique. */
+.projet-meta[hidden] {
+    display: none;
+}
+
 .projet-meta {
     display: flex;
     flex-direction: column;

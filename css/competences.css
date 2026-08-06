@@ -9,13 +9,10 @@
     text-align: left;
 }
 
-/* Sans règle, le navigateur dessine un liseré gris en relief sur toute la
-   largeur de `main`, alors que le contenu s'arrête à 1100px : le filet
-   dépassait des deux côtés. Même traitement que sur À propos et Mentions
-   légales, borné à la largeur du contenu. */
+/* Apparence dans global.css ; la page borne le filet à la largeur de son
+   contenu, sans quoi il traverserait tout `main`, et lui donne plus d'air que
+   le défaut : il sépare ici des sections entières, pas des rubriques. */
 main hr {
-    border: none;
-    border-top: 2px dashed var(--card-background);
     max-width: 1100px;
     margin: 3.5rem auto;
 }

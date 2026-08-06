@@ -143,41 +143,10 @@
 }
 
 /* ---- Bouton envoyer ---- */
+/* Apparence dans global.css (`.btn` + `.btn-primaire`). Le formulaire veut un
+   bouton un peu plus large que le socle. */
 .btn-envoyer {
     padding: 0.9rem 2.2rem;
-    background: var(--primary-color);
-    color: var(--tag-text-on-color);
-    border: 2px solid var(--primary-color);
-    border-radius: var(--radius-sm);
-    font-size: 1rem;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-
-.btn-envoyer::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn-envoyer:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-.btn-envoyer:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-primary);
 }
 
 /* ---- Aside — Cards de contact ---- */

@@ -245,45 +245,10 @@
 }
 
 /* ── Bouton retour — même style que .btn-cv ── */
+/* Apparence dans global.css (`.btn` + `.btn-primaire`). La page ne pose que
+   l'écart avec le texte au-dessus. */
 .btn-accueil {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1.8rem;
-    border-radius: var(--radius-sm);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    background: var(--primary-color);
-    color: var(--tag-text-on-color);
-    border: 2px solid var(--primary-color);
     margin-top: 2rem;
-    transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-
-.btn-accueil::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn-accueil:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-.btn-accueil:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-primary);
 }
 
 /* ── Particules flottantes ── */

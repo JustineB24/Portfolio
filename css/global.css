@@ -1351,112 +1351,236 @@ body.page-exit main {
 }
 
 /* ==============================
-   Couleurs des tags technologies (centralisées)
-   Utilisées à la fois sur les cartes projets (.card-tags) et la page détail
-   projet (#projet-technologies). Source unique — ne pas dupliquer ailleurs.
+   Couleurs des technos (centralisées) — une seule couleur par techno et par
+   thème, portée à la fois par le contour ET par le libellé des pastilles.
+   Utilisées sur les cartes projets (.card-tags) et la page détail projet
+   (#projet-technologies). Source unique — ne pas dupliquer ailleurs.
+
+   Pourquoi deux jeux de valeurs. La couleur habille désormais du texte, donc
+   son seuil passe de 3:1 (contour, WCAG 1.4.11) à 4,5:1 (texte, 1.4.3). Les
+   couleurs de marque brutes ne l'atteignent pas toutes : chacune est ramenée
+   au seuil à teinte et saturation constantes, en n'ajustant que la clarté
+   HSL — même méthode que les accents de la page Compétences. Celles qui
+   passent déjà sont laissées telles quelles.
+
+   Cinq marques dérivent visiblement, et c'est assumé : le jaune JavaScript
+   vire à l'olive en clair, le cyan React au bleu canard en clair, le violet
+   C# s'éclaircit en sombre. Socket.io et Expo, dont le logo est noir,
+   passent au blanc en sombre — c'est déjà la convention du projet pour les
+   logos monochromes.
+
+   Les valeurs sont calculées sur le **pire fond** de chaque thème, la carte
+   `--card-background`, pour qu'une seule valeur serve les trois surfaces où
+   ces pastilles apparaissent.
    ============================== */
+/* Thème clair */
 .card-tags .tag-html, #projet-technologies .tag-html {
-    border-color: rgba(241, 101, 41, 0.7);
+    --tag-color: rgb(187, 65, 12);
 }
 
 .card-tags .tag-css, #projet-technologies .tag-css {
-    border-color: rgba(41, 101, 241, 0.7);
+    --tag-color: rgb(30, 93, 240);
 }
 
 .card-tags .tag-js, #projet-technologies .tag-js {
-    border-color: rgba(247, 223, 30, 0.7);
+    --tag-color: rgb(119, 106, 4);
 }
 
 .card-tags .tag-php, #projet-technologies .tag-php {
-    border-color: rgba(97, 129, 182, 0.7);
+    --tag-color: rgb(74, 106, 160);
 }
 
 .card-tags .tag-csharp, #projet-technologies .tag-csharp {
-    border-color: rgba(57, 0, 145, 0.7);
+    --tag-color: rgb(57, 0, 145);
 }
 
 .card-tags .tag-mysql, #projet-technologies .tag-mysql {
-    border-color: rgba(0, 117, 143, 0.7);
+    --tag-color: rgb(0, 115, 141);
 }
 
 .card-tags .tag-xaml, #projet-technologies .tag-xaml {
-    border-color: rgba(13, 79, 178, 0.7);
+    --tag-color: rgb(13, 79, 178);
 }
 
 .card-tags .tag-maui, #projet-technologies .tag-maui {
-    border-color: rgba(108, 51, 175, 0.7);
+    --tag-color: rgb(108, 51, 175);
 }
 
 .card-tags .tag-winforms, #projet-technologies .tag-winforms {
-    border-color: rgba(0, 101, 169, 0.7);
+    --tag-color: rgb(0, 101, 169);
 }
 
 .card-tags .tag-jquery, #projet-technologies .tag-jquery {
-    border-color: rgba(0, 108, 174, 0.7);
+    --tag-color: rgb(0, 108, 174);
 }
 
 .card-tags .tag-bootstrap, #projet-technologies .tag-bootstrap {
-    border-color: rgba(121, 82, 179, 0.7);
+    --tag-color: rgb(121, 82, 179);
 }
 
 .card-tags .tag-tailwind, #projet-technologies .tag-tailwind {
-    border-color: rgba(56, 189, 248, 0.7);
+    --tag-color: rgb(6, 113, 160);
 }
 
 .card-tags .tag-datatables, #projet-technologies .tag-datatables {
-    border-color: rgba(51, 102, 153, 0.7);
+    --tag-color: rgb(51, 102, 153);
 }
 
 .card-tags .tag-postgresql, #projet-technologies .tag-postgresql {
-    border-color: rgba(51, 103, 145, 0.7);
+    --tag-color: rgb(51, 103, 145);
 }
 
 .card-tags .tag-react, #projet-technologies .tag-react {
-    border-color: rgba(97, 218, 251, 0.7);
+    --tag-color: rgb(4, 115, 146);
 }
 
 .card-tags .tag-nodejs, #projet-technologies .tag-nodejs {
-    border-color: rgba(104, 159, 56, 0.7);
+    --tag-color: rgb(76, 116, 41);
 }
 
 .card-tags .tag-socketio, #projet-technologies .tag-socketio {
-    border-color: rgba(1, 1, 1, 0.7);
+    --tag-color: rgb(1, 1, 1);
 }
 
 .card-tags .tag-docker, #projet-technologies .tag-docker {
-    border-color: rgba(35, 150, 237, 0.7);
+    --tag-color: rgb(15, 109, 181);
 }
 
 .card-tags .tag-react-native, #projet-technologies .tag-react-native {
-    border-color: rgba(83, 193, 222, 0.7);
+    --tag-color: rgb(27, 115, 139);
 }
 
 .card-tags .tag-expo, #projet-technologies .tag-expo {
-    border-color: rgba(0, 0, 32, 0.7);
+    --tag-color: rgb(0, 0, 32);
 }
 
 .card-tags .tag-xampp, #projet-technologies .tag-xampp {
-    border-color: rgba(251, 122, 36, 0.7);
+    --tag-color: rgb(179, 73, 3);
 }
 
 .card-tags .tag-mamp, #projet-technologies .tag-mamp {
-    border-color: rgba(37, 125, 174, 0.7);
+    --tag-color: rgb(33, 112, 157);
 }
 
 .card-tags .tag-figma, #projet-technologies .tag-figma {
-    border-color: rgba(162, 89, 255, 0.7);
+    --tag-color: rgb(137, 44, 255);
 }
 
 .card-tags .tag-git, #projet-technologies .tag-git {
-    border-color: rgba(240, 80, 51, 0.7);
+    --tag-color: rgb(202, 44, 15);
 }
 
 .card-tags .tag-github, #projet-technologies .tag-github {
-    border-color: rgba(110, 84, 148, 0.7);
+    --tag-color: rgb(110, 84, 148);
 }
 
 .card-tags .tag-gitlab, #projet-technologies .tag-gitlab {
-    border-color: rgba(226, 67, 41, 0.7);
+    --tag-color: rgb(197, 51, 27);
+}
+
+/* Thème sombre */
+.dark-theme .card-tags .tag-html, .dark-theme #projet-technologies .tag-html {
+    --tag-color: rgb(241, 101, 41);
+}
+
+.dark-theme .card-tags .tag-css, .dark-theme #projet-technologies .tag-css {
+    --tag-color: rgb(87, 134, 244);
+}
+
+.dark-theme .card-tags .tag-js, .dark-theme #projet-technologies .tag-js {
+    --tag-color: rgb(247, 223, 30);
+}
+
+.dark-theme .card-tags .tag-php, .dark-theme #projet-technologies .tag-php {
+    --tag-color: rgb(110, 140, 188);
+}
+
+.dark-theme .card-tags .tag-csharp, .dark-theme #projet-technologies .tag-csharp {
+    --tag-color: rgb(165, 107, 255);
+}
+
+.dark-theme .card-tags .tag-mysql, .dark-theme #projet-technologies .tag-mysql {
+    --tag-color: rgb(0, 151, 184);
+}
+
+.dark-theme .card-tags .tag-xaml, .dark-theme #projet-technologies .tag-xaml {
+    --tag-color: rgb(68, 138, 241);
+}
+
+.dark-theme .card-tags .tag-maui, .dark-theme #projet-technologies .tag-maui {
+    --tag-color: rgb(163, 118, 215);
+}
+
+.dark-theme .card-tags .tag-winforms, .dark-theme #projet-technologies .tag-winforms {
+    --tag-color: rgb(0, 143, 239);
+}
+
+.dark-theme .card-tags .tag-jquery, .dark-theme #projet-technologies .tag-jquery {
+    --tag-color: rgb(0, 144, 231);
+}
+
+.dark-theme .card-tags .tag-bootstrap, .dark-theme #projet-technologies .tag-bootstrap {
+    --tag-color: rgb(154, 125, 198);
+}
+
+.dark-theme .card-tags .tag-tailwind, .dark-theme #projet-technologies .tag-tailwind {
+    --tag-color: rgb(56, 189, 248);
+}
+
+.dark-theme .card-tags .tag-datatables, .dark-theme #projet-technologies .tag-datatables {
+    --tag-color: rgb(86, 143, 199);
+}
+
+.dark-theme .card-tags .tag-postgresql, .dark-theme #projet-technologies .tag-postgresql {
+    --tag-color: rgb(81, 144, 194);
+}
+
+.dark-theme .card-tags .tag-react, .dark-theme #projet-technologies .tag-react {
+    --tag-color: rgb(97, 218, 251);
+}
+
+.dark-theme .card-tags .tag-nodejs, .dark-theme #projet-technologies .tag-nodejs {
+    --tag-color: rgb(104, 159, 56);
+}
+
+.dark-theme .card-tags .tag-socketio, .dark-theme #projet-technologies .tag-socketio {
+    --tag-color: rgb(255, 255, 255);
+}
+
+.dark-theme .card-tags .tag-docker, .dark-theme #projet-technologies .tag-docker {
+    --tag-color: rgb(35, 150, 237);
+}
+
+.dark-theme .card-tags .tag-react-native, .dark-theme #projet-technologies .tag-react-native {
+    --tag-color: rgb(83, 193, 222);
+}
+
+.dark-theme .card-tags .tag-expo, .dark-theme #projet-technologies .tag-expo {
+    --tag-color: rgb(255, 255, 255);
+}
+
+.dark-theme .card-tags .tag-xampp, .dark-theme #projet-technologies .tag-xampp {
+    --tag-color: rgb(251, 122, 36);
+}
+
+.dark-theme .card-tags .tag-mamp, .dark-theme #projet-technologies .tag-mamp {
+    --tag-color: rgb(43, 147, 204);
+}
+
+.dark-theme .card-tags .tag-figma, .dark-theme #projet-technologies .tag-figma {
+    --tag-color: rgb(170, 104, 255);
+}
+
+.dark-theme .card-tags .tag-git, .dark-theme #projet-technologies .tag-git {
+    --tag-color: rgb(241, 86, 58);
+}
+
+.dark-theme .card-tags .tag-github, .dark-theme #projet-technologies .tag-github {
+    --tag-color: rgb(151, 129, 183);
+}
+
+.dark-theme .card-tags .tag-gitlab, .dark-theme #projet-technologies .tag-gitlab {
+    --tag-color: rgb(230, 96, 74);
 }
 
 /* ==============================

@@ -94,7 +94,7 @@
 
 .ee-achievement-titre {
     font-family: 'Raleway', sans-serif;
-    font-size: 0.75rem;
+    font-size: var(--texte-xs);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -105,7 +105,7 @@
 
 .ee-achievement-desc {
     font-family: monospace;
-    font-size: 0.9rem;
+    font-size: var(--texte-lg);
     color: #ccc;
 }
 
@@ -309,7 +309,7 @@
 .ee-snake-overlay .ee-snake-info {
     color: #666;
     font-family: monospace;
-    font-size: 0.9rem;
+    font-size: var(--texte-lg);
     margin-top: 0.5rem;
 }
 
@@ -433,7 +433,7 @@
     }
 
     .ee-achievement-desc {
-        font-size: 0.8rem;
+        font-size: var(--texte-sm);
     }
 
     .ee-modale-contenu h2 {

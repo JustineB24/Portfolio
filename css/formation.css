@@ -60,7 +60,7 @@
     padding: 0.35rem 0.85rem;
     border-radius: var(--radius-pill);
     background: var(--card-background);
-    font-size: 0.85rem;
+    font-size: var(--texte-md);
     font-weight: 600;
     color: var(--text-color);
 }
@@ -108,7 +108,7 @@
     display: block;
     margin-bottom: 0.4rem;
     font-family: var(--font-titre);
-    font-size: 0.72rem;
+    font-size: var(--texte-xs);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.18em;
@@ -121,7 +121,7 @@
 
 .formation-points p {
     margin: 0;
-    font-size: 0.95rem;
+    font-size: var(--texte-xl);
     line-height: 1.6;
     text-align: left;
 }
@@ -138,7 +138,7 @@
     }
 
     .formation-meta li {
-        font-size: 0.78rem;
+        font-size: var(--texte-sm);
         padding: 0.3rem 0.7rem;
     }
 }
@@ -221,7 +221,7 @@
     left: 0.8rem;
     background: var(--primary-color);
     color: var(--tag-text-on-color);
-    font-size: 0.75rem;
+    font-size: var(--texte-xs);
     font-weight: 800;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -255,7 +255,7 @@
     position: relative;
     padding-left: 1.3rem;
     margin-bottom: 0.55rem;
-    font-size: 0.92rem;
+    font-size: var(--texte-lg);
     line-height: 1.5;
     color: var(--text-color);
     text-align: left;
@@ -284,7 +284,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.85rem;
+    font-size: var(--texte-md);
     font-weight: 700;
     color: var(--primary-color);
     text-transform: uppercase;
@@ -295,7 +295,7 @@
 .bts-spe-debouches p {
     margin: 0;
     padding: 0;
-    font-size: 0.88rem;
+    font-size: var(--texte-lg);
     line-height: 1.6;
     color: var(--text-color);
     opacity: 0.85;
@@ -341,7 +341,7 @@
     gap: 0.4rem;
     background: var(--primary-color);
     color: var(--header-text-color);
-    font-size: 0.78rem;
+    font-size: var(--texte-sm);
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -350,7 +350,7 @@
 }
 
 .bts-doc-session {
-    font-size: 0.82rem;
+    font-size: var(--texte-sm);
     font-weight: 600;
     color: var(--text-muted);
     letter-spacing: 1px;
@@ -422,7 +422,7 @@
     color: var(--header-text-color);
     border-radius: var(--radius-sm);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: var(--texte-xl);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -515,11 +515,11 @@
     }
 
     .bts-doc-description {
-        font-size: 0.9rem;
+        font-size: var(--texte-lg);
     }
 
     .btn {
-        font-size: 0.9rem;
+        font-size: var(--texte-lg);
         padding: 0.6rem 1rem;
     }
 

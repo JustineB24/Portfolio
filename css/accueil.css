@@ -52,7 +52,7 @@
     margin: 0;
     padding: 0;
     font-family: var(--font-titre);
-    font-size: 0.85rem;
+    font-size: var(--texte-md);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.25em;
@@ -125,7 +125,7 @@
 }
 
 .scroll-arrow span {
-    font-size: 0.85rem;
+    font-size: var(--texte-md);
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 600;
@@ -231,7 +231,7 @@
 
 .compteur-label {
     font-family: var(--font-titre);
-    font-size: 0.72rem;
+    font-size: var(--texte-xs);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.18em;
@@ -361,7 +361,7 @@
     left: 50%;
     transform: translateX(-50%) translateY(4px);
     white-space: nowrap;
-    font-size: 0.8rem;
+    font-size: var(--texte-sm);
     font-weight: 600;
     color: var(--text-color);
     background: var(--card-background);
@@ -486,8 +486,10 @@
         font-size: 1rem;
     }
 
+    /* Plus de font-size ici : l'étiquette descendait à 0,68rem contre 0,72rem
+       en base, un écart de 0,6px que l'échelle a effacé. Seul l'interlettrage,
+       resserré sur petit écran, avait une raison d'être. */
     .compteur-label {
-        font-size: 0.68rem;
         letter-spacing: 0.12em;
     }
 

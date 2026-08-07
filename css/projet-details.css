@@ -49,26 +49,51 @@
     display: block;
 }
 
+/* ==============================
+   Pastilles du bandeau — texte clair sur fond sombre local.
+
+   Le texte du hero est clair et fixe, alors que la couleur du dégradé vient du
+   projet : quand elle est claire, le contraste s'effondre. Un audit a relevé
+   14 échecs sur 8 fiches sur 12, jusqu'à 2,38:1.
+
+   Un voile sur tout le bandeau réglerait le problème mais assombrirait les
+   couleurs de projet, ce que Justine ne veut pas : sur YABT le jaune virait à
+   l'ocre. Le fond est donc posé **sous les petits textes seulement**, ce qui
+   laisse le dégradé strictement intact.
+
+   45 % de noir est la valeur qui couvre les douze projets, calculée sur la
+   couleur la plus claire de chaque dégradé. Les trois pastilles partagent la
+   même valeur, sinon elles se verraient les unes par rapport aux autres.
+
+   Ce que ça ne règle pas, et c'est assumé : les titres de YABT, Cauffry et
+   Générateur de MDP restent sous 3:1. Une pastille sous un titre de cette
+   taille serait lourde.
+   ============================== */
 .projet-date {
     display: inline-block;
     margin-top: 1rem;
+    padding: 0.35rem 0.9rem;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: var(--radius-pill);
     font-size: var(--texte-sm);
     color: var(--header-text-color);
     font-family: var(--font-titre);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    opacity: 0.92;
 }
 
-.badge-en-cours {
+/* Même fond que les deux autres pastilles du bandeau. Il était clair
+   auparavant, `rgba(255, 255, 255, 0.18)`, ce qui éclaircissait son propre fond
+   et dégradait donc le contraste de son libellé au lieu de l'aider. */
+.badge-statut {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
     margin-top: 1rem;
     margin-left: 0.85rem;
     padding: 0.35rem 0.9rem;
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.45);
     border: 1px solid rgba(255, 255, 255, 0.45);
     border-radius: var(--radius-pill);
     color: var(--header-text-color);
@@ -79,10 +104,17 @@
 }
 
 /* Bouton retour : ancré en haut à gauche du hero */
+/* Le retrait latéral compense le padding de la pastille : sans lui, le libellé
+   se décalerait vers la droite et ne serait plus aligné sur la colonne de
+   lecture, puisque `left` positionne le bord de la boîte et non le texte. */
 .back-button {
     position: absolute;
     top: 1.6rem;
     left: max(2rem, calc(50% - 430px));
+    margin-left: -0.8rem;
+    padding: 0.35rem 0.8rem;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: var(--radius-pill);
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -647,7 +679,7 @@
         top: 1.3rem;
     }
 
-    .badge-en-cours {
+    .badge-statut {
         margin-left: 0;
     }
 

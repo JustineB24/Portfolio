@@ -27,7 +27,7 @@ const projets = {
         technologies: ["React", "Tailwind CSS", "Node.js", "Socket.io", "MySQL", "Docker", "Figma", "GitHub"],
         enCours: true,
         etudeDeCas: {
-            contexte: "Les blind tests entre amis se font souvent sur des applications payantes, limitées en fonctionnalités ou sans vrai mode multijoueur en temps réel. On voulait créer une alternative gratuite, fun et complète, jouable directement dans le navigateur.",
+            contexte: "L'idée vient d'abord d'une passion pour la musique : c'est ce qui a orienté le choix du sujet parmi tous ceux possibles en Bachelor. Le constat a suivi. Les blind tests entre amis se font souvent sur des applications payantes, limitées en fonctionnalités ou sans vrai mode multijoueur en temps réel. On voulait une alternative gratuite, complète et jouable directement dans le navigateur.",
             reflexion: "Avant d'écrire la moindre ligne de code, on a passé plusieurs semaines à structurer le projet comme un vrai projet professionnel : cahier des charges, maquettes Figma complètes (wireframes, design system, prototypes interactifs), choix des technologies, répartition des rôles et méthodologie Agile. C'est grâce à ce projet que j'ai appris à utiliser Figma et à concevoir une identité visuelle cohérente (logo, mascotte, nuancier, icônes néon).",
             defis: [
                 "Structurer un projet ambitieux de zéro (cahier des charges, maquettes, architecture technique) avant même de coder",
@@ -42,9 +42,9 @@ const projets = {
         title: "Gecko — Plateforme de gestion interne",
         date: "Septembre 2025 — aujourd'hui",
         images: [],
-        description: "Application web métier d'un client du secteur de l'édition et de la distribution, développée par l'équipe de Litesoft où je suis en alternance. Cette plateforme intranet, sur laquelle je travaille à temps plein depuis mon arrivée, centralise la gestion commerciale, la facturation, le suivi des activités et la logistique. Je traite les tickets en développement au sein d'un pipeline de support semi-automatisé mis en place par l'équipe — un agent de premier niveau trie les urgences et qualifie la demande auprès du client avant qu'un ticket n'arrive en développement —, et je contribue à la modernisation progressive de ce projet existant et toujours actif : refactoring de fichiers monolithiques en classes dédiées, mise en place de l'autoload PSR-4 sur l'ensemble du projet, passage aux standards de nommage PSR-1/4/12, et remplacement systématique des pratiques obsolètes (jointures SQL implicites, paramètres ambigus, comparaisons lâches). Parmi les développements majeurs : refonte complète du système de filtres avancés sur tous les tableaux de l'application (recherche par colonne, filtres favoris, opérateurs multiples), migration des tableaux du mode server-side vers client-side, ajout de fonctionnalités métier (traductions multi-langue, import Excel, gestion de stock, prévisualisation d'articles), audits de sécurité (prévention XSS, échappement systématique), et optimisations SQL (élimination de requêtes N+1, insertions batch). Pour améliorer ma productivité, j'utilise Claude Code au quotidien comme assistant technique : j'ai mis en place un fichier de conventions servant de référence complète du projet, des commandes personnalisées pour lancer des audits techniques automatisés (sécurité, performance, qualité) et générer des récapitulatifs de modifications, ainsi qu'un plan de résolution organisé pour prioriser la dette technique. Le projet repose sur une architecture MVC en PHP 8.3 avec PostgreSQL, un frontend en JavaScript, jQuery, Bootstrap et DataTables, du temps réel via Node.js et Socket.IO, et un pipeline CI/CD sur GitLab.",
+        description: "Application web métier d'un client du secteur de l'édition et de la distribution, développée par l'équipe de Litesoft où je suis en alternance. Cette plateforme intranet, en production depuis 2021, centralise la gestion commerciale, la facturation, le suivi des activités et la logistique. Le projet est mature : mon quotidien y est d'abord le support, au sein d'un pipeline semi-automatisé mis en place par l'équipe — un agent de premier niveau trie les urgences et qualifie la demande auprès du client avant qu'un ticket n'arrive en développement. Je développe aussi de nouvelles interfaces quand le besoin s'en présente, et je contribue à la modernisation progressive du code existant : refactoring de fichiers monolithiques en classes dédiées, mise en place de l'autoload PSR-4 sur l'ensemble du projet, passage aux standards de nommage PSR-1/4/12, et remplacement systématique des pratiques obsolètes (jointures SQL implicites, paramètres ambigus, comparaisons lâches). Parmi les développements majeurs : refonte complète du système de filtres avancés sur tous les tableaux de l'application (recherche par colonne, filtres favoris, opérateurs multiples), migration des tableaux du mode server-side vers client-side, ajout de fonctionnalités métier (traductions multi-langue, import Excel, gestion de stock, prévisualisation d'articles), audits de sécurité (prévention XSS, échappement systématique), et optimisations SQL (élimination de requêtes N+1, insertions batch). Pour améliorer ma productivité, j'utilise Claude Code au quotidien comme assistant technique : j'ai mis en place un fichier de conventions servant de référence complète du projet, des commandes personnalisées pour lancer des audits techniques automatisés (sécurité, performance, qualité) et générer des récapitulatifs de modifications, ainsi qu'un plan de résolution organisé pour prioriser la dette technique. Le projet repose sur une architecture MVC en PHP 8.3 avec PostgreSQL, un frontend en JavaScript, jQuery, Bootstrap et DataTables, du temps réel via Node.js et Socket.IO, et un pipeline CI/CD sur GitLab.",
         technologies: ["PHP", "JavaScript", "PostgreSQL", "jQuery", "Bootstrap", "Tailwind CSS", "DataTables", "Node.js", "Socket.io", "GitLab", "MAMP"],
-        enCours: true,
+        statut: "En production",
         etudeDeCas: {
             contexte: "Gecko est l'ERP interne d'un éditeur-distributeur de livres, utilisé par environ 350 personnes réparties sur plusieurs sites. Développé par l'équipe Litesoft depuis 2021, il couvre toute la chaîne : catalogue, CRM, facturation, fabrication, stock et expédition. Je l'ai rejoint en septembre 2025 dans le cadre de mon alternance. L'enjeu n'est donc pas de partir d'une page blanche, mais de m'intégrer efficacement dans un gros projet existant et toujours très actif, et d'y contribuer en full-stack.",
             reflexion: "Intervenir sur une application de cette taille, c'est d'abord savoir naviguer dans l'existant. Je travaille par tickets, en touchant souvent toute la chaîne (contrôleur PHP, classe métier, requête SQL, interface). Mon fil conducteur : moderniser et fiabiliser l'existant plutôt que d'empiler du code, en passant par la standardisation (autoload PSR-4, conventions PSR-1/4/12), la sécurité et la performance.",
@@ -261,6 +261,12 @@ if (!projetId || !projets[projetId]) {
     if (heroColors[projetId]) {
         const colors = heroColors[projetId];
         // Dégradé du hero (toutes les couleurs si la marque en compte plusieurs)
+        // Dégradé posé tel quel, sans voile. Un voile calculé avait été mis en
+        // place le 07/08 pour régler 14 échecs de contraste (jusqu'à 2,38:1),
+        // puis retiré à la demande de Justine : il assombrissait les couleurs de
+        // projet, notamment le jaune de YABT qui virait à l'ocre. Le détail du
+        // calcul est conservé dans `audit/ameliorations-et-audit.md` si la
+        // décision change.
         if (hero) {
             hero.style.background = "linear-gradient(135deg, " + colors.join(", ") + ")";
         }
@@ -283,14 +289,17 @@ if (!projetId || !projets[projetId]) {
         titreProjet.after(dateEl);
     }
 
-    // Badge "En cours de développement"
-    if (projets[projetId].enCours) {
+    // Badge de statut. `statut` porte le libellé quand il n'est pas « en cours de
+    // développement » : Gecko est un ERP en production depuis 2021, l'annoncer en
+    // cours de développement laissait croire à un projet encore en chantier.
+    const statut = projets[projetId].statut || (projets[projetId].enCours ? "En cours de développement" : null);
+    if (statut) {
         // Insérer après la date si elle existe, sinon après le titre
         const afterEl = (hero && hero.querySelector(".projet-date")) || titreProjet;
         if (afterEl) {
             const badge = document.createElement("span");
-            badge.classList.add("badge-en-cours");
-            badge.textContent = "En cours de développement";
+            badge.classList.add("badge-statut");
+            badge.textContent = statut;
             afterEl.after(badge);
         }
     }

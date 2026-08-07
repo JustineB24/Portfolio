@@ -4,6 +4,9 @@ Liste complète des améliorations, fonctionnalités et easter eggs du portfolio
 
 **Légende** : ✅ = En place | ❌ = Refusé / retiré
 
+> Les numéros ne sont pas contigus : une entrée qui passe en « retiré » libère le sien plutôt que de faire
+> glisser toutes les suivantes. Le 25 est vacant depuis le retrait du loading screen, le 06/08/2026.
+
 ---
 
 ## Améliorations à faire
@@ -188,9 +191,6 @@ focusable, donc 32 descriptions étaient invisibles sur téléphone._
 ### ✅ 24. Meta theme-color dynamique
 
 - `meta[name="theme-color"]` mis à jour par `toggleDarkMode()` : `#1a0000` (dark) / `#a90000` (light)
-
-### ✅ 25. Loading screen
-
 
 ### ✅ 26. Transitions de page
 
@@ -615,6 +615,15 @@ interpréter. Il en compte quatorze.
 - **Solution** : Ajouter une section blog avec des articles techniques sur le développement, les projets, etc.
 - **Gain** : Démontrer une expertise, améliorer le SEO.
 - **Raison du refus** : Demande du contenu à rédiger régulièrement, pas le temps de l'alimenter pour le moment.
+
+### ❌ Loading screen
+
+- **Solution** : `<div class="loader">` plein écran avec logo animé, masqué par le JS après chargement.
+- **Gain** : Masquer le rendu progressif de la page.
+- **Raison du retrait** (06/08/2026) : mesuré à **32 ms de visibilité**, soit un flash que personne ne perçoit.
+  En regard, il était opaque et en `z-index: 99999`, et seul le JS savait le retirer : sans JavaScript, les dix
+  pages s'affichaient **entièrement blanches** alors que leur contenu est bien dans le HTML. Un mode de panne
+  total pour un effet imperceptible.
 
 ### ❌ Favicon multi-format
 

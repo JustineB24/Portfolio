@@ -544,31 +544,74 @@
     right: 0.5rem;
 }
 
+/* ==============================
+   Puces du carrousel
+
+   Le bouton faisait 12x12px avec 8px d'écart, soit 20px de zone sûre contre les
+   24 exigés par WCAG 2.5.8, et l'exception d'espacement ne rattrapait pas. Sur
+   SIO Shop il y a seize puces alignées : viser la bonne au doigt était pénible.
+
+   La puce visible descend donc dans un `::before` et **le bouton devient la
+   zone cliquable**, à 24x24px et transparent. L'apparence ne change pas, seul
+   l'écart visuel passe de 8 à 12px, conséquence directe du pas de 24px.
+
+   `flex-wrap` n'est pas décoratif : seize puces de 24px font 384px, alors que
+   la colonne de lecture n'en offre que 288 à 320px de large. Sans le retour à
+   la ligne, la correction créerait un débordement horizontal.
+
+   La taille du bouton ne bouge pas dans les paliers mobiles, seule la puce
+   rétrécit : c'est justement au doigt que les 24px comptent.
+   ============================== */
 .carrousel-dots {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0;
     margin-top: 1rem;
 }
 
 .carrousel-dot {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    display: grid;
+    place-items: center;
+}
+
+.carrousel-dot::before {
+    content: "";
     width: 12px;
     height: 12px;
     border-radius: 50%;
     border: 2px solid var(--text-color);
-    background: transparent;
-    cursor: pointer;
-    padding: 0;
+    box-sizing: border-box;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-.carrousel-dot:hover {
+.carrousel-dot:hover::before {
     border-color: var(--primary-color);
 }
 
-.carrousel-dot.active {
+.carrousel-dot.active::before {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
+}
+
+/* La puce active est un élément d'interface, pas du texte : son seuil est 3:1
+   (WCAG 1.4.11). Le rouge de marque n'atteint que 2,05:1 sur le fond sombre,
+   donc l'indicateur « image courante » y était presque invisible. Le rouge
+   éclairci du site le remonte à 6,19:1. Même correction sur le survol, qui
+   sinon signalait moins que l'état au repos. */
+.dark-theme .carrousel-dot.active::before {
+    background-color: var(--primary-on-dark);
+    border-color: var(--primary-on-dark);
+}
+
+.dark-theme .carrousel-dot:hover::before {
+    border-color: var(--primary-on-dark);
 }
 
 /* Modale plein écran */
@@ -746,7 +789,7 @@
         font-size: var(--texte-sm);
     }
 
-    .carrousel-dot {
+    .carrousel-dot::before {
         width: 10px;
         height: 10px;
     }

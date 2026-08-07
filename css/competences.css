@@ -399,33 +399,56 @@ main hr {
 }
 
 /* Dots */
+/* Mêmes puces que le carrousel des fiches projet, et mêmes deux corrections :
+   la cible passe à 24x24 (WCAG 2.5.8) sans que la puce visible change de
+   taille, et l'état actif quitte le rouge de marque.
+
+   Ici le voile de la modale est noir à 90 % dans les DEUX thèmes, donc le rouge
+   n'y atteignait que 2,06:1 pour un seuil de 3:1 : l'indicateur d'image
+   courante était presque invisible. Le rouge éclairci monte à 6,66:1.
+
+   `flex-wrap` : quinze certifications font quinze puces, soit 360px à 24px
+   l'unité, plus que la largeur d'un téléphone. */
 #zoom-modal .carrousel-dots {
     position: absolute;
     bottom: 3.5rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+    max-width: calc(100vw - 2rem);
 }
 
 #zoom-modal .carrousel-dot {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    display: grid;
+    place-items: center;
+}
+
+#zoom-modal .carrousel-dot::before {
+    content: "";
     width: 12px;
     height: 12px;
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.5);
-    background: transparent;
-    cursor: pointer;
-    padding: 0;
+    box-sizing: border-box;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-#zoom-modal .carrousel-dot:hover {
-    border-color: var(--primary-color);
+#zoom-modal .carrousel-dot:hover::before {
+    border-color: var(--primary-on-dark);
 }
 
-#zoom-modal .carrousel-dot.active {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+#zoom-modal .carrousel-dot.active::before {
+    background-color: var(--primary-on-dark);
+    border-color: var(--primary-on-dark);
 }
 
 /* Compteur */

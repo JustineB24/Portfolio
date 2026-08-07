@@ -61,9 +61,8 @@ focusable, donc 32 descriptions étaient invisibles sur téléphone._
   environnements et conteneurs. Classement par famille technique et non par usage réel
 - **14 outils à part** : un éditeur ou un client d'API ne se compare pas à un langage
 - **Rien n'est caché** : le nom et la description sont du texte visible, en permanence
-- **Accent de marque** : filet gauche de 3px coloré par `--comp-color`, la seule variable lue par la mise en
-  page. Cinq marques ont une correction par thème, leur couleur étant illisible sur l'un des deux fonds
-  (C#, GitHub, Expo et Socket.io en sombre, JavaScript en clair)
+- **Accent de marque** : filet gauche de 3px coloré par `--tech-filet`. Les couleurs ont migré le 07/08 dans
+  `css/technos.css`, source unique partagée avec les pastilles des projets (voir l'entrée 51)
 - **15 certifications en liste unique**, groupées par organisme du plus au moins reconnu, puis par date.
   Pas de mise en avant ni de section « autres parcours » : l'ordre porte seul la hiérarchie
 - **Métadonnées complètes** pour chaque certification : organisme, intitulé, date, détail (centre, score,
@@ -192,7 +191,6 @@ focusable, donc 32 descriptions étaient invisibles sur téléphone._
 
 ### ✅ 25. Loading screen
 
-- `<div class="loader">` avec logo animé, masqué après chargement
 
 ### ✅ 26. Transitions de page
 
@@ -206,7 +204,7 @@ focusable, donc 32 descriptions étaient invisibles sur téléphone._
 
 ### ✅ 28. Styles d'impression
 
-- `@media print` masquant header, footer, loader et éléments interactifs
+- `@media print` masquant header, footer et éléments interactifs
 
 ### ✅ 29. Accessibilité — prefers-reduced-motion
 
@@ -342,6 +340,89 @@ Quatre corrections d'écarts entre ce qu'une fiche annonçait et ce que le proje
   prototype raconté comme une piste non terminée
 - **Python** : la description promettait « scripts et automatisation » sans rien pour l'appuyer. Elle devient
   « algorithmique, en cours de mathématiques », ce que montrent les 600 lignes écrites en première année
+
+### ✅ 48. Images de partage par page (05/08/2026, corrigé le 07/08)
+
+Longtemps classé « non réalisable sans outil dédié ». Il l'était : `assets/og/generateur.html` est une page qui
+compose la carte en HTML, capturée ensuite en 1200x630. Dix cartes, une par page.
+
+- Un dictionnaire `CARTES` porte eyebrow, titre, accroche et icône de chaque page, et son en-tête rappelle qu'une
+  image ne suit pas les modifications des pages : corriger le dictionnaire **puis** régénérer
+- **Par projet, c'est impossible en statique** : les douze projets partagent un seul `projet-details.html`, et
+  LinkedIn ne lit pas le HTML modifié par JavaScript. Le JS pose quand même la première capture en `og:image`,
+  utile aux robots qui exécutent le JS
+- Le 07/08, la carte de Compétences a été régénérée : elle annonçait « où le voir en projet » alors que les liens
+  de preuve avaient été retirés de la page la veille
+
+### ✅ 49. Fiches projet : Gecko n'est plus « en cours de développement » (07/08/2026)
+
+- C'est un ERP **en production depuis 2021**, utilisé par 350 personnes. Le badge dit « En production »
+- La description est rééquilibrée : le support était noyé dans une liste de développements, il passe devant
+- Un champ `statut` porte le libellé quand il diffère ; `enCours` reste pour YABT et le Grimoire
+- La classe `.badge-en-cours` devient `.badge-statut`, le nom devenant faux dès qu'un badge dit autre chose
+- **YABT** : le contexte s'ouvre désormais sur la passion pour la musique, qui explique le choix du sujet
+
+### ✅ 50. Bandeaux des fiches projet : 14 échecs de contraste fermés (07/08/2026)
+
+Le texte du bandeau est clair et fixe, la couleur du dégradé vient du projet : quand elle est claire, ça casse.
+Jusqu'à **2,38:1** sur le bouton « Retour ».
+
+- Un voile calculé sur tout le bandeau a d'abord été posé, puis **retiré** : il assombrissait les couleurs de
+  projet, le jaune de YABT virant à l'ocre
+- Le fond sombre est finalement posé **sous les petits textes seulement**, à 45 %, ce qui laisse le dégradé
+  strictement intact. 13 échecs sur 14 réglés
+- Le dernier, le titre du Générateur de MDP à 2,87:1, a demandé d'assombrir la couleur du projet de 15 %.
+  Couleur décorative d'un exercice de BTS, pas une marque
+- `opacity: 0.92` retiré de la date : griser du texte par l'opacité abaisse le contraste
+
+### ✅ 51. `technos.css`, source unique des couleurs de technos (07/08/2026)
+
+Trois feuilles déclaraient chacune leur version de la même palette, et elles avaient divergé sur **neuf technos**.
+
+- Une techno = la couleur de son **logo**, mesurée en comptant les pixels du SVG après rendu. Cinq déclarations
+  divergeaient de leur propre logo (HTML, CSS, Bootstrap, Git, GitLab)
+- Trois jetons par techno et par thème, parce que la même couleur sert à des usages de seuils différents :
+  `--tech-brut` (fond de pastille à 15 %), `--tech-libelle` (texte, 4,5:1) et `--tech-filet` (filet de 3px, 3:1)
+- Le fond teinté est ce qui sauve les marques pâles : le jaune JavaScript est à 1,13:1 en texte sur une carte
+  claire, mais reste parfaitement identifiable en fond à 15 %
+- **20 filets sur 36 passaient sous 3:1** dans un thème avant ce calcul
+
+### ✅ 52. Menu burger refait (07/08/2026)
+
+- Le panneau prenait `--button-background-color`, qui **s'inverse à contre-courant du thème** : noir en thème
+  clair, blanc en thème sombre. C'était la cause du pire échec de contraste du site, l'onglet de la page courante
+  à **1,90:1**. Il suit maintenant `--background-color`, ce qui supprime l'anomalie au lieu de la documenter
+- Libellés alignés à gauche : sept libellés centrés de longueurs différentes n'ont aucun bord commun
+- **Chevron « › » sur la page courante**, repris du logo ‹JB/›, plus `aria-current="page"` : la page courante ne
+  doit pas être signalée par la seule couleur (WCAG 1.4.1)
+- Le tiers bas, qui restait vide, reçoit le CV, seule chose que les sept liens ne donnent pas
+- Header resserré : le burger ne maigrissait pas avec le reste au palier ≤360px et chevauchait le logo
+
+### ✅ 53. Derniers échecs WCAG et cibles tactiles (07/08/2026)
+
+- **Badge de statut des cartes** : son texte était un `color-mix` à 50 % qui ne garantissait aucun seuil. Dix
+  cartes sur onze passaient par chance. Ramené à 35 %, le dosage le plus fort qui tienne pour n'importe quel accent
+- **Puces de carrousel** : 12x12px avec 8px d'écart, soit 20px utiles contre 24 exigés. La puce visible descend
+  dans un `::before`, le bouton devient la cible. `flex-wrap` indispensable, seize puces de 24px dépassant la
+  largeur d'un téléphone
+- Deux défauts trouvés en corrigeant : l'**indicateur d'image courante** était à 2:1 environ dans les deux
+  galeries, et la **galerie de certifications avait ses propres puces**, que Lighthouse ne voyait pas puisque la
+  modale est fermée pendant l'audit
+- `alt` **redondant** sur les logos techno, `src=""` de la modale de zoom, et le logo de la veille qui était à la
+  fois élément LCP et en `loading="lazy"`
+- **Nettoyage des modales d'easter egg** : il ne passait que par `transitionend`. Si l'évènement ne se déclenchait
+  pas, la modale restait à l'écran et le verrou bloquait tous les autres easter eggs pour le reste de la visite
+
+### ✅ 54. JSON-LD enrichi (07/08/2026)
+
+L'accueil ne déclarait qu'un `Person` à six propriétés ; tout le reste du site n'existait que sous forme de texte à
+interpréter. Il en compte quatorze.
+
+- `knowsAbout` : les 22 technologies et 14 outils de la page Compétences
+- `hasCredential` : le BTS SIO puis les 15 attestations, chacune rattachée à son organisme
+- `alumniOf`, `worksFor`, `address`, `knowsLanguage`
+- **Généré depuis les pages elles-mêmes**, pas ressaisi : une liste recopiée aurait divergé au premier ajout
+- 4,7 ko une fois compressé, le JSON-LD étant très répétitif
 
 ## ✅ Easter eggs actifs
 
@@ -540,12 +621,6 @@ Quatre corrections d'écarts entre ce qu'une fiche annonçait et ce que le proje
 - **Solution** : Générer des favicons en `.ico`, `.svg`, Apple Touch Icon et les déclarer dans le `<head>`.
 - **Gain** : Icône adaptée à tous les navigateurs et appareils.
 - **Raison du refus** : Nécessite la génération d'images dans plusieurs formats, non réalisable sans outil dédié.
-
-### ❌ Open Graph images par page
-
-- **Solution** : Créer des images OG spécifiques à chaque page (1200×630px) au lieu d'une image unique.
-- **Gain** : Meilleur aperçu lors du partage sur les réseaux sociaux.
-- **Raison du refus** : Nécessite la création graphique d'images dédiées, non réalisable sans outil dédié.
 
 ### ❌ Morse sur le logo
 

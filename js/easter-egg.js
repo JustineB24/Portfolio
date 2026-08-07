@@ -61,11 +61,24 @@
         function fermer() {
             modale.classList.remove('visible');
             document.removeEventListener('keydown', gestionnaireClavier);
-            modale.addEventListener('transitionend', function () {
+            // Le nettoyage passait par le seul `transitionend`. Si la transition
+            // ne se déclenche pas (élément retiré du flux, transition
+            // interrompue, réglage système), la modale restait à l'écran et
+            // `easterEggActif` restait à true, ce qui bloquait tous les autres
+            // easter eggs pour le reste de la visite. Le repli garantit que le
+            // nettoyage a lieu, et le drapeau garantit qu'il n'a lieu qu'une fois.
+            let nettoye = false;
+
+            function nettoyer() {
+                if (nettoye) return;
+                nettoye = true;
                 modale.remove();
                 easterEggActif = false;
                 if (onFermer) onFermer();
-            }, {once: true});
+            }
+
+            modale.addEventListener('transitionend', nettoyer, {once: true});
+            setTimeout(nettoyer, 700);   // transition déclarée à 0,5s
         }
 
         // Piège de focus : Tab cycle entre les éléments focusables de la modale

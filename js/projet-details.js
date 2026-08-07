@@ -461,7 +461,11 @@ if (!projetId || !projets[projetId]) {
         const ext = extensionsSpeciales[nomFichier] || "svg";
         let logo = document.createElement("img");
         logo.src = `../assets/competences/${nomFichier}.${ext}`;
-        logo.alt = String(tech);
+        // `alt` vide, volontairement : le nom de la techno est déjà écrit en toutes
+        // lettres juste à côté, dans le même <li>. Un `alt` le répétait, et un
+        // lecteur d'écran annonçait « React React ». Une image purement décorative
+        // se retire de l'arbre d'accessibilité avec un alt vide.
+        logo.alt = "";
         logo.width = 80;
         logo.height = 80;
         logo.classList.add("tech-logo");

@@ -548,7 +548,9 @@
             <button id="zoom-prev" class="carrousel-btn carrousel-prev" aria-label="Image précédente">
                 <i class="fas fa-chevron-left" aria-hidden="true"></i>
             </button>
-            <img id="zoom-modal-img" src="" alt="Image agrandie">
+            <!-- Pas de `src=""` : un src vide fait requêter la page elle-même par
+                 certains navigateurs. `certifications.js` le pose à l'ouverture. -->
+            <img id="zoom-modal-img" alt="Image agrandie">
             <button id="zoom-next" class="carrousel-btn carrousel-next" aria-label="Image suivante">
                 <i class="fas fa-chevron-right" aria-hidden="true"></i>
             </button>

@@ -93,8 +93,10 @@
             <div class="veille-intro-logo">
                 <picture>
                     <source srcset="../assets/veille/Raspberry_Pi_logo.webp" type="image/webp">
-                    <img src="../assets/veille/Raspberry_Pi_logo.png" alt="Logo Raspberry Pi" loading="lazy" width="250"
-                         height="316">
+                    <!-- Ni `loading="lazy"` ni report : c'est l'élément LCP de la page,
+                         le différer revient à retarder ce qui doit arriver en premier. -->
+                    <img src="../assets/veille/Raspberry_Pi_logo.png" alt="Logo Raspberry Pi" width="250"
+                         height="316" fetchpriority="high">
                 </picture>
                 <p class="veille-intro-logo-texte">Raspberry Pi</p>
             </div>

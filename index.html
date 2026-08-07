@@ -51,20 +51,255 @@
 
     <title>Portfolio | Justine BLIN</title>
 
-    <!-- Données structurées JSON-LD -->
+    <!-- ==============================
+         Données structurées JSON-LD (schema.org).
+         Généré depuis les pages elles-mêmes : les technos et outils viennent des
+         `h4` et `.outil-nom` de Compétences, les certifications de ses
+         `.certif-org` / `.certif-titre`. Regénérer si ces pages changent, sinon
+         la déclaration diverge silencieusement de ce que le site affiche.
+         `hasCredential` porte le BTS puis les 15 attestations ; `knowsAbout` la
+         totalité des technos et outils listés.
+         ============================== -->
     <script type="application/ld+json">
         {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Justine BLIN",
-            "url": "https://justineb24.github.io/Portfolio/",
-            "jobTitle": "Développeuse informatique",
-            "description": "Développeuse passionnée par le développement web et les nouvelles technologies.",
-            "sameAs": [
-                "https://www.linkedin.com/in/justine-blin-a88600292",
-                "https://github.com/JustineB24"
-            ],
-            "image": "https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png"
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Justine BLIN",
+                "url": "https://justineb24.github.io/Portfolio/",
+                "jobTitle": "Développeuse informatique",
+                "description": "Développeuse passionnée par le développement web et les nouvelles technologies.",
+                "image": "https://justineb24.github.io/Portfolio/assets/Logo_portfolio.png",
+                "sameAs": [
+                        "https://www.linkedin.com/in/justine-blin-a88600292",
+                        "https://github.com/JustineB24"
+                ],
+                "address": {
+                        "@type": "PostalAddress",
+                        "addressRegion": "Hauts-de-France",
+                        "addressCountry": "FR"
+                },
+                "knowsLanguage": [
+                        {
+                                "@type": "Language",
+                                "name": "Français"
+                        }
+                ],
+                "knowsAbout": [
+                        "HTML",
+                        "CSS",
+                        "JavaScript",
+                        "PHP",
+                        "C#",
+                        "XAML",
+                        "Python",
+                        "React",
+                        "Node.js",
+                        "Socket.io",
+                        "Tailwind CSS",
+                        "Bootstrap",
+                        "jQuery",
+                        "DataTables",
+                        "MAUI",
+                        "WinForms",
+                        "React Native",
+                        "MySQL",
+                        "PostgreSQL",
+                        "Docker",
+                        "XAMPP",
+                        "MAMP",
+                        "VS Code",
+                        "PhpStorm",
+                        "Visual Studio",
+                        "Git",
+                        "GitHub",
+                        "GitLab",
+                        "Postman",
+                        "Looping",
+                        "Figma",
+                        "Canva",
+                        "Jira",
+                        "Asana",
+                        "Odoo",
+                        "Expo"
+                ],
+                "worksFor": {
+                        "@type": "Organization",
+                        "name": "Litesoft",
+                        "url": "https://www.litesoft.fr/"
+                },
+                "alumniOf": [
+                        {
+                                "@type": "EducationalOrganization",
+                                "name": "La Manu",
+                                "location": {
+                                        "@type": "Place",
+                                        "address": {
+                                                "@type": "PostalAddress",
+                                                "addressLocality": "Lacroix-Saint-Ouen",
+                                                "addressCountry": "FR"
+                                        }
+                                }
+                        },
+                        {
+                                "@type": "EducationalOrganization",
+                                "name": "Lycée Édouard Gand",
+                                "location": {
+                                        "@type": "Place",
+                                        "address": {
+                                                "@type": "PostalAddress",
+                                                "addressLocality": "Amiens",
+                                                "addressCountry": "FR"
+                                        }
+                                }
+                        }
+                ],
+                "hasCredential": [
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "BTS Services informatiques aux organisations, option SLAM",
+                                "credentialCategory": "degree",
+                                "educationalLevel": "Bac +2",
+                                "recognizedBy": {
+                                        "@type": "EducationalOrganization",
+                                        "name": "Lycée Édouard Gand"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Introduction à la cybersécurité",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "Cisco Networking Academy"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Certification Pix, 502 pix sur 896",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "Pix"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Certification Pix, 378 pix sur 768",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "Pix"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Responsive Web Design",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "freeCodeCamp"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Module 1 : le RGPD et ses notions clés",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "CNIL, l'Atelier RGPD"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Module 2 : les principes de la protection des données",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "CNIL, l'Atelier RGPD"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Module 3 : les responsabilités des acteurs",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "CNIL, l'Atelier RGPD"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Module 4 : le DPO et les outils de la conformité",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "CNIL, l'Atelier RGPD"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Module 5 : les collectivités territoriales",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "CNIL, l'Atelier RGPD"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Introduction to SQL",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "SoloLearn"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Introduction to C#",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "SoloLearn"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Coding Foundations",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "SoloLearn"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Canva Essentials",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "Canva Design School"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Canva for Work",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "Canva Design School"
+                                }
+                        },
+                        {
+                                "@type": "EducationalOccupationalCredential",
+                                "name": "Apprendre le C# (Unity)",
+                                "credentialCategory": "certificate",
+                                "recognizedBy": {
+                                        "@type": "Organization",
+                                        "name": "Cursa, TUTO UNITY FR"
+                                }
+                        }
+                ]
         }
     </script>
 </head>

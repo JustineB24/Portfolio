@@ -214,9 +214,18 @@
     background: color-mix(in srgb, var(--card-accent, var(--primary-color)) 15%, transparent);
     border: 1px solid color-mix(in srgb, var(--card-accent, var(--primary-color)) 40%, transparent);
     border-radius: var(--radius-pill);
-    /* Texte assombri/éclairci vers --text-color pour un contraste lisible
-       quel que soit l'accent (ex. jaune card-1) et le thème */
-    color: color-mix(in srgb, var(--card-accent, var(--primary-color)) 50%, var(--text-color));
+    /* Texte teinté par l'accent de la carte, mais ramené vers `--text-color`.
+       Le dosage était à 50 %, ce qui ne garantissait rien : le résultat dépend
+       entièrement de l'accent, et l'accent jaune de la carte 1 tombait à
+       3,71:1. Dix cartes sur onze passaient par chance, pas par construction.
+
+       35 % est le dosage le plus fort qui tienne pour **n'importe quel**
+       accent, y compris les pires cas théoriques d'un accent blanc en thème
+       clair (4,62:1) ou noir en thème sombre (5,56:1). Sur les onze accents
+       réels, le pire remonte à 5,59:1. Ne pas remonter ce chiffre sans
+       revérifier les deux extrêmes : c'est ce qui rend la règle sûre pour un
+       projet ajouté plus tard. */
+    color: color-mix(in srgb, var(--card-accent, var(--primary-color)) 35%, var(--text-color));
     font-size: var(--texte-xs);
     font-weight: 600;
     letter-spacing: 0.3px;

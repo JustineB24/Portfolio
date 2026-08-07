@@ -244,7 +244,11 @@ if (!projetId || !projets[projetId]) {
         "sio-shop": ["#607d8b", "#37474f"],
         "speedcubing": ["#e64a19", "#bf360c"],
         "meteo": ["#4a148c", "#2a0054"],
-        "generateur-mdp": ["#e991bd", "#bb6090"],
+        // Assombri de 15 % à teinte et saturation constantes : au rose d'origine,
+        // le titre du bandeau n'atteignait que 2,87:1 pour un seuil de 3:1, le pire
+        // point du dégradé tombant à 2,18:1. C'était le dernier échec WCAG du site.
+        // Couleur décorative d'un exercice de BTS, pas une marque : rien à trahir.
+        "generateur-mdp": ["#e062a1", "#a8487b"],
         "mairie-cauffry": ["#1a5276", "#e6a817"],
         "panada-food": ["#ff6600", "#cc4400"],
         "yabt": ["#FDC800", "#E95F3F", "#E3312D", "#CF07FF", "#0409AA"],

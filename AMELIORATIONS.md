@@ -56,20 +56,20 @@ _Aucune amélioration en attente._
 ### ✅ 4. Page Compétences
 
 _Refaite entièrement le 06/08/2026. Les cartes retournables 3D décrites ici auparavant ont été supprimées :
-leur description n'était atteignable ni au tactile ni au clavier, aucune carte ne contenant d'élément
-focusable, donc 32 descriptions étaient invisibles sur téléphone._
+leur description n'était atteignable ni au tactile ni au clavier, aucune carte ne contenant d'élément focusable, donc 32
+descriptions étaient invisibles sur téléphone._
 
 - **Trois blocs** : Technologies, Outils, Certifications, séparés par des `<hr>` pointillés
-- **22 technologies en 4 familles** : langages, frameworks et bibliothèques, bases de données,
-  environnements et conteneurs. Classement par famille technique et non par usage réel
+- **22 technologies en 4 familles** : langages, frameworks et bibliothèques, bases de données, environnements et
+  conteneurs. Classement par famille technique et non par usage réel
 - **14 outils à part** : un éditeur ou un client d'API ne se compare pas à un langage
 - **Rien n'est caché** : le nom et la description sont du texte visible, en permanence
 - **Accent de marque** : filet gauche de 3px coloré par `--tech-filet`. Les couleurs ont migré le 07/08 dans
   `css/technos.css`, source unique partagée avec les pastilles des projets (voir l'entrée 51)
-- **15 certifications en liste unique**, groupées par organisme du plus au moins reconnu, puis par date.
-  Pas de mise en avant ni de section « autres parcours » : l'ordre porte seul la hiérarchie
-- **Métadonnées complètes** pour chaque certification : organisme, intitulé, date, détail (centre, score,
-  durée, identifiant) et lien de vérification quand il existe
+- **15 certifications en liste unique**, groupées par organisme du plus au moins reconnu, puis par date. Pas de mise en
+  avant ni de section « autres parcours » : l'ordre porte seul la hiérarchie
+- **Métadonnées complètes** pour chaque certification : organisme, intitulé, date, détail (centre, score, durée,
+  identifiant) et lien de vérification quand il existe
 - **En-tête de section centré** (eyebrow, titre, intro), **contenu aligné à gauche** sur le bord des cartes
 - **Échelle de titres** : `h1` 48px, `h2` 25,6px, `h3` 19,2px, nom de techno 16px
 - **Modale** : la vignette garde la classe `.certif`, contrat sur lequel `certifications.js` s'appuie
@@ -301,58 +301,56 @@ focusable, donc 32 descriptions étaient invisibles sur téléphone._
 
 ### ✅ 45. Composants partagés extraits (06/08/2026)
 
-Cinq motifs qui étaient recopiés de feuille en feuille, remontés dans `global.css` après mesure. Les
-duplications sont chiffrées dans les messages de commit correspondants.
+Cinq motifs qui étaient recopiés de feuille en feuille, remontés dans `global.css` après mesure. Les duplications sont
+chiffrées dans les messages de commit correspondants.
 
-- **Boutons** : socle `.btn` + variantes `.btn-primaire`, `.btn-secondaire`, `.btn-neutre`. Le même bouton
-  était écrit 7 fois dans 6 feuilles sous 7 noms, pour 388 lignes et 62 règles, ramenées à 32
-- **Liens de contenu** : un seul traitement pour tout le site, rouge sans soulignement au repos, souligné au
-  survol **et au focus clavier**. Il y avait 4 traitements différents, et tout lien non prévu retombait sur
-  le bleu du navigateur
-- **Échelle de texte** : `--texte-xs` à `--texte-xl`, cinq échelons de 0,05rem qui remplacent 13 valeurs
-  distinctes sous 1rem réparties sur 84 usages
-- **Survol des cartes** : `--carte-levee` et `--transition-carte`. Sept cartes montaient de 6, 5 ou 3px sur
-  des durées de 0,3 à 0,4s, moitié avec la courbe du site et moitié sans
+- **Boutons** : socle `.btn` + variantes `.btn-primaire`, `.btn-secondaire`, `.btn-neutre`. Le même bouton était écrit 7
+  fois dans 6 feuilles sous 7 noms, pour 388 lignes et 62 règles, ramenées à 32
+- **Liens de contenu** : un seul traitement pour tout le site, rouge sans soulignement au repos, souligné au survol **et
+  au focus clavier**. Il y avait 4 traitements différents, et tout lien non prévu retombait sur le bleu du navigateur
+- **Échelle de texte** : `--texte-xs` à `--texte-xl`, cinq échelons de 0,05rem qui remplacent 13 valeurs distinctes sous
+  1rem réparties sur 84 usages
+- **Survol des cartes** : `--carte-levee` et `--transition-carte`. Sept cartes montaient de 6, 5 ou 3px sur des durées
+  de 0,3 à 0,4s, moitié avec la courbe du site et moitié sans
 - **Jeton `--radius-pill`** : huit badges se partageaient `2rem` et `100px` pour la même intention
 - **Séparateurs `<hr>` et contenu masqué aux voyants** : trois copies chacun, réunies
 
-_Écarté après mesure : un composant `.carte`. Sur les 21 blocs à fond de carte, aucune déclaration n'est
-commune aux 21 et `padding` compte 16 valeurs pour 16 blocs. Le seul point commun réel est déjà un jeton._
+_Écarté après mesure : un composant `.carte`. Sur les 21 blocs à fond de carte, aucune déclaration n'est commune aux 21
+et `padding` compte 16 valeurs pour 16 blocs. Le seul point commun réel est déjà un jeton._
 
 ### ✅ 46. Douzième projet : Flouflix (06/08/2026)
 
 - Application mobile React Native / Expo Go sur l'API TVmaze, faite à deux en deux jours
-- **La consigne était de produire volontairement la pire interface possible** : le titre de la fiche l'assume,
-  « concevoir la pire interface possible ». C'était la condition pour la publier
-- Résout le dernier écart entre les technologies annoncées et les projets montrés : React Native et Expo
-  étaient listés sans aucun projet
+- **La consigne était de produire volontairement la pire interface possible** : le titre de la fiche l'assume, «
+  concevoir la pire interface possible ». C'était la condition pour la publier
+- Résout le dernier écart entre les technologies annoncées et les projets montrés : React Native et Expo étaient listés
+  sans aucun projet
 
 ### ✅ 47. Fiches projet remises d'aplomb (06/08/2026)
 
 Quatre corrections d'écarts entre ce qu'une fiche annonçait et ce que le projet contenait, dans les deux sens.
 
-- **Mairie de Cauffry** sur-annonçait : « site réalisé » avec HTML et CSS déclarés, alors que le site est un
-  WordPress de l'Adico et que le travail a porté sur le contenu. La fiche dit maintenant « je n'en ai pas
-  écrit le code »
+- **Mairie de Cauffry** sur-annonçait : « site réalisé » avec HTML et CSS déclarés, alors que le site est un WordPress
+  de l'Adico et que le travail a porté sur le contenu. La fiche dit maintenant « je n'en ai pas écrit le code »
 - **France Mobilier** déclarait C# : 41 fichiers PHP, aucun fichier C#, retiré
-- **Panada Food** : la version PHP avec base de données trouvée dans le dossier de stage est un prototype de
-  commande en ligne jamais abouti, pas le site livré. Technologies laissées à HTML, CSS, JavaScript, et le
-  prototype raconté comme une piste non terminée
-- **Python** : la description promettait « scripts et automatisation » sans rien pour l'appuyer. Elle devient
-  « algorithmique, en cours de mathématiques », ce que montrent les 600 lignes écrites en première année
+- **Panada Food** : la version PHP avec base de données trouvée dans le dossier de stage est un prototype de commande en
+  ligne jamais abouti, pas le site livré. Technologies laissées à HTML, CSS, JavaScript, et le prototype raconté comme
+  une piste non terminée
+- **Python** : la description promettait « scripts et automatisation » sans rien pour l'appuyer. Elle devient «
+  algorithmique, en cours de mathématiques », ce que montrent les 600 lignes écrites en première année
 
 ### ✅ 48. Images de partage par page (05/08/2026, corrigé le 07/08)
 
-Longtemps classé « non réalisable sans outil dédié ». Il l'était : `assets/og/generateur.html` est une page qui
-compose la carte en HTML, capturée ensuite en 1200x630. Dix cartes, une par page.
+Longtemps classé « non réalisable sans outil dédié ». Il l'était : `assets/og/generateur.html` est une page qui compose
+la carte en HTML, capturée ensuite en 1200x630. Dix cartes, une par page.
 
-- Un dictionnaire `CARTES` porte eyebrow, titre, accroche et icône de chaque page, et son en-tête rappelle qu'une
-  image ne suit pas les modifications des pages : corriger le dictionnaire **puis** régénérer
-- **Par projet, c'est impossible en statique** : les douze projets partagent un seul `projet-details.html`, et
-  LinkedIn ne lit pas le HTML modifié par JavaScript. Le JS pose quand même la première capture en `og:image`,
-  utile aux robots qui exécutent le JS
-- Le 07/08, la carte de Compétences a été régénérée : elle annonçait « où le voir en projet » alors que les liens
-  de preuve avaient été retirés de la page la veille
+- Un dictionnaire `CARTES` porte eyebrow, titre, accroche et icône de chaque page, et son en-tête rappelle qu'une image
+  ne suit pas les modifications des pages : corriger le dictionnaire **puis** régénérer
+- **Par projet, c'est impossible en statique** : les douze projets partagent un seul `projet-details.html`, et LinkedIn
+  ne lit pas le HTML modifié par JavaScript. Le JS pose quand même la première capture en `og:image`, utile aux robots
+  qui exécutent le JS
+- Le 07/08, la carte de Compétences a été régénérée : elle annonçait « où le voir en projet » alors que les liens de
+  preuve avaient été retirés de la page la veille
 
 ### ✅ 49. Fiches projet : Gecko n'est plus « en cours de développement » (07/08/2026)
 
@@ -364,15 +362,15 @@ compose la carte en HTML, capturée ensuite en 1200x630. Dix cartes, une par pag
 
 ### ✅ 50. Bandeaux des fiches projet : 14 échecs de contraste fermés (07/08/2026)
 
-Le texte du bandeau est clair et fixe, la couleur du dégradé vient du projet : quand elle est claire, ça casse.
-Jusqu'à **2,38:1** sur le bouton « Retour ».
+Le texte du bandeau est clair et fixe, la couleur du dégradé vient du projet : quand elle est claire, ça casse. Jusqu'à
+**2,38:1** sur le bouton « Retour ».
 
-- Un voile calculé sur tout le bandeau a d'abord été posé, puis **retiré** : il assombrissait les couleurs de
-  projet, le jaune de YABT virant à l'ocre
-- Le fond sombre est finalement posé **sous les petits textes seulement**, à 45 %, ce qui laisse le dégradé
-  strictement intact. 13 échecs sur 14 réglés
-- Le dernier, le titre du Générateur de MDP à 2,87:1, a demandé d'assombrir la couleur du projet de 15 %.
-  Couleur décorative d'un exercice de BTS, pas une marque
+- Un voile calculé sur tout le bandeau a d'abord été posé, puis **retiré** : il assombrissait les couleurs de projet, le
+  jaune de YABT virant à l'ocre
+- Le fond sombre est finalement posé **sous les petits textes seulement**, à 45 %, ce qui laisse le dégradé strictement
+  intact. 13 échecs sur 14 réglés
+- Le dernier, le titre du Générateur de MDP à 2,87:1, a demandé d'assombrir la couleur du projet de 15 %. Couleur
+  décorative d'un exercice de BTS, pas une marque
 - `opacity: 0.92` retiré de la date : griser du texte par l'opacité abaisse le contraste
 
 ### ✅ 51. `technos.css`, source unique des couleurs de technos (07/08/2026)
@@ -383,35 +381,35 @@ Trois feuilles déclaraient chacune leur version de la même palette, et elles a
   divergeaient de leur propre logo (HTML, CSS, Bootstrap, Git, GitLab)
 - Trois jetons par techno et par thème, parce que la même couleur sert à des usages de seuils différents :
   `--tech-brut` (fond de pastille à 15 %), `--tech-libelle` (texte, 4,5:1) et `--tech-filet` (filet de 3px, 3:1)
-- Le fond teinté est ce qui sauve les marques pâles : le jaune JavaScript est à 1,13:1 en texte sur une carte
-  claire, mais reste parfaitement identifiable en fond à 15 %
+- Le fond teinté est ce qui sauve les marques pâles : le jaune JavaScript est à 1,13:1 en texte sur une carte claire,
+  mais reste parfaitement identifiable en fond à 15 %
 - **20 filets sur 36 passaient sous 3:1** dans un thème avant ce calcul
 
 ### ✅ 52. Menu burger refait (07/08/2026)
 
-- Le panneau prenait `--button-background-color`, qui **s'inverse à contre-courant du thème** : noir en thème
-  clair, blanc en thème sombre. C'était la cause du pire échec de contraste du site, l'onglet de la page courante
-  à **1,90:1**. Il suit maintenant `--background-color`, ce qui supprime l'anomalie au lieu de la documenter
+- Le panneau prenait `--button-background-color`, qui **s'inverse à contre-courant du thème** : noir en thème clair,
+  blanc en thème sombre. C'était la cause du pire échec de contraste du site, l'onglet de la page courante à **1,90:1**.
+  Il suit maintenant `--background-color`, ce qui supprime l'anomalie au lieu de la documenter
 - Libellés alignés à gauche : sept libellés centrés de longueurs différentes n'ont aucun bord commun
-- **Chevron « › » sur la page courante**, repris du logo ‹JB/›, plus `aria-current="page"` : la page courante ne
-  doit pas être signalée par la seule couleur (WCAG 1.4.1)
+- **Chevron « › » sur la page courante**, repris du logo ‹JB/›, plus `aria-current="page"` : la page courante ne doit
+  pas être signalée par la seule couleur (WCAG 1.4.1)
 - Le tiers bas, qui restait vide, reçoit le CV, seule chose que les sept liens ne donnent pas
 - Header resserré : le burger ne maigrissait pas avec le reste au palier ≤360px et chevauchait le logo
 
 ### ✅ 53. Derniers échecs WCAG et cibles tactiles (07/08/2026)
 
-- **Badge de statut des cartes** : son texte était un `color-mix` à 50 % qui ne garantissait aucun seuil. Dix
-  cartes sur onze passaient par chance. Ramené à 35 %, le dosage le plus fort qui tienne pour n'importe quel accent
-- **Puces de carrousel** : 12x12px avec 8px d'écart, soit 20px utiles contre 24 exigés. La puce visible descend
-  dans un `::before`, le bouton devient la cible. `flex-wrap` indispensable, seize puces de 24px dépassant la
-  largeur d'un téléphone
-- Deux défauts trouvés en corrigeant : l'**indicateur d'image courante** était à 2:1 environ dans les deux
-  galeries, et la **galerie de certifications avait ses propres puces**, que Lighthouse ne voyait pas puisque la
-  modale est fermée pendant l'audit
-- `alt` **redondant** sur les logos techno, `src=""` de la modale de zoom, et le logo de la veille qui était à la
-  fois élément LCP et en `loading="lazy"`
-- **Nettoyage des modales d'easter egg** : il ne passait que par `transitionend`. Si l'évènement ne se déclenchait
-  pas, la modale restait à l'écran et le verrou bloquait tous les autres easter eggs pour le reste de la visite
+- **Badge de statut des cartes** : son texte était un `color-mix` à 50 % qui ne garantissait aucun seuil. Dix cartes sur
+  onze passaient par chance. Ramené à 35 %, le dosage le plus fort qui tienne pour n'importe quel accent
+- **Puces de carrousel** : 12x12px avec 8px d'écart, soit 20px utiles contre 24 exigés. La puce visible descend dans un
+  `::before`, le bouton devient la cible. `flex-wrap` indispensable, seize puces de 24px dépassant la largeur d'un
+  téléphone
+- Deux défauts trouvés en corrigeant : l'**indicateur d'image courante** était à 2:1 environ dans les deux galeries, et
+  la **galerie de certifications avait ses propres puces**, que Lighthouse ne voyait pas puisque la modale est fermée
+  pendant l'audit
+- `alt` **redondant** sur les logos techno, `src=""` de la modale de zoom, et le logo de la veille qui était à la fois
+  élément LCP et en `loading="lazy"`
+- **Nettoyage des modales d'easter egg** : il ne passait que par `transitionend`. Si l'évènement ne se déclenchait pas,
+  la modale restait à l'écran et le verrou bloquait tous les autres easter eggs pour le reste de la visite
 
 ### ✅ 54. JSON-LD enrichi (07/08/2026)
 
@@ -620,10 +618,10 @@ interpréter. Il en compte quatorze.
 
 - **Solution** : `<div class="loader">` plein écran avec logo animé, masqué par le JS après chargement.
 - **Gain** : Masquer le rendu progressif de la page.
-- **Raison du retrait** (06/08/2026) : mesuré à **32 ms de visibilité**, soit un flash que personne ne perçoit.
-  En regard, il était opaque et en `z-index: 99999`, et seul le JS savait le retirer : sans JavaScript, les dix
-  pages s'affichaient **entièrement blanches** alors que leur contenu est bien dans le HTML. Un mode de panne
-  total pour un effet imperceptible.
+- **Raison du retrait** (06/08/2026) : mesuré à **32 ms de visibilité**, soit un flash que personne ne perçoit. En
+  regard, il était opaque et en `z-index: 99999`, et seul le JS savait le retirer : sans JavaScript, les dix pages
+  s'affichaient **entièrement blanches** alors que leur contenu est bien dans le HTML. Un mode de panne total pour un
+  effet imperceptible.
 
 ### ❌ Favicon multi-format
 

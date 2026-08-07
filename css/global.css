@@ -634,9 +634,6 @@ p {
     transition: transform 0.3s ease-out;
 }
 
-.onglet-burger.active {
-    color: var(--primary-color) !important;
-}
 
 /* Icone menu burger */
 .icon-menu {
@@ -701,51 +698,123 @@ p {
     --rotate-bar-three: -45deg;
 }
 
-/* Menu burger */
+/* Le titre passait sur deux lignes dès l'ouverture du menu : la croix s'ajoute
+   à gauche et rogne la place. Il tient sur une ligne et cède du terrain par la
+   troncature plutôt que par le retour, qui donnait un header bancal. */
+.titre-nom {
+    white-space: nowrap;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ==============================
+   Menu burger (mobile)
+
+   Le panneau suivait `--button-background-color`, qui s'inverse à contre-courant
+   du thème : il était noir en thème CLAIR et blanc en thème SOMBRE. Outre
+   l'effet de surprise, c'est ce qui piégeait le contraste, le rouge de marque se
+   retrouvant sur du sombre précisément quand le reste de la page est clair.
+   Il suit maintenant `--background-color`, donc la règle habituelle du site
+   redevient valable et il n'y a plus d'exception à retenir.
+   ============================== */
 .menu-burger {
     position: fixed;
     top: -1000%;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--button-background-color);
+    background-color: var(--background-color);
     z-index: 100;
     transition: top 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    font-size: 1.2rem;
     height: 100%;
     overflow-y: auto;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    gap: clamp(2rem, 6vh, 3.5rem);
+    padding: 5rem 0 max(2rem, env(safe-area-inset-bottom, 2rem));
+    box-sizing: border-box;
 }
 
 .side-menu {
     width: 100%;
-    padding: 0 2rem;
+    padding: 0 1.75rem;
 }
 
+/* Aligné à gauche, et non centré : sept libellés centrés de longueurs très
+   différentes n'ont pas de bord commun, donc l'œil n'a aucune ligne à suivre
+   pour descendre la liste. */
 .side-menu ul {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(1.2rem, 5vh, 3rem);
+    align-items: stretch;
+    gap: 0.15rem;
+    /* `body` pose `text-align: center` pour tout le site : sans cette remise à
+       gauche, les libellés restent centrés et le chevron flotte loin du texte. */
+    text-align: left;
 }
 
 .side-menu li {
-    display: flex;
-    align-items: center;
+    display: block;
 }
 
 .onglet-burger {
-    font-weight: bold;
+    display: block;
+    position: relative;
+    padding: 0.85rem 0 0.85rem 1.6rem;
+    font-family: var(--font-titre);
+    font-size: clamp(1.25rem, 5.5vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: 0.01em;
     transition: color 0.3s ease;
-    width: 100%;
 }
 
 .onglet-burger:link,
 .onglet-burger:visited {
-    color: var(--button-text-color);
+    color: var(--text-color);
+}
+
+/* Marqueur de la page courante : le chevron du logo ‹JB/›. Il double la
+   couleur par une forme, seule façon de ne pas signaler la page courante
+   « par la couleur uniquement » (WCAG 1.4.1). Il sert aussi de repère au
+   survol et au focus clavier. */
+.onglet-burger::before {
+    content: "\203A";
+    position: absolute;
+    left: 0.15rem;
+    color: var(--primary-color);
+    opacity: 0;
+    transform: translateX(-0.35rem);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.onglet-burger.active::before,
+.onglet-burger:hover::before,
+.onglet-burger:focus-visible::before {
+    opacity: 1;
+    transform: none;
+}
+
+.onglet-burger.active {
+    color: var(--primary-color);
+}
+
+.dark-theme .onglet-burger.active,
+.dark-theme .onglet-burger::before {
+    color: var(--primary-on-dark);
+}
+
+/* Pied du panneau : le CV est la seule chose que les sept liens ne donnent pas,
+   et c'est ce qu'un recruteur cherche sur téléphone. Il occupe le tiers bas qui
+   restait vide. */
+.burger-pied {
+    padding: 0 1.75rem;
+}
+
+.burger-pied .btn {
+    width: 100%;
+    justify-content: center;
 }
 
 /* Affichage du menu lorsque la classe open est ajoutée par JS */
@@ -887,10 +956,13 @@ footer {
         padding: 5px;
     }
 
+    /* La marge gauche doit dépasser le pied du burger, qui est en position
+       absolue de 16 à 46px et ne bouge pas avec la largeur. À 3rem (48px) il
+       ne restait que 2px : le logo semblait collé à l'icône. */
     .titre-nom {
         font-size: 1.2rem;
         padding: 3px 6px;
-        margin-left: 3rem;
+        margin-left: 3.5rem;
     }
 
     .logo-header {
@@ -1417,10 +1489,19 @@ body.page-exit main {
    droit. On resserre uniquement les éléments du header à cette largeur.
    ============================== */
 @media (max-width: 360px) {
+    /* Tout rétrécit à ce palier — logo 30→26, boutons réseaux 35→28, titre
+       1,2→1rem — sauf le burger, qui restait à 30px et paraissait donc trop
+       gros. Il suit désormais la même réduction. Sa largeur commande la marge
+       du titre juste en dessous : 16px d'origine + 26px = 42px de pied. */
+    .icon-menu {
+        --gap: 4px;
+        width: 26px;
+    }
+
     .titre-nom {
         font-size: 1rem;
         padding: 2px 4px;
-        margin-left: 2.25rem;
+        margin-left: 3rem;
         gap: 0.4rem;
     }
 

@@ -108,10 +108,13 @@ function genererHeader(chemin) {
     // containing block créé par backdrop-filter sur le header
     const menuBurgerHTML = `
         <div class="menu-burger" id="menu-navigation">
-            <div class="side-menu">
+            <nav class="side-menu" aria-label="Navigation du site">
                 <ul>
                     ${menuBurger}
                 </ul>
+            </nav>
+            <div class="burger-pied">
+                <a class="btn btn-primaire" href="${chemin}cv_blin_justine.pdf" download><i class="fas fa-file-arrow-down" aria-hidden="true"></i> Télécharger mon CV</a>
             </div>
         </div>
     `;
@@ -124,6 +127,9 @@ function genererHeader(chemin) {
         if (href && (cheminActuel.endsWith(href.replace(/^\.\.\/|\.\//, '')) ||
             (href.includes('index.html') && (cheminActuel.endsWith('/') || cheminActuel.endsWith('/index.html'))))) {
             link.classList.add('active');
+            // `aria-current` porte l'information pour les lecteurs d'écran ; la
+            // classe ne fait que la couleur et le chevron, qui sont visuels.
+            link.setAttribute('aria-current', 'page');
         }
     });
 

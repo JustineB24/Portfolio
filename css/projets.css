@@ -207,7 +207,7 @@
 /* Couleurs des technos : centralisées dans `css/technos.css` */
 
 /* Badge en cours de développement */
-.card .badge-en-cours {
+.card .badge-statut {
     display: inline-block;
     margin-bottom: 0.6rem;
     padding: 0.25rem 0.7rem;

@@ -548,8 +548,14 @@
             <button id="zoom-prev" class="carrousel-btn carrousel-prev" aria-label="Image précédente">
                 <i class="fas fa-chevron-left" aria-hidden="true"></i>
             </button>
-            <!-- Pas de `src=""` : un src vide fait requêter la page elle-même par
-                 certains navigateurs. `certifications.js` le pose à l'ouverture. -->
+            <!-- Deux entorses volontaires à la convention du projet sur les images.
+                 Pas de `src=""` : un src vide fait requêter la page elle-même par
+                 certains navigateurs. `certifications.js` le pose à l'ouverture.
+                 Pas de `width`/`height` non plus : les quinze attestations n'ont
+                 pas le même rapport, une dimension fixe en déformerait certaines.
+                 La règle anti-CLS ne s'applique pas ici, l'image vivant dans une
+                 fenêtre en `position: fixed` masquée tant qu'on ne clique pas :
+                 elle ne peut décaler aucune mise en page. -->
             <img id="zoom-modal-img" alt="Image agrandie">
             <button id="zoom-next" class="carrousel-btn carrousel-next" aria-label="Image suivante">
                 <i class="fas fa-chevron-right" aria-hidden="true"></i>

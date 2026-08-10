@@ -39,20 +39,16 @@
 }
 
 /* ==============================
-   Couleur des filtres — `--filtre-color` habille le contour ET le libellé.
+   Couleur des filtres — `--tech-libelle` habille le contour ET le libellé,
+   `--tech-brut` le fond teinté à 15 %.
 
-   **Le logo de la techno est la source**, via le `--comp-color` de
-   `competences.css` qui porte déjà cette couleur : le but est que la pastille
-   fasse rappel avec l'icône affichée à côté d'elle. Ne pas modifier une
-   couleur ici sans la modifier là-bas, sous peine de recréer l'écart de
-   palette entre les deux pages.
+   **Les valeurs des technos ne sont plus ici** : elles vivent dans
+   `css/technos.css`, source unique partagée avec les pastilles des cartes et de
+   la fiche projet. Trois feuilles déclaraient chacune leur version de la même
+   palette, et elles avaient fini par diverger sur neuf technos.
 
-   Le seuil applicable est celui du texte, 4,5:1 (WCAG 1.4.3), et non celui
-   d'un contour, 3:1 (1.4.11). Les couleurs de marque brutes ne l'atteignent
-   pas toutes : chacune est ramenée au seuil en n'ajustant que la clarté HSL,
-   à teinte et saturation constantes. Une seule dérive encore visiblement, le
-   cyan React virant au bleu canard en clair (1,89:1 brut) ; JavaScript, qui
-   était le pire cas, est traité à part par un fond plein en bas de section.
+   Ne restent ci-dessous que les **catégories**, qui n'ont pas de logo dont
+   dériver une couleur et n'appartiennent donc pas à ce fichier-là.
 
    L'état actif reste rouge à texte clair : `.filtre-btn.active` l'emporte sur
    `.filtre-btn` par la spécificité, sans avoir besoin de `:not(.active)`.
@@ -206,7 +202,9 @@
 
 /* Couleurs des technos : centralisées dans `css/technos.css` */
 
-/* Badge en cours de développement */
+/* Badge de statut de la carte. Il ne dit plus seulement « en cours de
+   développement » : Gecko affiche « En production ». D'où le renommage de
+   `.badge-en-cours` en `.badge-statut` le 07/08. */
 .card .badge-statut {
     display: inline-block;
     margin-bottom: 0.6rem;

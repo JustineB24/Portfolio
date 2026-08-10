@@ -141,7 +141,7 @@ const projets = {
             "../assets/projets/france_mobilier/AjoutProduit.png",
             "../assets/projets/france_mobilier/AjoutMagasin.png"
         ],
-        description: "Site e-commerce développé pour la société France Mobilier, spécialisée dans le mobilier d'intérieur. Conçu selon l'architecture MVC, il propose une page d'accueil présentant l'entreprise, un module de recherche de meubles par catégorie, ainsi qu'une page listant l'ensemble des magasins physiques. Le projet utilise une base de données pour gérer dynamiquement les meubles et les points de vente. Un panneau d'administration est également prévu pour permettre la modification des produits et des magasins. L'interface est pensée pour être claire et facilement maintenable.",
+        description: "Site e-commerce développé pour France Mobilier, une société de mobilier d'intérieur fictive servant de support à un sujet de BTS. Conçu selon l'architecture MVC, il propose une page d'accueil présentant l'entreprise, un module de recherche de meubles par catégorie, ainsi qu'une page listant l'ensemble des magasins physiques. Le projet utilise une base de données pour gérer dynamiquement les meubles et les points de vente. Un panneau d'administration est également prévu pour permettre la modification des produits et des magasins. L'interface est pensée pour être claire et facilement maintenable.",
         technologies: ["HTML", "CSS", "PHP", "MySQL", "XAMPP"]
     },
     "sio-shop": {
@@ -165,7 +165,7 @@ const projets = {
             "../assets/projets/sio_shop/Employe.png",
             "../assets/projets/sio_shop/AjoutEmploye.png"
         ],
-        description: "Application de gestion commerciale développée sous Windows Forms pour une concession automobile. Ce projet propose une interface permettant aux employés de gérer les clients, les véhicules en stock et les ventes. L'application intègre une authentification sécurisée, une liaison directe avec une base de données SQL, ainsi qu'un module de création de factures au format PDF. Les utilisateurs peuvent rechercher, ajouter et modifier clients et produits, saisir des ventes avec calcul automatique du prix TTC, et suivre l'évolution des stocks en temps réel. La structure suit les principes de la programmation orientée objet, en assurant une navigation fluide et professionnelle entre les différentes fonctionnalités.",
+        description: "Application de gestion commerciale développée sous Windows Forms pour une concession automobile fictive, sujet d'un projet de BTS. Ce projet propose une interface permettant aux employés de gérer les clients, les véhicules en stock et les ventes. L'application intègre une authentification sécurisée, une liaison directe avec une base de données SQL, ainsi qu'un module de création de factures au format PDF. Les utilisateurs peuvent rechercher, ajouter et modifier clients et produits, saisir des ventes avec calcul automatique du prix TTC, et suivre l'évolution des stocks en temps réel. La structure suit les principes de la programmation orientée objet, en assurant une navigation fluide et professionnelle entre les différentes fonctionnalités.",
         technologies: ["WinForms", "C#", "MySQL", "XAMPP"]
     },
     "speedcubing": {
@@ -178,7 +178,7 @@ const projets = {
             "../assets/projets/speedcubing/Def_Speedcubing.jpg",
             "../assets/projets/speedcubing/Connexion.jpg"
         ],
-        description: "Projet développé pour l'Association Française de SpeedCubing. Ce site permet aux passionnés de Rubik's Cube de s'entraîner en ligne, d'enregistrer leurs temps et de comparer leurs performances avec celles des autres. Il intègre un chronomètre interactif, une base de données des meilleurs temps et une section dédiée à la résolution d'un Rubik's Cube 3x3.",
+        description: "Sujet d'école ayant pour thème une association de speedcubing, sans commande réelle derrière. Ce site permet aux passionnés de Rubik's Cube de s'entraîner en ligne, d'enregistrer leurs temps et de comparer leurs performances avec celles des autres. Il intègre un chronomètre interactif, une base de données des meilleurs temps et une section dédiée à la résolution d'un Rubik's Cube 3x3.",
         technologies: ["PHP", "CSS", "JavaScript", "MySQL", "XAMPP"]
     },
     "meteo": {

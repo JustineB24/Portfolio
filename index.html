@@ -58,7 +58,10 @@
          `.certif-org` / `.certif-titre`. Regénérer si ces pages changent, sinon
          la déclaration diverge silencieusement de ce que le site affiche.
          `hasCredential` porte le BTS puis les 15 attestations ; `knowsAbout` la
-         totalité des technos et outils listés.
+         totalité des technos et outils listés. Le Bachelor est en cours, donc
+         La Manu est en `affiliation` et non en `alumniOf`, qui affirmerait un
+         cursus achevé ; seul le lycée Édouard Gand, dont le BTS est obtenu,
+         reste en `alumniOf`.
          ============================== -->
     <script type="application/ld+json">
         {
@@ -128,18 +131,6 @@
                         "url": "https://www.litesoft.fr/"
                 },
                 "alumniOf": [
-                        {
-                                "@type": "EducationalOrganization",
-                                "name": "La Manu",
-                                "location": {
-                                        "@type": "Place",
-                                        "address": {
-                                                "@type": "PostalAddress",
-                                                "addressLocality": "Lacroix-Saint-Ouen",
-                                                "addressCountry": "FR"
-                                        }
-                                }
-                        },
                         {
                                 "@type": "EducationalOrganization",
                                 "name": "Lycée Édouard Gand",
@@ -299,7 +290,19 @@
                                         "name": "Cursa, TUTO UNITY FR"
                                 }
                         }
-                ]
+                ],
+                "affiliation": {
+                        "@type": "EducationalOrganization",
+                        "name": "La Manu",
+                        "location": {
+                                "@type": "Place",
+                                "address": {
+                                        "@type": "PostalAddress",
+                                        "addressLocality": "Lacroix-Saint-Ouen",
+                                        "addressCountry": "FR"
+                                }
+                        }
+                }
         }
     </script>
 </head>

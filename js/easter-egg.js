@@ -58,6 +58,13 @@
         // Donner le focus au bouton fermer
         fermerBtn.focus();
 
+        // Hors de `fermer()` : la fermeture est atteignable par trois chemins (le
+        // bouton, le clic sur le fond, Échap) et seul celui d'Échap est détaché.
+        // Un drapeau déclaré dans `fermer()` ne dédoublonnait donc qu'à
+        // l'intérieur d'un appel, et deux fermetures pendant le fondu lançaient
+        // le nettoyage deux fois.
+        let nettoye = false;
+
         function fermer() {
             modale.classList.remove('visible');
             document.removeEventListener('keydown', gestionnaireClavier);
@@ -67,8 +74,6 @@
             // `easterEggActif` restait à true, ce qui bloquait tous les autres
             // easter eggs pour le reste de la visite. Le repli garantit que le
             // nettoyage a lieu, et le drapeau garantit qu'il n'a lieu qu'une fois.
-            let nettoye = false;
-
             function nettoyer() {
                 if (nettoye) return;
                 nettoye = true;

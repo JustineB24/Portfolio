@@ -128,9 +128,14 @@
     transition: opacity 0.3s, transform 0.3s;
 }
 
+/* Le survol renforce la pastille au lieu de faire pâlir tout l'élément.
+   Un `opacity: 0.8` sur l'ensemble diluait le voile de 45 % à 36 % et fondait
+   le texte vers un fond devenu plus clair : sur les dégradés les plus pâles
+   (YABT, Générateur de MDP), l'état survolé repassait sous le seuil que cette
+   même règle venait de garantir. */
 .back-button:hover {
     color: var(--header-text-color);
-    opacity: 0.8;
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .back-button i {

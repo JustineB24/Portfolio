@@ -395,6 +395,13 @@ Trois feuilles déclaraient chacune leur version de la même palette, et elles a
   pas être signalée par la seule couleur (WCAG 1.4.1)
 - Le tiers bas, qui restait vide, reçoit le CV, seule chose que les sept liens ne donnent pas
 - Header resserré : le burger ne maigrissait pas avec le reste au palier ≤360px et chevauchait le logo
+- **Deux régressions introduites par cette refonte, trouvées le jour même par une relecture du diff** : le centrage
+  vertical rendait le premier lien injoignable sur tout téléphone en paysage (`justify-content: center` sur un conteneur
+  défilant déborde par le haut, et `scrollTop` ne peut pas être négatif), et le panneau fermé restait dans l'ordre de
+  tabulation. Corrigé par `safe center` et `visibility: hidden`. Les deux pièges sont notés dans
+  `CLAUDE.md`
+- **Le titre du header était coupé net** à 320 et 390px : `text-overflow: ellipsis` avait été posé sur un
+  `inline-flex`, où il ne s'applique pas. La troncature vit maintenant dans un `<span class="titre-texte">`
 
 ### ✅ 53. Derniers échecs WCAG et cibles tactiles (07/08/2026)
 
@@ -403,7 +410,7 @@ Trois feuilles déclaraient chacune leur version de la même palette, et elles a
 - **Puces de carrousel** : 12x12px avec 8px d'écart, soit 20px utiles contre 24 exigés. La puce visible descend dans un
   `::before`, le bouton devient la cible. `flex-wrap` indispensable, seize puces de 24px dépassant la largeur d'un
   téléphone
-- Deux défauts trouvés en corrigeant : l'**indicateur d'image courante** était à 2:1 environ dans les deux galeries, et
+- Deux défauts trouvés en corrigeant : l' **indicateur d'image courante** était à 2:1 environ dans les deux galeries, et
   la **galerie de certifications avait ses propres puces**, que Lighthouse ne voyait pas puisque la modale est fermée
   pendant l'audit
 - `alt` **redondant** sur les logos techno, `src=""` de la modale de zoom, et le logo de la veille qui était à la fois

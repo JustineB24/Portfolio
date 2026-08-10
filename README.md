@@ -19,18 +19,18 @@ de projets.
 
 ## 👋 À propos
 
-Développeuse passionnée par la création d'outils numériques, je me spécialise dans le développement d'applications et
-la gestion de projets informatiques. Curieuse de technologie, j'aime approfondir mes compétences techniques et
-appliquer les bonnes pratiques du développement logiciel.
+Développeuse passionnée par la création d'outils numériques, je me spécialise dans le développement d'applications et la
+gestion de projets informatiques. Curieuse de technologie, j'aime approfondir mes compétences techniques et appliquer
+les bonnes pratiques du développement logiciel.
 
 **Parcours :**
 
-| 🎓 Formation                                         | 📅 Période     |
-|------------------------------------------------------|----------------|
+| 🎓 Formation                                              | 📅 Période            |
+|-----------------------------------------------------------|-----------------------|
 | Mastère Expert IT, applications intelligentes et Big Data | 2026 – 2028 (à venir) |
-| Bachelor Chef de projet développement et data        | 2025 – 2026    |
-| BTS SIO, option SLAM                                 | 2023 – 2025    |
-| Baccalauréat Général (Maths, NSI)                    | 2020 – 2023    |
+| Bachelor Chef de projet développement et data             | 2025 – 2026           |
+| BTS SIO, option SLAM                                      | 2023 – 2025           |
+| Baccalauréat Général (Maths, NSI)                         | 2020 – 2023           |
 
 ---
 
@@ -41,14 +41,13 @@ appliquer les bonnes pratiques du développement logiciel.
 | 📱 **Design responsive**         | Adapté à tous les appareils (mobile, tablette, desktop)     |
 | 🌙 **Mode sombre / clair**       | Thème personnalisable avec persistance via `localStorage`   |
 | 🍔 **Menu burger**               | Navigation mobile fluide avec blocage du défilement         |
-| 🎬 **Animations fluides**        | Texte rotatif, compteurs animés, effets de survol 3D (tilt) |
+| 🎬 **Animations fluides**        | Texte rotatif, compteurs animés, révélation au défilement   |
 | 📜 **Timeline interactive**      | Parcours scolaire et professionnel présenté visuellement    |
-| 🏅 **Galerie de certifications** | Modale avec navigation clavier/flèches et zoom/déplacement  |
+| 🏅 **Galerie de certifications** | Modale plein écran, navigation aux flèches et au clavier    |
 | 🎓 **Page Formation**            | Un bloc par diplôme, du plus récent au plus ancien          |
-| 🧭 **Fil d'Ariane**              | Navigation contextuelle générée dynamiquement               |
-| ♿ **Accessibilité**              | Lien d'évitement, navigation au clavier, attributs ARIA     |
-| 🧲 **Boutons magnétiques**       | Effet d'attraction au survol sur les boutons et icônes      |
-| 🔍 **SEO**                       | Sitemap XML, robots.txt, balises méta Open Graph            |
+| ♿ **Accessibilité**             | Lien d'évitement, navigation au clavier, attributs ARIA     |
+| 🔍 **SEO**                       | Sitemap XML, robots.txt, carte de partage par page, JSON-LD |
+| 🎨 **Couleurs des technos**      | Une source unique, dérivée de la couleur réelle des logos   |
 | 🥚 **Easter eggs**               | Surprises cachées à découvrir (Konami code et autres…)      |
 
 ---
@@ -121,5 +120,4 @@ Portfolio/
 ## ✍️ Auteur
 
 **Justine BLIN**
-Étudiante en Bachelor Chef de Projet Développement et IA
-La Manu, Lacroix-Saint-Ouen
+Étudiante en Bachelor Chef de projet développement et data La Manu, Lacroix-Saint-Ouen

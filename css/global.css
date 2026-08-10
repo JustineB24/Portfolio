@@ -1056,10 +1056,6 @@ footer {
     overflow: hidden !important;
 }
 
-.cursor-pointer {
-    cursor: pointer;
-}
-
 .hidden {
     display: none;
 }
@@ -1190,18 +1186,16 @@ footer {
     background: var(--primary-light);
 }
 
-/* Thème sombre — transitions fluides sur éléments enfants */
-.card-accueil,
+/* Thème sombre — transitions fluides sur éléments enfants.
+   `.card-accueil`, `.specialite-card` et `.contact-infos` retirées le 07/08 :
+   plus aucun HTML ni JS ne les pose. */
 .card-competence,
-.specialite-card,
-.contact-infos,
 .profil,
 .timeline-content,
 .card,
 .filtre-btn,
 .form-group input,
-.form-group textarea,
-.contact-infos li i {
+.form-group textarea {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
@@ -1316,18 +1310,9 @@ body.page-exit main {
 
 /* Parallaxe léger sur les hero (desktop uniquement) */
 @media (hover: hover) and (min-width: 1025px) {
-    .hero,
-    .page-header {
+    .hero {
         background-attachment: fixed;
     }
-}
-
-/* Temps de lecture et sous-titre de page */
-.temps-lecture {
-    font-size: var(--texte-lg);
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-    font-weight: 600;
 }
 
 .sous-titre-page {
@@ -1396,9 +1381,6 @@ body.page-exit main {
         font-size: var(--texte-sm);
     }
 
-    .card-thumbnail {
-        height: 120px;
-    }
 }
 
 /* Print stylesheet */
@@ -1431,7 +1413,7 @@ body.page-exit main {
         opacity: 0.6;
     }
 
-    .card, .card-accueil {
+    .card {
         break-inside: avoid;
         box-shadow: none !important;
     }

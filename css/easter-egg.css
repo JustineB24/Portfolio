@@ -175,15 +175,6 @@
     line-height: 2;
 }
 
-.ee-modale-contenu .ee-code {
-    font-family: monospace;
-    background: #333;
-    padding: 0.3rem 0.8rem;
-    border-radius: 5px;
-    color: #0f0;
-    font-size: 1rem;
-}
-
 .ee-modale-contenu .ee-fermer {
     display: inline-block;
     margin-top: 2rem;
@@ -245,38 +236,6 @@
     }
     50% {
         opacity: 0;
-    }
-}
-
-.ee-rainbow {
-    animation: ee-rainbow-color 0.5s linear infinite;
-}
-
-.ee-rainbow * {
-    animation: ee-rainbow-color 0.5s linear infinite;
-}
-
-@keyframes ee-rainbow-color {
-    0% {
-        --primary-color: #ff0000;
-    }
-    16% {
-        --primary-color: #ff8800;
-    }
-    33% {
-        --primary-color: #ffff00;
-    }
-    50% {
-        --primary-color: #00ff00;
-    }
-    66% {
-        --primary-color: #0088ff;
-    }
-    83% {
-        --primary-color: #8800ff;
-    }
-    100% {
-        --primary-color: #ff0000;
     }
 }
 
@@ -452,8 +411,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .ee-rainbow,
-    .ee-rainbow *,
     .ee-glitch,
     .ee-achievement-icone,
     .ee-modale-contenu,

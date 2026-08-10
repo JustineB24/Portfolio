@@ -700,12 +700,22 @@ p {
 
 /* Le titre passait sur deux lignes dès l'ouverture du menu : la croix s'ajoute
    à gauche et rogne la place. Il tient sur une ligne et cède du terrain par la
-   troncature plutôt que par le retour, qui donnait un header bancal. */
+   troncature plutôt que par le retour, qui donnait un header bancal.
+
+   La troncature porte sur un `<span>` intérieur et non sur `.titre-nom` :
+   celui-ci est un `inline-flex`, or `text-overflow` ne s'applique qu'à un
+   conteneur de bloc. Posé dessus il ne faisait rien, et le `min-width: 0`
+   laissait le titre être coupé net en plein milieu d'une lettre, sans points de
+   suspension, à 320 et 390px. */
 .titre-nom {
-    white-space: nowrap;
+    min-width: 0;
+}
+
+.titre-texte {
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* ==============================
@@ -731,7 +741,26 @@ p {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* `flex-start` d'abord, `safe center` ensuite : les deux déclarations sont
+       nécessaires, et dans cet ordre.
+
+       Avec le seul `center`, un panneau plus haut que l'écran déborde par le
+       HAUT, et cette moitié-là n'est pas atteignable au défilement : `scrollTop`
+       ne peut pas devenir négatif. Sur tout téléphone en paysage (740x414,
+       667x375, 844x390) le premier lien se retrouvait à y négatif ou sous le
+       header fixe, donc invisible ET incliquable. Mesuré, « Accueil » était
+       injoignable sur les trois formats.
+
+       `safe center` centre tant qu'il y a la place et bascule en `flex-start`
+       dès que ça déborde. Les navigateurs qui ne le connaissent pas ignorent la
+       seconde ligne et gardent `flex-start`, qui ne déborde jamais par le haut. */
+    justify-content: flex-start;
+    justify-content: safe center;
+    /* Fermé, le panneau est seulement repoussé hors écran : ses huit liens
+       restaient dans l'ordre de tabulation, y compris en desktop où le burger
+       n'existe pas et où le panneau ne peut donc pas être ouvert.
+       `visibility: hidden` les en sort ; `.open` la rétablit. */
+    visibility: hidden;
     gap: clamp(2rem, 6vh, 3.5rem);
     padding: 5rem 0 max(2rem, env(safe-area-inset-bottom, 2rem));
     box-sizing: border-box;
@@ -820,6 +849,7 @@ p {
 /* Affichage du menu lorsque la classe open est ajoutée par JS */
 .menu-burger.open {
     top: 0;
+    visibility: visible;
 }
 
 /* Bas de page */

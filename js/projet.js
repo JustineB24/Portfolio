@@ -1,11 +1,12 @@
 // ==============================
-// projet.js — Cartes projet : navigation vers la page détail
+// projet.js — Page Projets : filtrage des cartes par catégorie et par techno
 // ==============================
 
-// La navigation ne passe plus par JavaScript : le titre de chaque carte est un
-// vrai lien, étendu à toute la carte par le `::after` de `.card-lien`. On y gagne
-// l'ouverture dans un nouvel onglet, le clic du milieu, la copie de l'adresse et
-// l'aperçu de l'URL au survol, qu'un `div` en `role="link"` ne peut pas offrir.
+// La navigation vers la fiche détail ne passe pas par ici : le titre de chaque
+// carte est un vrai lien, étendu à toute la carte par le `::after` de
+// `.card-lien`. On y gagne l'ouverture dans un nouvel onglet, le clic du milieu,
+// la copie de l'adresse et l'aperçu de l'URL au survol, qu'un `div` en
+// `role="link"` ne peut pas offrir. Ce fichier ne fait donc que du filtrage.
 
 // Filtrage des projets
 const filtreBtns = document.querySelectorAll('.filtre-btn');

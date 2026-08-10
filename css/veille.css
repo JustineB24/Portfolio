@@ -64,6 +64,19 @@ main h2 {
     color: var(--primary-color);
 }
 
+/* Rattachement au BTS. La page n'est plus dans la navigation depuis le 10/08/2026,
+   on y arrive par la page Formation ou par un moteur de recherche : il faut donc
+   que la première ligne dise d'où vient ce dossier et qu'il n'est pas tenu à jour.
+   C'est un vrai <p> et non une pastille de .veille-meta, pour que le lien reçoive
+   le traitement des liens de contenu de global.css, qui ne vise que main p/td/li. */
+.veille-rattachement {
+    text-align: center;
+    max-width: 60ch;
+    margin: 0 auto 2rem;
+    color: var(--text-muted);
+    font-size: var(--texte-lg);
+}
+
 /* Layout intro : sommaire + logo côte à côte */
 .veille-intro {
     display: flex;

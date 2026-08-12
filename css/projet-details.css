@@ -268,9 +268,20 @@
     text-align: left;
 }
 
-/* Lien projet en ligne */
-#projet-link {
+/* ---- Liens du projet : le site en ligne, et les liens complémentaires ---- */
+/* Le `display: none` était posé sans condition, alors que le JS ne retire que
+   l'attribut `hidden` : le conteneur restait donc masqué même quand il portait un
+   lien, et le bouton « Voir le projet en ligne » ne s'est jamais affiché (mesuré à
+   une hauteur de 0 le 11/08/2026). Même correctif que `.projet-meta[hidden]`
+   ci-dessus : c'est l'attribut qui masque, pas le sélecteur d'identifiant. */
+#projet-link[hidden] {
     display: none;
+}
+
+#projet-link {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     margin-top: 1.5rem;
 }
 
@@ -466,11 +477,23 @@
     animation: fadeInUp 1s ease;
 }
 
+/* Le `<picture>` doit s'effacer de la mise en page, sinon c'est lui l'élément flex
+   du wrapper et l'`<img>` n'a plus de hauteur définie à laquelle rapporter son
+   `height: 100%` : `object-fit` n'a alors rien à contraindre et l'image sort de la
+   boîte, rognée en haut et en bas par l'`overflow: hidden`. Mesuré sur la capture
+   de la fiche météo (580x846 dans une boîte de 796x498, 174px perdus de chaque côté). */
+.projet-image-wrapper picture {
+    display: contents;
+}
+
+/* `contain` et non `cover` : ces captures sont de tailles et de formats variés, et
+   celle de la météo est en portrait. Le wrapper porte un fond de carte et centre son
+   contenu précisément pour laisser l'image respirer dedans, comme le fait déjà
+   `.carrousel-slide` avec le même conteneur en 16/10. */
 .projet-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: top;
+    object-fit: contain;
     display: block;
     border-radius: var(--radius-md);
 }

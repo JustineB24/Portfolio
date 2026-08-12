@@ -10,7 +10,7 @@ const projetId = rawId && /^[a-z0-9-]+$/.test(rawId) ? rawId : null;
 // Base de données des projets
 const projets = {
     "yabt": {
-        title: "YABT — Yet Another Blind Test",
+        titre: "YABT — Yet Another Blind Test",
         date: "Novembre 2025 — en cours",
         images: [
             "../assets/projets/yabt/Maquette_accueil.png",
@@ -23,12 +23,15 @@ const projets = {
             "../assets/projets/yabt/Mascotte.jpg",
             "../assets/projets/yabt/Nuancier.png"
         ],
-        description: "Projet de groupe réalisé à 4 durant l'année de Bachelor Développement & IA. YABT est une application web de blind test et quiz musical multijoueur en temps réel. Les joueurs créent ou rejoignent des parties via un code ou un QR code, et s'affrontent sur des extraits musicaux provenant de l'API Deezer. L'application propose plusieurs modes de jeu (Classique, Speedrun, Battle Royale, Jackpot, Combo Breaker), un système de comptes avec progression par niveaux, des avatars déblocables, ainsi qu'un créateur de QCM personnalisés. L'identité visuelle (logo, mascotte animée, icônes néon) a été entièrement conçue par l'équipe. Le projet suit une méthodologie Agile et sera présenté devant un jury en fin d'année.",
+        description: "Projet de groupe réalisé à 4 durant l'année de Bachelor Chef de projet développement et data. YABT est une application web de blind test et quiz musical multijoueur en temps réel. Les joueurs créent ou rejoignent des parties via un code ou un QR code, et s'affrontent sur des extraits musicaux provenant de l'API Deezer. Elle propose un mode Classique jouable, quatre autres modes conçus et prévus (Speedrun, Battle Royale, Jackpot, Combo Breaker), un système de comptes avec choix d'avatar, et un créateur de QCM personnalisés. L'identité visuelle est un travail à plusieurs mains : le logo a été réalisé par un camarade en webdesign, les icônes néon ont été générées par IA, et j'ai dessiné la mascotte animée sur Inkscape. Le projet suit une méthodologie Agile et sera présenté devant un jury en fin d'année.",
         technologies: ["React", "Tailwind CSS", "Node.js", "Socket.io", "MySQL", "Docker", "Figma", "GitHub"],
+        liens: [
+            {libelle: "API Deezer", url: "https://developers.deezer.com/api"}
+        ],
         enCours: true,
         etudeDeCas: {
             contexte: "L'idée vient d'abord d'une passion pour la musique : c'est ce qui a orienté le choix du sujet parmi tous ceux possibles en Bachelor. Le constat a suivi. Les blind tests entre amis se font souvent sur des applications payantes, limitées en fonctionnalités ou sans vrai mode multijoueur en temps réel. On voulait une alternative gratuite, complète et jouable directement dans le navigateur.",
-            reflexion: "Avant d'écrire la moindre ligne de code, on a passé plusieurs semaines à structurer le projet comme un vrai projet professionnel : cahier des charges, maquettes Figma complètes (wireframes, design system, prototypes interactifs), choix des technologies, répartition des rôles et méthodologie Agile. C'est grâce à ce projet que j'ai appris à utiliser Figma et à concevoir une identité visuelle cohérente (logo, mascotte, nuancier, icônes néon).",
+            reflexion: "Avant d'écrire la moindre ligne de code, on a passé plusieurs semaines à structurer le projet comme un vrai projet professionnel : cahier des charges, maquettes Figma complètes (wireframes, design system, prototypes interactifs), choix des technologies, répartition des rôles et méthodologie Agile. C'est grâce à ce projet que j'ai appris à utiliser Figma.",
             defis: [
                 "Structurer un projet ambitieux de zéro (cahier des charges, maquettes, architecture technique) avant même de coder",
                 "Apprendre Figma en partant de rien pour concevoir des maquettes professionnelles et un design system complet",
@@ -39,17 +42,21 @@ const projets = {
         }
     },
     "gecko": {
-        title: "Gecko — Plateforme de gestion interne",
+        titre: "Gecko",
         date: "Septembre 2025 — aujourd'hui",
         images: [],
-        description: "Application web métier d'un client du secteur de l'édition et de la distribution, développée par l'équipe de Litesoft où je suis en alternance. Cette plateforme intranet, en production depuis 2021, centralise la gestion commerciale, la facturation, le suivi des activités et la logistique. Le projet est mature : mon quotidien y est d'abord le support, au sein d'un pipeline semi-automatisé mis en place par l'équipe : un agent de premier niveau trie les urgences et qualifie la demande auprès du client avant qu'un ticket n'arrive en développement. Je développe aussi de nouvelles interfaces quand le besoin s'en présente, et je contribue à la modernisation progressive du code existant : refactoring de fichiers monolithiques en classes dédiées, mise en place de l'autoload PSR-4 sur l'ensemble du projet, passage aux standards de nommage PSR-1/4/12, et remplacement systématique des pratiques obsolètes (jointures SQL implicites, paramètres ambigus, comparaisons lâches). Parmi les développements majeurs : refonte complète du système de filtres avancés sur tous les tableaux de l'application (recherche par colonne, filtres favoris, opérateurs multiples), migration des tableaux du mode server-side vers client-side, ajout de fonctionnalités métier (traductions multi-langue, import Excel, gestion de stock, prévisualisation d'articles), audits de sécurité (prévention XSS, échappement systématique), et optimisations SQL (élimination de requêtes N+1, insertions batch). Pour améliorer ma productivité, j'utilise Claude Code au quotidien comme assistant technique : j'ai mis en place un fichier de conventions servant de référence complète du projet, des commandes personnalisées pour lancer des audits techniques automatisés (sécurité, performance, qualité) et générer des récapitulatifs de modifications, ainsi qu'un plan de résolution organisé pour prioriser la dette technique. Le projet repose sur une architecture MVC en PHP 8.3 avec PostgreSQL, un frontend en JavaScript, jQuery, Bootstrap et DataTables, du temps réel via Node.js et Socket.IO, et un pipeline CI/CD sur GitLab.",
+        description: "Application web métier d'un client du secteur de l'édition et de la distribution, développée par l'équipe de Litesoft où je suis en alternance. C'est un intranet en production depuis 2021 : gestion commerciale, facturation, suivi d'activité et logistique. Le projet est mature, donc mon quotidien commence par le support. Un agent de premier niveau trie les urgences et qualifie la demande auprès du client avant qu'un ticket n'arrive en développement. Je développe aussi de nouvelles interfaces quand le besoin s'en présente. Le reste va à la modernisation de l'existant plutôt qu'à l'empilement : monolithes découpés en classes dédiées, autoload PSR-4 sur tout le projet, conventions de nommage PSR-1/4/12, et remplacement des pratiques obsolètes comme les jointures SQL implicites ou les comparaisons lâches. J'utilise Claude Code au quotidien, avec un fichier de conventions qui sert de référence au projet, des commandes d'audit automatisées et un plan de résolution de la dette technique. Le socle est une architecture MVC en PHP 8.3 avec PostgreSQL, un frontend en JavaScript, jQuery, Bootstrap et DataTables, du temps réel via Node.js et Socket.IO, et un pipeline CI/CD sur GitLab.",
         technologies: ["PHP", "JavaScript", "PostgreSQL", "jQuery", "Bootstrap", "Tailwind CSS", "DataTables", "Node.js", "Socket.io", "GitLab", "MAMP"],
+        liens: [
+            {libelle: "Litesoft", url: "https://www.litesoft.fr/"},
+            {libelle: "Claude Code", url: "https://claude.com/product/claude-code"}
+        ],
         statut: "En production",
         etudeDeCas: {
             contexte: "Gecko est l'ERP interne d'un éditeur-distributeur de livres, utilisé par environ 350 personnes réparties sur plusieurs sites. Développé par l'équipe Litesoft depuis 2021, il couvre toute la chaîne : catalogue, CRM, facturation, fabrication, stock et expédition. Je l'ai rejoint en septembre 2025 dans le cadre de mon alternance. L'enjeu n'est donc pas de partir d'une page blanche, mais de m'intégrer efficacement dans un gros projet existant et toujours très actif, et d'y contribuer en full-stack.",
             reflexion: "Intervenir sur une application de cette taille, c'est d'abord savoir naviguer dans l'existant. Je travaille par tickets, en touchant souvent toute la chaîne (contrôleur PHP, classe métier, requête SQL, interface). Mon fil conducteur : moderniser et fiabiliser l'existant plutôt que d'empiler du code, en passant par la standardisation (autoload PSR-4, conventions PSR-1/4/12), la sécurité et la performance.",
             defis: [
-                "Concevoir un moteur de filtres avancés réutilisé sur tous les tableaux de l'application : recherche par colonne, opérateurs adaptés au type de donnée (texte, nombre, date, EAN), filtres favoris sauvegardables. C'est mon plus gros chantier, environ 237 h.",
+                "Concevoir un moteur de filtres avancés réutilisé sur tous les tableaux de l'application : recherche par colonne, opérateurs adaptés au type de donnée (texte, nombre, date, EAN), filtres favoris sauvegardables.",
                 "Mener la migration en cours de l'interface de Bootstrap vers Tailwind CSS sur près de 190 pages sans régression, en réécrivant moi-même les composants d'UI (modales, menus, popovers, onglets) avec Floating UI pour remplacer le JavaScript de Bootstrap. Pour éviter les régressions, je m'appuie sur une centaine de tests navigateur (constitués en grande partie lors des optimisations), rejoués avant et après mes changements.",
                 "Faire passer le projet à l'autoload PSR-4 (≈ 336 fichiers) et extraire les imports en classes dédiées, supprimant plusieurs milliers de lignes de contrôleurs monolithiques.",
                 "Mener une campagne d'optimisation perf et sécurité sur ~25 pages : élimination de requêtes N+1, requêtes groupées, échappement XSS systématique.",
@@ -59,43 +66,29 @@ const projets = {
         }
     },
     "flouflix": {
-        title: "Flouflix — concevoir la pire interface possible",
+        titre: "Flouflix",
         date: "Juillet 2026",
         images: [],
-        description: "Application mobile de recherche de films et de séries, construite à deux en deux jours pendant le Bachelor, avec une contrainte inversée : produire volontairement l'interface la plus laide et la moins utilisable possible. L'exercice avait deux objectifs, découvrir React Native et Expo Go, et pousser assez loin les mauvaises pratiques d'ergonomie pour comprendre pourquoi ce sont de mauvaises pratiques. Sous la couche volontairement ratée, l'application fonctionne vraiment : trois écrans (liste, détail, favoris), recherche et filtres construits à partir des données de l'API TVmaze, et gestion de favoris en CRUD dont l'état est partagé entre les écrans par un contexte React.",
+        description: "Application mobile de recherche de films et de séries, construite à deux en deux jours pendant le Bachelor. La contrainte était inversée : produire volontairement l'interface la plus laide et la moins utilisable possible. L'exercice avait deux objectifs, découvrir React Native et Expo, et pousser les mauvaises pratiques d'ergonomie assez loin pour comprendre pourquoi ce sont de mauvaises pratiques. Sous la couche ratée, l'application fonctionne vraiment. Trois écrans, liste, détail et favoris, avec recherche et filtres construits sur les données de l'API TVmaze. Les favoris sont gérés en CRUD, leur état partagé entre les écrans par un contexte React.",
+        liens: [
+            {libelle: "API TVmaze", url: "https://www.tvmaze.com/api"}
+        ],
         technologies: ["React Native", "Expo", "JavaScript"],
-        etudeDeCas: {
-            contexte: "Le sujet était d'apprendre React Native et Expo Go sur un temps très court. Plutôt qu'une application vitrine de plus, le parti pris a été d'inverser la consigne habituelle : au lieu de viser la meilleure interface, viser la pire. Chaque anti-patron devait rester fonctionnel, sinon l'exercice n'aurait été qu'une application cassée.",
-            reflexion: "Concevoir mal demande de savoir ce qui est bien. Chaque décision est un principe d'ergonomie retourné : un bouton de retour qui exige six appuis inverse la loi de Fitts, des libellés en phrases entières à la place de « Valider » inversent la règle de concision, des boutons gris qui ont l'air désactivés sans l'être détournent une convention visuelle établie, et une barre de navigation qui change de côté d'une page à l'autre casse la cohérence spatiale. La liste des travers a été écrite avant le code, comme un vrai cahier des charges.",
-            defis: [
-                "Découvrir React Native, Expo Go et la navigation par fichiers d'Expo Router en deux jours, à deux",
-                "Partager l'état des favoris entre trois écrans indépendants, résolu par un contexte React plutôt qu'en faisant redescendre les données écran par écran",
-                "Construire les filtres à partir des données renvoyées par l'API TVmaze, dont les genres varient d'une fiche à l'autre",
-                "Garder une application réellement utilisable malgré les anti-patrons : chaque obstacle devait être contournable, jamais bloquant"
-            ],
-            resultat: "Une application de trois écrans qui interroge une API réelle, gère des favoris persistants le temps de la session et applique une douzaine d'anti-patrons assumés : texte rouge clignotant, pop-up de tutoriel à chaque page, opacité gênante sur les visuels, validation demandée à chaque action, libellés interminables. C'est le projet qui m'a servi d'entrée dans le développement mobile multiplateforme, et celui qui m'a le plus appris sur l'ergonomie, en la prenant à l'envers."
-        }
     },
     "grimoire-recettes": {
-        title: "Le Grimoire des Recettes",
+        titre: "Le Grimoire des Recettes",
         date: "2025 — en cours",
         images: ["../assets/projets/grimoire_recettes/Maquette.png"],
         description: "Projet personnel réalisé dans le but de tester les capacités des intelligences artificielles en développement. Le point de départ : une simple idée de carnet de recettes numérique et une maquette rapide dessinée sur tablette. Le cahier des charges a été rédigé avec Gemini (Google), puis l'intégralité du code a été générée par Claude Code (Anthropic). Le résultat est une application web complète (PWA installable comme une appli sur téléphone et utilisable hors ligne) avec recherche en temps réel, calculateur de portions, timer intégré, mode sombre et liste de courses, le tout en HTML, CSS et JavaScript vanilla, sans aucune ligne de code écrite manuellement.",
         technologies: ["HTML", "CSS", "JavaScript"],
+        liens: [
+            {libelle: "Gemini", url: "https://gemini.google.com/"},
+            {libelle: "Claude Code", url: "https://claude.com/product/claude-code"}
+        ],
         enCours: true,
-        etudeDeCas: {
-            contexte: "Un projet 100 % personnel, né d'une question : jusqu'où une IA peut-elle aller en développement ? Le point de départ était volontairement simple : une idée de carnet de recettes numérique et une maquette griffonnée sur tablette, avec l'hypothèse que le résultat pourrait être réellement utile au quotidien, et pas seulement un prototype jetable.",
-            reflexion: "J'ai séparé les rôles : le cahier des charges a été rédigé avec Gemini (cadrage des besoins et des fonctionnalités), puis l'intégralité du code générée par Claude Code. J'ai choisi le HTML/CSS/JavaScript vanilla et une PWA (installable, utilisable hors ligne) pour garder un projet léger, sans dépendance ni framework, et hébergeable simplement.",
-            defis: [
-                "Piloter l'IA avec des consignes assez précises pour obtenir un résultat cohérent, sans écrire le code moi-même",
-                "Relire et valider le code généré plutôt que de l'accepter aveuglément, pour comprendre ce qui était produit",
-                "Obtenir une vraie PWA fonctionnelle (recherche en temps réel, calculateur de portions, timer, mode sombre, liste de courses, hors ligne) et non une simple démo"
-            ],
-            resultat: "Une application web complète et installable, livrée sans une seule ligne écrite à la main. Au-delà du résultat, le projet m'a appris à cadrer un besoin clairement, à piloter des outils d'IA et surtout à évaluer d'un œil critique le code qu'ils produisent."
-        }
     },
     "panada-food": {
-        title: "Panada Food",
+        titre: "Panada Food",
         date: "12/11/2024 — 20/12/2024",
         images: [
             "../assets/projets/panada_food/Accueil.jpg",
@@ -104,24 +97,24 @@ const projets = {
             "../assets/projets/panada_food/Mentions_legales.jpg",
             "../assets/projets/panada_food/Ecran_chargement.jpg"
         ],
-        description: "Développement d'un site web vitrine pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en binôme avec une collègue. Le restaurant venait d'ouvrir et ne possédait aucune présence en ligne. On s'est déplacées sur place pour récolter les informations et comprendre les attentes du gérant, puis on a conçu et développé le site de A à Z. Le site inclut une page d'accueil, le menu du restaurant, un formulaire de contact et les mentions légales conformes au RGPD. Il a été mis en ligne via un hébergement OVH, sur un domaine que le restaurant n'a pas renouvelé depuis. Le gérant souhaitait aussi pouvoir prendre les commandes en ligne : on a commencé une seconde version en PHP avec une base MySQL, où le menu, les boissons et les sauces devenaient des tables et où un panier apparaissait. Elle n'a pas abouti, faute de temps sur six semaines, et n'a jamais été mise en ligne. C'est la version statique qui tourne.",
+        description: "Développement d'un site web vitrine pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en binôme avec une collègue. Le restaurant venait d'ouvrir et ne possédait aucune présence en ligne. On s'est déplacées sur place pour récolter les informations et comprendre les attentes du gérant, puis on a conçu et développé le site de A à Z. Le site inclut une page d'accueil, le menu du restaurant, un formulaire de contact et les mentions légales conformes au RGPD. Il a été mis en ligne via un hébergement OVH. Le gérant souhaitait aussi pouvoir prendre les commandes en ligne : on a commencé une seconde version en PHP avec une base MySQL, où le menu, les boissons et les sauces devenaient des tables et où un panier apparaissait. Elle n'a pas abouti, faute de temps sur six semaines, et n'a jamais été mise en ligne.",
         technologies: ["HTML", "CSS", "JavaScript"],
-        link: "https://panadafood.ovh",
+        liens: [
+            {libelle: "Voir le projet en ligne", url: "https://panadafood.ovh"},
+            {libelle: "Hébergeur OVH", url: "https://www.ovhcloud.com/fr/"}
+        ],
         etudeDeCas: {
-            contexte: "Panada Food est un restaurant de restauration rapide à Amiens qui venait d'ouvrir et ne possédait pas encore de site web. En binôme avec une collègue, on s'est proposées pour leur en créer un durant notre stage de 6 semaines en deuxième année de BTS SIO.",
-            reflexion: "Le restaurant n'ayant aucune présence en ligne, il fallait partir de zéro : se déplacer sur place pour récolter les informations (menu, photos, attentes du gérant), concevoir le design, développer le site, gérer la conformité RGPD et les mentions légales, puis mettre en ligne via un hébergement OVH.",
+            contexte: "Ni maquette ni cahier des charges au départ, et un maître de stage présent de 11h à 14h avec de longs délais de réponse. Les informations comme les décisions ont donc dû être cherchées auprès du gérant, puis assumées sans validation immédiate.",
+            reflexion: "Six semaines ne suffisaient pas pour finir le site vitrine et mener à bout la version PHP avec commande en ligne. On a tranché pour le site : un site complet valait mieux qu'une vitrine bâclée doublée d'un prototype à moitié fait, même si ça laissait la demande du gérant en suspens.",
             defis: [
-                "Travailler en grande autonomie, le maître de stage n'étant présent que de 11h à 14h et les délais de réponse étant longs",
                 "Se coordonner en binôme, en partie en télétravail, pour se répartir les tâches efficacement",
-                "Partir de zéro sans maquette ni cahier des charges fourni : il a fallu aller chercher les informations directement auprès du gérant",
-                "Assurer la conformité légale du site : mentions légales, crédits photographiques, respect du RGPD",
-                "Arbitrer entre finir proprement le site vitrine et poursuivre la version PHP avec commande en ligne : les six semaines ne permettaient pas les deux, on a livré le site plutôt qu'un prototype à moitié fait"
+                "Assurer la conformité légale du site : mentions légales, crédits photographiques, respect du RGPD"
             ],
-            resultat: "Site vitrine livré dans les temps et mis en ligne sur panadafood.ovh. La commande en ligne demandée par le gérant est restée à l'état de prototype : une version PHP avec sa base de données existe, avec le menu en tables et un début de panier, mais elle n'a pas été terminée dans le temps du stage. Ce stage a renforcé notre autonomie, notre esprit d'équipe et nos compétences en programmation dans un contexte professionnel réel."
+            resultat: "Livré dans les délais, et le compromis a tenu : le restaurant a eu un site complet plutôt que deux choses inachevées. C'est le premier projet où j'ai eu à décider seule de ce qu'on ne ferait pas."
         }
     },
     "pendu": {
-        title: "Pendu",
+        titre: "Pendu",
         date: "Mars 2025",
         images: ["../assets/projets/pendu/Menu.jpg",
             "../assets/projets/pendu/Jeu.jpg",
@@ -132,7 +125,7 @@ const projets = {
         technologies: ["C#", "XAML", "MAUI"]
     },
     "france-mobilier": {
-        title: "France Mobilier",
+        titre: "France Mobilier",
         date: "Février 2025",
         images: ["../assets/projets/france_mobilier/Accueil.png",
             "../assets/projets/france_mobilier/Meuble.jpg",
@@ -145,7 +138,7 @@ const projets = {
         technologies: ["HTML", "CSS", "PHP", "MySQL", "XAMPP"]
     },
     "sio-shop": {
-        title: "Sio Shop",
+        titre: "Sio Shop",
         date: "Janvier 2025",
         images: [
             "../assets/projets/sio_shop/Connexion.png",
@@ -169,7 +162,7 @@ const projets = {
         technologies: ["WinForms", "C#", "MySQL", "XAMPP"]
     },
     "speedcubing": {
-        title: "Speedcubing",
+        titre: "Speedcubing",
         date: "Novembre — Décembre 2024",
         images: [
             "../assets/projets/speedcubing/Accueil.jpg",
@@ -178,46 +171,51 @@ const projets = {
             "../assets/projets/speedcubing/Def_Speedcubing.jpg",
             "../assets/projets/speedcubing/Connexion.jpg"
         ],
-        description: "Sujet d'école ayant pour thème une association de speedcubing, sans commande réelle derrière. Ce site permet aux passionnés de Rubik's Cube de s'entraîner en ligne, d'enregistrer leurs temps et de comparer leurs performances avec celles des autres. Il intègre un chronomètre interactif, une base de données des meilleurs temps et une section dédiée à la résolution d'un Rubik's Cube 3x3.",
+        description: "Site sur le thème d'une association de speedcubing, sujet d'un projet de BTS, sans commande réelle derrière. Il permet aux passionnés de Rubik's Cube de s'entraîner en ligne, d'enregistrer leurs temps et de comparer leurs performances avec celles des autres. Il intègre un chronomètre interactif, une base de données des meilleurs temps et une section dédiée à la résolution d'un Rubik's Cube 3x3.",
         technologies: ["PHP", "CSS", "JavaScript", "MySQL", "XAMPP"]
     },
     "meteo": {
-        title: "Application météo",
+        titre: "Application météo",
         date: "Septembre — Octobre 2024",
         images: ["../assets/projets/meteo/Meteo.jpg"],
         description: "Application web développée pour afficher en temps réel les conditions météorologiques d'une ville choisie par l'utilisateur. En utilisant l'API OpenWeather, ce projet permet de consulter la température actuelle, l'humidité ainsi qu'une description du temps (ensoleillé, nuageux, etc.). L'interface propose une zone de recherche, un affichage centralisé des données principales, et un design épuré avec fond personnalisé. Le JavaScript assure la récupération dynamique des données météo et la mise à jour instantanée de l'affichage après chaque recherche.",
+        liens: [
+            {libelle: "API OpenWeather", url: "https://openweathermap.org/api"}
+        ],
         technologies: ["HTML", "CSS", "JavaScript"]
     },
     "generateur-mdp": {
-        title: "Générateur de mots de passe",
+        titre: "Générateur de mots de passe",
         date: "Septembre 2024",
         images: ["../assets/projets/generateur_mdp/Generateur_mdp.png"],
         description: "Outil conçu pour aider les utilisateurs à générer des mots de passe sécurisés en quelques clics. Ce générateur permet de créer des mots de passe aléatoires respectant des critères de sécurité stricts : majuscules, minuscules, chiffres et caractères spéciaux. Il intègre une interface interactive, incluant un slider pour définir la longueur du mot de passe (de 8 à 16 caractères), ainsi que des boutons pour copier rapidement le résultat.",
         technologies: ["HTML", "CSS", "JavaScript"]
     },
     "mairie-cauffry": {
-        title: "Mairie de Cauffry",
+        titre: "Mairie de Cauffry",
         date: "27/05/2024 — 21/06/2024",
         images: [
+            "../assets/projets/mairie_de_cauffry/Visuel_site.jpg",
             "../assets/projets/mairie_de_cauffry/Accueil.jpg",
             "../assets/projets/mairie_de_cauffry/Adico_collectivite.png",
             "../assets/projets/mairie_de_cauffry/Adico_arborescence.png",
-            "../assets/projets/mairie_de_cauffry/Adicloud.jpg",
-            "../assets/projets/mairie_de_cauffry/Visuel_site.jpg"
+            "../assets/projets/mairie_de_cauffry/Adicloud.jpg"
         ],
-        description: "Stage de 4 semaines en première année de BTS SIO, chez l'Adico (Association pour le développement et l'innovation numérique des collectivités), pour le nouveau site de la commune de Cauffry. Le site lui-même est un produit de l'Adico, bâti sur leur plateforme mutualisée : je n'en ai pas écrit le code. Mon travail portait sur le contenu et la structure. L'ancien site étant devenu indisponible, j'ai récupéré ses pages via la Wayback Machine, rempli le recueil de besoins, conçu l'arborescence des rubriques, puis préparé les documents et les ai déposés sur Adicloud en les structurant pour qu'ils s'affichent correctement. En parallèle, j'ai sauvegardé les mails de la maire vers un disque dur externe et proposé des prototypes de logo pour la commune.",
+        description: "Stage de 4 semaines en première année de BTS SIO, à la mairie de Cauffry, pour le nouveau site de la commune. Le site lui-même est un produit de l'Adico (Association pour le développement et l'innovation numérique des collectivités), le prestataire de la commune, bâti sur leur plateforme mutualisée : je n'en ai pas écrit le code. Mon travail portait sur le contenu et la structure. L'ancien site étant devenu indisponible, j'ai récupéré ses pages via la Wayback Machine, rempli le recueil de besoins, conçu l'arborescence des rubriques, puis préparé les documents et les ai déposés sur Adicloud en les structurant pour qu'ils s'affichent correctement. En parallèle, j'ai sauvegardé les mails de la maire vers un disque dur externe et proposé des prototypes de logo pour la commune.",
         technologies: [],
-        link: "https://mairiecauffry.fr/",
+        liens: [
+            {libelle: "Voir le projet en ligne", url: "https://mairiecauffry.fr/"},
+            {libelle: "Site de l'Adico", url: "https://www.adico.fr/"}
+        ],
         etudeDeCas: {
-            contexte: "Le site web de la mairie de Cauffry était devenu indisponible peu avant le début du stage. La commune avait besoin d'un nouveau site, développé en partenariat avec l'Adico, une plateforme mutualisée de services numériques pour les collectivités territoriales.",
-            reflexion: "L'ancien site étant hors ligne, il fallait retrouver son contenu pour ne pas repartir de zéro. J'ai utilisé la Wayback Machine pour récupérer les pages de l'ancien site, en vérifiant que les informations étaient encore à jour avant de les réinjecter. Le travail s'est ensuite organisé autour de l'outil Adico : création du recueil de besoins, définition de l'arborescence, puis envoi des dossiers sur Adicloud pour alimenter les pages.",
+            contexte: "Le site n'était pas à écrire mais à remplir : la plateforme et le gabarit venaient du prestataire. Tout l'enjeu tenait donc au contenu, à l'arborescence, et à un délai de quatre semaines pour que toutes les rubriques soient prêtes.",
+            reflexion: "Récupérer les pages archivées ne suffisait pas. Une mairie change d'horaires, d'élus et de tarifs, donc chaque information reprise de l'ancien site devait être revérifiée avant d'être réinjectée. C'est ce tri, et non la récupération, qui a pris le plus de temps.",
             defis: [
-                "Récupérer le contenu d'un site totalement disparu grâce à la Wayback Machine",
                 "Corriger une erreur dans l'arborescence Adico : le dossier « Services aux administrés » était manquant, ce qui a nécessité un appel au support",
                 "Gérer en parallèle d'autres missions : sauvegarde des mails Gmail de la maire vers un disque dur avec Mbox Viewer, et propositions de prototypes de logo",
                 "Tenir un délai de 4 semaines pour que le contenu de toutes les rubriques soit prêt"
             ],
-            resultat: "Le site a été mis en ligne dans les délais, avec son contenu et son arborescence. C'est un stage de découverte, pas un projet de développement : ce que j'en retiens tient au métier plus qu'au code. Travailler avec un prestataire externe et son outil, tenir un délai de quatre semaines en contexte professionnel, et voir fonctionner une collectivité territoriale de l'intérieur."
+            resultat: "Mis en ligne dans les délais, avec son contenu et son arborescence. C'est un stage de découverte, pas un projet de développement : ce que j'en retiens tient au métier plus qu'au code. Travailler avec un prestataire externe et son outil, tenir un délai de quatre semaines en contexte professionnel, et voir fonctionner une collectivité territoriale de l'intérieur."
         }
     }
 };
@@ -288,8 +286,8 @@ if (!projetId || !projets[projetId]) {
     }
 
     const titreProjet = document.getElementById("projet-title");
-    if (titreProjet) titreProjet.textContent = projets[projetId].title;
-    document.title = "Portfolio | " + projets[projetId].title;
+    if (titreProjet) titreProjet.textContent = projets[projetId].titre;
+    document.title = "Portfolio | " + projets[projetId].titre;
 
     // Date du projet
     if (titreProjet && projets[projetId].date) {
@@ -315,7 +313,7 @@ if (!projetId || !projets[projetId]) {
     }
 
     // Mise à jour des meta sociales dynamiquement (Open Graph + Twitter Cards)
-    const metaTitre = 'Portfolio | ' + projets[projetId].title;
+    const metaTitre = 'Portfolio | ' + projets[projetId].titre;
     const metaDesc = projets[projetId].description.substring(0, 200);
 
     const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -349,7 +347,7 @@ if (!projetId || !projets[projetId]) {
         const twitterImage = document.querySelector('meta[name="twitter:image"], meta[property="twitter:image"]');
         if (ogImage) ogImage.setAttribute('content', imageAbsolue);
         if (twitterImage) twitterImage.setAttribute('content', imageAbsolue);
-        if (ogImageAlt) ogImageAlt.setAttribute('content', 'Aperçu du projet ' + projets[projetId].title);
+        if (ogImageAlt) ogImageAlt.setAttribute('content', 'Aperçu du projet ' + projets[projetId].titre);
 
         // Les dimensions déclarées dans le <head> valent pour la carte 1200x630,
         // pas pour la capture : on les retire plutôt que d'annoncer un faux format.
@@ -366,7 +364,7 @@ if (!projetId || !projets[projetId]) {
     const donneesProjet = {
         "@context": "https://schema.org",
         "@type": "CreativeWork",
-        "name": projets[projetId].title,
+        "name": projets[projetId].titre,
         "description": projets[projetId].description.substring(0, 300),
         "author": {"@type": "Person", "name": "Justine BLIN"},
         "keywords": (projets[projetId].technologies || []).join(", "),
@@ -396,9 +394,13 @@ if (!projetId || !projets[projetId]) {
         "DataTables": "Plugin de tableaux interactifs",
         "PostgreSQL": "Base de données avancée",
         "React": "Bibliothèque front-end",
+        "React Native": "Applications mobiles en React",
+        "Expo": "Chaîne d'outils pour React Native",
         "Node.js": "JavaScript côté serveur",
         "Socket.io": "Communication temps réel (WebSockets)",
         "Docker": "Conteneurisation et environnements de développement",
+        "XAMPP": "Serveur de développement local (Apache, MySQL, PHP)",
+        "MAMP": "Serveur de développement local sur macOS",
         "Figma": "Conception d'interfaces et prototypage",
         "Git": "Gestion de versions et travail collaboratif",
         "GitHub": "Hébergement et collaboration",
@@ -585,7 +587,7 @@ if (!projetId || !projets[projetId]) {
         source.type = "image/webp";
         const img = document.createElement("img");
         img.src = images[0];
-        img.alt = projets[projetId].title + " — capture 1";
+        img.alt = projets[projetId].titre + " — capture 1";
         img.classList.add("projet-image");
         img.loading = "lazy";
         img.width = 1200;
@@ -621,7 +623,7 @@ if (!projetId || !projets[projetId]) {
             const boutonSlide = document.createElement("button");
             boutonSlide.type = "button";
             boutonSlide.classList.add("carrousel-slide-btn");
-            boutonSlide.setAttribute("aria-label", "Agrandir : " + projets[projetId].title + " — image " + (index + 1));
+            boutonSlide.setAttribute("aria-label", "Agrandir : " + projets[projetId].titre + " — image " + (index + 1));
             boutonSlide.style.position = index === 0 ? "relative" : "absolute";
             boutonSlide.style.top = "0";
             boutonSlide.style.left = "0";
@@ -639,7 +641,7 @@ if (!projetId || !projets[projetId]) {
             source.type = "image/webp";
             const img = document.createElement("img");
             img.src = String(imgSrc);
-            img.alt = projets[projetId].title + " — capture " + (index + 1);
+            img.alt = projets[projetId].titre + " — capture " + (index + 1);
             img.classList.add("carrousel-slide");
             img.loading = "lazy";
             img.width = 1200;
@@ -908,26 +910,37 @@ if (!projetId || !projets[projetId]) {
     // Efface tout contenu précédent dans le conteneur du lien
     if (projetLinkContainer) projetLinkContainer.innerHTML = "";
 
-    // Vérifier si un lien existe pour ce projet
-    if (projetLinkContainer && projets[projetId].link) {
-        const linkElement = document.createElement("a");
-        linkElement.href = projets[projetId].link;
-        linkElement.target = "_blank";
-        linkElement.rel = "noopener noreferrer";
+    if (projetLinkContainer) {
+        // Un seul champ `liens` porte tous les liens externes d'un projet : son propre
+        // site, et ceux d'un prestataire ou d'un partenaire. Il a remplacé un champ
+        // `link` qui ne tenait que le premier : garder les deux donnait `link` et
+        // `liens`, à une lettre d'écart et de sens différents.
+        // Chaque entrée porte son libellé, parce qu'un second « Voir le projet en
+        // ligne » ne dirait pas où il mène. Seule l'icône est déduite de l'adresse.
+        if (Array.isArray(projets[projetId].liens)) {
+            projets[projetId].liens.forEach(function (lien) {
+                const estGithub = lien.url.includes("github.com");
 
-        const isGithub = projets[projetId].link.includes("github.com");
-        const icon = document.createElement("i");
-        icon.classList.add(isGithub ? "fab" : "fas", isGithub ? "fa-github" : "fa-external-link-alt");
-        icon.setAttribute("aria-hidden", "true");
-        linkElement.appendChild(icon);
-        linkElement.append(isGithub ? " Voir sur GitHub" : " Voir le projet en ligne");
+                const a = document.createElement("a");
+                a.href = lien.url;
+                a.target = "_blank";
+                a.rel = "noopener noreferrer";
 
-        projetLinkContainer.appendChild(linkElement);
+                const icone = document.createElement("i");
+                icone.classList.add(estGithub ? "fab" : "fas", estGithub ? "fa-github" : "fa-external-link-alt");
+                icone.setAttribute("aria-hidden", "true");
+                a.appendChild(icone);
+                a.append(" " + lien.libelle);
 
-        // Rendre le conteneur visible UNIQUEMENT s'il y a un lien
-        projetLinkContainer.removeAttribute('hidden');
-    } else if (projetLinkContainer) {
-        // S'assurer que le conteneur est masqué s'il n'y a pas de lien
-        projetLinkContainer.setAttribute('hidden', '');
+                projetLinkContainer.appendChild(a);
+            });
+        }
+
+        // Visible seulement s'il y a effectivement quelque chose dedans
+        if (projetLinkContainer.children.length > 0) {
+            projetLinkContainer.removeAttribute('hidden');
+        } else {
+            projetLinkContainer.setAttribute('hidden', '');
+        }
     }
 }

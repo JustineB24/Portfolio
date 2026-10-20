@@ -131,6 +131,44 @@ a.timeline-link:hover .timeline-content {
     color: var(--text-muted);
 }
 
+/* L'icône de colonne porte le rouge, le libellé reste en gris : c'est elle qui
+   distingue les deux colonnes d'un coup d'œil, pas un libellé plus foncé.
+   Le rouge de marque ne monte qu'à 2:1 sur le fond sombre, d'où la reprise en
+   `--primary-on-dark` (même mécanique que `.hero-eyebrow` sur l'accueil). */
+.timeline > h3 i {
+    color: var(--primary-color);
+}
+
+.dark-theme .timeline > h3 i {
+    color: var(--primary-on-dark);
+}
+
+/* Pastille de statut des lignes en cours ou à venir. Même recette que le badge
+   des cartes projet : fond de l'accent à 15 %, contour à 40 %, et texte ramené
+   vers `--text-color` à 35 % pour que le contraste ne dépende pas de l'accent.
+   Le point pulsant de `.timeline-current` signale déjà l'actualité, mais il ne
+   dit pas laquelle des deux : en cours ou pas encore commencé. */
+.timeline-statut {
+    --statut-accent: var(--text-muted);
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.15rem 0.6rem;
+    border: 1px solid color-mix(in srgb, var(--statut-accent) 40%, transparent);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--statut-accent) 15%, transparent);
+    color: color-mix(in srgb, var(--statut-accent) 35%, var(--text-color));
+    font-size: var(--texte-xs);
+    font-weight: 600;
+    letter-spacing: normal;
+    vertical-align: middle;
+}
+
+/* En cours : le rouge de marque, celui du point pulsant. À venir garde le gris
+   par défaut, une échéance future n'a pas à crier plus fort que le présent. */
+.timeline-statut.statut-en-cours {
+    --statut-accent: var(--primary-color);
+}
+
 /* Date/période dans la timeline */
 .timeline-date {
     margin: 10px;
@@ -270,7 +308,15 @@ main hr {
    La timeline reste l'index du parcours ; le détail de chaque diplôme vit sur
    la page Formation, et ce bouton fait le lien entre les deux.
    ============================== */
+/* Sortie de page. Le bouton seul flottait sans rien pour l'annoncer : le titre
+   et la phrase disent ce qu'on trouvera de plus en suivant le lien. */
 .apropos-vers-formation {
-    margin: 3rem 0 1rem;
+    margin: 4rem auto 1rem;
+    max-width: 42rem;
     text-align: center;
+}
+
+.apropos-vers-formation-texte {
+    color: var(--text-muted);
+    margin: 0 0 2rem;
 }

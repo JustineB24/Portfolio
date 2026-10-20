@@ -159,9 +159,19 @@ a {
    Liens de contenu — traitement unique pour tout le site.
    Rouge de marque, sans soulignement au repos, souligné au survol et au focus
    clavier. La liste de `:not()` écarte ce qui est un bouton ou un onglet et se
-   trouve dans un `li` ; elle tient en cinq exclusions depuis que tous les
+   trouve dans un `li` ; elle tient en six exclusions depuis que tous les
    boutons portent le socle `.btn`, contre neuf quand il fallait les nommer un
    par un.
+
+   `main dd a` a rejoint la liste avec les fiches label/valeur des mentions
+   légales : un `dd` est un contexte de texte courant comme `p` ou `td`, et
+   sans lui les liens tél./mail de la page seraient restés sans traitement.
+
+   `.lien-sommaire` est la sixième exclusion. Un sommaire est de la navigation,
+   pas du texte courant, et ses entrées sont dans des `li` : sans exclusion,
+   elles héritaient du rouge et de la graisse 600. Une règle de page ne suffit
+   pas à reprendre la main, ce sélecteur-ci pesant cinq classes ; il aurait
+   fallu un `!important` par déclaration.
 
    La graisse n'est pas décorative, ne pas la retirer sans remettre un
    soulignement permanent : le rouge ne se détache du texte courant que de
@@ -175,7 +185,8 @@ a {
    ============================== */
 main p a,
 main td a,
-main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn) {
+main dd a,
+main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn):not(.lien-sommaire) {
     color: var(--primary-color);
     font-weight: 600;
     background-image: linear-gradient(currentColor, currentColor);
@@ -188,7 +199,8 @@ main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link)
 
 .dark-theme :is(main p a,
 main td a,
-main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn)) {
+main dd a,
+main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn):not(.lien-sommaire)) {
     color: var(--primary-on-dark);
 }
 
@@ -197,7 +209,8 @@ main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link)
    couleur. */
 :is(main p a,
 main td a,
-main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn)):is(:hover, :focus-visible) {
+main dd a,
+main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link):not(.btn):not(.lien-sommaire)):is(:hover, :focus-visible) {
     background-size: 100% 2px;
 }
 

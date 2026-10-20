@@ -1,21 +1,104 @@
 /* ==============================
    mentions-legales.css — Page mentions légales
+
+   Deux colonnes : un sommaire collant à gauche, la colonne de lecture à droite.
+   Sept rubriques dont deux seulement (données personnelles, cookies) motivent
+   la plupart des visites : sans sommaire, il faut parcourir les cinq autres.
    ============================== */
 
-main section {
-    max-width: 700px;
-    margin: 0 auto;
-    /* `text-align: left` doit être posé ICI et non sur le h2 : le h2 est en
-       `display: inline-block` (global.css), donc son propre text-align aligne
-       son texte interne, pas l'élément, qui reste centré par le text-align
-       hérité du body. C'est le conteneur qui décide de sa position. */
+.ml-layout {
+    display: grid;
+    grid-template-columns: 16rem minmax(0, 700px);
+    gap: 3rem;
+    justify-content: center;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+/* ── Sommaire ── */
+/* `top` calé sur le header fixe, comme le `scroll-margin-top: 120px` global.
+   `max-height` + `overflow` pour que les sept entrées restent atteignables sur
+   un écran bas. */
+.ml-sommaire {
+    position: sticky;
+    top: 8rem;
+    max-height: calc(100vh - 10rem);
+    overflow-y: auto;
     text-align: left;
 }
 
-/* Colonne de lecture alignée à gauche : sur une page de texte légal, un titre
-   centré au-dessus d'un paragraphe aligné à gauche décroche visuellement.
-   Titre et texte partagent donc le même bord gauche. */
-main section p {
+.ml-sommaire-titre {
+    margin: 0 0 0.75rem;
+    padding: 0;
+    font-size: var(--texte-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+}
+
+.ml-sommaire ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Comme le sommaire de la veille, ce n'est pas un lien de contenu : on annule
+   le traitement de `global.css` (rouge, graisse, soulignement animé) qui
+   ferait sept liens rouges en colonne. Le filet gauche remplace le
+   soulignement, et l'entrée en cours passe en rouge. */
+.ml-sommaire ol a {
+    display: block;
+    padding: 0.4rem 0 0.4rem 0.9rem;
+    border-left: 2px solid var(--card-background);
+    color: var(--text-muted);
+    font-size: var(--texte-lg);
+    font-weight: 500;
+    background-image: none !important;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.ml-sommaire ol a:hover,
+.ml-sommaire ol a:focus-visible {
+    color: var(--text-color);
+    border-left-color: var(--text-muted);
+}
+
+.ml-sommaire ol a.active {
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Le rouge de marque ne monte qu'à 2:1 sur le fond sombre : en texte, il passe
+   par la version éclaircie. Le filet, lui, est non textuel (seuil 3:1) et
+   garde le rouge de marque. */
+.dark-theme .ml-sommaire ol a.active {
+    color: var(--primary-on-dark);
+}
+
+/* ── Colonne de lecture ── */
+.ml-contenu {
+    text-align: left;
+}
+
+/* `text-align: left` doit être posé sur le conteneur et non sur le h2 : le h2
+   est en `display: inline-block` (global.css), donc son propre text-align
+   aligne son texte interne, pas l'élément, qui reste centré par le text-align
+   hérité du body. */
+.ml-contenu section {
+    text-align: left;
+}
+
+/* Titres de rubrique, et non titres de section : à 40px (le clamp global) ils
+   pesaient presque autant que le h1 à 48px, ce qui donnait sept titres
+   concurrents. On les redescend nettement pour rétablir la hiérarchie. */
+.ml-contenu h2 {
+    font-size: clamp(1.25rem, 2.8vw, 1.6rem);
+    margin-bottom: 0.75rem;
+}
+
+.ml-contenu p {
     text-align: left;
     line-height: 1.7;
     color: var(--text-color);
@@ -26,47 +109,149 @@ main section p {
     padding-right: 0;
 }
 
-/* Titres de rubrique, et non titres de section : à 40px (le clamp global) ils
-   pesaient presque autant que le h1 à 48px, ce qui donnait sept titres
-   concurrents. On les redescend nettement pour rétablir la hiérarchie. */
-main section h2 {
-    font-size: clamp(1.25rem, 2.8vw, 1.6rem);
-    margin-bottom: 0.75rem;
-}
-
-/* Les 6 liens de la page (téléphone, e-mails, hébergeur) n'ont plus de règle
-   propre : ils sont dans des `p`, donc la règle de lien de contenu de
-   `global.css` les couvre. Ils y gagnent le même traitement que partout
-   ailleurs et perdent leur soulignement permanent ; le second indice non
-   coloré reste assuré par la graisse, puis par le soulignement au survol et au
-   focus. */
-
-/* Séparateurs entre rubriques.
-   Ils étaient déclarés `border: none` sans rien d'autre, donc invisibles
-   (border-top: 0, height: 0) : 6 éléments morts dans le HTML. Même traitement
-   discret que sur la page À propos. */
-/* Le h1 laisse 2rem sous lui (règle globale), soit 32px avant la première
-   rubrique, alors que l'écart entre deux rubriques est de 82px grâce aux <hr>.
-   Le premier écart était donc 2,5x plus serré que tous les autres, et il fait
-   se toucher deux filets rouges : celui du h1 et celui du premier h2. */
-main section:first-of-type {
-    margin-top: 2rem;
-}
-
-/* Apparence et espacement dans global.css ; la page ne fixe que la largeur, qui
-   suit sa colonne de lecture. */
+/* Apparence et espacement dans global.css ; la page suit maintenant la largeur
+   de sa colonne, fixée par la grille. */
 main hr {
-    max-width: 700px;
+    max-width: 100%;
 }
 
-@media screen and (max-width: 768px) {
-    main hr {
-        max-width: 80%;
+/* ── Bandeau d'entête ── */
+/* Le fond est un mélange plutôt qu'une couleur en dur : il suit les deux
+   thèmes sans avoir à déclarer deux valeurs. */
+.ml-bandeau {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin: 0 0 2.5rem;
+    padding: 1rem 1.25rem;
+    background: color-mix(in srgb, var(--primary-color) 10%, var(--card-background));
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-weight: 600;
+}
+
+.ml-bandeau i {
+    color: var(--primary-color);
+    flex: none;
+}
+
+/* Icône seule sur fond sombre : élément non textuel, seuil 3:1, que le rouge de
+   marque n'atteint pas (2:1). */
+.dark-theme .ml-bandeau i {
+    color: var(--primary-on-dark);
+}
+
+/* ── Fiches label / valeur ── */
+/* `minmax(min(14rem, 100%), 1fr)` et non `minmax(14rem, 1fr)` : `min-width: 0`
+   borne le contenu de l'item, pas la largeur de la piste, qui resterait à 14rem
+   dans un conteneur plus étroit et déborderait. */
+.ml-fiche {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+    gap: 1.25rem 2rem;
+    margin: 0;
+}
+
+.ml-fiche > div {
+    min-width: 0;
+}
+
+.ml-fiche dt,
+.ml-contacts dt {
+    margin-bottom: 0.3rem;
+    font-size: var(--texte-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+}
+
+.ml-fiche dd,
+.ml-contacts dd {
+    margin: 0;
+    line-height: 1.6;
+    overflow-wrap: anywhere; /* l'adresse mail ne doit pas élargir la colonne */
+}
+
+/* ── Contact : une barre par moyen ── */
+.ml-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 0;
+}
+
+.ml-contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+    padding: 0.85rem 1.25rem;
+    background: var(--card-background);
+    border-radius: var(--radius-md);
+}
+
+.ml-contact dt {
+    margin-bottom: 0;
+    min-width: 9rem;
+}
+
+.ml-contact dt i {
+    margin-right: 0.4rem;
+    color: var(--primary-color);
+}
+
+.dark-theme .ml-contact dt i {
+    color: var(--primary-on-dark);
+}
+
+/* ── Encarts (données personnelles, cookies) ── */
+.ml-contenu p.ml-encart {
+    margin: 0;
+    padding: 1.25rem 1.5rem;
+    background: var(--card-background);
+    border-radius: var(--radius-md);
+}
+
+/* ── Responsive ── */
+/* Sous 1024px le sommaire passe au-dessus du texte et cesse d'être collant :
+   collé en pleine largeur, il mangerait le haut de l'écran à chaque défilement. */
+@media screen and (max-width: 1024px) {
+    .ml-layout {
+        grid-template-columns: minmax(0, 700px);
+        gap: 2rem;
+        margin-top: 1.5rem;
+    }
+
+    .ml-sommaire {
+        position: static;
+        max-height: none;
+        overflow: visible;
+        padding: 1.25rem;
+        background: var(--card-background);
+        border-radius: var(--radius-lg);
+    }
+
+    .ml-sommaire ol {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 1.5rem;
+    }
+
+    .ml-sommaire ol a {
+        border-left: none;
+        padding: 0.25rem 0;
+    }
+
+    .ml-sommaire ol a:hover,
+    .ml-sommaire ol a:focus-visible,
+    .ml-sommaire ol a.active {
+        border-left: none;
     }
 }
 
 @media screen and (max-width: 480px) {
-    main hr {
-        max-width: 90%;
+    .ml-contact dt {
+        min-width: 0;
     }
 }

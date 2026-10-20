@@ -50,77 +50,132 @@
 <body>
 <!-- Contenu principal -->
 <main id="main">
-    <p class="section-eyebrow">Aucun cookie, aucune donnée collectée</p>
+    <p class="section-eyebrow">Éditeur, hébergement et droits</p>
     <h1><i class="fas fa-scale-balanced" aria-hidden="true"></i> Mentions légales</h1>
 
-    <!-- Éditeur -->
-    <section id="editeur">
-        <h2>Éditeur du site</h2>
-        <p>Justine Blin <br>
-            Adresse : Oise 60 <br>
-            N° de téléphone : <a href="tel:0607400161">06 07 40 01 61</a><br>
-            Mail : <a href="mailto:blin.justine.sio@gmail.com">blin.justine.sio@gmail.com</a><br>
-        </p>
-    </section>
-    <hr>
+    <div class="ml-layout">
+        <!-- Sommaire collant. Sept rubriques dont deux seulement intéressent la
+             plupart des visiteurs : sans sommaire, il faut tout parcourir. -->
+        <aside class="ml-sommaire" aria-labelledby="ml-sommaire-titre">
+            <p class="ml-sommaire-titre" id="ml-sommaire-titre">Sur cette page</p>
+            <ol>
+                <li><a class="lien-sommaire" href="#editeur">Éditeur du site</a></li>
+                <li><a class="lien-sommaire" href="#hebergement">Hébergement</a></li>
+                <li><a class="lien-sommaire" href="#contact">Contact</a></li>
+                <li><a class="lien-sommaire" href="#propriete-intellectuelle">Propriété intellectuelle</a></li>
+                <li><a class="lien-sommaire" href="#photos">Crédits photographiques</a></li>
+                <li><a class="lien-sommaire" href="#donnees-personnelles">Données personnelles</a></li>
+                <li><a class="lien-sommaire" href="#cookies">Cookies</a></li>
+            </ol>
+        </aside>
 
-    <!-- Hébergeur -->
-    <section id="hebergement">
-        <h2>Hébergement</h2>
-        <p>GitHub Pages<br>
-            GitHub, Inc. <br>
-            88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA<br>
-            Site internet : <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">https://pages.github.com/</a>
-        </p>
-    </section>
-    <hr>
+        <div class="ml-contenu">
+            <!-- La réponse que le visiteur est venu chercher, avant les sept rubriques -->
+            <p class="ml-bandeau"><i class="fas fa-shield-halved" aria-hidden="true"></i> Ce site ne collecte aucune
+                donnée personnelle et n'utilise aucun cookie.</p>
 
-    <!-- Contact -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>
-            Par téléphone : <a href="tel:0607400161">06 07 40 01 61</a><br>
-            Par email : <a href="mailto:blin.justine.sio@gmail.com">blin.justine.sio@gmail.com</a>
-        </p>
-    </section>
-    <hr>
+            <!-- Éditeur -->
+            <section id="editeur">
+                <h2>Éditeur du site</h2>
+                <dl class="ml-fiche">
+                    <div>
+                        <dt>Éditeur</dt>
+                        <dd>Justine Blin</dd>
+                    </div>
+                    <div>
+                        <dt>Adresse</dt>
+                        <dd>Oise 60</dd>
+                    </div>
+                    <div>
+                        <dt>N° de téléphone</dt>
+                        <dd><a href="tel:0607400161">06 07 40 01 61</a></dd>
+                    </div>
+                    <div>
+                        <dt>Mail</dt>
+                        <dd><a href="mailto:blin.justine.sio@gmail.com">blin.justine.sio@gmail.com</a></dd>
+                    </div>
+                </dl>
+            </section>
+            <hr>
 
-    <!-- Propriété intellectuelle -->
-    <section id="propriete-intellectuelle">
-        <h2>Propriété intellectuelle</h2>
-        <p>L'ensemble du contenu de ce site (textes, code source, mises en page, logo) est la propriété exclusive de
-            Justine Blin, sauf mention contraire. Toute reproduction, représentation ou diffusion, en tout ou partie,
-            du contenu de ce site sans autorisation préalable est interdite.</p>
-    </section>
-    <hr>
+            <!-- Hébergeur -->
+            <section id="hebergement">
+                <h2>Hébergement</h2>
+                <dl class="ml-fiche">
+                    <div>
+                        <dt>Hébergeur</dt>
+                        <dd>GitHub Pages, fourni par GitHub, Inc.</dd>
+                    </div>
+                    <div>
+                        <dt>Adresse</dt>
+                        <dd>88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA</dd>
+                    </div>
+                    <div>
+                        <dt>Site internet</dt>
+                        <dd><a href="https://pages.github.com/" target="_blank"
+                               rel="noopener noreferrer">pages.github.com</a></dd>
+                    </div>
+                </dl>
+            </section>
+            <hr>
 
-    <!-- Crédits -->
-    <section id="photos">
-        <h2>Crédits photographiques</h2>
-        <p>Les captures d'écran et visuels des projets personnels sont la propriété de Justine Blin.
-            Les autres images et illustrations utilisées sur ce site proviennent de sources tierces disponibles sur
-            internet et restent la propriété de leurs auteurs respectifs. Si vous êtes l'auteur d'une image utilisée
-            sur ce site et souhaitez sa modification ou son retrait, merci de me contacter à l'adresse
-            <a href="mailto:blin.justine.sio@gmail.com">blin.justine.sio@gmail.com</a>.</p>
-    </section>
-    <hr>
+            <!-- Contact -->
+            <section id="contact">
+                <h2>Contact</h2>
+                <dl class="ml-contacts">
+                    <div class="ml-contact">
+                        <dt><i class="fas fa-phone" aria-hidden="true"></i> Par téléphone</dt>
+                        <dd><a href="tel:0607400161">06 07 40 01 61</a></dd>
+                    </div>
+                    <div class="ml-contact">
+                        <dt><i class="fas fa-envelope" aria-hidden="true"></i> Par email</dt>
+                        <dd><a href="mailto:blin.justine.sio@gmail.com">blin.justine.sio@gmail.com</a></dd>
+                    </div>
+                </dl>
+            </section>
+            <hr>
 
-    <!-- Données personnelles -->
-    <section id="donnees-personnelles">
-        <h2>Données personnelles</h2>
-        <p>Ce site ne collecte ni ne stocke aucune donnée personnelle. Le formulaire de contact ouvre directement
-            votre application de messagerie et aucune information n'est enregistrée sur le serveur.</p>
-    </section>
-    <hr>
+            <!-- Propriété intellectuelle -->
+            <section id="propriete-intellectuelle">
+                <h2>Propriété intellectuelle</h2>
+                <p>L'ensemble du contenu de ce site (textes, code source, mises en page, logo) est la propriété
+                    exclusive de Justine Blin, sauf mention contraire. Toute reproduction, représentation ou diffusion,
+                    en tout ou partie, du contenu de ce site sans autorisation préalable est interdite.</p>
+            </section>
+            <hr>
 
-    <!-- Cookies -->
-    <section id="cookies">
-        <h2>Cookies</h2>
-        <p>Ce site n'utilise aucun cookie. Seul le stockage local du navigateur est utilisé pour
-            mémoriser votre préférence de thème. Cette donnée reste uniquement sur votre appareil et
-            n'est transmise à aucun tiers.</p>
-    </section>
+            <!-- Crédits -->
+            <section id="photos">
+                <h2>Crédits photographiques</h2>
+                <p>Les captures d'écran et visuels des projets personnels sont la propriété de Justine Blin.
+                    Les autres images et illustrations utilisées sur ce site proviennent de sources tierces disponibles
+                    sur internet et restent la propriété de leurs auteurs respectifs. Si vous êtes l'auteur d'une image
+                    utilisée sur ce site et souhaitez sa modification ou son retrait, merci de me contacter à l'adresse
+                    <a href="mailto:blin.justine.sio@gmail.com">blin.justine.sio@gmail.com</a>.</p>
+            </section>
+            <hr>
+
+            <!-- Données personnelles -->
+            <section id="donnees-personnelles">
+                <h2>Données personnelles</h2>
+                <p class="ml-encart">Ce site ne collecte ni ne stocke aucune donnée personnelle. Le formulaire de
+                    contact ouvre directement votre application de messagerie et aucune information n'est enregistrée
+                    sur le serveur.</p>
+            </section>
+            <hr>
+
+            <!-- Cookies -->
+            <section id="cookies">
+                <h2>Cookies</h2>
+                <p class="ml-encart">Ce site n'utilise aucun cookie. Seul le stockage local du navigateur est utilisé
+                    pour mémoriser votre préférence de thème. Cette donnée reste uniquement sur votre appareil et
+                    n'est transmise à aucun tiers.</p>
+            </section>
+        </div>
+    </div>
 </main>
+
+<script src="../js/mentions-legales.js" defer></script>
 
 
 </body>

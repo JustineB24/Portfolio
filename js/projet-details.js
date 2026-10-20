@@ -78,7 +78,10 @@ const projets = {
     "limite-limite": {
         titre: "Limite Limite — API",
         date: "Septembre 2026",
-        images: [],
+        images: [
+            "../assets/projets/limite_limite/Reponse_API_1.png",
+            "../assets/projets/limite_limite/Reponse_API_2.png"
+        ],
         description: "Exercice de Bachelor réalisé en binôme, dont le sujet était la chaîne d'intégration et de déploiement continus plus que l'application elle-même. L'application est volontairement petite : une API PHP 8.2 qui renvoie en JSON une association tirée au hasard entre une carte question à trou et une carte réponse, sur le principe du jeu Limite Limite. Le code suit une architecture MVC légère, et le contrôleur reçoit sa connexion à la base par injection de dépendances, ce qui permet de le tester avec un mock sans base réelle. L'environnement tient dans Docker Compose, un service PHP et un service MySQL 8 initialisé par un script SQL. À chaque push ou pull request sur les branches develop et prod, GitHub Actions audite les dépendances avec Composer, vérifie le respect du standard PSR-12 avec PHP_CodeSniffer et lance les tests PHPUnit. À la fin de cette intégration, un second workflow déploie le code par SSH sur un VPS, dans un environnement de développement puis de production. Le travail suit le même circuit : développement sur develop, puis passage en production par pull request.",
         technologies: ["PHP", "MySQL", "Docker", "GitHub"],
         liens: [

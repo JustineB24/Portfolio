@@ -29,7 +29,7 @@ nouvelles applications.
 
 | 🎓 Formation                                              | 📅 Période  |
 |-----------------------------------------------------------|-------------|
-| Mastère Expert IT, applications intelligentes et Big Data | 2026 – 2028 |
+| Mastère Manager de projet Expert IT, Data & IA            | 2026 – 2028 |
 | Bachelor Chef de projet développement et data             | 2025 – 2026 |
 | BTS SIO, option SLAM                                      | 2023 – 2025 |
 | Baccalauréat général (Maths, NSI)                         | 2020 – 2023 |

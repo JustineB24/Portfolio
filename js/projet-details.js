@@ -7,29 +7,35 @@ const urlParams = new URLSearchParams(window.location.search);
 const rawId = urlParams.get("id");
 const projetId = rawId && /^[a-z0-9-]+$/.test(rawId) ? rawId : null;
 
+// Une image s'écrit soit comme un simple chemin, soit comme {src, legende}.
+// La légende s'affiche sous la galerie et sert de texte alternatif : sans elle,
+// chaque image s'annonçait « capture 3 », y compris les maquettes.
+function normaliserImage(image) {
+    return typeof image === "string" ? {src: image, legende: ""} : image;
+}
+
 // Base de données des projets
 const projets = {
     "yabt": {
         titre: "YABT — Yet Another Blind Test",
         date: "Février 2026 — en cours",
         images: [
-            "../assets/projets/yabt/Capture_liste_parties.jpg",
-            "../assets/projets/yabt/Capture_salon.jpg",
-            "../assets/projets/yabt/Capture_partie.jpg",
-            "../assets/projets/yabt/Capture_resultats.jpg",
-            "../assets/projets/yabt/Capture_creation.jpg",
-            "../assets/projets/yabt/Capture_compte.jpg",
-            "../assets/projets/yabt/Maquette_accueil.png",
-            "../assets/projets/yabt/Maquette_creation.png",
-            "../assets/projets/yabt/Maquette_lobby.png",
-            "../assets/projets/yabt/Maquette_en_partie.png",
-            "../assets/projets/yabt/Maquette_resultats.png",
-            "../assets/projets/yabt/Maquette_profil.png",
-            "../assets/projets/yabt/Logo.png",
-            "../assets/projets/yabt/Mascotte.jpg",
-            "../assets/projets/yabt/Nuancier.png"
+            {src: "../assets/projets/yabt/Capture_liste_parties.jpg", legende: "Liste des parties publiques et privées, vue en invité"},
+            {src: "../assets/projets/yabt/Capture_salon.jpg", legende: "Salon d'attente : QR code, code de partie et chat"},
+            {src: "../assets/projets/yabt/Capture_partie.jpg", legende: "Partie en cours : écoute de l'extrait et saisie de la réponse"},
+            {src: "../assets/projets/yabt/Capture_resultats.jpg", legende: "Résultats : podium, classement et statistiques"},
+            {src: "../assets/projets/yabt/Capture_creation.jpg", legende: "Création d'un blind test avec recherche Deezer, écran pas encore ouvert dans la V1"},
+            {src: "../assets/projets/yabt/Capture_compte.jpg", legende: "Page compte : parties jouées, victoires, historique"},
+            {src: "../assets/projets/yabt/Maquette_accueil.png", legende: "Maquette : accueil"},
+            {src: "../assets/projets/yabt/Maquette_creation.png", legende: "Maquette : création d'un blind test"},
+            {src: "../assets/projets/yabt/Maquette_lobby.png", legende: "Maquette : salon d'attente"},
+            {src: "../assets/projets/yabt/Maquette_en_partie.png", legende: "Maquette : partie en cours"},
+            {src: "../assets/projets/yabt/Maquette_resultats.png", legende: "Maquette : résultats"},
+            {src: "../assets/projets/yabt/Maquette_profil.png", legende: "Maquette : profil"},
+            {src: "../assets/projets/yabt/Logo.png", legende: "Logo, réalisé par un camarade en webdesign"},
+            {src: "../assets/projets/yabt/Nuancier.png", legende: "Nuancier de l'identité visuelle"}
         ],
-        description: "Projet fil rouge du Bachelor Chef de projet développement et data, mené à quatre depuis février 2026. YABT est une application web de blind test musical multijoueur en temps réel. Les joueurs créent ou rejoignent une partie par un code ou un QR code, discutent dans le salon et s'affrontent sur des extraits musicaux issus de l'API Deezer. La version 1 livrée propose le mode Classique, des comptes avec avatar et l'historique des parties ; les quatre autres modes (Speedrun, Battle Royale, Jackpot, Combo Breaker) sont annoncés dans l'interface comme à venir. Le mode quiz et la création de blind tests sont développés et testés, mais restent fermés tant que le moteur de jeu ne sait pas les dérouler : l'équipe a préféré ne pas ouvrir une fonctionnalité qui mène à une impasse. L'identité visuelle est un travail à plusieurs mains : le logo a été réalisé par un camarade en webdesign, les icônes néon ont été générées par IA, et j'ai dessiné la mascotte animée sur Inkscape. Le projet suit une méthode Agile, Scrum et Kanban sur Jira.",
+        description: "Projet fil rouge du Bachelor Chef de projet développement et data, mené à quatre depuis février 2026. YABT est une application web de blind test musical multijoueur en temps réel. Les joueurs créent ou rejoignent une partie par un code ou un QR code, discutent dans le salon et s'affrontent sur des extraits musicaux issus de l'API Deezer. La version 1 livrée propose le mode Classique, des comptes avec avatar et l'historique des parties ; les quatre autres modes (Speedrun, Battle Royale, Jackpot, Combo Breaker) sont annoncés dans l'interface comme à venir. Le mode quiz et la création de blind tests sont développés et testés, mais restent fermés tant que le moteur de jeu ne sait pas les dérouler : l'équipe a préféré ne pas ouvrir une fonctionnalité qui mène à une impasse. L'identité visuelle est un travail à plusieurs mains : le logo a été réalisé par un camarade en webdesign, et les icônes néon ont été générées par IA. Le projet suit une méthode Agile, Scrum et Kanban sur Jira.",
         technologies: ["React", "Tailwind CSS", "Node.js", "Socket.io", "MySQL", "Docker", "Figma", "GitHub"],
         liens: [
             {libelle: "API Deezer", url: "https://developers.deezer.com/api"}
@@ -45,17 +51,17 @@ const projets = {
                 "Compléter la chaîne d'intégration continue posée par un camarade (audit, lint, tests et build sur GitHub Actions à chaque push et pull request), et corriger un job qui consommait 1 975 des 2 000 minutes mensuelles en attendant une connexion jamais fermée",
                 "Se coordonner à quatre avec Git et une méthode Agile, et accepter de resserrer la version 1 pour livrer quelque chose de solide"
             ],
-            resultat: "La version 1 est livrée et jouable de bout en bout, la première partie complète ayant été jouée fin juin 2026. Elle s'appuie sur une suite de 534 tests automatisés, tous au vert : 391 côté serveur avec Jest et Supertest, 143 côté interface avec Vitest et Testing Library. Le projet n'a pas été mis en production et se poursuit : raccorder les blind tests créés au moteur de jeu, rouvrir le quiz, puis ajouter les modes restants et les niveaux. Les maquettes Figma couvrent une quarantaine d'écrans, chacun en version bureau et téléphone. Les six premiers visuels sont des captures de l'application, les suivants les maquettes. Le projet a été soutenu devant le jury du titre professionnel Concepteur développeur d'applications."
+            resultat: "La version 1 est livrée et jouable de bout en bout, la première partie complète ayant été jouée fin juin 2026. Elle s'appuie sur une suite de 534 tests automatisés, tous au vert : 391 côté serveur avec Jest et Supertest, 143 côté interface avec Vitest et Testing Library. J'ai largement contribué à cette suite, aux côtés de l'équipe. Le projet n'a pas été mis en production et se poursuit : raccorder les blind tests créés au moteur de jeu, rouvrir le quiz, puis ajouter les modes restants et les niveaux. Les maquettes Figma couvrent une quarantaine d'écrans, chacun en version bureau et téléphone. Les six premiers visuels sont des captures de l'application, les suivants les maquettes. Le projet a été soutenu devant le jury du titre professionnel Concepteur développeur d'applications."
         }
     },
     "gecko": {
         titre: "Gecko",
         date: "Septembre 2025 — aujourd'hui",
         images: [
-            "../assets/projets/gecko/Page_article.png",
-            "../assets/projets/gecko/Page_article_recherche.png",
-            "../assets/projets/gecko/Filtres_favoris.png",
-            "../assets/projets/gecko/Stocks_Paris_preparation.png"
+            {src: "../assets/projets/gecko/Page_article.png", legende: "Tableau des articles avec le moteur de filtres (données masquées)"},
+            {src: "../assets/projets/gecko/Page_article_recherche.png", legende: "Filtres combinés par colonne, résultats en direct"},
+            {src: "../assets/projets/gecko/Filtres_favoris.png", legende: "Gestion des filtres favoris"},
+            {src: "../assets/projets/gecko/Stocks_Paris_preparation.png", legende: "Stocks de Paris : préparation des envois"}
         ],
         description: "Application web métier d'un client du secteur de l'édition et de la distribution, développée par l'équipe de Litesoft où je suis en alternance. C'est un intranet utilisé chaque jour par des dizaines de personnes sur plusieurs sites : catalogue, CRM, facturation, fabrication, stocks et expédition. Je travaille par tickets, transmis par le chef de projet qui recueille le besoin auprès du client et valide les livraisons en test : plus de cinquante sur douze mois, souvent sur toute la chaîne, du script SQL à l'interface. Je fusionne moi-même sur l'environnement de test et j'applique les scripts de migration de base en préproduction et en production. Le reste va à la modernisation de l'existant plutôt qu'à l'empilement : imports sortis des contrôleurs en classes dédiées, Composer et autoload PSR-4 sur tout le projet, interface passée entièrement à Tailwind CSS. J'utilise Claude Code au quotidien, intégré à PhpStorm, chaque proposition étant relue. Le socle est une architecture MVC en PHP 8.3 avec PostgreSQL, un frontend en JavaScript, jQuery et DataTables stylé avec Tailwind CSS, du temps réel via Node.js et Socket.IO, et une chaîne de déploiement GitLab sur quatre environnements : développement, test, préproduction et production.",
         technologies: ["PHP", "JavaScript", "PostgreSQL", "jQuery", "Tailwind CSS", "DataTables", "Node.js", "Socket.io", "GitLab", "MAMP"],
@@ -92,7 +98,7 @@ const projets = {
     "limite-limite": {
         titre: "Limite Limite — API",
         date: "Septembre 2026",
-        images: ["../assets/projets/limite_limite/Reponse_API.png"],
+        images: [{src: "../assets/projets/limite_limite/Reponse_API.png", legende: "Réponse de l'API : une question et une réponse tirées au hasard"}],
         description: "Exercice de Bachelor réalisé en binôme, dont le sujet était la chaîne d'intégration et de déploiement continus plus que l'application elle-même. L'application est volontairement petite : une API PHP 8.2 qui renvoie en JSON une association tirée au hasard entre une carte question à trou et une carte réponse, sur le principe du jeu Limite Limite. Le code suit une architecture MVC légère, et le contrôleur reçoit sa connexion à la base par injection de dépendances, ce qui permet de le tester avec un mock sans base réelle. L'environnement tient dans Docker Compose, un service PHP et un service MySQL 8 initialisé par un script SQL. À chaque push ou pull request sur les branches develop et prod, GitHub Actions audite les dépendances avec Composer, vérifie le respect du standard PSR-12 avec PHP_CodeSniffer et lance les tests PHPUnit. À la fin de cette intégration, un second workflow déploie le code par SSH sur un VPS, dans un environnement de développement puis de production. Le travail suit le même circuit : développement sur develop, puis passage en production par pull request.",
         technologies: ["PHP", "MySQL", "Docker", "GitHub"],
         liens: [
@@ -102,8 +108,16 @@ const projets = {
     "grimoire-recettes": {
         titre: "Le Grimoire des Recettes",
         date: "2025 — en cours",
-        images: ["../assets/projets/grimoire_recettes/Maquette.png"],
-        description: "Projet personnel réalisé dans le but de tester les capacités des intelligences artificielles en développement. Le point de départ : une simple idée de carnet de recettes numérique et une maquette rapide dessinée sur tablette. Le cahier des charges a été rédigé avec Gemini (Google), puis l'intégralité du code a été générée par Claude Code (Anthropic). Le résultat est une application web complète (PWA installable comme une appli sur téléphone et utilisable hors ligne) avec recherche en temps réel, calculateur de portions, timer intégré, mode sombre et liste de courses, le tout en HTML, CSS et JavaScript vanilla, sans aucune ligne de code écrite manuellement.",
+        images: [
+            {src: "../assets/projets/grimoire_recettes/Accueil.jpg", legende: "Accueil : catégories et bannière de saison"},
+            {src: "../assets/projets/grimoire_recettes/Fiche_recette.png", legende: "Fiche recette : portions, ingrédients à cocher, note"},
+            {src: "../assets/projets/grimoire_recettes/Planificateur.png", legende: "Planificateur des repas de la semaine"},
+            {src: "../assets/projets/grimoire_recettes/Placards.png", legende: "« Qu'est-ce que j'ai dans mes placards ? » et recettes réalisables"},
+            {src: "../assets/projets/grimoire_recettes/Liste_de_courses.png", legende: "Liste de courses générée à partir de trois recettes"},
+            {src: "../assets/projets/grimoire_recettes/Fiche_sombre.png", legende: "Fiche recette en thème sombre"},
+            {src: "../assets/projets/grimoire_recettes/Maquette.png", legende: "Maquette de départ, dessinée sur tablette"}
+        ],
+        description: "Projet personnel réalisé dans le but de tester les capacités des intelligences artificielles en développement. Le point de départ : une simple idée de carnet de recettes numérique et une maquette rapide dessinée sur tablette, la dernière image de la galerie. Le cahier des charges a été rédigé avec Gemini (Google), puis l'intégralité du code a été générée par Claude Code (Anthropic). Le résultat est une application web complète (PWA installable comme une appli sur téléphone et utilisable hors ligne) avec recherche en temps réel, calculateur de portions, timer intégré, mode sombre et liste de courses, le tout en HTML, CSS et JavaScript vanilla, sans aucune ligne de code écrite manuellement.",
         technologies: ["HTML", "CSS", "JavaScript"],
         liens: [
             {libelle: "Gemini", url: "https://gemini.google.com/"},
@@ -115,11 +129,11 @@ const projets = {
         titre: "Panada Food",
         date: "12/11/2024 — 20/12/2024",
         images: [
-            "../assets/projets/panada_food/Accueil.jpg",
-            "../assets/projets/panada_food/Menu.jpg",
-            "../assets/projets/panada_food/Contact.jpg",
-            "../assets/projets/panada_food/Mentions_legales.jpg",
-            "../assets/projets/panada_food/Ecran_chargement.jpg"
+            {src: "../assets/projets/panada_food/Accueil.jpg", legende: "Page d'accueil"},
+            {src: "../assets/projets/panada_food/Menu.jpg", legende: "Carte du restaurant : burgers, sandwichs, pizzas, tacos"},
+            {src: "../assets/projets/panada_food/Contact.jpg", legende: "Page contact"},
+            {src: "../assets/projets/panada_food/Mentions_legales.jpg", legende: "Mentions légales et crédits photographiques"},
+            {src: "../assets/projets/panada_food/Ecran_chargement.jpg", legende: "Écran de chargement"}
         ],
         description: "Développement d'un site web vitrine pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en binôme avec une collègue. Le restaurant venait d'ouvrir et ne possédait aucune présence en ligne. On s'est déplacées sur place pour récolter les informations et comprendre les attentes du gérant, puis on a conçu et développé le site de A à Z. Le site inclut une page d'accueil, le menu du restaurant, un formulaire de contact et les mentions légales conformes au RGPD. Il a été mis en ligne via un hébergement OVH. Le gérant souhaitait aussi pouvoir prendre les commandes en ligne : on a commencé une seconde version en PHP avec une base MySQL, où le menu, les boissons et les sauces devenaient des tables et où un panier apparaissait. Elle n'a pas abouti, faute de temps sur six semaines, et n'a jamais été mise en ligne.",
         technologies: ["HTML", "CSS", "JavaScript"],
@@ -141,10 +155,10 @@ const projets = {
     "pendu": {
         titre: "Pendu",
         date: "Mars 2025",
-        images: ["../assets/projets/pendu/Menu.jpg",
-            "../assets/projets/pendu/Jeu.jpg",
-            "../assets/projets/pendu/Mots.jpg",
-            "../assets/projets/pendu/Scores.jpg"
+        images: [{src: "../assets/projets/pendu/Menu.jpg", legende: "Menu principal"},
+            {src: "../assets/projets/pendu/Jeu.jpg", legende: "Partie en cours : proposer une lettre"},
+            {src: "../assets/projets/pendu/Mots.jpg", legende: "Gestion de la liste des mots"},
+            {src: "../assets/projets/pendu/Scores.jpg", legende: "Tableau des scores"}
         ],
         description: "Application mobile développée avec MAUI et XAML, recréant le célèbre jeu du pendu. L'utilisateur doit deviner un mot choisi aléatoirement, en proposant des lettres une par une. Chaque mauvaise réponse révèle progressivement une image du pendu. Le menu principal permet de jouer, de gérer la liste des mots à deviner, de consulter les meilleurs scores ou de quitter l'application. Les mots et les scores sont stockés localement, permettant une gestion dynamique des parties et une personnalisation du jeu. L'interface est responsive et s'adapte parfaitement aux différents formats mobiles.",
         technologies: ["C#", "XAML", "MAUI"]
@@ -152,12 +166,12 @@ const projets = {
     "france-mobilier": {
         titre: "France Mobilier",
         date: "Février 2025",
-        images: ["../assets/projets/france_mobilier/Accueil.png",
-            "../assets/projets/france_mobilier/Meuble.jpg",
-            "../assets/projets/france_mobilier/Magasins.png",
-            "../assets/projets/france_mobilier/Admin.png",
-            "../assets/projets/france_mobilier/AjoutProduit.png",
-            "../assets/projets/france_mobilier/AjoutMagasin.png"
+        images: [{src: "../assets/projets/france_mobilier/Accueil.png", legende: "Page d'accueil"},
+            {src: "../assets/projets/france_mobilier/Meuble.jpg", legende: "Catalogue filtré par catégorie : meubles TV"},
+            {src: "../assets/projets/france_mobilier/Magasins.png", legende: "Liste des magasins"},
+            {src: "../assets/projets/france_mobilier/Admin.png", legende: "Espace d'administration"},
+            {src: "../assets/projets/france_mobilier/AjoutProduit.png", legende: "Ajout d'un produit"},
+            {src: "../assets/projets/france_mobilier/AjoutMagasin.png", legende: "Ajout d'un magasin"}
         ],
         description: "Site e-commerce développé pour France Mobilier, une société de mobilier d'intérieur fictive servant de support à un sujet de BTS. Conçu selon l'architecture MVC, il propose une page d'accueil présentant l'entreprise, un module de recherche de meubles par catégorie, ainsi qu'une page listant l'ensemble des magasins physiques. Le projet utilise une base de données pour gérer dynamiquement les meubles et les points de vente. Un panneau d'administration est également prévu pour permettre la modification des produits et des magasins. L'interface est pensée pour être claire et facilement maintenable.",
         technologies: ["HTML", "CSS", "PHP", "MySQL", "XAMPP"]
@@ -166,22 +180,22 @@ const projets = {
         titre: "Sio Shop",
         date: "Janvier 2025",
         images: [
-            "../assets/projets/sio_shop/Connexion.png",
-            "../assets/projets/sio_shop/Menu.png",
-            "../assets/projets/sio_shop/PasAdmin.png",
-            "../assets/projets/sio_shop/GestionClients.png",
-            "../assets/projets/sio_shop/RechercheClient.png",
-            "../assets/projets/sio_shop/Client.png",
-            "../assets/projets/sio_shop/NouveauClient.png",
-            "../assets/projets/sio_shop/GestionProduits.png",
-            "../assets/projets/sio_shop/RechercheProduit.png",
-            "../assets/projets/sio_shop/Produit.png",
-            "../assets/projets/sio_shop/NouveauProduit.png",
-            "../assets/projets/sio_shop/SaisirVente.png",
-            "../assets/projets/sio_shop/Facture.png",
-            "../assets/projets/sio_shop/GestionEmployes.png",
-            "../assets/projets/sio_shop/Employe.png",
-            "../assets/projets/sio_shop/AjoutEmploye.png"
+            {src: "../assets/projets/sio_shop/Connexion.png", legende: "Connexion"},
+            {src: "../assets/projets/sio_shop/Menu.png", legende: "Menu administrateur"},
+            {src: "../assets/projets/sio_shop/PasAdmin.png", legende: "Menu d'un employé, sans la gestion des employés"},
+            {src: "../assets/projets/sio_shop/GestionClients.png", legende: "Liste des clients"},
+            {src: "../assets/projets/sio_shop/RechercheClient.png", legende: "Recherche d'un client par nom"},
+            {src: "../assets/projets/sio_shop/Client.png", legende: "Fiche client et historique d'achats"},
+            {src: "../assets/projets/sio_shop/NouveauClient.png", legende: "Création d'un client"},
+            {src: "../assets/projets/sio_shop/GestionProduits.png", legende: "Liste des produits"},
+            {src: "../assets/projets/sio_shop/RechercheProduit.png", legende: "Produits filtrés par marque"},
+            {src: "../assets/projets/sio_shop/Produit.png", legende: "Fiche produit"},
+            {src: "../assets/projets/sio_shop/NouveauProduit.png", legende: "Création d'un produit"},
+            {src: "../assets/projets/sio_shop/SaisirVente.png", legende: "Saisie d'une vente : prix HT, TVA et TTC"},
+            {src: "../assets/projets/sio_shop/Facture.png", legende: "Facture générée en PDF"},
+            {src: "../assets/projets/sio_shop/GestionEmployes.png", legende: "Liste des employés"},
+            {src: "../assets/projets/sio_shop/Employe.png", legende: "Fiche employé"},
+            {src: "../assets/projets/sio_shop/AjoutEmploye.png", legende: "Création d'un employé"}
         ],
         description: "Application de gestion commerciale développée sous Windows Forms pour une concession automobile fictive, sujet d'un projet de BTS. Ce projet propose une interface permettant aux employés de gérer les clients, les véhicules en stock et les ventes. L'application intègre une authentification sécurisée, une liaison directe avec une base de données SQL, ainsi qu'un module de création de factures au format PDF. Les utilisateurs peuvent rechercher, ajouter et modifier clients et produits, saisir des ventes avec calcul automatique du prix TTC, et suivre l'évolution des stocks en temps réel. La structure suit les principes de la programmation orientée objet, en assurant une navigation fluide et professionnelle entre les différentes fonctionnalités.",
         technologies: ["WinForms", "C#", "MySQL", "XAMPP"]
@@ -190,11 +204,11 @@ const projets = {
         titre: "Speedcubing",
         date: "Novembre — Décembre 2024",
         images: [
-            "../assets/projets/speedcubing/Accueil.jpg",
-            "../assets/projets/speedcubing/Chrono.jpg",
-            "../assets/projets/speedcubing/Technique_3x3.jpg",
-            "../assets/projets/speedcubing/Def_Speedcubing.jpg",
-            "../assets/projets/speedcubing/Connexion.jpg"
+            {src: "../assets/projets/speedcubing/Accueil.jpg", legende: "Accueil et actualités"},
+            {src: "../assets/projets/speedcubing/Chrono.jpg", legende: "Chronomètre"},
+            {src: "../assets/projets/speedcubing/Technique_3x3.jpg", legende: "Méthode de résolution du 3x3"},
+            {src: "../assets/projets/speedcubing/Def_Speedcubing.jpg", legende: "Présentation du speedcubing"},
+            {src: "../assets/projets/speedcubing/Connexion.jpg", legende: "Connexion"}
         ],
         description: "Site sur le thème d'une association de speedcubing, sujet d'un projet de BTS, sans commande réelle derrière. Il permet aux passionnés de Rubik's Cube de s'entraîner en ligne, d'enregistrer leurs temps et de comparer leurs performances avec celles des autres. Il intègre un chronomètre interactif, une base de données des meilleurs temps et une section dédiée à la résolution d'un Rubik's Cube 3x3.",
         technologies: ["PHP", "CSS", "JavaScript", "MySQL", "XAMPP"]
@@ -202,7 +216,7 @@ const projets = {
     "meteo": {
         titre: "Application météo",
         date: "Septembre — Octobre 2024",
-        images: ["../assets/projets/meteo/Meteo.jpg"],
+        images: [{src: "../assets/projets/meteo/Meteo.jpg", legende: "Météo en temps réel d'une ville, ici Amiens"}],
         description: "Application web développée pour afficher en temps réel les conditions météorologiques d'une ville choisie par l'utilisateur. En utilisant l'API OpenWeather, ce projet permet de consulter la température actuelle, l'humidité ainsi qu'une description du temps (ensoleillé, nuageux, etc.). L'interface propose une zone de recherche, un affichage centralisé des données principales, et un design épuré avec fond personnalisé. Le JavaScript assure la récupération dynamique des données météo et la mise à jour instantanée de l'affichage après chaque recherche.",
         liens: [
             {libelle: "API OpenWeather", url: "https://openweathermap.org/api"}
@@ -212,7 +226,7 @@ const projets = {
     "generateur-mdp": {
         titre: "Générateur de mots de passe",
         date: "Septembre 2024",
-        images: ["../assets/projets/generateur_mdp/Generateur_mdp.png"],
+        images: [{src: "../assets/projets/generateur_mdp/Generateur_mdp.png", legende: "Longueur réglable et copie en un clic"}],
         description: "Outil conçu pour aider les utilisateurs à générer des mots de passe sécurisés en quelques clics. Ce générateur permet de créer des mots de passe aléatoires respectant des critères de sécurité stricts : majuscules, minuscules, chiffres et caractères spéciaux. Il intègre une interface interactive, incluant un slider pour définir la longueur du mot de passe (de 8 à 16 caractères), ainsi que des boutons pour copier rapidement le résultat.",
         technologies: ["HTML", "CSS", "JavaScript"]
     },
@@ -220,11 +234,11 @@ const projets = {
         titre: "Mairie de Cauffry",
         date: "27/05/2024 — 21/06/2024",
         images: [
-            "../assets/projets/mairie_de_cauffry/Visuel_site.jpg",
-            "../assets/projets/mairie_de_cauffry/Accueil.jpg",
-            "../assets/projets/mairie_de_cauffry/Adico_collectivite.png",
-            "../assets/projets/mairie_de_cauffry/Adico_arborescence.png",
-            "../assets/projets/mairie_de_cauffry/Adicloud.jpg"
+            {src: "../assets/projets/mairie_de_cauffry/Visuel_site.jpg", legende: "Bandeau d'accueil du nouveau site de la commune"},
+            {src: "../assets/projets/mairie_de_cauffry/Accueil.jpg", legende: "Page d'accueil du site en ligne"},
+            {src: "../assets/projets/mairie_de_cauffry/Adico_collectivite.png", legende: "Plateforme de l'Adico : recueil des besoins"},
+            {src: "../assets/projets/mairie_de_cauffry/Adico_arborescence.png", legende: "Arborescence des rubriques, sur la plateforme de l'Adico"},
+            {src: "../assets/projets/mairie_de_cauffry/Adicloud.jpg", legende: "Adicloud : documents déposés et structurés"}
         ],
         description: "Stage de 4 semaines en première année de BTS SIO, à la mairie de Cauffry, pour le nouveau site de la commune. Le site lui-même est un produit de l'Adico (Association pour le développement et l'innovation numérique des collectivités), le prestataire de la commune, bâti sur leur plateforme mutualisée : je n'en ai pas écrit le code. Mon travail portait sur le contenu et la structure. L'ancien site étant devenu indisponible, j'ai récupéré ses pages via la Wayback Machine, rempli le recueil de besoins, conçu l'arborescence des rubriques, puis préparé les documents et les ai déposés sur Adicloud en les structurant pour qu'ils s'affichent correctement. En parallèle, j'ai sauvegardé les mails de la maire vers un disque dur externe et proposé des prototypes de logo pour la commune.",
         technologies: [],
@@ -365,7 +379,7 @@ if (!projetId || !projets[projetId]) {
     // Attention : LinkedIn et Facebook ne lisent pas le HTML modifié par JS et
     // resteront sur la carte générique. Cette mise à jour ne sert qu'aux
     // consommateurs qui exécutent le JS (Google, aperçus internes).
-    const premiereImage = (projets[projetId].images || [])[0];
+    const premiereImage = (projets[projetId].images || []).map(normaliserImage).map(image => image.src)[0];
     if (premiereImage) {
         // Les balises Open Graph exigent une URL absolue
         const imageAbsolue = new URL(premiereImage, window.location.href).href;
@@ -593,7 +607,8 @@ if (!projetId || !projets[projetId]) {
 
     // Ajouter les images dans le div "projet-images"
     const imagesContainer = document.getElementById("projet-images");
-    const images = projets[projetId].images || [];
+    const images = (projets[projetId].images || []).map(normaliserImage);
+    const texteAlternatif = (image, index) => image.legende || (projets[projetId].titre + " — image " + (index + 1));
 
     // Masquer la section aperçu s'il n'y a pas d'images
     const titreApercu = document.querySelector(".projet-img");
@@ -610,11 +625,11 @@ if (!projetId || !projets[projetId]) {
         wrapper.classList.add("projet-image-wrapper");
         const picture = document.createElement("picture");
         const source = document.createElement("source");
-        source.srcset = images[0].replace(/\.(png|jpg|jpeg|PNG|JPG)$/i, ".webp");
+        source.srcset = images[0].src.replace(/\.(png|jpg|jpeg|PNG|JPG)$/i, ".webp");
         source.type = "image/webp";
         const img = document.createElement("img");
-        img.src = images[0];
-        img.alt = projets[projetId].titre + " — capture 1";
+        img.src = images[0].src;
+        img.alt = texteAlternatif(images[0], 0);
         img.classList.add("projet-image");
         img.loading = "lazy";
         img.width = 1200;
@@ -623,6 +638,12 @@ if (!projetId || !projets[projetId]) {
         picture.appendChild(img);
         wrapper.appendChild(picture);
         imagesContainer.appendChild(wrapper);
+        if (images[0].legende) {
+            const legende = document.createElement("p");
+            legende.classList.add("carrousel-legende", "projet-legende-seule");
+            legende.textContent = images[0].legende;
+            imagesContainer.appendChild(legende);
+        }
     } else {
         imagesContainer.innerHTML = "";
         // Carrousel
@@ -643,14 +664,14 @@ if (!projetId || !projets[projetId]) {
         const track = document.createElement("div");
         track.classList.add("carrousel-track");
 
-        images.forEach((imgSrc, index) => {
+        images.forEach((image, index) => {
             // Bouton réel rendant l'image cliquable (navigation clavier native Entrée/Espace).
             // Styles inline pour reprendre, sans toucher au CSS, le positionnement que
             // `.carrousel-track picture` appliquait auparavant (empilement des slides).
             const boutonSlide = document.createElement("button");
             boutonSlide.type = "button";
             boutonSlide.classList.add("carrousel-slide-btn");
-            boutonSlide.setAttribute("aria-label", "Agrandir : " + projets[projetId].titre + " — image " + (index + 1));
+            boutonSlide.setAttribute("aria-label", "Agrandir : " + texteAlternatif(image, index));
             boutonSlide.style.position = index === 0 ? "relative" : "absolute";
             boutonSlide.style.top = "0";
             boutonSlide.style.left = "0";
@@ -661,14 +682,20 @@ if (!projetId || !projets[projetId]) {
             boutonSlide.style.background = "none";
             boutonSlide.style.cursor = "pointer";
             boutonSlide.style.display = "block";
+            // Les diapositives sont empilées et seule l'image active est opaque.
+            // Sans `visibility`, les boutons invisibles restaient cliquables : le
+            // dernier, au-dessus de la pile, captait le clic, et la modale s'ouvrait
+            // sur la dernière image au lieu de celle qu'on regardait. Ils restaient
+            // aussi dans l'ordre de tabulation.
+            boutonSlide.style.visibility = index === 0 ? "visible" : "hidden";
 
             const picture = document.createElement("picture");
             const source = document.createElement("source");
-            source.srcset = imgSrc.replace(/\.(png|jpg|jpeg|PNG|JPG)$/i, ".webp");
+            source.srcset = image.src.replace(/\.(png|jpg|jpeg|PNG|JPG)$/i, ".webp");
             source.type = "image/webp";
             const img = document.createElement("img");
-            img.src = String(imgSrc);
-            img.alt = projets[projetId].titre + " — capture " + (index + 1);
+            img.src = image.src;
+            img.alt = texteAlternatif(image, index);
             img.classList.add("carrousel-slide");
             img.loading = "lazy";
             img.width = 1200;
@@ -703,7 +730,24 @@ if (!projetId || !projets[projetId]) {
         counter.classList.add("carrousel-counter");
         counter.setAttribute("aria-live", "polite");
         counter.setAttribute("aria-atomic", "true");
-        counter.textContent = "1 / " + images.length;
+
+        // Le numéro et la légende vivent dans la même région annoncée : en
+        // changeant d'image, un lecteur d'écran entend « 3 sur 14, Partie en cours ».
+        function remplirCompteur(cible, index) {
+            cible.textContent = "";
+            const numero = document.createElement("span");
+            numero.classList.add("carrousel-numero");
+            numero.textContent = (index + 1) + " / " + images.length;
+            cible.appendChild(numero);
+            if (images[index].legende) {
+                const legende = document.createElement("span");
+                legende.classList.add("carrousel-legende");
+                legende.textContent = images[index].legende;
+                cible.appendChild(legende);
+            }
+        }
+
+        remplirCompteur(counter, 0);
 
         carrousel.appendChild(btnPrev);
         carrousel.appendChild(track);
@@ -725,13 +769,19 @@ if (!projetId || !projets[projetId]) {
             slides[diapoCourante].classList.remove("active");
             dots[diapoCourante].classList.remove("active");
             const ancienBouton = boutonDeSlide(slides[diapoCourante]);
-            if (ancienBouton) ancienBouton.style.position = "absolute";
+            if (ancienBouton) {
+                ancienBouton.style.position = "absolute";
+                ancienBouton.style.visibility = "hidden";
+            }
             diapoCourante = (index + slides.length) % slides.length;
             slides[diapoCourante].classList.add("active");
             dots[diapoCourante].classList.add("active");
             const nouveauBouton = boutonDeSlide(slides[diapoCourante]);
-            if (nouveauBouton) nouveauBouton.style.position = "relative";
-            counter.textContent = (diapoCourante + 1) + " / " + slides.length;
+            if (nouveauBouton) {
+                nouveauBouton.style.position = "relative";
+                nouveauBouton.style.visibility = "visible";
+            }
+            remplirCompteur(counter, diapoCourante);
         }
 
         function slideSuivant() {
@@ -803,7 +853,7 @@ if (!projetId || !projets[projetId]) {
             compteurModale.classList.add("carrousel-modale-counter");
             compteurModale.setAttribute("aria-live", "polite");
             compteurModale.setAttribute("aria-atomic", "true");
-            compteurModale.textContent = (indexModale + 1) + " / " + slides.length;
+            remplirCompteur(compteurModale, indexModale);
 
             // Bouton fermer
             const btnFermerModale = document.createElement("button");
@@ -827,7 +877,7 @@ if (!projetId || !projets[projetId]) {
                 imgModale.src = slides[indexModale].src;
                 imgModale.alt = slides[indexModale].alt;
                 sourceModale.srcset = slides[indexModale].src.replace(/\.(png|jpg|jpeg|PNG|JPG)$/i, ".webp");
-                compteurModale.textContent = (indexModale + 1) + " / " + slides.length;
+                remplirCompteur(compteurModale, indexModale);
             }
 
             function imageSuivante(e) {

@@ -458,9 +458,27 @@
     text-align: center;
     margin-top: 0.5rem;
     font-size: var(--texte-lg);
-    color: var(--text-color);
-    opacity: 0.75;
+}
+
+/* Numéro en texte secondaire, légende en texte courant : c'est la légende qu'on
+   lit. `--text-muted` et non l'ancienne `opacity: 0.75`, qui aurait aussi grisé
+   la légende et que les conventions écartent pour du texte. */
+.carrousel-numero {
+    color: var(--text-muted);
     font-weight: 600;
+}
+
+.carrousel-legende {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--text-color);
+}
+
+/* Image seule : pas de compteur, la légende suit directement le cadre */
+.projet-legende-seule {
+    margin: -0.75rem 0 1.5rem;
+    text-align: center;
+    font-size: var(--texte-lg);
 }
 
 /* Images du projet */
@@ -730,9 +748,18 @@
     bottom: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
+    width: min(90vw, 48rem);
+    text-align: center;
     font-size: var(--texte-lg);
+}
+
+/* La modale reste sombre dans les deux thèmes : couleurs fixes, pas de jetons */
+.carrousel-modale-counter .carrousel-numero {
     color: rgba(255, 255, 255, 0.75);
-    font-weight: 600;
+}
+
+.carrousel-modale-counter .carrousel-legende {
+    color: #f2f2f2;
 }
 
 /* Responsive */

@@ -462,7 +462,7 @@ main .innovations li a:hover {
 .innovation-desc {
     font-size: var(--texte-lg);
     line-height: 1.6;
-    opacity: 0.85;
+    color: var(--text-muted);
     margin-top: auto;
 }
 

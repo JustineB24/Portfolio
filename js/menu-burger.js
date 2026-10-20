@@ -1,5 +1,6 @@
 // ==============================
-// menu-burger.js — Menu burger mobile : ouverture/fermeture + accessibilité clavier
+// menu-burger.js
+// Menu burger mobile : ouverture/fermeture + accessibilité clavier
 // ==============================
 
 // Sélection des éléments

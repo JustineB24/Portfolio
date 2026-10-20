@@ -1,5 +1,6 @@
 // ==============================
-// easter-egg.js — Easter eggs du portfolio (Konami, terminal, snake, rainbow, matrix, 90's…)
+// easter-egg.js
+// Easter eggs du portfolio (Konami, terminal, snake, rainbow, matrix, 90's…)
 // ==============================
 
 (function () {
@@ -231,7 +232,7 @@
 
             const desc = document.createElement('div');
             desc.classList.add('ee-achievement-desc');
-            desc.textContent = '\u2191\u2191\u2193\u2193\u2190\u2192\u2190\u2192 B A — Pas mal, tu connais tes classiques !';
+            desc.textContent = '\u2191\u2191\u2193\u2193\u2190\u2192\u2190\u2192 B A. Pas mal, tu connais tes classiques !';
 
             textes.appendChild(titre);
             textes.appendChild(desc);
@@ -656,7 +657,7 @@
             {
                 declencheur: '⬆ ⬆ ⬇ ⬇ ⬅ ➡ ⬅ ➡ B A',
                 nom: 'Konami Code',
-                description: 'Glitch + Achievement Unlocked — le classique des classiques.'
+                description: 'Glitch + Achievement Unlocked, le classique des classiques.'
             },
             {
                 declencheur: 'Taper "terminal"',
@@ -695,7 +696,7 @@
             }
         ];
 
-        console.log('%c🥚 Easter eggs du portfolio — Liste complète\n', 'color: #960000; font-size: 18px; font-weight: bold;');
+        console.log('%c🥚 Easter eggs du portfolio : liste complète\n', 'color: #960000; font-size: 18px; font-weight: bold;');
         console.table(liste.map(function (ee) {
             return {'Declencheur': ee.declencheur, 'Nom': ee.nom, 'Description': ee.description};
         }));

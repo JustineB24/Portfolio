@@ -1,5 +1,6 @@
 // ==============================
-// certifications.js — Galerie de certifications : modale + navigation clavier
+// certifications.js
+// Galerie de certifications : modale + navigation clavier
 // ==============================
 
 (function () {

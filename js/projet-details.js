@@ -1,5 +1,6 @@
 // ==============================
-// projet-details.js — Détails d'un projet : données, carrousel, modale
+// projet-details.js
+// Détails d'un projet : données, carrousel, modale
 // ==============================
 
 // Récupérer l'ID du projet depuis l'URL (lettres, chiffres et tirets uniquement)
@@ -17,8 +18,8 @@ function normaliserImage(image) {
 // Base de données des projets
 const projets = {
     "yabt": {
-        titre: "YABT — Yet Another Blind Test",
-        date: "Février 2026 — en cours",
+        titre: "YABT (Yet Another Blind Test)",
+        date: "Depuis février 2026",
         images: [
             {src: "../assets/projets/yabt/Capture_liste_parties.jpg", legende: "Liste des parties publiques et privées, vue en invité"},
             {src: "../assets/projets/yabt/Capture_salon.jpg", legende: "Salon d'attente : QR code, code de partie et chat"},
@@ -35,7 +36,7 @@ const projets = {
             {src: "../assets/projets/yabt/Logo.png", legende: "Logo, réalisé par un camarade en webdesign"},
             {src: "../assets/projets/yabt/Nuancier.png", legende: "Nuancier de l'identité visuelle"}
         ],
-        description: "Projet fil rouge du Bachelor Chef de projet développement et data, mené à quatre depuis février 2026. YABT est une application web de blind test musical multijoueur en temps réel. Les joueurs créent ou rejoignent une partie par un code ou un QR code, discutent dans le salon et s'affrontent sur des extraits musicaux issus de l'API Deezer. La version 1 livrée propose le mode Classique, des comptes avec avatar et l'historique des parties ; les quatre autres modes (Speedrun, Battle Royale, Jackpot, Combo Breaker) sont annoncés dans l'interface comme à venir. Le mode quiz et la création de blind tests sont développés et testés, mais restent fermés tant que le moteur de jeu ne sait pas les dérouler : l'équipe a préféré ne pas ouvrir une fonctionnalité qui mène à une impasse. L'identité visuelle est un travail à plusieurs mains : le logo a été réalisé par un camarade en webdesign, et les icônes néon ont été générées par IA. Le projet suit une méthode Agile, Scrum et Kanban sur Jira.",
+        description: "Projet fil rouge du Bachelor Chef de projet développement et data, mené à quatre depuis février 2026. YABT est une application web de blind test musical multijoueur en temps réel. Les joueurs créent ou rejoignent une partie par un code ou un QR code, discutent dans le salon et s'affrontent sur des extraits musicaux issus de l'API Deezer. La version 1 livrée propose le mode Classique, des comptes avec avatar et l'historique des parties. Les quatre autres modes (Speedrun, Battle Royale, Jackpot, Combo Breaker) sont annoncés dans l'interface comme à venir. Le mode quiz et la création de blind tests sont développés et testés, mais restent fermés tant que le moteur de jeu ne sait pas les dérouler : l'équipe a préféré ne pas ouvrir une fonctionnalité qui mène à une impasse. L'identité visuelle est un travail à plusieurs mains : le logo a été réalisé par un camarade en webdesign, et les icônes néon ont été générées par IA. Le projet suit une méthode Agile, Scrum et Kanban sur Jira.",
         technologies: ["React", "Tailwind CSS", "Node.js", "Socket.io", "MySQL", "Docker", "Figma", "GitHub"],
         liens: [
             {libelle: "API Deezer", url: "https://developers.deezer.com/api"}
@@ -56,7 +57,7 @@ const projets = {
     },
     "gecko": {
         titre: "Gecko",
-        date: "Septembre 2025 — aujourd'hui",
+        date: "Depuis septembre 2025",
         images: [
             {src: "../assets/projets/gecko/Page_article.png", legende: "Tableau des articles avec le moteur de filtres (données masquées)"},
             {src: "../assets/projets/gecko/Page_article_recherche.png", legende: "Filtres combinés par colonne, résultats en direct"},
@@ -96,7 +97,7 @@ const projets = {
         technologies: ["React Native", "Expo", "JavaScript"],
     },
     "limite-limite": {
-        titre: "Limite Limite — API",
+        titre: "API Limite Limite",
         date: "Septembre 2026",
         images: [{src: "../assets/projets/limite_limite/Reponse_API.png", legende: "Réponse de l'API : une question et une réponse tirées au hasard"}],
         description: "Exercice de Bachelor réalisé en binôme, dont le sujet était la chaîne d'intégration et de déploiement continus plus que l'application elle-même. L'application est volontairement petite : une API PHP 8.2 qui renvoie en JSON une association tirée au hasard entre une carte question à trou et une carte réponse, sur le principe du jeu Limite Limite. Le code suit une architecture MVC légère, et le contrôleur reçoit sa connexion à la base par injection de dépendances, ce qui permet de le tester avec un mock sans base réelle. L'environnement tient dans Docker Compose, un service PHP et un service MySQL 8 initialisé par un script SQL. À chaque push ou pull request sur les branches develop et prod, GitHub Actions audite les dépendances avec Composer, vérifie le respect du standard PSR-12 avec PHP_CodeSniffer et lance les tests PHPUnit. À la fin de cette intégration, un second workflow déploie le code par SSH sur un VPS, dans un environnement de développement puis de production. Le travail suit le même circuit : développement sur develop, puis passage en production par pull request.",
@@ -107,7 +108,7 @@ const projets = {
     },
     "grimoire-recettes": {
         titre: "Le Grimoire des Recettes",
-        date: "2025 — en cours",
+        date: "Depuis 2025",
         images: [
             {src: "../assets/projets/grimoire_recettes/Accueil.jpg", legende: "Accueil : catégories et bannière de saison"},
             {src: "../assets/projets/grimoire_recettes/Fiche_recette.png", legende: "Fiche recette : portions, ingrédients à cocher, note"},
@@ -127,7 +128,7 @@ const projets = {
     },
     "panada-food": {
         titre: "Panada Food",
-        date: "12/11/2024 — 20/12/2024",
+        date: "Du 12/11/2024 au 20/12/2024",
         images: [
             {src: "../assets/projets/panada_food/Accueil.jpg", legende: "Page d'accueil"},
             {src: "../assets/projets/panada_food/Menu.jpg", legende: "Carte du restaurant : burgers, sandwichs, pizzas, tacos"},
@@ -202,7 +203,7 @@ const projets = {
     },
     "speedcubing": {
         titre: "Speedcubing",
-        date: "Novembre — Décembre 2024",
+        date: "Novembre et décembre 2024",
         images: [
             {src: "../assets/projets/speedcubing/Accueil.jpg", legende: "Accueil et actualités"},
             {src: "../assets/projets/speedcubing/Chrono.jpg", legende: "Chronomètre"},
@@ -215,7 +216,7 @@ const projets = {
     },
     "meteo": {
         titre: "Application météo",
-        date: "Septembre — Octobre 2024",
+        date: "Septembre et octobre 2024",
         images: [{src: "../assets/projets/meteo/Meteo.jpg", legende: "Météo en temps réel d'une ville, ici Amiens"}],
         description: "Application web développée pour afficher en temps réel les conditions météorologiques d'une ville choisie par l'utilisateur. En utilisant l'API OpenWeather, ce projet permet de consulter la température actuelle, l'humidité ainsi qu'une description du temps (ensoleillé, nuageux, etc.). L'interface propose une zone de recherche, un affichage centralisé des données principales, et un design épuré avec fond personnalisé. Le JavaScript assure la récupération dynamique des données météo et la mise à jour instantanée de l'affichage après chaque recherche.",
         liens: [
@@ -232,7 +233,7 @@ const projets = {
     },
     "mairie-cauffry": {
         titre: "Mairie de Cauffry",
-        date: "27/05/2024 — 21/06/2024",
+        date: "Du 27/05/2024 au 21/06/2024",
         images: [
             {src: "../assets/projets/mairie_de_cauffry/Visuel_site.jpg", legende: "Bandeau d'accueil du nouveau site de la commune"},
             {src: "../assets/projets/mairie_de_cauffry/Accueil.jpg", legende: "Page d'accueil du site en ligne"},
@@ -311,7 +312,7 @@ if (!projetId || !projets[projetId]) {
         //
         // Les chiffres sont ici et non dans `audit/`, qui est gitignoré et
         // disparaîtrait à tout nouveau clone. Un voile uniforme demanderait 44 %
-        // de noir pour couvrir le pire cas ; dosé le long du dégradé en 13
+        // de noir pour couvrir le pire cas. Dosé le long du dégradé en 13
         // points, il tomberait à 45 % côté jaune de YABT et 0 % côté bleu nuit,
         // et cinq projets sur douze n'auraient besoin de rien. Le contraste des
         // petits textes est aujourd'hui assuré autrement, par la pastille sombre
@@ -531,7 +532,7 @@ if (!projetId || !projets[projetId]) {
             // Accessibilité : focusable au clavier (déclenche le tooltip CSS via :focus)
             // et description exposée aux lecteurs d'écran via aria-label.
             li.setAttribute("tabindex", "0");
-            li.setAttribute("aria-label", tech + " — " + desc);
+            li.setAttribute("aria-label", tech + " : " + desc);
         }
 
         // Ajout du logo et du texte
@@ -608,7 +609,7 @@ if (!projetId || !projets[projetId]) {
     // Ajouter les images dans le div "projet-images"
     const imagesContainer = document.getElementById("projet-images");
     const images = (projets[projetId].images || []).map(normaliserImage);
-    const texteAlternatif = (image, index) => image.legende || (projets[projetId].titre + " — image " + (index + 1));
+    const texteAlternatif = (image, index) => image.legende || (projets[projetId].titre + ", image " + (index + 1));
 
     // Masquer la section aperçu s'il n'y a pas d'images
     const titreApercu = document.querySelector(".projet-img");
@@ -960,7 +961,7 @@ if (!projetId || !projets[projetId]) {
             }
         });
 
-        // Auto-play (4 s) avec pause au survol — un SEUL timer à la fois.
+        // Auto-play (4 s) avec pause au survol : un SEUL timer à la fois.
         // arreterAuto/relancerAuto nettoient toujours l'intervalle existant avant
         // d'en créer un nouveau, pour éviter l'empilement de timers (accélération).
         let intervalleLectureAuto = null;

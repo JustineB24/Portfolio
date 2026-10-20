@@ -1,5 +1,6 @@
 /* ==============================
-   contact.css — Page contact : formulaire + cartes de contact
+   contact.css
+   Page contact : formulaire + cartes de contact
    ============================== */
 
 /* ---- Section principale ---- */
@@ -156,7 +157,7 @@
     padding: 0.9rem 2.2rem;
 }
 
-/* ---- Aside — Cards de contact ---- */
+/* ---- Aside : Cards de contact ---- */
 .contact-aside {
     position: sticky;
     top: 120px;

@@ -60,7 +60,7 @@
     <link rel="stylesheet" href="../fonts/fa/css/all.min.css">
     <link rel="stylesheet" href="../fonts/google/fonts.css">
     <style>
-        /* Carte Open Graph — 1200x630, l'aspect attendu par LinkedIn et X.
+        /* Carte Open Graph : 1200x630, l'aspect attendu par LinkedIn et X.
            Reprend l'identité du site : fond anthracite, rouge de marque,
            Raleway pour le titre, Inter pour le corps, et le motif
            eyebrow + titre + filet déjà utilisé sur les pages. */
@@ -354,7 +354,7 @@
         throw new Error('carte inconnue');
     }
 
-    // Une carte nommée fournit les valeurs par défaut ; chaque paramètre
+    // Une carte nommée fournit les valeurs par défaut. Chaque paramètre
     // d'URL peut encore les surcharger, pratique pour essayer une variante.
     const base = CARTES[nom] || {};
     const valeur = (cle) => p.get(cle) !== null ? p.get(cle) : base[cle];

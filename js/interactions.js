@@ -1,5 +1,6 @@
 // ==============================
-// interactions.js — Compteurs animés, temps de lecture, marquee de l'accueil
+// interactions.js
+// Compteurs animés, temps de lecture, marquee de l'accueil
 // ==============================
 
 (function () {

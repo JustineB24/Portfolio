@@ -1,5 +1,6 @@
 /* ==============================
-   projet-details.css — Page détail d'un projet : hero, carrousel, technologies
+   projet-details.css
+   Page détail d'un projet : hero, carrousel, technologies
    ============================== */
 
 /* ==============================
@@ -32,7 +33,7 @@
     background: linear-gradient(135deg, var(--hero-color, var(--primary-color)), var(--hero-color-dark, var(--primary-dark)));
     padding: 5.5rem max(2rem, calc(50% - 430px)) 2.75rem;
     margin-bottom: 0;
-    text-align: center; /* titre + date centrés ; le bouton retour reste ancré à gauche */
+    text-align: center; /* titre + date centrés. Le bouton retour reste ancré à gauche */
     animation: fadeInUp 0.6s ease both;
 }
 
@@ -50,7 +51,7 @@
 }
 
 /* ==============================
-   Pastilles du bandeau — texte clair sur fond sombre local.
+   Pastilles du bandeau : texte clair sur fond sombre local.
 
    Le texte du hero est clair et fixe, alors que la couleur du dégradé vient du
    projet : quand elle est claire, le contraste s'effondre. Un audit a relevé
@@ -154,7 +155,7 @@
     box-sizing: border-box;
 }
 
-/* Étiquette de section (eyebrow) — fil conducteur couleur projet */
+/* Étiquette de section (eyebrow) : fil conducteur couleur projet */
 .eyebrow {
     display: block;
     margin: 0 0 0.5rem;
@@ -305,7 +306,7 @@
 }
 
 /* ==============================
-   Étude de cas — colonne numérotée (signature de la page)
+   Étude de cas : colonne numérotée (signature de la page)
    Le déroulé contexte → réflexion → défis → résultat est une vraie
    séquence : les numéros 01→04 encodent l'ordre de lecture.
    ============================== */

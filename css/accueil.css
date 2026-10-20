@@ -1,5 +1,6 @@
 /* ==============================
-   accueil.css — Page d'accueil : hero, compteurs, qui-suis-je, marquee
+   accueil.css
+   Page d'accueil : hero, compteurs, qui-suis-je, marquee
    ============================== */
 
 /* ==============================
@@ -200,7 +201,7 @@
 
 /* Au survol : bordure d'accent épaisse sur les 4 côtés. Le filet intérieur
    est dessiné en box-shadow (inset) pour épaissir sans décaler la mise en
-   page ; combiné à la bordure 1px qui passe en accent. + élévation. */
+   page. Combiné à la bordure 1px qui passe en accent. + élévation. */
 .compteur:hover {
     transform: translateY(var(--carte-levee));
     border-color: var(--c-accent);

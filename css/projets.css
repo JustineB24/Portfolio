@@ -1,8 +1,9 @@
 /* ==============================
-   projets.css — Page projets : grille de cartes + filtres
+   projets.css
+   Page projets : grille de cartes + filtres
    ============================== */
 
-/* Barre de filtres — une rangée par axe (contexte, technologie), avec sa
+/* Barre de filtres : une rangée par axe (contexte, technologie), avec sa
    légende. Les deux se combinent, d'où l'étiquette : sans elle, quinze
    pastilles à la file se lisent comme un choix unique. */
 .filtres {
@@ -87,7 +88,7 @@
 }
 
 /* ==============================
-   Couleur des filtres — `--tech-libelle` habille le contour ET le libellé,
+   Couleur des filtres : `--tech-libelle` habille le contour ET le libellé,
    `--tech-brut` le fond teinté à 15 %.
 
    **Les valeurs des technos ne sont plus ici** : elles vivent dans
@@ -101,11 +102,11 @@
    L'état actif reste rouge à texte clair : `.filtre-btn.active` l'emporte sur
    `.filtre-btn` par la spécificité, sans avoir besoin de `:not(.active)`.
    ============================== */
-/* Catégories — contexte de réalisation. Les trois premières portent la couleur
+/* Catégories : contexte de réalisation. Les trois premières portent la couleur
    de l'institution derrière elles : le bleu d'action de Litesoft pour
    l'alternance, et une teinte par diplôme. « Stages » et « Perso » n'ont pas
    d'institution unique, mais gardent une couleur pour que les cinq pastilles
-   restent distinctes ; les teintes sont choisies aux deux plus grands écarts
+   restent distinctes. Les teintes sont choisies aux deux plus grands écarts
    libres, 151° et 262°, les trois autres occupant 0°, 204° et 319°. */
 .filtre-btn[data-filtre="entreprise"] {
     --tech-brut: #009aff;
@@ -232,7 +233,7 @@
 }
 
 /* Un style unique pour toutes les pastilles, la couleur seule les distingue.
-   Le fond porte la teinte du logo à 15 % — c'est lui qui fait le rappel avec
+   Le fond porte la teinte du logo à 15 % : c'est lui qui fait le rappel avec
    l'icône, et il permet de garder la vraie couleur des marques pâles, qu'un
    simple libellé coloré ne pourrait pas rendre lisibles. Contour et texte
    prennent la même teinte assombrie juste assez, `--tech-libelle`. Les trois

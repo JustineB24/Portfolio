@@ -1,5 +1,6 @@
 /* ==============================
-   competences.css — Page compétences : technologies avec preuve,
+   competences.css
+   Page compétences : technologies avec preuve,
    outils sans compteur, certifications attestées par un tiers
    ============================== */
 
@@ -9,7 +10,7 @@
     text-align: left;
 }
 
-/* Apparence dans global.css ; la page borne le filet à la largeur de son
+/* Apparence dans global.css. La page borne le filet à la largeur de son
    contenu, sans quoi il traverserait tout `main`, et lui donne plus d'air que
    le défaut : il sépare ici des sections entières, pas des rubriques. */
 main hr {
@@ -18,8 +19,8 @@ main hr {
 }
 
 /* Deux niveaux d'alignement dans un même bloc, volontairement :
-     - l'en-tête de section (eyebrow + h2) est centré, il annonce le bloc ;
-     - tout ce qui suit (titres de palier, notes, cartes) est aligné à gauche.
+     - l'en-tête de section (eyebrow + h2) est centré, il annonce le bloc.
+     - Tout ce qui suit (titres de palier, notes, cartes) est aligné à gauche.
    `p:first-of-type` désigne bien l'eyebrow : c'est le premier `p` enfant de la
    section, avant les notes. */
 .bloc-competences > p:first-of-type,
@@ -68,7 +69,7 @@ main hr {
 }
 
 /* Deux paragraphes d'accompagnement, même typographie, deux alignements :
-     .bloc-intro       suit le h2, appartient à l'en-tête de section, centré ;
+     .bloc-intro       suit le h2, appartient à l'en-tête de section, centré.
      .tech-palier-note suit un h3, appartient au palier, aligné à gauche.
    `padding: 0` sur les côtés : la règle globale `p { padding: 15px }` décalait
    la note de 15px à droite de son titre. Invisible sur un texte centré, le
@@ -366,7 +367,7 @@ main hr {
     transition: opacity 0.4s;
 }
 
-/* Boutons prev/next — même style que carrousel projet */
+/* Boutons prev/next : même style que carrousel projet */
 #zoom-modal .carrousel-btn {
     position: absolute;
     top: 50%;

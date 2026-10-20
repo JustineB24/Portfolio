@@ -1,5 +1,6 @@
 /* ==============================
-   veille.css — Page veille technologique : sommaire, colonne de lecture, timeline
+   veille.css
+   Page veille technologique : sommaire, colonne de lecture, timeline
    ============================== */
 
 body {
@@ -115,7 +116,7 @@ main h2 {
     margin-top: 0;
 }
 
-/* .veille-intro-desc : volontairement sans style propre — il hérite de
+/* .veille-intro-desc : volontairement sans style propre, il hérite de
    la règle commune .veille-section-body > p, identique au reste du texte. */
 
 /* Wrappers gauche/droite pour centrer le contenu dans chaque moitié */

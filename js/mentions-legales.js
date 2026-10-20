@@ -1,5 +1,6 @@
 // ==============================
-// mentions-legales.js — Sommaire collant : surlignage de la rubrique en cours
+// mentions-legales.js
+// Sommaire collant : surlignage de la rubrique en cours
 // ==============================
 
 // Version réduite du scroll-spy de `veille.js` : ici le sommaire ne déplie rien
@@ -23,7 +24,7 @@
         .filter(Boolean);
 
     // `-120px` en haut correspond au header fixe, comme le `scroll-margin-top`
-    // global ; `-70%` en bas empêche qu'une rubrique déjà loin sous le pli soit
+    // global. `-70%` en bas empêche qu'une rubrique déjà loin sous le pli soit
     // considérée comme celle qu'on lit.
     function activer(id) {
         liens.forEach(function (lien) {

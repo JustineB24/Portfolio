@@ -1,5 +1,6 @@
 /* ==============================
-   mentions-legales.css — Page mentions légales
+   mentions-legales.css
+   Page mentions légales
 
    Deux colonnes : un sommaire collant à gauche, la colonne de lecture à droite.
    Sept rubriques dont deux seulement (données personnelles, cookies) motivent
@@ -109,7 +110,7 @@
     padding-right: 0;
 }
 
-/* Apparence et espacement dans global.css ; la page suit maintenant la largeur
+/* Apparence et espacement dans global.css. La page suit maintenant la largeur
    de sa colonne, fixée par la grille. */
 main hr {
     max-width: 100%;

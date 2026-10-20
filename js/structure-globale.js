@@ -1,10 +1,11 @@
 // ==============================
-// structure-globale.js — Structure commune : header, footer, chargement des scripts
+// structure-globale.js
+// Structure commune : header, footer, chargement des scripts
 // ==============================
 
 function validerChemin(chemin) {
     if (typeof chemin !== 'string' || !/^(\.\/|\.\.\/)+$/.test(chemin)) {
-        console.warn('Chemin invalide : ' + chemin + ' — utilisation du chemin par défaut ./');
+        console.warn('Chemin invalide : ' + chemin + ', utilisation du chemin par défaut ./');
         return './';
     }
     return chemin;
@@ -125,13 +126,13 @@ function genererHeader(chemin) {
         if (href && (cheminActuel.endsWith(href.replace(/^\.\.\/|\.\//, '')) ||
             (href.includes('index.html') && (cheminActuel.endsWith('/') || cheminActuel.endsWith('/index.html'))))) {
             link.classList.add('active');
-            // `aria-current` porte l'information pour les lecteurs d'écran ; la
+            // `aria-current` porte l'information pour les lecteurs d'écran. La
             // classe ne fait que la couleur et le chevron, qui sont visuels.
             link.setAttribute('aria-current', 'page');
         }
     });
 
-    // Accessibilité — mise à jour de l'aria-label de la bascule de thème
+    // Accessibilité : mise à jour de l'aria-label de la bascule de thème
     // (le toggle réel du thème est géré par theme.js)
     const caseTheme = document.querySelector('.theme-switch__checkbox');
     if (caseTheme) {
@@ -143,7 +144,7 @@ function genererHeader(chemin) {
         caseTheme.addEventListener('change', majAriaLabelTheme);
     }
 
-    // Transitions entre pages — fade-out au clic sur un lien interne
+    // Transitions entre pages : fade-out au clic sur un lien interne
     document.addEventListener('click', function (e) {
         // Ne déclencher la transition que pour un clic gauche simple
         // (préserve clic-molette, Ctrl/Cmd-clic, ouvrir dans un nouvel onglet, etc.)

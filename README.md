@@ -29,10 +29,10 @@ nouvelles applications.
 
 | 🎓 Formation                                              | 📅 Période  |
 |-----------------------------------------------------------|-------------|
-| Mastère Manager de projet Expert IT, Data & IA            | 2026 – 2028 |
-| Bachelor Chef de projet développement et data             | 2025 – 2026 |
-| BTS SIO, option SLAM                                      | 2023 – 2025 |
-| Baccalauréat général (Maths, NSI)                         | 2020 – 2023 |
+| Mastère Manager de projet Expert IT, Data & IA            | 2026 - 2028 |
+| Bachelor Chef de projet développement et data             | 2025 - 2026 |
+| BTS SIO, option SLAM                                      | 2023 - 2025 |
+| Baccalauréat général (Maths, NSI)                         | 2020 - 2023 |
 
 ---
 
@@ -43,7 +43,7 @@ Treize projets, chacun avec sa fiche détaillée (contexte, réflexion, défis, 
 | Projet                               | En bref                                                |
 |--------------------------------------|--------------------------------------------------------|
 | 🦎 **Gecko**                         | ERP en production chez Litesoft, que je fais évoluer   |
-| 🎵 **YABT — Yet Another Blind Test** | Blind test musical multijoueur en temps réel, à quatre |
+| 🎵 **YABT (Yet Another Blind Test)** | Blind test musical multijoueur en temps réel, à quatre |
 | 🍔 **Panada Food**                   | Site vitrine d'un restaurant, réalisé en stage de BTS  |
 | 📖 **Le Grimoire des Recettes**      | Carnet de recettes familial, PWA en réseau local       |
 | 🎬 **Flouflix**                      | Films et séries en React Native : la pire UI possible  |
@@ -54,7 +54,7 @@ Treize projets, chacun avec sa fiche détaillée (contexte, réflexion, défis, 
 | 🌦 **Application météo**             | Météo en temps réel via l'API OpenWeather              |
 | 🔐 **Générateur de mots de passe**   | Mots de passe sécurisés, critères au choix             |
 | 🔤 **Pendu**                         | Jeu du pendu sur mobile, scores et mots gérés          |
-| 🃏 **Limite Limite — API**           | API PHP testée et déployée par une CI/CD GitHub        |
+| 🃏 **API Limite Limite**             | API PHP testée et déployée par une CI/CD GitHub        |
 
 ---
 

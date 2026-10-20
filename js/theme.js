@@ -1,5 +1,6 @@
 // ==============================
-// theme.js — Thème sombre/clair : toggle + persistance localStorage
+// theme.js
+// Thème sombre/clair : toggle + persistance localStorage
 // ==============================
 
 // Sélectionne les éléments nécessaires

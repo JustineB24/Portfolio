@@ -1,5 +1,6 @@
 // ==============================
-// scroll-animations.js — Animations au scroll (IntersectionObserver) + bouton retour en haut
+// scroll-animations.js
+// Animations au scroll (IntersectionObserver) + bouton retour en haut
 // ==============================
 
 (function () {

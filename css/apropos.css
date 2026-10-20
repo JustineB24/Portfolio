@@ -1,5 +1,6 @@
 /* ==============================
-   apropos.css — Page à propos : profil + timeline du parcours
+   apropos.css
+   Page à propos : profil + timeline du parcours
    ============================== */
 
 /* Profil */
@@ -15,7 +16,7 @@
 }
 
 /* Positionnement bouton CV sur cette page */
-/* Apparence dans global.css (`.btn` + `.btn-primaire`) ; la page ne pose que
+/* Apparence dans global.css (`.btn` + `.btn-primaire`). La page ne pose que
    l'écart avec le contenu autour. */
 .btn-cv {
     margin: 2rem;
@@ -80,7 +81,7 @@ a.timeline-link:hover .timeline-content {
     border: 3px solid var(--primary-color);
 }
 
-/* Indicateur "Aujourd'hui" — point pulsant */
+/* Indicateur "Aujourd'hui" : point pulsant */
 .timeline-current::before {
     background: var(--primary-color);
     box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.4);
@@ -194,7 +195,7 @@ a.timeline-link:hover .timeline-content {
     margin: 20px 0;
 }
 
-/* Apparence dans global.css ; ici la page resserre seulement l'espacement et
+/* Apparence dans global.css. Ici la page resserre seulement l'espacement et
    laisse le filet occuper toute la largeur. */
 main hr {
     margin: 20px 0;
@@ -305,7 +306,7 @@ main hr {
 
 /* ==============================
    Renvoi vers la page Formation, sous la timeline.
-   La timeline reste l'index du parcours ; le détail de chaque diplôme vit sur
+   La timeline reste l'index du parcours. Le détail de chaque diplôme vit sur
    la page Formation, et ce bouton fait le lien entre les deux.
    ============================== */
 /* Sortie de page. Le bouton seul flottait sans rien pour l'annoncer : le titre

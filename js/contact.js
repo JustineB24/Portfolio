@@ -1,5 +1,6 @@
 // ==============================
-// contact.js — Formulaire de contact : validation + ouverture mailto
+// contact.js
+// Formulaire de contact : validation + ouverture mailto
 // ==============================
 
 (function () {

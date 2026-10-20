@@ -1,5 +1,6 @@
 // ==============================
-// veille.js — Page veille : sommaire collant, scroll-spy, sections repliables
+// veille.js
+// Page veille : sommaire collant, scroll-spy, sections repliables
 // ==============================
 
 (function () {

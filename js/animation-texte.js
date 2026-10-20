@@ -1,5 +1,6 @@
 // ==============================
-// animation-texte.js — Animation du texte tournant (page d'accueil)
+// animation-texte.js
+// Animation du texte tournant (page d'accueil)
 // ==============================
 
 class TexteRotatif {

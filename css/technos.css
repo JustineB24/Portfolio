@@ -1,10 +1,11 @@
 /* ==============================
-   technos.css — Couleur de chaque technologie. Source unique du site.
+   technos.css
+   Couleur de chaque technologie. Source unique du site.
 
    Une techno = une couleur, celle de son logo, pour que sa pastille et son
    filet fassent rappel avec l'icône affichée à côté. Les valeurs viennent de la
    couleur réellement dominante de chaque SVG de `assets/competences/`, mesurée
-   en comptant les pixels après rendu — et non de la couleur de marque telle
+   en comptant les pixels après rendu, et non de la couleur de marque telle
    qu'on la retient, qui s'en écarte souvent. Six exceptions gardent la couleur
    de marque, la dominante n'y étant pas la bonne : sur Python c'est le jaune
    du serpent, sur Asana le bleu nuit du fond, sur Node.js le milieu d'un
@@ -26,12 +27,12 @@
    Les deux valeurs dérivées gardent la teinte et la saturation du logo : seule
    la clarté HSL est ajustée. Le calcul porte sur `--card-background`, le fond
    le plus défavorable de chaque thème, pour qu'une seule valeur serve les
-   trois surfaces où ces éléments apparaissent — d'où deux jeux complets. Sur
+   trois surfaces où ces éléments apparaissent, d'où deux jeux complets. Sur
    les 36 technos, 20 filets passaient sous 3:1 dans un thème avant ce calcul.
 
    Ce fond teinté est ce qui permet de garder la vraie couleur des marques
    pâles. Le jaune JavaScript #f7df1e est à 1,13:1 en texte sur une carte
-   claire, donc inutilisable comme libellé ; en fond à 15 % il reste
+   claire, donc inutilisable comme libellé. En fond à 15 % il reste
    parfaitement identifiable, et le libellé prend la même teinte assombrie.
 
    Les logos monochromes noirs (GitHub, Expo, Socket.io) passent au gris clair

@@ -1,5 +1,6 @@
 // ==============================
-// projet.js — Page Projets : filtrage des cartes par contexte et par techno
+// projet.js
+// Page Projets : filtrage des cartes par contexte et par techno
 // ==============================
 
 // La navigation vers la fiche détail ne passe pas par ici : le titre de chaque

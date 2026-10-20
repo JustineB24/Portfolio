@@ -1,5 +1,6 @@
 /* ==============================
-   global.css — Styles globaux : variables de thème, header, footer, éléments partagés
+   global.css
+   Styles globaux : variables de thème, header, footer, éléments partagés
    ============================== */
 
 /* Variables pour le thème clair */
@@ -58,7 +59,7 @@
     /* Rouge de marque éclairci, à utiliser dès que le rouge sert de couleur de
        TEXTE sur une surface sombre : thème sombre, ou surface sombre en
        permanence (notification easter egg). Le rouge brut n'y monte qu'à
-       2:1 ; ce dosage donne 6,2:1 sur le fond de page et 5,1:1 sur les
+       2:1. Ce dosage donne 6,2:1 sur le fond de page et 5,1:1 sur les
        cartes, soit WCAG AA dans les deux cas.
        La première déclaration est le repli statique pour les navigateurs sans
        color-mix : ils ignorent la seconde et gardent la valeur en dur. */
@@ -98,7 +99,7 @@ html {
 }
 
 
-/* Skip to content — accessibilité clavier */
+/* Skip to content : accessibilité clavier */
 .skip-link {
     position: fixed;
     top: -100%;
@@ -156,10 +157,10 @@ a {
 }
 
 /* ==============================
-   Liens de contenu — traitement unique pour tout le site.
+   Liens de contenu : traitement unique pour tout le site.
    Rouge de marque, sans soulignement au repos, souligné au survol et au focus
    clavier. La liste de `:not()` écarte ce qui est un bouton ou un onglet et se
-   trouve dans un `li` ; elle tient en six exclusions depuis que tous les
+   trouve dans un `li`. Elle tient en six exclusions depuis que tous les
    boutons portent le socle `.btn`, contre neuf quand il fallait les nommer un
    par un.
 
@@ -170,7 +171,7 @@ a {
    `.lien-sommaire` est la sixième exclusion. Un sommaire est de la navigation,
    pas du texte courant, et ses entrées sont dans des `li` : sans exclusion,
    elles héritaient du rouge et de la graisse 600. Une règle de page ne suffit
-   pas à reprendre la main, ce sélecteur-ci pesant cinq classes ; il aurait
+   pas à reprendre la main, ce sélecteur-ci pesant cinq classes. Il aurait
    fallu un `!important` par déclaration.
 
    La graisse n'est pas décorative, ne pas la retirer sans remettre un
@@ -272,7 +273,7 @@ main hr {
     margin: 2.5rem auto;
 }
 
-/* Entête — glassmorphism */
+/* Entête : glassmorphism */
 body > header {
     background: rgba(var(--primary-rgb), 0.85);
     backdrop-filter: blur(10px);
@@ -386,7 +387,7 @@ h3 {
    modèle éditorial du détail projet : elle annonce la nature du bloc
    ("Parcours", "Backend"…) et allège la charge du titre lui-même.
    Le détail projet garde sa propre classe `.eyebrow`, colorée par la
-   couleur du projet (--accent) ; ici on reste sur le rouge de marque.
+   couleur du projet (--accent). Ici on reste sur le rouge de marque.
    ============================== */
 .section-eyebrow {
     display: block;
@@ -772,7 +773,7 @@ p {
     /* Fermé, le panneau est seulement repoussé hors écran : ses huit liens
        restaient dans l'ordre de tabulation, y compris en desktop où le burger
        n'existe pas et où le panneau ne peut donc pas être ouvert.
-       `visibility: hidden` les en sort ; `.open` la rétablit. */
+       `visibility: hidden` les en sort. `.open` la rétablit. */
     visibility: hidden;
     gap: clamp(2rem, 6vh, 3.5rem);
     padding: 5rem 0 max(2rem, env(safe-area-inset-bottom, 2rem));
@@ -1199,7 +1200,7 @@ footer {
     background: var(--primary-light);
 }
 
-/* Thème sombre — transitions fluides sur éléments enfants.
+/* Thème sombre : transitions fluides sur éléments enfants.
    `.card-accueil`, `.specialite-card` et `.contact-infos` retirées le 07/08 :
    plus aucun HTML ni JS ne les pose. */
 .card-competence,
@@ -1500,7 +1501,7 @@ body.page-exit main {
 .card-tags .tag-gitlab::before { background-image: url(../assets/competences/gitlab.svg); }
 
 /* ==============================
-   Sommaire veille — rouge éclairci en sombre (généralisation A2)
+   Sommaire veille : rouge éclairci en sombre (généralisation A2)
    ============================== */
 .dark-theme .sommaire .titre-sommaire,
 .dark-theme .sommaire a:hover {
@@ -1514,8 +1515,8 @@ body.page-exit main {
    droit. On resserre uniquement les éléments du header à cette largeur.
    ============================== */
 @media (max-width: 360px) {
-    /* Tout rétrécit à ce palier — logo 30→26, boutons réseaux 35→28, titre
-       1,2→1rem — sauf le burger, qui restait à 30px et paraissait donc trop
+    /* Tout rétrécit à ce palier : logo 30→26, boutons réseaux 35→28, titre
+       1,2→1rem, sauf le burger, qui restait à 30px et paraissait donc trop
        gros. Il suit désormais la même réduction. Sa largeur commande la marge
        du titre juste en dessous : 16px d'origine + 26px = 42px de pied. */
     .icon-menu {

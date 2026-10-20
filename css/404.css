@@ -1,5 +1,6 @@
 /* ==============================
-   404.css — Page 404 : illustration glitch + particules
+   404.css
+   Page 404 : illustration glitch + particules
    ============================== */
 
 /* ── Conteneur principal ── */
@@ -43,7 +44,7 @@
     filter: blur(60px);
 }
 
-/* ── Illustration — icône d'erreur ── */
+/* ── Illustration : icône d'erreur ── */
 .erreur-illustration {
     margin-bottom: 1.5rem;
     z-index: 1;
@@ -67,7 +68,7 @@
     }
 }
 
-/* ── Titre 404 — effet glitch ── */
+/* ── Titre 404 : effet glitch ── */
 .glitch-titre {
     display: flex;
     align-items: baseline;
@@ -86,7 +87,7 @@
     text-shadow: 0 0 30px rgba(var(--primary-rgb), 0.2);
 }
 
-/* Couches glitch via pseudo-éléments — invisibles au repos */
+/* Couches glitch via pseudo-éléments : invisibles au repos */
 .glitch-chiffre::before,
 .glitch-chiffre::after {
     content: attr(data-text);
@@ -244,7 +245,7 @@
     opacity: 0.8;
 }
 
-/* ── Bouton retour — même style que .btn-cv ── */
+/* ── Bouton retour : même style que .btn-cv ── */
 /* Apparence dans global.css (`.btn` + `.btn-primaire`). La page ne pose que
    l'écart avec le texte au-dessus. */
 .btn-accueil {

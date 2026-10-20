@@ -75,6 +75,16 @@ const projets = {
         ],
         technologies: ["React Native", "Expo", "JavaScript"],
     },
+    "limite-limite": {
+        titre: "Limite Limite — API",
+        date: "Septembre 2026",
+        images: [],
+        description: "Exercice de Bachelor réalisé en binôme, dont le sujet était la chaîne d'intégration et de déploiement continus plus que l'application elle-même. L'application est volontairement petite : une API PHP 8.2 qui renvoie en JSON une association tirée au hasard entre une carte question à trou et une carte réponse, sur le principe du jeu Limite Limite. Le code suit une architecture MVC légère, et le contrôleur reçoit sa connexion à la base par injection de dépendances, ce qui permet de le tester avec un mock sans base réelle. L'environnement tient dans Docker Compose, un service PHP et un service MySQL 8 initialisé par un script SQL. À chaque push ou pull request sur les branches develop et prod, GitHub Actions audite les dépendances avec Composer, vérifie le respect du standard PSR-12 avec PHP_CodeSniffer et lance les tests PHPUnit. Quand cette intégration passe, un second workflow déploie le code par SSH sur un VPS, dans un environnement de développement puis de production. Le travail suit le même circuit : développement sur develop, puis passage en production par pull request.",
+        technologies: ["PHP", "MySQL", "Docker", "GitHub"],
+        liens: [
+            {libelle: "Dépôt GitHub", url: "https://github.com/JustineB24/limite-limite"}
+        ],
+    },
     "grimoire-recettes": {
         titre: "Le Grimoire des Recettes",
         date: "2025 — en cours",
@@ -101,6 +111,7 @@ const projets = {
         technologies: ["HTML", "CSS", "JavaScript"],
         liens: [
             {libelle: "Voir le projet en ligne", url: "https://panadafood.ovh"},
+            {libelle: "Dépôt GitHub", url: "https://github.com/JustineB24/panada-food"},
             {libelle: "Hébergeur OVH", url: "https://www.ovhcloud.com/fr/"}
         ],
         etudeDeCas: {
@@ -255,7 +266,9 @@ if (!projetId || !projets[projetId]) {
         // Les deux couleurs de l'app (#FF0000 et #00FF00), assombries à teinte et
         // saturation constantes : brutes, elles donnent 3,8:1 et 1,3:1 avec le titre
         // clair du hero, contre 4,5:1 ici.
-        "flouflix": ["#e80000", "#008700"]
+        "flouflix": ["#e80000", "#008700"],
+        // Pas de marque : l'indigo du logo PHP, langage de l'API, vers un bleu nuit
+        "limite-limite": ["#4f5b93", "#2c3361"]
     };
 
     const hero = document.getElementById("projet-hero");

@@ -38,7 +38,7 @@ nouvelles applications.
 
 ## 🗂 Projets présentés
 
-Douze projets, chacun avec sa fiche détaillée (contexte, réflexion, défis, résultat) :
+Treize projets, chacun avec sa fiche détaillée (contexte, réflexion, défis, résultat) :
 
 | Projet                               | En bref                                                |
 |--------------------------------------|--------------------------------------------------------|
@@ -54,6 +54,7 @@ Douze projets, chacun avec sa fiche détaillée (contexte, réflexion, défis, r
 | 🌦 **Application météo**             | Météo en temps réel via l'API OpenWeather              |
 | 🔐 **Générateur de mots de passe**   | Mots de passe sécurisés, critères au choix             |
 | 🔤 **Pendu**                         | Jeu du pendu sur mobile, scores et mots gérés          |
+| 🃏 **Limite Limite — API**           | API PHP testée et déployée par une CI/CD GitHub        |
 
 ---
 
@@ -65,7 +66,7 @@ Douze projets, chacun avec sa fiche détaillée (contexte, réflexion, défis, r
 | 🌙 **Mode sombre / clair**       | Thème persistant via `localStorage`                          |
 | ♿ **Accessibilité**             | Lien d'évitement, navigation au clavier, attributs ARIA      |
 | 🔍 **SEO**                       | Sitemap XML, robots.txt, carte de partage par page, JSON-LD  |
-| 🗂 **Fiches projet dynamiques**  | Une seule page `projet-details.html?id=…` pour les 12 fiches |
+| 🗂 **Fiches projet dynamiques**  | Une seule page `projet-details.html?id=…` pour les 13 fiches |
 | 📜 **Timeline interactive**      | Parcours scolaire et professionnel                           |
 | 🏅 **Galerie de certifications** | Modale plein écran, navigation aux flèches et au clavier     |
 | 🎬 **Animations**                | Texte rotatif, compteurs animés, révélation au défilement    |

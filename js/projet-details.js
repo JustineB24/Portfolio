@@ -13,6 +13,12 @@ const projets = {
         titre: "YABT — Yet Another Blind Test",
         date: "Novembre 2025 — en cours",
         images: [
+            "../assets/projets/yabt/Capture_liste_parties.jpg",
+            "../assets/projets/yabt/Capture_salon.jpg",
+            "../assets/projets/yabt/Capture_partie.jpg",
+            "../assets/projets/yabt/Capture_resultats.jpg",
+            "../assets/projets/yabt/Capture_creation.jpg",
+            "../assets/projets/yabt/Capture_compte.jpg",
             "../assets/projets/yabt/Maquette_accueil.png",
             "../assets/projets/yabt/Maquette_creation.png",
             "../assets/projets/yabt/Maquette_lobby.png",
@@ -38,13 +44,18 @@ const projets = {
                 "Se coordonner à 4 avec Git et une méthodologie Agile, en se répartissant les rôles clairement",
                 "Faire des choix techniques adaptés (React, Socket.io, Docker) en anticipant les contraintes du temps réel multijoueur"
             ],
-            resultat: "La phase de conception est terminée : identité visuelle finalisée, 52 maquettes Figma couvrant chaque écran en version bureau et téléphone, cahier des charges fonctionnel et technique, user stories et modèle de données. Le développement a suivi, de mars à juillet 2026, sur une cinquantaine de commits à quatre : une soixantaine de composants React côté navigateur, un serveur Node avec Socket.io pour le temps réel, et un environnement conteneurisé avec Docker Compose. Les visuels ci-dessus sont les maquettes, pas des captures de l'application. Le projet a été présenté devant un jury en fin d'année de Bachelor."
+            resultat: "La phase de conception est terminée : identité visuelle finalisée, 52 maquettes Figma couvrant chaque écran en version bureau et téléphone, cahier des charges fonctionnel et technique, user stories et modèle de données. Le développement a suivi, de mars à juillet 2026, sur une cinquantaine de commits à quatre : une soixantaine de composants React côté navigateur, un serveur Node avec Socket.io pour le temps réel, et un environnement conteneurisé avec Docker Compose. Les six premiers visuels sont des captures de l'application, les suivants les maquettes Figma. Le projet a été présenté devant un jury en fin d'année de Bachelor."
         }
     },
     "gecko": {
         titre: "Gecko",
         date: "Septembre 2025 — aujourd'hui",
-        images: [],
+        images: [
+            "../assets/projets/gecko/Page_article.png",
+            "../assets/projets/gecko/Page_article_recherche.png",
+            "../assets/projets/gecko/Filtres_favoris.png",
+            "../assets/projets/gecko/Stocks_Paris_preparation.png"
+        ],
         description: "Application web métier d'un client du secteur de l'édition et de la distribution, développée par l'équipe de Litesoft où je suis en alternance. C'est un intranet en production depuis 2021 : gestion commerciale, facturation, suivi d'activité et logistique. Le projet est mature, donc mon quotidien commence par le support. Un agent de premier niveau trie les urgences et qualifie la demande auprès du client avant qu'un ticket n'arrive en développement. Je développe aussi de nouvelles interfaces quand le besoin s'en présente. Le reste va à la modernisation de l'existant plutôt qu'à l'empilement : monolithes découpés en classes dédiées, autoload PSR-4 sur tout le projet, conventions de nommage PSR-1/4/12, et remplacement des pratiques obsolètes comme les jointures SQL implicites ou les comparaisons lâches. J'utilise Claude Code au quotidien, avec un fichier de conventions qui sert de référence au projet, des commandes d'audit automatisées et un plan de résolution de la dette technique. Le socle est une architecture MVC en PHP 8.3 avec PostgreSQL, un frontend en JavaScript, jQuery, Bootstrap et DataTables, du temps réel via Node.js et Socket.IO, et un pipeline CI/CD sur GitLab.",
         technologies: ["PHP", "JavaScript", "PostgreSQL", "jQuery", "Bootstrap", "Tailwind CSS", "DataTables", "Node.js", "Socket.io", "GitLab", "MAMP"],
         liens: [

@@ -251,6 +251,33 @@
     margin-top: 2rem;
 }
 
+/* ── Raccourcis sous le bouton ── */
+/* Couleur, graisse et soulignement animé viennent de la règle des liens de
+   contenu de `global.css` : ne rien redéfinir ici, seulement la disposition. */
+.erreur-liens {
+    z-index: 1;
+    margin-top: 1.75rem;
+}
+
+.erreur-liens ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Séparateur décoratif porté par l'élément **précédent** : en `::before` du
+   suivant, il ouvrirait la ligne quand la liste se réenroule sur mobile. */
+.erreur-liens li:not(:last-child)::after {
+    content: "·";
+    margin-left: 1rem;
+    color: var(--text-muted);
+}
+
 /* ── Particules flottantes ── */
 .particule-404 {
     position: absolute;

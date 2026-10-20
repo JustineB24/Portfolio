@@ -58,6 +58,17 @@
         <p>On dirait que cette page a été compilée avec des erreurs...</p>
 
         <a href="./index.html" class="btn btn-primaire btn-accueil"><i class="fas fa-home" aria-hidden="true"></i> Retour à l'accueil</a>
+
+        <!-- Raccourcis vers les pages qu'on cherchait probablement. En `ul` et
+             non en `div` : le traitement des liens de contenu de `global.css`
+             ne vise que `main p`, `main td` et `main li`. -->
+        <nav class="erreur-liens" aria-label="Aller directement à">
+            <ul>
+                <li><a href="./pages/projets.html">Voir mes projets</a></li>
+                <li><a href="./pages/competences.html">Mes compétences</a></li>
+                <li><a href="./pages/contact.html">Me contacter</a></li>
+            </ul>
+        </nav>
     </div>
 </main>
 
@@ -69,6 +80,8 @@
         for (let i = 0; i < 18; i++) {
             const el = document.createElement('span');
             el.className = 'particule-404';
+            // Décor : sans ça, un lecteur d'écran lit « null », « err »… en fin de page
+            el.setAttribute('aria-hidden', 'true');
             el.textContent = fragments[Math.floor(Math.random() * fragments.length)];
             el.style.left = Math.random() * 100 + '%';
             el.style.top = (60 + Math.random() * 50) + '%';

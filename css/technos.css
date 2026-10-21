@@ -180,7 +180,9 @@
     --tech-filet: rgb(0, 117, 143);
 }
 
+/* pgAdmin partage le logo de PostgreSQL, donc ses couleurs */
 .comp-postgresql,
+.comp-pgadmin,
 .card-tags .tag-postgresql,
 #projet-technologies .tag-postgresql {
     --tech-brut: rgb(51, 103, 145);
@@ -322,6 +324,59 @@
     --tech-filet: rgb(0, 0, 255);
 }
 
+/* Ajoutés le 20/10/2026 (outils et briques de YABT et de Gecko), même calcul que
+   les autres. Trois exceptions à la couleur dominante : Vitest garde le vert de
+   marque (le jaune de l'éclair ne l'emporte que de 11 %), Composer le brun de sa
+   veste (la dominante est le beige du visage), Sequelize le bleu médian de ses
+   trois tons à égalité. Express, logo noir, suit la règle de GitHub. */
+.comp-express {
+    --tech-brut: rgb(22, 22, 20);
+    --tech-libelle: rgb(22, 22, 20);
+    --tech-filet: rgb(22, 22, 20);
+}
+
+.comp-jest {
+    --tech-brut: rgb(153, 66, 91);
+    --tech-libelle: rgb(148, 64, 88);
+    --tech-filet: rgb(153, 66, 91);
+}
+
+.comp-vitest {
+    --tech-brut: rgb(114, 155, 27);
+    --tech-libelle: rgb(78, 105, 18);
+    --tech-filet: rgb(108, 146, 25);
+}
+
+.comp-eslint {
+    --tech-brut: rgb(75, 50, 195);
+    --tech-libelle: rgb(75, 50, 195);
+    --tech-filet: rgb(75, 50, 195);
+}
+
+.comp-github-actions {
+    --tech-brut: rgb(32, 136, 255);
+    --tech-libelle: rgb(0, 91, 195);
+    --tech-filet: rgb(25, 132, 255);
+}
+
+.comp-traefik {
+    --tech-brut: rgb(36, 161, 193);
+    --tech-libelle: rgb(23, 105, 126);
+    --tech-filet: rgb(33, 146, 175);
+}
+
+.comp-composer {
+    --tech-brut: rgb(108, 68, 40);
+    --tech-libelle: rgb(108, 68, 40);
+    --tech-filet: rgb(108, 68, 40);
+}
+
+.comp-sequelize {
+    --tech-brut: rgb(60, 120, 196);
+    --tech-libelle: rgb(47, 95, 156);
+    --tech-filet: rgb(60, 120, 196);
+}
+
 /* ---- Thème sombre ---- */
 
 .dark-theme .comp-html,
@@ -460,6 +515,7 @@
 }
 
 .dark-theme .comp-postgresql,
+.dark-theme .comp-pgadmin,
 .dark-theme .card-tags .tag-postgresql,
 .dark-theme #projet-technologies .tag-postgresql {
     --tech-brut: rgb(51, 103, 145);
@@ -599,4 +655,52 @@
     --tech-brut: rgb(0, 0, 255);
     --tech-libelle: rgb(125, 125, 255);
     --tech-filet: rgb(87, 87, 255);
+}
+
+.dark-theme .comp-express {
+    --tech-brut: rgb(201, 201, 201);
+    --tech-libelle: rgb(201, 201, 201);
+    --tech-filet: rgb(201, 201, 201);
+}
+
+.dark-theme .comp-jest {
+    --tech-brut: rgb(153, 66, 91);
+    --tech-libelle: rgb(199, 125, 146);
+    --tech-filet: rgb(176, 76, 105);
+}
+
+.dark-theme .comp-vitest {
+    --tech-brut: rgb(114, 155, 27);
+    --tech-libelle: rgb(125, 170, 30);
+    --tech-filet: rgb(114, 155, 27);
+}
+
+.dark-theme .comp-eslint {
+    --tech-brut: rgb(75, 50, 195);
+    --tech-libelle: rgb(147, 131, 223);
+    --tech-filet: rgb(111, 90, 213);
+}
+
+.dark-theme .comp-github-actions {
+    --tech-brut: rgb(32, 136, 255);
+    --tech-libelle: rgb(69, 156, 255);
+    --tech-filet: rgb(32, 136, 255);
+}
+
+.dark-theme .comp-traefik {
+    --tech-brut: rgb(36, 161, 193);
+    --tech-libelle: rgb(38, 170, 203);
+    --tech-filet: rgb(36, 161, 193);
+}
+
+.dark-theme .comp-composer {
+    --tech-brut: rgb(108, 68, 40);
+    --tech-libelle: rgb(193, 131, 88);
+    --tech-filet: rgb(153, 96, 57);
+}
+
+.dark-theme .comp-sequelize {
+    --tech-brut: rgb(60, 120, 196);
+    --tech-libelle: rgb(110, 155, 211);
+    --tech-filet: rgb(60, 120, 196);
 }

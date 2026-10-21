@@ -492,6 +492,7 @@ main hr {
 
 /* Logos monochromes noirs : rendus blancs en mode sombre pour rester visibles */
 body.dark-theme .comp-expo img,
+body.dark-theme .comp-express img,
 body.dark-theme .comp-github img,
 body.dark-theme .comp-socketio img {
     filter: invert(1);

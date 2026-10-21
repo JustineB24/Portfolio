@@ -97,6 +97,7 @@ const projets = {
         ],
         description: "Application mobile de recherche de films et de séries, construite à deux en deux jours pendant le Bachelor. La contrainte était inversée : produire volontairement l'interface la plus laide et la moins utilisable possible. L'exercice avait deux objectifs, découvrir React Native et Expo, et pousser les mauvaises pratiques d'ergonomie assez loin pour comprendre pourquoi ce sont de mauvaises pratiques. Sous la couche ratée, l'application fonctionne vraiment. Trois écrans, liste, détail et favoris, avec recherche et filtres construits sur les données de l'API TVmaze. Les favoris sont gérés en CRUD, leur état partagé entre les écrans par un contexte React.",
         liens: [
+            {libelle: "Dépôt GitHub", url: "https://github.com/JustineB24/flouflix"},
             {libelle: "API TVmaze", url: "https://www.tvmaze.com/api"}
         ],
         technologies: ["React Native", "Expo", "JavaScript"],

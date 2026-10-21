@@ -311,9 +311,10 @@ if (!projetId || !projets[projetId]) {
         "meteo": ["#4a148c", "#2a0054"],
         // Rose assombri pour que le titre du bandeau passe le seuil de 3:1
         "generateur-mdp": ["#e062a1", "#a8487b"],
-        "mairie-cauffry": ["#1a5276", "#e6a817"],
+        "mairie-cauffry": ["#1a5276", "#b58412"],   // ocre plutôt que jaune, pour le titre clair
         "panada-food": ["#ff6600", "#cc4400"],
-        "yabt": ["#FDC800", "#E95F3F", "#E3312D", "#CF07FF", "#0409AA"],
+        // Jaune resserré dans le coin : étalé, il passait sous le titre
+        "yabt": ["#FDC800 0%", "#E95F3F 12%", "#E3312D 37%", "#CF07FF 68%", "#0409AA 100%"],
         "gecko": ["#4c7c13", "#4e73df"],   // local -> prod, vert assombri pour le contraste
         "grimoire-recettes": ["#c2703e", "#6b7c3e"],
         // Rouge et vert de l'app, assombris pour que le titre clair reste lisible
@@ -335,8 +336,9 @@ if (!projetId || !projets[projetId]) {
         }
         // Couleur du projet propagée à toute la page (eyebrows, spine, filets…)
         if (detailsWrap) {
-            detailsWrap.style.setProperty("--hero-color", colors[0]);
-            detailsWrap.style.setProperty("--hero-color-dark", colors[colors.length > 1 ? 1 : 0]);
+            // Les variables ne prennent que la couleur, sans la position d'arrêt
+            detailsWrap.style.setProperty("--hero-color", colors[0].split(" ")[0]);
+            detailsWrap.style.setProperty("--hero-color-dark", colors[colors.length > 1 ? 1 : 0].split(" ")[0]);
         }
     }
 

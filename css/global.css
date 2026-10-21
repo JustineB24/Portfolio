@@ -1,9 +1,6 @@
-/* ==============================
-   global.css
-   Styles globaux : variables de thème, header, footer, éléments partagés
-   ============================== */
+/* global.css : variables, header, footer et composants partagés */
 
-/* Variables pour le thème clair */
+/* ===== Variables : thème clair ===== */
 :root {
     --background-color: #fafafa;
     --text-color: #1a1a1a;
@@ -11,7 +8,7 @@
     --button-text-color: #fafafa;
     --main-bg-rgb: 250, 250, 250;
     --card-background: #e8eaf1;
-    /* Texte secondaire : assez foncé pour rester conforme WCAG AA (≈7:1) */
+    /* Texte secondaire, assez foncé pour rester conforme WCAG AA */
     --text-muted: #595959;
     --primary-color: #960000;
     --primary-light: #b30000;
@@ -21,32 +18,16 @@
     --radius-md: 10px;
     --radius-lg: 12px;
     --radius-xl: 14px;
-    /* Pilule : arrondi complet pour les badges, étiquettes et boutons de filtre.
-       Une valeur volontairement plus grande que la moitié de leur hauteur, que
-       le navigateur ramène à cette moitié. Elle remplace un mélange de `2rem` et
-       de `100px` qui rendaient pareil tant que l'élément reste sous 64px. */
+    /* Plus grand que la moitié de toute hauteur, le navigateur le ramène à un arrondi complet */
     --radius-pill: 100px;
-    /* Échelle du texte secondaire, sous la taille du corps.
-       Le site utilisait 13 valeurs différentes sous 1rem pour 84 usages, avec
-       des écarts de 0,3px entre voisines : aucune page n'était d'accord avec
-       une autre. Cinq échelons réguliers de 0,05rem les remplacent.
-       Du plus grand au plus petit : note et intro de section, texte secondaire
-       courant, mention dense, badge, étiquette en capitales.
-       Les titres gardent leurs `clamp()`, qui relèvent d'une autre mécanique. */
+    /* Tailles sous 1rem, de l'intro de section à l'étiquette en capitales */
     --texte-xl: 0.95rem;
     --texte-lg: 0.9rem;
     --texte-md: 0.85rem;
     --texte-sm: 0.8rem;
     --texte-xs: 0.75rem;
-    /* Mouvement des cartes au survol : même hauteur de levée et même rythme
-       partout. Les cartes montaient de 6px, 5px ou 3px selon la page, sur des
-       durées de 0,3 / 0,35 / 0,4s, la moitié avec la courbe d'accélération du
-       site et la moitié sans.
-       Les ombres, elles, restent propres à chaque contexte et ne sont pas
-       tokenisées : certaines sont teintées de rouge, une porte un liseré
-       intérieur, elles portent une intention par page.
-       Une carte qui a d'autres propriétés à animer les ajoute après le jeton :
-       `transition: var(--transition-carte), border-color 0.3s;`. */
+    /* Levée des cartes au survol. Une carte qui anime autre chose l'ajoute après le jeton :
+       `var(--transition-carte), border-color 0.3s`. Les ombres restent propres à chaque page */
     --carte-levee: -6px;
     --transition-carte: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -54,25 +35,19 @@
     --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.15);
     --shadow-primary: 0 6px 20px rgba(var(--primary-rgb), 0.35);
     --primary-rgb: 150, 0, 0;
-    /* Texte posé sur le header rouge : toujours clair, ne s'inverse pas selon le thème */
+    /* Texte sur le header rouge : reste clair dans les deux thèmes */
     --header-text-color: #fafafa;
-    /* Rouge de marque éclairci, à utiliser dès que le rouge sert de couleur de
-       TEXTE sur une surface sombre : thème sombre, ou surface sombre en
-       permanence (notification easter egg). Le rouge brut n'y monte qu'à
-       2:1. Ce dosage donne 6,2:1 sur le fond de page et 5,1:1 sur les
-       cartes, soit WCAG AA dans les deux cas.
-       La première déclaration est le repli statique pour les navigateurs sans
-       color-mix : ils ignorent la seconde et gardent la valeur en dur. */
+    /* Rouge en texte sur surface sombre, où le rouge brut est illisible.
+       La valeur en dur sert de repli aux navigateurs sans color-mix */
     --primary-on-dark: #ca8080;
     --primary-on-dark: color-mix(in srgb, var(--primary-color) 50%, #ffffff);
-    /* Texte posé sur un fond de couleur opaque (filtres actifs, tags) : toujours clair */
+    /* Texte sur un fond de couleur opaque (filtres actifs, tags) : toujours clair */
     --tag-text-on-color: #fff;
-    /* Typographie : Raleway pour les titres / navbar, Inter pour le corps de texte */
     --font-titre: 'Raleway', sans-serif;
     --font-corps: 'Inter', sans-serif;
 }
 
-/* Variables pour le thème sombre */
+/* ===== Variables : thème sombre ===== */
 .dark-theme {
     --background-color: #121212;
     --text-color: #e6e6e6;
@@ -83,7 +58,7 @@
     --text-muted: #9e9e9e;
 }
 
-/* Principal */
+/* ===== Base ===== */
 html {
     overflow-y: scroll;
     overflow-x: hidden;
@@ -92,14 +67,12 @@ html {
     scrollbar-color: var(--primary-color) var(--card-background);
 }
 
-/* Couleur de sélection de texte */
 ::selection {
     background: var(--primary-color);
     color: var(--tag-text-on-color);
 }
 
-
-/* Skip to content : accessibilité clavier */
+/* Lien d'évitement pour la navigation au clavier */
 .skip-link {
     position: fixed;
     top: -100%;
@@ -145,45 +118,18 @@ body {
     box-sizing: border-box;
 }
 
-/* Focus visible pour l'accessibilité clavier */
 :focus-visible {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
 
-/* Liens */
 a {
     text-decoration: none;
 }
 
-/* ==============================
-   Liens de contenu : traitement unique pour tout le site.
-   Rouge de marque, sans soulignement au repos, souligné au survol et au focus
-   clavier. La liste de `:not()` écarte ce qui est un bouton ou un onglet et se
-   trouve dans un `li`. Elle tient en six exclusions depuis que tous les
-   boutons portent le socle `.btn`, contre neuf quand il fallait les nommer un
-   par un.
-
-   `main dd a` a rejoint la liste avec les fiches label/valeur des mentions
-   légales : un `dd` est un contexte de texte courant comme `p` ou `td`, et
-   sans lui les liens tél./mail de la page seraient restés sans traitement.
-
-   `.lien-sommaire` est la sixième exclusion. Un sommaire est de la navigation,
-   pas du texte courant, et ses entrées sont dans des `li` : sans exclusion,
-   elles héritaient du rouge et de la graisse 600. Une règle de page ne suffit
-   pas à reprendre la main, ce sélecteur-ci pesant cinq classes. Il aurait
-   fallu un `!important` par déclaration.
-
-   La graisse n'est pas décorative, ne pas la retirer sans remettre un
-   soulignement permanent : le rouge ne se détache du texte courant que de
-   1,90:1 en clair et 2,43:1 en sombre, sous les 3:1 qu'exige WCAG 1.4.1 pour un
-   lien reconnaissable à sa seule couleur. C'est elle qui fournit le second
-   indice au repos, le soulignement prenant le relais au survol et au focus.
-
-   Le dégradé du soulignement est en `currentColor` et non en `--primary-color` :
-   sinon il resterait rouge foncé en thème sombre, soit 2:1 sur le fond de page,
-   presque invisible.
-   ============================== */
+/* ===== Liens de contenu ===== */
+/* Graisse 600 obligatoire : la couleur seule distingue trop peu le lien du texte (sous 3:1).
+   Soulignement en currentColor pour suivre le rouge éclairci du thème sombre */
 main p a,
 main td a,
 main dd a,
@@ -205,9 +151,7 @@ main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link)
     color: var(--primary-on-dark);
 }
 
-/* `:focus-visible` autant que `:hover` : sans lui, l'indice non coloré
-   n'existerait qu'à la souris et un parcours au clavier n'aurait que la
-   couleur. */
+/* Au focus clavier aussi, sinon le clavier n'aurait que la couleur comme indice */
 :is(main p a,
 main td a,
 main dd a,
@@ -215,20 +159,9 @@ main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link)
     background-size: 100% 2px;
 }
 
-/* ==============================
-   Carte projet entièrement cliquable.
-
-   Le titre porte un vrai `<a>` et son `::after` recouvre la carte, si bien que
-   cliquer n'importe où suit le lien. Auparavant la carte était un `div` en
-   `role="link"` rendu cliquable par un écouteur JavaScript : elle imitait un
-   lien sans en avoir les comportements. On récupère l'ouverture dans un nouvel
-   onglet, le clic du milieu, la copie de l'adresse, l'aperçu de l'URL au
-   survol, et le nom accessible devient le titre lui-même.
-
-   Contrepartie assumée du motif : le recouvrement empêche de sélectionner le
-   texte de la carte. L'implémentation précédente avait déjà ce défaut, un clic
-   n'importe où déclenchant la navigation.
-   ============================== */
+/* ===== Carte projet cliquable ===== */
+/* Vrai <a> dont le ::after recouvre la carte, pour garder nouvel onglet, clic du milieu
+   et copie d'adresse. Contrepartie : le texte de la carte n'est plus sélectionnable */
 .card {
     position: relative;
 }
@@ -242,16 +175,12 @@ main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link)
     content: "";
     position: absolute;
     inset: 0;
-    /* `z-index: 1` est nécessaire, pas décoratif : la description de la carte
-       porte `opacity: 0.8`, ce qui crée un contexte d'empilement et la fait
-       peindre au niveau 0, donc au-dessus de ce recouvrement qui la précède
-       dans l'arbre. Sans ça, le milieu de la carte n'est pas cliquable. */
+    /* Nécessaire : l'opacity de la description crée un contexte d'empilement qui la peint
+       par-dessus le recouvrement, et le milieu de la carte n'est plus cliquable */
     z-index: 1;
 }
 
-/* L'anneau de focus doit entourer la carte et non le seul titre, puisque c'est
-   la carte entière qui est cliquable. Le tout sous `@supports` : sans `:has()`,
-   retirer l'anneau du lien le priverait de tout repère visible au clavier. */
+/* Anneau de focus sur toute la carte. Sous @supports pour ne pas priver le lien de repère sans :has() */
 @supports selector(:has(*)) {
     .card:has(.card-lien:focus-visible) {
         outline: 2px solid var(--primary-color);
@@ -263,17 +192,14 @@ main li a:not(.onglet):not(.onglet-burger):not(.btn-reseaux):not(.timeline-link)
     }
 }
 
-/* Séparateur de rubrique.
-   Les trois pages qui en posent (À propos, Compétences, Mentions légales)
-   recopiaient les deux mêmes déclarations. L'apparence est ici, chaque page ne
-   règle plus que sa largeur et son espacement, qui dépendent de sa colonne. */
+/* Séparateur de rubrique : l'apparence ici, largeur et marges dans chaque page */
 main hr {
     border: none;
     border-top: 2px dashed var(--card-background);
     margin: 2.5rem auto;
 }
 
-/* Entête : glassmorphism */
+/* ===== Header ===== */
 body > header {
     background: rgba(var(--primary-rgb), 0.85);
     backdrop-filter: blur(10px);
@@ -292,19 +218,18 @@ body > header {
     transition: height 0.3s, padding 0.3s;
 }
 
-
-/* Compensation du header fixe pour les ancres */
+/* Compense le header fixe lors d'un saut vers une ancre */
 [id] {
     scroll-margin-top: 120px;
 }
 
-/* Pour éviter que le contenu principal ne soit caché sous le header */
+/* Laisse la place du header fixe */
 main {
     margin: 10rem 1rem 1rem;
     flex: 1;
 }
 
-/* Titres */
+/* ===== Titres ===== */
 .titre-nom {
     font-family: var(--font-titre);
     font-size: 1.5rem;
@@ -344,10 +269,7 @@ h1 {
     margin-bottom: 2rem;
     padding-bottom: 0.75rem;
     border-bottom: 3px solid var(--primary-color);
-    /* Les titres sont en capitales avec du letter-spacing : sur écran étroit,
-       un mot long ("TECHNOLOGIQUE") dépassait la largeur de l'écran et créait
-       un scroll horizontal. On borne la largeur, on autorise l'icône à passer
-       à la ligne, et on coupe le mot en dernier recours. */
+    /* Capitales espacées : un mot long débordait sur écran étroit, on coupe en dernier recours */
     max-width: 100%;
     flex-wrap: wrap;
     justify-content: center;
@@ -360,7 +282,7 @@ h2 i {
     font-size: 0.85em;
 }
 
-/* Icônes de titres : rouge éclairci en thème sombre pour le contraste */
+/* Icônes de titres : rouge éclairci en thème sombre */
 .dark-theme h1 i,
 .dark-theme h2 i {
     color: var(--primary-on-dark);
@@ -372,7 +294,7 @@ h2 {
     display: inline-block;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--primary-color);
-    /* Même garde-fou que h1 contre le débordement des mots longs */
+    /* Même garde-fou que h1 contre les mots longs */
     max-width: 100%;
     overflow-wrap: break-word;
 }
@@ -381,14 +303,8 @@ h3 {
     font-size: clamp(1.5rem, 3.5vw, 2rem);
 }
 
-/* ==============================
-   Eyebrow de section (partagé)
-   Étiquette courte placée juste au-dessus d'un titre de section, sur le
-   modèle éditorial du détail projet : elle annonce la nature du bloc
-   ("Parcours", "Backend"…) et allège la charge du titre lui-même.
-   Le détail projet garde sa propre classe `.eyebrow`, colorée par la
-   couleur du projet (--accent). Ici on reste sur le rouge de marque.
-   ============================== */
+/* ===== Eyebrow de section ===== */
+/* Le détail projet garde sa propre classe .eyebrow, colorée par le projet */
 .section-eyebrow {
     display: block;
     margin: 0 0 0.4rem;
@@ -400,36 +316,19 @@ h3 {
     color: var(--primary-color);
 }
 
-/* Rouge éclairci en sombre pour rester lisible sur fond foncé */
 .dark-theme .section-eyebrow {
     color: var(--primary-on-dark);
 }
 
-/* L'eyebrow forme un bloc avec le titre qui le suit : on absorbe la
-   marge haute du titre pour éviter un trou entre les deux. */
+/* Absorbe la marge haute du titre pour que l'eyebrow lui reste collé */
 .section-eyebrow + h1,
 .section-eyebrow + h2 {
     margin-top: 0;
 }
 
-/* ==============================
-   Bouton (partagé)
-
-   Un socle `.btn` plus une variante d'apparence. Le même bouton était écrit
-   sept fois dans six feuilles, sous sept noms différents, avec des écarts qui
-   n'étaient pas des choix : `flex` au lieu de `inline-flex`, un padding à
-   2rem au lieu de 1,8rem, une transition qui oubliait `color`. Le patron vient
-   de `formation.css`, qui l'avait déjà pour ses deux boutons.
-
-   Usage : `class="btn btn-primaire"`. Les anciens noms (`btn-cv`,
-   `btn-voir-projets`…) subsistent uniquement comme points d'accroche pour les
-   réglages propres à une page (marge, largeur en mobile), jamais pour
-   l'apparence.
-
-   Le balayage au survol est un `::before` en `scaleX` : le socle en pose la
-   mécanique, la variante ne fournit que le fond. Un bouton sans fond de
-   variante n'affiche donc rien, ce qui est le cas voulu pour `.btn-neutre`.
-   ============================== */
+/* ===== Boutons ===== */
+/* Socle .btn + une variante. Le balayage au survol est un ::before dont la variante
+   fournit le fond : sans fond, rien ne s'affiche, ce qui est voulu pour .btn-neutre */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -468,7 +367,7 @@ h3 {
     box-shadow: var(--shadow-primary);
 }
 
-/* Variante pleine : l'action principale d'une page */
+/* Action principale */
 .btn-primaire {
     background: var(--primary-color);
     color: var(--tag-text-on-color);
@@ -479,7 +378,7 @@ h3 {
     background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
 }
 
-/* Variante contour : action secondaire, se remplit au survol */
+/* Contour, se remplit au survol */
 .btn-secondaire {
     background: transparent;
     color: var(--primary-color);
@@ -490,7 +389,7 @@ h3 {
     background: var(--primary-color);
 }
 
-/* Après `.btn:hover`, à spécificité égale : c'est l'ordre qui tranche. */
+/* Doit rester après .btn:hover, à spécificité égale c'est l'ordre qui tranche */
 .btn-secondaire:hover {
     color: var(--tag-text-on-color);
     box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.25);
@@ -500,7 +399,7 @@ h3 {
     color: var(--primary-on-dark);
 }
 
-/* Variante neutre : action tertiaire, se borde de rouge au survol */
+/* Fond de carte, se borde de rouge au survol */
 .btn-neutre {
     background: var(--card-background);
     color: var(--text-color);
@@ -511,8 +410,7 @@ h3 {
     border-color: var(--primary-color);
 }
 
-/* Halo en thème sombre, sur les boutons pleins uniquement : sur fond foncé,
-   le rouge a besoin d'être détaché du fond. */
+/* Halo en thème sombre pour détacher le rouge du fond foncé */
 .dark-theme .btn-primaire {
     box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.4);
 }
@@ -526,7 +424,6 @@ h4 {
     font-weight: 700;
 }
 
-/* Paragraphe */
 p {
     font-size: 1.2rem;
     line-height: 1.5;
@@ -534,7 +431,7 @@ p {
     padding: 15px;
 }
 
-/* Boutons des réseaux sociaux */
+/* ===== Réseaux sociaux ===== */
 .reseaux {
     display: flex;
     gap: 10px;
@@ -594,7 +491,7 @@ p {
     background-color: #1f1f1f;
 }
 
-/* Menu de navigation */
+/* ===== Navigation ===== */
 .nav-menu {
     list-style: none;
     margin: 0;
@@ -613,8 +510,7 @@ p {
 .onglet {
     position: relative;
     font-family: var(--font-titre);
-    /* Taille et espacement fluides : se resserrent quand la fenêtre
-       rétrécit pour tenir sur une ligne, s'aèrent sur grand écran. */
+    /* Se resserrent pour tenir sur une ligne quand la fenêtre rétrécit */
     margin: 0 clamp(0.2rem, 1.5vw - 0.95rem, 0.95rem);
     text-transform: uppercase;
     font-size: clamp(0.78rem, 1.4vw - 0.3rem, 1.05rem);
@@ -648,8 +544,7 @@ p {
     transition: transform 0.3s ease-out;
 }
 
-
-/* Icone menu burger */
+/* ===== Menu burger : icône ===== */
 .icon-menu {
     --gap: 5px;
     --height-bar: 3px;
@@ -668,7 +563,7 @@ p {
     z-index: 200;
 }
 
-/* `.check-icon` est masquée avec `.sr-only`, plus bas dans ce fichier. */
+/* .check-icon est masquée par .sr-only plus bas */
 
 .bar {
     position: relative;
@@ -690,7 +585,6 @@ p {
 }
 
 .bar--3 {
-
     bottom: var(--pos-y-bar-three);
     transform: rotate(var(--rotate-bar-three));
     transition: bottom 200ms 100ms, transform 100ms;
@@ -712,15 +606,8 @@ p {
     --rotate-bar-three: -45deg;
 }
 
-/* Le titre passait sur deux lignes dès l'ouverture du menu : la croix s'ajoute
-   à gauche et rogne la place. Il tient sur une ligne et cède du terrain par la
-   troncature plutôt que par le retour, qui donnait un header bancal.
-
-   La troncature porte sur un `<span>` intérieur et non sur `.titre-nom` :
-   celui-ci est un `inline-flex`, or `text-overflow` ne s'applique qu'à un
-   conteneur de bloc. Posé dessus il ne faisait rien, et le `min-width: 0`
-   laissait le titre être coupé net en plein milieu d'une lettre, sans points de
-   suspension, à 320 et 390px. */
+/* Une seule ligne même menu ouvert : on tronque plutôt que de passer à la ligne. L'ellipsis
+   est sur le <span> intérieur car text-overflow est sans effet sur un inline-flex */
 .titre-nom {
     min-width: 0;
 }
@@ -732,16 +619,8 @@ p {
     white-space: nowrap;
 }
 
-/* ==============================
-   Menu burger (mobile)
-
-   Le panneau suivait `--button-background-color`, qui s'inverse à contre-courant
-   du thème : il était noir en thème CLAIR et blanc en thème SOMBRE. Outre
-   l'effet de surprise, c'est ce qui piégeait le contraste, le rouge de marque se
-   retrouvant sur du sombre précisément quand le reste de la page est clair.
-   Il suit maintenant `--background-color`, donc la règle habituelle du site
-   redevient valable et il n'y a plus d'exception à retenir.
-   ============================== */
+/* ===== Menu burger : panneau ===== */
+/* Suit --background-color, pas --button-background-color qui s'inverse à contre-thème */
 .menu-burger {
     position: fixed;
     top: -1000%;
@@ -755,25 +634,11 @@ p {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    /* `flex-start` d'abord, `safe center` ensuite : les deux déclarations sont
-       nécessaires, et dans cet ordre.
-
-       Avec le seul `center`, un panneau plus haut que l'écran déborde par le
-       HAUT, et cette moitié-là n'est pas atteignable au défilement : `scrollTop`
-       ne peut pas devenir négatif. Sur tout téléphone en paysage (740x414,
-       667x375, 844x390) le premier lien se retrouvait à y négatif ou sous le
-       header fixe, donc invisible ET incliquable. Mesuré, « Accueil » était
-       injoignable sur les trois formats.
-
-       `safe center` centre tant qu'il y a la place et bascule en `flex-start`
-       dès que ça déborde. Les navigateurs qui ne le connaissent pas ignorent la
-       seconde ligne et gardent `flex-start`, qui ne déborde jamais par le haut. */
+    /* Les deux, dans cet ordre : center seul déborde par le haut, hors de portée du scroll
+       (lien Accueil invisible en paysage). safe center retombe sur flex-start s'il ne tient pas */
     justify-content: flex-start;
     justify-content: safe center;
-    /* Fermé, le panneau est seulement repoussé hors écran : ses huit liens
-       restaient dans l'ordre de tabulation, y compris en desktop où le burger
-       n'existe pas et où le panneau ne peut donc pas être ouvert.
-       `visibility: hidden` les en sort. `.open` la rétablit. */
+    /* Hors écran ne suffit pas, ses liens restaient dans l'ordre de tabulation */
     visibility: hidden;
     gap: clamp(2rem, 6vh, 3.5rem);
     padding: 5rem 0 max(2rem, env(safe-area-inset-bottom, 2rem));
@@ -785,16 +650,13 @@ p {
     padding: 0 1.75rem;
 }
 
-/* Aligné à gauche, et non centré : sept libellés centrés de longueurs très
-   différentes n'ont pas de bord commun, donc l'œil n'a aucune ligne à suivre
-   pour descendre la liste. */
+/* Aligné à gauche pour que l'œil ait un bord à suivre en descendant la liste */
 .side-menu ul {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 0.15rem;
-    /* `body` pose `text-align: center` pour tout le site : sans cette remise à
-       gauche, les libellés restent centrés et le chevron flotte loin du texte. */
+    /* body centre le texte pour tout le site */
     text-align: left;
 }
 
@@ -818,10 +680,7 @@ p {
     color: var(--text-color);
 }
 
-/* Marqueur de la page courante : le chevron du logo ‹JB/›. Il double la
-   couleur par une forme, seule façon de ne pas signaler la page courante
-   « par la couleur uniquement » (WCAG 1.4.1). Il sert aussi de repère au
-   survol et au focus clavier. */
+/* Page courante : le chevron double la couleur par une forme (WCAG 1.4.1) */
 .onglet-burger::before {
     content: "\203A";
     position: absolute;
@@ -848,9 +707,7 @@ p {
     color: var(--primary-on-dark);
 }
 
-/* Pied du panneau : le CV est la seule chose que les sept liens ne donnent pas,
-   et c'est ce qu'un recruteur cherche sur téléphone. Il occupe le tiers bas qui
-   restait vide. */
+/* Le CV en pied de panneau, c'est ce qu'un recruteur cherche sur téléphone */
 .burger-pied {
     padding: 0 1.75rem;
 }
@@ -860,13 +717,12 @@ p {
     justify-content: center;
 }
 
-/* Affichage du menu lorsque la classe open est ajoutée par JS */
 .menu-burger.open {
     top: 0;
     visibility: visible;
 }
 
-/* Bas de page */
+/* ===== Footer ===== */
 footer {
     font-size: var(--texte-sm);
     padding: 1rem;
@@ -891,28 +747,21 @@ footer {
     color: var(--button-text-color);
 }
 
-/* ------------------ */
-/* Responsive Design */
-/* ------------------ */
+/* ===== Responsive ===== */
 
-/* Pour les ordinateurs */
+/* Desktop (1025px et plus) */
 @media (min-width: 1025px) {
-
-    /* Enlève le menu burger */
     .icon-menu {
         display: none;
     }
 }
 
-/* Pour les écrans de taille moyenne */
+/* Tablettes et mobiles (1024px et moins) */
 @media (max-width: 1024px) {
-
-    /* Onglet */
     .menu {
         display: none;
     }
 
-    /* Supprimer la barre sur les appareils mobiles et tablettes */
     .onglet::after {
         content: none;
     }
@@ -960,7 +809,6 @@ footer {
 
     .nav-menu {
         display: none;
-        /* Cache le menu de navigation classique */
         flex-direction: column;
         background-color: var(--primary-color);
         top: 100px;
@@ -1000,9 +848,7 @@ footer {
         padding: 5px;
     }
 
-    /* La marge gauche doit dépasser le pied du burger, qui est en position
-       absolue de 16 à 46px et ne bouge pas avec la largeur. À 3rem (48px) il
-       ne restait que 2px : le logo semblait collé à l'icône. */
+    /* Doit dépasser le burger, en position absolue de 16 à 46px, sinon le logo y paraît collé */
     .titre-nom {
         font-size: 1.2rem;
         padding: 3px 6px;
@@ -1016,8 +862,7 @@ footer {
 
     h1 {
         gap: 0.75rem;
-        /* Titres redimensionnés pour tenir sur les petits écrans (320px)
-           sans avoir à couper les mots */
+        /* Réduits pour tenir à 320px sans couper les mots */
         font-size: clamp(1.5rem, 6.5vw, 2rem);
     }
 
@@ -1065,7 +910,7 @@ footer {
     }
 }
 
-/* Classes utilitaires */
+/* ===== Utilitaires ===== */
 .overflow-hidden {
     overflow: hidden !important;
 }
@@ -1074,7 +919,7 @@ footer {
     display: none;
 }
 
-/* Animation lettre par lettre sur h1 */
+/* Animation lettre par lettre des h1 */
 .letter-reveal {
     opacity: 0;
     display: inline-block;
@@ -1089,7 +934,7 @@ footer {
     display: inline-flex;
 }
 
-/* Conteneur du titre animé : aligne les mots sans subir le `gap` flex du h1 */
+/* Aligne les mots sans subir le gap flex du h1 */
 .titre-anime {
     display: inline-flex;
     flex-wrap: wrap;
@@ -1097,7 +942,6 @@ footer {
     justify-content: center;
 }
 
-/* Message projet introuvable */
 .projet-introuvable {
     text-align: center;
     margin-top: 5rem;
@@ -1105,12 +949,8 @@ footer {
     color: var(--text-color);
 }
 
-/* Classe utilitaire pour le contenu visuellement masqué mais accessible */
-/* Masqué à l'œil, gardé pour les lecteurs d'écran et pour recevoir le focus.
-   Le même bloc était recopié trois fois : ici, sur la case du menu burger
-   (`.check-icon`) et sur celle du thème (`.theme-switch__checkbox`, dans
-   `theme.css`). Les deux cases sont de vraies `input` qui doivent rester
-   focalisables, d'où cette technique plutôt qu'un `display: none`. */
+/* Masqué à l'œil mais lu et focalisable. Les cases du burger et du thème doivent rester
+   focalisables, d'où cette technique plutôt que display: none */
 .sr-only,
 .check-icon,
 .theme-switch__checkbox {
@@ -1125,7 +965,7 @@ footer {
     border: 0;
 }
 
-/* Animations partagées */
+/* ===== Animations ===== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -1138,7 +978,7 @@ footer {
     }
 }
 
-/* Animations au scroll */
+/* Révélation au défilement */
 .scroll-reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -1182,7 +1022,7 @@ footer {
     transform: translateY(-3px);
 }
 
-/* Scrollbar personnalisée */
+/* Barre de défilement */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -1200,9 +1040,7 @@ footer {
     background: var(--primary-light);
 }
 
-/* Thème sombre : transitions fluides sur éléments enfants.
-   `.card-accueil`, `.specialite-card` et `.contact-infos` retirées le 07/08 :
-   plus aucun HTML ni JS ne les pose. */
+/* Transitions douces au changement de thème */
 .card-competence,
 .profil,
 .timeline-content,
@@ -1213,47 +1051,27 @@ footer {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-/* Le halo en thème sombre est posé avec la variante `.btn-primaire`, plus haut
-   dans ce fichier. Il était listé ici bouton par bouton, et le bouton
-   « Voir tous les projets » de l'accueil avait été oublié. */
-
 .dark-theme h1,
 .dark-theme h2 {
     text-shadow: 0 0 20px rgba(var(--primary-rgb), 0.15);
 }
 
-
 .dark-theme .btn-retour-haut {
     box-shadow: 0 0 12px rgba(var(--primary-rgb), 0.5);
 }
 
-
-/* Logo Expo monochrome noir : inversé en thème sombre pour rester visible,
-   même traitement que sur la page Compétences. */
+/* Logo Expo noir, inversé en thème sombre */
 .dark-theme .card-tags .tag-expo::before {
     filter: invert(1);
 }
 
-/* Tooltip sur badges technos */
+/* ===== Infobulles des badges ===== */
 [data-tooltip] {
     position: relative;
 }
 
-/* `display: none` au repos, et pas seulement `opacity: 0` : une infobulle
-   transparente reste dans la mise en page. Large de 194px à cause du
-   `white-space: nowrap` et centrée sur une pastille proche du bord droit, elle
-   étendait la largeur du document de 25px sur la page détail projet à 320 et
-   390px. Le débordement était invisible, `overflow-x: hidden` sur `html` le
-   masquant sans permettre de faire défiler, donc le contenu dépassant était
-   simplement coupé.
-
-   La largeur est bornée à l'écran et le texte peut passer à la ligne, pour que
-   l'infobulle affichée ne sorte pas non plus. À 16rem, les libellés actuels
-   tiennent toujours sur une ligne : le rendu ne change pas sur grand écran.
-
-   `allow-discrete` et `@starting-style` conservent le fondu malgré le passage
-   par `display`. Sans leur prise en charge, l'infobulle apparaît d'un coup, ce
-   qui reste correct. */
+/* display: none au repos et non opacity: 0, sinon l'infobulle invisible élargit la page
+   (débordement caché par overflow-x). allow-discrete et @starting-style gardent le fondu */
 [data-tooltip]::after {
     content: attr(data-tooltip);
     position: absolute;
@@ -1265,10 +1083,7 @@ footer {
     padding: 0.4rem 0.8rem;
     border-radius: 6px;
     font-size: var(--texte-xs);
-    /* `width: max-content` est indispensable avec `white-space: normal` : sans
-       lui, la boîte se replie sur la largeur de sa pastille, soit 84px et trois
-       lignes. Avec lui elle prend la largeur de son texte, donc une seule
-       ligne, et `max-width` ne la replie que si l'écran l'exige. */
+    /* Indispensable avec white-space: normal, sinon la boîte se replie sur la largeur de la pastille */
     width: max-content;
     max-width: min(16rem, calc(100vw - 2rem));
     white-space: normal;
@@ -1295,7 +1110,7 @@ footer {
     }
 }
 
-/* Transitions entre pages */
+/* ===== Transitions entre pages ===== */
 main {
     animation: pageIn 0.4s ease-out;
 }
@@ -1322,7 +1137,7 @@ body.page-exit main {
     }
 }
 
-/* Parallaxe léger sur les hero (desktop uniquement) */
+/* Parallaxe léger des hero, desktop uniquement */
 @media (hover: hover) and (min-width: 1025px) {
     .hero {
         background-attachment: fixed;
@@ -1333,18 +1148,13 @@ body.page-exit main {
     font-size: 1.1rem;
     color: var(--text-color);
     margin-bottom: 2rem;
-    /* Sans borne, un sous-titre un peu long s'étire sur toute la largeur de la
-       page (plus de 1200px), bien au-delà du confort de lecture. On le limite à
-       une longueur de ligne raisonnable, centrée comme le reste de l'en-tête. */
+    /* Borne la ligne à une longueur lisible */
     max-width: 68ch;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Les liens du sous-titre n'ont plus de règle propre : `.sous-titre-page` est un
-   `p`, donc la règle de lien de contenu plus haut les couvre. */
-
-/* Sommaire veille */
+/* ===== Sommaire veille ===== */
 .sommaire {
     background: var(--card-background);
     border-radius: var(--radius-md);
@@ -1380,7 +1190,7 @@ body.page-exit main {
     color: var(--primary-color);
 }
 
-/* CSS Container Queries pour les cards */
+/* Container queries des cartes */
 .projet-container,
 .card-container {
     container-type: inline-size;
@@ -1397,7 +1207,7 @@ body.page-exit main {
 
 }
 
-/* Print stylesheet */
+/* ===== Impression ===== */
 @media print {
     header,
     footer,
@@ -1433,7 +1243,7 @@ body.page-exit main {
     }
 }
 
-/* Accessibilité : désactiver les animations pour les utilisateurs sensibles */
+/* ===== Mouvement réduit ===== */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -1448,15 +1258,10 @@ body.page-exit main {
     }
 }
 
-/* Les couleurs des technos vivent dans `css/technos.css`, source unique du
-   site. Les pastilles lisent `--tech-brut` (fond teinté) et `--tech-libelle`
-   (contour et texte). */
+/* Les couleurs des technos sont dans technos.css */
 
-/* ==============================
-   Icônes dans les pastilles des cartes projet (.card-tags).
-   La page détail (#projet-technologies) a déjà ses <img>, on ne la touche pas.
-   L'icône est posée en ::before (l'URL est relative à ce fichier CSS).
-   ============================== */
+/* ===== Icônes des pastilles de cartes projet ===== */
+/* URL relative à ce fichier CSS. Le détail projet a déjà ses propres <img> */
 .card-tags span {
     display: inline-flex;
     align-items: center;
@@ -1501,25 +1306,16 @@ body.page-exit main {
 .card-tags .tag-github::before { background-image: url(../assets/competences/github.svg); }
 .card-tags .tag-gitlab::before { background-image: url(../assets/competences/gitlab.svg); }
 
-/* ==============================
-   Sommaire veille : rouge éclairci en sombre (généralisation A2)
-   ============================== */
+/* ===== Sommaire veille : thème sombre ===== */
 .dark-theme .sommaire .titre-sommaire,
 .dark-theme .sommaire a:hover {
     color: var(--primary-on-dark);
 }
 
-/* ==============================
-   Très petits mobiles (360px et moins)
-   À 320px, le header ne tenait plus : burger + logo + titre + réseaux +
-   sélecteur de thème dépassaient, et le sélecteur se retrouvait coupé au bord
-   droit. On resserre uniquement les éléments du header à cette largeur.
-   ============================== */
+/* ===== Très petits mobiles (360px et moins) ===== */
+/* À 320px le header ne tenait plus, on ne resserre que lui */
 @media (max-width: 360px) {
-    /* Tout rétrécit à ce palier : logo 30→26, boutons réseaux 35→28, titre
-       1,2→1rem, sauf le burger, qui restait à 30px et paraissait donc trop
-       gros. Il suit désormais la même réduction. Sa largeur commande la marge
-       du titre juste en dessous : 16px d'origine + 26px = 42px de pied. */
+    /* Le burger suit la même réduction, et sa largeur commande la marge du titre */
     .icon-menu {
         --gap: 4px;
         width: 26px;

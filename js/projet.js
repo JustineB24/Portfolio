@@ -3,17 +3,11 @@
 // Page Projets : filtrage des cartes par contexte et par techno
 // ==============================
 
-// La navigation vers la fiche détail ne passe pas par ici : le titre de chaque
-// carte est un vrai lien, étendu à toute la carte par le `::after` de
-// `.card-lien`. On y gagne l'ouverture dans un nouvel onglet, le clic du milieu,
-// la copie de l'adresse et l'aperçu de l'URL au survol, qu'un `div` en
-// `role="link"` ne peut pas offrir. Ce fichier ne fait donc que du filtrage.
+// Pas de navigation ici : le titre de chaque carte est un vrai lien étendu par `::after`,
+// plutôt qu'un div role=link, pour garder le clic du milieu et le nouvel onglet.
 
-// Deux axes indépendants, combinés par ET : le contexte de réalisation
-// (`data-type` sur la carte) et la technologie (`data-tech`, liste séparée par
-// des virgules). Une seule valeur active par axe, `tous` remettant l'axe au
-// neutre. Une rangée unique mélangeant les deux laissait croire à un choix
-// exclusif : on ne pouvait pas demander « React » **et** « Bachelor ».
+// Deux axes combinés par ET : contexte (`data-type`) et techno (`data-tech`).
+// Une valeur active par axe, `tous` remet l'axe au neutre.
 const filtreBtns = document.querySelectorAll('.filtre-btn');
 const cartes = document.querySelectorAll('.card');
 const messageVide = document.getElementById('filtre-vide');
@@ -47,8 +41,7 @@ function appliquerFiltres() {
     majMessage(visibles);
 }
 
-// Combiner deux axes rend le résultat vide possible, ce qu'un filtre unique ne
-// permettait jamais : sans message, la grille se viderait sans explication.
+// Avec deux axes, un résultat vide devient possible, il faut l'expliquer
 function majMessage(visibles) {
     if (!messageVide) return;
 
@@ -90,7 +83,7 @@ filtreBtns.forEach(btn => {
 if (btnReset) {
     btnReset.addEventListener('click', () => {
         document.querySelectorAll('.filtre-btn[data-filtre="tous"]').forEach(b => b.click());
-        // Rendre la main au clavier : le bouton disparaît après le clic
+        // Le bouton disparaît après le clic, le focus doit aller ailleurs
         const premier = document.querySelector('.filtre-btn[data-axe="contexte"]');
         if (premier) premier.focus();
     });

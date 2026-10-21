@@ -3,19 +3,17 @@
 // Détails d'un projet : données, carrousel, modale
 // ==============================
 
-// Récupérer l'ID du projet depuis l'URL (lettres, chiffres et tirets uniquement)
+// ID du projet dans l'URL, limité aux lettres, chiffres et tirets
 const urlParams = new URLSearchParams(window.location.search);
 const rawId = urlParams.get("id");
 const projetId = rawId && /^[a-z0-9-]+$/.test(rawId) ? rawId : null;
 
-// Une image s'écrit soit comme un simple chemin, soit comme {src, legende}.
-// La légende s'affiche sous la galerie et sert de texte alternatif : sans elle,
-// chaque image s'annonçait « capture 3 », y compris les maquettes.
+// Une image est un chemin ou un {src, legende}. La légende sert aussi d'alt,
+// sans elle chaque image s'annonçait « capture 3 ».
 function normaliserImage(image) {
     return typeof image === "string" ? {src: image, legende: ""} : image;
 }
 
-// Base de données des projets
 const projets = {
     "yabt": {
         titre: "YABT (Yet Another Blind Test)",
@@ -290,7 +288,6 @@ const projets = {
     }
 };
 
-// Vérifier si l'ID existe et mettre à jour la page
 if (!projetId || !projets[projetId]) {
     const main = document.querySelector("main");
     if (main) {
@@ -305,26 +302,20 @@ if (!projetId || !projets[projetId]) {
         main.appendChild(p);
     }
 } else {
-    // Couleurs du hero par projet
     const heroColors = {
         "pendu": ["#b71c1c", "#7f0000"],
         "france-mobilier": ["#e91e63", "#880e4f"],
         "sio-shop": ["#607d8b", "#37474f"],
         "speedcubing": ["#e64a19", "#bf360c"],
         "meteo": ["#4a148c", "#2a0054"],
-        // Assombri de 15 % à teinte et saturation constantes : au rose d'origine,
-        // le titre du bandeau n'atteignait que 2,87:1 pour un seuil de 3:1, le pire
-        // point du dégradé tombant à 2,18:1. C'était le dernier échec WCAG du site.
-        // Couleur décorative d'un exercice de BTS, pas une marque : rien à trahir.
+        // Rose assombri pour que le titre du bandeau passe le seuil de 3:1
         "generateur-mdp": ["#e062a1", "#a8487b"],
         "mairie-cauffry": ["#1a5276", "#e6a817"],
         "panada-food": ["#ff6600", "#cc4400"],
         "yabt": ["#FDC800", "#E95F3F", "#E3312D", "#CF07FF", "#0409AA"],
-        "gecko": ["#4c7c13", "#4e73df"],   // local -> prod (vert assombri pour le contraste)
+        "gecko": ["#4c7c13", "#4e73df"],   // local -> prod, vert assombri pour le contraste
         "grimoire-recettes": ["#c2703e", "#6b7c3e"],
-        // Les deux couleurs de l'app (#FF0000 et #00FF00), assombries à teinte et
-        // saturation constantes : brutes, elles donnent 3,8:1 et 1,3:1 avec le titre
-        // clair du hero, contre 4,5:1 ici.
+        // Rouge et vert de l'app, assombris pour que le titre clair reste lisible
         "flouflix": ["#e80000", "#008700"],
         // Pas de marque : l'indigo du logo PHP, langage de l'API, vers un bleu nuit
         "limite-limite": ["#4f5b93", "#2c3361"],
@@ -336,19 +327,8 @@ if (!projetId || !projets[projetId]) {
     const detailsWrap = document.querySelector(".projet-details");
     if (heroColors[projetId]) {
         const colors = heroColors[projetId];
-        // Dégradé posé tel quel, sans voile, et avec toutes les couleurs quand la
-        // marque en compte plusieurs. Un voile calculé avait été mis en
-        // place le 07/08 pour régler 14 échecs de contraste (jusqu'à 2,38:1),
-        // puis retiré à la demande de Justine : il assombrissait les couleurs de
-        // projet, notamment le jaune de YABT qui virait à l'ocre.
-        //
-        // Les chiffres sont ici et non dans `audit/`, qui est gitignoré et
-        // disparaîtrait à tout nouveau clone. Un voile uniforme demanderait 44 %
-        // de noir pour couvrir le pire cas. Dosé le long du dégradé en 13
-        // points, il tomberait à 45 % côté jaune de YABT et 0 % côté bleu nuit,
-        // et cinq projets sur douze n'auraient besoin de rien. Le contraste des
-        // petits textes est aujourd'hui assuré autrement, par la pastille sombre
-        // à 45 % posée sous chacun d'eux (voir `projet-details.css`).
+        // Dégradé aux couleurs du projet, sans voile (il ternissait le jaune de YABT).
+        // Les petits textes tiennent leur contraste de leur pastille sombre, côté CSS.
         if (hero) {
             hero.style.background = "linear-gradient(135deg, " + colors.join(", ") + ")";
         }
@@ -363,7 +343,6 @@ if (!projetId || !projets[projetId]) {
     if (titreProjet) titreProjet.textContent = projets[projetId].titre;
     document.title = "Portfolio | " + projets[projetId].titre;
 
-    // Date du projet
     if (titreProjet && projets[projetId].date) {
         const dateEl = document.createElement("span");
         dateEl.classList.add("projet-date");
@@ -371,9 +350,8 @@ if (!projetId || !projets[projetId]) {
         titreProjet.after(dateEl);
     }
 
-    // Badge de statut. `statut` porte le libellé quand il n'est pas « en cours de
-    // développement » : Gecko est un ERP en production depuis 2021, l'annoncer en
-    // cours de développement laissait croire à un projet encore en chantier.
+    // `statut` remplace « En cours de développement » quand ce libellé tromperait,
+    // Gecko par exemple est en production.
     const statut = projets[projetId].statut || (projets[projetId].enCours ? "En cours de développement" : null);
     if (statut) {
         // Insérer après la date si elle existe, sinon après le titre
@@ -386,7 +364,7 @@ if (!projetId || !projets[projetId]) {
         }
     }
 
-    // Mise à jour des meta sociales dynamiquement (Open Graph + Twitter Cards)
+    // Meta sociales (Open Graph + Twitter Cards)
     const metaTitre = 'Portfolio | ' + projets[projetId].titre;
     const metaDesc = projets[projetId].description.substring(0, 200);
 
@@ -407,11 +385,8 @@ if (!projetId || !projets[projetId]) {
     if (twitterTitle) twitterTitle.setAttribute('content', metaTitre);
     if (twitterDesc) twitterDesc.setAttribute('content', metaDesc);
 
-    // Image de partage : la première capture du projet quand il y en a une,
-    // sinon on garde la carte générique déclarée en dur dans le <head>.
-    // Attention : LinkedIn et Facebook ne lisent pas le HTML modifié par JS et
-    // resteront sur la carte générique. Cette mise à jour ne sert qu'aux
-    // consommateurs qui exécutent le JS (Google, aperçus internes).
+    // Première capture comme image de partage. LinkedIn et Facebook ne lisent pas
+    // le JS et garderont la carte générique du <head>.
     const premiereImage = (projets[projetId].images || []).map(normaliserImage).map(image => image.src)[0];
     if (premiereImage) {
         // Les balises Open Graph exigent une URL absolue
@@ -423,8 +398,7 @@ if (!projetId || !projets[projetId]) {
         if (twitterImage) twitterImage.setAttribute('content', imageAbsolue);
         if (ogImageAlt) ogImageAlt.setAttribute('content', 'Aperçu du projet ' + projets[projetId].titre);
 
-        // Les dimensions déclarées dans le <head> valent pour la carte 1200x630,
-        // pas pour la capture : on les retire plutôt que d'annoncer un faux format.
+        // Les dimensions du <head> sont celles de la carte 1200x630, pas de la capture
         document.querySelectorAll('meta[property="og:image:width"], meta[property="og:image:height"]')
             .forEach(function (m) {
                 m.remove();
@@ -483,17 +457,12 @@ if (!projetId || !projets[projetId]) {
     };
 
     const techList = document.getElementById("projet-technologies");
-
-    // Vider la liste avant d'ajouter les nouvelles technologies
     if (techList) techList.innerHTML = "";
 
     const technologies = projets[projetId].technologies || [];
 
-    // Un projet peut n'avoir aucune technologie à déclarer. C'était le cas de la
-    // Mairie de Cauffry, où le travail portait sur le contenu et non sur le
-    // code, jusqu'à l'ajout de Canva pour les prototypes de logo. Sans ça,
-    // l'étiquette « Technologies » resterait seule au-dessus d'une liste vide,
-    // avec le filet de séparation de la barre méta.
+    // Sans techno à déclarer, la barre méta disparaît plutôt que d'afficher
+    // l'étiquette « Technologies » au-dessus d'une liste vide.
     const barreMeta = techList ? techList.closest(".projet-meta") : null;
     if (barreMeta) barreMeta.hidden = technologies.length === 0;
 
@@ -545,15 +514,11 @@ if (!projetId || !projets[projetId]) {
         const tagClass = tagClasses[tech.toLowerCase()];
         if (tagClass) li.classList.add(tagClass);
 
-        // Création du logo
         const extensionsSpeciales = {"datatables": "png"};
         const ext = extensionsSpeciales[nomFichier] || "svg";
         let logo = document.createElement("img");
         logo.src = `../assets/competences/${nomFichier}.${ext}`;
-        // `alt` vide, volontairement : le nom de la techno est déjà écrit en toutes
-        // lettres juste à côté, dans le même <li>. Un `alt` le répétait, et un
-        // lecteur d'écran annonçait « React React ». Une image purement décorative
-        // se retire de l'arbre d'accessibilité avec un alt vide.
+        // alt vide : le nom est écrit juste à côté, sinon le lecteur d'écran le dit deux fois
         logo.alt = "";
         logo.width = 80;
         logo.height = 80;
@@ -564,13 +529,11 @@ if (!projetId || !projets[projetId]) {
         const desc = cleCorrespondante ? techDescriptions[cleCorrespondante] : undefined;
         if (desc) {
             li.setAttribute("data-tooltip", desc);
-            // Accessibilité : focusable au clavier (déclenche le tooltip CSS via :focus)
-            // et description exposée aux lecteurs d'écran via aria-label.
+            // Focusable pour ouvrir le tooltip au clavier, description lue via aria-label
             li.setAttribute("tabindex", "0");
             li.setAttribute("aria-label", tech + " : " + desc);
         }
 
-        // Ajout du logo et du texte
         li.appendChild(logo);
         li.append(` ${tech}`);
 
@@ -641,7 +604,6 @@ if (!projetId || !projets[projetId]) {
         }
     }
 
-    // Ajouter les images dans le div "projet-images"
     const imagesContainer = document.getElementById("projet-images");
     const images = (projets[projetId].images || []).map(normaliserImage);
     const texteAlternatif = (image, index) => image.legende || (projets[projetId].titre + ", image " + (index + 1));
@@ -690,20 +652,17 @@ if (!projetId || !projets[projetId]) {
         carrousel.setAttribute("aria-label", "Galerie d'images du projet");
         carrousel.setAttribute("tabindex", "0");
 
-        // Bouton précédent
         const btnPrev = document.createElement("button");
         btnPrev.classList.add("carrousel-btn", "carrousel-prev");
         btnPrev.setAttribute("aria-label", "Image précédente");
         btnPrev.innerHTML = '<i class="fas fa-chevron-left"></i>';
 
-        // Track
         const track = document.createElement("div");
         track.classList.add("carrousel-track");
 
         images.forEach((image, index) => {
-            // Bouton réel rendant l'image cliquable (navigation clavier native Entrée/Espace).
-            // Styles inline pour reprendre, sans toucher au CSS, le positionnement que
-            // `.carrousel-track picture` appliquait auparavant (empilement des slides).
+            // Vrai bouton pour Entrée/Espace. Styles inline pour garder l'empilement
+            // des slides sans toucher au CSS.
             const boutonSlide = document.createElement("button");
             boutonSlide.type = "button";
             boutonSlide.classList.add("carrousel-slide-btn");
@@ -718,11 +677,8 @@ if (!projetId || !projets[projetId]) {
             boutonSlide.style.background = "none";
             boutonSlide.style.cursor = "pointer";
             boutonSlide.style.display = "block";
-            // Les diapositives sont empilées et seule l'image active est opaque.
-            // Sans `visibility`, les boutons invisibles restaient cliquables : le
-            // dernier, au-dessus de la pile, captait le clic, et la modale s'ouvrait
-            // sur la dernière image au lieu de celle qu'on regardait. Ils restaient
-            // aussi dans l'ordre de tabulation.
+            // Slides empilées : sans `visibility`, les boutons invisibles restaient cliquables
+            // et la modale s'ouvrait sur la dernière image au lieu de celle affichée.
             boutonSlide.style.visibility = index === 0 ? "visible" : "hidden";
 
             const picture = document.createElement("picture");
@@ -743,13 +699,11 @@ if (!projetId || !projets[projetId]) {
             track.appendChild(boutonSlide);
         });
 
-        // Bouton suivant
         const btnNext = document.createElement("button");
         btnNext.classList.add("carrousel-btn", "carrousel-next");
         btnNext.setAttribute("aria-label", "Image suivante");
         btnNext.innerHTML = '<i class="fas fa-chevron-right"></i>';
 
-        // Dots
         const dotsContainer = document.createElement("div");
         dotsContainer.classList.add("carrousel-dots");
 
@@ -761,14 +715,12 @@ if (!projetId || !projets[projetId]) {
             dotsContainer.appendChild(dot);
         });
 
-        // Compteur
         const counter = document.createElement("div");
         counter.classList.add("carrousel-counter");
         counter.setAttribute("aria-live", "polite");
         counter.setAttribute("aria-atomic", "true");
 
-        // Le numéro et la légende vivent dans la même région annoncée : en
-        // changeant d'image, un lecteur d'écran entend « 3 sur 14, Partie en cours ».
+        // Numéro et légende dans la même région, annoncés ensemble à chaque changement
         function remplirCompteur(cible, index) {
             cible.textContent = "";
             const numero = document.createElement("span");
@@ -847,7 +799,6 @@ if (!projetId || !projets[projetId]) {
         // Clic sur image → modale plein écran avec navigation
         let indexModale = 0;
         let dernierFocusAvantModale = null;
-        // Flag indiquant si la modale plein écran est ouverte (remplace l'ancien MutationObserver)
         let modaleOuverte = false;
 
         function ouvrirModale(index) {
@@ -861,13 +812,11 @@ if (!projetId || !projets[projetId]) {
             modale.setAttribute("aria-modal", "true");
             modale.setAttribute("aria-label", "Image en plein écran");
 
-            // Bouton précédent
             const btnPrevModale = document.createElement("button");
             btnPrevModale.classList.add("carrousel-btn", "carrousel-prev");
             btnPrevModale.setAttribute("aria-label", "Image précédente");
             btnPrevModale.innerHTML = '<i class="fas fa-chevron-left"></i>';
 
-            // Image
             const pictureModale = document.createElement("picture");
             const sourceModale = document.createElement("source");
             sourceModale.srcset = slides[indexModale].src.replace(/\.(png|jpg|jpeg|PNG|JPG)$/i, ".webp");
@@ -878,20 +827,17 @@ if (!projetId || !projets[projetId]) {
             pictureModale.appendChild(sourceModale);
             pictureModale.appendChild(imgModale);
 
-            // Bouton suivant
             const btnNextModale = document.createElement("button");
             btnNextModale.classList.add("carrousel-btn", "carrousel-next");
             btnNextModale.setAttribute("aria-label", "Image suivante");
             btnNextModale.innerHTML = '<i class="fas fa-chevron-right"></i>';
 
-            // Compteur
             const compteurModale = document.createElement("div");
             compteurModale.classList.add("carrousel-modale-counter");
             compteurModale.setAttribute("aria-live", "polite");
             compteurModale.setAttribute("aria-atomic", "true");
             remplirCompteur(compteurModale, indexModale);
 
-            // Bouton fermer
             const btnFermerModale = document.createElement("button");
             btnFermerModale.classList.add("carrousel-modale-fermer");
             btnFermerModale.setAttribute("aria-label", "Fermer");
@@ -975,8 +921,7 @@ if (!projetId || !projets[projetId]) {
             document.addEventListener("keydown", gestionnaireClavier);
         }
 
-        // L'image cliquable est enveloppée dans un vrai <button> :
-        // la navigation clavier (Entrée/Espace) est gérée nativement.
+        // Vrai <button> autour de l'image : Entrée et Espace marchent sans rien ajouter
         const boutonsSlide = track.querySelectorAll(".carrousel-slide-btn");
         boutonsSlide.forEach((bouton, index) => {
             bouton.addEventListener("click", () => ouvrirModale(index));
@@ -996,9 +941,8 @@ if (!projetId || !projets[projetId]) {
             }
         });
 
-        // Auto-play (4 s) avec pause au survol : un SEUL timer à la fois.
-        // arreterAuto/relancerAuto nettoient toujours l'intervalle existant avant
-        // d'en créer un nouveau, pour éviter l'empilement de timers (accélération).
+        // Auto-play avec pause au survol. Toujours un seul timer à la fois,
+        // sinon ils s'empilent et le défilement accélère.
         let intervalleLectureAuto = null;
 
         function arreterAuto() {
@@ -1020,16 +964,11 @@ if (!projetId || !projets[projetId]) {
 
     const projetLinkContainer = document.getElementById("projet-link");
 
-    // Efface tout contenu précédent dans le conteneur du lien
     if (projetLinkContainer) projetLinkContainer.innerHTML = "";
 
     if (projetLinkContainer) {
-        // Un seul champ `liens` porte tous les liens externes d'un projet : son propre
-        // site, et ceux d'un prestataire ou d'un partenaire. Il a remplacé un champ
-        // `link` qui ne tenait que le premier : garder les deux donnait `link` et
-        // `liens`, à une lettre d'écart et de sens différents.
-        // Chaque entrée porte son libellé, parce qu'un second « Voir le projet en
-        // ligne » ne dirait pas où il mène. Seule l'icône est déduite de l'adresse.
+        // `liens` porte tous les liens externes, chacun avec son libellé : un second
+        // « Voir le projet en ligne » ne dirait pas où il mène.
         if (Array.isArray(projets[projetId].liens)) {
             projets[projetId].liens.forEach(function (lien) {
                 const estGithub = lien.url.includes("github.com");

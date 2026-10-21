@@ -39,9 +39,7 @@
 })();
 
 
-// ==============================
-// Temps de lecture (page veille)
-// ==============================
+// ----- Temps de lecture (page veille) -----
 
 (function () {
     const main = document.querySelector('main');
@@ -60,19 +58,15 @@
 })();
 
 
-// ==============================
-// Texte révélé lettre par lettre (titres h1)
-// ==============================
+// ----- Titre h1 révélé lettre par lettre -----
 
 (function () {
-    // Seulement sur les pages avec un h1 visible (pas le sr-only de l'accueil)
+    // Le h1 de l'accueil est en sr-only, on n'y touche pas
     const h1 = document.querySelector('main h1');
     if (!h1 || h1.classList.contains('sr-only')) return;
 
-    // Préserver l'icône si présente
     const icone = h1.querySelector('i');
 
-    // Récupérer uniquement le texte (sans l'icône)
     let texte = '';
     h1.childNodes.forEach(function (node) {
         if (node.nodeType === Node.TEXT_NODE) {
@@ -81,14 +75,12 @@
     });
     texte = texte.trim();
 
-    // Vider le h1 et remettre l'icône
     h1.textContent = '';
     if (icone) {
         h1.appendChild(icone);
     }
 
-    // Conteneur unique pour le texte animé : évite que le `gap` flex du h1
-    // ne s'applique entre chaque mot (l'espacement des mots est géré par .letter-space)
+    // Un seul conteneur, sinon le `gap` flex du h1 s'appliquerait entre chaque mot
     const conteneurTitre = document.createElement('span');
     conteneurTitre.classList.add('titre-anime');
     h1.appendChild(conteneurTitre);
@@ -118,16 +110,14 @@
     });
 })();
 
-// ==============================
-// Marquee compétences : pause (hors viewport + survol) + nom au survol
-// ==============================
+// ----- Marquee des compétences -----
 
 (function () {
     const marquee = document.querySelector('.marquee');
     const marqueeTrack = document.querySelector('.marquee-track');
     if (!marqueeTrack) return;
 
-    // Envelopper chaque logo pour afficher son nom (alt) au survol
+    // Chaque logo est enveloppé pour afficher son nom au survol
     marqueeTrack.querySelectorAll('img').forEach(function (img) {
         const item = document.createElement('span');
         item.className = 'techno-item';
@@ -143,7 +133,7 @@
     let survol = false;
 
     function majAnimation() {
-        // Le défilement tourne uniquement s'il est visible ET non survolé
+        // Défile seulement s'il est à l'écran et pas survolé
         marqueeTrack.style.animationPlayState = (visible && !survol) ? 'running' : 'paused';
     }
 

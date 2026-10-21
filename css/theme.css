@@ -1,9 +1,5 @@
-/* ==============================
-   theme.css
-   Composant de bascule de thème (toggle sombre/clair)
-   ============================== */
+/* theme.css : bouton de bascule entre thème clair et sombre */
 
-/* Bouton mode sombre */
 /* From Uiverse.io by Galahhad */
 .theme-switch {
     --toggle-size: 20px;
@@ -64,8 +60,7 @@
     border-radius: var(--container-radius)
 }
 
-/* La case du thème est masquée par la règle `.sr-only` de `global.css`, qui
-   regroupe les trois éléments du site utilisant cette technique. */
+/* La case est masquée par .sr-only dans global.css */
 
 .theme-switch__circle-container {
     width: var(--circle-container-diameter);

@@ -3,13 +3,11 @@
 // Thème sombre/clair : toggle + persistance localStorage
 // ==============================
 
-// Sélectionne les éléments nécessaires
 const boutonBascule = document.querySelector('.theme-switch__checkbox');
 const body = document.body;
 const classeModeObscur = 'dark-theme';
 
 if (boutonBascule) {
-    // Fonction pour activer/désactiver le mode sombre
     function basculerModeSombre(estModeSombre) {
         if (estModeSombre) {
             document.documentElement.classList.add(classeModeObscur);
@@ -18,14 +16,13 @@ if (boutonBascule) {
             document.documentElement.classList.remove(classeModeObscur);
             body.classList.remove(classeModeObscur);
         }
-        // Meta theme-color dynamique selon le thème
+        // Couleur de la barre du navigateur sur mobile
         const metaTheme = document.querySelector('meta[name="theme-color"]');
         if (metaTheme) {
             metaTheme.content = estModeSombre ? '#1a0000' : '#a90000';
         }
     }
 
-    // Sauvegarde le mode actuel dans localStorage
     function sauvegarderPreference(estModeSombre) {
         try {
             localStorage.setItem('dark-mode', estModeSombre);
@@ -33,7 +30,6 @@ if (boutonBascule) {
         }
     }
 
-    // Applique le thème lors du chargement de la page
     function chargerPreference() {
         let estModeSombre = false;
         let aPreference = false;
@@ -46,7 +42,7 @@ if (boutonBascule) {
         } catch (e) { /* Navigation privée */
         }
 
-        // Détection automatique du thème système si aucune préférence sauvegardée
+        // Sans choix enregistré, on suit le thème du système
         if (!aPreference && window.matchMedia) {
             estModeSombre = window.matchMedia('(prefers-color-scheme: dark)').matches;
         }
@@ -55,13 +51,11 @@ if (boutonBascule) {
         boutonBascule.checked = estModeSombre;
     }
 
-    // Gestionnaire d'événement pour le basculement
     boutonBascule.addEventListener('change', (event) => {
         const estModeSombre = event.target.checked;
         basculerModeSombre(estModeSombre);
         sauvegarderPreference(estModeSombre);
     });
 
-    // Charge les préférences au démarrage
     chargerPreference();
 }

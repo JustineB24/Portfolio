@@ -1,49 +1,9 @@
-/* ==============================
-   technos.css
-   Couleur de chaque technologie. Source unique du site.
+/* technos.css : couleur de chaque techno, à modifier ici et nulle part ailleurs */
+/* --tech-brut : couleur du logo, en fond de pastille à 15 %
+   --tech-libelle : texte et contour de pastille, 4,5:1 sur le fond teinté
+   --tech-filet : filet de la page Compétences, 3:1 sur la carte */
 
-   Une techno = une couleur, celle de son logo, pour que sa pastille et son
-   filet fassent rappel avec l'icône affichée à côté. Les valeurs viennent de la
-   couleur réellement dominante de chaque SVG de `assets/competences/`, mesurée
-   en comptant les pixels après rendu, et non de la couleur de marque telle
-   qu'on la retient, qui s'en écarte souvent. Six exceptions gardent la couleur
-   de marque, la dominante n'y étant pas la bonne : sur Python c'est le jaune
-   du serpent, sur Asana le bleu nuit du fond, sur Node.js le milieu d'un
-   dégradé, sur jQuery elle n'est échantillonnée que sur 14 px (logo noir), et
-   C# comme XAML ont deux teintes voisines dont on exploite déjà les deux.
-
-   Trois jetons par techno, parce que la couleur sert à des usages qui n'ont
-   pas le même seuil d'accessibilité :
-
-     --tech-brut     la couleur du logo, telle quelle. Sert de fond de pastille
-                     à 15 % d'opacité : c'est elle qui fait le rappel visuel,
-                     et à cette dose elle ne porte aucun texte.
-     --tech-libelle  contour et texte de la pastille. C'est du texte, seuil
-                     4,5:1 (WCAG 1.4.3), calculé sur le fond teinté ci-dessus
-                     et non sur la carte nue.
-     --tech-filet    filet de 3px de la page Compétences. Élément non textuel,
-                     seuil 3:1 (WCAG 1.4.11), calculé sur la carte nue.
-
-   Les deux valeurs dérivées gardent la teinte et la saturation du logo : seule
-   la clarté HSL est ajustée. Le calcul porte sur `--card-background`, le fond
-   le plus défavorable de chaque thème, pour qu'une seule valeur serve les
-   trois surfaces où ces éléments apparaissent, d'où deux jeux complets. Sur
-   les 36 technos, 20 filets passaient sous 3:1 dans un thème avant ce calcul.
-
-   Ce fond teinté est ce qui permet de garder la vraie couleur des marques
-   pâles. Le jaune JavaScript #f7df1e est à 1,13:1 en texte sur une carte
-   claire, donc inutilisable comme libellé. En fond à 15 % il reste
-   parfaitement identifiable, et le libellé prend la même teinte assombrie.
-
-   Les logos monochromes noirs (GitHub, Expo, Socket.io) passent au gris clair
-   #c9c9c9 en thème sombre, où leur image est aussi inversée par un filtre.
-
-   **Modifier une couleur ici et nulle part ailleurs.** C'est le fichier qui
-   empêche les pages de diverger, ce qu'elles avaient fini par faire sur neuf
-   technos.
-   ============================== */
-
-/* ---- Thème clair ---- */
+/* ===== Thème clair ===== */
 
 .comp-html,
 .filtre-btn[data-filtre="html"],
@@ -326,11 +286,8 @@
     --tech-filet: rgb(0, 0, 255);
 }
 
-/* Ajoutés le 20/10/2026 (outils et briques de YABT et de Gecko), même calcul que
-   les autres. Trois exceptions à la couleur dominante : Vitest garde le vert de
-   marque (le jaune de l'éclair ne l'emporte que de 11 %), Composer le brun de sa
-   veste (la dominante est le beige du visage), Sequelize le bleu médian de ses
-   trois tons à égalité. Express, logo noir, suit la règle de GitHub. */
+/* Vitest, Composer et Sequelize gardent leur couleur de marque, la dominante
+   de leur logo n'étant pas la bonne. Express suit la règle de GitHub */
 .comp-express {
     --tech-brut: rgb(22, 22, 20);
     --tech-libelle: rgb(22, 22, 20);
@@ -379,7 +336,7 @@
     --tech-filet: rgb(60, 120, 196);
 }
 
-/* ---- Thème sombre ---- */
+/* ===== Thème sombre ===== */
 
 .dark-theme .comp-html,
 .dark-theme .filtre-btn[data-filtre="html"],

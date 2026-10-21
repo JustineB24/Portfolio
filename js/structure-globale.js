@@ -14,7 +14,7 @@ function validerChemin(chemin) {
 function genererHeader(chemin) {
     chemin = validerChemin(chemin);
 
-    // Source unique pour les liens de navigation
+    // Source unique des liens, pour le menu desktop comme pour le burger
     const elementsNav = [
         {href: 'index.html', label: 'Accueil'},
         {href: 'pages/apropos.html', label: 'À propos'},
@@ -32,7 +32,6 @@ function genererHeader(chemin) {
         return '<li>\n                            <a class="onglet-burger" href="' + chemin + item.href + '">' + item.label + '</a>\n                        </li>';
     }).join('\n                        ');
 
-    // Skip to content (accessibilité)
     const lienSaut = '<a href="#main" class="skip-link">Aller au contenu</a>';
 
     const headerHTML = `
@@ -103,8 +102,7 @@ function genererHeader(chemin) {
     `;
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
 
-    // Menu burger inséré après le header (en dehors) pour éviter le
-    // containing block créé par backdrop-filter sur le header
+    // Hors du header : son backdrop-filter servirait de bloc conteneur au menu fixe
     const menuBurgerHTML = `
         <div class="menu-burger" id="menu-navigation">
             <nav class="side-menu" aria-label="Navigation du site">
@@ -119,21 +117,18 @@ function genererHeader(chemin) {
     `;
     document.querySelector('header').insertAdjacentHTML('afterend', menuBurgerHTML);
 
-    // Lien actif dans la navigation
     const cheminActuel = window.location.pathname;
     document.querySelectorAll('.onglet, .onglet-burger').forEach(link => {
         const href = link.getAttribute('href');
         if (href && (cheminActuel.endsWith(href.replace(/^\.\.\/|\.\//, '')) ||
             (href.includes('index.html') && (cheminActuel.endsWith('/') || cheminActuel.endsWith('/index.html'))))) {
             link.classList.add('active');
-            // `aria-current` porte l'information pour les lecteurs d'écran. La
-            // classe ne fait que la couleur et le chevron, qui sont visuels.
+            // aria-current pour les lecteurs d'écran, la classe ne fait que le visuel
             link.setAttribute('aria-current', 'page');
         }
     });
 
-    // Accessibilité : mise à jour de l'aria-label de la bascule de thème
-    // (le toggle réel du thème est géré par theme.js)
+    // Libellé de la bascule de thème (le thème lui-même est géré par theme.js)
     const caseTheme = document.querySelector('.theme-switch__checkbox');
     if (caseTheme) {
         const majAriaLabelTheme = function () {
@@ -144,17 +139,15 @@ function genererHeader(chemin) {
         caseTheme.addEventListener('change', majAriaLabelTheme);
     }
 
-    // Transitions entre pages : fade-out au clic sur un lien interne
+    // Fondu de sortie au clic sur un lien interne
     document.addEventListener('click', function (e) {
-        // Ne déclencher la transition que pour un clic gauche simple
-        // (préserve clic-molette, Ctrl/Cmd-clic, ouvrir dans un nouvel onglet, etc.)
+        // Clic gauche simple uniquement, pour laisser le clic du milieu et Ctrl+clic tranquilles
         if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
         const lien = e.target.closest('a');
         if (!lien) return;
         const href = lien.getAttribute('href');
         if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('javascript:') ||
             lien.target === '_blank' || lien.hasAttribute('download')) return;
-        // Lien interne uniquement
         if (href.includes('.html')) {
             e.preventDefault();
             document.body.classList.add('page-exit');
@@ -180,11 +173,9 @@ function genererFooter(chemin) {
     `;
     document.body.insertAdjacentHTML('beforeend', footerHTML);
 
-    // Mise à jour de l'année automatiquement
     document.getElementById('year').textContent = new Date().getFullYear().toString();
 
-    // Chargement des scripts communs
-    // theme.js doit se charger en premier (séquentiel), puis les autres en parallèle
+    // theme.js d'abord, puis les autres scripts en parallèle
     const scriptTheme = document.createElement('script');
     scriptTheme.src = `${chemin}js/theme.js`;
     scriptTheme.onerror = function () {
@@ -204,12 +195,9 @@ function genererFooter(chemin) {
     document.body.appendChild(scriptTheme);
 }
 
-// Auto-exécution (ce script est chargé avec defer, le DOM est prêt)
+// Chargé en defer, le DOM est déjà prêt
 (function () {
     const chemin = window.location.pathname.includes('/pages/') ? '../' : './';
-
-    // Les polices self-hébergées sont désormais chargées via un <link rel="stylesheet">
-    // statique dans le <head> de chaque page (meilleure performance, pas d'injection JS).
 
     genererHeader(chemin);
     genererFooter(chemin);

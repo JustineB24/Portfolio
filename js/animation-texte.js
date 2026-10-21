@@ -26,7 +26,7 @@ class TexteRotatif {
         srTexte.textContent = this.aRotationner.join(', ');
         this.el.appendChild(srTexte);
 
-        // Si reduced-motion, afficher le premier texte sans animation
+        // Avec reduced-motion, on affiche le premier texte et on s'arrête là
         if (reducedMotion) {
             this.enveloppe.textContent = this.aRotationner[0];
             return;
@@ -36,16 +36,14 @@ class TexteRotatif {
         this.tick();
     }
 
-    // Suspend la rotation quand le hero sort du viewport, la reprend au retour.
-    // Un seul observer/listener par instance : aucun empilement de listeners.
+    // Met la rotation en pause quand le hero sort de l'écran
     observerViewport() {
         if (!('IntersectionObserver' in window)) return;
         const self = this;
         const observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 self.dansViewport = entry.isIntersecting;
-                // Reprendre uniquement si on redevient visible et qu'aucun tick
-                // n'est déjà planifié (évite les ticks en double).
+                // Ne reprendre que si aucun tick n'est en attente, sinon la rotation double
                 if (self.dansViewport && !self.planifie && !document.hidden) {
                     self.tick();
                 }

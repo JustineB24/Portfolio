@@ -1,39 +1,27 @@
-/* ==============================
-   projet-details.css
-   Page détail d'un projet : hero, carrousel, technologies
-   ============================== */
+/* projet-details.css : page détail d'un projet, hero, étude de cas et carrousel */
 
-/* ==============================
-   Mise en page éditoriale (alignée à gauche)
-   --hero-color / --hero-color-dark : couleur du projet, posée par le JS
-   sur .projet-details → sert de fil conducteur (eyebrows, spine, filets).
-   ============================== */
+/* ===== Mise en page ===== */
+/* --hero-color, posée par le JS, sert de fil conducteur : eyebrows, filets, marqueurs */
 .projet-details {
     padding: 0 0 4rem;
     display: block;
     box-sizing: border-box;
-    text-align: left; /* sort du centrage global du body */
-    /* --hero-color : couleur vive du projet (posée par le JS), utilisée
-       telle quelle pour le dégradé du hero.
-       --accent : version au contraste garanti pour le corps de page. On
-       mélange la couleur du projet vers --text-color (qui s'inverse selon
-       le thème), ce qui reste lisible aussi bien en clair qu'en sombre,
-       que la couleur d'origine soit très claire (jaune) ou très foncée.
-       Repli silencieux sur la couleur brute si color-mix est absent. */
+    text-align: left; /* Sort du centrage global du body */
+    /* --hero-color brute pour le dégradé du hero. --accent la tire vers --text-color pour
+   rester lisible dans les deux thèmes, que la couleur du projet soit claire ou foncée */
     --accent: var(--hero-color, var(--primary-color));
     --accent: color-mix(in srgb, var(--hero-color, var(--primary-color)) 45%, var(--text-color));
     --accent-dark: var(--hero-color-dark, var(--primary-dark));
 }
 
-/* ---- Hero : la thèse du projet, à gauche sur un bandeau dégradé ---- */
-/* Le padding latéral recentre le contenu sur la même colonne (860px) que le
-   corps de page, tout en gardant le dégradé pleine largeur. */
+/* ===== Hero ===== */
+/* Dégradé pleine largeur, contenu recentré sur la colonne de lecture */
 .projet-hero {
     position: relative;
     background: linear-gradient(135deg, var(--hero-color, var(--primary-color)), var(--hero-color-dark, var(--primary-dark)));
     padding: 5.5rem max(2rem, calc(50% - 430px)) 2.75rem;
     margin-bottom: 0;
-    text-align: center; /* titre + date centrés. Le bouton retour reste ancré à gauche */
+    text-align: center; /* Titre et date centrés, le bouton retour reste ancré à gauche */
     animation: fadeInUp 0.6s ease both;
 }
 
@@ -50,26 +38,9 @@
     display: block;
 }
 
-/* ==============================
-   Pastilles du bandeau : texte clair sur fond sombre local.
-
-   Le texte du hero est clair et fixe, alors que la couleur du dégradé vient du
-   projet : quand elle est claire, le contraste s'effondre. Un audit a relevé
-   14 échecs sur 8 fiches sur 12, jusqu'à 2,38:1.
-
-   Un voile sur tout le bandeau réglerait le problème mais assombrirait les
-   couleurs de projet, ce que Justine ne veut pas : sur YABT le jaune virait à
-   l'ocre. Le fond est donc posé **sous les petits textes seulement**, ce qui
-   laisse le dégradé strictement intact.
-
-   45 % de noir est la valeur qui couvre les douze projets, calculée sur la
-   couleur la plus claire de chaque dégradé. Les trois pastilles partagent la
-   même valeur, sinon elles se verraient les unes par rapport aux autres.
-
-   Ce que ça ne règle pas, et c'est assumé : les titres de YABT, Cauffry et
-   Générateur de MDP restent sous 3:1. Une pastille sous un titre de cette
-   taille serait lourde.
-   ============================== */
+/* ===== Pastilles du bandeau ===== */
+/* Fond sombre sous les petits textes seulement : un voile sur tout le bandeau ternissait
+   les couleurs de projet, comme le jaune de YABT */
 .projet-date {
     display: inline-block;
     margin-top: 1rem;
@@ -84,9 +55,7 @@
     letter-spacing: 0.16em;
 }
 
-/* Même fond que les deux autres pastilles du bandeau. Il était clair
-   auparavant, `rgba(255, 255, 255, 0.18)`, ce qui éclaircissait son propre fond
-   et dégradait donc le contraste de son libellé au lieu de l'aider. */
+/* Même fond que les autres pastilles, un fond clair dégradait son propre contraste */
 .badge-statut {
     display: inline-flex;
     align-items: center;
@@ -104,10 +73,8 @@
     backdrop-filter: blur(4px);
 }
 
-/* Bouton retour : ancré en haut à gauche du hero */
-/* Le retrait latéral compense le padding de la pastille : sans lui, le libellé
-   se décalerait vers la droite et ne serait plus aligné sur la colonne de
-   lecture, puisque `left` positionne le bord de la boîte et non le texte. */
+/* Bouton retour, ancré en haut à gauche du hero */
+/* Le retrait compense le padding de la pastille pour aligner le libellé sur la colonne */
 .back-button {
     position: absolute;
     top: 1.6rem;
@@ -129,11 +96,7 @@
     transition: opacity 0.3s, transform 0.3s;
 }
 
-/* Le survol renforce la pastille au lieu de faire pâlir tout l'élément.
-   Un `opacity: 0.8` sur l'ensemble diluait le voile de 45 % à 36 % et fondait
-   le texte vers un fond devenu plus clair : sur les dégradés les plus pâles
-   (YABT, Générateur de MDP), l'état survolé repassait sous le seuil que cette
-   même règle venait de garantir. */
+/* On renforce la pastille plutôt qu'une opacité, qui éclaircirait le fond sous le texte */
 .back-button:hover {
     color: var(--header-text-color);
     background: rgba(0, 0, 0, 0.6);
@@ -147,7 +110,7 @@
     transform: translateX(-4px);
 }
 
-/* ---- Colonne de lecture ---- */
+/* ===== Colonne de lecture ===== */
 .projet-wrap {
     max-width: 860px;
     margin: 0 auto;
@@ -155,7 +118,7 @@
     box-sizing: border-box;
 }
 
-/* Étiquette de section (eyebrow) : fil conducteur couleur projet */
+/* Eyebrow à la couleur du projet */
 .eyebrow {
     display: block;
     margin: 0 0 0.5rem;
@@ -167,11 +130,8 @@
     color: var(--accent);
 }
 
-/* ---- Barre méta : technologies ---- */
-/* L'attribut `hidden` est posé par le JS quand le projet n'a aucune technologie
-   à déclarer. Sans cette règle il ne ferait rien : `[hidden] { display: none }`
-   est une règle par défaut du navigateur, que le `display: flex` ci-dessous
-   écrase, étant plus spécifique. */
+/* ===== Technologies ===== */
+/* Le display: flex plus bas écrase [hidden], d'où cette règle explicite */
 .projet-meta[hidden] {
     display: none;
 }
@@ -208,8 +168,7 @@
     background: color-mix(in srgb, var(--tech-brut, transparent) 15%, var(--card-background));
     padding: 0.4rem 0.85rem;
     border-radius: var(--radius-pill);
-    /* Même style que les pastilles des cartes projet : fond teinté à 15 %,
-       contour et libellé en `--tech-libelle`. Jetons dans `css/technos.css`. */
+    /* Même style que les pastilles des cartes projet, jetons dans technos.css */
     border: 1px solid var(--tech-libelle, transparent);
     font-size: var(--texte-lg);
     font-weight: 600;
@@ -222,15 +181,13 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
-/* Couleurs des technos : centralisées dans `css/technos.css` */
-
-/* ---- Sections de contenu ---- */
+/* ===== Sections de contenu ===== */
 .projet-section {
     margin-top: 3rem;
     animation: fadeInUp 0.6s ease both;
 }
 
-/* Titres de section : à gauche, avec filet d'accent */
+/* Titres à gauche avec filet d'accent */
 .projet-section-titre,
 .projet-img {
     font-family: var(--font-titre);
@@ -269,12 +226,8 @@
     text-align: left;
 }
 
-/* ---- Liens du projet : le site en ligne, et les liens complémentaires ---- */
-/* Le `display: none` était posé sans condition, alors que le JS ne retire que
-   l'attribut `hidden` : le conteneur restait donc masqué même quand il portait un
-   lien, et le bouton « Voir le projet en ligne » ne s'est jamais affiché (mesuré à
-   une hauteur de 0 le 11/08/2026). Même correctif que `.projet-meta[hidden]`
-   ci-dessus : c'est l'attribut qui masque, pas le sélecteur d'identifiant. */
+/* ===== Liens du projet ===== */
+/* C'est l'attribut hidden qui masque, le JS le retire quand il y a un lien */
 #projet-link[hidden] {
     display: none;
 }
@@ -305,11 +258,8 @@
     transform: translateY(-2px);
 }
 
-/* ==============================
-   Étude de cas : colonne numérotée (signature de la page)
-   Le déroulé contexte → réflexion → défis → résultat est une vraie
-   séquence : les numéros 01→04 encodent l'ordre de lecture.
-   ============================== */
+/* ===== Étude de cas ===== */
+/* Les numéros 01 à 04 encodent l'ordre de lecture */
 .etude-de-cas {
     margin-top: 3.5rem;
     animation: fadeInUp 0.6s ease both;
@@ -361,7 +311,7 @@
     margin-bottom: 0;
 }
 
-/* Marqueur numéroté 01 → 04, sur le filet */
+/* Marqueur numéroté posé sur le filet */
 .etude-etape-icone {
     position: absolute;
     left: -3.5rem;
@@ -379,7 +329,7 @@
 }
 
 .etude-etape-icone i {
-    display: none; /* on remplace l'icône par le numéro d'étape */
+    display: none; /* Le numéro d'étape remplace l'icône */
 }
 
 .etude-etape-icone::before {
@@ -400,7 +350,6 @@
     color: var(--button-text-color);
 }
 
-/* Contenu de l'étape : plus de carte grise, lecture directe */
 .etude-etape-contenu {
     padding-top: 0.1rem;
 }
@@ -461,9 +410,7 @@
     font-size: var(--texte-lg);
 }
 
-/* Numéro en texte secondaire, légende en texte courant : c'est la légende qu'on
-   lit. `--text-muted` et non l'ancienne `opacity: 0.75`, qui aurait aussi grisé
-   la légende et que les conventions écartent pour du texte. */
+/* --text-muted et pas opacity, qui griserait aussi la légende */
 .carrousel-numero {
     color: var(--text-muted);
     font-weight: 600;
@@ -475,14 +422,14 @@
     color: var(--text-color);
 }
 
-/* Image seule : pas de compteur, la légende suit directement le cadre */
+/* Image seule : la légende suit directement le cadre, sans compteur */
 .projet-legende-seule {
     margin: -0.75rem 0 1.5rem;
     text-align: center;
     font-size: var(--texte-lg);
 }
 
-/* Images du projet */
+/* ===== Images ===== */
 .projet-image-wrapper {
     max-width: 100%;
     margin: 0 0 1.5rem;
@@ -496,19 +443,13 @@
     animation: fadeInUp 1s ease;
 }
 
-/* Le `<picture>` doit s'effacer de la mise en page, sinon c'est lui l'élément flex
-   du wrapper et l'`<img>` n'a plus de hauteur définie à laquelle rapporter son
-   `height: 100%` : `object-fit` n'a alors rien à contraindre et l'image sort de la
-   boîte, rognée en haut et en bas par l'`overflow: hidden`. Mesuré sur la capture
-   de la fiche météo (580x846 dans une boîte de 796x498, 174px perdus de chaque côté). */
+/* display: contents sinon <picture> devient l'item flex et l'img perd sa hauteur de référence,
+   object-fit ne contraint plus rien et l'image est rognée */
 .projet-image-wrapper picture {
     display: contents;
 }
 
-/* `contain` et non `cover` : ces captures sont de tailles et de formats variés, et
-   celle de la météo est en portrait. Le wrapper porte un fond de carte et centre son
-   contenu précisément pour laisser l'image respirer dedans, comme le fait déjà
-   `.carrousel-slide` avec le même conteneur en 16/10. */
+/* contain et non cover : captures de formats variés, dont certaines en portrait */
 .projet-image {
     width: 100%;
     height: 100%;
@@ -517,7 +458,7 @@
     border-radius: var(--radius-md);
 }
 
-/* Carrousel */
+/* ===== Carrousel ===== */
 .carrousel {
     position: relative;
     max-width: 100%;
@@ -591,24 +532,9 @@
     right: 0.5rem;
 }
 
-/* ==============================
-   Puces du carrousel
-
-   Le bouton faisait 12x12px avec 8px d'écart, soit 20px de zone sûre contre les
-   24 exigés par WCAG 2.5.8, et l'exception d'espacement ne rattrapait pas. Sur
-   SIO Shop il y a seize puces alignées : viser la bonne au doigt était pénible.
-
-   La puce visible descend donc dans un `::before` et **le bouton devient la
-   zone cliquable**, à 24x24px et transparent. L'apparence ne change pas, seul
-   l'écart visuel passe de 8 à 12px, conséquence directe du pas de 24px.
-
-   `flex-wrap` n'est pas décoratif : seize puces de 24px font 384px, alors que
-   la colonne de lecture n'en offre que 288 à 320px de large. Sans le retour à
-   la ligne, la correction créerait un débordement horizontal.
-
-   La taille du bouton ne bouge pas dans les paliers mobiles, seule la puce
-   rétrécit : c'est justement au doigt que les 24px comptent.
-   ============================== */
+/* ===== Puces du carrousel ===== */
+/* Le bouton est la zone cliquable de 24px, la puce visible est dans ::before.
+   flex-wrap car seize puces dépassent la largeur de la colonne sur mobile */
 .carrousel-dots {
     display: flex;
     justify-content: center;
@@ -647,11 +573,7 @@
     border-color: var(--primary-color);
 }
 
-/* La puce active est un élément d'interface, pas du texte : son seuil est 3:1
-   (WCAG 1.4.11). Le rouge de marque n'atteint que 2,05:1 sur le fond sombre,
-   donc l'indicateur « image courante » y était presque invisible. Le rouge
-   éclairci du site le remonte à 6,19:1. Même correction sur le survol, qui
-   sinon signalait moins que l'état au repos. */
+/* Rouge éclairci en sombre, le rouge de marque y rend la puce active presque invisible */
 .dark-theme .carrousel-dot.active::before {
     background-color: var(--primary-on-dark);
     border-color: var(--primary-on-dark);
@@ -661,7 +583,7 @@
     border-color: var(--primary-on-dark);
 }
 
-/* Modale plein écran */
+/* ===== Modale plein écran ===== */
 .carrousel-modale {
     position: fixed;
     top: 0;
@@ -754,7 +676,7 @@
     font-size: var(--texte-lg);
 }
 
-/* La modale reste sombre dans les deux thèmes : couleurs fixes, pas de jetons */
+/* La modale reste sombre dans les deux thèmes, d'où des couleurs fixes */
 .carrousel-modale-counter .carrousel-numero {
     color: rgba(255, 255, 255, 0.75);
 }
@@ -763,7 +685,7 @@
     color: #f2f2f2;
 }
 
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
     .projet-hero {
         padding: 4.5rem 1.25rem 2.25rem;

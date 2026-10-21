@@ -58,7 +58,7 @@
     <h1><i class="fas fa-laptop-code" aria-hidden="true"></i> Compétences</h1>
     <p class="sous-titre-page">Ce que j'utilise pour développer, et les certifications que j'ai passées.</p>
 
-    <!-- ==================== Technologies ==================== -->
+    <!-- Technologies -->
     <section class="bloc-competences" id="technologies">
         <p class="section-eyebrow">Ce avec quoi je construis</p>
         <h2><i class="fas fa-code" aria-hidden="true"></i> Technologies</h2>
@@ -257,7 +257,7 @@
 
     <hr>
 
-    <!-- ==================== Outils ==================== -->
+    <!-- Outils -->
     <section class="bloc-competences" id="outils">
         <p class="section-eyebrow">Mon environnement de travail</p>
         <h2><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> Outils</h2>
@@ -368,7 +368,7 @@
 
     <hr>
 
-    <!-- ==================== Certifications ==================== -->
+    <!-- Certifications -->
     <section class="bloc-competences" id="certifications">
         <p class="section-eyebrow">Validées par un organisme tiers</p>
         <h2><i class="fas fa-award" aria-hidden="true"></i> Certifications</h2>
@@ -593,14 +593,8 @@
             <button id="zoom-prev" class="carrousel-btn carrousel-prev" aria-label="Image précédente">
                 <i class="fas fa-chevron-left" aria-hidden="true"></i>
             </button>
-            <!-- Deux entorses volontaires à la convention du projet sur les images.
-                 Pas de `src=""` : un src vide fait requêter la page elle-même par
-                 certains navigateurs. `certifications.js` le pose à l'ouverture.
-                 Pas de `width`/`height` non plus : les quinze attestations n'ont
-                 pas le même rapport, une dimension fixe en déformerait certaines.
-                 La règle anti-CLS ne s'applique pas ici, l'image vivant dans une
-                 fenêtre en `position: fixed` masquée tant qu'on ne clique pas :
-                 elle ne peut décaler aucune mise en page. -->
+            <!-- Ni src vide (certains navigateurs requêtent alors la page), ni width/height : les
+                 attestations n'ont pas toutes le même format, et la modale fixe ne décale rien. -->
             <img id="zoom-modal-img" alt="Image agrandie">
             <button id="zoom-next" class="carrousel-btn carrousel-next" aria-label="Image suivante">
                 <i class="fas fa-chevron-right" aria-hidden="true"></i>

@@ -4,7 +4,6 @@
 // ==============================
 
 (function () {
-    // Formulaire de contact
     const formulaireContact = document.getElementById('contact-form');
     if (!formulaireContact) return;
 
@@ -23,7 +22,7 @@
         const sujet = champs.sujet.value.trim();
         const message = champs.message.value.trim();
 
-        // Réinitialise l'état d'erreur (message + attributs ARIA des champs)
+        // Repartir d'un état propre à chaque envoi
         const ancienneErreur = document.querySelector('.erreur-formulaire');
         if (ancienneErreur) ancienneErreur.remove();
         Object.values(champs).forEach(function (c) {
@@ -31,7 +30,6 @@
             c.removeAttribute('aria-describedby');
         });
 
-        // Validation des champs
         const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const erreurs = [];
         const champsInvalides = [];
@@ -64,7 +62,7 @@
             divErreur.textContent = erreurs.join(' ');
             formulaireContact.insertBefore(divErreur, formulaireContact.firstChild);
 
-            // Marque les champs fautifs, les relie au message et focus le premier
+            // Relie chaque champ fautif au message, puis focus sur le premier
             champsInvalides.forEach(function (c) {
                 c.setAttribute('aria-invalid', 'true');
                 c.setAttribute('aria-describedby', 'erreur-formulaire');

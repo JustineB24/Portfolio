@@ -1,55 +1,19 @@
 <!--    ==========================================================    -->
 <!--    | * Générateur des cartes de partage (Open Graph)         |    -->
 <!--    | * Auteur : Justine BLIN                                 |    -->
-<!--    |                                                          |    -->
-<!--    | Page outil, non liée depuis le site. Elle sert à         |    -->
-<!--    | régénérer les images og-*.jpg de ce dossier.             |    -->
-<!--    |                                                          |    -->
-<!--    | Les textes se passent en paramètres d'URL :              |    -->
-<!--    |   generateur.html?eyebrow=Formation&titre=BTS%20SIO      |    -->
-<!--    |     &accroche=Une%20phrase&icone=fas%20fa-graduation-cap |    -->
-<!--    |                                                          |    -->
-<!--    | Pour exporter en 1200x630 (format attendu par LinkedIn   |    -->
-<!--    | et X), depuis la racine du dépôt :                       |    -->
-<!--    |   python3 -m http.server 8000                            |    -->
-<!--    |   chrome --headless --window-size=1200,630 \             |    -->
-<!--    |     --screenshot=carte.png "http://localhost:8000/…"     |    -->
-<!--    |   sips -s format jpeg -s formatOptions 88 carte.png \    |    -->
-<!--    |     --out assets/og/og-nom.jpg                           |    -->
 <!--    ==========================================================    -->
 
 <!--
-    ==========================================================================
-    OÙ SONT LES TEXTES DES CARTES
-    ==========================================================================
-    Dans l'objet `CARTES` en bas de ce fichier : c'est la SEULE source de
-    vérité. Volontairement pas recopiés ici, un commentaire finirait par
-    diverger (c'est déjà arrivé aux images elles-mêmes).
-
-    Ouvrir generateur.html sans paramètre affiche la liste des cartes.
-
-    ==========================================================================
-    RÉGÉNÉRER UNE CARTE
-    ==========================================================================
-      cd <racine du dépôt> && python3 -m http.server 8000 &
-      NOM=formation      # une des clés de l'objet CARTES
-      chrome --headless --disable-gpu --hide-scrollbars \
-             --virtual-time-budget=7000 --window-size=1200,630 \
-             --screenshot=/tmp/carte.png \
+    Textes des cartes : objet `CARTES` en bas du fichier. Sans paramètre, la page les liste.
+    Régénérer une carte, depuis la racine du dépôt :
+      python3 -m http.server 8000 &
+      NOM=formation
+      chrome --headless --disable-gpu --hide-scrollbars --virtual-time-budget=7000 \
+             --window-size=1200,630 --screenshot=/tmp/carte.png \
              "http://localhost:8000/assets/og/generateur.html?carte=$NOM"
-      sips -s format jpeg -s formatOptions 88 /tmp/carte.png \
-           --out "assets/og/og-$NOM.jpg"
-
-    Qualité 88 : les dégradés du fond sont coûteux, en dessous ils marbrent.
-
-    Une carte est une image, elle ne suit pas les modifications des pages.
-    Quand un eyebrow ou un titre de page change : corriger `CARTES`, PUIS
-    régénérer l'image.
-
-    Les paramètres eyebrow / titre / accroche / icone restent acceptés, seuls
-    ou en surcharge d'une carte nommée, pour essayer une variante sans
-    toucher au fichier.
-    ==========================================================================
+      sips -s format jpeg -s formatOptions 88 /tmp/carte.png --out "assets/og/og-$NOM.jpg"
+    Qualité 88 parce qu'en dessous les dégradés du fond marbrent.
+    Une carte ne suit pas sa page : si un eyebrow ou un titre change, corriger `CARTES` puis régénérer.
 -->
 
 <!doctype html>
@@ -60,10 +24,7 @@
     <link rel="stylesheet" href="../fonts/fa/css/all.min.css">
     <link rel="stylesheet" href="../fonts/google/fonts.css">
     <style>
-        /* Carte Open Graph : 1200x630, l'aspect attendu par LinkedIn et X.
-           Reprend l'identité du site : fond anthracite, rouge de marque,
-           Raleway pour le titre, Inter pour le corps, et le motif
-           eyebrow + titre + filet déjà utilisé sur les pages. */
+        /* 1200x630, le format attendu par LinkedIn et X, aux couleurs et polices du site */
         :root {
             --rouge: #960000;
             --rouge-clair: #ca8080;
@@ -246,17 +207,8 @@
 </div>
 
 <script>
-    // ======================================================================
-    // SOURCE UNIQUE DE VÉRITÉ des 10 cartes.
-    //
-    // La clé est le suffixe du fichier : "formation" -> og-formation.jpg.
-    // Règle de contenu : `eyebrow` et `titre` reprennent l'eyebrow et le h1
-    // de la page, pour que la carte et la page racontent la même chose.
-    //
-    // À GARDER À JOUR : une carte est une image, elle ne suit pas les
-    // modifications des pages. Quand un eyebrow ou un titre de page change,
-    // corriger ici PUIS régénérer l'image (voir l'en-tête du fichier).
-    // ======================================================================
+    // ----- Cartes -----
+    // La clé donne le fichier ("formation" -> og-formation.jpg). eyebrow et titre reprennent ceux de la page.
     const CARTES = {
         "accueil": {
             eyebrow: "Développeuse web",
@@ -273,9 +225,7 @@
         "competences": {
             eyebrow: "Langages, outils et certifications",
             titre: "Compétences",
-            // Reprend le sous-titre réel de la page. L'ancienne accroche, « Ce que
-            // j'utilise, et où le voir en projet », promettait des liens de preuve
-            // vers les projets qui ont été retirés de la page le 06/08.
+            // Reprend le sous-titre réel de la page
             accroche: "Du site web à l'application mobile, avec la base de données et le déploiement derrière.",
             icone: "fas fa-laptop-code"
         },
@@ -285,8 +235,7 @@
             accroche: "Projets de Bachelor, de BTS SIO, de stage et personnels.",
             icone: "fas fa-folder-open"
         },
-        // eyebrow et titre volontairement inversés par rapport à la page :
-        // « Raspberry Pi » en grand est plus parlant dans un flux.
+        // eyebrow et titre inversés par rapport à la page : « Raspberry Pi » parle plus en grand
         "veille": {
             eyebrow: "Sujet suivi",
             titre: "Raspberry Pi",
@@ -330,8 +279,7 @@
     const p = new URLSearchParams(location.search);
     const nom = p.get('carte');
 
-    // Sans paramètre : on liste les cartes disponibles au lieu d'afficher
-    // une carte vide, pour qu'on n'ait pas à ouvrir le code pour les trouver.
+    // Sans paramètre, on liste les cartes plutôt que d'afficher une carte vide
     if (!nom && !p.get('titre')) {
         document.body.innerHTML =
             '<div style="padding:3rem;font:16px/1.7 monospace;color:#e6e6e6">' +
@@ -354,8 +302,7 @@
         throw new Error('carte inconnue');
     }
 
-    // Une carte nommée fournit les valeurs par défaut. Chaque paramètre
-    // d'URL peut encore les surcharger, pratique pour essayer une variante.
+    // Une carte nommée donne les valeurs par défaut, les paramètres d'URL peuvent les surcharger
     const base = CARTES[nom] || {};
     const valeur = (cle) => p.get(cle) !== null ? p.get(cle) : base[cle];
 

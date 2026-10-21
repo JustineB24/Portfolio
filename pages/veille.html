@@ -97,8 +97,7 @@
             <div class="veille-intro-logo">
                 <picture>
                     <source srcset="../assets/veille/Raspberry_Pi_logo.webp" type="image/webp">
-                    <!-- Ni `loading="lazy"` ni report : c'est l'élément LCP de la page,
-                         le différer revient à retarder ce qui doit arriver en premier. -->
+                    <!-- Pas de lazy : c'est l'élément LCP de la page -->
                     <img src="../assets/veille/Raspberry_Pi_logo.png" alt="Logo Raspberry Pi" width="250"
                          height="316" fetchpriority="high">
                 </picture>
@@ -425,8 +424,7 @@
 
     <h2 id="avantages">Avantages et inconvénients</h2>
 
-    <!-- Focalisable : quand le tableau déborde, c'est le seul moyen de le faire
-         défiler au clavier. Nommé pour que le focus annonce ce qu'il contient. -->
+    <!-- Focusable pour pouvoir faire défiler le tableau au clavier quand il déborde -->
     <div class="table-wrapper" tabindex="0" role="region" aria-label="Avantages et inconvénients">
         <table class="comparatif">
             <caption>Comparatif des avantages et inconvénients du Raspberry Pi</caption>

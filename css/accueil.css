@@ -1,11 +1,6 @@
-/* ==============================
-   accueil.css
-   Page d'accueil : hero, compteurs, qui-suis-je, marquee
-   ============================== */
+/* accueil.css : page d'accueil, hero, compteurs, qui suis-je et marquee */
 
-/* ==============================
-   Hero plein écran
-   ============================== */
+/* ===== Hero ===== */
 .hero {
     display: flex;
     flex-direction: column;
@@ -16,7 +11,7 @@
     var(--background-color);
     gap: 2rem;
     position: relative;
-    margin-top: -10rem; /* compenser le margin-top du main */
+    margin-top: -10rem; /* Compense le margin-top du main */
     padding: 10rem 2rem 2rem;
 }
 
@@ -40,7 +35,6 @@
     }
 }
 
-/* Bloc texte du hero : nom + rôle + accroche tournante */
 .hero-text {
     display: flex;
     flex-direction: column;
@@ -48,7 +42,6 @@
     gap: 0.6rem;
 }
 
-/* Eyebrow : le rôle, annoncé d'emblée */
 .hero-eyebrow {
     margin: 0;
     padding: 0;
@@ -62,12 +55,10 @@
     animation: fadeIn 1s ease-out forwards 0.4s;
 }
 
-/* Rouge éclairci en thème sombre pour rester lisible sur fond foncé */
 .dark-theme .hero-eyebrow {
     color: var(--primary-on-dark);
 }
 
-/* Nom : la thèse du hero (h1 visible) */
 .hero-nom {
     margin: 0;
     padding: 0;
@@ -81,7 +72,6 @@
     animation: fadeIn 1s ease-out forwards 0.55s;
 }
 
-/* Accroche tournante : sous-titre, secondaire au nom */
 .hero .txt-rotate {
     font-size: clamp(1.1rem, 3vw, 1.5rem);
     font-weight: 600;
@@ -94,9 +84,7 @@
     padding: 0 1rem;
 }
 
-/* Deux actions dès le premier écran : sans elles, la seule chose à faire en
-   arrivant était de faire défiler ou de repartir dans la navigation. Elles
-   apparaissent après l'accroche, dans la même cascade que le reste du hero. */
+/* Deux actions dès le premier écran, sinon on ne peut que défiler ou repartir */
 .hero-btns {
     display: flex;
     flex-wrap: wrap;
@@ -123,7 +111,7 @@
     border-right: 0.08em solid var(--text-color);
 }
 
-/* Flèche animée pour scroller */
+/* Flèche d'invitation au défilement */
 .scroll-arrow {
     position: absolute;
     bottom: 2rem;
@@ -163,9 +151,7 @@
     }
 }
 
-/* ==============================
-   Compteurs animés (mini-cards)
-   ============================== */
+/* ===== Compteurs ===== */
 .compteurs {
     display: flex;
     justify-content: center;
@@ -175,8 +161,7 @@
     --c-accent: var(--primary-color);
 }
 
-/* Rouge éclairci en thème sombre pour le contraste (chiffres, icônes,
-   bordure de survol) sur les cartes foncées */
+/* Rouge éclairci en sombre pour rester lisible sur les cartes foncées */
 .dark-theme .compteurs {
     --c-accent: color-mix(in srgb, var(--primary-color) 62%, #ffffff);
 }
@@ -199,9 +184,7 @@
     transition: var(--transition-carte), border-color 0.3s;
 }
 
-/* Au survol : bordure d'accent épaisse sur les 4 côtés. Le filet intérieur
-   est dessiné en box-shadow (inset) pour épaissir sans décaler la mise en
-   page. Combiné à la bordure 1px qui passe en accent. + élévation. */
+/* Filet intérieur en box-shadow inset : épaissit la bordure sans décaler la mise en page */
 .compteur:hover {
     transform: translateY(var(--carte-levee));
     border-color: var(--c-accent);
@@ -257,9 +240,7 @@
     color: var(--text-color);
 }
 
-/* ==============================
-   Qui suis-je
-   ============================== */
+/* ===== Qui suis-je ===== */
 .qui-suis-je {
     max-width: 750px;
     margin: 0 auto;
@@ -267,10 +248,7 @@
     text-align: center;
 }
 
-/* Le `:not()` protège l'eyebrow de section : `.qui-suis-je p` est plus
-   spécifique que `.section-eyebrow` et se charge après global.css, donc sans
-   cette exclusion l'étiquette héritait de la taille du paragraphe (17,6 px au
-   lieu de 11,52 px) et paraissait plus grosse que sur les autres sections. */
+/* :not() sinon cette règle, plus spécifique, grossit aussi l'eyebrow de section */
 .qui-suis-je p:not(.section-eyebrow) {
     font-size: 1.1rem;
     line-height: 1.8;
@@ -285,12 +263,7 @@
     gap: 1rem;
 }
 
-/* Apparence dans global.css (`.btn` + `.btn-neutre`). La page n'a plus rien à
-   dire sur ce bouton hors de la règle mobile plus bas. */
-
-/* ==============================
-   Aperçu projets
-   ============================== */
+/* ===== Aperçu projets ===== */
 .apercu-projets {
     max-width: 1100px;
     margin: 0 auto;
@@ -321,8 +294,7 @@
     border-color: var(--card-accent, var(--primary-color));
 }
 
-/* Apparence dans global.css (`.btn` + `.btn-primaire`). Ne restent ici que le
-   centrage en bas de section et un padding un peu plus large que le socle. */
+/* Apparence dans global.css, ici seulement le centrage et un padding plus large */
 .btn-voir-projets {
     display: flex;
     justify-content: center;
@@ -331,9 +303,7 @@
     padding: 0.85rem 2rem;
 }
 
-/* ==============================
-   Bandeau compétences (marquee)
-   ============================== */
+/* ===== Bandeau compétences ===== */
 .bandeau-competences {
     padding: 2rem 0 3rem;
     overflow: hidden;
@@ -359,7 +329,7 @@
     animation: marquee-scroll 30s linear infinite;
 }
 
-/* Conteneur d'un logo : permet d'afficher le nom au survol */
+/* Conteneur d'un logo, pour afficher son nom au survol */
 .techno-item {
     position: relative;
     display: inline-flex;
@@ -419,9 +389,7 @@
     }
 }
 
-/* ==============================
-   Responsive
-   ============================== */
+/* ===== Responsive ===== */
 @media (max-width: 1024px) {
     .hero {
         padding: 8rem 1rem 2rem;
@@ -500,9 +468,6 @@
         font-size: 1rem;
     }
 
-    /* Plus de font-size ici : l'étiquette descendait à 0,68rem contre 0,72rem
-       en base, un écart de 0,6px que l'échelle a effacé. Seul l'interlettrage,
-       resserré sur petit écran, avait une raison d'être. */
     .compteur-label {
         letter-spacing: 0.12em;
     }

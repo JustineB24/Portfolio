@@ -4,26 +4,21 @@
 // ==============================
 
 (function () {
-    // ==============================
-    // Animations au scroll (IntersectionObserver)
-    // ==============================
+    // ----- Révélation au défilement -----
 
-    // NodeList extraite une seule fois et partagée entre les deux branches
     const elementsAAnimer = document.querySelectorAll(
         '.scroll-reveal, .timeline-item, .card-competence, .innovations, .comparatif, .card-container, .profil, .btn-cv, .projet-container .card, .qui-suis-je, .carte-apercu, .bandeau-competences'
     );
 
-    // Respecter prefers-reduced-motion : rendre les éléments visibles sans animation
+    // Sans animation (reduced-motion ou vieux navigateur), tout est visible d'emblée
     if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         elementsAAnimer.forEach(function (el) {
             el.classList.add('scroll-reveal', 'visible');
         });
-        // Ne pas initialiser l'observer, passer directement au bouton retour en haut
     } else {
 
-        // L'observer gère l'état initial : il se déclenche dès l'observation pour
-        // les éléments déjà visibles au chargement, inutile d'appeler
-        // getBoundingClientRect() en boucle.
+        // Pas besoin de tester la position au chargement : l'observer se déclenche
+        // tout de suite pour les éléments déjà visibles.
         elementsAAnimer.forEach(el => {
             el.classList.add('scroll-reveal');
         });
@@ -44,11 +39,9 @@
             observer.observe(el);
         });
 
-    } // fin du else (prefers-reduced-motion)
+    }
 
-    // ==============================
-    // Bouton "Retour en haut"
-    // ==============================
+    // ----- Bouton retour en haut -----
 
     const btnRetourHaut = document.createElement('button');
     btnRetourHaut.classList.add('btn-retour-haut');

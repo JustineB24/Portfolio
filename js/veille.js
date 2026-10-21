@@ -12,7 +12,7 @@
     const introDroite = main.querySelector('.veille-intro-droite');
     if (!sommaire || !intro || !introDroite) return;
 
-    // ----- 1. Construire le layout deux colonnes -----
+    // ----- Mise en page deux colonnes -----
     const layout = document.createElement('div');
     layout.className = 'veille-layout';
 
@@ -23,9 +23,7 @@
     const article = document.createElement('div');
     article.className = 'veille-article';
 
-    // Aplatir l'intro pour que "Définition" devienne une section normale :
-    // titre (h2#definition) → logo → description, afin que le groupement par h2
-    // place le logo + le texte dans le corps de la première section.
+    // Le titre Définition sort de l'intro pour ouvrir une section comme les autres
     const introLogo = introDroite.querySelector('.veille-intro-logo');
     const introTitre = introDroite.querySelector('#definition');
     const introDesc = introDroite.querySelector('.veille-intro-desc');
@@ -33,7 +31,6 @@
     if (introLogo) article.appendChild(introLogo);
     if (introDesc) article.appendChild(introDesc);
 
-    // Déplacer tout ce qui suit l'ancienne intro dans l'article
     let node = intro.nextElementSibling;
     while (node) {
         const suivant = node.nextElementSibling;
@@ -46,7 +43,7 @@
     layout.appendChild(article);
     main.appendChild(layout);
 
-    // ----- 2. Grouper le contenu en sections repliables (par h2) -----
+    // ----- Sections repliables, une par h2 -----
     function setExpanded(section, ouvert) {
         const btn = section.querySelector('.veille-section-toggle');
         section.classList.toggle('is-collapsed', !ouvert);
@@ -64,7 +61,7 @@
             const section = document.createElement('section');
             section.className = 'veille-section';
 
-            // Le texte du titre devient un bouton de bascule (accessibilité accordéon)
+            // Le texte du titre passe dans le bouton de l'accordéon
             const btn = document.createElement('button');
             btn.className = 'veille-section-toggle';
             btn.type = 'button';
@@ -97,7 +94,7 @@
         }
     });
 
-    // ----- 3. Liens du sommaire : déplier la cible puis y défiler -----
+    // ----- Liens du sommaire -----
     const liens = Array.from(sommaire.querySelectorAll('a[href^="#"]'));
 
     liens.forEach(function (lien) {
@@ -114,7 +111,7 @@
         });
     });
 
-    // ----- 4. Scroll-spy : surligner la section en cours -----
+    // ----- Scroll-spy -----
     const parId = {};
     liens.forEach(function (l) {
         parId[l.getAttribute('href').slice(1)] = l;
@@ -125,7 +122,7 @@
         })
         .filter(Boolean);
 
-    // Garder l'entrée active visible dans le sommaire (défilement interne, sans bouger la page)
+    // Fait défiler le sommaire seul, sans bouger la page
     function garderVisibleDansSommaire(lien) {
         const cRect = sommaire.getBoundingClientRect();
         const lRect = lien.getBoundingClientRect();

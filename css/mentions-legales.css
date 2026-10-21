@@ -1,11 +1,4 @@
-/* ==============================
-   mentions-legales.css
-   Page mentions légales
-
-   Deux colonnes : un sommaire collant à gauche, la colonne de lecture à droite.
-   Sept rubriques dont deux seulement (données personnelles, cookies) motivent
-   la plupart des visites : sans sommaire, il faut parcourir les cinq autres.
-   ============================== */
+/* mentions-legales.css : page Mentions légales, sommaire collant et colonne de lecture */
 
 .ml-layout {
     display: grid;
@@ -16,10 +9,8 @@
     margin-top: 2rem;
 }
 
-/* ── Sommaire ── */
-/* `top` calé sur le header fixe, comme le `scroll-margin-top: 120px` global.
-   `max-height` + `overflow` pour que les sept entrées restent atteignables sur
-   un écran bas. */
+/* ===== Sommaire ===== */
+/* max-height + overflow pour garder toutes les entrées atteignables sur un écran bas */
 .ml-sommaire {
     position: sticky;
     top: 8rem;
@@ -44,10 +35,7 @@
     list-style: none;
 }
 
-/* Comme le sommaire de la veille, ce n'est pas un lien de contenu : on annule
-   le traitement de `global.css` (rouge, graisse, soulignement animé) qui
-   ferait sept liens rouges en colonne. Le filet gauche remplace le
-   soulignement, et l'entrée en cours passe en rouge. */
+/* Pas un lien de contenu : on annule le style de global.css, le filet gauche remplace le soulignement */
 .ml-sommaire ol a {
     display: block;
     padding: 0.4rem 0 0.4rem 0.9rem;
@@ -71,29 +59,22 @@
     font-weight: 700;
 }
 
-/* Le rouge de marque ne monte qu'à 2:1 sur le fond sombre : en texte, il passe
-   par la version éclaircie. Le filet, lui, est non textuel (seuil 3:1) et
-   garde le rouge de marque. */
+/* Rouge éclairci pour le texte en sombre, le filet garde le rouge de marque */
 .dark-theme .ml-sommaire ol a.active {
     color: var(--primary-on-dark);
 }
 
-/* ── Colonne de lecture ── */
+/* ===== Colonne de lecture ===== */
 .ml-contenu {
     text-align: left;
 }
 
-/* `text-align: left` doit être posé sur le conteneur et non sur le h2 : le h2
-   est en `display: inline-block` (global.css), donc son propre text-align
-   aligne son texte interne, pas l'élément, qui reste centré par le text-align
-   hérité du body. */
+/* text-align sur le conteneur : le h2 est en inline-block, son propre text-align ne le déplace pas */
 .ml-contenu section {
     text-align: left;
 }
 
-/* Titres de rubrique, et non titres de section : à 40px (le clamp global) ils
-   pesaient presque autant que le h1 à 48px, ce qui donnait sept titres
-   concurrents. On les redescend nettement pour rétablir la hiérarchie. */
+/* Titres de rubrique plus petits que le clamp global, sinon ils concurrencent le h1 */
 .ml-contenu h2 {
     font-size: clamp(1.25rem, 2.8vw, 1.6rem);
     margin-bottom: 0.75rem;
@@ -103,22 +84,17 @@
     text-align: left;
     line-height: 1.7;
     color: var(--text-color);
-    /* La règle globale `p { padding: 15px }` décalait le texte de 15px vers la
-       droite, donc il ne s'alignait pas avec le titre juste au-dessus. On
-       neutralise l'horizontal en gardant l'espacement vertical. */
+    /* Annule le padding horizontal global de p pour aligner le texte sur le titre */
     padding-left: 0;
     padding-right: 0;
 }
 
-/* Apparence et espacement dans global.css. La page suit maintenant la largeur
-   de sa colonne, fixée par la grille. */
 main hr {
     max-width: 100%;
 }
 
-/* ── Bandeau d'entête ── */
-/* Le fond est un mélange plutôt qu'une couleur en dur : il suit les deux
-   thèmes sans avoir à déclarer deux valeurs. */
+/* ===== Bandeau d'entête ===== */
+/* Mélange plutôt qu'une couleur en dur : suit les deux thèmes sans double déclaration */
 .ml-bandeau {
     display: flex;
     align-items: baseline;
@@ -136,16 +112,13 @@ main hr {
     flex: none;
 }
 
-/* Icône seule sur fond sombre : élément non textuel, seuil 3:1, que le rouge de
-   marque n'atteint pas (2:1). */
+/* Le rouge de marque n'atteint pas 3:1 sur fond sombre, même pour une icône */
 .dark-theme .ml-bandeau i {
     color: var(--primary-on-dark);
 }
 
-/* ── Fiches label / valeur ── */
-/* `minmax(min(14rem, 100%), 1fr)` et non `minmax(14rem, 1fr)` : `min-width: 0`
-   borne le contenu de l'item, pas la largeur de la piste, qui resterait à 14rem
-   dans un conteneur plus étroit et déborderait. */
+/* ===== Fiches label / valeur ===== */
+/* min(14rem, 100%) : sinon la piste reste à 14rem et déborde sur écran étroit */
 .ml-fiche {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
@@ -171,10 +144,10 @@ main hr {
 .ml-contacts dd {
     margin: 0;
     line-height: 1.6;
-    overflow-wrap: anywhere; /* l'adresse mail ne doit pas élargir la colonne */
+    overflow-wrap: anywhere; /* L'adresse mail ne doit pas élargir la colonne */
 }
 
-/* ── Contact : une barre par moyen ── */
+/* ===== Contact ===== */
 .ml-contacts {
     display: flex;
     flex-direction: column;
@@ -206,7 +179,7 @@ main hr {
     color: var(--primary-on-dark);
 }
 
-/* ── Encarts (données personnelles, cookies) ── */
+/* ===== Encarts ===== */
 .ml-contenu p.ml-encart {
     margin: 0;
     padding: 1.25rem 1.5rem;
@@ -214,9 +187,8 @@ main hr {
     border-radius: var(--radius-md);
 }
 
-/* ── Responsive ── */
-/* Sous 1024px le sommaire passe au-dessus du texte et cesse d'être collant :
-   collé en pleine largeur, il mangerait le haut de l'écran à chaque défilement. */
+/* ===== Responsive ===== */
+/* Sous 1024px le sommaire n'est plus collant : en pleine largeur il mangerait le haut de l'écran */
 @media screen and (max-width: 1024px) {
     .ml-layout {
         grid-template-columns: minmax(0, 700px);

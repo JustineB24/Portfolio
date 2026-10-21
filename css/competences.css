@@ -1,8 +1,4 @@
-/* ==============================
-   competences.css
-   Page compétences : technologies avec preuve,
-   outils sans compteur, certifications attestées par un tiers
-   ============================== */
+/* competences.css : page Compétences, technologies, outils et certifications */
 
 .bloc-competences {
     max-width: 1100px;
@@ -10,50 +6,31 @@
     text-align: left;
 }
 
-/* Apparence dans global.css. La page borne le filet à la largeur de son
-   contenu, sans quoi il traverserait tout `main`, et lui donne plus d'air que
-   le défaut : il sépare ici des sections entières, pas des rubriques. */
+/* Apparence dans global.css, ici bornée au contenu et plus aérée : elle sépare des blocs entiers */
 main hr {
     max-width: 1100px;
     margin: 3.5rem auto;
 }
 
-/* Deux niveaux d'alignement dans un même bloc, volontairement :
-     - l'en-tête de section (eyebrow + h2) est centré, il annonce le bloc.
-     - Tout ce qui suit (titres de palier, notes, cartes) est aligné à gauche.
-   `p:first-of-type` désigne bien l'eyebrow : c'est le premier `p` enfant de la
-   section, avant les notes. */
+/* En-tête de bloc centré, tout ce qui suit aligné à gauche. p:first-of-type est l'eyebrow */
 .bloc-competences > p:first-of-type,
 .bloc-competences > h2 {
     text-align: center;
 }
 
-/* `display: block` est porteur, ne pas le retirer : global.css met les h2 en
-   `inline-block` pour que le soulignement rouge (un border-bottom) s'arrête au
-   bout du texte. Or `margin: auto` ne centre pas un inline-block, et son propre
-   `text-align` n'agit que sur son texte interne, pas sur sa position. Les trois
-   déclarations vont donc ensemble : bloc pour que les marges automatiques
-   agissent, fit-content pour que le soulignement ne traverse pas les 1100px. */
+/* display: block indispensable : margin auto ne centre pas l'inline-block posé par global.css.
+   fit-content garde le soulignement à la longueur du texte */
 .bloc-competences > h2 {
     display: block;
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
-    /* Même échelle que les titres de rubrique des Mentions légales. Au clamp
-       global, un h2 montait à 40px contre 48px pour le h1 : les deux niveaux
-       pesaient presque autant, et la page donnait l'impression de titres
-       concurrents. Le soulignement rouge raccourcit d'autant, puisque la
-       largeur suit le texte. */
+    /* Plus petit que le clamp global, sinon le h2 pèse presque autant que le h1 */
     font-size: clamp(1.25rem, 2.8vw, 1.6rem);
 }
 
-/* ---- Paliers ---- */
-/* L'escalier complet, à 1440px : h1 48px, h2 25,6px, h3 19,2px, puis 16px pour
-   le nom d'une techno dans sa carte. Les h3 ont dû descendre avec les h2 :
-   à 21,6px ils n'étaient plus qu'à 4px du niveau du dessus, et les deux se
-   confondaient. Le h3 reste en capitales espacées là où le nom de techno est
-   en casse normale, ce qui sépare les deux derniers niveaux autrement que par
-   la taille. */
+/* ===== Paliers ===== */
+/* h3 réduit avec les h2 pour garder l'écart, les capitales le séparent du nom de techno */
 .tech-palier-titre {
     font-family: var(--font-titre);
     font-size: clamp(1rem, 2vw, 1.2rem);
@@ -68,13 +45,7 @@ main hr {
     margin-top: 2.75rem;
 }
 
-/* Paragraphe d'accompagnement du h2, centré. Les familles avaient aussi leur
-   note (`.tech-palier-note`), retirée le 20/10/2026 : quatre slogans du type
-   « Côté navigateur, côté serveur et côté mobile » qui sonnaient générés.
-   `padding: 0` sur les côtés : la règle globale `p { padding: 15px }` décalait
-   la note de 15px à droite de son titre. Invisible sur un texte centré, le
-   padding étant symétrique, mais net dès qu'on aligne à gauche. On neutralise
-   l'horizontal en gardant l'espacement vertical, comme sur Mentions légales. */
+/* Padding horizontal à 0 : celui de p décale le texte dès qu'il est aligné à gauche */
 .bloc-intro {
     max-width: 68ch;
     padding-left: 0;
@@ -83,36 +54,30 @@ main hr {
     color: var(--text-muted);
 }
 
-/* `margin: auto` sur les côtés est indispensable : sans lui, la boîte de 68ch
-   reste collée à gauche et seul son texte serait centré à l'intérieur. */
+/* margin auto sinon la boîte reste collée à gauche */
 .bloc-intro {
     margin: 0 auto 1.5rem;
     text-align: center;
 }
 
-
-/* Un palier qui suit une grille a besoin de respirer : sans ça, son titre
-   reste à 1rem des cartes du dessus et se lit comme leur légende. Même écart
-   que celui posé sur les eyebrows de section. */
+/* Sans cet écart, le titre du palier se lit comme la légende des cartes du dessus */
 .tech-grille + .tech-palier-titre {
     margin-top: 2.75rem;
 }
 
-/* ---- Grille des technologies ---- */
+/* ===== Technologies ===== */
 .tech-grille {
     list-style: none;
     margin: 0 0 1rem;
     padding: 0;
     display: grid;
-    /* `min()` et non une valeur fixe : sinon la piste garde sa largeur dans un
-       conteneur plus étroit et la page part en scroll horizontal. */
+    /* min() sinon la piste garde sa largeur et la page défile en largeur sur mobile */
     grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
     gap: 0.9rem;
 }
 
 .tech {
-    /* min-width: 0 : un item de grille refuse sinon de descendre sous la
-       largeur min-content de son texte. */
+    /* Sans min-width: 0 l'item refuse de descendre sous la largeur de son texte */
     min-width: 0;
     display: flex;
     align-items: flex-start;
@@ -153,7 +118,7 @@ main hr {
     text-align: left;
 }
 
-/* ---- Outils : plus dense, aucun compteur ---- */
+/* ===== Outils ===== */
 .outils-grille {
     list-style: none;
     margin: 0;
@@ -173,8 +138,7 @@ main hr {
     padding: 0.6rem 0.8rem;
     background: var(--card-background);
     border-radius: var(--radius-md);
-    /* Même accent de marque que les cartes technos : les classes .comp-* sont
-       déjà posées sur les <li>, elles fournissent --tech-filet. */
+    /* Les classes .comp-* des <li> fournissent --tech-filet */
     border-left: 3px solid var(--tech-filet, var(--primary-color));
 }
 
@@ -198,7 +162,7 @@ main hr {
     color: var(--text-muted);
 }
 
-/* ---- Certifications : le texte d'abord, la vignette ensuite ---- */
+/* ===== Certifications ===== */
 .certif-liste {
     list-style: none;
     margin: 0 0 1rem;
@@ -260,11 +224,6 @@ main hr {
     text-align: left;
 }
 
-/* Les liens de vérification n'ont plus de règle propre : `.certif-verif` est un
-   `p`, donc la règle de lien de contenu de `global.css` les couvre. Leur
-   soulignement permanent est tombé avec, pour que le site n'ait qu'un seul
-   traitement de lien. */
-
 .certif-verif code {
     font-size: 0.95em;
 }
@@ -273,8 +232,7 @@ main hr {
     flex-shrink: 0;
 }
 
-/* La vignette conserve la classe .certif : certifications.js s'appuie dessus
-   pour construire la modale, on ne change pas son contrat. */
+/* Garder la classe .certif, certifications.js s'en sert pour construire la modale */
 .certif-liste .certif {
     display: block;
     width: 110px;
@@ -294,7 +252,7 @@ main hr {
     box-shadow: var(--shadow-md);
 }
 
-/* ---- Responsive ---- */
+/* ===== Responsive ===== */
 @media screen and (max-width: 768px) {
     .bloc-competences {
         padding: 0 0.5rem;
@@ -311,8 +269,7 @@ main hr {
 }
 
 @media screen and (max-width: 480px) {
-    /* Sous 480px la vignette passe au-dessus du texte : côte à côte, il ne
-       reste plus assez de place pour lire l'intitulé. */
+    /* Sous 480px la vignette passe au-dessus, côte à côte l'intitulé n'a plus la place */
     .certif-item {
         flex-direction: column;
         align-items: flex-start;
@@ -360,7 +317,7 @@ main hr {
     transition: opacity 0.4s;
 }
 
-/* Boutons prev/next : même style que carrousel projet */
+/* Boutons précédent et suivant, comme le carrousel projet */
 #zoom-modal .carrousel-btn {
     position: absolute;
     top: 50%;
@@ -392,17 +349,9 @@ main hr {
     right: 1rem;
 }
 
-/* Dots */
-/* Mêmes puces que le carrousel des fiches projet, et mêmes deux corrections :
-   la cible passe à 24x24 (WCAG 2.5.8) sans que la puce visible change de
-   taille, et l'état actif quitte le rouge de marque.
-
-   Ici le voile de la modale est noir à 90 % dans les DEUX thèmes, donc le rouge
-   n'y atteignait que 2,06:1 pour un seuil de 3:1 : l'indicateur d'image
-   courante était presque invisible. Le rouge éclairci monte à 6,66:1.
-
-   `flex-wrap` : quinze certifications font quinze puces, soit 360px à 24px
-   l'unité, plus que la largeur d'un téléphone. */
+/* Puces */
+/* Cible de 24px sans grossir la puce, et actif en rouge éclairci : le rouge de marque
+   disparaît sur le voile noir. flex-wrap car quinze puces dépassent la largeur d'un téléphone */
 #zoom-modal .carrousel-dots {
     position: absolute;
     bottom: 3.5rem;
@@ -485,12 +434,9 @@ main hr {
     outline-offset: 4px;
 }
 
-/* Les couleurs des technos vivent dans `css/technos.css`, source unique du
-   site : elles servent aussi aux pastilles des projets, et les deux pages
-   avaient fini par diverger. Le filet lit `--tech-filet`, calibré pour le
-   seuil de 3:1 d'un élément non textuel. */
+/* Couleurs des technos dans technos.css, partagées avec les pastilles des projets */
 
-/* Logos monochromes noirs : rendus blancs en mode sombre pour rester visibles */
+/* Logos monochromes noirs inversés en sombre pour rester visibles */
 body.dark-theme .comp-expo img,
 body.dark-theme .comp-express img,
 body.dark-theme .comp-github img,

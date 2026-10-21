@@ -1,7 +1,4 @@
-/* ==============================
-   easter-egg.css
-   Styles des easter eggs
-   ============================== */
+/* easter-egg.css : effets des easter eggs */
 
 .ee-matrix-canvas {
     position: fixed;
@@ -14,7 +11,7 @@
     opacity: 0.85;
 }
 
-/* Glitch effect */
+/* ===== Glitch ===== */
 .ee-glitch {
     animation: ee-glitch-anim 0.15s linear infinite;
 }
@@ -46,7 +43,7 @@
     }
 }
 
-/* Achievement Unlocked notification */
+/* ===== Notification de succès ===== */
 .ee-achievement {
     position: fixed;
     bottom: 2rem;
@@ -99,8 +96,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    /* La notification a un fond sombre dans les deux thèmes : le rouge est
-       éclairci en permanence, pas seulement en thème sombre. */
+    /* Fond sombre dans les deux thèmes, donc rouge toujours éclairci */
     color: var(--primary-on-dark);
 }
 
@@ -332,7 +328,7 @@
     }
 }
 
-/* Explosion (retour vers le futur) */
+/* ===== Explosion (retour vers le futur) ===== */
 .ee-explosion-flash {
     position: fixed;
     top: 0;
@@ -375,7 +371,7 @@
     }
 }
 
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width: 480px) {
     .ee-achievement {
         left: 1rem;

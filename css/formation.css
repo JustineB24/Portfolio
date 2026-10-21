@@ -1,15 +1,7 @@
-/* ==============================
-   formation.css
-   Page Formation : un bloc par diplôme (Bachelor, BTS SIO),
-   spécialités du BTS et carte du tableau de synthèse
-   ============================== */
+/* formation.css : page Formation, un bloc par diplôme et spécialités du BTS */
 
-/* ==============================
-   Bloc diplôme
-   Un bloc par diplôme, du plus récent au plus ancien. Le filet vertical rouge
-   tient le rôle de fil chronologique et permet d'en ajouter un (mastère) sans
-   rien changer d'autre.
-   ============================== */
+/* ===== Bloc diplôme ===== */
+/* Le filet rouge sert de fil chronologique, ajouter un diplôme ne demande rien d'autre */
 .formation-diplome {
     max-width: 1100px;
     margin: 0 auto 4.5rem;
@@ -26,8 +18,7 @@
     margin-bottom: 1.25rem;
 }
 
-/* Le titre du diplôme : à gauche, sans le soulignement pleine largeur des h2
-   globaux, qui écraserait la hiérarchie face aux sous-titres de section. */
+/* Sans le soulignement pleine largeur des h2 globaux, trop lourd face aux sous-titres */
 .formation-titre {
     display: block;
     margin: 0 0 0.9rem;
@@ -39,12 +30,12 @@
     color: var(--text-color);
 }
 
-/* L'eyebrow du bloc s'aligne à gauche, contrairement au composant centré */
+/* Aligné à gauche, contrairement au composant centré */
 .formation-tete .section-eyebrow {
     text-align: left;
 }
 
-/* Pastilles d'information : lieu, niveau, statut */
+/* Pastilles lieu, niveau, statut */
 .formation-meta {
     display: flex;
     flex-wrap: wrap;
@@ -82,23 +73,19 @@
     text-align: left;
 }
 
-/* Points saillants du diplôme, chacun renvoyant vers la preuve (un projet) */
+/* Chaque point renvoie vers le projet qui sert de preuve */
 .formation-points {
     list-style: none;
     margin: 0 0 2.5rem;
     padding: 0;
     display: grid;
     gap: 1rem;
-    /* `min(280px, 100%)` et non `280px` seul : sinon la piste garde 280px de
-       large même quand le conteneur est plus étroit (274px à 320px de viewport)
-       et la page part en scroll horizontal. `min-width: 0` sur les items ne
-       suffit pas, il borne le contenu, pas la piste. */
+    /* min(280px, 100%) sinon la piste garde 280px et la page défile en largeur sur mobile */
     grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
 }
 
 .formation-points > li {
-    /* min-width: 0 : sans ça un item de grille refuse de descendre sous la
-       largeur min-content de son texte et pousse la page en scroll horizontal */
+    /* Sans min-width: 0 l'item refuse de descendre sous la largeur de son texte */
     min-width: 0;
     padding: 1.1rem 1.3rem;
     background: var(--card-background);
@@ -127,11 +114,6 @@
     text-align: left;
 }
 
-/* Les liens de la page n'ont plus de règle propre : `.formation-texte` est un
-   `p` et ceux de `.formation-points` sont dans un `p`, donc la règle de lien de
-   contenu de `global.css` les couvre, couleur et soulignement au survol
-   compris. */
-
 @media screen and (max-width: 480px) {
     .formation-diplome {
         padding-left: 1rem;
@@ -144,7 +126,7 @@
     }
 }
 
-/* ---- Sections ---- */
+/* ===== Spécialités du BTS ===== */
 .bts-specialites-section,
 .bts-document-section {
     max-width: 1100px;
@@ -152,7 +134,6 @@
     padding: 0 2rem;
 }
 
-/* Titre de section */
 .bts-section-title {
     color: var(--primary-color);
     margin: 0 0 2rem;
@@ -162,8 +143,6 @@
     display: inline-block;
 }
 
-
-/* ---- Grille spécialités ---- */
 .bts-specialites-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -231,7 +210,6 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Contenu de la card */
 .bts-spe-content {
     padding: 1.8rem;
 }
@@ -303,7 +281,7 @@
     text-align: left;
 }
 
-/* ---- Document / Tableau de synthèse ---- */
+/* ===== Tableau de synthèse ===== */
 .bts-doc-card {
     background: var(--card-background);
     border-radius: var(--radius-lg);
@@ -373,13 +351,9 @@
     flex-wrap: wrap;
 }
 
-/* Boutons */
-/* Le socle `.btn` et ses deux variantes vivent maintenant dans global.css : ce
-   fichier avait le bon patron, il sert désormais à tout le site. Les boutons de
-   la page s'écrivent `btn btn-primaire` et `btn btn-secondaire`.
-   Ne restent ici que les règles de largeur en mobile, plus bas. */
+/* Les boutons viennent de global.css, seules leurs largeurs en mobile restent ici */
 
-/* Aperçu image cliquable (1ʳᵉ page) → ouvre le vrai PDF */
+/* Aperçu cliquable de la première page, ouvre le PDF */
 .pdf-apercu {
     display: block;
     position: relative;
@@ -397,7 +371,7 @@
     height: auto;
 }
 
-/* Fondu en bas : suggère qu'il y a plus de contenu */
+/* Fondu en bas pour suggérer la suite du document */
 .pdf-apercu::after {
     content: "";
     position: absolute;
@@ -437,9 +411,7 @@
     box-shadow: var(--shadow-primary);
 }
 
-/* ============================== */
-/*   Responsive                   */
-/* ============================== */
+/* ===== Responsive ===== */
 
 @media screen and (max-width: 1024px) {
     .bts-specialites-section,
@@ -529,10 +501,8 @@
     }
 }
 
-/* ==============================
-   Rouge éclairci en thème sombre pour rester lisible sur fond foncé
-   (.btn-view est exclu au survol : il passe alors sur fond rouge plein)
-   ============================== */
+/* ===== Thème sombre ===== */
+/* .btn-view est exclu au survol, il passe alors sur fond rouge plein */
 .dark-theme .bts-section-title,
 .dark-theme .bts-spe-debouches-label,
 .dark-theme .btn-secondaire:not(:hover) {

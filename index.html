@@ -51,18 +51,8 @@
 
     <title>Portfolio | Justine BLIN</title>
 
-    <!-- ==============================
-         Données structurées JSON-LD (schema.org).
-         Généré depuis les pages elles-mêmes : les technos et outils viennent des
-         `h4` et `.outil-nom` de Compétences, les certifications de ses
-         `.certif-org` / `.certif-titre`. Regénérer si ces pages changent, sinon
-         la déclaration diverge silencieusement de ce que le site affiche.
-         `hasCredential` porte le BTS puis les 15 attestations. `knowsAbout` la
-         totalité des technos et outils listés. Le Mastère est en cours, donc
-         La Manu est en `affiliation` et non en `alumniOf`, qui affirmerait un
-         cursus achevé. Seul le lycée Édouard Gand, dont le BTS est obtenu,
-         reste en `alumniOf`.
-         ============================== -->
+    <!-- JSON-LD tiré de la page Compétences : à régénérer si elle change, sinon il diverge en silence.
+         La Manu est en `affiliation` et non en `alumniOf`, le mastère n'étant pas terminé. -->
     <script type="application/ld+json">
         {
                 "@context": "https://schema.org",
@@ -468,7 +458,7 @@
                 <img src="assets/competences/looping.svg" alt="Looping" width="48" height="48" loading="lazy">
                 <img src="assets/competences/expo.svg" alt="Expo" width="48" height="48" loading="lazy">
 
-                <!-- Duplication pour boucle infinie -->
+                <!-- Duplication pour la boucle infinie -->
                 <img src="assets/competences/html.svg" alt="HTML" width="48" height="48" loading="lazy"
                      aria-hidden="true">
                 <img src="assets/competences/css.svg" alt="CSS" width="48" height="48" loading="lazy"

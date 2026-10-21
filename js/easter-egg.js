@@ -7,7 +7,7 @@
     // Empêcher les easter eggs de se chevaucher
     let easterEggActif = false;
 
-    // Charger les styles easter eggs depuis un fichier CSS externe
+    // Feuille chargée à la demande, chemin déduit de celui de global.css
     const globalCssLink = document.querySelector('link[href*="global.css"]');
     const basePath = globalCssLink ? globalCssLink.getAttribute('href').replace('css/global.css', '') : '';
     const link = document.createElement('link');
@@ -15,9 +15,7 @@
     link.href = basePath + 'css/easter-egg.css';
     document.head.appendChild(link);
 
-    // ==============================
-    // Utilitaires
-    // ==============================
+    // ----- Utilitaires -----
 
     function estDansChamp() {
         const el = document.activeElement;
@@ -56,25 +54,17 @@
         modale.offsetHeight;
         modale.classList.add('visible');
 
-        // Donner le focus au bouton fermer
         fermerBtn.focus();
 
-        // Hors de `fermer()` : la fermeture est atteignable par trois chemins (le
-        // bouton, le clic sur le fond, Échap) et seul celui d'Échap est détaché.
-        // Un drapeau déclaré dans `fermer()` ne dédoublonnait donc qu'à
-        // l'intérieur d'un appel, et deux fermetures pendant le fondu lançaient
-        // le nettoyage deux fois.
+        // Drapeau hors de `fermer()` : la modale se ferme par trois chemins, et deux
+        // fermetures pendant le fondu lançaient le nettoyage deux fois.
         let nettoye = false;
 
         function fermer() {
             modale.classList.remove('visible');
             document.removeEventListener('keydown', gestionnaireClavier);
-            // Le nettoyage passait par le seul `transitionend`. Si la transition
-            // ne se déclenche pas (élément retiré du flux, transition
-            // interrompue, réglage système), la modale restait à l'écran et
-            // `easterEggActif` restait à true, ce qui bloquait tous les autres
-            // easter eggs pour le reste de la visite. Le repli garantit que le
-            // nettoyage a lieu, et le drapeau garantit qu'il n'a lieu qu'une fois.
+            // Repli si `transitionend` n'arrive jamais : la modale resterait affichée
+            // et bloquerait tous les autres easter eggs.
             function nettoyer() {
                 if (nettoye) return;
                 nettoye = true;
@@ -87,7 +77,7 @@
             setTimeout(nettoyer, 700);   // transition déclarée à 0,5s
         }
 
-        // Piège de focus : Tab cycle entre les éléments focusables de la modale
+        // Piège de focus dans la modale
         function gestionnaireClavier(e) {
             if (e.key === 'Escape') {
                 fermer();
@@ -119,9 +109,7 @@
         document.addEventListener('keydown', gestionnaireClavier);
     }
 
-    // ==============================
-    // Détection de mots tapés au clavier
-    // ==============================
+    // ----- Mots tapés au clavier -----
 
     let motsTapes = '';
     const motsCles = {
@@ -165,9 +153,7 @@
         }
     });
 
-    // ==============================
-    // Konami Code
-    // ==============================
+    // ----- Konami Code -----
 
     function lancerMatrix() {
         const canvas = document.createElement('canvas');
@@ -252,7 +238,6 @@
                 barre.classList.add('active');
             }, 50);
 
-            // Disparition après 4s
             setTimeout(function () {
                 notif.classList.remove('visible');
                 notif.addEventListener('transitionend', function () {
@@ -263,9 +248,7 @@
         }, 800);
     }
 
-    // ==============================
-    // Mode terminal
-    // ==============================
+    // ----- Mode terminal -----
 
     function lancerTerminal() {
         easterEggActif = true;
@@ -276,9 +259,7 @@
         }, 6000);
     }
 
-    // ==============================
-    // Retour vers le futur (clic sur le copyright)
-    // ==============================
+    // ----- Retour vers le futur (clic sur le copyright) -----
 
     document.addEventListener('click', function (e) {
         const yearEl = document.getElementById('year');
@@ -381,10 +362,7 @@
         }
     });
 
-    // ==============================
-    // ==============================
-    // Snake
-    // ==============================
+    // ----- Snake -----
 
     function lancerSnake() {
         easterEggActif = true;
@@ -441,11 +419,9 @@
             ctx.fillStyle = '#000';
             ctx.fillRect(0, 0, TAILLE, TAILLE);
 
-            // Pomme
             ctx.fillStyle = '#ff0000';
             ctx.fillRect(pomme.x * CELLULE, pomme.y * CELLULE, CELLULE - 1, CELLULE - 1);
 
-            // Serpent
             serpent.forEach(function (s, i) {
                 ctx.fillStyle = i === 0 ? '#00ff00' : '#00cc00';
                 ctx.fillRect(s.x * CELLULE, s.y * CELLULE, CELLULE - 1, CELLULE - 1);
@@ -522,9 +498,7 @@
         document.addEventListener('keydown', gestionnaireClavier);
     }
 
-    // ==============================
-    // Matrix standalone
-    // ==============================
+    // ----- Matrix -----
 
     function lancerMatrixStandalone() {
         easterEggActif = true;
@@ -536,9 +510,7 @@
         }, 8000);
     }
 
-    // ==============================
-    // Mode 90's
-    // ==============================
+    // ----- Mode 90's -----
 
     function lancer90s() {
         easterEggActif = true;
@@ -555,9 +527,7 @@
     }
 
 
-    // ==============================
-    // Easter egg mobile : secouer le telephone
-    // ==============================
+    // ----- Secousse du téléphone -----
 
     let dernierX = null, dernierY = null, dernierZ = null;
     let compteurSecousses = 0;
@@ -586,7 +556,7 @@
                     }
                     if (compteurSecousses >= 3) {
                         compteurSecousses = 0;
-                        // Lancer un easter egg aleatoire parmi les visuels
+                        // Un easter egg visuel au hasard
                         const eesMobiles = [lancerRainbow];
                         const ee = eesMobiles[Math.floor(Math.random() * eesMobiles.length)];
                         ee();
@@ -607,9 +577,7 @@
         }, 1000);
     }
 
-    // ==============================
-    // Thème arc-en-ciel
-    // ==============================
+    // ----- Thème arc-en-ciel -----
 
     function lancerRainbow() {
         easterEggActif = true;
@@ -621,16 +589,13 @@
         }, 300);
         setTimeout(function () {
             clearInterval(interval);
-            // Retirer le style inline pour rendre la main à la cascade CSS
-            // (la valeur revient à celle définie dans :root)
+            // Sans style inline, la valeur de :root reprend la main
             document.documentElement.style.removeProperty('--primary-color');
             easterEggActif = false;
         }, 10000);
     }
 
-    // ==============================
-    // Message console
-    // ==============================
+    // ----- Message console -----
 
     console.log('%c' +
         '\n' +

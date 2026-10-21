@@ -1,9 +1,6 @@
-/* ==============================
-   404.css
-   Page 404 : illustration glitch + particules
-   ============================== */
+/* 404.css : page d'erreur, titre glitch et particules */
 
-/* ── Conteneur principal ── */
+/* ===== Conteneur ===== */
 .erreur-404 {
     display: flex;
     flex-direction: column;
@@ -17,7 +14,7 @@
     background: var(--background-color);
 }
 
-/* Grille de fond subtile */
+/* Grille de fond discrète */
 .erreur-404::before {
     content: "";
     position: absolute;
@@ -29,7 +26,6 @@
     pointer-events: none;
 }
 
-/* Lueur rouge centrale */
 .erreur-404::after {
     content: "";
     position: absolute;
@@ -44,7 +40,7 @@
     filter: blur(60px);
 }
 
-/* ── Illustration : icône d'erreur ── */
+/* ===== Icône ===== */
 .erreur-illustration {
     margin-bottom: 1.5rem;
     z-index: 1;
@@ -68,7 +64,7 @@
     }
 }
 
-/* ── Titre 404 : effet glitch ── */
+/* ===== Titre 404 en glitch ===== */
 .glitch-titre {
     display: flex;
     align-items: baseline;
@@ -87,7 +83,7 @@
     text-shadow: 0 0 30px rgba(var(--primary-rgb), 0.2);
 }
 
-/* Couches glitch via pseudo-éléments : invisibles au repos */
+/* Couches du glitch, invisibles hors des pics de l'animation */
 .glitch-chiffre::before,
 .glitch-chiffre::after {
     content: attr(data-text);
@@ -113,7 +109,7 @@
     animation: glitch-bas 4s infinite linear;
 }
 
-/* Décalage de timing par chiffre */
+/* Délais décalés pour que les trois chiffres ne glitchent pas ensemble */
 .glitch-chiffre:nth-child(1)::before {
     animation-delay: 0s;
 }
@@ -138,7 +134,6 @@
     animation-delay: 0.25s;
 }
 
-/* Tremblement global du titre */
 .glitch-titre {
     animation: glitch-shake 5s infinite;
 }
@@ -220,7 +215,7 @@
     }
 }
 
-/* ── Sous-titre ── */
+/* ===== Sous-titre ===== */
 .erreur-404 h1 {
     font-size: 1.6rem;
     font-weight: 700;
@@ -230,12 +225,12 @@
     color: var(--text-color);
     z-index: 1;
     opacity: 0.9;
-    /* Neutralise les styles globaux de h1 (soulignement rouge, inline-flex) */
+    /* Neutralise le style global des h1 (soulignement rouge, inline-flex) */
     border: none;
     display: block;
 }
 
-/* ── Texte d'erreur style terminal ── */
+/* ===== Texte ===== */
 .erreur-404 p {
     font-size: 1.1rem;
     margin-bottom: 0.4rem;
@@ -245,16 +240,14 @@
     opacity: 0.8;
 }
 
-/* ── Bouton retour : même style que .btn-cv ── */
-/* Apparence dans global.css (`.btn` + `.btn-primaire`). La page ne pose que
-   l'écart avec le texte au-dessus. */
+/* ===== Bouton retour ===== */
+/* Apparence dans global.css, seul l'écart avec le texte est réglé ici */
 .btn-accueil {
     margin-top: 2rem;
 }
 
-/* ── Raccourcis sous le bouton ── */
-/* Couleur, graisse et soulignement animé viennent de la règle des liens de
-   contenu de `global.css` : ne rien redéfinir ici, seulement la disposition. */
+/* ===== Raccourcis ===== */
+/* Style des liens hérité de global.css, ici seulement la disposition */
 .erreur-liens {
     z-index: 1;
     margin-top: 1.75rem;
@@ -271,15 +264,15 @@
     list-style: none;
 }
 
-/* Séparateur décoratif porté par l'élément **précédent** : en `::before` du
-   suivant, il ouvrirait la ligne quand la liste se réenroule sur mobile. */
+/* Séparateur en ::after du précédent : en ::before du suivant, il ouvrirait
+   la ligne quand la liste passe sur deux lignes en mobile */
 .erreur-liens li:not(:last-child)::after {
     content: "·";
     margin-left: 1rem;
     color: var(--text-muted);
 }
 
-/* ── Particules flottantes ── */
+/* ===== Particules ===== */
 .particule-404 {
     position: absolute;
     font-family: "Courier New", monospace;
@@ -309,7 +302,7 @@
     }
 }
 
-/* ── Responsive ── */
+/* ===== Responsive ===== */
 @media (max-width: 1024px) {
     .glitch-chiffre {
         font-size: 8rem;
@@ -360,7 +353,7 @@
     }
 }
 
-/* ── Accessibilité ── */
+/* ===== Mouvement réduit ===== */
 @media (prefers-reduced-motion: reduce) {
     .glitch-titre,
     .glitch-chiffre::before,
@@ -375,9 +368,8 @@
     }
 }
 
-/* ==============================
-   Rouge éclairci en thème sombre pour rester lisible sur fond foncé
-   ============================== */
+/* ===== Thème sombre ===== */
+/* Rouge éclairci pour rester lisible sur fond foncé */
 .dark-theme .erreur-illustration .fa-triangle-exclamation,
 .dark-theme .glitch-chiffre,
 .dark-theme .particule-404 {

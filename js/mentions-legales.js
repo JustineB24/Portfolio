@@ -3,9 +3,8 @@
 // Sommaire collant : surlignage de la rubrique en cours
 // ==============================
 
-// Version réduite du scroll-spy de `veille.js` : ici le sommaire ne déplie rien
-// et ne déplace aucun nœud, il ne fait que suivre la lecture. Les ancres elles-
-// mêmes sont de vrais liens `#id`, donc la page reste navigable sans ce script.
+// Version allégée du scroll-spy de veille.js : rien à déplier ici, et les ancres
+// restent de vrais liens `#id` qui marchent sans ce script.
 
 (function () {
     const sommaire = document.querySelector('.ml-sommaire');
@@ -23,9 +22,6 @@
         })
         .filter(Boolean);
 
-    // `-120px` en haut correspond au header fixe, comme le `scroll-margin-top`
-    // global. `-70%` en bas empêche qu'une rubrique déjà loin sous le pli soit
-    // considérée comme celle qu'on lit.
     function activer(id) {
         liens.forEach(function (lien) {
             lien.classList.remove('active');
@@ -38,6 +34,7 @@
         }
     }
 
+    // -120px pour le header fixe, -70% pour ignorer ce qui est loin sous le pli
     const observer = new IntersectionObserver(function (entrees) {
         if (choixClic || enBasDePage()) return;
         entrees.forEach(function (entree) {
@@ -49,16 +46,12 @@
         observer.observe(cible);
     });
 
-    // Les dernières rubriques sont trop courtes pour remonter jusqu'à la bande
-    // observée : la page bute en bas avant. Sans ce relais, cliquer sur la
-    // dernière entrée du sommaire laissait l'avant-dernière surlignée.
+    // Les dernières rubriques, trop courtes, n'atteignent jamais la bande observée
     function enBasDePage() {
         return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
     }
 
-    // Le bas de page ne dit pas laquelle des dernières rubriques on a demandée :
-    // après un clic dans le sommaire, c'est le clic qui fait foi, jusqu'à ce
-    // que le défilement qu'il a provoqué s'arrête.
+    // Après un clic dans le sommaire, le clic fait foi jusqu'à la fin du défilement
     let choixClic = null;
     let minuterie = null;
 

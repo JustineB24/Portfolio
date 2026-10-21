@@ -1,11 +1,7 @@
-/* ==============================
-   projets.css
-   Page projets : grille de cartes + filtres
-   ============================== */
+/* projets.css : page Projets, filtres et cartes */
 
-/* Barre de filtres : une rangée par axe (contexte, technologie), avec sa
-   légende. Les deux se combinent, d'où l'étiquette : sans elle, quinze
-   pastilles à la file se lisent comme un choix unique. */
+/* ===== Filtres ===== */
+/* Une rangée par axe avec sa légende : sans elle, les pastilles se lisent comme un choix unique */
 .filtres {
     display: flex;
     flex-direction: column;
@@ -19,7 +15,7 @@
     gap: 0.75rem;
 }
 
-/* Largeur fixe pour que les deux rangées de pastilles démarrent au même bord */
+/* Largeur fixe pour que les deux rangées démarrent au même bord */
 .filtre-legende {
     flex: 0 0 7.5rem;
     text-align: left;
@@ -37,8 +33,7 @@
     min-width: 0;
 }
 
-/* Vide tant qu'il reste des résultats : la région vivante doit rester dans le
-   DOM pour être annoncée, `:empty` la retire seulement de l'affichage. */
+/* La région vivante reste dans le DOM pour être annoncée, :empty la masque seulement */
 .filtre-vide {
     color: var(--text-muted);
     margin: 0.5rem 0 0;
@@ -54,15 +49,12 @@
     margin-top: 0.25rem;
 }
 
-/* `.btn` pose un `display: inline-flex` qui l'emporte sur celui de `[hidden]` :
-   sans cette règle le bouton reste visible alors que l'attribut est posé. */
+/* Le display de .btn l'emporte sur [hidden], sans cette règle le bouton reste visible */
 .filtre-reset[hidden] {
     display: none;
 }
 
-/* Même traitement que les pastilles de carte : fond teinté à 15 %, contour et
-   libellé en `--tech-libelle`. Les jetons des technos viennent de
-   `css/technos.css`, ceux des catégories sont posés plus bas. */
+/* Même traitement que les pastilles de carte, jetons des technos dans technos.css */
 .filtre-btn {
     padding: 0.5rem 1.2rem;
     border: 2px solid var(--tech-libelle, var(--text-color));
@@ -75,8 +67,7 @@
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-/* Au survol la teinte de fond se renforce, la couleur du libellé ne bouge pas :
-   la passer en rouge la décrocherait de son contour, qui lui ne change pas. */
+/* Seul le fond se renforce, un libellé rouge se décrocherait de son contour */
 .filtre-btn:hover:not(.active) {
     background: color-mix(in srgb, var(--tech-brut, var(--primary-color)) 30%, transparent);
 }
@@ -87,27 +78,9 @@
     border-color: var(--primary-color);
 }
 
-/* ==============================
-   Couleur des filtres : `--tech-libelle` habille le contour ET le libellé,
-   `--tech-brut` le fond teinté à 15 %.
-
-   **Les valeurs des technos ne sont plus ici** : elles vivent dans
-   `css/technos.css`, source unique partagée avec les pastilles des cartes et de
-   la fiche projet. Trois feuilles déclaraient chacune leur version de la même
-   palette, et elles avaient fini par diverger sur neuf technos.
-
-   Ne restent ci-dessous que les **catégories**, qui n'ont pas de logo dont
-   dériver une couleur et n'appartiennent donc pas à ce fichier-là.
-
-   L'état actif reste rouge à texte clair : `.filtre-btn.active` l'emporte sur
-   `.filtre-btn` par la spécificité, sans avoir besoin de `:not(.active)`.
-   ============================== */
-/* Catégories : contexte de réalisation. Les trois premières portent la couleur
-   de l'institution derrière elles : le bleu d'action de Litesoft pour
-   l'alternance, et une teinte par diplôme. « Stages » et « Perso » n'ont pas
-   d'institution unique, mais gardent une couleur pour que les cinq pastilles
-   restent distinctes. Les teintes sont choisies aux deux plus grands écarts
-   libres, 151° et 262°, les trois autres occupant 0°, 204° et 319°. */
+/* ===== Couleur des filtres ===== */
+/* Les technos sont dans technos.css, ne restent ici que les catégories, sans logo dont dériver une couleur */
+/* Couleur de l'institution quand il y en a une, sinon une teinte libre pour rester distincte */
 .filtre-btn[data-filtre="entreprise"] {
     --tech-brut: #009aff;
     --tech-libelle: rgb(0, 108, 180);
@@ -158,7 +131,7 @@
     --tech-libelle: rgb(154, 104, 241);
 }
 
-/* Grille des projets */
+/* ===== Cartes ===== */
 .projet-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -166,7 +139,6 @@
     margin: 2rem 3rem 5rem;
 }
 
-/* Card projet */
 .card {
     border-radius: var(--radius-xl);
     background: var(--card-background);
@@ -192,7 +164,6 @@
     visibility: hidden;
 }
 
-/* Contenu texte */
 .card-body {
     padding: 1.5rem;
     display: flex;
@@ -223,22 +194,15 @@
     flex: 1;
 }
 
-/* Tags technologies */
 .card-tags {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* alignés sur le titre et la description, centrés */
+    justify-content: center;
     gap: 0.4rem;
     margin-top: 0.8rem;
 }
 
-/* Un style unique pour toutes les pastilles, la couleur seule les distingue.
-   Le fond porte la teinte du logo à 15 % : c'est lui qui fait le rappel avec
-   l'icône, et il permet de garder la vraie couleur des marques pâles, qu'un
-   simple libellé coloré ne pourrait pas rendre lisibles. Contour et texte
-   prennent la même teinte assombrie juste assez, `--tech-libelle`. Les trois
-   jetons viennent de `css/technos.css`. Le repli sert aux pastilles sans
-   techno reconnue. */
+/* Fond teinté à la couleur du logo, contour et texte en --tech-libelle lisible même pour les marques pâles */
 .card-tags span {
     font-size: var(--texte-xs);
     padding: 0.25rem 0.6rem;
@@ -249,11 +213,7 @@
     font-weight: 600;
 }
 
-/* Couleurs des technos : centralisées dans `css/technos.css` */
-
-/* Badge de statut de la carte. Il ne dit plus seulement « en cours de
-   développement » : Gecko affiche « En production ». D'où le renommage de
-   `.badge-en-cours` en `.badge-statut` le 07/08. */
+/* Badge de statut : en cours, en production... */
 .card .badge-statut {
     display: inline-block;
     margin-bottom: 0.6rem;
@@ -261,17 +221,7 @@
     background: color-mix(in srgb, var(--card-accent, var(--primary-color)) 15%, transparent);
     border: 1px solid color-mix(in srgb, var(--card-accent, var(--primary-color)) 40%, transparent);
     border-radius: var(--radius-pill);
-    /* Texte teinté par l'accent de la carte, mais ramené vers `--text-color`.
-       Le dosage était à 50 %, ce qui ne garantissait rien : le résultat dépend
-       entièrement de l'accent, et l'accent jaune de la carte 1 tombait à
-       3,71:1. Dix cartes sur onze passaient par chance, pas par construction.
-
-       35 % est le dosage le plus fort qui tienne pour **n'importe quel**
-       accent, y compris les pires cas théoriques d'un accent blanc en thème
-       clair (4,62:1) ou noir en thème sombre (5,56:1). Sur les onze accents
-       réels, le pire remonte à 5,59:1. Ne pas remonter ce chiffre sans
-       revérifier les deux extrêmes : c'est ce qui rend la règle sûre pour un
-       projet ajouté plus tard. */
+    /* 35 % au plus : au-delà, un accent clair ou sombre peut rendre le texte illisible */
     color: color-mix(in srgb, var(--card-accent, var(--primary-color)) 35%, var(--text-color));
     font-size: var(--texte-xs);
     font-weight: 600;
@@ -279,7 +229,7 @@
 }
 
 /* Couleurs d'accent par carte */
-/* Ordre : YABT, Gecko, Grimoire, Panada Food, Pendu, France Mobilier, Sio Shop, Speedcubing, Météo, Générateur MDP,
+/* YABT, Gecko, Grimoire, Panada Food, Pendu, France Mobilier, Sio Shop, Speedcubing, Météo, Générateur MDP,
    Mairie Cauffry, Flouflix, Limite Limite, Keep Eat */
 .card-1 {
     --card-accent: #FDC800;
@@ -337,7 +287,7 @@
     --card-accent: #5a8a47;
 }
 
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width: 1024px) {
     .projet-container {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -351,8 +301,7 @@
         gap: 1rem;
     }
 
-    /* La légende passe au-dessus : à 7,5rem elle mangeait la moitié de la
-       largeur restante pour les pastilles. */
+    /* Légende au-dessus, sinon elle prend la moitié de la largeur des pastilles */
     .filtre-ligne {
         flex-direction: column;
         align-items: stretch;

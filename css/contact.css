@@ -1,9 +1,6 @@
-/* ==============================
-   contact.css
-   Page contact : formulaire + cartes de contact
-   ============================== */
+/* contact.css : formulaire et cartes de contact */
 
-/* ---- Section principale ---- */
+/* ===== Section ===== */
 .contact-section {
     max-width: 1000px;
     margin: 0 auto 3rem;
@@ -17,7 +14,7 @@
     align-items: center;
 }
 
-/* ---- Formulaire ---- */
+/* ===== Formulaire ===== */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -59,7 +56,7 @@
     transform-origin: left top;
 }
 
-/* Label remonté quand focus ou rempli */
+/* Label remonté au focus ou quand le champ est rempli */
 .form-group input:focus + label,
 .form-group input:not(:placeholder-shown) + label,
 .form-group textarea:focus + label,
@@ -76,7 +73,7 @@
     outline: none;
 }
 
-/* Champ en erreur (validation JS) */
+/* Champ refusé par la validation de contact.js */
 .form-group input[aria-invalid="true"],
 .form-group textarea[aria-invalid="true"] {
     border-color: var(--primary-color);
@@ -94,7 +91,7 @@
     min-height: 140px;
 }
 
-/* Empêcher le fond bleu de l'autofill navigateur */
+/* Évite le fond bleu de l'autofill du navigateur */
 .form-group input:-webkit-autofill,
 .form-group input:-webkit-autofill:hover,
 .form-group input:-webkit-autofill:focus,
@@ -127,7 +124,7 @@
     font-size: var(--texte-lg);
 }
 
-/* Footer du form */
+/* Pied du formulaire */
 .contact-form-footer {
     display: flex;
     align-items: center;
@@ -143,21 +140,18 @@
     color: var(--text-muted);
 }
 
-/* Le paragraphe EST déjà la mention discrète : le `small` qu'il contient
-   réduisait une seconde fois, à 11,3px, sous l'échelle du site. On garde la
-   balise pour son sens et on lui laisse la taille du paragraphe. */
+/* Le paragraphe est déjà en petit, le small le réduisait une seconde fois */
 .contact-info-mailto small {
     font-size: inherit;
 }
 
-/* ---- Bouton envoyer ---- */
-/* Apparence dans global.css (`.btn` + `.btn-primaire`). Le formulaire veut un
-   bouton un peu plus large que le socle. */
+/* ===== Bouton envoyer ===== */
+/* Apparence dans global.css, un peu plus large ici */
 .btn-envoyer {
     padding: 0.9rem 2.2rem;
 }
 
-/* ---- Aside : Cards de contact ---- */
+/* ===== Cartes de contact ===== */
 .contact-aside {
     position: sticky;
     top: 120px;
@@ -268,9 +262,7 @@
     transform: translateX(0);
 }
 
-/* ============================== */
-/*   Responsive                   */
-/* ============================== */
+/* ===== Responsive ===== */
 
 @media screen and (max-width: 768px) {
     .contact-section {
@@ -327,10 +319,8 @@
     }
 }
 
-/* ==============================
-   Thème sombre : on éclaircit le rouge de marque (fixe) sur les petits
-   textes pour garder un contraste lisible sur fond foncé.
-   ============================== */
+/* ===== Thème sombre ===== */
+/* Rouge éclairci sur les petits textes, le rouge de marque est illisible sur fond foncé */
 .dark-theme .contact-aside h2,
 .dark-theme .contact-card-label,
 .dark-theme .contact-card-icon,
@@ -339,12 +329,8 @@
     color: var(--primary-on-dark);
 }
 
-/* ==============================
-   Les colonnes de la grille ne doivent pas être bloquées par la largeur
-   min-content de leur contenu : un champ de formulaire a une largeur
-   intrinsèque d'environ 320px, et sans min-width: 0 le grid item refuse de
-   descendre en dessous, ce qui provoquait un scroll horizontal à 320px.
-   ============================== */
+/* Sans min-width: 0, la largeur intrinsèque des champs (environ 320px) bloque
+   la colonne et crée un scroll horizontal sur petit écran */
 .contact-grid > * {
     min-width: 0;
 }

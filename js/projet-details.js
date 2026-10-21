@@ -161,7 +161,8 @@ const projets = {
             {src: "../assets/projets/panada_food/Menu.jpg", legende: "La carte du restaurant"},
             {src: "../assets/projets/panada_food/Contact.jpg", legende: "Page contact"},
             {src: "../assets/projets/panada_food/Mentions_legales.jpg", legende: "Mentions légales et crédits photographiques"},
-            {src: "../assets/projets/panada_food/Ecran_chargement.jpg", legende: "Écran de chargement"}
+            {src: "../assets/projets/panada_food/Ecran_chargement.jpg", legende: "Écran de chargement"},
+            {src: "../assets/projets/panada_food/Palette.png", legende: "La palette de couleurs du site, montée sur Coolors"}
         ],
         description: "Développement d'un site web vitrine pour le restaurant Panada Food sur une durée de 6 semaines en deuxième année de BTS SIO, en binôme avec une collègue. Le restaurant venait d'ouvrir et ne possédait aucune présence en ligne. On s'est déplacées sur place pour récolter les informations et comprendre les attentes du gérant, puis on a conçu et développé le site de A à Z. Le site inclut une page d'accueil, le menu du restaurant, un formulaire de contact et les mentions légales conformes au RGPD. Il a été mis en ligne via un hébergement OVH. Le gérant souhaitait aussi pouvoir prendre les commandes en ligne : on a commencé une seconde version en PHP avec une base MySQL, où le menu, les boissons et les sauces devenaient des tables et où un panier apparaissait. Elle n'a pas abouti, faute de temps sur six semaines, et n'a jamais été mise en ligne.",
         technologies: ["HTML", "CSS", "JavaScript"],

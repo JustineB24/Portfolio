@@ -280,7 +280,7 @@
 
 /* Couleurs d'accent par carte */
 /* Ordre : YABT, Gecko, Grimoire, Panada Food, Pendu, France Mobilier, Sio Shop, Speedcubing, Météo, Générateur MDP,
-   Mairie Cauffry, Flouflix, Limite Limite */
+   Mairie Cauffry, Flouflix, Limite Limite, Keep Eat */
 .card-1 {
     --card-accent: #FDC800;
 }
@@ -331,6 +331,10 @@
 
 .card-13 {
     --card-accent: #4f5b93;
+}
+
+.card-14 {
+    --card-accent: #5a8a47;
 }
 
 /* Responsive */

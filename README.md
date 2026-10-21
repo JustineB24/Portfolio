@@ -38,7 +38,7 @@ nouvelles applications.
 
 ## 🗂 Projets présentés
 
-Treize projets, chacun avec sa fiche détaillée (contexte, réflexion, défis, résultat) :
+Quatorze projets, chacun avec sa fiche détaillée (contexte, réflexion, défis, résultat) :
 
 | Projet                               | En bref                                                |
 |--------------------------------------|--------------------------------------------------------|
@@ -55,6 +55,7 @@ Treize projets, chacun avec sa fiche détaillée (contexte, réflexion, défis, 
 | 🔐 **Générateur de mots de passe**   | Mots de passe sécurisés, critères au choix             |
 | 🔤 **Pendu**                         | Jeu du pendu sur mobile, scores et mots gérés          |
 | 🃏 **API Limite Limite**             | API PHP testée et déployée par une CI/CD GitHub        |
+| 🥔 **Keep Eat**                      | Maquettes Figma d'une appli anti-gaspi, à trois        |
 
 ---
 
@@ -66,7 +67,7 @@ Treize projets, chacun avec sa fiche détaillée (contexte, réflexion, défis, 
 | 🌙 **Mode sombre / clair**       | Thème persistant via `localStorage`                          |
 | ♿ **Accessibilité**             | Lien d'évitement, navigation au clavier, attributs ARIA      |
 | 🔍 **SEO**                       | Sitemap XML, robots.txt, carte de partage par page, JSON-LD  |
-| 🗂 **Fiches projet dynamiques**  | Une seule page `projet-details.html?id=…` pour les 13 fiches |
+| 🗂 **Fiches projet dynamiques**  | Une seule page `projet-details.html?id=…` pour les 14 fiches |
 | 📜 **Timeline interactive**      | Parcours scolaire et professionnel                           |
 | 🏅 **Galerie de certifications** | Modale plein écran, navigation aux flèches et au clavier     |
 | 🎬 **Animations**                | Texte rotatif, compteurs animés, révélation au défilement    |

@@ -113,6 +113,26 @@ const projets = {
             {libelle: "Dépôt GitHub", url: "https://github.com/JustineB24/limite-limite"}
         ],
     },
+    "keep-eat": {
+        titre: "Keep Eat",
+        date: "Septembre et octobre 2025",
+        images: [
+            {src: "../assets/projets/keep_eat/Splash.jpg", legende: "L'écran de lancement et la mascotte"},
+            {src: "../assets/projets/keep_eat/Accueil.jpg", legende: "L'accueil, recettes classées par envie"},
+            {src: "../assets/projets/keep_eat/Detail_recette.jpg", legende: "Le détail d'une recette"},
+            {src: "../assets/projets/keep_eat/Instructions.jpg", legende: "Les étapes de la recette, une par une"},
+            {src: "../assets/projets/keep_eat/Frigo.jpg", legende: "Le frigo, pour dire ce qu'on a sous la main"},
+            {src: "../assets/projets/keep_eat/Communaute.jpg", legende: "Les photos de la communauté"},
+            {src: "../assets/projets/keep_eat/Publication.jpg", legende: "Une recette refaite et publiée par un utilisateur"},
+            {src: "../assets/projets/keep_eat/Parametres.jpg", legende: "Les allergies à exclure des recettes"},
+            {src: "../assets/projets/keep_eat/Zoning_accueil.png", legende: "Le zoning de l'accueil, première étape"},
+            {src: "../assets/projets/keep_eat/Wireframe_accueil.png", legende: "Le wireframe de l'accueil"},
+            {src: "../assets/projets/keep_eat/User_stories.jpg", legende: "Les user stories et les catégories du frigo"},
+            {src: "../assets/projets/keep_eat/Parcours.jpg", legende: "Le parcours utilisateur pour trouver une recette"}
+        ],
+        description: "Défi de conception UX/UI mené en équipe de trois au début du Bachelor. Il fallait imaginer et maquetter sur Figma une application mobile qui propose des recettes à partir de ce qu'on a déjà dans son frigo, pour moins gaspiller. On est partis d'une carte des fonctionnalités, de user stories et d'un parcours utilisateur, puis on est passés par le zoning et les wireframes avant les maquettes finales, avec un petit design system de couleurs, de typographies et de composants. Le projet a aussi son identité, une mascotte pomme de terre et l'histoire de Marc, un ancien cuisinier écœuré par le gaspillage. C'était un exercice de conception, sans code. Sur les maquettes, la photo de profil d'un camarade a été remplacée par la mascotte.",
+        technologies: ["Figma"],
+    },
     "grimoire-recettes": {
         titre: "Le Grimoire des Recettes",
         date: "Depuis 2025",
@@ -304,7 +324,9 @@ if (!projetId || !projets[projetId]) {
         // clair du hero, contre 4,5:1 ici.
         "flouflix": ["#e80000", "#008700"],
         // Pas de marque : l'indigo du logo PHP, langage de l'API, vers un bleu nuit
-        "limite-limite": ["#4f5b93", "#2c3361"]
+        "limite-limite": ["#4f5b93", "#2c3361"],
+        // Le vert anti-gaspi et l'orange cuisine de la maquette, assombris pour le titre clair
+        "keep-eat": ["#4f7d3e", "#9a5c17"]
     };
 
     const hero = document.getElementById("projet-hero");

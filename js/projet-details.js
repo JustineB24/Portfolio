@@ -89,7 +89,14 @@ const projets = {
     "flouflix": {
         titre: "Flouflix",
         date: "Juillet 2026",
-        images: [],
+        images: [
+            {src: "../assets/projets/flouflix/Liste.png", legende: "La liste, titre géant et texte qui clignote"},
+            {src: "../assets/projets/flouflix/Liste_favoris.jpg", legende: "Les favoris annoncés « en bas de la page », juste au-dessus du bouton"},
+            {src: "../assets/projets/flouflix/Liste_cartes.jpg", legende: "Une carte de série : trois clics sur l'affiche pour l'ouvrir"},
+            {src: "../assets/projets/flouflix/Detail_popup.jpg", legende: "Le pop-up de tutoriel, deux boutons qui disent presque la même chose"},
+            {src: "../assets/projets/flouflix/Detail.jpg", legende: "Le détail d'une série, avec son bouton favori à presser huit fois"},
+            {src: "../assets/projets/flouflix/Favoris.jpg", legende: "Un favori, signalé en rouge vif"}
+        ],
         description: "Application mobile de recherche de films et de séries, construite à deux en deux jours pendant le Bachelor. La contrainte était inversée : produire volontairement l'interface la plus laide et la moins utilisable possible. L'exercice avait deux objectifs, découvrir React Native et Expo, et pousser les mauvaises pratiques d'ergonomie assez loin pour comprendre pourquoi ce sont de mauvaises pratiques. Sous la couche ratée, l'application fonctionne vraiment. Trois écrans, liste, détail et favoris, avec recherche et filtres construits sur les données de l'API TVmaze. Les favoris sont gérés en CRUD, leur état partagé entre les écrans par un contexte React.",
         liens: [
             {libelle: "API TVmaze", url: "https://www.tvmaze.com/api"}

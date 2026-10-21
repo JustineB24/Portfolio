@@ -264,7 +264,9 @@
     --tech-filet: rgb(162, 89, 255);
 }
 
-.comp-canva {
+.comp-canva,
+.card-tags .tag-canva,
+#projet-technologies .tag-canva {
     --tech-brut: rgb(0, 196, 204);
     --tech-libelle: rgb(0, 108, 113);
     --tech-filet: rgb(0, 147, 153);
@@ -597,7 +599,9 @@
     --tech-filet: rgb(162, 89, 255);
 }
 
-.dark-theme .comp-canva {
+.dark-theme .comp-canva,
+.dark-theme .card-tags .tag-canva,
+.dark-theme #projet-technologies .tag-canva {
     --tech-brut: rgb(0, 196, 204);
     --tech-libelle: rgb(0, 196, 204);
     --tech-filet: rgb(0, 196, 204);

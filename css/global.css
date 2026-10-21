@@ -1496,6 +1496,7 @@ body.page-exit main {
 .card-tags .tag-xampp::before { background-image: url(../assets/competences/xampp.svg); }
 .card-tags .tag-mamp::before { background-image: url(../assets/competences/mamp.svg); }
 .card-tags .tag-figma::before { background-image: url(../assets/competences/figma.svg); }
+.card-tags .tag-canva::before { background-image: url(../assets/competences/canva.svg); }
 .card-tags .tag-git::before { background-image: url(../assets/competences/git.svg); }
 .card-tags .tag-github::before { background-image: url(../assets/competences/github.svg); }
 .card-tags .tag-gitlab::before { background-image: url(../assets/competences/gitlab.svg); }

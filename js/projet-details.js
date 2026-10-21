@@ -266,10 +266,12 @@ const projets = {
             {src: "../assets/projets/mairie_de_cauffry/Accueil.jpg", legende: "Page d'accueil du site en ligne"},
             {src: "../assets/projets/mairie_de_cauffry/Adico_collectivite.png", legende: "Le recueil des besoins sur la plateforme de l'Adico"},
             {src: "../assets/projets/mairie_de_cauffry/Adico_arborescence.png", legende: "Arborescence des rubriques, sur la plateforme de l'Adico"},
-            {src: "../assets/projets/mairie_de_cauffry/Adicloud.jpg", legende: "Les documents rangés sur Adicloud"}
+            {src: "../assets/projets/mairie_de_cauffry/Adicloud.jpg", legende: "Les documents rangés sur Adicloud"},
+            {src: "../assets/projets/mairie_de_cauffry/Prototypes_logo_1.png", legende: "Prototypes de logo réalisés sur Canva, autour du bâtiment et de la commune"},
+            {src: "../assets/projets/mairie_de_cauffry/Prototypes_logo_2.png", legende: "Six autres pistes de logo sur Canva, du trait à l'aplat de couleur"}
         ],
-        description: "Stage de 4 semaines en première année de BTS SIO, à la mairie de Cauffry, pour le nouveau site de la commune. Le site lui-même est un produit de l'Adico (Association pour le développement et l'innovation numérique des collectivités), le prestataire de la commune, bâti sur leur plateforme mutualisée : je n'en ai pas écrit le code. Mon travail portait sur le contenu et la structure. L'ancien site étant devenu indisponible, j'ai récupéré ses pages via la Wayback Machine, rempli le recueil de besoins, conçu l'arborescence des rubriques, puis préparé les documents et les ai déposés sur Adicloud en les structurant pour qu'ils s'affichent correctement. En parallèle, j'ai sauvegardé les mails de la maire vers un disque dur externe et proposé des prototypes de logo pour la commune.",
-        technologies: [],
+        description: "Stage de 4 semaines en première année de BTS SIO, à la mairie de Cauffry, pour le nouveau site de la commune. Le site lui-même est un produit de l'Adico (Association pour le développement et l'innovation numérique des collectivités), le prestataire de la commune, bâti sur leur plateforme mutualisée : je n'en ai pas écrit le code. Mon travail portait sur le contenu et la structure. L'ancien site étant devenu indisponible, j'ai récupéré ses pages via la Wayback Machine, rempli le recueil de besoins, conçu l'arborescence des rubriques, puis préparé les documents et les ai déposés sur Adicloud en les structurant pour qu'ils s'affichent correctement. En parallèle, j'ai sauvegardé les mails de la maire vers un disque dur externe et proposé à la commune des prototypes de logo réalisés sur Canva.",
+        technologies: ["Canva"],
         liens: [
             {libelle: "Voir le projet en ligne", url: "https://mairiecauffry.fr/"},
             {libelle: "Site de l'Adico", url: "https://www.adico.fr/"}
@@ -473,6 +475,7 @@ if (!projetId || !projets[projetId]) {
         "XAMPP": "Serveur de développement local (Apache, MySQL, PHP)",
         "MAMP": "Serveur de développement local sur macOS",
         "Figma": "Conception d'interfaces et prototypage",
+        "Canva": "Création graphique",
         "Git": "Gestion de versions et travail collaboratif",
         "GitHub": "Hébergement et collaboration",
         "GitLab": "Plateforme DevOps et CI/CD"
@@ -485,10 +488,11 @@ if (!projetId || !projets[projetId]) {
 
     const technologies = projets[projetId].technologies || [];
 
-    // Un projet peut n'avoir aucune technologie à déclarer : c'est le cas de la
-    // Mairie de Cauffry, où le travail a porté sur le contenu et non sur le
-    // code. Sans ça, l'étiquette « Technologies » resterait seule au-dessus
-    // d'une liste vide, avec le filet de séparation de la barre méta.
+    // Un projet peut n'avoir aucune technologie à déclarer. C'était le cas de la
+    // Mairie de Cauffry, où le travail portait sur le contenu et non sur le
+    // code, jusqu'à l'ajout de Canva pour les prototypes de logo. Sans ça,
+    // l'étiquette « Technologies » resterait seule au-dessus d'une liste vide,
+    // avec le filet de séparation de la barre méta.
     const barreMeta = techList ? techList.closest(".projet-meta") : null;
     if (barreMeta) barreMeta.hidden = technologies.length === 0;
 
@@ -532,6 +536,7 @@ if (!projetId || !projets[projetId]) {
             "react native": "tag-react-native",
             "expo": "tag-expo",
             "figma": "tag-figma",
+            "canva": "tag-canva",
             "git": "tag-git",
             "github": "tag-github",
             "gitlab": "tag-gitlab"

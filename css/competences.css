@@ -60,7 +60,7 @@ main hr {
     font-weight: 700;
     letter-spacing: 0.06em;
     color: var(--text-color);
-    margin: 0 0 0.35rem;
+    margin: 0 0 1rem;
     text-align: left;
 }
 
@@ -68,15 +68,14 @@ main hr {
     margin-top: 2.75rem;
 }
 
-/* Deux paragraphes d'accompagnement, même typographie, deux alignements :
-     .bloc-intro       suit le h2, appartient à l'en-tête de section, centré.
-     .tech-palier-note suit un h3, appartient au palier, aligné à gauche.
+/* Paragraphe d'accompagnement du h2, centré. Les familles avaient aussi leur
+   note (`.tech-palier-note`), retirée le 20/10/2026 : quatre slogans du type
+   « Côté navigateur, côté serveur et côté mobile » qui sonnaient générés.
    `padding: 0` sur les côtés : la règle globale `p { padding: 15px }` décalait
    la note de 15px à droite de son titre. Invisible sur un texte centré, le
    padding étant symétrique, mais net dès qu'on aligne à gauche. On neutralise
    l'horizontal en gardant l'espacement vertical, comme sur Mentions légales. */
-.bloc-intro,
-.tech-palier-note {
+.bloc-intro {
     max-width: 68ch;
     padding-left: 0;
     padding-right: 0;
@@ -91,12 +90,6 @@ main hr {
     text-align: center;
 }
 
-/* La note forme un bloc avec le titre de palier qui la précède : même bord
-   gauche que lui. */
-.tech-palier-note {
-    margin: 0 0 1.5rem;
-    text-align: left;
-}
 
 /* Un palier qui suit une grille a besoin de respirer : sans ça, son titre
    reste à 1rem des cartes du dessus et se lit comme leur légende. Même écart

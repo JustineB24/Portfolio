@@ -22,17 +22,17 @@ const projets = {
         date: "Depuis février 2026",
         images: [
             {src: "../assets/projets/yabt/Capture_liste_parties.jpg", legende: "Liste des parties publiques et privées, vue en invité"},
-            {src: "../assets/projets/yabt/Capture_salon.jpg", legende: "Salon d'attente : QR code, code de partie et chat"},
-            {src: "../assets/projets/yabt/Capture_partie.jpg", legende: "Partie en cours : écoute de l'extrait et saisie de la réponse"},
-            {src: "../assets/projets/yabt/Capture_resultats.jpg", legende: "Résultats : podium, classement et statistiques"},
-            {src: "../assets/projets/yabt/Capture_creation.jpg", legende: "Création d'un blind test avec recherche Deezer, écran pas encore ouvert dans la V1"},
-            {src: "../assets/projets/yabt/Capture_compte.jpg", legende: "Page compte : parties jouées, victoires, historique"},
-            {src: "../assets/projets/yabt/Maquette_accueil.png", legende: "Maquette : accueil"},
-            {src: "../assets/projets/yabt/Maquette_creation.png", legende: "Maquette : création d'un blind test"},
-            {src: "../assets/projets/yabt/Maquette_lobby.png", legende: "Maquette : salon d'attente"},
-            {src: "../assets/projets/yabt/Maquette_en_partie.png", legende: "Maquette : partie en cours"},
-            {src: "../assets/projets/yabt/Maquette_resultats.png", legende: "Maquette : résultats"},
-            {src: "../assets/projets/yabt/Maquette_profil.png", legende: "Maquette : profil"},
+            {src: "../assets/projets/yabt/Capture_salon.jpg", legende: "Le salon d'attente, avec le QR code pour rejoindre"},
+            {src: "../assets/projets/yabt/Capture_partie.jpg", legende: "Une partie en cours, réponse en train d'être tapée"},
+            {src: "../assets/projets/yabt/Capture_resultats.jpg", legende: "Le podium de fin de partie"},
+            {src: "../assets/projets/yabt/Capture_creation.jpg", legende: "Création d'un blind test, avec la recherche Deezer"},
+            {src: "../assets/projets/yabt/Capture_compte.jpg", legende: "La page compte et l'historique des parties"},
+            {src: "../assets/projets/yabt/Maquette_accueil.png", legende: "Maquette de l'accueil"},
+            {src: "../assets/projets/yabt/Maquette_creation.png", legende: "Maquette de la création d'un blind test"},
+            {src: "../assets/projets/yabt/Maquette_lobby.png", legende: "Maquette du salon d'attente"},
+            {src: "../assets/projets/yabt/Maquette_en_partie.png", legende: "Maquette d'une partie en cours"},
+            {src: "../assets/projets/yabt/Maquette_resultats.png", legende: "Maquette des résultats"},
+            {src: "../assets/projets/yabt/Maquette_profil.png", legende: "Maquette du profil"},
             {src: "../assets/projets/yabt/Logo.png", legende: "Logo, réalisé par un camarade en webdesign"},
             {src: "../assets/projets/yabt/Nuancier.png", legende: "Nuancier de l'identité visuelle"}
         ],
@@ -44,15 +44,15 @@ const projets = {
         statut: "V1 livrée",
         etudeDeCas: {
             contexte: "L'idée vient d'abord d'une passion pour la musique : c'est ce qui a orienté le choix du sujet parmi tous ceux possibles en Bachelor. Le constat a suivi. Les blind tests entre amis se font souvent sur des applications payantes, limitées en fonctionnalités ou sans vrai mode multijoueur en temps réel. On voulait une alternative gratuite, complète et jouable directement dans le navigateur.",
-            reflexion: "On a d'abord structuré le projet comme un projet professionnel : cahier des charges, vingt-cinq user stories, zoning, wireframes, maquettes Figma et design system, choix des technologies et répartition des rôles. Le socle technique, dépôts, Docker et base de données, a été posé dès le cadrage. Mon périmètre de départ était la création de contenu : les routes, contrôleurs et modèles des quiz et des blind tests, un proxy Deezer qui ne renvoie au navigateur que les champs utiles, et les écrans de création avec recherche en direct et écoute d'un extrait. Il s'est ensuite élargi à la chaîne musicale, à la sécurité, aux tests et à l'installation reproductible. C'est aussi avec ce projet que j'ai appris Figma.",
+            reflexion: "On a commencé par le cahier des charges, les user stories et les maquettes Figma, puis on s'est réparti les rôles. Le socle technique (dépôts, Docker, base de données) a été posé dès le début. Au départ, je m'occupais de la création de contenu : l'API des quiz et des blind tests, un proxy vers Deezer et les écrans de création, avec la recherche de morceaux en direct. Mon rôle s'est ensuite étendu à la chaîne musicale, à la sécurité, aux tests et à l'installation du projet. C'est aussi avec ce projet que j'ai appris Figma.",
             defis: [
-                "Construire la playlist d'une partie : un mélange de Fisher-Yates pour que chaque ordre ait la même chance de sortir, le regroupement des versions d'un même titre et la détection de l'artiste dominant",
-                "Couvrir de tests un moteur de jeu que je n'avais pas écrit : ils ont mis au jour cinq défauts réels, corrigés dans la foulée",
-                "Fermer une lecture de fichier arbitraire sur le service des extraits audio, une élévation de privilège à l'inscription, et poser le contrôle d'accès sur les routes de compte",
-                "Compléter la chaîne d'intégration continue posée par un camarade (audit, lint, tests et build sur GitHub Actions à chaque push et pull request), et corriger un job qui consommait 1 975 des 2 000 minutes mensuelles en attendant une connexion jamais fermée",
-                "Se coordonner à quatre avec Git et une méthode Agile, et accepter de resserrer la version 1 pour livrer quelque chose de solide"
+                "Construire la playlist d'une partie. J'ai écrit un mélange de Fisher-Yates pour que chaque ordre ait autant de chances de sortir, et regroupé les différentes versions d'un même titre.",
+                "Les tests que j'ai écrits sur le moteur de jeu, que je n'avais pas développé, ont trouvé cinq vrais bugs, corrigés dans la foulée.",
+                "Fermer plusieurs failles, dont une qui permettait de lire n'importe quel fichier du serveur en passant par le service des extraits audio.",
+                "L'intégration continue sur GitHub Actions, à partir du squelette d'un camarade. Un job consommait presque tout le quota mensuel parce qu'une connexion à la base n'était jamais fermée.",
+                "S'organiser à quatre avec Git et Jira, et accepter de réduire la version 1 pour livrer quelque chose qui marche."
             ],
-            resultat: "La version 1 est livrée et jouable de bout en bout, la première partie complète ayant été jouée fin juin 2026. Elle s'appuie sur une suite de 534 tests automatisés, tous au vert : 391 côté serveur avec Jest et Supertest, 143 côté interface avec Vitest et Testing Library. J'ai largement contribué à cette suite, aux côtés de l'équipe. Le projet n'a pas été mis en production et se poursuit : raccorder les blind tests créés au moteur de jeu, rouvrir le quiz, puis ajouter les modes restants et les niveaux. Les maquettes Figma couvrent une quarantaine d'écrans, chacun en version bureau et téléphone. Les six premiers visuels sont des captures de l'application, les suivants les maquettes. Le projet a été soutenu devant le jury du titre professionnel Concepteur développeur d'applications."
+            resultat: "La version 1 est livrée et une partie se joue de bout en bout depuis fin juin 2026. Elle s'appuie sur 534 tests automatisés, côté serveur comme côté interface, et j'ai largement contribué à cette suite aux côtés de l'équipe. Le projet n'a pas été mis en production et continue. Il reste à brancher les blind tests créés sur le moteur de jeu, à rouvrir le quiz, puis à ajouter les autres modes. Les six premiers visuels sont des captures de l'application, les suivants les maquettes. Le projet a été soutenu devant le jury du titre professionnel Concepteur développeur d'applications."
         }
     },
     "gecko": {
@@ -62,9 +62,9 @@ const projets = {
             {src: "../assets/projets/gecko/Page_article.png", legende: "Tableau des articles avec le moteur de filtres (données masquées)"},
             {src: "../assets/projets/gecko/Page_article_recherche.png", legende: "Filtres combinés par colonne, résultats en direct"},
             {src: "../assets/projets/gecko/Filtres_favoris.png", legende: "Gestion des filtres favoris"},
-            {src: "../assets/projets/gecko/Stocks_Paris_preparation.png", legende: "Stocks de Paris : préparation des envois"}
+            {src: "../assets/projets/gecko/Stocks_Paris_preparation.png", legende: "Préparation des envois, dans le module de Paris"}
         ],
-        description: "Application web métier d'un client du secteur de l'édition et de la distribution, développée par l'équipe de Litesoft où je suis en alternance. C'est un intranet utilisé chaque jour par des dizaines de personnes sur plusieurs sites : catalogue, CRM, facturation, fabrication, stocks et expédition. Je travaille par tickets, transmis par le chef de projet qui recueille le besoin auprès du client et valide les livraisons en test : plus de cinquante sur douze mois, souvent sur toute la chaîne, du script SQL à l'interface. Je fusionne moi-même sur l'environnement de test et j'applique les scripts de migration de base en préproduction et en production. Le reste va à la modernisation de l'existant plutôt qu'à l'empilement : imports sortis des contrôleurs en classes dédiées, Composer et autoload PSR-4 sur tout le projet, interface passée entièrement à Tailwind CSS. J'utilise Claude Code au quotidien, intégré à PhpStorm, chaque proposition étant relue. Le socle est une architecture MVC en PHP 8.3 avec PostgreSQL, un frontend en JavaScript, jQuery et DataTables stylé avec Tailwind CSS, du temps réel via Node.js et Socket.IO, et une chaîne de déploiement GitLab sur quatre environnements : développement, test, préproduction et production.",
+        description: "Application web métier d'un client du secteur de l'édition et de la distribution, développée par l'équipe de Litesoft où je suis en alternance. C'est un intranet utilisé chaque jour par des dizaines de personnes sur plusieurs sites, du catalogue à la facturation en passant par les stocks et l'expédition. Je travaille par tickets, que le chef de projet me transmet après avoir vu le besoin avec le client. Il en est passé plus de cinquante en un an, souvent du script SQL jusqu'à l'interface. Je fusionne moi-même sur l'environnement de test et j'applique les scripts de migration de la base en préproduction et en production. Le reste du temps, je modernise l'existant. J'utilise Claude Code au quotidien dans PhpStorm, en relisant chaque proposition. Côté technique, c'est du PHP 8.3 en MVC avec PostgreSQL, une interface en JavaScript, jQuery et DataTables stylée avec Tailwind CSS, Node.js et Socket.IO pour le temps réel, et un déploiement GitLab sur quatre environnements.",
         technologies: ["PHP", "JavaScript", "PostgreSQL", "jQuery", "Tailwind CSS", "DataTables", "Node.js", "Socket.io", "GitLab", "MAMP"],
         liens: [
             {libelle: "Litesoft", url: "https://www.litesoft.fr/"},
@@ -72,18 +72,18 @@ const projets = {
         ],
         statut: "En production",
         etudeDeCas: {
-            contexte: "Gecko est l'ERP interne d'un éditeur-distributeur de livres, utilisé chaque jour par des dizaines de personnes réparties sur plusieurs sites. Développé par l'équipe Litesoft depuis 2021, il couvre toute la chaîne : catalogue, CRM, facturation, fabrication, stock et expédition. Je l'ai rejoint en septembre 2025 dans le cadre de mon alternance. L'enjeu n'est donc pas de partir d'une page blanche, mais de m'intégrer efficacement dans un gros projet existant et toujours très actif, et d'y contribuer en full-stack.",
-            reflexion: "Intervenir sur une application de cette taille, c'est d'abord savoir naviguer dans l'existant. Je travaille par tickets, en touchant souvent toute la chaîne (contrôleur PHP, classe métier, requête SQL, interface). Mon fil conducteur : moderniser et fiabiliser l'existant plutôt que d'empiler du code, sans jamais de bascule brutale sur une application en production, en passant par la standardisation (Composer, autoload PSR-4), la sécurité et la performance.",
+            contexte: "Gecko est l'ERP interne d'un éditeur-distributeur de livres. L'équipe Litesoft le développe depuis 2021 et il couvre toute la chaîne, du catalogue à l'expédition. Je l'ai rejoint en septembre 2025 pour mon alternance, donc sur un gros projet déjà en production et toujours très actif.",
+            reflexion: "Sur une application de cette taille, il faut d'abord apprendre à s'y repérer. Un ticket touche souvent toute la chaîne, du contrôleur PHP à l'interface en passant par la requête SQL. J'essaie de moderniser par petites étapes, sans jamais tout basculer d'un coup sur une application que des gens utilisent tous les jours.",
             defis: [
-                "Reprendre, fiabiliser et étendre le filtre par colonne qui existait déjà dans Gecko, jusqu'à un moteur commun à tous les tableaux : opérateurs adaptés au type de donnée (texte, nombre, date, EAN) et filtres favoris sauvegardables. C'est le plus gros chantier de l'année, une centaine de fichiers d'octobre 2025 à janvier 2026, et la fonctionnalité est utilisée tous les jours par toutes les équipes.",
-                "Mener la migration de l'interface vers Tailwind CSS écran par écran, jusqu'au retrait complet de Bootstrap en juin 2026, en préservant le comportement de 70 à 80 tableaux de données. Dans la foulée, retirer jQuery UI : Flatpickr pour les dates, SortableJS pour le glisser-déposer, Floating UI pour les info-bulles et des moteurs maison pour les fenêtres déplaçables. Près d'une centaine de pages sont couvertes par des tests navigateur, rejoués avant et après chaque changement.",
-                "Faire passer le projet à Composer et à l'autoload PSR-4 (plus de 400 fichiers), puis sortir les imports de deux contrôleurs surchargés : plus de 4 000 lignes déplacées vers une classe mère et une vingtaine de classes spécialisées.",
-                "Auditer et optimiser une quarantaine de pages : élimination de requêtes N+1, l'ouverture d'une facture passant de 201 requêtes à une seule, requêtes préparées et échappement XSS systématique.",
-                "Développer le module de stocks du site de Paris : six écrans, de la réception à l'écart d'inventaire, livrés par lots à partir d'une maquette fournie par le client.",
-                "Écrire près de la moitié du fichier d'intégration continue, avec un versionnement des assets par empreinte de contenu qui empêche trois pannes de déploiement : un site sans CSS, un JavaScript périmé servi par le cache et un asset introuvable en silence.",
-                "Concevoir une « page modèle » : un template CRUD réutilisable (liste avec filtres + formulaire Nouveau / Modifier / Supprimer) qui sert de référence d'architecture à l'équipe pour démarrer rapidement une nouvelle interface, documenté pas à pas et fonctionnel sans base de données grâce à un jeu de données de démonstration."
+                "J'ai repris le filtre par colonne qui existait déjà dans Gecko pour en faire un moteur commun à tous les tableaux, avec des opérateurs adaptés au type de donnée et des filtres favoris. C'est le plus gros chantier de mon année, et toutes les équipes s'en servent chaque jour.",
+                "La migration de l'interface vers Tailwind CSS, écran par écran, jusqu'au retrait complet de Bootstrap en juin 2026. J'ai aussi remplacé jQuery UI par Flatpickr, SortableJS et Floating UI. Avant et après chaque changement, je rejoue près d'une centaine de tests navigateur.",
+                "Le passage à Composer et à l'autoload PSR-4 sur plus de 400 fichiers, puis la sortie des imports de deux contrôleurs devenus énormes vers des classes dédiées.",
+                "Des optimisations de performance et de sécurité, page par page. À l'ouverture d'une facture, on est passé de 201 requêtes à une seule.",
+                "Le module de stocks du site de Paris, six écrans livrés par lots à partir d'une maquette du client.",
+                "Près de la moitié du fichier d'intégration continue, dont un système qui évite de déployer un site sans CSS ou un JavaScript resté en cache.",
+                "Une page modèle que l'équipe reprend pour démarrer une nouvelle interface, avec une liste filtrable et son formulaire. Elle fonctionne sans base de données grâce à un jeu de démonstration."
             ],
-            resultat: "Au fil de mon alternance, j'ai contribué en continu à un ERP en production : plus de cinquante tickets livrés, un moteur de filtres utilisé par toutes les équipes, une interface entièrement passée à Tailwind CSS, une base de code assainie (PSR-4, imports en classes), un module de stocks pour le site de Paris, une chaîne d'intégration continue plus sûre et une page modèle servant de référence à l'équipe. J'y apprends surtout à être autonome dans une grande base de code d'équipe, avec une vraie exigence de non-régression, de sécurité et de performance."
+            resultat: "Un an d'alternance sur un ERP en production, avec un moteur de filtres utilisé par toutes les équipes, une interface entièrement passée à Tailwind CSS, un module de stocks pour Paris et une page modèle reprise par l'équipe. J'y ai surtout appris à travailler en autonomie dans une grosse base de code sans rien casser."
         }
     },
     "flouflix": {
@@ -99,7 +99,7 @@ const projets = {
     "limite-limite": {
         titre: "API Limite Limite",
         date: "Septembre 2026",
-        images: [{src: "../assets/projets/limite_limite/Reponse_API.png", legende: "Réponse de l'API : une question et une réponse tirées au hasard"}],
+        images: [{src: "../assets/projets/limite_limite/Reponse_API.png", legende: "Une question et une réponse tirées au hasard par l'API"}],
         description: "Exercice de Bachelor réalisé en binôme, dont le sujet était la chaîne d'intégration et de déploiement continus plus que l'application elle-même. L'application est volontairement petite : une API PHP 8.2 qui renvoie en JSON une association tirée au hasard entre une carte question à trou et une carte réponse, sur le principe du jeu Limite Limite. Le code suit une architecture MVC légère, et le contrôleur reçoit sa connexion à la base par injection de dépendances, ce qui permet de le tester avec un mock sans base réelle. L'environnement tient dans Docker Compose, un service PHP et un service MySQL 8 initialisé par un script SQL. À chaque push ou pull request sur les branches develop et prod, GitHub Actions audite les dépendances avec Composer, vérifie le respect du standard PSR-12 avec PHP_CodeSniffer et lance les tests PHPUnit. À la fin de cette intégration, un second workflow déploie le code par SSH sur un VPS, dans un environnement de développement puis de production. Le travail suit le même circuit : développement sur develop, puis passage en production par pull request.",
         technologies: ["PHP", "MySQL", "Docker", "GitHub"],
         liens: [
@@ -110,8 +110,8 @@ const projets = {
         titre: "Le Grimoire des Recettes",
         date: "Depuis 2025",
         images: [
-            {src: "../assets/projets/grimoire_recettes/Accueil.jpg", legende: "Accueil : catégories et bannière de saison"},
-            {src: "../assets/projets/grimoire_recettes/Fiche_recette.png", legende: "Fiche recette : portions, ingrédients à cocher, note"},
+            {src: "../assets/projets/grimoire_recettes/Accueil.jpg", legende: "L'accueil, avec la bannière de saison"},
+            {src: "../assets/projets/grimoire_recettes/Fiche_recette.png", legende: "Une fiche recette avec ses ingrédients à cocher"},
             {src: "../assets/projets/grimoire_recettes/Planificateur.png", legende: "Planificateur des repas de la semaine"},
             {src: "../assets/projets/grimoire_recettes/Placards.png", legende: "« Qu'est-ce que j'ai dans mes placards ? » et recettes réalisables"},
             {src: "../assets/projets/grimoire_recettes/Liste_de_courses.png", legende: "Liste de courses générée à partir de trois recettes"},
@@ -131,7 +131,7 @@ const projets = {
         date: "Du 12/11/2024 au 20/12/2024",
         images: [
             {src: "../assets/projets/panada_food/Accueil.jpg", legende: "Page d'accueil"},
-            {src: "../assets/projets/panada_food/Menu.jpg", legende: "Carte du restaurant : burgers, sandwichs, pizzas, tacos"},
+            {src: "../assets/projets/panada_food/Menu.jpg", legende: "La carte du restaurant"},
             {src: "../assets/projets/panada_food/Contact.jpg", legende: "Page contact"},
             {src: "../assets/projets/panada_food/Mentions_legales.jpg", legende: "Mentions légales et crédits photographiques"},
             {src: "../assets/projets/panada_food/Ecran_chargement.jpg", legende: "Écran de chargement"}
@@ -168,7 +168,7 @@ const projets = {
         titre: "France Mobilier",
         date: "Février 2025",
         images: [{src: "../assets/projets/france_mobilier/Accueil.png", legende: "Page d'accueil"},
-            {src: "../assets/projets/france_mobilier/Meuble.jpg", legende: "Catalogue filtré par catégorie : meubles TV"},
+            {src: "../assets/projets/france_mobilier/Meuble.jpg", legende: "Le catalogue filtré sur les meubles TV"},
             {src: "../assets/projets/france_mobilier/Magasins.png", legende: "Liste des magasins"},
             {src: "../assets/projets/france_mobilier/Admin.png", legende: "Espace d'administration"},
             {src: "../assets/projets/france_mobilier/AjoutProduit.png", legende: "Ajout d'un produit"},
@@ -192,7 +192,7 @@ const projets = {
             {src: "../assets/projets/sio_shop/RechercheProduit.png", legende: "Produits filtrés par marque"},
             {src: "../assets/projets/sio_shop/Produit.png", legende: "Fiche produit"},
             {src: "../assets/projets/sio_shop/NouveauProduit.png", legende: "Création d'un produit"},
-            {src: "../assets/projets/sio_shop/SaisirVente.png", legende: "Saisie d'une vente : prix HT, TVA et TTC"},
+            {src: "../assets/projets/sio_shop/SaisirVente.png", legende: "Saisie d'une vente avec le calcul de la TVA"},
             {src: "../assets/projets/sio_shop/Facture.png", legende: "Facture générée en PDF"},
             {src: "../assets/projets/sio_shop/GestionEmployes.png", legende: "Liste des employés"},
             {src: "../assets/projets/sio_shop/Employe.png", legende: "Fiche employé"},
@@ -211,7 +211,7 @@ const projets = {
             {src: "../assets/projets/speedcubing/Def_Speedcubing.jpg", legende: "Présentation du speedcubing"},
             {src: "../assets/projets/speedcubing/Connexion.jpg", legende: "Connexion"}
         ],
-        description: "Site sur le thème d'une association de speedcubing, sujet d'un projet de BTS, sans commande réelle derrière. Il permet aux passionnés de Rubik's Cube de s'entraîner en ligne, d'enregistrer leurs temps et de comparer leurs performances avec celles des autres. Il intègre un chronomètre interactif, une base de données des meilleurs temps et une section dédiée à la résolution d'un Rubik's Cube 3x3.",
+        description: "Site sur le thème d'une association de speedcubing, réalisé comme projet de BTS. Il permet aux passionnés de Rubik's Cube de s'entraîner en ligne, d'enregistrer leurs temps et de comparer leurs performances avec celles des autres. Il intègre un chronomètre interactif, une base de données des meilleurs temps et une section dédiée à la résolution d'un Rubik's Cube 3x3.",
         technologies: ["PHP", "CSS", "JavaScript", "MySQL", "XAMPP"]
     },
     "meteo": {
@@ -237,9 +237,9 @@ const projets = {
         images: [
             {src: "../assets/projets/mairie_de_cauffry/Visuel_site.jpg", legende: "Bandeau d'accueil du nouveau site de la commune"},
             {src: "../assets/projets/mairie_de_cauffry/Accueil.jpg", legende: "Page d'accueil du site en ligne"},
-            {src: "../assets/projets/mairie_de_cauffry/Adico_collectivite.png", legende: "Plateforme de l'Adico : recueil des besoins"},
+            {src: "../assets/projets/mairie_de_cauffry/Adico_collectivite.png", legende: "Le recueil des besoins sur la plateforme de l'Adico"},
             {src: "../assets/projets/mairie_de_cauffry/Adico_arborescence.png", legende: "Arborescence des rubriques, sur la plateforme de l'Adico"},
-            {src: "../assets/projets/mairie_de_cauffry/Adicloud.jpg", legende: "Adicloud : documents déposés et structurés"}
+            {src: "../assets/projets/mairie_de_cauffry/Adicloud.jpg", legende: "Les documents rangés sur Adicloud"}
         ],
         description: "Stage de 4 semaines en première année de BTS SIO, à la mairie de Cauffry, pour le nouveau site de la commune. Le site lui-même est un produit de l'Adico (Association pour le développement et l'innovation numérique des collectivités), le prestataire de la commune, bâti sur leur plateforme mutualisée : je n'en ai pas écrit le code. Mon travail portait sur le contenu et la structure. L'ancien site étant devenu indisponible, j'ai récupéré ses pages via la Wayback Machine, rempli le recueil de besoins, conçu l'arborescence des rubriques, puis préparé les documents et les ai déposés sur Adicloud en les structurant pour qu'ils s'affichent correctement. En parallèle, j'ai sauvegardé les mails de la maire vers un disque dur externe et proposé des prototypes de logo pour la commune.",
         technologies: [],

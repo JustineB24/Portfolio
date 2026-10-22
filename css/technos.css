@@ -288,37 +288,43 @@
 
 /* Vitest, Composer et Sequelize gardent leur couleur de marque, la dominante
    de leur logo n'étant pas la bonne. Express suit la règle de GitHub */
-.comp-express {
+.comp-express,
+#projet-technologies .tag-express {
     --tech-brut: rgb(22, 22, 20);
     --tech-libelle: rgb(22, 22, 20);
     --tech-filet: rgb(22, 22, 20);
 }
 
-.comp-jest {
+.comp-jest,
+#projet-technologies .tag-jest {
     --tech-brut: rgb(153, 66, 91);
     --tech-libelle: rgb(148, 64, 88);
     --tech-filet: rgb(153, 66, 91);
 }
 
-.comp-vitest {
+.comp-vitest,
+#projet-technologies .tag-vitest {
     --tech-brut: rgb(114, 155, 27);
     --tech-libelle: rgb(78, 105, 18);
     --tech-filet: rgb(108, 146, 25);
 }
 
-.comp-eslint {
+.comp-eslint,
+#projet-technologies .tag-eslint {
     --tech-brut: rgb(75, 50, 195);
     --tech-libelle: rgb(75, 50, 195);
     --tech-filet: rgb(75, 50, 195);
 }
 
-.comp-github-actions {
+.comp-github-actions,
+#projet-technologies .tag-github-actions {
     --tech-brut: rgb(32, 136, 255);
     --tech-libelle: rgb(0, 91, 195);
     --tech-filet: rgb(25, 132, 255);
 }
 
-.comp-traefik {
+.comp-traefik,
+#projet-technologies .tag-traefik {
     --tech-brut: rgb(36, 161, 193);
     --tech-libelle: rgb(23, 105, 126);
     --tech-filet: rgb(33, 146, 175);
@@ -330,10 +336,32 @@
     --tech-filet: rgb(108, 68, 40);
 }
 
-.comp-sequelize {
+.comp-sequelize,
+#projet-technologies .tag-sequelize {
     --tech-brut: rgb(60, 120, 196);
     --tech-libelle: rgb(47, 95, 156);
     --tech-filet: rgb(60, 120, 196);
+}
+
+.comp-vite,
+#projet-technologies .tag-vite {
+    --tech-brut: rgb(100, 108, 255);
+    --tech-libelle: rgb(48, 58, 255);
+    --tech-filet: rgb(100, 108, 255);
+}
+
+.comp-playwright,
+#projet-technologies .tag-playwright {
+    --tech-brut: rgb(46, 173, 51);
+    --tech-libelle: rgb(29, 110, 32);
+    --tech-filet: rgb(41, 153, 45);
+}
+
+.comp-claude-code,
+#projet-technologies .tag-claude-code {
+    --tech-brut: rgb(217, 119, 87);
+    --tech-libelle: rgb(160, 66, 36);
+    --tech-filet: rgb(212, 100, 64);
 }
 
 /* ===== Thème sombre ===== */
@@ -618,37 +646,43 @@
     --tech-filet: rgb(87, 87, 255);
 }
 
-.dark-theme .comp-express {
+.dark-theme .comp-express,
+.dark-theme #projet-technologies .tag-express {
     --tech-brut: rgb(201, 201, 201);
     --tech-libelle: rgb(201, 201, 201);
     --tech-filet: rgb(201, 201, 201);
 }
 
-.dark-theme .comp-jest {
+.dark-theme .comp-jest,
+.dark-theme #projet-technologies .tag-jest {
     --tech-brut: rgb(153, 66, 91);
-    --tech-libelle: rgb(199, 125, 146);
+    --tech-libelle: rgb(201, 129, 149);
     --tech-filet: rgb(176, 76, 105);
 }
 
-.dark-theme .comp-vitest {
+.dark-theme .comp-vitest,
+.dark-theme #projet-technologies .tag-vitest {
     --tech-brut: rgb(114, 155, 27);
     --tech-libelle: rgb(125, 170, 30);
     --tech-filet: rgb(114, 155, 27);
 }
 
-.dark-theme .comp-eslint {
+.dark-theme .comp-eslint,
+.dark-theme #projet-technologies .tag-eslint {
     --tech-brut: rgb(75, 50, 195);
     --tech-libelle: rgb(147, 131, 223);
     --tech-filet: rgb(111, 90, 213);
 }
 
-.dark-theme .comp-github-actions {
+.dark-theme .comp-github-actions,
+.dark-theme #projet-technologies .tag-github-actions {
     --tech-brut: rgb(32, 136, 255);
     --tech-libelle: rgb(69, 156, 255);
     --tech-filet: rgb(32, 136, 255);
 }
 
-.dark-theme .comp-traefik {
+.dark-theme .comp-traefik,
+.dark-theme #projet-technologies .tag-traefik {
     --tech-brut: rgb(36, 161, 193);
     --tech-libelle: rgb(38, 170, 203);
     --tech-filet: rgb(36, 161, 193);
@@ -660,8 +694,30 @@
     --tech-filet: rgb(153, 96, 57);
 }
 
-.dark-theme .comp-sequelize {
+.dark-theme .comp-sequelize,
+.dark-theme #projet-technologies .tag-sequelize {
     --tech-brut: rgb(60, 120, 196);
     --tech-libelle: rgb(110, 155, 211);
     --tech-filet: rgb(60, 120, 196);
+}
+
+.dark-theme .comp-vite,
+.dark-theme #projet-technologies .tag-vite {
+    --tech-brut: rgb(100, 108, 255);
+    --tech-libelle: rgb(138, 144, 255);
+    --tech-filet: rgb(100, 108, 255);
+}
+
+.dark-theme .comp-playwright,
+.dark-theme #projet-technologies .tag-playwright {
+    --tech-brut: rgb(46, 173, 51);
+    --tech-libelle: rgb(48, 182, 54);
+    --tech-filet: rgb(46, 173, 51);
+}
+
+.dark-theme .comp-claude-code,
+.dark-theme #projet-technologies .tag-claude-code {
+    --tech-brut: rgb(217, 119, 87);
+    --tech-libelle: rgb(221, 135, 107);
+    --tech-filet: rgb(217, 119, 87);
 }

@@ -151,6 +151,12 @@
     vertical-align: middle;
 }
 
+/* Logos noirs, invisibles sur la pastille sombre sans inversion */
+.dark-theme #projet-technologies .tag-express .tech-logo,
+.dark-theme #projet-technologies .tag-socketio .tech-logo {
+    filter: invert(1);
+}
+
 #projet-technologies {
     list-style: none;
     padding: 0;

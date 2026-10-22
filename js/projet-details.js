@@ -35,14 +35,14 @@ const projets = {
             {src: "../assets/projets/yabt/Nuancier.png", legende: "Nuancier de l'identité visuelle"}
         ],
         description: "Projet fil rouge du Bachelor Chef de projet développement et data, mené à quatre depuis février 2026. YABT est une application web de blind test musical multijoueur en temps réel. Les joueurs créent ou rejoignent une partie par un code ou un QR code, discutent dans le salon et s'affrontent sur des extraits musicaux issus de l'API Deezer. La version 1 livrée propose le mode Classique, des comptes avec avatar et l'historique des parties. Les quatre autres modes (Speedrun, Battle Royale, Jackpot, Combo Breaker) sont annoncés dans l'interface comme à venir. Le mode quiz et la création de blind tests sont développés et testés, mais restent fermés tant que le moteur de jeu ne sait pas les dérouler : l'équipe a préféré ne pas ouvrir une fonctionnalité qui mène à une impasse. L'identité visuelle est un travail à plusieurs mains : le logo a été réalisé par un camarade en webdesign, et les icônes néon ont été générées par IA. Le projet suit une méthode Agile, Scrum et Kanban sur Jira.",
-        technologies: ["React", "Tailwind CSS", "Node.js", "Socket.io", "MySQL", "Docker", "Figma", "GitHub"],
+        technologies: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "Socket.io", "Sequelize", "MySQL", "Docker", "Traefik", "Jest", "Vitest", "ESLint", "GitHub Actions", "Figma", "GitHub"],
         liens: [
             {libelle: "API Deezer", url: "https://developers.deezer.com/api"}
         ],
         statut: "V1 livrée",
         etudeDeCas: {
             contexte: "L'idée vient d'abord d'une passion pour la musique : c'est ce qui a orienté le choix du sujet parmi tous ceux possibles en Bachelor. Le constat a suivi. Les blind tests entre amis se font souvent sur des applications payantes, limitées en fonctionnalités ou sans vrai mode multijoueur en temps réel. On voulait une alternative gratuite, complète et jouable directement dans le navigateur.",
-            reflexion: "On a commencé par le cahier des charges, les user stories et les maquettes Figma, puis on s'est réparti les rôles. Le socle technique (dépôts, Docker, base de données) a été posé dès le début. Au départ, je m'occupais de la création de contenu : l'API des quiz et des blind tests, un proxy vers Deezer et les écrans de création, avec la recherche de morceaux en direct. Mon rôle s'est ensuite étendu à la chaîne musicale, à la sécurité, aux tests et à l'installation du projet. C'est aussi avec ce projet que j'ai appris Figma.",
+            reflexion: "On a commencé par le cahier des charges, les user stories et les maquettes Figma, puis on s'est réparti les rôles. Le socle technique (dépôts, Docker derrière un reverse proxy Traefik, base de données) a été posé dès le début. Au départ, je m'occupais de la création de contenu : l'API des quiz et des blind tests, un proxy vers Deezer et les écrans de création, avec la recherche de morceaux en direct. Mon rôle s'est ensuite étendu à la chaîne musicale, à la sécurité, aux tests et à l'installation du projet. C'est aussi avec ce projet que j'ai appris Figma.",
             defis: [
                 "Construire la playlist d'une partie. J'ai écrit un mélange de Fisher-Yates pour que chaque ordre ait autant de chances de sortir, et regroupé les différentes versions d'un même titre.",
                 "Les tests que j'ai écrits sur le moteur de jeu, que je n'avais pas développé, ont trouvé cinq vrais bugs, corrigés dans la foulée.",
@@ -50,7 +50,7 @@ const projets = {
                 "L'intégration continue sur GitHub Actions, à partir du squelette d'un camarade. Un job consommait presque tout le quota mensuel parce qu'une connexion à la base n'était jamais fermée.",
                 "S'organiser à quatre avec Git et Jira, et accepter de réduire la version 1 pour livrer quelque chose qui marche."
             ],
-            resultat: "La version 1 est livrée et une partie se joue de bout en bout depuis fin juin 2026. Elle s'appuie sur 534 tests automatisés, côté serveur comme côté interface, et j'ai largement contribué à cette suite aux côtés de l'équipe. Le projet n'a pas été mis en production et continue. Il reste à brancher les blind tests créés sur le moteur de jeu, à rouvrir le quiz, puis à ajouter les autres modes. Les six premiers visuels sont des captures de l'application, les suivants les maquettes. Le projet a été soutenu devant le jury du titre professionnel Concepteur développeur d'applications."
+            resultat: "La version 1 est livrée et une partie se joue de bout en bout depuis fin juin 2026. Elle s'appuie sur 534 tests automatisés, avec Jest côté serveur et Vitest côté interface, et j'ai largement contribué à cette suite aux côtés de l'équipe. Le projet n'a pas été mis en production et continue. Il reste à brancher les blind tests créés sur le moteur de jeu, à rouvrir le quiz, puis à ajouter les autres modes. Les six premiers visuels sont des captures de l'application, les suivants les maquettes. Le projet a été soutenu devant le jury du titre professionnel Concepteur développeur d'applications."
         }
     },
     "gecko": {
@@ -62,8 +62,8 @@ const projets = {
             {src: "../assets/projets/gecko/Filtres_favoris.png", legende: "Gestion des filtres favoris"},
             {src: "../assets/projets/gecko/Stocks_Paris_preparation.png", legende: "Préparation des envois, dans le module de Paris"}
         ],
-        description: "Application web métier d'un client du secteur de l'édition et de la distribution, développée par l'équipe de Litesoft où je suis en alternance. C'est un intranet utilisé chaque jour par des dizaines de personnes sur plusieurs sites, du catalogue à la facturation en passant par les stocks et l'expédition. Je travaille par tickets, que le chef de projet me transmet après avoir vu le besoin avec le client. Il en est passé plus de cinquante en un an, souvent du script SQL jusqu'à l'interface. Je fusionne moi-même sur l'environnement de test et j'applique les scripts de migration de la base en préproduction et en production. Le reste du temps, je modernise l'existant. J'utilise Claude Code au quotidien dans PhpStorm, en relisant chaque proposition. Côté technique, c'est du PHP 8.3 en MVC avec PostgreSQL, une interface en JavaScript, jQuery et DataTables stylée avec Tailwind CSS, Node.js et Socket.IO pour le temps réel, et un déploiement GitLab sur quatre environnements.",
-        technologies: ["PHP", "JavaScript", "PostgreSQL", "jQuery", "Tailwind CSS", "DataTables", "Node.js", "Socket.io", "GitLab", "MAMP"],
+        description: "Application web métier d'un client du secteur de l'édition et de la distribution, développée par l'équipe de Litesoft où je suis en alternance. C'est un intranet utilisé chaque jour par des dizaines de personnes sur plusieurs sites, du catalogue à la facturation en passant par les stocks et l'expédition. Je travaille par tickets, que le chef de projet me transmet après avoir vu le besoin avec le client. Il en est passé plus de cinquante en un an, souvent du script SQL jusqu'à l'interface. Je fusionne moi-même sur l'environnement de test et j'applique les scripts de migration de la base en préproduction et en production. Le reste du temps, je modernise l'existant. J'utilise Claude Code au quotidien dans PhpStorm, en relisant chaque proposition. Côté technique, c'est du PHP 8.3 en MVC avec PostgreSQL, une interface en JavaScript, jQuery et DataTables stylée avec Tailwind CSS, Node.js et Socket.io pour le temps réel, et un déploiement GitLab sur quatre environnements.",
+        technologies: ["PHP", "JavaScript", "PostgreSQL", "jQuery", "Tailwind CSS", "DataTables", "Node.js", "Socket.io", "GitLab", "MAMP", "Playwright", "Claude Code"],
         liens: [
             {libelle: "Litesoft", url: "https://www.litesoft.fr/"},
             {libelle: "Claude Code", url: "https://claude.com/product/claude-code"}
@@ -74,7 +74,7 @@ const projets = {
             reflexion: "Sur une application de cette taille, il faut d'abord apprendre à s'y repérer. Un ticket touche souvent toute la chaîne, du contrôleur PHP à l'interface en passant par la requête SQL. J'essaie de moderniser par petites étapes, sans jamais tout basculer d'un coup sur une application que des gens utilisent tous les jours.",
             defis: [
                 "J'ai repris le filtre par colonne qui existait déjà dans Gecko pour en faire un moteur commun à tous les tableaux, avec des opérateurs adaptés au type de donnée et des filtres favoris. C'est le plus gros chantier de mon année, et toutes les équipes s'en servent chaque jour.",
-                "La migration de l'interface vers Tailwind CSS, écran par écran, jusqu'au retrait complet de Bootstrap en juin 2026. J'ai aussi remplacé jQuery UI par Flatpickr, SortableJS et Floating UI. Avant et après chaque changement, je rejoue près d'une centaine de tests navigateur.",
+                "La migration de l'interface vers Tailwind CSS, écran par écran, jusqu'au retrait complet de Bootstrap en juin 2026. J'ai aussi remplacé jQuery UI par Flatpickr, SortableJS et Floating UI. Avant et après chaque changement, je rejoue près d'une centaine de tests navigateur, et un test Playwright rejoue les mêmes clics sur l'ancienne et la nouvelle interface pour les comparer.",
                 "Le passage à Composer et à l'autoload PSR-4 sur plus de 400 fichiers, puis la sortie des imports de deux contrôleurs devenus énormes vers des classes dédiées.",
                 "Des optimisations de performance et de sécurité, page par page. À l'ouverture d'une facture, on est passé de 201 requêtes à une seule.",
                 "Le module de stocks du site de Paris, six écrans livrés par lots à partir d'une maquette du client.",
@@ -145,7 +145,7 @@ const projets = {
             {src: "../assets/projets/grimoire_recettes/Maquette.png", legende: "Maquette de départ, dessinée sur tablette"}
         ],
         description: "Projet personnel réalisé dans le but de tester les capacités des intelligences artificielles en développement. Le point de départ : une simple idée de carnet de recettes numérique et une maquette rapide dessinée sur tablette, la dernière image de la galerie. Le cahier des charges a été rédigé avec Gemini (Google), puis l'intégralité du code a été générée par Claude Code (Anthropic). Le résultat est une application web complète (PWA installable comme une appli sur téléphone et utilisable hors ligne) avec recherche en temps réel, calculateur de portions, timer intégré, mode sombre et liste de courses, le tout en HTML, CSS et JavaScript vanilla, sans aucune ligne de code écrite manuellement.",
-        technologies: ["HTML", "CSS", "JavaScript"],
+        technologies: ["HTML", "CSS", "JavaScript", "Claude Code"],
         liens: [
             {libelle: "Gemini", url: "https://gemini.google.com/"},
             {libelle: "Claude Code", url: "https://claude.com/product/claude-code"}
@@ -456,7 +456,17 @@ if (!projetId || !projets[projetId]) {
         "Canva": "Création graphique",
         "Git": "Gestion de versions et travail collaboratif",
         "GitHub": "Hébergement et collaboration",
-        "GitLab": "Plateforme DevOps et CI/CD"
+        "GitLab": "Plateforme DevOps et CI/CD",
+        "Express": "Framework serveur pour Node.js",
+        "Sequelize": "ORM pour Node.js",
+        "Traefik": "Reverse proxy et certificats HTTPS",
+        "Jest": "Tests JavaScript côté serveur",
+        "Vitest": "Tests de l'interface, intégré à Vite",
+        "ESLint": "Analyse statique du JavaScript",
+        "GitHub Actions": "Intégration continue sur GitHub",
+        "Vite": "Serveur de développement et build du front",
+        "Playwright": "Tests de bout en bout dans le navigateur",
+        "Claude Code": "Assistant de code, relu à chaque proposition"
     };
 
     const techList = document.getElementById("projet-technologies");
@@ -478,7 +488,9 @@ if (!projetId || !projets[projetId]) {
             "c#": "c-sharp",
             "node.js": "nodejs",
             "socket.io": "socket-io",
-            "tailwind css": "tailwind", "react native": "react", "expo": "expo"
+            "tailwind css": "tailwind", "react native": "react", "expo": "expo",
+            "github actions": "github-actions",
+            "claude code": "claude-code"
         };
         if (nomsSpeciaux[nomFichier]) {
             nomFichier = nomsSpeciaux[nomFichier];
@@ -512,12 +524,22 @@ if (!projetId || !projets[projetId]) {
             "canva": "tag-canva",
             "git": "tag-git",
             "github": "tag-github",
-            "gitlab": "tag-gitlab"
+            "gitlab": "tag-gitlab",
+            "express": "tag-express",
+            "sequelize": "tag-sequelize",
+            "traefik": "tag-traefik",
+            "jest": "tag-jest",
+            "vitest": "tag-vitest",
+            "eslint": "tag-eslint",
+            "github actions": "tag-github-actions",
+            "vite": "tag-vite",
+            "playwright": "tag-playwright",
+            "claude code": "tag-claude-code"
         };
         const tagClass = tagClasses[tech.toLowerCase()];
         if (tagClass) li.classList.add(tagClass);
 
-        const extensionsSpeciales = {"datatables": "png"};
+        const extensionsSpeciales = {"datatables": "png", "sequelize": "png", "jest": "png", "eslint": "png"};
         const ext = extensionsSpeciales[nomFichier] || "svg";
         let logo = document.createElement("img");
         logo.src = `../assets/competences/${nomFichier}.${ext}`;

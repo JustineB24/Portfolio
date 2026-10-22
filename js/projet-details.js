@@ -35,14 +35,14 @@ const projets = {
             {src: "../assets/projets/yabt/Nuancier.png", legende: "Nuancier de l'identité visuelle"}
         ],
         description: "Projet fil rouge du Bachelor Chef de projet développement et data, mené à quatre depuis février 2026. YABT est une application web de blind test musical multijoueur en temps réel. Les joueurs créent ou rejoignent une partie par un code ou un QR code, discutent dans le salon et s'affrontent sur des extraits musicaux issus de l'API Deezer. La version 1 livrée propose le mode Classique, des comptes avec avatar et l'historique des parties. Les quatre autres modes (Speedrun, Battle Royale, Jackpot, Combo Breaker) sont annoncés dans l'interface comme à venir. Le mode quiz et la création de blind tests sont développés et testés, mais restent fermés tant que le moteur de jeu ne sait pas les dérouler : l'équipe a préféré ne pas ouvrir une fonctionnalité qui mène à une impasse. L'identité visuelle est un travail à plusieurs mains : le logo a été réalisé par un camarade en webdesign, et les icônes néon ont été générées par IA. Le projet suit une méthode Agile, Scrum et Kanban sur Jira.",
-        technologies: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "Socket.io", "Sequelize", "MySQL", "Docker", "Traefik", "Jest", "Vitest", "ESLint", "GitHub Actions", "Figma", "GitHub"],
+        technologies: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "Socket.io", "Sequelize", "MySQL", "Looping", "Docker", "Traefik", "Jest", "Vitest", "ESLint", "GitHub Actions", "Figma", "GitHub"],
         liens: [
             {libelle: "API Deezer", url: "https://developers.deezer.com/api"}
         ],
         statut: "V1 livrée",
         etudeDeCas: {
             contexte: "L'idée vient d'abord d'une passion pour la musique : c'est ce qui a orienté le choix du sujet parmi tous ceux possibles en Bachelor. Le constat a suivi. Les blind tests entre amis se font souvent sur des applications payantes, limitées en fonctionnalités ou sans vrai mode multijoueur en temps réel. On voulait une alternative gratuite, complète et jouable directement dans le navigateur.",
-            reflexion: "On a commencé par le cahier des charges, les user stories et les maquettes Figma, puis on s'est réparti les rôles. Le socle technique (dépôts, Docker derrière un reverse proxy Traefik, base de données) a été posé dès le début. Au départ, je m'occupais de la création de contenu : l'API des quiz et des blind tests, un proxy vers Deezer et les écrans de création, avec la recherche de morceaux en direct. Mon rôle s'est ensuite étendu à la chaîne musicale, à la sécurité, aux tests et à l'installation du projet. C'est aussi avec ce projet que j'ai appris Figma.",
+            reflexion: "On a commencé par le cahier des charges, les user stories et les maquettes Figma, puis on s'est réparti les rôles. Le socle technique (dépôts, Docker derrière un reverse proxy Traefik, base de données modélisée sur Looping) a été posé dès le début. Au départ, je m'occupais de la création de contenu : l'API des quiz et des blind tests, un proxy vers Deezer et les écrans de création, avec la recherche de morceaux en direct. Mon rôle s'est ensuite étendu à la chaîne musicale, à la sécurité, aux tests et à l'installation du projet. C'est aussi avec ce projet que j'ai appris Figma.",
             defis: [
                 "Construire la playlist d'une partie. J'ai écrit un mélange de Fisher-Yates pour que chaque ordre ait autant de chances de sortir, et regroupé les différentes versions d'un même titre.",
                 "Les tests que j'ai écrits sur le moteur de jeu, que je n'avais pas développé, ont trouvé cinq vrais bugs, corrigés dans la foulée.",
@@ -62,8 +62,8 @@ const projets = {
             {src: "../assets/projets/gecko/Filtres_favoris.png", legende: "Gestion des filtres favoris"},
             {src: "../assets/projets/gecko/Stocks_Paris_preparation.png", legende: "Préparation des envois, dans le module de Paris"}
         ],
-        description: "Application web métier d'un client du secteur de l'édition et de la distribution, développée par l'équipe de Litesoft où je suis en alternance. C'est un intranet utilisé chaque jour par des dizaines de personnes sur plusieurs sites, du catalogue à la facturation en passant par les stocks et l'expédition. Je travaille par tickets, que le chef de projet me transmet après avoir vu le besoin avec le client. Il en est passé plus de cinquante en un an, souvent du script SQL jusqu'à l'interface. Je fusionne moi-même sur l'environnement de test et j'applique les scripts de migration de la base en préproduction et en production. Le reste du temps, je modernise l'existant. J'utilise Claude Code au quotidien dans PhpStorm, en relisant chaque proposition. Côté technique, c'est du PHP 8.3 en MVC avec PostgreSQL, une interface en JavaScript, jQuery et DataTables stylée avec Tailwind CSS, Node.js et Socket.io pour le temps réel, et un déploiement GitLab sur quatre environnements.",
-        technologies: ["PHP", "JavaScript", "PostgreSQL", "jQuery", "Tailwind CSS", "DataTables", "Node.js", "Socket.io", "GitLab", "MAMP", "Playwright", "Claude Code"],
+        description: "Application web métier d'un client du secteur de l'édition et de la distribution, développée par l'équipe de Litesoft où je suis en alternance. C'est un intranet utilisé chaque jour par des dizaines de personnes sur plusieurs sites, du catalogue à la facturation en passant par les stocks et l'expédition. Je travaille par tickets, que le chef de projet me transmet après avoir vu le besoin avec le client. Il en est passé plus de cinquante en un an, souvent du script SQL jusqu'à l'interface. Je fusionne moi-même sur l'environnement de test et j'applique les scripts de migration de la base en préproduction et en production. Le reste du temps, je modernise l'existant. J'utilise Claude Code au quotidien dans PhpStorm, en relisant chaque proposition. Je suis mes tickets dans Odoo, et dans Asana avant lui, et j'interroge la base PostgreSQL avec pgAdmin. Côté technique, c'est du PHP 8.3 en MVC avec PostgreSQL, une interface en JavaScript, jQuery et DataTables stylée avec Tailwind CSS, Node.js et Socket.io pour le temps réel, et un déploiement GitLab sur quatre environnements.",
+        technologies: ["PHP", "JavaScript", "PostgreSQL", "jQuery", "Tailwind CSS", "DataTables", "Node.js", "Socket.io", "GitLab", "MAMP", "pgAdmin", "Odoo", "Asana", "Playwright", "Claude Code"],
         liens: [
             {libelle: "Litesoft", url: "https://www.litesoft.fr/"},
             {libelle: "Claude Code", url: "https://claude.com/product/claude-code"}
@@ -188,8 +188,8 @@ const projets = {
             {src: "../assets/projets/pendu/Mots.jpg", legende: "Gestion de la liste des mots"},
             {src: "../assets/projets/pendu/Scores.jpg", legende: "Tableau des scores"}
         ],
-        description: "Application mobile développée avec MAUI et XAML, recréant le célèbre jeu du pendu. L'utilisateur doit deviner un mot choisi aléatoirement, en proposant des lettres une par une. Chaque mauvaise réponse révèle progressivement une image du pendu. Le menu principal permet de jouer, de gérer la liste des mots à deviner, de consulter les meilleurs scores ou de quitter l'application. Les mots et les scores sont stockés localement, permettant une gestion dynamique des parties et une personnalisation du jeu. L'interface est responsive et s'adapte parfaitement aux différents formats mobiles.",
-        technologies: ["C#", "XAML", "MAUI"]
+        description: "Application mobile développée dans Visual Studio avec MAUI et XAML, recréant le célèbre jeu du pendu. L'utilisateur doit deviner un mot choisi aléatoirement, en proposant des lettres une par une. Chaque mauvaise réponse révèle progressivement une image du pendu. Le menu principal permet de jouer, de gérer la liste des mots à deviner, de consulter les meilleurs scores ou de quitter l'application. Les mots et les scores sont stockés localement, permettant une gestion dynamique des parties et une personnalisation du jeu. L'interface est responsive et s'adapte parfaitement aux différents formats mobiles.",
+        technologies: ["C#", "XAML", "MAUI", "Visual Studio"]
     },
     "france-mobilier": {
         titre: "France Mobilier",
@@ -225,8 +225,8 @@ const projets = {
             {src: "../assets/projets/sio_shop/Employe.png", legende: "Fiche employé"},
             {src: "../assets/projets/sio_shop/AjoutEmploye.png", legende: "Création d'un employé"}
         ],
-        description: "Application de gestion commerciale développée sous Windows Forms pour une concession automobile fictive, sujet d'un projet de BTS. Ce projet propose une interface permettant aux employés de gérer les clients, les véhicules en stock et les ventes. L'application intègre une authentification sécurisée, une liaison directe avec une base de données SQL, ainsi qu'un module de création de factures au format PDF. Les utilisateurs peuvent rechercher, ajouter et modifier clients et produits, saisir des ventes avec calcul automatique du prix TTC, et suivre l'évolution des stocks en temps réel. La structure suit les principes de la programmation orientée objet, en assurant une navigation fluide et professionnelle entre les différentes fonctionnalités.",
-        technologies: ["WinForms", "C#", "MySQL", "XAMPP"]
+        description: "Application de gestion commerciale développée dans Visual Studio sous Windows Forms pour une concession automobile fictive, sujet d'un projet de BTS. Ce projet propose une interface permettant aux employés de gérer les clients, les véhicules en stock et les ventes. L'application intègre une connexion par identifiant, avec des droits différents pour l'administrateur et les employés, une liaison directe avec une base de données SQL, ainsi qu'un module de création de factures au format PDF. Les utilisateurs peuvent rechercher, ajouter et modifier clients et produits, saisir des ventes avec calcul automatique du prix TTC, et suivre l'évolution des stocks en temps réel. La structure suit les principes de la programmation orientée objet, en assurant une navigation fluide et professionnelle entre les différentes fonctionnalités.",
+        technologies: ["WinForms", "C#", "MySQL", "XAMPP", "Visual Studio"]
     },
     "speedcubing": {
         titre: "Speedcubing",
@@ -270,8 +270,8 @@ const projets = {
             {src: "../assets/projets/mairie_de_cauffry/Prototypes_logo_1.png", legende: "Prototypes de logo réalisés sur Canva, autour du bâtiment et de la commune"},
             {src: "../assets/projets/mairie_de_cauffry/Prototypes_logo_2.png", legende: "Six autres pistes de logo sur Canva, du trait à l'aplat de couleur"}
         ],
-        description: "Stage de 4 semaines en première année de BTS SIO, à la mairie de Cauffry, pour le nouveau site de la commune. Le site lui-même est un produit de l'Adico (Association pour le développement et l'innovation numérique des collectivités), le prestataire de la commune, bâti sur leur plateforme mutualisée : je n'en ai pas écrit le code. Mon travail portait sur le contenu et la structure. L'ancien site étant devenu indisponible, j'ai récupéré ses pages via la Wayback Machine, rempli le recueil de besoins, conçu l'arborescence des rubriques, puis préparé les documents et les ai déposés sur Adicloud en les structurant pour qu'ils s'affichent correctement. En parallèle, j'ai sauvegardé les mails de la maire vers un disque dur externe et proposé à la commune des prototypes de logo réalisés sur Canva.",
-        technologies: ["Canva"],
+        description: "Stage de 4 semaines en première année de BTS SIO, à la mairie de Cauffry, pour le nouveau site de la commune. Le site lui-même est un produit de l'Adico (Association pour le développement et l'innovation numérique des collectivités), le prestataire de la commune, bâti sur leur plateforme mutualisée : je n'en ai pas écrit le code. Mon travail portait sur le contenu et la structure, après un premier prototype du site en HTML et CSS monté sur VS Code. L'ancien site étant devenu indisponible, j'ai récupéré ses pages via la Wayback Machine, rempli le recueil de besoins, conçu l'arborescence des rubriques, puis préparé les documents et les ai déposés sur Adicloud en les structurant pour qu'ils s'affichent correctement. En parallèle, j'ai sauvegardé les mails de la maire vers un disque dur externe et proposé à la commune des prototypes de logo réalisés sur Canva.",
+        technologies: ["Canva", "VS Code"],
         liens: [
             {libelle: "Voir le projet en ligne", url: "https://mairiecauffry.fr/"},
             {libelle: "Site de l'Adico", url: "https://www.adico.fr/"}
@@ -466,7 +466,13 @@ if (!projetId || !projets[projetId]) {
         "GitHub Actions": "Intégration continue sur GitHub",
         "Vite": "Serveur de développement et build du front",
         "Playwright": "Tests de bout en bout dans le navigateur",
-        "Claude Code": "Assistant de code, relu à chaque proposition"
+        "Claude Code": "Assistant de code, relu à chaque proposition",
+        "Visual Studio": "IDE C# et .NET",
+        "VS Code": "Éditeur de code",
+        "pgAdmin": "Administration de PostgreSQL",
+        "Asana": "Gestion de projets",
+        "Odoo": "ERP et CRM open source",
+        "Looping": "Modélisation de bases de données"
     };
 
     const techList = document.getElementById("projet-technologies");
@@ -490,7 +496,9 @@ if (!projetId || !projets[projetId]) {
             "socket.io": "socket-io",
             "tailwind css": "tailwind", "react native": "react", "expo": "expo",
             "github actions": "github-actions",
-            "claude code": "claude-code"
+            "claude code": "claude-code",
+            "visual studio": "visual-studio",
+            "vs code": "visual-studio-code"
         };
         if (nomsSpeciaux[nomFichier]) {
             nomFichier = nomsSpeciaux[nomFichier];
@@ -534,7 +542,13 @@ if (!projetId || !projets[projetId]) {
             "github actions": "tag-github-actions",
             "vite": "tag-vite",
             "playwright": "tag-playwright",
-            "claude code": "tag-claude-code"
+            "claude code": "tag-claude-code",
+            "visual studio": "tag-vs",
+            "vs code": "tag-vscode",
+            "pgadmin": "tag-pgadmin",
+            "asana": "tag-asana",
+            "odoo": "tag-odoo",
+            "looping": "tag-looping"
         };
         const tagClass = tagClasses[tech.toLowerCase()];
         if (tagClass) li.classList.add(tagClass);

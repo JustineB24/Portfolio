@@ -143,6 +143,7 @@
 /* pgAdmin partage le logo de PostgreSQL, donc ses couleurs */
 .comp-postgresql,
 .comp-pgadmin,
+#projet-technologies .tag-pgadmin,
 .card-tags .tag-postgresql,
 #projet-technologies .tag-postgresql {
     --tech-brut: rgb(51, 103, 145);
@@ -150,13 +151,15 @@
     --tech-filet: rgb(51, 103, 145);
 }
 
-.comp-vscode {
+.comp-vscode,
+#projet-technologies .tag-vscode {
     --tech-brut: rgb(0, 122, 204);
     --tech-libelle: rgb(0, 95, 160);
     --tech-filet: rgb(0, 122, 204);
 }
 
-.comp-vs {
+.comp-vs,
+#projet-technologies .tag-vs {
     --tech-brut: rgb(108, 51, 175);
     --tech-libelle: rgb(108, 51, 175);
     --tech-filet: rgb(108, 51, 175);
@@ -232,7 +235,8 @@
     --tech-filet: rgb(0, 147, 153);
 }
 
-.comp-asana {
+.comp-asana,
+#projet-technologies .tag-asana {
     --tech-brut: rgb(249, 93, 143);
     --tech-libelle: rgb(189, 7, 65);
     --tech-filet: rgb(247, 49, 113);
@@ -244,17 +248,13 @@
     --tech-filet: rgb(0, 82, 204);
 }
 
-.comp-odoo {
+.comp-odoo,
+#projet-technologies .tag-odoo {
     --tech-brut: rgb(113, 75, 103);
     --tech-libelle: rgb(113, 75, 103);
     --tech-filet: rgb(113, 75, 103);
 }
 
-.comp-postman {
-    --tech-brut: rgb(255, 108, 55);
-    --tech-libelle: rgb(178, 47, 0);
-    --tech-filet: rgb(244, 65, 0);
-}
 
 .comp-bootstrap,
 .card-tags .tag-bootstrap,
@@ -280,7 +280,8 @@
     --tech-filet: rgb(37, 96, 255);
 }
 
-.comp-looping {
+.comp-looping,
+#projet-technologies .tag-looping {
     --tech-brut: rgb(0, 0, 255);
     --tech-libelle: rgb(0, 0, 255);
     --tech-filet: rgb(0, 0, 255);
@@ -503,6 +504,7 @@
 
 .dark-theme .comp-postgresql,
 .dark-theme .comp-pgadmin,
+.dark-theme #projet-technologies .tag-pgadmin,
 .dark-theme .card-tags .tag-postgresql,
 .dark-theme #projet-technologies .tag-postgresql {
     --tech-brut: rgb(51, 103, 145);
@@ -510,13 +512,15 @@
     --tech-filet: rgb(58, 116, 164);
 }
 
-.dark-theme .comp-vscode {
+.dark-theme .comp-vscode,
+.dark-theme #projet-technologies .tag-vscode {
     --tech-brut: rgb(0, 122, 204);
     --tech-libelle: rgb(10, 157, 255);
     --tech-filet: rgb(0, 122, 204);
 }
 
-.dark-theme .comp-vs {
+.dark-theme .comp-vs,
+.dark-theme #projet-technologies .tag-vs {
     --tech-brut: rgb(108, 51, 175);
     --tech-libelle: rgb(169, 128, 218);
     --tech-filet: rgb(139, 83, 205);
@@ -592,7 +596,8 @@
     --tech-filet: rgb(0, 196, 204);
 }
 
-.dark-theme .comp-asana {
+.dark-theme .comp-asana,
+.dark-theme #projet-technologies .tag-asana {
     --tech-brut: rgb(249, 93, 143);
     --tech-libelle: rgb(250, 109, 154);
     --tech-filet: rgb(249, 93, 143);
@@ -604,17 +609,13 @@
     --tech-filet: rgb(0, 101, 250);
 }
 
-.dark-theme .comp-odoo {
+.dark-theme .comp-odoo,
+.dark-theme #projet-technologies .tag-odoo {
     --tech-brut: rgb(113, 75, 103);
     --tech-libelle: rgb(176, 136, 165);
     --tech-filet: rgb(146, 97, 133);
 }
 
-.dark-theme .comp-postman {
-    --tech-brut: rgb(255, 108, 55);
-    --tech-libelle: rgb(255, 115, 64);
-    --tech-filet: rgb(255, 108, 55);
-}
 
 .dark-theme .comp-bootstrap,
 .dark-theme .card-tags .tag-bootstrap,
@@ -640,7 +641,8 @@
     --tech-filet: rgb(38, 97, 255);
 }
 
-.dark-theme .comp-looping {
+.dark-theme .comp-looping,
+.dark-theme #projet-technologies .tag-looping {
     --tech-brut: rgb(0, 0, 255);
     --tech-libelle: rgb(125, 125, 255);
     --tech-filet: rgb(87, 87, 255);
